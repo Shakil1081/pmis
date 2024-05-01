@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.employee-promotions.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.employeePromotion.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'EmployeePromotion', 'route' => 'admin.employee-promotions.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -105,7 +109,7 @@
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 10,
   };
   let table = $('.datatable-EmployeePromotion').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

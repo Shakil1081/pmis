@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyLeaveRecordRequest;
 use App\Http\Requests\StoreLeaveRecordRequest;
@@ -13,18 +14,52 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class LeaveRecordController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('leave_record_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $leaveRecords = LeaveRecord::with(['employee'])->get();
+        if ($request->ajax()) {
+            $query = LeaveRecord::with(['employee'])->select(sprintf('%s.*', (new LeaveRecord)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.leaveRecords.index', compact('leaveRecords'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'leave_record_show';
+                $editGate      = 'leave_record_edit';
+                $deleteGate    = 'leave_record_delete';
+                $crudRoutePart = 'leave-records';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->addColumn('employee_employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
+
+            $table->editColumn('status', function ($row) {
+                return $row->status ? LeaveRecord::STATUS_SELECT[$row->status] : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'employee']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.leaveRecords.index');
     }
 
     public function create()

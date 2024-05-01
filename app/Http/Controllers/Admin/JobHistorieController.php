@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyJobHistoryRequest;
 use App\Http\Requests\StoreJobHistoryRequest;
 use App\Http\Requests\UpdateJobHistoryRequest;
@@ -13,16 +14,81 @@ use App\Models\JobType;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class JobHistorieController extends Controller
 {
-    public function index()
+    use CsvImportTrait;
+
+    public function index(Request $request)
     {
         abort_if(Gate::denies('job_history_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $jobHistories = JobHistory::with(['job_type', 'designation', 'employee'])->get();
+        if ($request->ajax()) {
+            $query = JobHistory::with(['job_type', 'designation', 'employee'])->select(sprintf('%s.*', (new JobHistory)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.jobHistories.index', compact('jobHistories'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'job_history_show';
+                $editGate      = 'job_history_edit';
+                $deleteGate    = 'job_history_delete';
+                $crudRoutePart = 'job-histories';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('institute_name', function ($row) {
+                return $row->institute_name ? $row->institute_name : '';
+            });
+            $table->addColumn('job_type_name_bn', function ($row) {
+                return $row->job_type ? $row->job_type->name_bn : '';
+            });
+
+            $table->addColumn('designation_name_bn', function ($row) {
+                return $row->designation ? $row->designation->name_bn : '';
+            });
+
+            $table->editColumn('level_1', function ($row) {
+                return $row->level_1 ? $row->level_1 : '';
+            });
+            $table->editColumn('level_2', function ($row) {
+                return $row->level_2 ? $row->level_2 : '';
+            });
+            $table->editColumn('level_3', function ($row) {
+                return $row->level_3 ? $row->level_3 : '';
+            });
+            $table->editColumn('level_4', function ($row) {
+                return $row->level_4 ? $row->level_4 : '';
+            });
+            $table->editColumn('level_5', function ($row) {
+                return $row->level_5 ? $row->level_5 : '';
+            });
+            $table->addColumn('employee_employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
+
+            $table->editColumn('employee.fullname_bn', function ($row) {
+                return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'job_type', 'designation', 'employee']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.jobHistories.index');
     }
 
     public function create()
