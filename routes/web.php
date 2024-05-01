@@ -147,10 +147,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Professionale
     Route::delete('professionales/destroy', 'ProfessionaleController@massDestroy')->name('professionales.massDestroy');
+    Route::post('professionales/parse-csv-import', 'ProfessionaleController@parseCsvImport')->name('professionales.parseCsvImport');
+    Route::post('professionales/process-csv-import', 'ProfessionaleController@processCsvImport')->name('professionales.processCsvImport');
     Route::resource('professionales', 'ProfessionaleController');
 
     // Addressdetaile
     Route::delete('addressdetailes/destroy', 'AddressdetaileController@massDestroy')->name('addressdetailes.massDestroy');
+    Route::post('addressdetailes/parse-csv-import', 'AddressdetaileController@parseCsvImport')->name('addressdetailes.parseCsvImport');
+    Route::post('addressdetailes/process-csv-import', 'AddressdetaileController@processCsvImport')->name('addressdetailes.processCsvImport');
     Route::resource('addressdetailes', 'AddressdetaileController');
 
     // Upazila
@@ -175,18 +179,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Job Historie
     Route::delete('job-histories/destroy', 'JobHistorieController@massDestroy')->name('job-histories.massDestroy');
+    Route::post('job-histories/parse-csv-import', 'JobHistorieController@parseCsvImport')->name('job-histories.parseCsvImport');
+    Route::post('job-histories/process-csv-import', 'JobHistorieController@processCsvImport')->name('job-histories.processCsvImport');
     Route::resource('job-histories', 'JobHistorieController');
 
     // Employee Promotion
     Route::delete('employee-promotions/destroy', 'EmployeePromotionController@massDestroy')->name('employee-promotions.massDestroy');
     Route::post('employee-promotions/media', 'EmployeePromotionController@storeMedia')->name('employee-promotions.storeMedia');
     Route::post('employee-promotions/ckmedia', 'EmployeePromotionController@storeCKEditorImages')->name('employee-promotions.storeCKEditorImages');
+    Route::post('employee-promotions/parse-csv-import', 'EmployeePromotionController@parseCsvImport')->name('employee-promotions.parseCsvImport');
+    Route::post('employee-promotions/process-csv-import', 'EmployeePromotionController@processCsvImport')->name('employee-promotions.processCsvImport');
     Route::resource('employee-promotions', 'EmployeePromotionController');
 
     // Leave Record
     Route::delete('leave-records/destroy', 'LeaveRecordController@massDestroy')->name('leave-records.massDestroy');
     Route::post('leave-records/media', 'LeaveRecordController@storeMedia')->name('leave-records.storeMedia');
     Route::post('leave-records/ckmedia', 'LeaveRecordController@storeCKEditorImages')->name('leave-records.storeCKEditorImages');
+    Route::post('leave-records/parse-csv-import', 'LeaveRecordController@parseCsvImport')->name('leave-records.parseCsvImport');
+    Route::post('leave-records/process-csv-import', 'LeaveRecordController@processCsvImport')->name('leave-records.processCsvImport');
     Route::resource('leave-records', 'LeaveRecordController');
 
     // Training
@@ -247,16 +257,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Faq Question
     Route::delete('faq-questions/destroy', 'FaqQuestionController@massDestroy')->name('faq-questions.massDestroy');
     Route::resource('faq-questions', 'FaqQuestionController');
-
-    // Contact Company
-    Route::delete('contact-companies/destroy', 'ContactCompanyController@massDestroy')->name('contact-companies.massDestroy');
-    Route::resource('contact-companies', 'ContactCompanyController');
-
-    // Contact Contacts
-    Route::delete('contact-contacts/destroy', 'ContactContactsController@massDestroy')->name('contact-contacts.massDestroy');
-    Route::resource('contact-contacts', 'ContactContactsController');
-
-    Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

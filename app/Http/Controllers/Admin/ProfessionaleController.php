@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyProfessionaleRequest;
 use App\Http\Requests\StoreProfessionaleRequest;
 use App\Http\Requests\UpdateProfessionaleRequest;
@@ -11,16 +12,62 @@ use App\Models\Professionale;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProfessionaleController extends Controller
 {
-    public function index()
+    use CsvImportTrait;
+
+    public function index(Request $request)
     {
         abort_if(Gate::denies('professionale_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $professionales = Professionale::with(['employee'])->get();
+        if ($request->ajax()) {
+            $query = Professionale::with(['employee'])->select(sprintf('%s.*', (new Professionale)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.professionales.index', compact('professionales'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'professionale_show';
+                $editGate      = 'professionale_edit';
+                $deleteGate    = 'professionale_delete';
+                $crudRoutePart = 'professionales';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->addColumn('employee_employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
+
+            $table->editColumn('employee.fullname_bn', function ($row) {
+                return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
+            });
+            $table->editColumn('qualification_title', function ($row) {
+                return $row->qualification_title ? $row->qualification_title : '';
+            });
+            $table->editColumn('institution', function ($row) {
+                return $row->institution ? $row->institution : '';
+            });
+
+            $table->editColumn('passing_year', function ($row) {
+                return $row->passing_year ? $row->passing_year : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'employee']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.professionales.index');
     }
 
     public function create()

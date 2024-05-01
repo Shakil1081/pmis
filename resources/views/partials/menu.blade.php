@@ -7,11 +7,6 @@
     </div>
 
     <ul class="c-sidebar-nav">
-        <li>
-            <select class="searchable-field form-control">
-
-            </select>
-        </li>
         <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
@@ -536,38 +531,6 @@
 
                                 </i>
                                 {{ trans('cruds.faqQuestion.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
-        @can('contact_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/contact-companies*") ? "c-show" : "" }} {{ request()->is("admin/contact-contacts*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-phone-square c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.contactManagement.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('contact_company_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.contact-companies.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/contact-companies") || request()->is("admin/contact-companies/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.contactCompany.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('contact_contact_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.contact-contacts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/contact-contacts") || request()->is("admin/contact-contacts/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user-plus c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.contactContact.title') }}
                             </a>
                         </li>
                     @endcan

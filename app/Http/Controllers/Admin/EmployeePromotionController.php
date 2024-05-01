@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyEmployeePromotionRequest;
 use App\Http\Requests\StoreEmployeePromotionRequest;
@@ -18,7 +19,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class EmployeePromotionController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
     public function index(Request $request)
     {
