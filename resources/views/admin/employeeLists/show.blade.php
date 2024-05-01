@@ -1,0 +1,351 @@
+@extends('layouts.admin')
+@section('content')
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.show') }} {{ trans('cruds.employeeList.title') }}
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ route('admin.employee-lists.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.id') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->id }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.employeeid') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->employeeid }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.cadreid') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->cadreid }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->fullname_bn }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fullname_en') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->fullname_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fname_bn') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->fname_bn }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fname_en') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->fname_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.mname_bn') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->mname_bn }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.mname_en') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->mname_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.date_of_birth') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->date_of_birth }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.height') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->height }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.special_identity') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->special_identity }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.home_district') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->home_district->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.marital_statu') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->marital_statu->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.gender') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->gender->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.religion') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->religion->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.blood_group') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->blood_group->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.nid') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->nid }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.nid_upload') }}
+                        </th>
+                        <td>
+                            @if($employeeList->nid_upload)
+                                <a href="{{ $employeeList->nid_upload->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.passport') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->passport }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.passport_upload') }}
+                        </th>
+                        <td>
+                            @if($employeeList->passport_upload)
+                                <a href="{{ $employeeList->passport_upload->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.license_type') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->license_type->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.license_upload') }}
+                        </th>
+                        <td>
+                            @if($employeeList->license_upload)
+                                <a href="{{ $employeeList->license_upload->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.email') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.mobile_number') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->mobile_number }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fjoining_date') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->fjoining_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.project_name') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->project_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.job_type') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->job_type->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fjoiningofficename') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->fjoiningofficename }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.office_orderno') }}
+                        </th>
+                        <td>
+                            @if($employeeList->office_orderno)
+                                <a href="{{ $employeeList->office_orderno->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fjoining_letter') }}
+                        </th>
+                        <td>
+                            @if($employeeList->fjoining_letter)
+                                <a href="{{ $employeeList->fjoining_letter->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.office_order') }}
+                        </th>
+                        <td>
+                            @if($employeeList->office_order)
+                                <a href="{{ $employeeList->office_order->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->date_of_con_serviec }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.quota') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->quota->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.electric_signature') }}
+                        </th>
+                        <td>
+                            @if($employeeList->electric_signature)
+                                <a href="{{ $employeeList->electric_signature->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $employeeList->electric_signature->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.employee_photo') }}
+                        </th>
+                        <td>
+                            @if($employeeList->employee_photo)
+                                <a href="{{ $employeeList->employee_photo->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ route('admin.employee-lists.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@endsection
