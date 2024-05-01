@@ -43,9 +43,6 @@ class BloodGroupController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->editColumn('name_bn', function ($row) {
                 return $row->name_bn ? $row->name_bn : '';
             });

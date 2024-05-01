@@ -17,10 +17,10 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.upazila.fields.id') }}
+                            {{ trans('cruds.upazila.fields.district') }}
                         </th>
                         <td>
-                            {{ $upazila->id }}
+                            {{ $upazila->district->name_bn ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -37,6 +37,14 @@
                         </th>
                         <td>
                             {{ $upazila->name_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.upazila.fields.grocode') }}
+                        </th>
+                        <td>
+                            {{ $upazila->grocode }}
                         </td>
                     </tr>
                 </tbody>

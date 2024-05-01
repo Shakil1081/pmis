@@ -12,9 +12,8 @@ class CreateDivisionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name_bn')->unique();
             $table->string('name_en')->unique();
-            $table->string('geocode')->nullable();
+            $table->string('grocode')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }

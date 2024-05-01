@@ -21,11 +21,11 @@ class StoreMaritalstatusRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'value' => [
-                'string',
-                'nullable',
-            ],
             'name_en' => [
+                'string',
+                'required',
+            ],
+            'value' => [
                 'string',
                 'nullable',
             ],

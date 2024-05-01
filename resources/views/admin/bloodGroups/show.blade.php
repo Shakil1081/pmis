@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.bloodGroup.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $bloodGroup->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.bloodGroup.fields.name_bn') }}
                         </th>
                         <td>

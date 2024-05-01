@@ -24,14 +24,13 @@ class StoreLeaveTypeRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'value' => [
-                'required',
+                'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'unique:leave_types,value',
             ],
         ];
     }

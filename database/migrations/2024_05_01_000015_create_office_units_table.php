@@ -11,7 +11,7 @@ class CreateOfficeUnitsTable extends Migration
         Schema::create('office_units', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_bn')->unique();
-            $table->string('name_en')->nullable();
+            $table->string('name_en');
             $table->string('code')->nullable();
             $table->timestamps();
             $table->softDeletes();

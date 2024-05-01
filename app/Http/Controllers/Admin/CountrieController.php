@@ -49,8 +49,8 @@ class CountrieController extends Controller
             $table->editColumn('name_en', function ($row) {
                 return $row->name_en ? $row->name_en : '';
             });
-            $table->editColumn('country_code', function ($row) {
-                return $row->country_code ? $row->country_code : '';
+            $table->editColumn('grocode', function ($row) {
+                return $row->grocode ? $row->grocode : '';
             });
 
             $table->rawColumns(['actions', 'placeholder']);

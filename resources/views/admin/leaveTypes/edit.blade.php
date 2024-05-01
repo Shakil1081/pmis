@@ -21,8 +21,8 @@
                 <span class="help-block">{{ trans('cruds.leaveType.fields.name_bn_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="name_en">{{ trans('cruds.leaveType.fields.name_en') }}</label>
-                <input class="form-control {{ $errors->has('name_en') ? 'is-invalid' : '' }}" type="text" name="name_en" id="name_en" value="{{ old('name_en', $leaveType->name_en) }}">
+                <label class="required" for="name_en">{{ trans('cruds.leaveType.fields.name_en') }}</label>
+                <input class="form-control {{ $errors->has('name_en') ? 'is-invalid' : '' }}" type="text" name="name_en" id="name_en" value="{{ old('name_en', $leaveType->name_en) }}" required>
                 @if($errors->has('name_en'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name_en') }}
@@ -31,8 +31,8 @@
                 <span class="help-block">{{ trans('cruds.leaveType.fields.name_en_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="value">{{ trans('cruds.leaveType.fields.value') }}</label>
-                <input class="form-control {{ $errors->has('value') ? 'is-invalid' : '' }}" type="number" name="value" id="value" value="{{ old('value', $leaveType->value) }}" step="1" required>
+                <label for="value">{{ trans('cruds.leaveType.fields.value') }}</label>
+                <input class="form-control {{ $errors->has('value') ? 'is-invalid' : '' }}" type="number" name="value" id="value" value="{{ old('value', $leaveType->value) }}" step="1">
                 @if($errors->has('value'))
                     <div class="invalid-feedback">
                         {{ $errors->first('value') }}

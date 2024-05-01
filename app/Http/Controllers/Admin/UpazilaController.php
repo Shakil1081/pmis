@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyUpazilaRequest;
 use App\Http\Requests\StoreUpazilaRequest;
 use App\Http\Requests\UpdateUpazilaRequest;
+use App\Models\District;
 use App\Models\Upazila;
 use Gate;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class UpazilaController extends Controller
         abort_if(Gate::denies('upazila_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Upazila::query()->select(sprintf('%s.*', (new Upazila)->table));
+            $query = Upazila::with(['district'])->select(sprintf('%s.*', (new Upazila)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -43,17 +44,21 @@ class UpazilaController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
+            $table->addColumn('district_name_bn', function ($row) {
+                return $row->district ? $row->district->name_bn : '';
             });
+
             $table->editColumn('name_bn', function ($row) {
                 return $row->name_bn ? $row->name_bn : '';
             });
             $table->editColumn('name_en', function ($row) {
                 return $row->name_en ? $row->name_en : '';
             });
+            $table->editColumn('grocode', function ($row) {
+                return $row->grocode ? $row->grocode : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->rawColumns(['actions', 'placeholder', 'district']);
 
             return $table->make(true);
         }
@@ -65,7 +70,9 @@ class UpazilaController extends Controller
     {
         abort_if(Gate::denies('upazila_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.upazilas.create');
+        $districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.upazilas.create', compact('districts'));
     }
 
     public function store(StoreUpazilaRequest $request)
@@ -79,7 +86,11 @@ class UpazilaController extends Controller
     {
         abort_if(Gate::denies('upazila_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.upazilas.edit', compact('upazila'));
+        $districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $upazila->load('district');
+
+        return view('admin.upazilas.edit', compact('districts', 'upazila'));
     }
 
     public function update(UpdateUpazilaRequest $request, Upazila $upazila)
@@ -92,6 +103,8 @@ class UpazilaController extends Controller
     public function show(Upazila $upazila)
     {
         abort_if(Gate::denies('upazila_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $upazila->load('district');
 
         return view('admin.upazilas.show', compact('upazila'));
     }

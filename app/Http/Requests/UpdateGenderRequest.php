@@ -21,11 +21,11 @@ class UpdateGenderRequest extends FormRequest
                 'string',
                 'min:1',
                 'max:20',
-                'nullable',
+                'required',
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

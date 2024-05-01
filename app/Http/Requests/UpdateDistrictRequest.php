@@ -17,6 +17,10 @@ class UpdateDistrictRequest extends FormRequest
     public function rules()
     {
         return [
+            'divisions_id' => [
+                'required',
+                'integer',
+            ],
             'name_bn' => [
                 'string',
                 'min:5',
@@ -26,8 +30,6 @@ class UpdateDistrictRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'min:5',
-                'max:10',
                 'required',
                 'unique:districts,name_en,' . request()->route('district')->id,
             ],

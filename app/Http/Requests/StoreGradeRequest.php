@@ -24,7 +24,7 @@ class StoreGradeRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'salary_range' => [
                 'string',

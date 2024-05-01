@@ -27,9 +27,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.licenseType.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.licenseType.fields.name_bn') }}
                         </th>
                         <th>
@@ -45,9 +42,6 @@
                         <tr data-entry-id="{{ $licenseType->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $licenseType->id ?? '' }}
                             </td>
                             <td>
                                 {{ $licenseType->name_bn ?? '' }}

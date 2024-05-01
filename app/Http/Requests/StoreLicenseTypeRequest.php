@@ -24,7 +24,7 @@ class StoreLicenseTypeRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

@@ -24,12 +24,11 @@ class UpdateDesignationRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'value' => [
                 'string',
-                'required',
-                'unique:designations,value,' . request()->route('designation')->id,
+                'nullable',
             ],
         ];
     }

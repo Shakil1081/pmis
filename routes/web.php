@@ -11,7 +11,7 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -27,15 +27,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Divisions
     Route::delete('divisions/destroy', 'DivisionsController@massDestroy')->name('divisions.massDestroy');
+    Route::post('divisions/parse-csv-import', 'DivisionsController@parseCsvImport')->name('divisions.parseCsvImport');
+    Route::post('divisions/process-csv-import', 'DivisionsController@processCsvImport')->name('divisions.processCsvImport');
     Route::resource('divisions', 'DivisionsController');
 
     // District
     Route::delete('districts/destroy', 'DistrictController@massDestroy')->name('districts.massDestroy');
+    Route::post('districts/parse-csv-import', 'DistrictController@parseCsvImport')->name('districts.parseCsvImport');
+    Route::post('districts/process-csv-import', 'DistrictController@processCsvImport')->name('districts.processCsvImport');
     Route::resource('districts', 'DistrictController');
 
     // Maritalstatu
-    Route::delete('maritalstatuses/destroy', 'MaritalstatuController@massDestroy')->name('maritalstatuses.massDestroy');
-    Route::resource('maritalstatuses', 'MaritalstatuController');
+    Route::post('maritalstatuses/parse-csv-import', 'MaritalstatuController@parseCsvImport')->name('maritalstatuses.parseCsvImport');
+    Route::post('maritalstatuses/process-csv-import', 'MaritalstatuController@processCsvImport')->name('maritalstatuses.processCsvImport');
+    Route::resource('maritalstatuses', 'MaritalstatuController', ['except' => ['destroy']]);
 
     // Gender
     Route::delete('genders/destroy', 'GenderController@massDestroy')->name('genders.massDestroy');
@@ -190,6 +195,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Traveltype
     Route::delete('traveltypes/destroy', 'TraveltypeController@massDestroy')->name('traveltypes.massDestroy');
+    Route::post('traveltypes/parse-csv-import', 'TraveltypeController@parseCsvImport')->name('traveltypes.parseCsvImport');
+    Route::post('traveltypes/process-csv-import', 'TraveltypeController@processCsvImport')->name('traveltypes.processCsvImport');
     Route::resource('traveltypes', 'TraveltypeController');
 
     // Travel Record
@@ -240,13 +247,32 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Faq Question
     Route::delete('faq-questions/destroy', 'FaqQuestionController@massDestroy')->name('faq-questions.massDestroy');
     Route::resource('faq-questions', 'FaqQuestionController');
+
+    // Contact Company
+    Route::delete('contact-companies/destroy', 'ContactCompanyController@massDestroy')->name('contact-companies.massDestroy');
+    Route::resource('contact-companies', 'ContactCompanyController');
+
+    // Contact Contacts
+    Route::delete('contact-contacts/destroy', 'ContactContactsController@massDestroy')->name('contact-contacts.massDestroy');
+    Route::resource('contact-contacts', 'ContactContactsController');
+
+    Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
         Route::get('password', 'ChangePasswordController@edit')->name('password.edit');
         Route::post('password', 'ChangePasswordController@update')->name('password.update');
         Route::post('profile', 'ChangePasswordController@updateProfile')->name('password.updateProfile');
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
+        Route::post('profile/two-factor', 'ChangePasswordController@toggleTwoFactor')->name('password.toggleTwoFactor');
+    }
+});
+Route::group(['namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
+    // Two Factor Authentication
+    if (file_exists(app_path('Http/Controllers/Auth/TwoFactorController.php'))) {
+        Route::get('two-factor', 'TwoFactorController@show')->name('twoFactor.show');
+        Route::post('two-factor', 'TwoFactorController@check')->name('twoFactor.check');
+        Route::get('two-factor/resend', 'TwoFactorController@resend')->name('twoFactor.resend');
     }
 });

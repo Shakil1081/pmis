@@ -5,11 +5,10 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Division extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     public $table = 'divisions';
 
@@ -20,9 +19,10 @@ class Division extends Model
     ];
 
     protected $fillable = [
+        'country_id',
         'name_bn',
         'name_en',
-        'geocode',
+        'grocode',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,5 +31,10 @@ class Division extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 }

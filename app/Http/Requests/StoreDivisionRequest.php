@@ -17,6 +17,10 @@ class StoreDivisionRequest extends FormRequest
     public function rules()
     {
         return [
+            'country_id' => [
+                'required',
+                'integer',
+            ],
             'name_bn' => [
                 'string',
                 'min:5',
@@ -31,10 +35,8 @@ class StoreDivisionRequest extends FormRequest
                 'required',
                 'unique:divisions',
             ],
-            'geocode' => [
+            'grocode' => [
                 'string',
-                'min:1',
-                'max:10',
                 'nullable',
             ],
         ];

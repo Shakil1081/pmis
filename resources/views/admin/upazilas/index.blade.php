@@ -26,13 +26,16 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.upazila.fields.id') }}
+                        {{ trans('cruds.upazila.fields.district') }}
                     </th>
                     <th>
                         {{ trans('cruds.upazila.fields.name_bn') }}
                     </th>
                     <th>
                         {{ trans('cruds.upazila.fields.name_en') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.upazila.fields.grocode') }}
                     </th>
                     <th>
                         &nbsp;
@@ -90,13 +93,14 @@
     ajax: "{{ route('admin.upazilas.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
+{ data: 'district_name_bn', name: 'district.name_bn' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
+{ data: 'grocode', name: 'grocode' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 10,
   };
   let table = $('.datatable-Upazila').DataTable(dtOverrideGlobals);

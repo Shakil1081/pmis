@@ -14,7 +14,6 @@ class CreateDistrictsTable extends Migration
             $table->string('name_en')->unique();
             $table->string('grocode')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }
