@@ -24,7 +24,7 @@ class UpdateBloodGroupRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

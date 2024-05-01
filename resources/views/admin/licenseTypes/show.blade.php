@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.licenseType.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $licenseType->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.licenseType.fields.name_bn') }}
                         </th>
                         <td>

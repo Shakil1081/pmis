@@ -17,6 +17,10 @@ class UpdateUpazilaRequest extends FormRequest
     public function rules()
     {
         return [
+            'district_id' => [
+                'required',
+                'integer',
+            ],
             'name_bn' => [
                 'string',
                 'required',
@@ -26,6 +30,10 @@ class UpdateUpazilaRequest extends FormRequest
                 'string',
                 'required',
                 'unique:upazilas,name_en,' . request()->route('upazila')->id,
+            ],
+            'grocode' => [
+                'string',
+                'nullable',
             ],
         ];
     }

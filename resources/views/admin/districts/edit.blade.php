@@ -11,6 +11,20 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label class="required" for="divisions_id">{{ trans('cruds.district.fields.divisions') }}</label>
+                <select class="form-control select2 {{ $errors->has('divisions') ? 'is-invalid' : '' }}" name="divisions_id" id="divisions_id" required>
+                    @foreach($divisions as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('divisions_id') ? old('divisions_id') : $district->divisions->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('divisions'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('divisions') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.district.fields.divisions_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name_bn">{{ trans('cruds.district.fields.name_bn') }}</label>
                 <input class="form-control {{ $errors->has('name_bn') ? 'is-invalid' : '' }}" type="text" name="name_bn" id="name_bn" value="{{ old('name_bn', $district->name_bn) }}" required>
                 @if($errors->has('name_bn'))

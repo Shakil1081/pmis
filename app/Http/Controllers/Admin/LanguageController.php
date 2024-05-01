@@ -11,16 +11,59 @@ use App\Models\Language;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class LanguageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('language_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $languages = Language::with(['employee'])->get();
+        if ($request->ajax()) {
+            $query = Language::with(['employee'])->select(sprintf('%s.*', (new Language)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.languages.index', compact('languages'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'language_show';
+                $editGate      = 'language_edit';
+                $deleteGate    = 'language_delete';
+                $crudRoutePart = 'languages';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->addColumn('employee_employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
+
+            $table->editColumn('language', function ($row) {
+                return $row->language ? $row->language : '';
+            });
+            $table->editColumn('read', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->read ? 'checked' : null) . '>';
+            });
+            $table->editColumn('write', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->write ? 'checked' : null) . '>';
+            });
+            $table->editColumn('speak', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->speak ? 'checked' : null) . '>';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'employee', 'read', 'write', 'speak']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.languages.index');
     }
 
     public function create()

@@ -47,15 +47,19 @@ class StoreEmployeeListRequest extends FormRequest
             ],
             'fname_en' => [
                 'string',
-                'nullable',
+                'min:5',
+                'max:50',
+                'required',
             ],
             'mname_bn' => [
                 'string',
-                'nullable',
+                'min:2',
+                'max:50',
+                'required',
             ],
             'mname_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'date_of_birth' => [
                 'required',
@@ -63,33 +67,47 @@ class StoreEmployeeListRequest extends FormRequest
             ],
             'height' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'special_identity' => [
                 'string',
                 'nullable',
+            ],
+            'home_district_id' => [
+                'required',
+                'integer',
+            ],
+            'marital_statu_id' => [
+                'required',
+                'integer',
+            ],
+            'gender_id' => [
+                'required',
+                'integer',
+            ],
+            'religion_id' => [
+                'required',
+                'integer',
+            ],
+            'blood_group_id' => [
+                'required',
+                'integer',
             ],
             'nid' => [
                 'required',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'unique:employee_lists,nid',
-            ],
-            'nid_upload' => [
-                'required',
             ],
             'passport' => [
+                'string',
                 'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'mobile_number' => [
                 'string',
                 'min:11',
-                'max:13',
-                'nullable',
+                'max:15',
+                'required',
             ],
             'fjoining_date' => [
                 'required',
@@ -106,9 +124,6 @@ class StoreEmployeeListRequest extends FormRequest
             'date_of_con_serviec' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
-            ],
-            'electric_signature' => [
-                'required',
             ],
         ];
     }

@@ -5,11 +5,10 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Maritalstatus extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     public $table = 'maritalstatuses';
 
@@ -21,8 +20,8 @@ class Maritalstatus extends Model
 
     protected $fillable = [
         'name',
-        'value',
         'name_en',
+        'value',
         'created_at',
         'updated_at',
         'deleted_at',

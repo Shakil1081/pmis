@@ -11,8 +11,8 @@ class CreateLeaveTypesTable extends Migration
         Schema::create('leave_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_bn')->unique();
-            $table->string('name_en')->nullable();
-            $table->integer('value')->unique();
+            $table->string('name_en');
+            $table->integer('value')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

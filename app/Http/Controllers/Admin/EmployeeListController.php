@@ -52,17 +52,8 @@ class EmployeeListController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->editColumn('employeeid', function ($row) {
                 return $row->employeeid ? $row->employeeid : '';
-            });
-            $table->editColumn('height', function ($row) {
-                return $row->height ? $row->height : '';
-            });
-            $table->editColumn('special_identity', function ($row) {
-                return $row->special_identity ? $row->special_identity : '';
             });
             $table->addColumn('home_district_name_bn', function ($row) {
                 return $row->home_district ? $row->home_district->name_bn : '';
@@ -87,22 +78,10 @@ class EmployeeListController extends Controller
             $table->editColumn('nid', function ($row) {
                 return $row->nid ? $row->nid : '';
             });
-            $table->editColumn('nid_upload', function ($row) {
-                return $row->nid_upload ? '<a href="' . $row->nid_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-            });
-            $table->editColumn('passport', function ($row) {
-                return $row->passport ? $row->passport : '';
-            });
-            $table->editColumn('passport_upload', function ($row) {
-                return $row->passport_upload ? '<a href="' . $row->passport_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-            });
             $table->addColumn('license_type_name_bn', function ($row) {
                 return $row->license_type ? $row->license_type->name_bn : '';
             });
 
-            $table->editColumn('license_upload', function ($row) {
-                return $row->license_upload ? '<a href="' . $row->license_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-            });
             $table->editColumn('email', function ($row) {
                 return $row->email ? $row->email : '';
             });
@@ -130,19 +109,7 @@ class EmployeeListController extends Controller
                 return $row->quota ? $row->quota->name_bn : '';
             });
 
-            $table->editColumn('employee_photo', function ($row) {
-                if ($photo = $row->employee_photo) {
-                    return sprintf(
-                        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
-                        $photo->url,
-                        $photo->thumbnail
-                    );
-                }
-
-                return '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'nid_upload', 'passport_upload', 'license_type', 'license_upload', 'office_orderno', 'fjoining_letter', 'office_order', 'quota', 'employee_photo']);
+            $table->rawColumns(['actions', 'placeholder', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'office_orderno', 'fjoining_letter', 'office_order', 'quota']);
 
             return $table->make(true);
         }
@@ -177,10 +144,6 @@ class EmployeeListController extends Controller
     {
         $employeeList = EmployeeList::create($request->all());
 
-        if ($request->input('nid_upload', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
-        }
-
         if ($request->input('passport_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_upload'))))->toMediaCollection('passport_upload');
         }
@@ -207,6 +170,10 @@ class EmployeeListController extends Controller
 
         if ($request->input('employee_photo', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('employee_photo'))))->toMediaCollection('employee_photo');
+        }
+
+        if ($request->input('nid_upload', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -244,17 +211,6 @@ class EmployeeListController extends Controller
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)
     {
         $employeeList->update($request->all());
-
-        if ($request->input('nid_upload', false)) {
-            if (! $employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
-                if ($employeeList->nid_upload) {
-                    $employeeList->nid_upload->delete();
-                }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
-            }
-        } elseif ($employeeList->nid_upload) {
-            $employeeList->nid_upload->delete();
-        }
 
         if ($request->input('passport_upload', false)) {
             if (! $employeeList->passport_upload || $request->input('passport_upload') !== $employeeList->passport_upload->file_name) {
@@ -331,6 +287,17 @@ class EmployeeListController extends Controller
             }
         } elseif ($employeeList->employee_photo) {
             $employeeList->employee_photo->delete();
+        }
+
+        if ($request->input('nid_upload', false)) {
+            if (! $employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
+                if ($employeeList->nid_upload) {
+                    $employeeList->nid_upload->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
+            }
+        } elseif ($employeeList->nid_upload) {
+            $employeeList->nid_upload->delete();
         }
 
         return redirect()->route('admin.employee-lists.index');

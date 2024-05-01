@@ -17,6 +17,14 @@
                 <tbody>
                     <tr>
                         <th>
+                            {{ trans('cruds.district.fields.divisions') }}
+                        </th>
+                        <td>
+                            {{ $district->divisions->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.district.fields.name_bn') }}
                         </th>
                         <td>

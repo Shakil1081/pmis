@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class District extends Model
 {
-    use SoftDeletes, HasFactory;
+    use Auditable, HasFactory;
 
     public $table = 'districts';
 
@@ -20,6 +20,7 @@ class District extends Model
     ];
 
     protected $fillable = [
+        'divisions_id',
         'name_bn',
         'name_en',
         'grocode',
@@ -31,5 +32,10 @@ class District extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function divisions()
+    {
+        return $this->belongsTo(Division::class, 'divisions_id');
     }
 }

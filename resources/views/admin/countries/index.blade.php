@@ -32,7 +32,7 @@
                         {{ trans('cruds.country.fields.name_en') }}
                     </th>
                     <th>
-                        {{ trans('cruds.country.fields.country_code') }}
+                        {{ trans('cruds.country.fields.grocode') }}
                     </th>
                     <th>
                         &nbsp;
@@ -92,12 +92,12 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
-{ data: 'country_code', name: 'country_code' },
+{ data: 'grocode', name: 'grocode' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 25,
+    pageLength: 10,
   };
   let table = $('.datatable-Country').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

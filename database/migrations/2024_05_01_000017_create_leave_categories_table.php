@@ -11,7 +11,7 @@ class CreateLeaveCategoriesTable extends Migration
         Schema::create('leave_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_bn')->unique();
-            $table->string('name_en')->nullable();
+            $table->string('name_en');
             $table->integer('value')->nullable();
             $table->timestamps();
             $table->softDeletes();

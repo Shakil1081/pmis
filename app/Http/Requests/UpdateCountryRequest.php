@@ -24,12 +24,10 @@ class UpdateCountryRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
-            'country_code' => [
+            'grocode' => [
                 'string',
-                'min:1',
-                'max:5',
                 'nullable',
             ],
         ];

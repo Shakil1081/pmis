@@ -24,12 +24,11 @@ class StoreDesignationRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'value' => [
                 'string',
-                'required',
-                'unique:designations',
+                'nullable',
             ],
         ];
     }

@@ -24,7 +24,7 @@ class UpdateQuotumRequest extends FormRequest
             ],
             'name_en' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'remark' => [
                 'string',

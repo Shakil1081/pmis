@@ -11,6 +11,20 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label class="required" for="country_id">{{ trans('cruds.division.fields.country') }}</label>
+                <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
+                    @foreach($countries as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('country_id') ? old('country_id') : $division->country->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('country'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('country') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.division.fields.country_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name_bn">{{ trans('cruds.division.fields.name_bn') }}</label>
                 <input class="form-control {{ $errors->has('name_bn') ? 'is-invalid' : '' }}" type="text" name="name_bn" id="name_bn" value="{{ old('name_bn', $division->name_bn) }}" required>
                 @if($errors->has('name_bn'))
@@ -31,14 +45,14 @@
                 <span class="help-block">{{ trans('cruds.division.fields.name_en_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="geocode">{{ trans('cruds.division.fields.geocode') }}</label>
-                <input class="form-control {{ $errors->has('geocode') ? 'is-invalid' : '' }}" type="text" name="geocode" id="geocode" value="{{ old('geocode', $division->geocode) }}">
-                @if($errors->has('geocode'))
+                <label for="grocode">{{ trans('cruds.division.fields.grocode') }}</label>
+                <input class="form-control {{ $errors->has('grocode') ? 'is-invalid' : '' }}" type="text" name="grocode" id="grocode" value="{{ old('grocode', $division->grocode) }}">
+                @if($errors->has('grocode'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('geocode') }}
+                        {{ $errors->first('grocode') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.division.fields.geocode_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.division.fields.grocode_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

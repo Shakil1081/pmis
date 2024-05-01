@@ -11,7 +11,7 @@ class CreateGradesTable extends Migration
         Schema::create('grades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_bn')->unique();
-            $table->string('name_en')->nullable();
+            $table->string('name_en');
             $table->string('salary_range')->nullable();
             $table->timestamps();
             $table->softDeletes();

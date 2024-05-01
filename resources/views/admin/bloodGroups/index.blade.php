@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.bloodGroup.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.bloodGroup.fields.name_bn') }}
                     </th>
                     <th>
@@ -90,7 +87,6 @@
     ajax: "{{ route('admin.blood-groups.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

@@ -25,18 +25,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.maritalstatus.fields.value') }}
-                        </th>
-                        <td>
-                            {{ $maritalstatus->value }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.maritalstatus.fields.name_en') }}
                         </th>
                         <td>
                             {{ $maritalstatus->name_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.maritalstatus.fields.value') }}
+                        </th>
+                        <td>
+                            {{ $maritalstatus->value }}
                         </td>
                     </tr>
                 </tbody>

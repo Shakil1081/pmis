@@ -5,11 +5,10 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Upazila extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
 
     public $table = 'upazilas';
 
@@ -20,8 +19,10 @@ class Upazila extends Model
     ];
 
     protected $fillable = [
+        'district_id',
         'name_bn',
         'name_en',
+        'grocode',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -30,5 +31,10 @@ class Upazila extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
     }
 }

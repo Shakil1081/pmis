@@ -11,7 +11,7 @@ class CreateQuotaTable extends Migration
         Schema::create('quota', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_bn')->unique();
-            $table->string('name_en')->nullable();
+            $table->string('name_en');
             $table->string('remark')->nullable();
             $table->timestamps();
         });

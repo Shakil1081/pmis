@@ -17,10 +17,10 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.division.fields.id') }}
+                            {{ trans('cruds.division.fields.country') }}
                         </th>
                         <td>
-                            {{ $division->id }}
+                            {{ $division->country->name_bn ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.division.fields.geocode') }}
+                            {{ trans('cruds.division.fields.grocode') }}
                         </th>
                         <td>
-                            {{ $division->geocode }}
+                            {{ $division->grocode }}
                         </td>
                     </tr>
                 </tbody>

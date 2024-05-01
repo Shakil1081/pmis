@@ -61,8 +61,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.fname_bn_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="fname_en">{{ trans('cruds.employeeList.fields.fname_en') }}</label>
-                <input class="form-control {{ $errors->has('fname_en') ? 'is-invalid' : '' }}" type="text" name="fname_en" id="fname_en" value="{{ old('fname_en', $employeeList->fname_en) }}">
+                <label class="required" for="fname_en">{{ trans('cruds.employeeList.fields.fname_en') }}</label>
+                <input class="form-control {{ $errors->has('fname_en') ? 'is-invalid' : '' }}" type="text" name="fname_en" id="fname_en" value="{{ old('fname_en', $employeeList->fname_en) }}" required>
                 @if($errors->has('fname_en'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fname_en') }}
@@ -71,8 +71,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.fname_en_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="mname_bn">{{ trans('cruds.employeeList.fields.mname_bn') }}</label>
-                <input class="form-control {{ $errors->has('mname_bn') ? 'is-invalid' : '' }}" type="text" name="mname_bn" id="mname_bn" value="{{ old('mname_bn', $employeeList->mname_bn) }}">
+                <label class="required" for="mname_bn">{{ trans('cruds.employeeList.fields.mname_bn') }}</label>
+                <input class="form-control {{ $errors->has('mname_bn') ? 'is-invalid' : '' }}" type="text" name="mname_bn" id="mname_bn" value="{{ old('mname_bn', $employeeList->mname_bn) }}" required>
                 @if($errors->has('mname_bn'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mname_bn') }}
@@ -81,8 +81,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.mname_bn_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="mname_en">{{ trans('cruds.employeeList.fields.mname_en') }}</label>
-                <input class="form-control {{ $errors->has('mname_en') ? 'is-invalid' : '' }}" type="text" name="mname_en" id="mname_en" value="{{ old('mname_en', $employeeList->mname_en) }}">
+                <label class="required" for="mname_en">{{ trans('cruds.employeeList.fields.mname_en') }}</label>
+                <input class="form-control {{ $errors->has('mname_en') ? 'is-invalid' : '' }}" type="text" name="mname_en" id="mname_en" value="{{ old('mname_en', $employeeList->mname_en) }}" required>
                 @if($errors->has('mname_en'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mname_en') }}
@@ -101,8 +101,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_birth_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="height">{{ trans('cruds.employeeList.fields.height') }}</label>
-                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}" type="text" name="height" id="height" value="{{ old('height', $employeeList->height) }}" required>
+                <label for="height">{{ trans('cruds.employeeList.fields.height') }}</label>
+                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}" type="text" name="height" id="height" value="{{ old('height', $employeeList->height) }}">
                 @if($errors->has('height'))
                     <div class="invalid-feedback">
                         {{ $errors->first('height') }}
@@ -121,8 +121,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.special_identity_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="home_district_id">{{ trans('cruds.employeeList.fields.home_district') }}</label>
-                <select class="form-control select2 {{ $errors->has('home_district') ? 'is-invalid' : '' }}" name="home_district_id" id="home_district_id">
+                <label class="required" for="home_district_id">{{ trans('cruds.employeeList.fields.home_district') }}</label>
+                <select class="form-control select2 {{ $errors->has('home_district') ? 'is-invalid' : '' }}" name="home_district_id" id="home_district_id" required>
                     @foreach($home_districts as $id => $entry)
                         <option value="{{ $id }}" {{ (old('home_district_id') ? old('home_district_id') : $employeeList->home_district->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -135,8 +135,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.home_district_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
-                <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}" name="marital_statu_id" id="marital_statu_id">
+                <label class="required" for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
+                <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}" name="marital_statu_id" id="marital_statu_id" required>
                     @foreach($marital_status as $id => $entry)
                         <option value="{{ $id }}" {{ (old('marital_statu_id') ? old('marital_statu_id') : $employeeList->marital_statu->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -149,8 +149,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.marital_statu_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
-                <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender_id" id="gender_id">
+                <label class="required" for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
+                <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender_id" id="gender_id" required>
                     @foreach($genders as $id => $entry)
                         <option value="{{ $id }}" {{ (old('gender_id') ? old('gender_id') : $employeeList->gender->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -163,8 +163,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.gender_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
-                <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}" name="religion_id" id="religion_id">
+                <label class="required" for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
+                <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}" name="religion_id" id="religion_id" required>
                     @foreach($religions as $id => $entry)
                         <option value="{{ $id }}" {{ (old('religion_id') ? old('religion_id') : $employeeList->religion->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -177,8 +177,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.religion_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="blood_group_id">{{ trans('cruds.employeeList.fields.blood_group') }}</label>
-                <select class="form-control select2 {{ $errors->has('blood_group') ? 'is-invalid' : '' }}" name="blood_group_id" id="blood_group_id">
+                <label class="required" for="blood_group_id">{{ trans('cruds.employeeList.fields.blood_group') }}</label>
+                <select class="form-control select2 {{ $errors->has('blood_group') ? 'is-invalid' : '' }}" name="blood_group_id" id="blood_group_id" required>
                     @foreach($blood_groups as $id => $entry)
                         <option value="{{ $id }}" {{ (old('blood_group_id') ? old('blood_group_id') : $employeeList->blood_group->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -201,7 +201,7 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.nid_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
+                <label for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}" id="nid_upload-dropzone">
                 </div>
                 @if($errors->has('nid_upload'))
@@ -213,7 +213,7 @@
             </div>
             <div class="form-group">
                 <label for="passport">{{ trans('cruds.employeeList.fields.passport') }}</label>
-                <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}" type="number" name="passport" id="passport" value="{{ old('passport', $employeeList->passport) }}" step="1">
+                <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}" type="text" name="passport" id="passport" value="{{ old('passport', $employeeList->passport) }}">
                 @if($errors->has('passport'))
                     <div class="invalid-feedback">
                         {{ $errors->first('passport') }}
@@ -268,8 +268,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.email_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="mobile_number">{{ trans('cruds.employeeList.fields.mobile_number') }}</label>
-                <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}" type="text" name="mobile_number" id="mobile_number" value="{{ old('mobile_number', $employeeList->mobile_number) }}">
+                <label class="required" for="mobile_number">{{ trans('cruds.employeeList.fields.mobile_number') }}</label>
+                <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}" type="text" name="mobile_number" id="mobile_number" value="{{ old('mobile_number', $employeeList->mobile_number) }}" required>
                 @if($errors->has('mobile_number'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mobile_number') }}
@@ -379,7 +379,7 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.quota_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="electric_signature">{{ trans('cruds.employeeList.fields.electric_signature') }}</label>
+                <label for="electric_signature">{{ trans('cruds.employeeList.fields.electric_signature') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('electric_signature') ? 'is-invalid' : '' }}" id="electric_signature-dropzone">
                 </div>
                 @if($errors->has('electric_signature'))
@@ -417,14 +417,14 @@
 <script>
     Dropzone.options.nidUploadDropzone = {
     url: '{{ route('admin.employee-lists.storeMedia') }}',
-    maxFilesize: 1, // MB
+    maxFilesize: 2, // MB
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 1
+      size: 2
     },
     success: function (file, response) {
       $('form').find('input[name="nid_upload"]').remove()
@@ -717,7 +717,7 @@
 <script>
     Dropzone.options.electricSignatureDropzone = {
     url: '{{ route('admin.employee-lists.storeMedia') }}',
-    maxFilesize: 1, // MB
+    maxFilesize: 2, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,
@@ -725,7 +725,7 @@
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 1,
+      size: 2,
       width: 4096,
       height: 4096
     },
