@@ -40,6 +40,18 @@
                             <h3>{!! $chart6->options['chart_title'] !!}</h3>
                             {!! $chart6->renderHtml() !!}
                         </div>
+                        <div class="{{ $chart7->options['column_class'] }}">
+                            <h3>{!! $chart7->options['chart_title'] !!}</h3>
+                            {!! $chart7->renderHtml() !!}
+                        </div>
+                        <div class="{{ $chart8->options['column_class'] }}">
+                            <h3>{!! $chart8->options['chart_title'] !!}</h3>
+                            {!! $chart8->renderHtml() !!}
+                        </div>
+                        <div class="{{ $chart9->options['column_class'] }}">
+                            <h3>{!! $chart9->options['chart_title'] !!}</h3>
+                            {!! $chart9->renderHtml() !!}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,5 +61,5 @@
 @endsection
 @section('scripts')
 @parent
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>{!! $chart1->renderJs() !!}{!! $chart2->renderJs() !!}{!! $chart3->renderJs() !!}{!! $chart4->renderJs() !!}{!! $chart5->renderJs() !!}{!! $chart6->renderJs() !!}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>{!! $chart1->renderJs() !!}{!! $chart2->renderJs() !!}{!! $chart3->renderJs() !!}{!! $chart4->renderJs() !!}{!! $chart5->renderJs() !!}{!! $chart6->renderJs() !!}{!! $chart7->renderJs() !!}{!! $chart8->renderJs() !!}{!! $chart9->renderJs() !!}
 @endsection

@@ -114,6 +114,59 @@ class HomeController
 
         $chart6 = new LaravelChart($settings6);
 
-        return view('home', compact('chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6'));
+        $settings7 = [
+            'chart_title'           => 'Leave Record',
+            'chart_type'            => 'line',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\LeaveRecord',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-4',
+            'entries_number'        => '5',
+            'translation_key'       => 'leaveRecord',
+        ];
+
+        $chart7 = new LaravelChart($settings7);
+
+        $settings8 = [
+            'chart_title'           => 'Language',
+            'chart_type'            => 'line',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Language',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_period'         => 'year',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-4',
+            'entries_number'        => '5',
+            'translation_key'       => 'language',
+        ];
+
+        $chart8 = new LaravelChart($settings8);
+
+        $settings9 = [
+            'chart_title'           => 'Child Record',
+            'chart_type'            => 'line',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Child',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_period'         => 'month',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-4',
+            'entries_number'        => '5',
+            'translation_key'       => 'child',
+        ];
+
+        $chart9 = new LaravelChart($settings9);
+
+        return view('home', compact('chart1', 'chart2', 'chart3', 'chart4', 'chart5', 'chart6', 'chart7', 'chart8', 'chart9'));
     }
 }
