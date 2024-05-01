@@ -201,7 +201,7 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.nid_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
+                <label class="required" for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}" id="nid_upload-dropzone">
                 </div>
                 @if($errors->has('nid_upload'))
