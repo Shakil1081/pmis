@@ -916,6 +916,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 227,
+                'title' => 'site_setting_create',
+            ],
+            [
+                'id'    => 228,
+                'title' => 'site_setting_edit',
+            ],
+            [
+                'id'    => 229,
+                'title' => 'site_setting_show',
+            ],
+            [
+                'id'    => 230,
+                'title' => 'site_setting_delete',
+            ],
+            [
+                'id'    => 231,
+                'title' => 'site_setting_access',
+            ],
+            [
+                'id'    => 232,
                 'title' => 'profile_password_edit',
             ],
         ];

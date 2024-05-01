@@ -257,6 +257,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Faq Question
     Route::delete('faq-questions/destroy', 'FaqQuestionController@massDestroy')->name('faq-questions.massDestroy');
     Route::resource('faq-questions', 'FaqQuestionController');
+
+    // Site Setting
+    Route::delete('site-settings/destroy', 'SiteSettingController@massDestroy')->name('site-settings.massDestroy');
+    Route::post('site-settings/media', 'SiteSettingController@storeMedia')->name('site-settings.storeMedia');
+    Route::post('site-settings/ckmedia', 'SiteSettingController@storeCKEditorImages')->name('site-settings.storeCKEditorImages');
+    Route::resource('site-settings', 'SiteSettingController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
