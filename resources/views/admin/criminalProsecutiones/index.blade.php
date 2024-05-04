@@ -25,16 +25,13 @@
                         {{ trans('cruds.criminalProsecutione.fields.employee') }}
                     </th>
                     <th>
+                        {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
                     </th>
                     <th>
                         {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.criminalProsecutione.fields.government_order_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.criminalProsecutione.fields.court_name') }}
                     </th>
                     <th>
                         {{ trans('cruds.criminalProsecutione.fields.court_order') }}
@@ -96,15 +93,14 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
+{ data: 'judgement_type', name: 'judgement_type' },
 { data: 'natureof_offence', name: 'natureof_offence' },
 { data: 'government_order_no', name: 'government_order_no' },
-{ data: 'government_order_date', name: 'government_order_date' },
-{ data: 'court_name', name: 'court_name' },
 { data: 'court_order', name: 'court_order', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 2, 'desc' ]],
+    order: [[ 3, 'desc' ]],
     pageLength: 10,
   };
   let table = $('.datatable-CriminalProsecutione').DataTable(dtOverrideGlobals);

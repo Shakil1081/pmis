@@ -28,6 +28,9 @@
                         {{ trans('cruds.child.fields.name_en') }}
                     </th>
                     <th>
+                        {{ trans('cruds.child.fields.date_of_birth') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.child.fields.gender') }}
                     </th>
                     <th>
@@ -37,7 +40,7 @@
                         {{ trans('cruds.child.fields.passport_number') }}
                     </th>
                     <th>
-                        {{ trans('cruds.child.fields.date_of_birth') }}
+                        {{ trans('cruds.child.fields.complite_21') }}
                     </th>
                     <th>
                         &nbsp;
@@ -97,10 +100,11 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
+{ data: 'date_of_birth', name: 'date_of_birth' },
 { data: 'gender_name_bn', name: 'gender.name_bn' },
 { data: 'nid_number', name: 'nid_number' },
 { data: 'passport_number', name: 'passport_number' },
-{ data: 'date_of_birth', name: 'date_of_birth' },
+{ data: 'complite_21', name: 'complite_21' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

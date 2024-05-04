@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Auditable;
-use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,14 +15,13 @@ class CriminalproDisciplinary extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia, Auditable, HasFactory;
 
-    protected $appends = [
-        'court_orader',
-    ];
-
     public $table = 'criminalpro_disciplinaries';
 
+    protected $appends = [
+        'order_upload_file',
+    ];
+
     protected $dates = [
-        'date_of_prosecution',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,10 +29,9 @@ class CriminalproDisciplinary extends Model implements HasMedia
 
     protected $fillable = [
         'criminalprosecutione_id',
+        'judgement_type',
         'government_order_no',
-        'court_name',
-        'date_of_prosecution',
-        'description',
+        'remarks',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -56,18 +53,8 @@ class CriminalproDisciplinary extends Model implements HasMedia
         return $this->belongsTo(CriminalProsecutione::class, 'criminalprosecutione_id');
     }
 
-    public function getCourtOraderAttribute()
+    public function getOrderUploadFileAttribute()
     {
-        return $this->getMedia('court_orader')->last();
-    }
-
-    public function getDateOfProsecutionAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
-
-    public function setDateOfProsecutionAttribute($value)
-    {
-        $this->attributes['date_of_prosecution'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+        return $this->getMedia('order_upload_file')->last();
     }
 }

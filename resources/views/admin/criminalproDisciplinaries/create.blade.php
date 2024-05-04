@@ -24,6 +24,16 @@
                 <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="judgement_type">{{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}</label>
+                <input class="form-control {{ $errors->has('judgement_type') ? 'is-invalid' : '' }}" type="text" name="judgement_type" id="judgement_type" value="{{ old('judgement_type', '') }}">
+                @if($errors->has('judgement_type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('judgement_type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.judgement_type_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="government_order_no">{{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}</label>
                 <input class="form-control {{ $errors->has('government_order_no') ? 'is-invalid' : '' }}" type="text" name="government_order_no" id="government_order_no" value="{{ old('government_order_no', '') }}">
                 @if($errors->has('government_order_no'))
@@ -34,45 +44,25 @@
                 <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.government_order_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="court_name">{{ trans('cruds.criminalproDisciplinary.fields.court_name') }}</label>
-                <input class="form-control {{ $errors->has('court_name') ? 'is-invalid' : '' }}" type="text" name="court_name" id="court_name" value="{{ old('court_name', '') }}">
-                @if($errors->has('court_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('court_name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.court_name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="court_orader">{{ trans('cruds.criminalproDisciplinary.fields.court_orader') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('court_orader') ? 'is-invalid' : '' }}" id="court_orader-dropzone">
+                <label for="order_upload_file">{{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('order_upload_file') ? 'is-invalid' : '' }}" id="order_upload_file-dropzone">
                 </div>
-                @if($errors->has('court_orader'))
+                @if($errors->has('order_upload_file'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('court_orader') }}
+                        {{ $errors->first('order_upload_file') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.court_orader_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.order_upload_file_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="date_of_prosecution">{{ trans('cruds.criminalproDisciplinary.fields.date_of_prosecution') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_prosecution') ? 'is-invalid' : '' }}" type="text" name="date_of_prosecution" id="date_of_prosecution" value="{{ old('date_of_prosecution') }}">
-                @if($errors->has('date_of_prosecution'))
+                <label for="remarks">{{ trans('cruds.criminalproDisciplinary.fields.remarks') }}</label>
+                <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
+                @if($errors->has('remarks'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('date_of_prosecution') }}
+                        {{ $errors->first('remarks') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.date_of_prosecution_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.criminalproDisciplinary.fields.description') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.description_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.remarks_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -89,7 +79,7 @@
 
 @section('scripts')
 <script>
-    Dropzone.options.courtOraderDropzone = {
+    Dropzone.options.orderUploadFileDropzone = {
     url: '{{ route('admin.criminalpro-disciplinaries.storeMedia') }}',
     maxFilesize: 2, // MB
     maxFiles: 1,
@@ -101,22 +91,22 @@
       size: 2
     },
     success: function (file, response) {
-      $('form').find('input[name="court_orader"]').remove()
-      $('form').append('<input type="hidden" name="court_orader" value="' + response.name + '">')
+      $('form').find('input[name="order_upload_file"]').remove()
+      $('form').append('<input type="hidden" name="order_upload_file" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
       if (file.status !== 'error') {
-        $('form').find('input[name="court_orader"]').remove()
+        $('form').find('input[name="order_upload_file"]').remove()
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
     init: function () {
-@if(isset($criminalproDisciplinary) && $criminalproDisciplinary->court_orader)
-      var file = {!! json_encode($criminalproDisciplinary->court_orader) !!}
+@if(isset($criminalproDisciplinary) && $criminalproDisciplinary->order_upload_file)
+      var file = {!! json_encode($criminalproDisciplinary->order_upload_file) !!}
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="court_orader" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="order_upload_file" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
@@ -138,68 +128,4 @@
      }
 }
 </script>
-<script>
-    $(document).ready(function () {
-  function SimpleUploadAdapter(editor) {
-    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
-      return {
-        upload: function() {
-          return loader.file
-            .then(function (file) {
-              return new Promise(function(resolve, reject) {
-                // Init request
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', '{{ route('admin.criminalpro-disciplinaries.storeCKEditorImages') }}', true);
-                xhr.setRequestHeader('x-csrf-token', window._token);
-                xhr.setRequestHeader('Accept', 'application/json');
-                xhr.responseType = 'json';
-
-                // Init listeners
-                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
-                xhr.addEventListener('error', function() { reject(genericErrorText) });
-                xhr.addEventListener('abort', function() { reject() });
-                xhr.addEventListener('load', function() {
-                  var response = xhr.response;
-
-                  if (!response || xhr.status !== 201) {
-                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
-                  }
-
-                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
-
-                  resolve({ default: response.url });
-                });
-
-                if (xhr.upload) {
-                  xhr.upload.addEventListener('progress', function(e) {
-                    if (e.lengthComputable) {
-                      loader.uploadTotal = e.total;
-                      loader.uploaded = e.loaded;
-                    }
-                  });
-                }
-
-                // Send request
-                var data = new FormData();
-                data.append('upload', file);
-                data.append('crud_id', '{{ $criminalproDisciplinary->id ?? 0 }}');
-                xhr.send(data);
-              });
-            })
-        }
-      };
-    }
-  }
-
-  var allEditors = document.querySelectorAll('.ckeditor');
-  for (var i = 0; i < allEditors.length; ++i) {
-    ClassicEditor.create(
-      allEditors[i], {
-        extraPlugins: [SimpleUploadAdapter]
-      }
-    );
-  }
-});
-</script>
-
 @endsection

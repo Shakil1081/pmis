@@ -17,6 +17,14 @@ class UpdateLeaveRecordRequest extends FormRequest
     public function rules()
     {
         return [
+            'type_of_leave_id' => [
+                'required',
+                'integer',
+            ],
+            'leave_category_id' => [
+                'required',
+                'integer',
+            ],
             'start_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

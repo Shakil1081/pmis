@@ -28,914 +28,1102 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 5,
-                'title' => 'permission_delete',
-            ],
-            [
-                'id'    => 6,
                 'title' => 'permission_access',
             ],
             [
-                'id'    => 7,
+                'id'    => 6,
                 'title' => 'role_create',
             ],
             [
-                'id'    => 8,
+                'id'    => 7,
                 'title' => 'role_edit',
             ],
             [
-                'id'    => 9,
+                'id'    => 8,
                 'title' => 'role_show',
             ],
             [
-                'id'    => 10,
+                'id'    => 9,
                 'title' => 'role_delete',
             ],
             [
-                'id'    => 11,
+                'id'    => 10,
                 'title' => 'role_access',
             ],
             [
-                'id'    => 12,
+                'id'    => 11,
                 'title' => 'user_create',
             ],
             [
-                'id'    => 13,
+                'id'    => 12,
                 'title' => 'user_edit',
             ],
             [
-                'id'    => 14,
+                'id'    => 13,
                 'title' => 'user_show',
             ],
             [
-                'id'    => 15,
+                'id'    => 14,
                 'title' => 'user_delete',
             ],
             [
-                'id'    => 16,
+                'id'    => 15,
                 'title' => 'user_access',
             ],
             [
-                'id'    => 17,
+                'id'    => 16,
                 'title' => 'division_create',
             ],
             [
-                'id'    => 18,
+                'id'    => 17,
                 'title' => 'division_edit',
             ],
             [
-                'id'    => 19,
+                'id'    => 18,
                 'title' => 'division_show',
             ],
             [
-                'id'    => 20,
+                'id'    => 19,
                 'title' => 'division_delete',
             ],
             [
-                'id'    => 21,
+                'id'    => 20,
                 'title' => 'division_access',
             ],
             [
-                'id'    => 22,
+                'id'    => 21,
                 'title' => 'configuration_access',
             ],
             [
-                'id'    => 23,
+                'id'    => 22,
                 'title' => 'district_create',
             ],
             [
-                'id'    => 24,
+                'id'    => 23,
                 'title' => 'district_edit',
             ],
             [
-                'id'    => 25,
+                'id'    => 24,
                 'title' => 'district_show',
             ],
             [
-                'id'    => 26,
+                'id'    => 25,
                 'title' => 'district_delete',
             ],
             [
-                'id'    => 27,
+                'id'    => 26,
                 'title' => 'district_access',
             ],
             [
-                'id'    => 28,
+                'id'    => 27,
                 'title' => 'maritalstatus_create',
             ],
             [
-                'id'    => 29,
+                'id'    => 28,
                 'title' => 'maritalstatus_edit',
             ],
             [
-                'id'    => 30,
+                'id'    => 29,
                 'title' => 'maritalstatus_show',
             ],
             [
-                'id'    => 31,
+                'id'    => 30,
                 'title' => 'maritalstatus_access',
             ],
             [
-                'id'    => 32,
+                'id'    => 31,
                 'title' => 'gender_create',
             ],
             [
-                'id'    => 33,
+                'id'    => 32,
                 'title' => 'gender_edit',
             ],
             [
-                'id'    => 34,
+                'id'    => 33,
                 'title' => 'gender_show',
             ],
             [
-                'id'    => 35,
+                'id'    => 34,
                 'title' => 'gender_delete',
             ],
             [
-                'id'    => 36,
+                'id'    => 35,
                 'title' => 'gender_access',
             ],
             [
-                'id'    => 37,
+                'id'    => 36,
                 'title' => 'religion_create',
             ],
             [
-                'id'    => 38,
+                'id'    => 37,
                 'title' => 'religion_edit',
             ],
             [
-                'id'    => 39,
+                'id'    => 38,
                 'title' => 'religion_show',
             ],
             [
-                'id'    => 40,
+                'id'    => 39,
                 'title' => 'religion_delete',
             ],
             [
-                'id'    => 41,
+                'id'    => 40,
                 'title' => 'religion_access',
             ],
             [
-                'id'    => 42,
+                'id'    => 41,
                 'title' => 'blood_group_create',
             ],
             [
-                'id'    => 43,
+                'id'    => 42,
                 'title' => 'blood_group_edit',
             ],
             [
-                'id'    => 44,
+                'id'    => 43,
                 'title' => 'blood_group_show',
             ],
             [
-                'id'    => 45,
+                'id'    => 44,
                 'title' => 'blood_group_delete',
             ],
             [
-                'id'    => 46,
+                'id'    => 45,
                 'title' => 'blood_group_access',
             ],
             [
-                'id'    => 47,
+                'id'    => 46,
                 'title' => 'quotum_create',
             ],
             [
-                'id'    => 48,
+                'id'    => 47,
                 'title' => 'quotum_edit',
             ],
             [
-                'id'    => 49,
+                'id'    => 48,
                 'title' => 'quotum_show',
             ],
             [
-                'id'    => 50,
+                'id'    => 49,
                 'title' => 'quotum_delete',
             ],
             [
-                'id'    => 51,
+                'id'    => 50,
                 'title' => 'quotum_access',
             ],
             [
-                'id'    => 52,
+                'id'    => 51,
                 'title' => 'examination_create',
             ],
             [
-                'id'    => 53,
+                'id'    => 52,
                 'title' => 'examination_edit',
             ],
             [
-                'id'    => 54,
+                'id'    => 53,
                 'title' => 'examination_show',
             ],
             [
-                'id'    => 55,
+                'id'    => 54,
                 'title' => 'examination_access',
             ],
             [
-                'id'    => 56,
+                'id'    => 55,
                 'title' => 'exam_board_create',
             ],
             [
-                'id'    => 57,
+                'id'    => 56,
                 'title' => 'exam_board_edit',
             ],
             [
-                'id'    => 58,
+                'id'    => 57,
                 'title' => 'exam_board_show',
             ],
             [
-                'id'    => 59,
+                'id'    => 58,
                 'title' => 'exam_board_delete',
             ],
             [
-                'id'    => 60,
+                'id'    => 59,
                 'title' => 'exam_board_access',
             ],
             [
-                'id'    => 61,
+                'id'    => 60,
                 'title' => 'office_unit_create',
             ],
             [
-                'id'    => 62,
+                'id'    => 61,
                 'title' => 'office_unit_edit',
             ],
             [
-                'id'    => 63,
+                'id'    => 62,
                 'title' => 'office_unit_show',
             ],
             [
-                'id'    => 64,
+                'id'    => 63,
                 'title' => 'office_unit_delete',
             ],
             [
-                'id'    => 65,
+                'id'    => 64,
                 'title' => 'office_unit_access',
             ],
             [
-                'id'    => 66,
+                'id'    => 65,
                 'title' => 'designation_create',
             ],
             [
-                'id'    => 67,
+                'id'    => 66,
                 'title' => 'designation_edit',
             ],
             [
-                'id'    => 68,
+                'id'    => 67,
                 'title' => 'designation_show',
             ],
             [
-                'id'    => 69,
+                'id'    => 68,
                 'title' => 'designation_delete',
             ],
             [
-                'id'    => 70,
+                'id'    => 69,
                 'title' => 'designation_access',
             ],
             [
-                'id'    => 71,
+                'id'    => 70,
                 'title' => 'leave_category_create',
             ],
             [
-                'id'    => 72,
+                'id'    => 71,
                 'title' => 'leave_category_edit',
             ],
             [
-                'id'    => 73,
+                'id'    => 72,
                 'title' => 'leave_category_show',
             ],
             [
-                'id'    => 74,
+                'id'    => 73,
                 'title' => 'leave_category_delete',
             ],
             [
-                'id'    => 75,
+                'id'    => 74,
                 'title' => 'leave_category_access',
             ],
             [
-                'id'    => 76,
+                'id'    => 75,
                 'title' => 'leave_type_create',
             ],
             [
-                'id'    => 77,
+                'id'    => 76,
                 'title' => 'leave_type_edit',
             ],
             [
-                'id'    => 78,
+                'id'    => 77,
                 'title' => 'leave_type_show',
             ],
             [
-                'id'    => 79,
+                'id'    => 78,
                 'title' => 'leave_type_delete',
             ],
             [
-                'id'    => 80,
+                'id'    => 79,
                 'title' => 'leave_type_access',
             ],
             [
-                'id'    => 81,
+                'id'    => 80,
                 'title' => 'training_type_create',
             ],
             [
-                'id'    => 82,
+                'id'    => 81,
                 'title' => 'training_type_edit',
             ],
             [
-                'id'    => 83,
+                'id'    => 82,
                 'title' => 'training_type_show',
             ],
             [
-                'id'    => 84,
+                'id'    => 83,
                 'title' => 'training_type_delete',
             ],
             [
-                'id'    => 85,
+                'id'    => 84,
                 'title' => 'training_type_access',
             ],
             [
-                'id'    => 86,
+                'id'    => 85,
                 'title' => 'country_create',
             ],
             [
-                'id'    => 87,
+                'id'    => 86,
                 'title' => 'country_edit',
             ],
             [
-                'id'    => 88,
+                'id'    => 87,
                 'title' => 'country_show',
             ],
             [
-                'id'    => 89,
+                'id'    => 88,
                 'title' => 'country_delete',
             ],
             [
-                'id'    => 90,
+                'id'    => 89,
                 'title' => 'country_access',
             ],
             [
-                'id'    => 91,
+                'id'    => 90,
                 'title' => 'travel_purpose_create',
             ],
             [
-                'id'    => 92,
+                'id'    => 91,
                 'title' => 'travel_purpose_edit',
             ],
             [
-                'id'    => 93,
+                'id'    => 92,
                 'title' => 'travel_purpose_show',
             ],
             [
-                'id'    => 94,
+                'id'    => 93,
                 'title' => 'travel_purpose_delete',
             ],
             [
-                'id'    => 95,
+                'id'    => 94,
                 'title' => 'travel_purpose_access',
             ],
             [
-                'id'    => 96,
+                'id'    => 95,
                 'title' => 'employee_list_create',
             ],
             [
-                'id'    => 97,
+                'id'    => 96,
                 'title' => 'employee_list_edit',
             ],
             [
-                'id'    => 98,
+                'id'    => 97,
                 'title' => 'employee_list_show',
             ],
             [
-                'id'    => 99,
+                'id'    => 98,
                 'title' => 'employee_list_delete',
             ],
             [
-                'id'    => 100,
+                'id'    => 99,
                 'title' => 'employee_list_access',
             ],
             [
-                'id'    => 101,
+                'id'    => 100,
                 'title' => 'license_type_create',
             ],
             [
-                'id'    => 102,
+                'id'    => 101,
                 'title' => 'license_type_edit',
             ],
             [
-                'id'    => 103,
+                'id'    => 102,
                 'title' => 'license_type_show',
             ],
             [
-                'id'    => 104,
+                'id'    => 103,
                 'title' => 'license_type_delete',
             ],
             [
-                'id'    => 105,
+                'id'    => 104,
                 'title' => 'license_type_access',
             ],
             [
-                'id'    => 106,
+                'id'    => 105,
                 'title' => 'job_type_create',
             ],
             [
-                'id'    => 107,
+                'id'    => 106,
                 'title' => 'job_type_edit',
             ],
             [
-                'id'    => 108,
+                'id'    => 107,
                 'title' => 'job_type_show',
             ],
             [
-                'id'    => 109,
+                'id'    => 108,
                 'title' => 'job_type_delete',
             ],
             [
-                'id'    => 110,
+                'id'    => 109,
                 'title' => 'job_type_access',
             ],
             [
-                'id'    => 111,
+                'id'    => 110,
                 'title' => 'grade_create',
             ],
             [
-                'id'    => 112,
+                'id'    => 111,
                 'title' => 'grade_edit',
             ],
             [
-                'id'    => 113,
+                'id'    => 112,
                 'title' => 'grade_show',
             ],
             [
-                'id'    => 114,
+                'id'    => 113,
                 'title' => 'grade_delete',
             ],
             [
-                'id'    => 115,
+                'id'    => 114,
                 'title' => 'grade_access',
             ],
             [
-                'id'    => 116,
+                'id'    => 115,
                 'title' => 'employee_detail_access',
             ],
             [
-                'id'    => 117,
+                'id'    => 116,
                 'title' => 'education_informatione_create',
             ],
             [
-                'id'    => 118,
+                'id'    => 117,
                 'title' => 'education_informatione_edit',
             ],
             [
-                'id'    => 119,
+                'id'    => 118,
                 'title' => 'education_informatione_show',
             ],
             [
-                'id'    => 120,
+                'id'    => 119,
                 'title' => 'education_informatione_delete',
             ],
             [
-                'id'    => 121,
+                'id'    => 120,
                 'title' => 'education_informatione_access',
             ],
             [
-                'id'    => 122,
+                'id'    => 121,
                 'title' => 'professionale_create',
             ],
             [
-                'id'    => 123,
+                'id'    => 122,
                 'title' => 'professionale_edit',
             ],
             [
-                'id'    => 124,
+                'id'    => 123,
                 'title' => 'professionale_show',
             ],
             [
-                'id'    => 125,
+                'id'    => 124,
                 'title' => 'professionale_delete',
             ],
             [
-                'id'    => 126,
+                'id'    => 125,
                 'title' => 'professionale_access',
             ],
             [
-                'id'    => 127,
+                'id'    => 126,
                 'title' => 'addressdetaile_create',
             ],
             [
-                'id'    => 128,
+                'id'    => 127,
                 'title' => 'addressdetaile_edit',
             ],
             [
-                'id'    => 129,
+                'id'    => 128,
                 'title' => 'addressdetaile_show',
             ],
             [
-                'id'    => 130,
+                'id'    => 129,
                 'title' => 'addressdetaile_delete',
             ],
             [
-                'id'    => 131,
+                'id'    => 130,
                 'title' => 'addressdetaile_access',
             ],
             [
-                'id'    => 132,
+                'id'    => 131,
                 'title' => 'upazila_create',
             ],
             [
-                'id'    => 133,
+                'id'    => 132,
                 'title' => 'upazila_edit',
             ],
             [
-                'id'    => 134,
+                'id'    => 133,
                 'title' => 'upazila_show',
             ],
             [
-                'id'    => 135,
+                'id'    => 134,
                 'title' => 'upazila_delete',
             ],
             [
-                'id'    => 136,
+                'id'    => 135,
                 'title' => 'upazila_access',
             ],
             [
-                'id'    => 137,
+                'id'    => 136,
                 'title' => 'emergence_contacte_create',
             ],
             [
-                'id'    => 138,
+                'id'    => 137,
                 'title' => 'emergence_contacte_edit',
             ],
             [
-                'id'    => 139,
+                'id'    => 138,
                 'title' => 'emergence_contacte_show',
             ],
             [
-                'id'    => 140,
+                'id'    => 139,
                 'title' => 'emergence_contacte_delete',
             ],
             [
-                'id'    => 141,
+                'id'    => 140,
                 'title' => 'emergence_contacte_access',
             ],
             [
-                'id'    => 142,
+                'id'    => 141,
                 'title' => 'spouse_informatione_create',
             ],
             [
-                'id'    => 143,
+                'id'    => 142,
                 'title' => 'spouse_informatione_edit',
             ],
             [
-                'id'    => 144,
+                'id'    => 143,
                 'title' => 'spouse_informatione_show',
             ],
             [
-                'id'    => 145,
+                'id'    => 144,
                 'title' => 'spouse_informatione_delete',
             ],
             [
-                'id'    => 146,
+                'id'    => 145,
                 'title' => 'spouse_informatione_access',
             ],
             [
-                'id'    => 147,
+                'id'    => 146,
                 'title' => 'child_create',
             ],
             [
-                'id'    => 148,
+                'id'    => 147,
                 'title' => 'child_edit',
             ],
             [
-                'id'    => 149,
+                'id'    => 148,
                 'title' => 'child_show',
             ],
             [
-                'id'    => 150,
+                'id'    => 149,
                 'title' => 'child_delete',
             ],
             [
-                'id'    => 151,
+                'id'    => 150,
                 'title' => 'child_access',
             ],
             [
-                'id'    => 152,
+                'id'    => 151,
                 'title' => 'job_history_create',
             ],
             [
-                'id'    => 153,
+                'id'    => 152,
                 'title' => 'job_history_edit',
             ],
             [
-                'id'    => 154,
+                'id'    => 153,
                 'title' => 'job_history_show',
             ],
             [
-                'id'    => 155,
+                'id'    => 154,
                 'title' => 'job_history_delete',
             ],
             [
-                'id'    => 156,
+                'id'    => 155,
                 'title' => 'job_history_access',
             ],
             [
-                'id'    => 157,
+                'id'    => 156,
                 'title' => 'employee_promotion_create',
             ],
             [
-                'id'    => 158,
+                'id'    => 157,
                 'title' => 'employee_promotion_edit',
             ],
             [
-                'id'    => 159,
+                'id'    => 158,
                 'title' => 'employee_promotion_show',
             ],
             [
-                'id'    => 160,
+                'id'    => 159,
                 'title' => 'employee_promotion_delete',
             ],
             [
-                'id'    => 161,
+                'id'    => 160,
                 'title' => 'employee_promotion_access',
             ],
             [
-                'id'    => 162,
+                'id'    => 161,
                 'title' => 'leave_record_create',
             ],
             [
-                'id'    => 163,
+                'id'    => 162,
                 'title' => 'leave_record_edit',
             ],
             [
-                'id'    => 164,
+                'id'    => 163,
                 'title' => 'leave_record_show',
             ],
             [
-                'id'    => 165,
+                'id'    => 164,
                 'title' => 'leave_record_delete',
             ],
             [
-                'id'    => 166,
+                'id'    => 165,
                 'title' => 'leave_record_access',
             ],
             [
-                'id'    => 167,
+                'id'    => 166,
                 'title' => 'training_create',
             ],
             [
-                'id'    => 168,
+                'id'    => 167,
                 'title' => 'training_edit',
             ],
             [
-                'id'    => 169,
+                'id'    => 168,
                 'title' => 'training_show',
             ],
             [
-                'id'    => 170,
+                'id'    => 169,
                 'title' => 'training_delete',
             ],
             [
-                'id'    => 171,
+                'id'    => 170,
                 'title' => 'training_access',
             ],
             [
-                'id'    => 172,
+                'id'    => 171,
                 'title' => 'traveltype_create',
             ],
             [
-                'id'    => 173,
+                'id'    => 172,
                 'title' => 'traveltype_edit',
             ],
             [
-                'id'    => 174,
+                'id'    => 173,
                 'title' => 'traveltype_show',
             ],
             [
-                'id'    => 175,
+                'id'    => 174,
                 'title' => 'traveltype_delete',
             ],
             [
-                'id'    => 176,
+                'id'    => 175,
                 'title' => 'traveltype_access',
             ],
             [
-                'id'    => 177,
+                'id'    => 176,
                 'title' => 'travel_record_create',
             ],
             [
-                'id'    => 178,
+                'id'    => 177,
                 'title' => 'travel_record_edit',
             ],
             [
-                'id'    => 179,
+                'id'    => 178,
                 'title' => 'travel_record_show',
             ],
             [
-                'id'    => 180,
+                'id'    => 179,
                 'title' => 'travel_record_delete',
             ],
             [
-                'id'    => 181,
+                'id'    => 180,
                 'title' => 'travel_record_access',
             ],
             [
-                'id'    => 182,
+                'id'    => 181,
                 'title' => 'extracurriculam_create',
             ],
             [
-                'id'    => 183,
+                'id'    => 182,
                 'title' => 'extracurriculam_edit',
             ],
             [
-                'id'    => 184,
+                'id'    => 183,
                 'title' => 'extracurriculam_show',
             ],
             [
-                'id'    => 185,
+                'id'    => 184,
                 'title' => 'extracurriculam_delete',
             ],
             [
-                'id'    => 186,
+                'id'    => 185,
                 'title' => 'extracurriculam_access',
             ],
             [
-                'id'    => 187,
+                'id'    => 186,
                 'title' => 'publication_create',
             ],
             [
-                'id'    => 188,
+                'id'    => 187,
                 'title' => 'publication_edit',
             ],
             [
-                'id'    => 189,
+                'id'    => 188,
                 'title' => 'publication_show',
             ],
             [
-                'id'    => 190,
+                'id'    => 189,
                 'title' => 'publication_delete',
             ],
             [
-                'id'    => 191,
+                'id'    => 190,
                 'title' => 'publication_access',
             ],
             [
-                'id'    => 192,
+                'id'    => 191,
                 'title' => 'language_create',
             ],
             [
-                'id'    => 193,
+                'id'    => 192,
                 'title' => 'language_edit',
             ],
             [
-                'id'    => 194,
+                'id'    => 193,
                 'title' => 'language_show',
             ],
             [
-                'id'    => 195,
+                'id'    => 194,
                 'title' => 'language_delete',
             ],
             [
-                'id'    => 196,
+                'id'    => 195,
                 'title' => 'language_access',
             ],
             [
-                'id'    => 197,
+                'id'    => 196,
                 'title' => 'criminal_prosecutione_create',
             ],
             [
-                'id'    => 198,
+                'id'    => 197,
                 'title' => 'criminal_prosecutione_edit',
             ],
             [
-                'id'    => 199,
+                'id'    => 198,
                 'title' => 'criminal_prosecutione_show',
             ],
             [
-                'id'    => 200,
+                'id'    => 199,
                 'title' => 'criminal_prosecutione_delete',
             ],
             [
-                'id'    => 201,
+                'id'    => 200,
                 'title' => 'criminal_prosecutione_access',
             ],
             [
-                'id'    => 202,
+                'id'    => 201,
                 'title' => 'criminalpro_disciplinary_create',
             ],
             [
-                'id'    => 203,
+                'id'    => 202,
                 'title' => 'criminalpro_disciplinary_edit',
             ],
             [
-                'id'    => 204,
+                'id'    => 203,
                 'title' => 'criminalpro_disciplinary_show',
             ],
             [
-                'id'    => 205,
+                'id'    => 204,
                 'title' => 'criminalpro_disciplinary_delete',
             ],
             [
-                'id'    => 206,
+                'id'    => 205,
                 'title' => 'criminalpro_disciplinary_access',
             ],
             [
-                'id'    => 207,
+                'id'    => 206,
                 'title' => 'acr_monitoring_create',
             ],
             [
-                'id'    => 208,
+                'id'    => 207,
                 'title' => 'acr_monitoring_edit',
             ],
             [
-                'id'    => 209,
+                'id'    => 208,
                 'title' => 'acr_monitoring_show',
             ],
             [
-                'id'    => 210,
+                'id'    => 209,
                 'title' => 'acr_monitoring_delete',
             ],
             [
-                'id'    => 211,
+                'id'    => 210,
                 'title' => 'acr_monitoring_access',
             ],
             [
-                'id'    => 212,
+                'id'    => 211,
                 'title' => 'audit_log_show',
             ],
             [
-                'id'    => 213,
+                'id'    => 212,
                 'title' => 'audit_log_access',
             ],
             [
-                'id'    => 214,
+                'id'    => 213,
                 'title' => 'faq_management_access',
             ],
             [
-                'id'    => 215,
+                'id'    => 214,
                 'title' => 'faq_category_create',
             ],
             [
-                'id'    => 216,
+                'id'    => 215,
                 'title' => 'faq_category_edit',
             ],
             [
-                'id'    => 217,
+                'id'    => 216,
                 'title' => 'faq_category_show',
             ],
             [
-                'id'    => 218,
+                'id'    => 217,
                 'title' => 'faq_category_delete',
             ],
             [
-                'id'    => 219,
+                'id'    => 218,
                 'title' => 'faq_category_access',
             ],
             [
-                'id'    => 220,
+                'id'    => 219,
                 'title' => 'faq_question_create',
             ],
             [
-                'id'    => 221,
+                'id'    => 220,
                 'title' => 'faq_question_edit',
             ],
             [
-                'id'    => 222,
+                'id'    => 221,
                 'title' => 'faq_question_show',
             ],
             [
-                'id'    => 223,
+                'id'    => 222,
                 'title' => 'faq_question_delete',
             ],
             [
-                'id'    => 224,
+                'id'    => 223,
                 'title' => 'faq_question_access',
             ],
             [
-                'id'    => 225,
+                'id'    => 224,
                 'title' => 'edu_config_access',
             ],
             [
-                'id'    => 226,
+                'id'    => 225,
                 'title' => 'office_config_access',
             ],
             [
-                'id'    => 227,
+                'id'    => 226,
                 'title' => 'site_setting_create',
             ],
             [
-                'id'    => 228,
+                'id'    => 227,
                 'title' => 'site_setting_edit',
             ],
             [
-                'id'    => 229,
+                'id'    => 228,
                 'title' => 'site_setting_show',
             ],
             [
-                'id'    => 230,
+                'id'    => 229,
                 'title' => 'site_setting_delete',
             ],
             [
-                'id'    => 231,
+                'id'    => 230,
                 'title' => 'site_setting_access',
             ],
             [
+                'id'    => 231,
+                'title' => 'batch_create',
+            ],
+            [
                 'id'    => 232,
+                'title' => 'batch_edit',
+            ],
+            [
+                'id'    => 233,
+                'title' => 'batch_show',
+            ],
+            [
+                'id'    => 234,
+                'title' => 'batch_delete',
+            ],
+            [
+                'id'    => 235,
+                'title' => 'batch_access',
+            ],
+            [
+                'id'    => 236,
+                'title' => 'joininginfo_create',
+            ],
+            [
+                'id'    => 237,
+                'title' => 'joininginfo_edit',
+            ],
+            [
+                'id'    => 238,
+                'title' => 'joininginfo_show',
+            ],
+            [
+                'id'    => 239,
+                'title' => 'joininginfo_delete',
+            ],
+            [
+                'id'    => 240,
+                'title' => 'joininginfo_access',
+            ],
+            [
+                'id'    => 241,
+                'title' => 'project_revenuelone_create',
+            ],
+            [
+                'id'    => 242,
+                'title' => 'project_revenuelone_edit',
+            ],
+            [
+                'id'    => 243,
+                'title' => 'project_revenuelone_show',
+            ],
+            [
+                'id'    => 244,
+                'title' => 'project_revenuelone_delete',
+            ],
+            [
+                'id'    => 245,
+                'title' => 'project_revenuelone_access',
+            ],
+            [
+                'id'    => 246,
+                'title' => 'project_revenue_exam_create',
+            ],
+            [
+                'id'    => 247,
+                'title' => 'project_revenue_exam_edit',
+            ],
+            [
+                'id'    => 248,
+                'title' => 'project_revenue_exam_show',
+            ],
+            [
+                'id'    => 249,
+                'title' => 'project_revenue_exam_access',
+            ],
+            [
+                'id'    => 250,
+                'title' => 'service_particular_create',
+            ],
+            [
+                'id'    => 251,
+                'title' => 'service_particular_edit',
+            ],
+            [
+                'id'    => 252,
+                'title' => 'service_particular_show',
+            ],
+            [
+                'id'    => 253,
+                'title' => 'service_particular_delete',
+            ],
+            [
+                'id'    => 254,
+                'title' => 'service_particular_access',
+            ],
+            [
+                'id'    => 255,
+                'title' => 'foreign_travel_personal_create',
+            ],
+            [
+                'id'    => 256,
+                'title' => 'foreign_travel_personal_edit',
+            ],
+            [
+                'id'    => 257,
+                'title' => 'foreign_travel_personal_show',
+            ],
+            [
+                'id'    => 258,
+                'title' => 'foreign_travel_personal_delete',
+            ],
+            [
+                'id'    => 259,
+                'title' => 'foreign_travel_personal_access',
+            ],
+            [
+                'id'    => 260,
+                'title' => 'social_ass_pr_attachment_create',
+            ],
+            [
+                'id'    => 261,
+                'title' => 'social_ass_pr_attachment_edit',
+            ],
+            [
+                'id'    => 262,
+                'title' => 'social_ass_pr_attachment_show',
+            ],
+            [
+                'id'    => 263,
+                'title' => 'social_ass_pr_attachment_access',
+            ],
+            [
+                'id'    => 264,
+                'title' => 'award_create',
+            ],
+            [
+                'id'    => 265,
+                'title' => 'award_edit',
+            ],
+            [
+                'id'    => 266,
+                'title' => 'award_show',
+            ],
+            [
+                'id'    => 267,
+                'title' => 'award_delete',
+            ],
+            [
+                'id'    => 268,
+                'title' => 'award_access',
+            ],
+            [
+                'id'    => 269,
+                'title' => 'other_service_job_create',
+            ],
+            [
+                'id'    => 270,
+                'title' => 'other_service_job_edit',
+            ],
+            [
+                'id'    => 271,
+                'title' => 'other_service_job_show',
+            ],
+            [
+                'id'    => 272,
+                'title' => 'other_service_job_delete',
+            ],
+            [
+                'id'    => 273,
+                'title' => 'other_service_job_access',
+            ],
+            [
+                'id'    => 274,
+                'title' => 'language_proficiency_create',
+            ],
+            [
+                'id'    => 275,
+                'title' => 'language_proficiency_edit',
+            ],
+            [
+                'id'    => 276,
+                'title' => 'language_proficiency_show',
+            ],
+            [
+                'id'    => 277,
+                'title' => 'language_proficiency_delete',
+            ],
+            [
+                'id'    => 278,
+                'title' => 'language_proficiency_access',
+            ],
+            [
+                'id'    => 279,
                 'title' => 'profile_password_edit',
             ],
         ];

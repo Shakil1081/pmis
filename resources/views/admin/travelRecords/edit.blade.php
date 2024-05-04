@@ -39,6 +39,30 @@
                 <span class="help-block">{{ trans('cruds.travelRecord.fields.country_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="title">{{ trans('cruds.travelRecord.fields.title') }}</label>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $travelRecord->title) }}">
+                @if($errors->has('title'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('title') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.travelRecord.fields.title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="purpose_id">{{ trans('cruds.travelRecord.fields.purpose') }}</label>
+                <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}" name="purpose_id" id="purpose_id">
+                    @foreach($purposes as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('purpose_id') ? old('purpose_id') : $travelRecord->purpose->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('purpose'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('purpose') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.travelRecord.fields.purpose_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="start_date">{{ trans('cruds.travelRecord.fields.start_date') }}</label>
                 <input class="form-control date {{ $errors->has('start_date') ? 'is-invalid' : '' }}" type="text" name="start_date" id="start_date" value="{{ old('start_date', $travelRecord->start_date) }}" required>
                 @if($errors->has('start_date'))
@@ -57,45 +81,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.travelRecord.fields.end_date_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="purpose_id">{{ trans('cruds.travelRecord.fields.purpose') }}</label>
-                <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}" name="purpose_id" id="purpose_id">
-                    @foreach($purposes as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('purpose_id') ? old('purpose_id') : $travelRecord->purpose->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('purpose'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('purpose') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.travelRecord.fields.purpose_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label>{{ trans('cruds.travelRecord.fields.travel_type') }}</label>
-                <select class="form-control {{ $errors->has('travel_type') ? 'is-invalid' : '' }}" name="travel_type" id="travel_type">
-                    <option value disabled {{ old('travel_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\TravelRecord::TRAVEL_TYPE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('travel_type', $travelRecord->travel_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('travel_type'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('travel_type') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.travelRecord.fields.travel_type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="remark">{{ trans('cruds.travelRecord.fields.remark') }}</label>
-                <input class="form-control {{ $errors->has('remark') ? 'is-invalid' : '' }}" type="text" name="remark" id="remark" value="{{ old('remark', $travelRecord->remark) }}">
-                @if($errors->has('remark'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('remark') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.travelRecord.fields.remark_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -21,16 +21,12 @@ class UpdateCriminalproDisciplinaryRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'judgement_type' => [
+                'string',
+                'nullable',
+            ],
             'government_order_no' => [
                 'string',
-                'nullable',
-            ],
-            'court_name' => [
-                'string',
-                'nullable',
-            ],
-            'date_of_prosecution' => [
-                'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
         ];

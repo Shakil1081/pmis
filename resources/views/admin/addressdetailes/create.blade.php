@@ -49,26 +49,6 @@
                 <span class="help-block">{{ trans('cruds.addressdetaile.fields.flat_house_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="road_no">{{ trans('cruds.addressdetaile.fields.road_no') }}</label>
-                <input class="form-control {{ $errors->has('road_no') ? 'is-invalid' : '' }}" type="text" name="road_no" id="road_no" value="{{ old('road_no', '') }}">
-                @if($errors->has('road_no'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('road_no') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.addressdetaile.fields.road_no_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="village_town">{{ trans('cruds.addressdetaile.fields.village_town') }}</label>
-                <input class="form-control {{ $errors->has('village_town') ? 'is-invalid' : '' }}" type="text" name="village_town" id="village_town" value="{{ old('village_town', '') }}">
-                @if($errors->has('village_town'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('village_town') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.addressdetaile.fields.village_town_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="post_office">{{ trans('cruds.addressdetaile.fields.post_office') }}</label>
                 <input class="form-control {{ $errors->has('post_office') ? 'is-invalid' : '' }}" type="text" name="post_office" id="post_office" value="{{ old('post_office', '') }}">
                 @if($errors->has('post_office'))
@@ -101,20 +81,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.addressdetaile.fields.thana_upazila_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="district_id">{{ trans('cruds.addressdetaile.fields.district') }}</label>
-                <select class="form-control select2 {{ $errors->has('district') ? 'is-invalid' : '' }}" name="district_id" id="district_id">
-                    @foreach($districts as $id => $entry)
-                        <option value="{{ $id }}" {{ old('district_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('district'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('district') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.addressdetaile.fields.district_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="phone_number">{{ trans('cruds.addressdetaile.fields.phone_number') }}</label>

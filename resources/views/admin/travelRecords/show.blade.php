@@ -33,18 +33,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelRecord.fields.start_date') }}
+                            {{ trans('cruds.travelRecord.fields.title') }}
                         </th>
                         <td>
-                            {{ $travelRecord->start_date }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.travelRecord.fields.end_date') }}
-                        </th>
-                        <td>
-                            {{ $travelRecord->end_date }}
+                            {{ $travelRecord->title }}
                         </td>
                     </tr>
                     <tr>
@@ -57,18 +49,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelRecord.fields.travel_type') }}
+                            {{ trans('cruds.travelRecord.fields.start_date') }}
                         </th>
                         <td>
-                            {{ App\Models\TravelRecord::TRAVEL_TYPE_SELECT[$travelRecord->travel_type] ?? '' }}
+                            {{ $travelRecord->start_date }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelRecord.fields.remark') }}
+                            {{ trans('cruds.travelRecord.fields.end_date') }}
                         </th>
                         <td>
-                            {{ $travelRecord->remark }}
+                            {{ $travelRecord->end_date }}
                         </td>
                     </tr>
                 </tbody>

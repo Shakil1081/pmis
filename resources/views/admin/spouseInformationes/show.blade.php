@@ -53,14 +53,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.spouseInformatione.fields.date_of_birth') }}
-                        </th>
-                        <td>
-                            {{ $spouseInformatione->date_of_birth }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.spouseInformatione.fields.occupation') }}
                         </th>
                         <td>

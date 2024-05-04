@@ -11,9 +11,10 @@ use App\Models\BloodGroup;
 use App\Models\District;
 use App\Models\EmployeeList;
 use App\Models\Gender;
-use App\Models\JobType;
+use App\Models\Grade;
 use App\Models\LicenseType;
 use App\Models\Maritalstatus;
+use App\Models\ProjectRevenueExam;
 use App\Models\Quotum;
 use App\Models\Religion;
 use Gate;
@@ -31,7 +32,7 @@ class EmployeeListController extends Controller
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = EmployeeList::with(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'job_type', 'quota'])->select(sprintf('%s.*', (new EmployeeList)->table));
+            $query = EmployeeList::with(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->select(sprintf('%s.*', (new EmployeeList)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -88,28 +89,32 @@ class EmployeeListController extends Controller
             $table->editColumn('mobile_number', function ($row) {
                 return $row->mobile_number ? $row->mobile_number : '';
             });
+            $table->addColumn('joiningexaminfo_exam_name_bn', function ($row) {
+                return $row->joiningexaminfo ? $row->joiningexaminfo->exam_name_bn : '';
+            });
 
-            $table->editColumn('project_name', function ($row) {
-                return $row->project_name ? $row->project_name : '';
+            $table->addColumn('grade_name_bn', function ($row) {
+                return $row->grade ? $row->grade->name_bn : '';
             });
-            $table->editColumn('fjoiningofficename', function ($row) {
-                return $row->fjoiningofficename ? $row->fjoiningofficename : '';
-            });
-            $table->editColumn('office_orderno', function ($row) {
-                return $row->office_orderno ? '<a href="' . $row->office_orderno->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+
+            $table->editColumn('first_office_order_letter', function ($row) {
+                return $row->first_office_order_letter ? '<a href="' . $row->first_office_order_letter->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
             $table->editColumn('fjoining_letter', function ($row) {
                 return $row->fjoining_letter ? '<a href="' . $row->fjoining_letter->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
-            $table->editColumn('office_order', function ($row) {
-                return $row->office_order ? '<a href="' . $row->office_order->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            $table->editColumn('date_of_gazette_if_any', function ($row) {
+                return $row->date_of_gazette_if_any ? '<a href="' . $row->date_of_gazette_if_any->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            });
+            $table->editColumn('regularization_office_orde_go', function ($row) {
+                return $row->regularization_office_orde_go ? '<a href="' . $row->regularization_office_orde_go->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
 
             $table->addColumn('quota_name_bn', function ($row) {
                 return $row->quota ? $row->quota->name_bn : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'office_orderno', 'fjoining_letter', 'office_order', 'quota']);
+            $table->rawColumns(['actions', 'placeholder', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'first_office_order_letter', 'fjoining_letter', 'date_of_gazette_if_any', 'regularization_office_orde_go', 'quota']);
 
             return $table->make(true);
         }
@@ -133,16 +138,22 @@ class EmployeeListController extends Controller
 
         $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_types = JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employeeLists.create', compact('blood_groups', 'genders', 'home_districts', 'job_types', 'license_types', 'marital_status', 'quotas', 'religions'));
+        return view('admin.employeeLists.create', compact('blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions'));
     }
 
     public function store(StoreEmployeeListRequest $request)
     {
         $employeeList = EmployeeList::create($request->all());
+
+        if ($request->input('nid_upload', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
+        }
 
         if ($request->input('passport_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_upload'))))->toMediaCollection('passport_upload');
@@ -152,16 +163,20 @@ class EmployeeListController extends Controller
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('license_upload'))))->toMediaCollection('license_upload');
         }
 
-        if ($request->input('office_orderno', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_orderno'))))->toMediaCollection('office_orderno');
+        if ($request->input('first_office_order_letter', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_office_order_letter'))))->toMediaCollection('first_office_order_letter');
         }
 
         if ($request->input('fjoining_letter', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('fjoining_letter'))))->toMediaCollection('fjoining_letter');
         }
 
-        if ($request->input('office_order', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_order'))))->toMediaCollection('office_order');
+        if ($request->input('date_of_gazette_if_any', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('date_of_gazette_if_any'))))->toMediaCollection('date_of_gazette_if_any');
+        }
+
+        if ($request->input('regularization_office_orde_go', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('regularization_office_orde_go'))))->toMediaCollection('regularization_office_orde_go');
         }
 
         if ($request->input('electric_signature', false)) {
@@ -170,10 +185,6 @@ class EmployeeListController extends Controller
 
         if ($request->input('employee_photo', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('employee_photo'))))->toMediaCollection('employee_photo');
-        }
-
-        if ($request->input('nid_upload', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -199,18 +210,31 @@ class EmployeeListController extends Controller
 
         $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_types = JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employeeList->load('home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'job_type', 'quota');
+        $employeeList->load('home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
 
-        return view('admin.employeeLists.edit', compact('blood_groups', 'employeeList', 'genders', 'home_districts', 'job_types', 'license_types', 'marital_status', 'quotas', 'religions'));
+        return view('admin.employeeLists.edit', compact('blood_groups', 'employeeList', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions'));
     }
 
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)
     {
         $employeeList->update($request->all());
+
+        if ($request->input('nid_upload', false)) {
+            if (! $employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
+                if ($employeeList->nid_upload) {
+                    $employeeList->nid_upload->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
+            }
+        } elseif ($employeeList->nid_upload) {
+            $employeeList->nid_upload->delete();
+        }
 
         if ($request->input('passport_upload', false)) {
             if (! $employeeList->passport_upload || $request->input('passport_upload') !== $employeeList->passport_upload->file_name) {
@@ -234,15 +258,15 @@ class EmployeeListController extends Controller
             $employeeList->license_upload->delete();
         }
 
-        if ($request->input('office_orderno', false)) {
-            if (! $employeeList->office_orderno || $request->input('office_orderno') !== $employeeList->office_orderno->file_name) {
-                if ($employeeList->office_orderno) {
-                    $employeeList->office_orderno->delete();
+        if ($request->input('first_office_order_letter', false)) {
+            if (! $employeeList->first_office_order_letter || $request->input('first_office_order_letter') !== $employeeList->first_office_order_letter->file_name) {
+                if ($employeeList->first_office_order_letter) {
+                    $employeeList->first_office_order_letter->delete();
                 }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_orderno'))))->toMediaCollection('office_orderno');
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_office_order_letter'))))->toMediaCollection('first_office_order_letter');
             }
-        } elseif ($employeeList->office_orderno) {
-            $employeeList->office_orderno->delete();
+        } elseif ($employeeList->first_office_order_letter) {
+            $employeeList->first_office_order_letter->delete();
         }
 
         if ($request->input('fjoining_letter', false)) {
@@ -256,15 +280,26 @@ class EmployeeListController extends Controller
             $employeeList->fjoining_letter->delete();
         }
 
-        if ($request->input('office_order', false)) {
-            if (! $employeeList->office_order || $request->input('office_order') !== $employeeList->office_order->file_name) {
-                if ($employeeList->office_order) {
-                    $employeeList->office_order->delete();
+        if ($request->input('date_of_gazette_if_any', false)) {
+            if (! $employeeList->date_of_gazette_if_any || $request->input('date_of_gazette_if_any') !== $employeeList->date_of_gazette_if_any->file_name) {
+                if ($employeeList->date_of_gazette_if_any) {
+                    $employeeList->date_of_gazette_if_any->delete();
                 }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_order'))))->toMediaCollection('office_order');
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('date_of_gazette_if_any'))))->toMediaCollection('date_of_gazette_if_any');
             }
-        } elseif ($employeeList->office_order) {
-            $employeeList->office_order->delete();
+        } elseif ($employeeList->date_of_gazette_if_any) {
+            $employeeList->date_of_gazette_if_any->delete();
+        }
+
+        if ($request->input('regularization_office_orde_go', false)) {
+            if (! $employeeList->regularization_office_orde_go || $request->input('regularization_office_orde_go') !== $employeeList->regularization_office_orde_go->file_name) {
+                if ($employeeList->regularization_office_orde_go) {
+                    $employeeList->regularization_office_orde_go->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('regularization_office_orde_go'))))->toMediaCollection('regularization_office_orde_go');
+            }
+        } elseif ($employeeList->regularization_office_orde_go) {
+            $employeeList->regularization_office_orde_go->delete();
         }
 
         if ($request->input('electric_signature', false)) {
@@ -289,17 +324,6 @@ class EmployeeListController extends Controller
             $employeeList->employee_photo->delete();
         }
 
-        if ($request->input('nid_upload', false)) {
-            if (! $employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
-                if ($employeeList->nid_upload) {
-                    $employeeList->nid_upload->delete();
-                }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
-            }
-        } elseif ($employeeList->nid_upload) {
-            $employeeList->nid_upload->delete();
-        }
-
         return redirect()->route('admin.employee-lists.index');
     }
 
@@ -307,7 +331,7 @@ class EmployeeListController extends Controller
     {
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employeeList->load('home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'job_type', 'quota');
+        $employeeList->load('home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
 
         return view('admin.employeeLists.show', compact('employeeList'));
     }

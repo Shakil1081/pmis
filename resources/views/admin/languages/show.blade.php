@@ -36,7 +36,7 @@
                             {{ trans('cruds.language.fields.read') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $language->read ? 'checked' : '' }}>
+                            {{ $language->read->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +44,7 @@
                             {{ trans('cruds.language.fields.write') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $language->write ? 'checked' : '' }}>
+                            {{ $language->write->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                             {{ trans('cruds.language.fields.speak') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $language->speak ? 'checked' : '' }}>
+                            {{ $language->speak->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

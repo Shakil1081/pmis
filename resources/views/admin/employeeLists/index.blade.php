@@ -52,22 +52,25 @@
                         {{ trans('cruds.employeeList.fields.mobile_number') }}
                     </th>
                     <th>
+                        {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.grade') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.employeeList.fields.fjoining_date') }}
                     </th>
                     <th>
-                        {{ trans('cruds.employeeList.fields.project_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employeeList.fields.fjoiningofficename') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employeeList.fields.office_orderno') }}
+                        {{ trans('cruds.employeeList.fields.first_office_order_letter') }}
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.fjoining_letter') }}
                     </th>
                     <th>
-                        {{ trans('cruds.employeeList.fields.office_order') }}
+                        {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
@@ -141,18 +144,19 @@
 { data: 'license_type_name_bn', name: 'license_type.name_bn' },
 { data: 'email', name: 'email' },
 { data: 'mobile_number', name: 'mobile_number' },
+{ data: 'joiningexaminfo_exam_name_bn', name: 'joiningexaminfo.exam_name_bn' },
+{ data: 'grade_name_bn', name: 'grade.name_bn' },
 { data: 'fjoining_date', name: 'fjoining_date' },
-{ data: 'project_name', name: 'project_name' },
-{ data: 'fjoiningofficename', name: 'fjoiningofficename' },
-{ data: 'office_orderno', name: 'office_orderno', sortable: false, searchable: false },
+{ data: 'first_office_order_letter', name: 'first_office_order_letter', sortable: false, searchable: false },
 { data: 'fjoining_letter', name: 'fjoining_letter', sortable: false, searchable: false },
-{ data: 'office_order', name: 'office_order', sortable: false, searchable: false },
+{ data: 'date_of_gazette_if_any', name: 'date_of_gazette_if_any', sortable: false, searchable: false },
+{ data: 'regularization_office_orde_go', name: 'regularization_office_orde_go', sortable: false, searchable: false },
 { data: 'date_of_con_serviec', name: 'date_of_con_serviec' },
 { data: 'quota_name_bn', name: 'quota.name_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 13, 'desc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 25,
   };
   let table = $('.datatable-EmployeeList').DataTable(dtOverrideGlobals);

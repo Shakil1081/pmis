@@ -54,7 +54,6 @@ class SpouseInformationeController extends Controller
             $table->editColumn('nid_upload', function ($row) {
                 return $row->nid_upload ? '<a href="' . $row->nid_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
-
             $table->editColumn('occupation', function ($row) {
                 return $row->occupation ? $row->occupation : '';
             });

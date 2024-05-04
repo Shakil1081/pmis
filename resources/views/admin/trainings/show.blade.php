@@ -87,6 +87,14 @@
                             {{ $training->position }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.training.fields.location') }}
+                        </th>
+                        <td>
+                            {{ $training->location }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

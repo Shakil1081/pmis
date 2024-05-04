@@ -49,6 +49,10 @@ class UpdateTrainingRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'location' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

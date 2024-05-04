@@ -25,9 +25,6 @@ class UpdateLanguageRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'read' => [
-                'required',
-            ],
         ];
     }
 }

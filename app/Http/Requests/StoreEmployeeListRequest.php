@@ -106,23 +106,23 @@ class StoreEmployeeListRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'license_type_id' => [
+                'required',
+                'integer',
+            ],
             'mobile_number' => [
                 'string',
                 'min:11',
                 'max:15',
                 'required',
             ],
+            'joiningexaminfo_id' => [
+                'required',
+                'integer',
+            ],
             'fjoining_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
-            ],
-            'project_name' => [
-                'string',
-                'nullable',
-            ],
-            'fjoiningofficename' => [
-                'string',
-                'nullable',
             ],
             'date_of_con_serviec' => [
                 'date_format:' . config('panel.date_format'),

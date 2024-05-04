@@ -55,16 +55,6 @@
                 <span class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_upload_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="date_of_birth">{{ trans('cruds.spouseInformatione.fields.date_of_birth') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}">
-                @if($errors->has('date_of_birth'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('date_of_birth') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.spouseInformatione.fields.date_of_birth_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="occupation">{{ trans('cruds.spouseInformatione.fields.occupation') }}</label>
                 <input class="form-control {{ $errors->has('occupation') ? 'is-invalid' : '' }}" type="text" name="occupation" id="occupation" value="{{ old('occupation', '') }}">
                 @if($errors->has('occupation'))

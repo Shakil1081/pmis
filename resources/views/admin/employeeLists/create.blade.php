@@ -232,8 +232,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.passport_upload_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
-                <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}" name="license_type_id" id="license_type_id">
+                <label class="required" for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
+                <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}" name="license_type_id" id="license_type_id" required>
                     @foreach($license_types as $id => $entry)
                         <option value="{{ $id }}" {{ old('license_type_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -277,6 +277,34 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.mobile_number_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
+                <select class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}" name="joiningexaminfo_id" id="joiningexaminfo_id" required>
+                    @foreach($joiningexaminfos as $id => $entry)
+                        <option value="{{ $id }}" {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('joiningexaminfo'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('joiningexaminfo') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id" id="grade_id">
+                    @foreach($grades as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grade'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
                 <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}" type="text" name="fjoining_date" id="fjoining_date" value="{{ old('fjoining_date') }}" required>
                 @if($errors->has('fjoining_date'))
@@ -287,49 +315,15 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="project_name">{{ trans('cruds.employeeList.fields.project_name') }}</label>
-                <input class="form-control {{ $errors->has('project_name') ? 'is-invalid' : '' }}" type="text" name="project_name" id="project_name" value="{{ old('project_name', '') }}">
-                @if($errors->has('project_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('project_name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.project_name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="job_type_id">{{ trans('cruds.employeeList.fields.job_type') }}</label>
-                <select class="form-control select2 {{ $errors->has('job_type') ? 'is-invalid' : '' }}" name="job_type_id" id="job_type_id">
-                    @foreach($job_types as $id => $entry)
-                        <option value="{{ $id }}" {{ old('job_type_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('job_type'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('job_type') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.job_type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="fjoiningofficename">{{ trans('cruds.employeeList.fields.fjoiningofficename') }}</label>
-                <input class="form-control {{ $errors->has('fjoiningofficename') ? 'is-invalid' : '' }}" type="text" name="fjoiningofficename" id="fjoiningofficename" value="{{ old('fjoiningofficename', '') }}">
-                @if($errors->has('fjoiningofficename'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('fjoiningofficename') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.fjoiningofficename_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="office_orderno">{{ trans('cruds.employeeList.fields.office_orderno') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('office_orderno') ? 'is-invalid' : '' }}" id="office_orderno-dropzone">
+                <label for="first_office_order_letter">{{ trans('cruds.employeeList.fields.first_office_order_letter') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('first_office_order_letter') ? 'is-invalid' : '' }}" id="first_office_order_letter-dropzone">
                 </div>
-                @if($errors->has('office_orderno'))
+                @if($errors->has('first_office_order_letter'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('office_orderno') }}
+                        {{ $errors->first('first_office_order_letter') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.office_orderno_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.employeeList.fields.first_office_order_letter_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="fjoining_letter">{{ trans('cruds.employeeList.fields.fjoining_letter') }}</label>
@@ -343,15 +337,26 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_letter_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="office_order">{{ trans('cruds.employeeList.fields.office_order') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('office_order') ? 'is-invalid' : '' }}" id="office_order-dropzone">
+                <label for="date_of_gazette_if_any">{{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('date_of_gazette_if_any') ? 'is-invalid' : '' }}" id="date_of_gazette_if_any-dropzone">
                 </div>
-                @if($errors->has('office_order'))
+                @if($errors->has('date_of_gazette_if_any'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('office_order') }}
+                        {{ $errors->first('date_of_gazette_if_any') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.office_order_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_gazette_if_any_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="regularization_office_orde_go">{{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('regularization_office_orde_go') ? 'is-invalid' : '' }}" id="regularization_office_orde_go-dropzone">
+                </div>
+                @if($errors->has('regularization_office_orde_go'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('regularization_office_orde_go') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.regularization_office_orde_go_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="date_of_con_serviec">{{ trans('cruds.employeeList.fields.date_of_con_serviec') }}</label>
@@ -564,7 +569,7 @@
 }
 </script>
 <script>
-    Dropzone.options.officeOrdernoDropzone = {
+    Dropzone.options.firstOfficeOrderLetterDropzone = {
     url: '{{ route('admin.employee-lists.storeMedia') }}',
     maxFilesize: 2, // MB
     maxFiles: 1,
@@ -576,22 +581,22 @@
       size: 2
     },
     success: function (file, response) {
-      $('form').find('input[name="office_orderno"]').remove()
-      $('form').append('<input type="hidden" name="office_orderno" value="' + response.name + '">')
+      $('form').find('input[name="first_office_order_letter"]').remove()
+      $('form').append('<input type="hidden" name="first_office_order_letter" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
       if (file.status !== 'error') {
-        $('form').find('input[name="office_orderno"]').remove()
+        $('form').find('input[name="first_office_order_letter"]').remove()
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
     init: function () {
-@if(isset($employeeList) && $employeeList->office_orderno)
-      var file = {!! json_encode($employeeList->office_orderno) !!}
+@if(isset($employeeList) && $employeeList->first_office_order_letter)
+      var file = {!! json_encode($employeeList->first_office_order_letter) !!}
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="office_orderno" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="first_office_order_letter" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
@@ -664,7 +669,7 @@
 }
 </script>
 <script>
-    Dropzone.options.officeOrderDropzone = {
+    Dropzone.options.dateOfGazetteIfAnyDropzone = {
     url: '{{ route('admin.employee-lists.storeMedia') }}',
     maxFilesize: 2, // MB
     maxFiles: 1,
@@ -676,22 +681,72 @@
       size: 2
     },
     success: function (file, response) {
-      $('form').find('input[name="office_order"]').remove()
-      $('form').append('<input type="hidden" name="office_order" value="' + response.name + '">')
+      $('form').find('input[name="date_of_gazette_if_any"]').remove()
+      $('form').append('<input type="hidden" name="date_of_gazette_if_any" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
       if (file.status !== 'error') {
-        $('form').find('input[name="office_order"]').remove()
+        $('form').find('input[name="date_of_gazette_if_any"]').remove()
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
     init: function () {
-@if(isset($employeeList) && $employeeList->office_order)
-      var file = {!! json_encode($employeeList->office_order) !!}
+@if(isset($employeeList) && $employeeList->date_of_gazette_if_any)
+      var file = {!! json_encode($employeeList->date_of_gazette_if_any) !!}
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="office_order" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="date_of_gazette_if_any" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
+<script>
+    Dropzone.options.regularizationOfficeOrdeGoDropzone = {
+    url: '{{ route('admin.employee-lists.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="regularization_office_orde_go"]').remove()
+      $('form').append('<input type="hidden" name="regularization_office_orde_go" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="regularization_office_orde_go"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($employeeList) && $employeeList->regularization_office_orde_go)
+      var file = {!! json_encode($employeeList->regularization_office_orde_go) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="regularization_office_orde_go" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
