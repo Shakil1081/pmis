@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Auditable;
-use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,7 +22,6 @@ class SpouseInformatione extends Model implements HasMedia
     ];
 
     protected $dates = [
-        'date_of_birth',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -33,7 +31,6 @@ class SpouseInformatione extends Model implements HasMedia
         'employee_id',
         'name_bn',
         'name_en',
-        'date_of_birth',
         'occupation',
         'office_address',
         'phone_number',
@@ -63,15 +60,5 @@ class SpouseInformatione extends Model implements HasMedia
     public function getNidUploadAttribute()
     {
         return $this->getMedia('nid_upload')->last();
-    }
-
-    public function getDateOfBirthAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
-
-    public function setDateOfBirthAttribute($value)
-    {
-        $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 }

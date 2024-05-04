@@ -8,6 +8,7 @@ use App\Http\Requests\StoreLanguageRequest;
 use App\Http\Requests\UpdateLanguageRequest;
 use App\Models\EmployeeList;
 use App\Models\Language;
+use App\Models\LanguageProficiency;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,7 @@ class LanguageController extends Controller
         abort_if(Gate::denies('language_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Language::with(['employee'])->select(sprintf('%s.*', (new Language)->table));
+            $query = Language::with(['employee', 'read', 'write', 'speak'])->select(sprintf('%s.*', (new Language)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -48,14 +49,16 @@ class LanguageController extends Controller
             $table->editColumn('language', function ($row) {
                 return $row->language ? $row->language : '';
             });
-            $table->editColumn('read', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->read ? 'checked' : null) . '>';
+            $table->addColumn('read_name', function ($row) {
+                return $row->read ? $row->read->name : '';
             });
-            $table->editColumn('write', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->write ? 'checked' : null) . '>';
+
+            $table->addColumn('write_name', function ($row) {
+                return $row->write ? $row->write->name : '';
             });
-            $table->editColumn('speak', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->speak ? 'checked' : null) . '>';
+
+            $table->addColumn('speak_name', function ($row) {
+                return $row->speak ? $row->speak->name : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'employee', 'read', 'write', 'speak']);
@@ -72,7 +75,13 @@ class LanguageController extends Controller
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.languages.create', compact('employees'));
+        $reads = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $writes = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $speaks = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.languages.create', compact('employees', 'reads', 'speaks', 'writes'));
     }
 
     public function store(StoreLanguageRequest $request)
@@ -88,9 +97,15 @@ class LanguageController extends Controller
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $language->load('employee');
+        $reads = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.languages.edit', compact('employees', 'language'));
+        $writes = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $speaks = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $language->load('employee', 'read', 'write', 'speak');
+
+        return view('admin.languages.edit', compact('employees', 'language', 'reads', 'speaks', 'writes'));
     }
 
     public function update(UpdateLanguageRequest $request, Language $language)
@@ -104,7 +119,7 @@ class LanguageController extends Controller
     {
         abort_if(Gate::denies('language_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $language->load('employee');
+        $language->load('employee', 'read', 'write', 'speak');
 
         return view('admin.languages.show', compact('language'));
     }

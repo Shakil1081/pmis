@@ -21,14 +21,6 @@ class UpdateEmployeePromotionRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'promotion_date' => [
-                'required',
-                'date_format:' . config('panel.date_format'),
-            ],
-            'organization_name' => [
-                'string',
-                'required',
-            ],
             'office_order_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

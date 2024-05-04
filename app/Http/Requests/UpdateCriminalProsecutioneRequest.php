@@ -17,19 +17,15 @@ class UpdateCriminalProsecutioneRequest extends FormRequest
     public function rules()
     {
         return [
+            'judgement_type' => [
+                'string',
+                'nullable',
+            ],
             'natureof_offence' => [
                 'string',
                 'nullable',
             ],
             'government_order_no' => [
-                'string',
-                'nullable',
-            ],
-            'government_order_date' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-            'court_name' => [
                 'string',
                 'nullable',
             ],

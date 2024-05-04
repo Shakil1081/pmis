@@ -21,6 +21,10 @@ class UpdateTravelRecordRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'title' => [
+                'string',
+                'nullable',
+            ],
             'start_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
@@ -28,10 +32,6 @@ class UpdateTravelRecordRequest extends FormRequest
             'end_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
-            ],
-            'remark' => [
-                'string',
-                'nullable',
             ],
         ];
     }

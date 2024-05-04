@@ -67,6 +67,9 @@ class TrainingController extends Controller
             $table->editColumn('position', function ($row) {
                 return $row->position ? $row->position : '';
             });
+            $table->editColumn('location', function ($row) {
+                return $row->location ? $row->location : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'employee', 'training_type', 'country']);
 

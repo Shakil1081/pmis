@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Auditable;
-use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +21,6 @@ class CriminalProsecutione extends Model implements HasMedia
     public $table = 'criminal_prosecutiones';
 
     protected $dates = [
-        'government_order_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -30,10 +28,9 @@ class CriminalProsecutione extends Model implements HasMedia
 
     protected $fillable = [
         'employee_id',
+        'judgement_type',
         'natureof_offence',
         'government_order_no',
-        'government_order_date',
-        'court_name',
         'remzrk',
         'created_at',
         'updated_at',
@@ -54,16 +51,6 @@ class CriminalProsecutione extends Model implements HasMedia
     public function employee()
     {
         return $this->belongsTo(EmployeeList::class, 'employee_id');
-    }
-
-    public function getGovernmentOrderDateAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
-
-    public function setGovernmentOrderDateAttribute($value)
-    {
-        $this->attributes['government_order_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getCourtOrderAttribute()

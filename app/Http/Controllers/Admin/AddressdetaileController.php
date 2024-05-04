@@ -8,7 +8,6 @@ use App\Http\Requests\MassDestroyAddressdetaileRequest;
 use App\Http\Requests\StoreAddressdetaileRequest;
 use App\Http\Requests\UpdateAddressdetaileRequest;
 use App\Models\Addressdetaile;
-use App\Models\District;
 use App\Models\EmployeeList;
 use App\Models\Upazila;
 use Gate;
@@ -25,7 +24,7 @@ class AddressdetaileController extends Controller
         abort_if(Gate::denies('addressdetaile_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Addressdetaile::with(['employee', 'thana_upazila', 'district'])->select(sprintf('%s.*', (new Addressdetaile)->table));
+            $query = Addressdetaile::with(['employee', 'thana_upazila'])->select(sprintf('%s.*', (new Addressdetaile)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -59,12 +58,6 @@ class AddressdetaileController extends Controller
             $table->editColumn('flat_house', function ($row) {
                 return $row->flat_house ? $row->flat_house : '';
             });
-            $table->editColumn('road_no', function ($row) {
-                return $row->road_no ? $row->road_no : '';
-            });
-            $table->editColumn('village_town', function ($row) {
-                return $row->village_town ? $row->village_town : '';
-            });
             $table->editColumn('post_office', function ($row) {
                 return $row->post_office ? $row->post_office : '';
             });
@@ -75,13 +68,6 @@ class AddressdetaileController extends Controller
                 return $row->thana_upazila ? $row->thana_upazila->name_bn : '';
             });
 
-            $table->addColumn('district_name_bn', function ($row) {
-                return $row->district ? $row->district->name_bn : '';
-            });
-
-            $table->editColumn('district.name_en', function ($row) {
-                return $row->district ? (is_string($row->district) ? $row->district : $row->district->name_en) : '';
-            });
             $table->editColumn('phone_number', function ($row) {
                 return $row->phone_number ? $row->phone_number : '';
             });
@@ -89,7 +75,7 @@ class AddressdetaileController extends Controller
                 return $row->status ? Addressdetaile::STATUS_SELECT[$row->status] : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'employee', 'thana_upazila', 'district']);
+            $table->rawColumns(['actions', 'placeholder', 'employee', 'thana_upazila']);
 
             return $table->make(true);
         }
@@ -105,9 +91,7 @@ class AddressdetaileController extends Controller
 
         $thana_upazilas = Upazila::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.addressdetailes.create', compact('districts', 'employees', 'thana_upazilas'));
+        return view('admin.addressdetailes.create', compact('employees', 'thana_upazilas'));
     }
 
     public function store(StoreAddressdetaileRequest $request)
@@ -125,11 +109,9 @@ class AddressdetaileController extends Controller
 
         $thana_upazilas = Upazila::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $addressdetaile->load('employee', 'thana_upazila');
 
-        $addressdetaile->load('employee', 'thana_upazila', 'district');
-
-        return view('admin.addressdetailes.edit', compact('addressdetaile', 'districts', 'employees', 'thana_upazilas'));
+        return view('admin.addressdetailes.edit', compact('addressdetaile', 'employees', 'thana_upazilas'));
     }
 
     public function update(UpdateAddressdetaileRequest $request, Addressdetaile $addressdetaile)
@@ -143,7 +125,7 @@ class AddressdetaileController extends Controller
     {
         abort_if(Gate::denies('addressdetaile_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $addressdetaile->load('employee', 'thana_upazila', 'district');
+        $addressdetaile->load('employee', 'thana_upazila');
 
         return view('admin.addressdetailes.show', compact('addressdetaile'));
     }

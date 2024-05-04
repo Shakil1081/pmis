@@ -94,9 +94,9 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'language', name: 'language' },
-{ data: 'read', name: 'read' },
-{ data: 'write', name: 'write' },
-{ data: 'speak', name: 'speak' },
+{ data: 'read_name', name: 'read.name' },
+{ data: 'write_name', name: 'write.name' },
+{ data: 'speak_name', name: 'speak.name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

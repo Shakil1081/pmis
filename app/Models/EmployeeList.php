@@ -31,9 +31,10 @@ class EmployeeList extends Model implements HasMedia
         'nid_upload',
         'passport_upload',
         'license_upload',
-        'office_orderno',
+        'first_office_order_letter',
         'fjoining_letter',
-        'office_order',
+        'date_of_gazette_if_any',
+        'regularization_office_orde_go',
         'electric_signature',
         'employee_photo',
     ];
@@ -60,10 +61,9 @@ class EmployeeList extends Model implements HasMedia
         'license_type_id',
         'email',
         'mobile_number',
+        'joiningexaminfo_id',
+        'grade_id',
         'fjoining_date',
-        'project_name',
-        'job_type_id',
-        'fjoiningofficename',
         'date_of_con_serviec',
         'quota_id',
         'created_at',
@@ -137,6 +137,16 @@ class EmployeeList extends Model implements HasMedia
         return $this->getMedia('license_upload')->last();
     }
 
+    public function joiningexaminfo()
+    {
+        return $this->belongsTo(ProjectRevenueExam::class, 'joiningexaminfo_id');
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
     public function getFjoiningDateAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -147,14 +157,9 @@ class EmployeeList extends Model implements HasMedia
         $this->attributes['fjoining_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function job_type()
+    public function getFirstOfficeOrderLetterAttribute()
     {
-        return $this->belongsTo(JobType::class, 'job_type_id');
-    }
-
-    public function getOfficeOrdernoAttribute()
-    {
-        return $this->getMedia('office_orderno')->last();
+        return $this->getMedia('first_office_order_letter')->last();
     }
 
     public function getFjoiningLetterAttribute()
@@ -162,9 +167,14 @@ class EmployeeList extends Model implements HasMedia
         return $this->getMedia('fjoining_letter')->last();
     }
 
-    public function getOfficeOrderAttribute()
+    public function getDateOfGazetteIfAnyAttribute()
     {
-        return $this->getMedia('office_order')->last();
+        return $this->getMedia('date_of_gazette_if_any')->last();
+    }
+
+    public function getRegularizationOfficeOrdeGoAttribute()
+    {
+        return $this->getMedia('regularization_office_orde_go')->last();
     }
 
     public function getDateOfConServiecAttribute($value)

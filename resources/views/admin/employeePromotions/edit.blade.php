@@ -39,26 +39,6 @@
                 <span class="help-block">{{ trans('cruds.employeePromotion.fields.new_designation_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="promotion_date">{{ trans('cruds.employeePromotion.fields.promotion_date') }}</label>
-                <input class="form-control date {{ $errors->has('promotion_date') ? 'is-invalid' : '' }}" type="text" name="promotion_date" id="promotion_date" value="{{ old('promotion_date', $employeePromotion->promotion_date) }}" required>
-                @if($errors->has('promotion_date'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('promotion_date') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employeePromotion.fields.promotion_date_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="organization_name">{{ trans('cruds.employeePromotion.fields.organization_name') }}</label>
-                <input class="form-control {{ $errors->has('organization_name') ? 'is-invalid' : '' }}" type="text" name="organization_name" id="organization_name" value="{{ old('organization_name', $employeePromotion->organization_name) }}" required>
-                @if($errors->has('organization_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('organization_name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employeePromotion.fields.organization_name_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="office_order_date">{{ trans('cruds.employeePromotion.fields.office_order_date') }}</label>
                 <input class="form-control date {{ $errors->has('office_order_date') ? 'is-invalid' : '' }}" type="text" name="office_order_date" id="office_order_date" value="{{ old('office_order_date', $employeePromotion->office_order_date) }}" required>
                 @if($errors->has('office_order_date'))

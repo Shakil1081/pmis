@@ -50,6 +50,9 @@ class EmergenceContacteController extends Controller
             $table->editColumn('contact_person_relation', function ($row) {
                 return $row->contact_person_relation ? $row->contact_person_relation : '';
             });
+            $table->editColumn('address', function ($row) {
+                return $row->address ? $row->address : '';
+            });
             $table->editColumn('contact_person_number', function ($row) {
                 return $row->contact_person_number ? $row->contact_person_number : '';
             });

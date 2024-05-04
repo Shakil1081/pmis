@@ -28,19 +28,16 @@
                         {{ trans('cruds.travelRecord.fields.country') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travelRecord.fields.start_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travelRecord.fields.end_date') }}
+                        {{ trans('cruds.travelRecord.fields.title') }}
                     </th>
                     <th>
                         {{ trans('cruds.travelRecord.fields.purpose') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travelRecord.fields.travel_type') }}
+                        {{ trans('cruds.travelRecord.fields.start_date') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travelRecord.fields.remark') }}
+                        {{ trans('cruds.travelRecord.fields.end_date') }}
                     </th>
                     <th>
                         &nbsp;
@@ -100,11 +97,10 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'country_name_bn', name: 'country.name_bn' },
+{ data: 'title', name: 'title' },
+{ data: 'purpose_name_bn', name: 'purpose.name_bn' },
 { data: 'start_date', name: 'start_date' },
 { data: 'end_date', name: 'end_date' },
-{ data: 'purpose_name_bn', name: 'purpose.name_bn' },
-{ data: 'travel_type', name: 'travel_type' },
-{ data: 'remark', name: 'remark' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

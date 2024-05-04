@@ -25,6 +25,10 @@ class UpdateChildRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'date_of_birth' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
             'gender_id' => [
                 'required',
                 'integer',
@@ -37,9 +41,9 @@ class UpdateChildRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'date_of_birth' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
+            'complite_21' => [
+                'string',
+                'required',
             ],
         ];
     }

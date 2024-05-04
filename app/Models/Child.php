@@ -23,13 +23,14 @@ class Child extends Model
     ];
 
     protected $fillable = [
+        'employee_id',
         'name_bn',
         'name_en',
+        'date_of_birth',
         'gender_id',
         'nid_number',
         'passport_number',
-        'date_of_birth',
-        'employee_id',
+        'complite_21',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -40,9 +41,9 @@ class Child extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function gender()
+    public function employee()
     {
-        return $this->belongsTo(Gender::class, 'gender_id');
+        return $this->belongsTo(EmployeeList::class, 'employee_id');
     }
 
     public function getDateOfBirthAttribute($value)
@@ -55,8 +56,8 @@ class Child extends Model
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function employee()
+    public function gender()
     {
-        return $this->belongsTo(EmployeeList::class, 'employee_id');
+        return $this->belongsTo(Gender::class, 'gender_id');
     }
 }

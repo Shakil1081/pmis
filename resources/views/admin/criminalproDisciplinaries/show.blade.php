@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}
+                        </th>
+                        <td>
+                            {{ $criminalproDisciplinary->judgement_type }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
                         </th>
                         <td>
@@ -33,19 +41,11 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.criminalproDisciplinary.fields.court_name') }}
+                            {{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}
                         </th>
                         <td>
-                            {{ $criminalproDisciplinary->court_name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.criminalproDisciplinary.fields.court_orader') }}
-                        </th>
-                        <td>
-                            @if($criminalproDisciplinary->court_orader)
-                                <a href="{{ $criminalproDisciplinary->court_orader->getUrl() }}" target="_blank">
+                            @if($criminalproDisciplinary->order_upload_file)
+                                <a href="{{ $criminalproDisciplinary->order_upload_file->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>
                             @endif
@@ -53,18 +53,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.criminalproDisciplinary.fields.date_of_prosecution') }}
+                            {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
                         </th>
                         <td>
-                            {{ $criminalproDisciplinary->date_of_prosecution }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.criminalproDisciplinary.fields.description') }}
-                        </th>
-                        <td>
-                            {!! $criminalproDisciplinary->description !!}
+                            {{ $criminalproDisciplinary->remarks }}
                         </td>
                     </tr>
                 </tbody>

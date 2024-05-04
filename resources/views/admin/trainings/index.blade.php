@@ -49,6 +49,9 @@
                         {{ trans('cruds.training.fields.position') }}
                     </th>
                     <th>
+                        {{ trans('cruds.training.fields.location') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -113,6 +116,7 @@
 { data: 'end_date', name: 'end_date' },
 { data: 'grade', name: 'grade' },
 { data: 'position', name: 'position' },
+{ data: 'location', name: 'location' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

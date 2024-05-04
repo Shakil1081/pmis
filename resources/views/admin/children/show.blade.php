@@ -17,6 +17,14 @@
                 <tbody>
                     <tr>
                         <th>
+                            {{ trans('cruds.child.fields.employee') }}
+                        </th>
+                        <td>
+                            {{ $child->employee->employeeid ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.child.fields.name_bn') }}
                         </th>
                         <td>
@@ -29,6 +37,14 @@
                         </th>
                         <td>
                             {{ $child->name_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.child.fields.date_of_birth') }}
+                        </th>
+                        <td>
+                            {{ $child->date_of_birth }}
                         </td>
                     </tr>
                     <tr>
@@ -57,18 +73,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.child.fields.date_of_birth') }}
+                            {{ trans('cruds.child.fields.complite_21') }}
                         </th>
                         <td>
-                            {{ $child->date_of_birth }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.child.fields.employee') }}
-                        </th>
-                        <td>
-                            {{ $child->employee->employeeid ?? '' }}
+                            {{ $child->complite_21 }}
                         </td>
                     </tr>
                 </tbody>

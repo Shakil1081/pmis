@@ -34,12 +34,9 @@ class Addressdetaile extends Model
         'employee_id',
         'address_type',
         'flat_house',
-        'road_no',
-        'village_town',
         'post_office',
         'post_code',
         'thana_upazila_id',
-        'district_id',
         'phone_number',
         'status',
         'created_at',
@@ -60,10 +57,5 @@ class Addressdetaile extends Model
     public function thana_upazila()
     {
         return $this->belongsTo(Upazila::class, 'thana_upazila_id');
-    }
-
-    public function district()
-    {
-        return $this->belongsTo(District::class, 'district_id');
     }
 }

@@ -31,6 +31,9 @@
                         {{ trans('cruds.emergenceContacte.fields.contact_person_relation') }}
                     </th>
                     <th>
+                        {{ trans('cruds.emergenceContacte.fields.address') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
                     </th>
                     <th>
@@ -98,6 +101,7 @@
 { data: 'id', name: 'id' },
 { data: 'contact_person_name', name: 'contact_person_name' },
 { data: 'contact_person_relation', name: 'contact_person_relation' },
+{ data: 'address', name: 'address' },
 { data: 'contact_person_number', name: 'contact_person_number' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'employee.fullname_bn', name: 'employee.fullname_bn' },

@@ -38,12 +38,6 @@
                         {{ trans('cruds.addressdetaile.fields.flat_house') }}
                     </th>
                     <th>
-                        {{ trans('cruds.addressdetaile.fields.road_no') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.addressdetaile.fields.village_town') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.addressdetaile.fields.post_office') }}
                     </th>
                     <th>
@@ -51,12 +45,6 @@
                     </th>
                     <th>
                         {{ trans('cruds.addressdetaile.fields.thana_upazila') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.addressdetaile.fields.district') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.district.fields.name_en') }}
                     </th>
                     <th>
                         {{ trans('cruds.addressdetaile.fields.phone_number') }}
@@ -124,13 +112,9 @@
 { data: 'employee.fullname_bn', name: 'employee.fullname_bn' },
 { data: 'address_type', name: 'address_type' },
 { data: 'flat_house', name: 'flat_house' },
-{ data: 'road_no', name: 'road_no' },
-{ data: 'village_town', name: 'village_town' },
 { data: 'post_office', name: 'post_office' },
 { data: 'post_code', name: 'post_code' },
 { data: 'thana_upazila_name_bn', name: 'thana_upazila.name_bn' },
-{ data: 'district_name_bn', name: 'district.name_bn' },
-{ data: 'district.name_en', name: 'district.name_en' },
 { data: 'phone_number', name: 'phone_number' },
 { data: 'status', name: 'status' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

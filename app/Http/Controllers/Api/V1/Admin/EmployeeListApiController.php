@@ -20,7 +20,7 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource(EmployeeList::with(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'job_type', 'quota'])->get());
+        return new EmployeeListResource(EmployeeList::with(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->get());
     }
 
     public function store(StoreEmployeeListRequest $request)
@@ -39,16 +39,20 @@ class EmployeeListApiController extends Controller
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('license_upload'))))->toMediaCollection('license_upload');
         }
 
-        if ($request->input('office_orderno', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_orderno'))))->toMediaCollection('office_orderno');
+        if ($request->input('first_office_order_letter', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_office_order_letter'))))->toMediaCollection('first_office_order_letter');
         }
 
         if ($request->input('fjoining_letter', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('fjoining_letter'))))->toMediaCollection('fjoining_letter');
         }
 
-        if ($request->input('office_order', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_order'))))->toMediaCollection('office_order');
+        if ($request->input('date_of_gazette_if_any', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('date_of_gazette_if_any'))))->toMediaCollection('date_of_gazette_if_any');
+        }
+
+        if ($request->input('regularization_office_orde_go', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('regularization_office_orde_go'))))->toMediaCollection('regularization_office_orde_go');
         }
 
         if ($request->input('electric_signature', false)) {
@@ -68,7 +72,7 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource($employeeList->load(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'job_type', 'quota']));
+        return new EmployeeListResource($employeeList->load(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota']));
     }
 
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)
@@ -108,15 +112,15 @@ class EmployeeListApiController extends Controller
             $employeeList->license_upload->delete();
         }
 
-        if ($request->input('office_orderno', false)) {
-            if (! $employeeList->office_orderno || $request->input('office_orderno') !== $employeeList->office_orderno->file_name) {
-                if ($employeeList->office_orderno) {
-                    $employeeList->office_orderno->delete();
+        if ($request->input('first_office_order_letter', false)) {
+            if (! $employeeList->first_office_order_letter || $request->input('first_office_order_letter') !== $employeeList->first_office_order_letter->file_name) {
+                if ($employeeList->first_office_order_letter) {
+                    $employeeList->first_office_order_letter->delete();
                 }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_orderno'))))->toMediaCollection('office_orderno');
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_office_order_letter'))))->toMediaCollection('first_office_order_letter');
             }
-        } elseif ($employeeList->office_orderno) {
-            $employeeList->office_orderno->delete();
+        } elseif ($employeeList->first_office_order_letter) {
+            $employeeList->first_office_order_letter->delete();
         }
 
         if ($request->input('fjoining_letter', false)) {
@@ -130,15 +134,26 @@ class EmployeeListApiController extends Controller
             $employeeList->fjoining_letter->delete();
         }
 
-        if ($request->input('office_order', false)) {
-            if (! $employeeList->office_order || $request->input('office_order') !== $employeeList->office_order->file_name) {
-                if ($employeeList->office_order) {
-                    $employeeList->office_order->delete();
+        if ($request->input('date_of_gazette_if_any', false)) {
+            if (! $employeeList->date_of_gazette_if_any || $request->input('date_of_gazette_if_any') !== $employeeList->date_of_gazette_if_any->file_name) {
+                if ($employeeList->date_of_gazette_if_any) {
+                    $employeeList->date_of_gazette_if_any->delete();
                 }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('office_order'))))->toMediaCollection('office_order');
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('date_of_gazette_if_any'))))->toMediaCollection('date_of_gazette_if_any');
             }
-        } elseif ($employeeList->office_order) {
-            $employeeList->office_order->delete();
+        } elseif ($employeeList->date_of_gazette_if_any) {
+            $employeeList->date_of_gazette_if_any->delete();
+        }
+
+        if ($request->input('regularization_office_orde_go', false)) {
+            if (! $employeeList->regularization_office_orde_go || $request->input('regularization_office_orde_go') !== $employeeList->regularization_office_orde_go->file_name) {
+                if ($employeeList->regularization_office_orde_go) {
+                    $employeeList->regularization_office_orde_go->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('regularization_office_orde_go'))))->toMediaCollection('regularization_office_orde_go');
+            }
+        } elseif ($employeeList->regularization_office_orde_go) {
+            $employeeList->regularization_office_orde_go->delete();
         }
 
         if ($request->input('electric_signature', false)) {

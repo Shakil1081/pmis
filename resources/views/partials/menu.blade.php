@@ -78,7 +78,7 @@
             </li>
         @endcan
         @can('configuration_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/divisions*") ? "c-show" : "" }} {{ request()->is("admin/districts*") ? "c-show" : "" }} {{ request()->is("admin/upazilas*") ? "c-show" : "" }} {{ request()->is("admin/maritalstatuses*") ? "c-show" : "" }} {{ request()->is("admin/genders*") ? "c-show" : "" }} {{ request()->is("admin/religions*") ? "c-show" : "" }} {{ request()->is("admin/blood-groups*") ? "c-show" : "" }} {{ request()->is("admin/quota*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/divisions*") ? "c-show" : "" }} {{ request()->is("admin/districts*") ? "c-show" : "" }} {{ request()->is("admin/upazilas*") ? "c-show" : "" }} {{ request()->is("admin/maritalstatuses*") ? "c-show" : "" }} {{ request()->is("admin/genders*") ? "c-show" : "" }} {{ request()->is("admin/religions*") ? "c-show" : "" }} {{ request()->is("admin/blood-groups*") ? "c-show" : "" }} {{ request()->is("admin/quota*") ? "c-show" : "" }} {{ request()->is("admin/language-proficiencies*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-tasks c-sidebar-nav-icon">
 
@@ -176,11 +176,21 @@
                             </a>
                         </li>
                     @endcan
+                    @can('language_proficiency_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.language-proficiencies.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/language-proficiencies") || request()->is("admin/language-proficiencies/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.languageProficiency.title') }}
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
         @endcan
         @can('office_config_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/office-units*") ? "c-show" : "" }} {{ request()->is("admin/designations*") ? "c-show" : "" }} {{ request()->is("admin/leave-categories*") ? "c-show" : "" }} {{ request()->is("admin/leave-types*") ? "c-show" : "" }} {{ request()->is("admin/training-types*") ? "c-show" : "" }} {{ request()->is("admin/travel-purposes*") ? "c-show" : "" }} {{ request()->is("admin/license-types*") ? "c-show" : "" }} {{ request()->is("admin/job-types*") ? "c-show" : "" }} {{ request()->is("admin/grades*") ? "c-show" : "" }} {{ request()->is("admin/traveltypes*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/office-units*") ? "c-show" : "" }} {{ request()->is("admin/designations*") ? "c-show" : "" }} {{ request()->is("admin/leave-categories*") ? "c-show" : "" }} {{ request()->is("admin/leave-types*") ? "c-show" : "" }} {{ request()->is("admin/training-types*") ? "c-show" : "" }} {{ request()->is("admin/travel-purposes*") ? "c-show" : "" }} {{ request()->is("admin/license-types*") ? "c-show" : "" }} {{ request()->is("admin/job-types*") ? "c-show" : "" }} {{ request()->is("admin/grades*") ? "c-show" : "" }} {{ request()->is("admin/traveltypes*") ? "c-show" : "" }} {{ request()->is("admin/batches*") ? "c-show" : "" }} {{ request()->is("admin/joininginfos*") ? "c-show" : "" }} {{ request()->is("admin/project-revenuelones*") ? "c-show" : "" }} {{ request()->is("admin/project-revenue-exams*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-building c-sidebar-nav-icon">
 
@@ -288,6 +298,46 @@
                             </a>
                         </li>
                     @endcan
+                    @can('batch_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.batches.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/batches") || request()->is("admin/batches/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.batch.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('joininginfo_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.joininginfos.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/joininginfos") || request()->is("admin/joininginfos/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.joininginfo.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('project_revenuelone_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.project-revenuelones.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/project-revenuelones") || request()->is("admin/project-revenuelones/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.projectRevenuelone.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('project_revenue_exam_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.project-revenue-exams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/project-revenue-exams") || request()->is("admin/project-revenue-exams/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.projectRevenueExam.title') }}
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
         @endcan
@@ -324,7 +374,7 @@
             </li>
         @endcan
         @can('employee_detail_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/employee-lists*") ? "c-show" : "" }} {{ request()->is("admin/education-informationes*") ? "c-show" : "" }} {{ request()->is("admin/professionales*") ? "c-show" : "" }} {{ request()->is("admin/addressdetailes*") ? "c-show" : "" }} {{ request()->is("admin/emergence-contactes*") ? "c-show" : "" }} {{ request()->is("admin/spouse-informationes*") ? "c-show" : "" }} {{ request()->is("admin/children*") ? "c-show" : "" }} {{ request()->is("admin/job-histories*") ? "c-show" : "" }} {{ request()->is("admin/employee-promotions*") ? "c-show" : "" }} {{ request()->is("admin/leave-records*") ? "c-show" : "" }} {{ request()->is("admin/trainings*") ? "c-show" : "" }} {{ request()->is("admin/travel-records*") ? "c-show" : "" }} {{ request()->is("admin/extracurriculams*") ? "c-show" : "" }} {{ request()->is("admin/publications*") ? "c-show" : "" }} {{ request()->is("admin/languages*") ? "c-show" : "" }} {{ request()->is("admin/criminal-prosecutiones*") ? "c-show" : "" }} {{ request()->is("admin/criminalpro-disciplinaries*") ? "c-show" : "" }} {{ request()->is("admin/acr-monitorings*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/employee-lists*") ? "c-show" : "" }} {{ request()->is("admin/education-informationes*") ? "c-show" : "" }} {{ request()->is("admin/professionales*") ? "c-show" : "" }} {{ request()->is("admin/addressdetailes*") ? "c-show" : "" }} {{ request()->is("admin/emergence-contactes*") ? "c-show" : "" }} {{ request()->is("admin/spouse-informationes*") ? "c-show" : "" }} {{ request()->is("admin/children*") ? "c-show" : "" }} {{ request()->is("admin/job-histories*") ? "c-show" : "" }} {{ request()->is("admin/employee-promotions*") ? "c-show" : "" }} {{ request()->is("admin/leave-records*") ? "c-show" : "" }} {{ request()->is("admin/service-particulars*") ? "c-show" : "" }} {{ request()->is("admin/trainings*") ? "c-show" : "" }} {{ request()->is("admin/travel-records*") ? "c-show" : "" }} {{ request()->is("admin/foreign-travel-personals*") ? "c-show" : "" }} {{ request()->is("admin/social-ass-pr-attachments*") ? "c-show" : "" }} {{ request()->is("admin/extracurriculams*") ? "c-show" : "" }} {{ request()->is("admin/publications*") ? "c-show" : "" }} {{ request()->is("admin/awards*") ? "c-show" : "" }} {{ request()->is("admin/other-service-jobs*") ? "c-show" : "" }} {{ request()->is("admin/languages*") ? "c-show" : "" }} {{ request()->is("admin/criminal-prosecutiones*") ? "c-show" : "" }} {{ request()->is("admin/criminalpro-disciplinaries*") ? "c-show" : "" }} {{ request()->is("admin/acr-monitorings*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-id-card-alt c-sidebar-nav-icon">
 
@@ -432,6 +482,16 @@
                             </a>
                         </li>
                     @endcan
+                    @can('service_particular_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.service-particulars.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/service-particulars") || request()->is("admin/service-particulars/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.serviceParticular.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('training_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.trainings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/trainings") || request()->is("admin/trainings/*") ? "c-active" : "" }}">
@@ -452,6 +512,26 @@
                             </a>
                         </li>
                     @endcan
+                    @can('foreign_travel_personal_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.foreign-travel-personals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/foreign-travel-personals") || request()->is("admin/foreign-travel-personals/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.foreignTravelPersonal.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('social_ass_pr_attachment_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.social-ass-pr-attachments.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/social-ass-pr-attachments") || request()->is("admin/social-ass-pr-attachments/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.socialAssPrAttachment.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('extracurriculam_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.extracurriculams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/extracurriculams") || request()->is("admin/extracurriculams/*") ? "c-active" : "" }}">
@@ -469,6 +549,26 @@
 
                                 </i>
                                 {{ trans('cruds.publication.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('award_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.awards.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/awards") || request()->is("admin/awards/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.award.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('other_service_job_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.other-service-jobs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/other-service-jobs") || request()->is("admin/other-service-jobs/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.otherServiceJob.title') }}
                             </a>
                         </li>
                     @endcan

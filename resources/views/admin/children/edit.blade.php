@@ -11,6 +11,20 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label for="employee_id">{{ trans('cruds.child.fields.employee') }}</label>
+                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id" id="employee_id">
+                    @foreach($employees as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('employee_id') ? old('employee_id') : $child->employee->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('employee'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('employee') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.child.fields.employee_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name_bn">{{ trans('cruds.child.fields.name_bn') }}</label>
                 <input class="form-control {{ $errors->has('name_bn') ? 'is-invalid' : '' }}" type="text" name="name_bn" id="name_bn" value="{{ old('name_bn', $child->name_bn) }}" required>
                 @if($errors->has('name_bn'))
@@ -29,6 +43,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.child.fields.name_en_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="date_of_birth">{{ trans('cruds.child.fields.date_of_birth') }}</label>
+                <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth', $child->date_of_birth) }}">
+                @if($errors->has('date_of_birth'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date_of_birth') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.child.fields.date_of_birth_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="gender_id">{{ trans('cruds.child.fields.gender') }}</label>
@@ -65,28 +89,14 @@
                 <span class="help-block">{{ trans('cruds.child.fields.passport_number_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="date_of_birth">{{ trans('cruds.child.fields.date_of_birth') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth', $child->date_of_birth) }}">
-                @if($errors->has('date_of_birth'))
+                <label class="required" for="complite_21">{{ trans('cruds.child.fields.complite_21') }}</label>
+                <input class="form-control {{ $errors->has('complite_21') ? 'is-invalid' : '' }}" type="text" name="complite_21" id="complite_21" value="{{ old('complite_21', $child->complite_21) }}" required>
+                @if($errors->has('complite_21'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('date_of_birth') }}
+                        {{ $errors->first('complite_21') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.child.fields.date_of_birth_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="employee_id">{{ trans('cruds.child.fields.employee') }}</label>
-                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id" id="employee_id">
-                    @foreach($employees as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('employee_id') ? old('employee_id') : $child->employee->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('employee'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('employee') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.child.fields.employee_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.child.fields.complite_21_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

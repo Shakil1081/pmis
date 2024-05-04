@@ -18,11 +18,6 @@ class LeaveRecord extends Model implements HasMedia
 
     public $table = 'leave_records';
 
-    public const STATUS_SELECT = [
-        'Active'   => 'Active',
-        'Inactive' => 'Inactive',
-    ];
-
     protected $dates = [
         'start_date',
         'end_date',
@@ -33,10 +28,11 @@ class LeaveRecord extends Model implements HasMedia
 
     protected $fillable = [
         'employee_id',
+        'type_of_leave_id',
+        'leave_category_id',
         'start_date',
         'end_date',
         'reason',
-        'status',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -56,6 +52,16 @@ class LeaveRecord extends Model implements HasMedia
     public function employee()
     {
         return $this->belongsTo(EmployeeList::class, 'employee_id');
+    }
+
+    public function type_of_leave()
+    {
+        return $this->belongsTo(LeaveType::class, 'type_of_leave_id');
+    }
+
+    public function leave_category()
+    {
+        return $this->belongsTo(LeaveCategory::class, 'leave_category_id');
     }
 
     public function getStartDateAttribute($value)
