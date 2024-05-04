@@ -22,6 +22,7 @@ class EmergenceContacte extends Model
     protected $fillable = [
         'contact_person_name',
         'contact_person_relation',
+        'address',
         'contact_person_number',
         'employee_id',
         'created_at',

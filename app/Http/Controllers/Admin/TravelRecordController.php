@@ -51,15 +51,11 @@ class TravelRecordController extends Controller
                 return $row->country ? $row->country->name_bn : '';
             });
 
+            $table->editColumn('title', function ($row) {
+                return $row->title ? $row->title : '';
+            });
             $table->addColumn('purpose_name_bn', function ($row) {
                 return $row->purpose ? $row->purpose->name_bn : '';
-            });
-
-            $table->editColumn('travel_type', function ($row) {
-                return $row->travel_type ? TravelRecord::TRAVEL_TYPE_SELECT[$row->travel_type] : '';
-            });
-            $table->editColumn('remark', function ($row) {
-                return $row->remark ? $row->remark : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'employee', 'country', 'purpose']);

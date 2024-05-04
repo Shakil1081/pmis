@@ -14,8 +14,7 @@ Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
-    Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
-    Route::resource('permissions', 'PermissionsController');
+    Route::resource('permissions', 'PermissionsController', ['except' => ['destroy']]);
 
     // Roles
     Route::delete('roles/destroy', 'RolesController@massDestroy')->name('roles.massDestroy');
@@ -175,6 +174,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Child
     Route::delete('children/destroy', 'ChildController@massDestroy')->name('children.massDestroy');
+    Route::post('children/media', 'ChildController@storeMedia')->name('children.storeMedia');
+    Route::post('children/ckmedia', 'ChildController@storeCKEditorImages')->name('children.storeCKEditorImages');
     Route::resource('children', 'ChildController');
 
     // Job Historie
@@ -263,6 +264,50 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('site-settings/media', 'SiteSettingController@storeMedia')->name('site-settings.storeMedia');
     Route::post('site-settings/ckmedia', 'SiteSettingController@storeCKEditorImages')->name('site-settings.storeCKEditorImages');
     Route::resource('site-settings', 'SiteSettingController');
+
+    // Batch
+    Route::delete('batches/destroy', 'BatchController@massDestroy')->name('batches.massDestroy');
+    Route::post('batches/parse-csv-import', 'BatchController@parseCsvImport')->name('batches.parseCsvImport');
+    Route::post('batches/process-csv-import', 'BatchController@processCsvImport')->name('batches.processCsvImport');
+    Route::resource('batches', 'BatchController');
+
+    // Joininginfo
+    Route::delete('joininginfos/destroy', 'JoininginfoController@massDestroy')->name('joininginfos.massDestroy');
+    Route::resource('joininginfos', 'JoininginfoController');
+
+    // Project Revenuelone
+    Route::delete('project-revenuelones/destroy', 'ProjectRevenueloneController@massDestroy')->name('project-revenuelones.massDestroy');
+    Route::resource('project-revenuelones', 'ProjectRevenueloneController');
+
+    // Project Revenue Exam
+    Route::post('project-revenue-exams/media', 'ProjectRevenueExamController@storeMedia')->name('project-revenue-exams.storeMedia');
+    Route::post('project-revenue-exams/ckmedia', 'ProjectRevenueExamController@storeCKEditorImages')->name('project-revenue-exams.storeCKEditorImages');
+    Route::resource('project-revenue-exams', 'ProjectRevenueExamController', ['except' => ['destroy']]);
+
+    // Service Particulars
+    Route::delete('service-particulars/destroy', 'ServiceParticularsController@massDestroy')->name('service-particulars.massDestroy');
+    Route::resource('service-particulars', 'ServiceParticularsController');
+
+    // Foreign Travel Personal
+    Route::delete('foreign-travel-personals/destroy', 'ForeignTravelPersonalController@massDestroy')->name('foreign-travel-personals.massDestroy');
+    Route::resource('foreign-travel-personals', 'ForeignTravelPersonalController');
+
+    // Social Ass Pr Attachment
+    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController', ['except' => ['destroy']]);
+
+    // Awards
+    Route::delete('awards/destroy', 'AwardsController@massDestroy')->name('awards.massDestroy');
+    Route::post('awards/media', 'AwardsController@storeMedia')->name('awards.storeMedia');
+    Route::post('awards/ckmedia', 'AwardsController@storeCKEditorImages')->name('awards.storeCKEditorImages');
+    Route::resource('awards', 'AwardsController');
+
+    // Other Service Job
+    Route::delete('other-service-jobs/destroy', 'OtherServiceJobController@massDestroy')->name('other-service-jobs.massDestroy');
+    Route::resource('other-service-jobs', 'OtherServiceJobController');
+
+    // Language Proficiency
+    Route::delete('language-proficiencies/destroy', 'LanguageProficiencyController@massDestroy')->name('language-proficiencies.massDestroy');
+    Route::resource('language-proficiencies', 'LanguageProficiencyController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

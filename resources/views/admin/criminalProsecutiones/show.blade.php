@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
+                        </th>
+                        <td>
+                            {{ $criminalProsecutione->judgement_type }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
                         </th>
                         <td>
@@ -37,22 +45,6 @@
                         </th>
                         <td>
                             {{ $criminalProsecutione->government_order_no }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.criminalProsecutione.fields.government_order_date') }}
-                        </th>
-                        <td>
-                            {{ $criminalProsecutione->government_order_date }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.criminalProsecutione.fields.court_name') }}
-                        </th>
-                        <td>
-                            {{ $criminalProsecutione->court_name }}
                         </td>
                     </tr>
                     <tr>

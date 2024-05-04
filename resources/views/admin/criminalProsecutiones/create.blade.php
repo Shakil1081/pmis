@@ -24,6 +24,16 @@
                 <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.employee_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="judgement_type">{{ trans('cruds.criminalProsecutione.fields.judgement_type') }}</label>
+                <input class="form-control {{ $errors->has('judgement_type') ? 'is-invalid' : '' }}" type="text" name="judgement_type" id="judgement_type" value="{{ old('judgement_type', '') }}">
+                @if($errors->has('judgement_type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('judgement_type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.judgement_type_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="natureof_offence">{{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}</label>
                 <input class="form-control {{ $errors->has('natureof_offence') ? 'is-invalid' : '' }}" type="text" name="natureof_offence" id="natureof_offence" value="{{ old('natureof_offence', '') }}">
                 @if($errors->has('natureof_offence'))
@@ -42,26 +52,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.government_order_no_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="government_order_date">{{ trans('cruds.criminalProsecutione.fields.government_order_date') }}</label>
-                <input class="form-control date {{ $errors->has('government_order_date') ? 'is-invalid' : '' }}" type="text" name="government_order_date" id="government_order_date" value="{{ old('government_order_date') }}">
-                @if($errors->has('government_order_date'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('government_order_date') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.government_order_date_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="court_name">{{ trans('cruds.criminalProsecutione.fields.court_name') }}</label>
-                <input class="form-control {{ $errors->has('court_name') ? 'is-invalid' : '' }}" type="text" name="court_name" id="court_name" value="{{ old('court_name', '') }}">
-                @if($errors->has('court_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('court_name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.court_name_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="court_order">{{ trans('cruds.criminalProsecutione.fields.court_order') }}</label>

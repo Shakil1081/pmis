@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.emergenceContacte.fields.address') }}
+                        </th>
+                        <td>
+                            {{ $emergenceContacte->address }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
                         </th>
                         <td>

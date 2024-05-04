@@ -29,14 +29,6 @@ class UpdateAddressdetaileRequest extends FormRequest
                 'required',
                 'unique:addressdetailes,flat_house,' . request()->route('addressdetaile')->id,
             ],
-            'road_no' => [
-                'string',
-                'nullable',
-            ],
-            'village_town' => [
-                'string',
-                'nullable',
-            ],
             'post_office' => [
                 'string',
                 'nullable',

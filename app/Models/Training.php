@@ -33,6 +33,7 @@ class Training extends Model
         'end_date',
         'grade',
         'position',
+        'location',
         'created_at',
         'updated_at',
         'deleted_at',

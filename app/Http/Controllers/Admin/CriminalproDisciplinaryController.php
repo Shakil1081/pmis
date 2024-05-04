@@ -49,17 +49,20 @@ class CriminalproDisciplinaryController extends Controller
                 return $row->criminalprosecutione ? $row->criminalprosecutione->natureof_offence : '';
             });
 
+            $table->editColumn('judgement_type', function ($row) {
+                return $row->judgement_type ? $row->judgement_type : '';
+            });
             $table->editColumn('government_order_no', function ($row) {
                 return $row->government_order_no ? $row->government_order_no : '';
             });
-            $table->editColumn('court_name', function ($row) {
-                return $row->court_name ? $row->court_name : '';
+            $table->editColumn('order_upload_file', function ($row) {
+                return $row->order_upload_file ? '<a href="' . $row->order_upload_file->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
-            $table->editColumn('court_orader', function ($row) {
-                return $row->court_orader ? '<a href="' . $row->court_orader->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'criminalprosecutione', 'court_orader']);
+            $table->rawColumns(['actions', 'placeholder', 'criminalprosecutione', 'order_upload_file']);
 
             return $table->make(true);
         }
@@ -80,8 +83,8 @@ class CriminalproDisciplinaryController extends Controller
     {
         $criminalproDisciplinary = CriminalproDisciplinary::create($request->all());
 
-        if ($request->input('court_orader', false)) {
-            $criminalproDisciplinary->addMedia(storage_path('tmp/uploads/' . basename($request->input('court_orader'))))->toMediaCollection('court_orader');
+        if ($request->input('order_upload_file', false)) {
+            $criminalproDisciplinary->addMedia(storage_path('tmp/uploads/' . basename($request->input('order_upload_file'))))->toMediaCollection('order_upload_file');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -106,15 +109,15 @@ class CriminalproDisciplinaryController extends Controller
     {
         $criminalproDisciplinary->update($request->all());
 
-        if ($request->input('court_orader', false)) {
-            if (! $criminalproDisciplinary->court_orader || $request->input('court_orader') !== $criminalproDisciplinary->court_orader->file_name) {
-                if ($criminalproDisciplinary->court_orader) {
-                    $criminalproDisciplinary->court_orader->delete();
+        if ($request->input('order_upload_file', false)) {
+            if (! $criminalproDisciplinary->order_upload_file || $request->input('order_upload_file') !== $criminalproDisciplinary->order_upload_file->file_name) {
+                if ($criminalproDisciplinary->order_upload_file) {
+                    $criminalproDisciplinary->order_upload_file->delete();
                 }
-                $criminalproDisciplinary->addMedia(storage_path('tmp/uploads/' . basename($request->input('court_orader'))))->toMediaCollection('court_orader');
+                $criminalproDisciplinary->addMedia(storage_path('tmp/uploads/' . basename($request->input('order_upload_file'))))->toMediaCollection('order_upload_file');
             }
-        } elseif ($criminalproDisciplinary->court_orader) {
-            $criminalproDisciplinary->court_orader->delete();
+        } elseif ($criminalproDisciplinary->order_upload_file) {
+            $criminalproDisciplinary->order_upload_file->delete();
         }
 
         return redirect()->route('admin.criminalpro-disciplinaries.index');

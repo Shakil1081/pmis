@@ -31,6 +31,16 @@
                 <span class="help-block">{{ trans('cruds.emergenceContacte.fields.contact_person_relation_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="address">{{ trans('cruds.emergenceContacte.fields.address') }}</label>
+                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address">{{ old('address', $emergenceContacte->address) }}</textarea>
+                @if($errors->has('address'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('address') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.emergenceContacte.fields.address_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="contact_person_number">{{ trans('cruds.emergenceContacte.fields.contact_person_number') }}</label>
                 <input class="form-control {{ $errors->has('contact_person_number') ? 'is-invalid' : '' }}" type="text" name="contact_person_number" id="contact_person_number" value="{{ old('contact_person_number', $emergenceContacte->contact_person_number) }}" required>
                 @if($errors->has('contact_person_number'))

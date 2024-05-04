@@ -221,6 +221,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->joiningexaminfo->exam_name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.grade') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->grade->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.employeeList.fields.fjoining_date') }}
                         </th>
                         <td>
@@ -229,35 +245,11 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.employeeList.fields.project_name') }}
+                            {{ trans('cruds.employeeList.fields.first_office_order_letter') }}
                         </th>
                         <td>
-                            {{ $employeeList->project_name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.job_type') }}
-                        </th>
-                        <td>
-                            {{ $employeeList->job_type->name_bn ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fjoiningofficename') }}
-                        </th>
-                        <td>
-                            {{ $employeeList->fjoiningofficename }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.office_orderno') }}
-                        </th>
-                        <td>
-                            @if($employeeList->office_orderno)
-                                <a href="{{ $employeeList->office_orderno->getUrl() }}" target="_blank">
+                            @if($employeeList->first_office_order_letter)
+                                <a href="{{ $employeeList->first_office_order_letter->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>
                             @endif
@@ -277,11 +269,23 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.employeeList.fields.office_order') }}
+                            {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
                         </th>
                         <td>
-                            @if($employeeList->office_order)
-                                <a href="{{ $employeeList->office_order->getUrl() }}" target="_blank">
+                            @if($employeeList->date_of_gazette_if_any)
+                                <a href="{{ $employeeList->date_of_gazette_if_any->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
+                        </th>
+                        <td>
+                            @if($employeeList->regularization_office_orde_go)
+                                <a href="{{ $employeeList->regularization_office_orde_go->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>
                             @endif

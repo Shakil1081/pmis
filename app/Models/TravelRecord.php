@@ -22,20 +22,13 @@ class TravelRecord extends Model
         'deleted_at',
     ];
 
-    public const TRAVEL_TYPE_SELECT = [
-        'Personal' => 'Personal',
-        'Official' => 'Official',
-        'Other'    => 'Other',
-    ];
-
     protected $fillable = [
         'employee_id',
         'country_id',
+        'title',
+        'purpose_id',
         'start_date',
         'end_date',
-        'purpose_id',
-        'travel_type',
-        'remark',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -56,6 +49,11 @@ class TravelRecord extends Model
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function purpose()
+    {
+        return $this->belongsTo(TravelPurpose::class, 'purpose_id');
+    }
+
     public function getStartDateAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -74,10 +72,5 @@ class TravelRecord extends Model
     public function setEndDateAttribute($value)
     {
         $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    }
-
-    public function purpose()
-    {
-        return $this->belongsTo(TravelPurpose::class, 'purpose_id');
     }
 }

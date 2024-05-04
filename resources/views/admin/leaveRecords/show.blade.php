@@ -25,6 +25,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
+                        </th>
+                        <td>
+                            {{ $leaveRecord->type_of_leave->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.leaveRecord.fields.leave_category') }}
+                        </th>
+                        <td>
+                            {{ $leaveRecord->leave_category->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.leaveRecord.fields.start_date') }}
                         </th>
                         <td>
@@ -45,14 +61,6 @@
                         </th>
                         <td>
                             {!! $leaveRecord->reason !!}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.leaveRecord.fields.status') }}
-                        </th>
-                        <td>
-                            {{ App\Models\LeaveRecord::STATUS_SELECT[$leaveRecord->status] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

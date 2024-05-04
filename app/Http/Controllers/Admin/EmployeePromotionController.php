@@ -55,10 +55,6 @@ class EmployeePromotionController extends Controller
                 return $row->new_designation ? $row->new_designation->name_bn : '';
             });
 
-            $table->editColumn('organization_name', function ($row) {
-                return $row->organization_name ? $row->organization_name : '';
-            });
-
             $table->editColumn('office_order', function ($row) {
                 return $row->office_order ? '<a href="' . $row->office_order->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });

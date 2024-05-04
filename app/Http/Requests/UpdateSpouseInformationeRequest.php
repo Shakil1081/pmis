@@ -29,10 +29,6 @@ class UpdateSpouseInformationeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'date_of_birth' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
             'occupation' => [
                 'string',
                 'nullable',

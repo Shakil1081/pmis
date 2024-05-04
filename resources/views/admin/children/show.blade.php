@@ -17,6 +17,14 @@
                 <tbody>
                     <tr>
                         <th>
+                            {{ trans('cruds.child.fields.employee') }}
+                        </th>
+                        <td>
+                            {{ $child->employee->employeeid ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.child.fields.name_bn') }}
                         </th>
                         <td>
@@ -29,6 +37,14 @@
                         </th>
                         <td>
                             {{ $child->name_en }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.child.fields.date_of_birth') }}
+                        </th>
+                        <td>
+                            {{ $child->date_of_birth }}
                         </td>
                     </tr>
                     <tr>
@@ -57,18 +73,22 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.child.fields.date_of_birth') }}
+                            {{ trans('cruds.child.fields.complite_21') }}
                         </th>
                         <td>
-                            {{ $child->date_of_birth }}
+                            {{ $child->complite_21 }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.child.fields.employee') }}
+                            {{ trans('cruds.child.fields.birth_certificate') }}
                         </th>
                         <td>
-                            {{ $child->employee->employeeid ?? '' }}
+                            @if($child->birth_certificate)
+                                <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

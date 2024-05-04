@@ -31,9 +31,6 @@
                         {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
                     </th>
                     <th>
-                        {{ trans('cruds.spouseInformatione.fields.date_of_birth') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.spouseInformatione.fields.occupation') }}
                     </th>
                     <th>
@@ -101,7 +98,6 @@
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
 { data: 'nid_upload', name: 'nid_upload', sortable: false, searchable: false },
-{ data: 'date_of_birth', name: 'date_of_birth' },
 { data: 'occupation', name: 'occupation' },
 { data: 'office_address', name: 'office_address' },
 { data: 'phone_number', name: 'phone_number' },

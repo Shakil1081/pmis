@@ -25,16 +25,16 @@
                         {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
                     </th>
                     <th>
+                        {{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
                     </th>
                     <th>
-                        {{ trans('cruds.criminalproDisciplinary.fields.court_name') }}
+                        {{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}
                     </th>
                     <th>
-                        {{ trans('cruds.criminalproDisciplinary.fields.court_orader') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.criminalproDisciplinary.fields.date_of_prosecution') }}
+                        {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
                     </th>
                     <th>
                         &nbsp;
@@ -93,14 +93,14 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'criminalprosecutione_natureof_offence', name: 'criminalprosecutione.natureof_offence' },
+{ data: 'judgement_type', name: 'judgement_type' },
 { data: 'government_order_no', name: 'government_order_no' },
-{ data: 'court_name', name: 'court_name' },
-{ data: 'court_orader', name: 'court_orader', sortable: false, searchable: false },
-{ data: 'date_of_prosecution', name: 'date_of_prosecution' },
+{ data: 'order_upload_file', name: 'order_upload_file', sortable: false, searchable: false },
+{ data: 'remarks', name: 'remarks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 2, 'desc' ]],
+    order: [[ 3, 'desc' ]],
     pageLength: 10,
   };
   let table = $('.datatable-CriminalproDisciplinary').DataTable(dtOverrideGlobals);

@@ -113,6 +113,16 @@
                 <span class="help-block">{{ trans('cruds.training.fields.position_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="location">{{ trans('cruds.training.fields.location') }}</label>
+                <input class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" type="text" name="location" id="location" value="{{ old('location', $training->location) }}">
+                @if($errors->has('location'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('location') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.training.fields.location_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

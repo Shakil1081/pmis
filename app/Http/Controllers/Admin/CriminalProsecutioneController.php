@@ -49,15 +49,14 @@ class CriminalProsecutioneController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->editColumn('judgement_type', function ($row) {
+                return $row->judgement_type ? $row->judgement_type : '';
+            });
             $table->editColumn('natureof_offence', function ($row) {
                 return $row->natureof_offence ? $row->natureof_offence : '';
             });
             $table->editColumn('government_order_no', function ($row) {
                 return $row->government_order_no ? $row->government_order_no : '';
-            });
-
-            $table->editColumn('court_name', function ($row) {
-                return $row->court_name ? $row->court_name : '';
             });
             $table->editColumn('court_order', function ($row) {
                 return $row->court_order ? '<a href="' . $row->court_order->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';

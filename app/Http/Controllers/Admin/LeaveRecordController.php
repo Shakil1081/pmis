@@ -9,7 +9,9 @@ use App\Http\Requests\MassDestroyLeaveRecordRequest;
 use App\Http\Requests\StoreLeaveRecordRequest;
 use App\Http\Requests\UpdateLeaveRecordRequest;
 use App\Models\EmployeeList;
+use App\Models\LeaveCategory;
 use App\Models\LeaveRecord;
+use App\Models\LeaveType;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -25,7 +27,7 @@ class LeaveRecordController extends Controller
         abort_if(Gate::denies('leave_record_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = LeaveRecord::with(['employee'])->select(sprintf('%s.*', (new LeaveRecord)->table));
+            $query = LeaveRecord::with(['employee', 'type_of_leave', 'leave_category'])->select(sprintf('%s.*', (new LeaveRecord)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -50,11 +52,15 @@ class LeaveRecordController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
-            $table->editColumn('status', function ($row) {
-                return $row->status ? LeaveRecord::STATUS_SELECT[$row->status] : '';
+            $table->addColumn('type_of_leave_name_bn', function ($row) {
+                return $row->type_of_leave ? $row->type_of_leave->name_bn : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'employee']);
+            $table->addColumn('leave_category_name_bn', function ($row) {
+                return $row->leave_category ? $row->leave_category->name_bn : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'employee', 'type_of_leave', 'leave_category']);
 
             return $table->make(true);
         }
@@ -68,7 +74,11 @@ class LeaveRecordController extends Controller
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.leaveRecords.create', compact('employees'));
+        $type_of_leaves = LeaveType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $leave_categories = LeaveCategory::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.leaveRecords.create', compact('employees', 'leave_categories', 'type_of_leaves'));
     }
 
     public function store(StoreLeaveRecordRequest $request)
@@ -88,9 +98,13 @@ class LeaveRecordController extends Controller
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $leaveRecord->load('employee');
+        $type_of_leaves = LeaveType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.leaveRecords.edit', compact('employees', 'leaveRecord'));
+        $leave_categories = LeaveCategory::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $leaveRecord->load('employee', 'type_of_leave', 'leave_category');
+
+        return view('admin.leaveRecords.edit', compact('employees', 'leaveRecord', 'leave_categories', 'type_of_leaves'));
     }
 
     public function update(UpdateLeaveRecordRequest $request, LeaveRecord $leaveRecord)
@@ -104,7 +118,7 @@ class LeaveRecordController extends Controller
     {
         abort_if(Gate::denies('leave_record_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $leaveRecord->load('employee');
+        $leaveRecord->load('employee', 'type_of_leave', 'leave_category');
 
         return view('admin.leaveRecords.show', compact('leaveRecord'));
     }

@@ -41,22 +41,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.addressdetaile.fields.road_no') }}
-                        </th>
-                        <td>
-                            {{ $addressdetaile->road_no }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.addressdetaile.fields.village_town') }}
-                        </th>
-                        <td>
-                            {{ $addressdetaile->village_town }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.addressdetaile.fields.post_office') }}
                         </th>
                         <td>
@@ -77,14 +61,6 @@
                         </th>
                         <td>
                             {{ $addressdetaile->thana_upazila->name_bn ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.addressdetaile.fields.district') }}
-                        </th>
-                        <td>
-                            {{ $addressdetaile->district->name_bn ?? '' }}
                         </td>
                     </tr>
                     <tr>
