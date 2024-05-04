@@ -301,7 +301,7 @@
                     @can('batch_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.batches.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/batches") || request()->is("admin/batches/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.batch.title') }}
@@ -311,7 +311,7 @@
                     @can('joininginfo_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.joininginfos.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/joininginfos") || request()->is("admin/joininginfos/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.joininginfo.title') }}
@@ -321,7 +321,7 @@
                     @can('project_revenuelone_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.project-revenuelones.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/project-revenuelones") || request()->is("admin/project-revenuelones/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.projectRevenuelone.title') }}
@@ -331,7 +331,7 @@
                     @can('project_revenue_exam_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.project-revenue-exams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/project-revenue-exams") || request()->is("admin/project-revenue-exams/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.projectRevenueExam.title') }}
@@ -353,7 +353,7 @@
                     @can('examination_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.examinations.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/examinations") || request()->is("admin/examinations/*") ? "c-active" : "" }}">
-                                <i class="fa-fw far fa-address-book c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.examination.title') }}
@@ -363,7 +363,7 @@
                     @can('exam_board_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.exam-boards.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/exam-boards") || request()->is("admin/exam-boards/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-atlas c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.examBoard.title') }}
@@ -565,7 +565,7 @@
                     @can('other_service_job_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.other-service-jobs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/other-service-jobs") || request()->is("admin/other-service-jobs/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.otherServiceJob.title') }}

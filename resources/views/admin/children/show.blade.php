@@ -79,6 +79,18 @@
                             {{ $child->complite_21 }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.child.fields.birth_certificate') }}
+                        </th>
+                        <td>
+                            @if($child->birth_certificate)
+                                <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
