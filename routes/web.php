@@ -174,6 +174,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Child
     Route::delete('children/destroy', 'ChildController@massDestroy')->name('children.massDestroy');
+    Route::post('children/media', 'ChildController@storeMedia')->name('children.storeMedia');
+    Route::post('children/ckmedia', 'ChildController@storeCKEditorImages')->name('children.storeCKEditorImages');
     Route::resource('children', 'ChildController');
 
     // Job Historie
