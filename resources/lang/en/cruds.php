@@ -584,8 +584,8 @@ return [
         ],
     ],
     'professionale' => [
-        'title'          => 'Additional Professional Qualification',
-        'title_singular' => 'Additional Professional Qualification',
+        'title'          => 'Add Professional Qualification',
+        'title_singular' => 'Add Professional Qualification',
         'fields'         => [
             'id'                         => 'ID',
             'id_helper'                  => ' ',
@@ -1296,8 +1296,8 @@ return [
         ],
     ],
     'socialAssPrAttachment' => [
-        'title'          => 'Social, Associational, Professional Attachment',
-        'title_singular' => 'Social, Associational, Professional Attachment',
+        'title'          => 'Soc, Ass,Pro Attachment',
+        'title_singular' => 'Soc, Ass,Pro Attachment',
         'fields'         => [
             'id'                                    => 'ID',
             'id_helper'                             => ' ',
@@ -1407,6 +1407,22 @@ return [
             'id_helper'         => ' ',
             'name'              => 'Name',
             'name_helper'       => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
+    'year' => [
+        'title'          => 'Year',
+        'title_singular' => 'Year',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'year'              => 'Year',
+            'year_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',

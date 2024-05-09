@@ -1164,6 +1164,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 289,
+                'title' => 'year_create',
+            ],
+            [
+                'id'    => 290,
+                'title' => 'year_edit',
+            ],
+            [
+                'id'    => 291,
+                'title' => 'year_show',
+            ],
+            [
+                'id'    => 292,
+                'title' => 'year_delete',
+            ],
+            [
+                'id'    => 293,
+                'title' => 'year_access',
+            ],
+            [
+                'id'    => 294,
                 'title' => 'profile_password_edit',
             ],
         ];
