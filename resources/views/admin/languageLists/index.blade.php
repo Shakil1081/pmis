@@ -1,44 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-@can('employee_promotion_create')
+@can('language_list_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.employee-promotions.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.employeePromotion.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.language-lists.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.languageList.title_singular') }}
             </a>
             <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
                 {{ trans('global.app_csvImport') }}
             </button>
-            @include('csvImport.modal', ['model' => 'EmployeePromotion', 'route' => 'admin.employee-promotions.parseCsvImport'])
+            @include('csvImport.modal', ['model' => 'LanguageList', 'route' => 'admin.language-lists.parseCsvImport'])
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.employeePromotion.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.languageList.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-EmployeePromotion">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-LanguageList">
             <thead>
                 <tr>
                     <th width="10">
 
                     </th>
                     <th>
-                        {{ trans('cruds.employeePromotion.fields.employee') }}
+                        {{ trans('cruds.languageList.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.employeePromotion.fields.new_designation') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employeePromotion.fields.office_order_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employeePromotion.fields.office_order') }}
+                        {{ trans('cruds.languageList.fields.name') }}
                     </th>
                     <th>
                         &nbsp;
@@ -57,11 +48,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('employee_promotion_delete')
+@can('language_list_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.employee-promotions.massDestroy') }}",
+    url: "{{ route('admin.language-lists.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -93,21 +84,18 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.employee-promotions.index') }}",
+    ajax: "{{ route('admin.language-lists.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'employee_employeeid', name: 'employee.employeeid' },
-{ data: 'new_designation_name_bn', name: 'new_designation.name_bn' },
-{ data: 'go_issue_date', name: 'go_issue_date' },
-{ data: 'office_order_date', name: 'office_order_date' },
-{ data: 'office_order', name: 'office_order', sortable: false, searchable: false },
+{ data: 'id', name: 'id' },
+{ data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 10,
+    pageLength: 100,
   };
-  let table = $('.datatable-EmployeePromotion').DataTable(dtOverrideGlobals);
+  let table = $('.datatable-LanguageList').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

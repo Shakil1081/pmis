@@ -30,6 +30,20 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.cadreid_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="batch_id">{{ trans('cruds.employeeList.fields.batch') }}</label>
+                <select class="form-control select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}" name="batch_id" id="batch_id">
+                    @foreach($batches as $id => $entry)
+                        <option value="{{ $id }}" {{ old('batch_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('batch'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('batch') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.batch_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="fullname_bn">{{ trans('cruds.employeeList.fields.fullname_bn') }}</label>
                 <input class="form-control {{ $errors->has('fullname_bn') ? 'is-invalid' : '' }}" type="text" name="fullname_bn" id="fullname_bn" value="{{ old('fullname_bn', '') }}" required>
                 @if($errors->has('fullname_bn'))
@@ -98,6 +112,27 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_birth_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="birth_certificate_upload">{{ trans('cruds.employeeList.fields.birth_certificate_upload') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('birth_certificate_upload') ? 'is-invalid' : '' }}" id="birth_certificate_upload-dropzone">
+                </div>
+                @if($errors->has('birth_certificate_upload'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('birth_certificate_upload') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.birth_certificate_upload_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="prl_date">{{ trans('cruds.employeeList.fields.prl_date') }}</label>
+                <input class="form-control date {{ $errors->has('prl_date') ? 'is-invalid' : '' }}" type="text" name="prl_date" id="prl_date" value="{{ old('prl_date') }}">
+                @if($errors->has('prl_date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('prl_date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.prl_date_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="height">{{ trans('cruds.employeeList.fields.height') }}</label>
@@ -200,7 +235,7 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.nid_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
+                <label for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}" id="nid_upload-dropzone">
                 </div>
                 @if($errors->has('nid_upload'))
@@ -315,15 +350,45 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="first_office_order_letter">{{ trans('cruds.employeeList.fields.first_office_order_letter') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('first_office_order_letter') ? 'is-invalid' : '' }}" id="first_office_order_letter-dropzone">
-                </div>
-                @if($errors->has('first_office_order_letter'))
+                <label for="first_joining_office_name">{{ trans('cruds.employeeList.fields.first_joining_office_name') }}</label>
+                <input class="form-control {{ $errors->has('first_joining_office_name') ? 'is-invalid' : '' }}" type="text" name="first_joining_office_name" id="first_joining_office_name" value="{{ old('first_joining_office_name', '') }}">
+                @if($errors->has('first_joining_office_name'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('first_office_order_letter') }}
+                        {{ $errors->first('first_joining_office_name') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.first_office_order_letter_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.employeeList.fields.first_joining_office_name_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}</label>
+                <input class="form-control date {{ $errors->has('first_joining_g_o_date') ? 'is-invalid' : '' }}" type="text" name="first_joining_g_o_date" id="first_joining_g_o_date" value="{{ old('first_joining_g_o_date') }}">
+                @if($errors->has('first_joining_g_o_date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('first_joining_g_o_date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.first_joining_g_o_date_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
+                <input class="form-control {{ $errors->has('first_joining_memo_no') ? 'is-invalid' : '' }}" type="text" name="first_joining_memo_no" id="first_joining_memo_no" value="{{ old('first_joining_memo_no', '') }}">
+                @if($errors->has('first_joining_memo_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('first_joining_memo_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.first_joining_memo_no_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="first_joining_order">{{ trans('cruds.employeeList.fields.first_joining_order') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('first_joining_order') ? 'is-invalid' : '' }}" id="first_joining_order-dropzone">
+                </div>
+                @if($errors->has('first_joining_order'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('first_joining_order') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.first_joining_order_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="fjoining_letter">{{ trans('cruds.employeeList.fields.fjoining_letter') }}</label>
@@ -337,6 +402,16 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_letter_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="date_of_gazette">{{ trans('cruds.employeeList.fields.date_of_gazette') }}</label>
+                <input class="form-control date {{ $errors->has('date_of_gazette') ? 'is-invalid' : '' }}" type="text" name="date_of_gazette" id="date_of_gazette" value="{{ old('date_of_gazette') }}">
+                @if($errors->has('date_of_gazette'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date_of_gazette') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_gazette_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="date_of_gazette_if_any">{{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('date_of_gazette_if_any') ? 'is-invalid' : '' }}" id="date_of_gazette_if_any-dropzone">
                 </div>
@@ -346,6 +421,26 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_gazette_if_any_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
+                <input class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}" type="text" name="date_of_regularization" id="date_of_regularization" value="{{ old('date_of_regularization') }}">
+                @if($errors->has('date_of_regularization'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date_of_regularization') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_regularization_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
+                <input class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}" type="text" name="regularization_issue_date" id="regularization_issue_date" value="{{ old('regularization_issue_date') }}">
+                @if($errors->has('regularization_issue_date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('regularization_issue_date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="regularization_office_orde_go">{{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}</label>
@@ -367,6 +462,17 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_con_serviec_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="confirmation_in_service">{{ trans('cruds.employeeList.fields.confirmation_in_service') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('confirmation_in_service') ? 'is-invalid' : '' }}" id="confirmation_in_service-dropzone">
+                </div>
+                @if($errors->has('confirmation_in_service'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('confirmation_in_service') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.confirmation_in_service_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="quota_id">{{ trans('cruds.employeeList.fields.quota') }}</label>
@@ -418,6 +524,56 @@
 @endsection
 
 @section('scripts')
+<script>
+    Dropzone.options.birthCertificateUploadDropzone = {
+    url: '{{ route('admin.employee-lists.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="birth_certificate_upload"]').remove()
+      $('form').append('<input type="hidden" name="birth_certificate_upload" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="birth_certificate_upload"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($employeeList) && $employeeList->birth_certificate_upload)
+      var file = {!! json_encode($employeeList->birth_certificate_upload) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="birth_certificate_upload" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
 <script>
     Dropzone.options.nidUploadDropzone = {
     url: '{{ route('admin.employee-lists.storeMedia') }}',
@@ -569,7 +725,7 @@
 }
 </script>
 <script>
-    Dropzone.options.firstOfficeOrderLetterDropzone = {
+    Dropzone.options.firstJoiningOrderDropzone = {
     url: '{{ route('admin.employee-lists.storeMedia') }}',
     maxFilesize: 2, // MB
     maxFiles: 1,
@@ -581,22 +737,22 @@
       size: 2
     },
     success: function (file, response) {
-      $('form').find('input[name="first_office_order_letter"]').remove()
-      $('form').append('<input type="hidden" name="first_office_order_letter" value="' + response.name + '">')
+      $('form').find('input[name="first_joining_order"]').remove()
+      $('form').append('<input type="hidden" name="first_joining_order" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
       if (file.status !== 'error') {
-        $('form').find('input[name="first_office_order_letter"]').remove()
+        $('form').find('input[name="first_joining_order"]').remove()
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
     init: function () {
-@if(isset($employeeList) && $employeeList->first_office_order_letter)
-      var file = {!! json_encode($employeeList->first_office_order_letter) !!}
+@if(isset($employeeList) && $employeeList->first_joining_order)
+      var file = {!! json_encode($employeeList->first_joining_order) !!}
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="first_office_order_letter" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="first_joining_order" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
@@ -747,6 +903,56 @@
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="regularization_office_orde_go" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
+<script>
+    Dropzone.options.confirmationInServiceDropzone = {
+    url: '{{ route('admin.employee-lists.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="confirmation_in_service"]').remove()
+      $('form').append('<input type="hidden" name="confirmation_in_service" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="confirmation_in_service"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($employeeList) && $employeeList->confirmation_in_service)
+      var file = {!! json_encode($employeeList->confirmation_in_service) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="confirmation_in_service" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },

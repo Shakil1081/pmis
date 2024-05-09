@@ -31,6 +31,7 @@ class EducationInformatione extends Model implements HasMedia
         'name_of_exam_id',
         'exam_board_id',
         'school_university_name',
+        'achivement',
         'passing_year',
         'employee_id',
         'created_at',

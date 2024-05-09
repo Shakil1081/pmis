@@ -25,6 +25,9 @@
                         {{ trans('cruds.employeeList.fields.employeeid') }}
                     </th>
                     <th>
+                        {{ trans('cruds.employeeList.fields.batch') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.employeeList.fields.home_district') }}
                     </th>
                     <th>
@@ -61,19 +64,40 @@
                         {{ trans('cruds.employeeList.fields.fjoining_date') }}
                     </th>
                     <th>
-                        {{ trans('cruds.employeeList.fields.first_office_order_letter') }}
+                        {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_order') }}
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.fjoining_letter') }}
                     </th>
                     <th>
+                        {{ trans('cruds.employeeList.fields.date_of_gazette') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.date_of_regularization') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.quota') }}
@@ -135,6 +159,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employeeid', name: 'employeeid' },
+{ data: 'batch_batch_bn', name: 'batch.batch_bn' },
 { data: 'home_district_name_bn', name: 'home_district.name_bn' },
 { data: 'marital_statu_name', name: 'marital_statu.name' },
 { data: 'gender_name_bn', name: 'gender.name_bn' },
@@ -147,11 +172,18 @@
 { data: 'joiningexaminfo_exam_name_bn', name: 'joiningexaminfo.exam_name_bn' },
 { data: 'grade_name_bn', name: 'grade.name_bn' },
 { data: 'fjoining_date', name: 'fjoining_date' },
-{ data: 'first_office_order_letter', name: 'first_office_order_letter', sortable: false, searchable: false },
+{ data: 'first_joining_office_name', name: 'first_joining_office_name' },
+{ data: 'first_joining_g_o_date', name: 'first_joining_g_o_date' },
+{ data: 'first_joining_memo_no', name: 'first_joining_memo_no' },
+{ data: 'first_joining_order', name: 'first_joining_order', sortable: false, searchable: false },
 { data: 'fjoining_letter', name: 'fjoining_letter', sortable: false, searchable: false },
+{ data: 'date_of_gazette', name: 'date_of_gazette' },
 { data: 'date_of_gazette_if_any', name: 'date_of_gazette_if_any', sortable: false, searchable: false },
+{ data: 'date_of_regularization', name: 'date_of_regularization' },
+{ data: 'regularization_issue_date', name: 'regularization_issue_date' },
 { data: 'regularization_office_orde_go', name: 'regularization_office_orde_go', sortable: false, searchable: false },
 { data: 'date_of_con_serviec', name: 'date_of_con_serviec' },
+{ data: 'confirmation_in_service', name: 'confirmation_in_service', sortable: false, searchable: false },
 { data: 'quota_name_bn', name: 'quota.name_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

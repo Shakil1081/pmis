@@ -9,6 +9,8 @@ class AddRelationshipFieldsToEmployeeListsTable extends Migration
     public function up()
     {
         Schema::table('employee_lists', function (Blueprint $table) {
+            $table->unsignedBigInteger('batch_id')->nullable();
+            $table->foreign('batch_id', 'batch_fk_9753599')->references('id')->on('batches');
             $table->unsignedBigInteger('home_district_id')->nullable();
             $table->foreign('home_district_id', 'home_district_fk_9732641')->references('id')->on('districts');
             $table->unsignedBigInteger('marital_statu_id')->nullable();

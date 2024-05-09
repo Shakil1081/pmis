@@ -23,6 +23,7 @@ class EmployeePromotion extends Model implements HasMedia
     ];
 
     protected $dates = [
+        'go_issue_date',
         'office_order_date',
         'created_at',
         'updated_at',
@@ -32,6 +33,7 @@ class EmployeePromotion extends Model implements HasMedia
     protected $fillable = [
         'employee_id',
         'new_designation_id',
+        'go_issue_date',
         'office_order_date',
         'created_at',
         'updated_at',
@@ -57,6 +59,16 @@ class EmployeePromotion extends Model implements HasMedia
     public function new_designation()
     {
         return $this->belongsTo(Designation::class, 'new_designation_id');
+    }
+
+    public function getGoIssueDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setGoIssueDateAttribute($value)
+    {
+        $this->attributes['go_issue_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getOfficeOrderDateAttribute($value)
