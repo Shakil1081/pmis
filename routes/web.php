@@ -318,6 +318,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Status
     Route::delete('statuses/destroy', 'StatusController@massDestroy')->name('statuses.massDestroy');
     Route::resource('statuses', 'StatusController');
+
+    // Year
+    Route::delete('years/destroy', 'YearController@massDestroy')->name('years.massDestroy');
+    Route::resource('years', 'YearController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
