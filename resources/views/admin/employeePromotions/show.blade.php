@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
+                        </th>
+                        <td>
+                            {{ $employeePromotion->go_issue_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.employeePromotion.fields.office_order_date') }}
                         </th>
                         <td>

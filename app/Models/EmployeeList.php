@@ -20,7 +20,12 @@ class EmployeeList extends Model implements HasMedia
 
     protected $dates = [
         'date_of_birth',
+        'prl_date',
         'fjoining_date',
+        'first_joining_g_o_date',
+        'date_of_gazette',
+        'date_of_regularization',
+        'regularization_issue_date',
         'date_of_con_serviec',
         'created_at',
         'updated_at',
@@ -28,13 +33,15 @@ class EmployeeList extends Model implements HasMedia
     ];
 
     protected $appends = [
+        'birth_certificate_upload',
         'nid_upload',
         'passport_upload',
         'license_upload',
-        'first_office_order_letter',
+        'first_joining_order',
         'fjoining_letter',
         'date_of_gazette_if_any',
         'regularization_office_orde_go',
+        'confirmation_in_service',
         'electric_signature',
         'employee_photo',
     ];
@@ -42,6 +49,7 @@ class EmployeeList extends Model implements HasMedia
     protected $fillable = [
         'employeeid',
         'cadreid',
+        'batch_id',
         'fullname_bn',
         'fullname_en',
         'fname_bn',
@@ -49,6 +57,7 @@ class EmployeeList extends Model implements HasMedia
         'mname_bn',
         'mname_en',
         'date_of_birth',
+        'prl_date',
         'height',
         'special_identity',
         'home_district_id',
@@ -64,6 +73,12 @@ class EmployeeList extends Model implements HasMedia
         'joiningexaminfo_id',
         'grade_id',
         'fjoining_date',
+        'first_joining_office_name',
+        'first_joining_g_o_date',
+        'first_joining_memo_no',
+        'date_of_gazette',
+        'date_of_regularization',
+        'regularization_issue_date',
         'date_of_con_serviec',
         'quota_id',
         'created_at',
@@ -82,6 +97,11 @@ class EmployeeList extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function batch()
+    {
+        return $this->belongsTo(Batch::class, 'batch_id');
+    }
+
     public function getDateOfBirthAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -90,6 +110,21 @@ class EmployeeList extends Model implements HasMedia
     public function setDateOfBirthAttribute($value)
     {
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getBirthCertificateUploadAttribute()
+    {
+        return $this->getMedia('birth_certificate_upload')->last();
+    }
+
+    public function getPrlDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setPrlDateAttribute($value)
+    {
+        $this->attributes['prl_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function home_district()
@@ -157,9 +192,19 @@ class EmployeeList extends Model implements HasMedia
         $this->attributes['fjoining_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function getFirstOfficeOrderLetterAttribute()
+    public function getFirstJoiningGODateAttribute($value)
     {
-        return $this->getMedia('first_office_order_letter')->last();
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setFirstJoiningGODateAttribute($value)
+    {
+        $this->attributes['first_joining_g_o_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getFirstJoiningOrderAttribute()
+    {
+        return $this->getMedia('first_joining_order')->last();
     }
 
     public function getFjoiningLetterAttribute()
@@ -167,9 +212,39 @@ class EmployeeList extends Model implements HasMedia
         return $this->getMedia('fjoining_letter')->last();
     }
 
+    public function getDateOfGazetteAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDateOfGazetteAttribute($value)
+    {
+        $this->attributes['date_of_gazette'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
     public function getDateOfGazetteIfAnyAttribute()
     {
         return $this->getMedia('date_of_gazette_if_any')->last();
+    }
+
+    public function getDateOfRegularizationAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDateOfRegularizationAttribute($value)
+    {
+        $this->attributes['date_of_regularization'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getRegularizationIssueDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setRegularizationIssueDateAttribute($value)
+    {
+        $this->attributes['regularization_issue_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     public function getRegularizationOfficeOrdeGoAttribute()
@@ -185,6 +260,11 @@ class EmployeeList extends Model implements HasMedia
     public function setDateOfConServiecAttribute($value)
     {
         $this->attributes['date_of_con_serviec'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getConfirmationInServiceAttribute()
+    {
+        return $this->getMedia('confirmation_in_service')->last();
     }
 
     public function quota()

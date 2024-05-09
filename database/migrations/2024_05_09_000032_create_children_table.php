@@ -13,9 +13,9 @@ class CreateChildrenTable extends Migration
             $table->string('name_bn');
             $table->string('name_en');
             $table->date('date_of_birth')->nullable();
+            $table->string('complite_21');
             $table->string('nid_number')->nullable();
             $table->string('passport_number')->nullable();
-            $table->string('complite_21');
             $table->timestamps();
             $table->softDeletes();
         });

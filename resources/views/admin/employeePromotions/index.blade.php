@@ -32,6 +32,9 @@
                         {{ trans('cruds.employeePromotion.fields.new_designation') }}
                     </th>
                     <th>
+                        {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.employeePromotion.fields.office_order_date') }}
                     </th>
                     <th>
@@ -95,6 +98,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'new_designation_name_bn', name: 'new_designation.name_bn' },
+{ data: 'go_issue_date', name: 'go_issue_date' },
 { data: 'office_order_date', name: 'office_order_date' },
 { data: 'office_order', name: 'office_order', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

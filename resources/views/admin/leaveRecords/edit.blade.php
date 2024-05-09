@@ -25,20 +25,6 @@
                 <span class="help-block">{{ trans('cruds.leaveRecord.fields.employee_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="type_of_leave_id">{{ trans('cruds.leaveRecord.fields.type_of_leave') }}</label>
-                <select class="form-control select2 {{ $errors->has('type_of_leave') ? 'is-invalid' : '' }}" name="type_of_leave_id" id="type_of_leave_id" required>
-                    @foreach($type_of_leaves as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('type_of_leave_id') ? old('type_of_leave_id') : $leaveRecord->type_of_leave->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('type_of_leave'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('type_of_leave') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.leaveRecord.fields.type_of_leave_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="leave_category_id">{{ trans('cruds.leaveRecord.fields.leave_category') }}</label>
                 <select class="form-control select2 {{ $errors->has('leave_category') ? 'is-invalid' : '' }}" name="leave_category_id" id="leave_category_id" required>
                     @foreach($leave_categories as $id => $entry)
@@ -51,6 +37,20 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.leaveRecord.fields.leave_category_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="type_of_leave_id">{{ trans('cruds.leaveRecord.fields.type_of_leave') }}</label>
+                <select class="form-control select2 {{ $errors->has('type_of_leave') ? 'is-invalid' : '' }}" name="type_of_leave_id" id="type_of_leave_id" required>
+                    @foreach($type_of_leaves as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('type_of_leave_id') ? old('type_of_leave_id') : $leaveRecord->type_of_leave->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type_of_leave'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('type_of_leave') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.leaveRecord.fields.type_of_leave_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="start_date">{{ trans('cruds.leaveRecord.fields.start_date') }}</label>

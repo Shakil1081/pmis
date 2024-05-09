@@ -49,6 +49,16 @@
                 <span class="help-block">{{ trans('cruds.educationInformatione.fields.school_university_name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="achivement">{{ trans('cruds.educationInformatione.fields.achivement') }}</label>
+                <input class="form-control {{ $errors->has('achivement') ? 'is-invalid' : '' }}" type="text" name="achivement" id="achivement" value="{{ old('achivement', $educationInformatione->achivement) }}">
+                @if($errors->has('achivement'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('achivement') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.educationInformatione.fields.achivement_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="passing_year">{{ trans('cruds.educationInformatione.fields.passing_year') }}</label>
                 <input class="form-control {{ $errors->has('passing_year') ? 'is-invalid' : '' }}" type="number" name="passing_year" id="passing_year" value="{{ old('passing_year', $educationInformatione->passing_year) }}" step="1">
                 @if($errors->has('passing_year'))

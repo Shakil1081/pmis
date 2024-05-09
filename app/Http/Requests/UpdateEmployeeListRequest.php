@@ -65,6 +65,10 @@ class UpdateEmployeeListRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
+            'prl_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
             'height' => [
                 'string',
                 'nullable',
@@ -99,9 +103,6 @@ class UpdateEmployeeListRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
-            'nid_upload' => [
-                'required',
-            ],
             'passport' => [
                 'string',
                 'nullable',
@@ -123,6 +124,30 @@ class UpdateEmployeeListRequest extends FormRequest
             'fjoining_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
+            ],
+            'first_joining_office_name' => [
+                'string',
+                'nullable',
+            ],
+            'first_joining_g_o_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'first_joining_memo_no' => [
+                'string',
+                'nullable',
+            ],
+            'date_of_gazette' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'date_of_regularization' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'regularization_issue_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'date_of_con_serviec' => [
                 'date_format:' . config('panel.date_format'),

@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.employeeList.fields.batch') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->batch->batch_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.employeeList.fields.fullname_bn') }}
                         </th>
                         <td>
@@ -85,6 +93,26 @@
                         </th>
                         <td>
                             {{ $employeeList->date_of_birth }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.birth_certificate_upload') }}
+                        </th>
+                        <td>
+                            @if($employeeList->birth_certificate_upload)
+                                <a href="{{ $employeeList->birth_certificate_upload->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.prl_date') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->prl_date }}
                         </td>
                     </tr>
                     <tr>
@@ -245,11 +273,35 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.employeeList.fields.first_office_order_letter') }}
+                            {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
                         </th>
                         <td>
-                            @if($employeeList->first_office_order_letter)
-                                <a href="{{ $employeeList->first_office_order_letter->getUrl() }}" target="_blank">
+                            {{ $employeeList->first_joining_office_name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->first_joining_g_o_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->first_joining_memo_no }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.first_joining_order') }}
+                        </th>
+                        <td>
+                            @if($employeeList->first_joining_order)
+                                <a href="{{ $employeeList->first_joining_order->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>
                             @endif
@@ -269,6 +321,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.employeeList.fields.date_of_gazette') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->date_of_gazette }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
                         </th>
                         <td>
@@ -277,6 +337,22 @@
                                     {{ trans('global.view_file') }}
                                 </a>
                             @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.date_of_regularization') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->date_of_regularization }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
+                        </th>
+                        <td>
+                            {{ $employeeList->regularization_issue_date }}
                         </td>
                     </tr>
                     <tr>
@@ -297,6 +373,18 @@
                         </th>
                         <td>
                             {{ $employeeList->date_of_con_serviec }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
+                        </th>
+                        <td>
+                            @if($employeeList->confirmation_in_service)
+                                <a href="{{ $employeeList->confirmation_in_service->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
                         </td>
                     </tr>
                     <tr>
