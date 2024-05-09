@@ -21,6 +21,10 @@ class UpdateEmployeePromotionRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'go_issue_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
             'office_order_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

@@ -1124,6 +1124,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 279,
+                'title' => 'language_list_create',
+            ],
+            [
+                'id'    => 280,
+                'title' => 'language_list_edit',
+            ],
+            [
+                'id'    => 281,
+                'title' => 'language_list_show',
+            ],
+            [
+                'id'    => 282,
+                'title' => 'language_list_delete',
+            ],
+            [
+                'id'    => 283,
+                'title' => 'language_list_access',
+            ],
+            [
+                'id'    => 284,
+                'title' => 'status_create',
+            ],
+            [
+                'id'    => 285,
+                'title' => 'status_edit',
+            ],
+            [
+                'id'    => 286,
+                'title' => 'status_show',
+            ],
+            [
+                'id'    => 287,
+                'title' => 'status_delete',
+            ],
+            [
+                'id'    => 288,
+                'title' => 'status_access',
+            ],
+            [
+                'id'    => 289,
                 'title' => 'profile_password_edit',
             ],
         ];

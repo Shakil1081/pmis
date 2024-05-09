@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.educationInformatione.fields.achivement') }}
+                        </th>
+                        <td>
+                            {{ $educationInformatione->achivement }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.educationInformatione.fields.passing_year') }}
                         </th>
                         <td>

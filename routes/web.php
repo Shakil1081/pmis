@@ -308,6 +308,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Language Proficiency
     Route::delete('language-proficiencies/destroy', 'LanguageProficiencyController@massDestroy')->name('language-proficiencies.massDestroy');
     Route::resource('language-proficiencies', 'LanguageProficiencyController');
+
+    // Language List
+    Route::delete('language-lists/destroy', 'LanguageListController@massDestroy')->name('language-lists.massDestroy');
+    Route::post('language-lists/parse-csv-import', 'LanguageListController@parseCsvImport')->name('language-lists.parseCsvImport');
+    Route::post('language-lists/process-csv-import', 'LanguageListController@processCsvImport')->name('language-lists.processCsvImport');
+    Route::resource('language-lists', 'LanguageListController');
+
+    // Status
+    Route::delete('statuses/destroy', 'StatusController@massDestroy')->name('statuses.massDestroy');
+    Route::resource('statuses', 'StatusController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

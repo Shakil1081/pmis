@@ -20,12 +20,16 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource(EmployeeList::with(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->get());
+        return new EmployeeListResource(EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->get());
     }
 
     public function store(StoreEmployeeListRequest $request)
     {
         $employeeList = EmployeeList::create($request->all());
+
+        if ($request->input('birth_certificate_upload', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('birth_certificate_upload'))))->toMediaCollection('birth_certificate_upload');
+        }
 
         if ($request->input('nid_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('nid_upload'))))->toMediaCollection('nid_upload');
@@ -39,8 +43,8 @@ class EmployeeListApiController extends Controller
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('license_upload'))))->toMediaCollection('license_upload');
         }
 
-        if ($request->input('first_office_order_letter', false)) {
-            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_office_order_letter'))))->toMediaCollection('first_office_order_letter');
+        if ($request->input('first_joining_order', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_joining_order'))))->toMediaCollection('first_joining_order');
         }
 
         if ($request->input('fjoining_letter', false)) {
@@ -53,6 +57,10 @@ class EmployeeListApiController extends Controller
 
         if ($request->input('regularization_office_orde_go', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('regularization_office_orde_go'))))->toMediaCollection('regularization_office_orde_go');
+        }
+
+        if ($request->input('confirmation_in_service', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('confirmation_in_service'))))->toMediaCollection('confirmation_in_service');
         }
 
         if ($request->input('electric_signature', false)) {
@@ -72,12 +80,23 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource($employeeList->load(['home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota']));
+        return new EmployeeListResource($employeeList->load(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota']));
     }
 
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)
     {
         $employeeList->update($request->all());
+
+        if ($request->input('birth_certificate_upload', false)) {
+            if (! $employeeList->birth_certificate_upload || $request->input('birth_certificate_upload') !== $employeeList->birth_certificate_upload->file_name) {
+                if ($employeeList->birth_certificate_upload) {
+                    $employeeList->birth_certificate_upload->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('birth_certificate_upload'))))->toMediaCollection('birth_certificate_upload');
+            }
+        } elseif ($employeeList->birth_certificate_upload) {
+            $employeeList->birth_certificate_upload->delete();
+        }
 
         if ($request->input('nid_upload', false)) {
             if (! $employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
@@ -112,15 +131,15 @@ class EmployeeListApiController extends Controller
             $employeeList->license_upload->delete();
         }
 
-        if ($request->input('first_office_order_letter', false)) {
-            if (! $employeeList->first_office_order_letter || $request->input('first_office_order_letter') !== $employeeList->first_office_order_letter->file_name) {
-                if ($employeeList->first_office_order_letter) {
-                    $employeeList->first_office_order_letter->delete();
+        if ($request->input('first_joining_order', false)) {
+            if (! $employeeList->first_joining_order || $request->input('first_joining_order') !== $employeeList->first_joining_order->file_name) {
+                if ($employeeList->first_joining_order) {
+                    $employeeList->first_joining_order->delete();
                 }
-                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_office_order_letter'))))->toMediaCollection('first_office_order_letter');
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('first_joining_order'))))->toMediaCollection('first_joining_order');
             }
-        } elseif ($employeeList->first_office_order_letter) {
-            $employeeList->first_office_order_letter->delete();
+        } elseif ($employeeList->first_joining_order) {
+            $employeeList->first_joining_order->delete();
         }
 
         if ($request->input('fjoining_letter', false)) {
@@ -154,6 +173,17 @@ class EmployeeListApiController extends Controller
             }
         } elseif ($employeeList->regularization_office_orde_go) {
             $employeeList->regularization_office_orde_go->delete();
+        }
+
+        if ($request->input('confirmation_in_service', false)) {
+            if (! $employeeList->confirmation_in_service || $request->input('confirmation_in_service') !== $employeeList->confirmation_in_service->file_name) {
+                if ($employeeList->confirmation_in_service) {
+                    $employeeList->confirmation_in_service->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('confirmation_in_service'))))->toMediaCollection('confirmation_in_service');
+            }
+        } elseif ($employeeList->confirmation_in_service) {
+            $employeeList->confirmation_in_service->delete();
         }
 
         if ($request->input('electric_signature', false)) {

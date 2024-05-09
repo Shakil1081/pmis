@@ -49,6 +49,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.child.fields.birth_certificate') }}
+                        </th>
+                        <td>
+                            @if($child->birth_certificate)
+                                <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.child.fields.complite_21') }}
+                        </th>
+                        <td>
+                            {{ $child->complite_21 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.child.fields.gender') }}
                         </th>
                         <td>
@@ -69,26 +89,6 @@
                         </th>
                         <td>
                             {{ $child->passport_number }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.child.fields.complite_21') }}
-                        </th>
-                        <td>
-                            {{ $child->complite_21 }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.child.fields.birth_certificate') }}
-                        </th>
-                        <td>
-                            @if($child->birth_certificate)
-                                <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
-                                    {{ trans('global.view_file') }}
-                                </a>
-                            @endif
                         </td>
                     </tr>
                 </tbody>

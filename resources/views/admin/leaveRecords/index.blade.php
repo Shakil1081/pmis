@@ -29,10 +29,10 @@
                         {{ trans('cruds.leaveRecord.fields.employee') }}
                     </th>
                     <th>
-                        {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
+                        {{ trans('cruds.leaveRecord.fields.leave_category') }}
                     </th>
                     <th>
-                        {{ trans('cruds.leaveRecord.fields.leave_category') }}
+                        {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
                     </th>
                     <th>
                         {{ trans('cruds.leaveRecord.fields.start_date') }}
@@ -97,8 +97,8 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
-{ data: 'type_of_leave_name_bn', name: 'type_of_leave.name_bn' },
 { data: 'leave_category_name_bn', name: 'leave_category.name_bn' },
+{ data: 'type_of_leave_name_bn', name: 'type_of_leave.name_bn' },
 { data: 'start_date', name: 'start_date' },
 { data: 'end_date', name: 'end_date' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

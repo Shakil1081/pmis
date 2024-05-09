@@ -58,6 +58,9 @@ class EducationInformationeController extends Controller
             $table->editColumn('school_university_name', function ($row) {
                 return $row->school_university_name ? $row->school_university_name : '';
             });
+            $table->editColumn('achivement', function ($row) {
+                return $row->achivement ? $row->achivement : '';
+            });
             $table->editColumn('passing_year', function ($row) {
                 return $row->passing_year ? $row->passing_year : '';
             });

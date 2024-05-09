@@ -10,6 +10,7 @@ class CreateEmployeePromotionsTable extends Migration
     {
         Schema::create('employee_promotions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->date('go_issue_date')->nullable();
             $table->date('office_order_date');
             $table->timestamps();
             $table->softDeletes();

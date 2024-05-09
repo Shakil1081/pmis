@@ -54,6 +54,27 @@
                 <span class="help-block">{{ trans('cruds.child.fields.date_of_birth_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="birth_certificate">{{ trans('cruds.child.fields.birth_certificate') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('birth_certificate') ? 'is-invalid' : '' }}" id="birth_certificate-dropzone">
+                </div>
+                @if($errors->has('birth_certificate'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('birth_certificate') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.child.fields.birth_certificate_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="complite_21">{{ trans('cruds.child.fields.complite_21') }}</label>
+                <input class="form-control {{ $errors->has('complite_21') ? 'is-invalid' : '' }}" type="text" name="complite_21" id="complite_21" value="{{ old('complite_21', '') }}" required>
+                @if($errors->has('complite_21'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('complite_21') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.child.fields.complite_21_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="gender_id">{{ trans('cruds.child.fields.gender') }}</label>
                 <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender_id" id="gender_id" required>
                     @foreach($genders as $id => $entry)
@@ -86,27 +107,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.child.fields.passport_number_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="complite_21">{{ trans('cruds.child.fields.complite_21') }}</label>
-                <input class="form-control {{ $errors->has('complite_21') ? 'is-invalid' : '' }}" type="text" name="complite_21" id="complite_21" value="{{ old('complite_21', '') }}" required>
-                @if($errors->has('complite_21'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('complite_21') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.child.fields.complite_21_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="birth_certificate">{{ trans('cruds.child.fields.birth_certificate') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('birth_certificate') ? 'is-invalid' : '' }}" id="birth_certificate-dropzone">
-                </div>
-                @if($errors->has('birth_certificate'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('birth_certificate') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.child.fields.birth_certificate_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

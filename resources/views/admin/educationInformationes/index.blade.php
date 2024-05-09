@@ -31,6 +31,9 @@
                         {{ trans('cruds.educationInformatione.fields.school_university_name') }}
                     </th>
                     <th>
+                        {{ trans('cruds.educationInformatione.fields.achivement') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.educationInformatione.fields.passing_year') }}
                     </th>
                     <th>
@@ -101,6 +104,7 @@
 { data: 'name_of_exam_name_bn', name: 'name_of_exam.name_bn' },
 { data: 'exam_board_name_bn', name: 'exam_board.name_bn' },
 { data: 'school_university_name', name: 'school_university_name' },
+{ data: 'achivement', name: 'achivement' },
 { data: 'passing_year', name: 'passing_year' },
 { data: 'catificarte', name: 'catificarte', sortable: false, searchable: false },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
