@@ -1296,8 +1296,8 @@ return [
         ],
     ],
     'socialAssPrAttachment' => [
-        'title'          => 'Soc, Ass,Pro Attachment',
-        'title_singular' => 'Soc, Ass,Pro Attachment',
+        'title'          => 'Soc/Ass/Pro Attachment',
+        'title_singular' => 'Soc/Ass/Pro Attachment',
         'fields'         => [
             'id'                                    => 'ID',
             'id_helper'                             => ' ',
