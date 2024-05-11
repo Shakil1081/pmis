@@ -43,6 +43,12 @@
                         {{ trans('cruds.child.fields.passport_number') }}
                     </th>
                     <th>
+                        {{ trans('cruds.child.fields.childdren_nid') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.child.fields.childdren_passporft') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -105,6 +111,8 @@
 { data: 'gender_name_bn', name: 'gender.name_bn' },
 { data: 'nid_number', name: 'nid_number' },
 { data: 'passport_number', name: 'passport_number' },
+{ data: 'childdren_nid', name: 'childdren_nid', sortable: false, searchable: false },
+{ data: 'childdren_passporft', name: 'childdren_passporft', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

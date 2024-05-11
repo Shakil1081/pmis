@@ -29,6 +29,10 @@ class UpdateChildRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
+            'complite_21' => [
+                'string',
+                'required',
+            ],
             'gender_id' => [
                 'required',
                 'integer',
@@ -40,10 +44,6 @@ class UpdateChildRequest extends FormRequest
             'passport_number' => [
                 'string',
                 'nullable',
-            ],
-            'complite_21' => [
-                'string',
-                'required',
             ],
         ];
     }

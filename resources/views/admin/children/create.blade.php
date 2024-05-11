@@ -109,6 +109,28 @@
                 <span class="help-block">{{ trans('cruds.child.fields.passport_number_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="childdren_nid">{{ trans('cruds.child.fields.childdren_nid') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('childdren_nid') ? 'is-invalid' : '' }}" id="childdren_nid-dropzone">
+                </div>
+                @if($errors->has('childdren_nid'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('childdren_nid') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.child.fields.childdren_nid_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="childdren_passporft">{{ trans('cruds.child.fields.childdren_passporft') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('childdren_passporft') ? 'is-invalid' : '' }}" id="childdren_passporft-dropzone">
+                </div>
+                @if($errors->has('childdren_passporft'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('childdren_passporft') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.child.fields.childdren_passporft_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -151,6 +173,106 @@
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="birth_certificate" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
+<script>
+    Dropzone.options.childdrenNidDropzone = {
+    url: '{{ route('admin.children.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="childdren_nid"]').remove()
+      $('form').append('<input type="hidden" name="childdren_nid" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="childdren_nid"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($child) && $child->childdren_nid)
+      var file = {!! json_encode($child->childdren_nid) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="childdren_nid" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
+<script>
+    Dropzone.options.childdrenPassporftDropzone = {
+    url: '{{ route('admin.children.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="childdren_passporft"]').remove()
+      $('form').append('<input type="hidden" name="childdren_passporft" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="childdren_passporft"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($child) && $child->childdren_passporft)
+      var file = {!! json_encode($child->childdren_passporft) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="childdren_passporft" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
