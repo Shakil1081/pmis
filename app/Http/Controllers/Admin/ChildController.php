@@ -53,6 +53,9 @@ class ChildController extends Controller
                 return $row->name_en ? $row->name_en : '';
             });
 
+            $table->editColumn('complite_21', function ($row) {
+                return $row->complite_21 ? $row->complite_21 : '';
+            });
             $table->addColumn('gender_name_bn', function ($row) {
                 return $row->gender ? $row->gender->name_bn : '';
             });
@@ -63,11 +66,14 @@ class ChildController extends Controller
             $table->editColumn('passport_number', function ($row) {
                 return $row->passport_number ? $row->passport_number : '';
             });
-            $table->editColumn('complite_21', function ($row) {
-                return $row->complite_21 ? $row->complite_21 : '';
+            $table->editColumn('childdren_nid', function ($row) {
+                return $row->childdren_nid ? '<a href="' . $row->childdren_nid->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            });
+            $table->editColumn('childdren_passporft', function ($row) {
+                return $row->childdren_passporft ? '<a href="' . $row->childdren_passporft->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'gender']);
+            $table->rawColumns(['actions', 'placeholder', 'gender', 'childdren_nid', 'childdren_passporft']);
 
             return $table->make(true);
         }
@@ -92,6 +98,14 @@ class ChildController extends Controller
 
         if ($request->input('birth_certificate', false)) {
             $child->addMedia(storage_path('tmp/uploads/' . basename($request->input('birth_certificate'))))->toMediaCollection('birth_certificate');
+        }
+
+        if ($request->input('childdren_nid', false)) {
+            $child->addMedia(storage_path('tmp/uploads/' . basename($request->input('childdren_nid'))))->toMediaCollection('childdren_nid');
+        }
+
+        if ($request->input('childdren_passporft', false)) {
+            $child->addMedia(storage_path('tmp/uploads/' . basename($request->input('childdren_passporft'))))->toMediaCollection('childdren_passporft');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -127,6 +141,28 @@ class ChildController extends Controller
             }
         } elseif ($child->birth_certificate) {
             $child->birth_certificate->delete();
+        }
+
+        if ($request->input('childdren_nid', false)) {
+            if (! $child->childdren_nid || $request->input('childdren_nid') !== $child->childdren_nid->file_name) {
+                if ($child->childdren_nid) {
+                    $child->childdren_nid->delete();
+                }
+                $child->addMedia(storage_path('tmp/uploads/' . basename($request->input('childdren_nid'))))->toMediaCollection('childdren_nid');
+            }
+        } elseif ($child->childdren_nid) {
+            $child->childdren_nid->delete();
+        }
+
+        if ($request->input('childdren_passporft', false)) {
+            if (! $child->childdren_passporft || $request->input('childdren_passporft') !== $child->childdren_passporft->file_name) {
+                if ($child->childdren_passporft) {
+                    $child->childdren_passporft->delete();
+                }
+                $child->addMedia(storage_path('tmp/uploads/' . basename($request->input('childdren_passporft'))))->toMediaCollection('childdren_passporft');
+            }
+        } elseif ($child->childdren_passporft) {
+            $child->childdren_passporft->delete();
         }
 
         return redirect()->route('admin.children.index');

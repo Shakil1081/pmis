@@ -91,6 +91,30 @@
                             {{ $child->passport_number }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.child.fields.childdren_nid') }}
+                        </th>
+                        <td>
+                            @if($child->childdren_nid)
+                                <a href="{{ $child->childdren_nid->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.child.fields.childdren_passporft') }}
+                        </th>
+                        <td>
+                            @if($child->childdren_passporft)
+                                <a href="{{ $child->childdren_passporft->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
