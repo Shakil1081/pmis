@@ -322,6 +322,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Year
     Route::delete('years/destroy', 'YearController@massDestroy')->name('years.massDestroy');
     Route::resource('years', 'YearController');
+
+    // Employee List Details
+    Route::resource('employee-list-details', 'EmployeeListDetailsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

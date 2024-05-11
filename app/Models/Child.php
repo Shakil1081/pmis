@@ -18,10 +18,6 @@ class Child extends Model implements HasMedia
 
     public $table = 'children';
 
-    protected $appends = [
-        'birth_certificate',
-    ];
-
     protected $dates = [
         'date_of_birth',
         'created_at',
@@ -29,15 +25,21 @@ class Child extends Model implements HasMedia
         'deleted_at',
     ];
 
+    protected $appends = [
+        'birth_certificate',
+        'childdren_nid',
+        'childdren_passporft',
+    ];
+
     protected $fillable = [
         'employee_id',
         'name_bn',
         'name_en',
         'date_of_birth',
+        'complite_21',
         'gender_id',
         'nid_number',
         'passport_number',
-        'complite_21',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -69,13 +71,23 @@ class Child extends Model implements HasMedia
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
+    public function getBirthCertificateAttribute()
+    {
+        return $this->getMedia('birth_certificate')->last();
+    }
+
     public function gender()
     {
         return $this->belongsTo(Gender::class, 'gender_id');
     }
 
-    public function getBirthCertificateAttribute()
+    public function getChilddrenNidAttribute()
     {
-        return $this->getMedia('birth_certificate')->last();
+        return $this->getMedia('childdren_nid')->last();
+    }
+
+    public function getChilddrenPassporftAttribute()
+    {
+        return $this->getMedia('childdren_passporft')->last();
     }
 }
