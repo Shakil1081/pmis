@@ -305,7 +305,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('foreign-travel-personals', 'ForeignTravelPersonalController');
 
     // Social Ass Pr Attachment
-    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController', ['except' => ['destroy']]);
+    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController');
 
     // Awards
     Route::delete('awards/destroy', 'AwardsController@massDestroy')->name('awards.massDestroy');

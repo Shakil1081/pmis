@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSocialAssPrAttachmentRequest;
 use App\Http\Requests\UpdateSocialAssPrAttachmentRequest;
+use App\Models\EmployeeList;
 use App\Models\SocialAssPrAttachment;
 use Gate;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class SocialAssPrAttachmentController extends Controller
         abort_if(Gate::denies('social_ass_pr_attachment_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = SocialAssPrAttachment::query()->select(sprintf('%s.*', (new SocialAssPrAttachment)->table));
+            $query = SocialAssPrAttachment::with(['employee'])->select(sprintf('%s.*', (new SocialAssPrAttachment)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -51,8 +52,15 @@ class SocialAssPrAttachmentController extends Controller
             $table->editColumn('certificate_achievement', function ($row) {
                 return $row->certificate_achievement ? $row->certificate_achievement : '';
             });
+            $table->addColumn('employee_employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->editColumn('employee.fullname_bn', function ($row) {
+                return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'employee']);
 
             return $table->make(true);
         }
@@ -64,21 +72,27 @@ class SocialAssPrAttachmentController extends Controller
     {
         abort_if(Gate::denies('social_ass_pr_attachment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.socialAssPrAttachments.create');
+        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.socialAssPrAttachments.create', compact('employees'));
     }
 
     public function store(StoreSocialAssPrAttachmentRequest $request)
     {
         $socialAssPrAttachment = SocialAssPrAttachment::create($request->all());
         return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.social-ass-pr-attachments.index');
+       // return redirect()->route('admin.social-ass-pr-attachments.index');
     }
 
     public function edit(SocialAssPrAttachment $socialAssPrAttachment)
     {
         abort_if(Gate::denies('social_ass_pr_attachment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.socialAssPrAttachments.edit', compact('socialAssPrAttachment'));
+        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $socialAssPrAttachment->load('employee');
+
+        return view('admin.socialAssPrAttachments.edit', compact('employees', 'socialAssPrAttachment'));
     }
 
     public function update(UpdateSocialAssPrAttachmentRequest $request, SocialAssPrAttachment $socialAssPrAttachment)
@@ -91,6 +105,8 @@ class SocialAssPrAttachmentController extends Controller
     public function show(SocialAssPrAttachment $socialAssPrAttachment)
     {
         abort_if(Gate::denies('social_ass_pr_attachment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $socialAssPrAttachment->load('employee');
 
         return view('admin.socialAssPrAttachments.show', compact('socialAssPrAttachment'));
     }

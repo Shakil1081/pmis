@@ -322,6 +322,11 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->hasMany(SpouseInformatione::class, 'employee_id');
     }
+
+    public function childinformationes()
+    {
+        return $this->hasMany(Child::class, 'employee_id');
+    }
     public function jobhistories()
     {
         return $this->hasMany(JobHistory::class, 'employee_id');

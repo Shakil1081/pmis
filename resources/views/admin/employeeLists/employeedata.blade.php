@@ -1,4 +1,15 @@
 @extends('layouts.admin')
+@section('styles')
+    @parent
+    <style>
+        th,
+        td {
+            font-size: 11px !important;
+            padding: 4px !important;
+            margin: 0px !important;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="card p-2">
         <div class="container">
@@ -854,6 +865,134 @@
                             @endforeach
 
 
+                            <h4> {{ trans('cruds.child.title') }}</h4>
+
+                            @foreach ($employeeList->childinformationes as $child)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.name_bn') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->name_bn }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.name_en') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->name_en }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.date_of_birth') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->date_of_birth }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.birth_certificate') }}
+                                            </th>
+                                            <td>
+                                                @if ($child->birth_certificate)
+                                                    <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.complite_21') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->complite_21 }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.gender') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->gender->name_bn ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.nid_number') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->nid_number }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.passport_number') }}
+                                            </th>
+                                            <td>
+                                                {{ $child->passport_number }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.childdren_nid') }}
+                                            </th>
+                                            <td>
+                                                @if ($child->childdren_nid)
+                                                    <a href="{{ $child->childdren_nid->getUrl() }}" target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.child.fields.childdren_passporft') }}
+                                            </th>
+                                            <td>
+                                                @if ($child->childdren_passporft)
+                                                    <a href="{{ $child->childdren_passporft->getUrl() }}" target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.children.edit', ['child' => $child->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.children.destroy', ['child' => $child->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            @endforeach
+
                             <h4> {{ trans('cruds.jobHistory.title') }}</h4>
 
                             @foreach ($employeeList->jobhistories as $jobHistory)
@@ -1440,38 +1579,714 @@
                             @endforeach
 
 
-                            {{-- <h4> Professionales</h4>
+                            <h4> {{ trans('cruds.socialAssPrAttachment.title') }}</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
+                            @foreach ($employeeList->socialassprattachments as $socialAssPrAttachment)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.socialAssPrAttachment.fields.id') }}
+                                            </th>
+                                            <td>
+                                                {{ $socialAssPrAttachment->id }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
+                                            </th>
+                                            <td>
+                                                {{ $socialAssPrAttachment->degree_membership_organization }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.socialAssPrAttachment.fields.description') }}
+                                            </th>
+                                            <td>
+                                                {{ $socialAssPrAttachment->description }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
+                                            </th>
+                                            <td>
+                                                {{ $socialAssPrAttachment->certificate_achievement }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
+                            <h4> {{ trans('cruds.extracurriculam.title') }}</h4>
+                            @foreach ($employeeList->extracurriculams as $extracurriculam)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.id') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->id }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.activity_name') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->activity_name }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.organization') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->organization }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.position') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->position }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.start_date') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->start_date }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.end_date') }}
+                                            </th>
+                                            <td>
+                                                {{ $extracurriculam->end_date }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.description') }}
+                                            </th>
+                                            <td>
+                                                {!! $extracurriculam->description !!}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.extracurriculam.fields.attatchment') }}
+                                            </th>
+                                            <td>
+                                                @if ($extracurriculam->attatchment)
+                                                    <a href="{{ $extracurriculam->attatchment->getUrl() }}"
+                                                        target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.extracurriculams.edit', ['extracurriculam' => $extracurriculam->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
 
-                            @foreach ($employeeList->educations as $professionale)
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.extracurriculams.destroy', ['extracurriculam' => $extracurriculam->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
+                            <h4> {{ trans('cruds.publication.title') }}</h4>
+
+                            @foreach ($employeeList->publications as $publication)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.title') }}
+                                            </th>
+                                            <td>
+                                                {{ $publication->title }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.publication_type') }}
+                                            </th>
+                                            <td>
+                                                {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.publication_media') }}
+                                            </th>
+                                            <td>
+                                                {{ $publication->publication_media }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.publication_date') }}
+                                            </th>
+                                            <td>
+                                                {{ $publication->publication_date }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.publication_link') }}
+                                            </th>
+                                            <td>
+                                                {{ $publication->publication_link }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.description') }}
+                                            </th>
+                                            <td>
+                                                {!! $publication->description !!}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.publication.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $publication->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.publications.edit', ['publication' => $publication->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.publications.destroy', ['publication' => $publication->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
+                            <h4> {{ trans('cruds.award.title') }}</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
+                            @foreach ($employeeList->awards as $award)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.award.fields.title') }}
+                                            </th>
+                                            <td>
+                                                {{ $award->title }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.award.fields.ground_area') }}
+                                            </th>
+                                            <td>
+                                                {{ $award->ground_area }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.award.fields.date') }}
+                                            </th>
+                                            <td>
+                                                {{ $award->date }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.award.fields.certificate') }}
+                                            </th>
+                                            <td>
+                                                @if ($award->certificate)
+                                                    <a href="{{ $award->certificate->getUrl() }}" target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.award.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $award->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.awards.edit', ['award' => $award->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.awards.destroy', ['award' => $award->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
+
+                            <h4> {{ trans('cruds.otherServiceJob.title') }}</h4>
+
+                            @foreach ($employeeList->otherservicejobs as $otherServiceJob)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.id') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->id }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.employer') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->employer }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.address') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->address }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.service_type') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->service_type }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.position') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->position }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.from') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->from }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.to') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->to }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.otherServiceJob.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $otherServiceJob->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.other-service-jobs.edit', ['other_service_job' => $otherServiceJob->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.other-service-jobs.destroy', ['other_service_job' => $otherServiceJob->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
+                            <h4> {{ trans('cruds.language.title') }}</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
+                            @foreach ($employeeList->languages as $language)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $language->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.language') }}
+                                            </th>
+                                            <td>
+                                                {{ $language->language }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.read') }}
+                                            </th>
+                                            <td>
+                                                {{ $language->read->name ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.write') }}
+                                            </th>
+                                            <td>
+                                                {{ $language->write->name ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.speak') }}
+                                            </th>
+                                            <td>
+                                                {{ $language->speak->name ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.languages.destroy', ['language' => $language->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
+                            <h4> {{ trans('cruds.criminalProsecutione.title') }}</h4>
+
+                            @foreach ($employeeList->criminalprosecutiones as $criminalProsecutione)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalProsecutione.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalProsecutione->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalProsecutione->judgement_type }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalProsecutione->natureof_offence }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalProsecutione->government_order_no }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalProsecutione.fields.court_order') }}
+                                            </th>
+                                            <td>
+                                                @if ($criminalProsecutione->court_order)
+                                                    <a href="{{ $criminalProsecutione->court_order->getUrl() }}"
+                                                        target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalProsecutione.fields.remzrk') }}
+                                            </th>
+                                            <td>
+                                                {!! $criminalProsecutione->remzrk !!}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.criminal-prosecutiones.edit', ['criminal_prosecutione' => $criminalProsecutione->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.criminal-prosecutiones.destroy', ['criminal_prosecutione' => $criminalProsecutione->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
                             @endforeach
-                             <h4> Professionales</h4>
 
-                            @foreach ($employeeList->educations as $professionale)
-                            @endforeach --}}
+                            <h4> {{ trans('cruds.criminalproDisciplinary.title') }}</h4>
+
+                            @foreach ($employeeList->criminalprodisciplinaries as $criminalproDisciplinary)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalproDisciplinary->judgement_type }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalproDisciplinary->government_order_no }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}
+                                            </th>
+                                            <td>
+                                                @if ($criminalproDisciplinary->order_upload_file)
+                                                    <a href="{{ $criminalproDisciplinary->order_upload_file->getUrl() }}"
+                                                        target="_blank">
+                                                        {{ trans('global.view_file') }}
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
+                                            </th>
+                                            <td>
+                                                {{ $criminalproDisciplinary->remarks }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.criminalpro-disciplinaries.edit', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.criminalpro-disciplinaries.destroy', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            @endforeach
+
+
+
+
+
+                            <h4>{{ trans('cruds.acrMonitoring.title') }}</h4>
+
+                            @foreach ($employeeList->acrmonitorings as $acrMonitoring)
+                                <table class="table-bordered table-striped table">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.acrMonitoring.fields.employee') }}
+                                            </th>
+                                            <td>
+                                                {{ $acrMonitoring->employee->employeeid ?? '' }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.acrMonitoring.fields.year') }}
+                                            </th>
+                                            <td>
+                                                {{ $acrMonitoring->year }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.acrMonitoring.fields.reviewer') }}
+                                            </th>
+                                            <td>
+                                                {{ $acrMonitoring->reviewer }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.acrMonitoring.fields.review_date') }}
+                                            </th>
+                                            <td>
+                                                {{ $acrMonitoring->review_date }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.acrMonitoring.fields.remarks') }}
+                                            </th>
+                                            <td>
+                                                {!! $acrMonitoring->remarks !!}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Action
+                                            </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.acr-monitorings.edit', ['acr_monitoring' => $acrMonitoring->id]) }}"
+                                                    class="btn btn-sm btn-primary">Edit</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.acr-monitorings.destroy', ['acr_monitoring' => $acrMonitoring->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            @endforeach
                         </div>
                     </div>
                 </div>
