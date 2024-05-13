@@ -47,7 +47,7 @@
                             <div>
                                 <p class="customer-name fw-bold mb-0">{{ $result['fullname_bn'] }}</p>
                                 <p class="samall mb-0">{{ $result['employeeid'] }}</p>
-                                <p class="samall mb-0">Current position:</p>
+                                <p class="samall mb-0">Position:</p>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <a href="{{ route('admin.employeedata', ['id' => $empID]) }}" class="btn btn-success">
                                 {{ trans('global.view') }}
                             </a>
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}" class="btn btn-success">
+                            <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}" class="btn btn-success">
                                 {{ trans('global.edit') }}
                             </a>
                             <a href="{{ route('admin.employeedata', ['id' => $empID]) }}" class="btn btn-success">
