@@ -33,6 +33,10 @@ class StoreForeignTravelPersonalRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
+            'employee_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }
