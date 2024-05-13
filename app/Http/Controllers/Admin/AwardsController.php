@@ -47,8 +47,8 @@ class AwardsController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $award->id]);
         }
-
-        return redirect()->route('admin.awards.index');
+        return redirect()->back()->with('status', 'Action successful!');
+        //return redirect()->route('admin.awards.index');
     }
 
     public function edit(Award $award)

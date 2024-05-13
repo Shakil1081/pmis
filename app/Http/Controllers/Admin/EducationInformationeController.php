@@ -107,8 +107,8 @@ class EducationInformationeController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $educationInformatione->id]);
         }
-
-        return redirect()->route('admin.education-informationes.index');
+        return redirect()->back()->with('status', 'Action successful!');
+        //return redirect()->route('admin.education-informationes.index');
     }
 
     public function edit(EducationInformatione $educationInformatione)
@@ -145,6 +145,14 @@ class EducationInformationeController extends Controller
     }
 
     public function show(EducationInformatione $educationInformatione)
+    {
+        abort_if(Gate::denies('education_informatione_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $educationInformatione->load('name_of_exam', 'exam_board', 'employee');
+
+        return view('admin.educationInformationes.show', compact('educationInformatione'));
+    }
+    public function showdata(EducationInformatione $educationInformatione)
     {
         abort_if(Gate::denies('education_informatione_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
