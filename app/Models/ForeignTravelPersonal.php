@@ -29,6 +29,7 @@ class ForeignTravelPersonal extends Model
         'from_date',
         'to_date',
         'leave_id',
+        'employee_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -72,5 +73,10 @@ class ForeignTravelPersonal extends Model
     public function leave()
     {
         return $this->belongsTo(TravelRecord::class, 'leave_id');
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(EmployeeList::class, 'employee_id');
     }
 }
