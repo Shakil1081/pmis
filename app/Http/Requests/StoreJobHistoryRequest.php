@@ -49,6 +49,10 @@ class StoreJobHistoryRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'grade_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

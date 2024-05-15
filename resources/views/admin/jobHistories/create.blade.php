@@ -48,7 +48,7 @@
                                     <label for="designation_id">{{ trans('cruds.jobHistory.fields.designation') }}</label>
                                     <select
                                         class="form-control select2 {{ $errors->has('designation') ? 'is-invalid' : '' }}"
-                                        name="designation_id" id="designation_id">
+                                        name="designation_id" id="designation_id" required>
                                         @foreach ($designations as $id => $entry)
                                             <option value="{{ $id }}"
                                                 {{ old('designation_id') == $id ? 'selected' : '' }}>{{ $entry }}
@@ -90,61 +90,72 @@
                                     <span
                                         class="help-block">{{ trans('cruds.jobHistory.fields.release_date_helper') }}</span>
                                 </div>
+
+
+
+
+
                                 <div class="form-group">
-                                    <label for="level_1">{{ trans('cruds.jobHistory.fields.level_1') }}</label>
-                                    <input class="form-control {{ $errors->has('level_1') ? 'is-invalid' : '' }}"
-                                        type="text" name="level_1" id="level_1" value="{{ old('level_1', '') }}">
-                                    @if ($errors->has('level_1'))
+                                    <label for="level_1">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+                                    <select class="form-control" name="level_1" id="level_1">
+                                        <option value="">Select Office</option>
+                                        <option value="Head Office">Head Office</option>
+                                        <option value="Circle">Circle</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="level_2">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+                                    <select class="form-control" name="level_2" id="level_2" disabled>
+                                        <option value="">Select Unit</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="level_3">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                        <option value="">Select Subunit</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="level_4">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+                                    <select class="form-control" name="level_4" id="level_4" disabled>
+                                        <option value="">Select Sub-Subunit</option>
+                                    </select>
+                                </div>
+
+                                <!-- Add more select elements for additional levels as needed -->
+
+                                <div class="form-group" id="inputFieldContainer" style="display: none;">
+                                    <label
+                                        for="head_office_input">{{ trans('cruds.jobHistory.fields.head_office_input') }}</label>
+                                    <input class="form-control" type="text" name="head_office_input"
+                                        id="head_office_input">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="required"
+                                        for="grade_id">{{ trans('cruds.jobHistory.fields.grade') }}</label>
+                                    <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
+                                        name="grade_id" id="grade_id" required>
+                                        @foreach ($grades as $id => $entry)
+                                            <option value="{{ $id }}"
+                                                {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('grade'))
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('level_1') }}
+                                            {{ $errors->first('grade') }}
                                         </div>
                                     @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.level_1_helper') }}</span>
+                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.grade_helper') }}</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="level_2">{{ trans('cruds.jobHistory.fields.level_2') }}</label>
-                                    <input class="form-control {{ $errors->has('level_2') ? 'is-invalid' : '' }}"
-                                        type="text" name="level_2" id="level_2" value="{{ old('level_2', '') }}">
-                                    @if ($errors->has('level_2'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('level_2') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.level_2_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="level_3">{{ trans('cruds.jobHistory.fields.level_3') }}</label>
-                                    <input class="form-control {{ $errors->has('level_3') ? 'is-invalid' : '' }}"
-                                        type="text" name="level_3" id="level_3" value="{{ old('level_3', '') }}">
-                                    @if ($errors->has('level_3'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('level_3') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.level_3_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="level_4">{{ trans('cruds.jobHistory.fields.level_4') }}</label>
-                                    <input class="form-control {{ $errors->has('level_4') ? 'is-invalid' : '' }}"
-                                        type="text" name="level_4" id="level_4" value="{{ old('level_4', '') }}">
-                                    @if ($errors->has('level_4'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('level_4') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.level_4_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="level_5">{{ trans('cruds.jobHistory.fields.level_5') }}</label>
-                                    <input class="form-control {{ $errors->has('level_5') ? 'is-invalid' : '' }}"
-                                        type="text" name="level_5" id="level_5" value="{{ old('level_5', '') }}">
-                                    @if ($errors->has('level_5'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('level_5') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.level_5_helper') }}</span>
-                                </div>
+
+
 
                             </div>
                             <div class="form-group">
@@ -159,4 +170,110 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+    @parent
+    <!-- Add more select elements for additional levels as needed -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const level1Select = document.getElementById('level_1');
+            const level2Select = document.getElementById('level_2');
+            const level3Select = document.getElementById('level_3');
+            const level4Select = document.getElementById('level_4');
+
+            level1Select.addEventListener('change', function() {
+                level2Select.innerHTML = '<option value="">Select Unit</option>';
+                level3Select.innerHTML = '<option value="">Select Subunit</option>';
+                level4Select.innerHTML = '<option value="">Select Sub-Subunit</option>';
+                level2Select.disabled = true;
+                level3Select.disabled = true;
+                level4Select.disabled = true;
+
+                if (this.value === 'Head Office') {
+                    level2Select.disabled = false;
+                    level2Select.innerHTML = `
+                        <option value="">Select Unit</option>
+                        <option value="Posting in Office">Posting in Office</option>
+                        <option value="Division">Division</option>
+                    `;
+                }
+
+                if (this.value === 'Circle') {
+                    level2Select.disabled = false;
+                    level2Select.required = true;
+                    level2Select.innerHTML = `
+                        <option value="">Select Unit</option>
+                        <option value="Posting in Office">Posting in Office</option>
+                        <option value="Division">Division</option>
+                    `;
+                }
+
+                if (this.value === 'Others') {
+                    level2Select.disabled = false;
+                    level2Select.required = true;
+                    level2Select.innerHTML = `
+                        <option value="">Select Unit</option>
+                        <option value="Institution">Institution</option>
+                        <option value="Others">Others</option>
+                    `;
+                }
+            });
+
+            level2Select.addEventListener('change', function() {
+                level3Select.innerHTML = '<option value="">Select Subunit</option>';
+                level4Select.innerHTML = '<option value="">Select Sub-Subunit</option>';
+                level3Select.disabled = true;
+                level4Select.disabled = true;
+
+                if (this.value === 'Division') {
+                    level3Select.disabled = false;
+                    level3Select.required = true;
+                    level3Select.innerHTML = `
+                        <option value="">Select Subunit</option>
+                        <option value="Posting in Office">Posting in Office</option>
+                        <option value="Range/SFNTC/Station">Range/SFNTC/Station</option>
+                    `;
+                }
+                if (this.value === 'Institution') {
+                    level3Select.disabled = false;
+                    level3Select.required = true;
+                    level3Select.innerHTML = `
+                        <option value="">Select Subunit</option>
+                        <option value="Forest Academy">Forest Academy</option>
+                        <option value="SKWC">SKWC</option>
+                        <option value="FISTT">FISTT</option>
+                    `;
+                }
+            });
+
+            level3Select.addEventListener('change', function() {
+                level4Select.innerHTML = '<option value="">Select Sub-Subunit</option>';
+                level4Select.disabled = true;
+
+                if (this.value === 'Range/SFNTC/Station') {
+                    level4Select.disabled = false;
+                    level4Select.required = true;
+                    level4Select.innerHTML = `
+                        <option value="">Select</option>
+                        <option value="Beat/SFPC/Camp">Beat/SFPC/Camp</option>
+                        <option value="Posting in Office">Posting in Office</option>
+                    `;
+                }
+
+                if (this.value === 'FISTT') {
+                    level4Select.disabled = false;
+                    level4Select.required = true;
+                    level4Select.innerHTML = `
+                        <option value="">Select FISTT</option>
+                        <option value="Sylhet">Sylhet</option>
+                        <option value="Chittagong">Chittagong</option>
+                        <option value="Rajshahi">Rajshahi</option>
+                    `;
+                }
+            });
+        });
+    </script>
 @endsection

@@ -9,6 +9,7 @@ use App\Http\Requests\StoreJobHistoryRequest;
 use App\Http\Requests\UpdateJobHistoryRequest;
 use App\Models\Designation;
 use App\Models\EmployeeList;
+use App\Models\Grade;
 use App\Models\JobHistory;
 use App\Models\JobType;
 use Gate;
@@ -25,7 +26,7 @@ class JobHistorieController extends Controller
         abort_if(Gate::denies('job_history_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = JobHistory::with(['job_type', 'designation', 'employee'])->select(sprintf('%s.*', (new JobHistory)->table));
+            $query = JobHistory::with(['job_type', 'designation', 'employee', 'grade'])->select(sprintf('%s.*', (new JobHistory)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -82,8 +83,15 @@ class JobHistorieController extends Controller
             $table->editColumn('employee.fullname_bn', function ($row) {
                 return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
             });
+            $table->addColumn('grade_name_bn', function ($row) {
+                return $row->grade ? $row->grade->name_bn : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'job_type', 'designation', 'employee']);
+            $table->editColumn('grade.salary_range', function ($row) {
+                return $row->grade ? (is_string($row->grade) ? $row->grade : $row->grade->salary_range) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'job_type', 'designation', 'employee', 'grade']);
 
             return $table->make(true);
         }
@@ -101,7 +109,9 @@ class JobHistorieController extends Controller
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.jobHistories.create', compact('designations', 'employees', 'job_types'));
+        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.jobHistories.create', compact('designations', 'employees', 'grades', 'job_types'));
     }
 
     public function store(StoreJobHistoryRequest $request)
@@ -121,9 +131,11 @@ class JobHistorieController extends Controller
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $jobHistory->load('job_type', 'designation', 'employee');
+        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.jobHistories.edit', compact('designations', 'employees', 'jobHistory', 'job_types'));
+        $jobHistory->load('job_type', 'designation', 'employee', 'grade');
+
+        return view('admin.jobHistories.edit', compact('designations', 'employees', 'grades', 'jobHistory', 'job_types'));
     }
 
     public function update(UpdateJobHistoryRequest $request, JobHistory $jobHistory)
@@ -137,7 +149,7 @@ class JobHistorieController extends Controller
     {
         abort_if(Gate::denies('job_history_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $jobHistory->load('job_type', 'designation', 'employee');
+        $jobHistory->load('job_type', 'designation', 'employee', 'grade');
 
         return view('admin.jobHistories.show', compact('jobHistory'));
     }

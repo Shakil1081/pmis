@@ -7,26 +7,30 @@
 
             <div class="row justify-content-center align-items-center g-1">
                 <div class="col">
-                    @can('employee_list_create')
-                        <div style="margin-bottom: 10px;" class="row">
-                            <div class="col-lg-12">
-                                <a class="btn btn-success" href="{{ route('admin.employee-lists.create') }}">
-                                    {{ trans('global.add') }} {{ trans('cruds.employeeList.title_singular') }}
-                                </a>
-                            </div>
-                        </div>
-                    @endcan
-
-                </div>
-                <div class="col">
-                    <h4 class="text-secoundery">Total Employee: {{ $data['total'] }}</h4>
-                </div>
-                <div class="col">
                     <div class="position-relative">
                         <input class="form-control px-5" type="search" placeholder="Search Customers">
                         <span
                             class="material-icons-outlined position-absolute translate-middle-y top-50 fs-5 start-0 ms-3">search</span>
                     </div>
+                </div>
+
+                <div class="col">
+                    <strong>Total Employee: {{ $data['total'] }}</strong>
+
+                </div>
+                <div class="col text-end">
+
+                    @can('employee_list_create')
+                        <a class="btn btn-success" href="{{ route('admin.employee-lists.create') }}"> <i class="fa fa-plus"
+                                aria-hidden="true"></i>
+                            {{ trans('global.add') }} {{ trans('cruds.employeeList.title_singular') }}
+                        </a>
+                    @endcan
+                    <button type="button" class="btn btn- btn-success">
+                        <i class="fa fa-filter" aria-hidden="true"></i> Filter
+                    </button>
+
+
                 </div>
             </div>
         </div>
@@ -42,31 +46,83 @@
                         <div class="d-flex align-items-center gap-3">
                             <div class="customer-pic">
                                 <img src="http://127.0.0.1:8000/assets/images/logo1.png" class="rounded-circle"
-                                    width="40" height="40" alt="">
+                                    width="80" height="80" alt="">
                             </div>
                             <div>
                                 <p class="customer-name fw-bold mb-0">{{ $result['fullname_bn'] }}</p>
-                                <p class="samall mb-0">{{ $result['employeeid'] }}</p>
-                                <p class="samall mb-0">Position:</p>
+                                <p class="mb-0">{{ $result['employeeid'] }}</p>
+                                <p>
+                                    @php
+                                        $lastJobHistory = $result->jobhistories->last();
+                                        if ($lastJobHistory && $lastJobHistory->relationLoaded('designation')) {
+                                            $designation = $lastJobHistory->designation;
+                                            @$designationName = $designation->name_bn;
+                                        } else {
+                                            $designationName = 'NA';
+                                        }
+                                    @endphp
+                                    <small>{{ $designationName }}</small>
+
+
+                                </p>
                             </div>
                         </div>
                     </div>
+
                     <div class="col">
                         <small>Profile progress</small>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100">25%</div>
+                            @php
+                                $total = 0;
+                                $totalvalue = 17;
+
+                                $relationships = [
+                                    'batch',
+                                    'educations',
+                                    'professionales',
+                                    'addressdetailes',
+                                    'emergencecontactes',
+                                    'spouseinformationes',
+                                    'childinformationes',
+                                    'jobhistories',
+                                    'employeepromotions',
+                                    'trainings',
+                                    'travelRecords',
+                                    'foreigntravelpersonals',
+                                    'socialassprattachments',
+                                    'extracurriculams',
+                                    'otherservicejobs',
+                                    'languages',
+                                    'acrmonitorings',
+                                ];
+                                foreach ($relationships as $relationship) {
+                                    if ($result->{$relationship}->count()) {
+                                        $total++;
+                                    }
+                                }
+
+                                // Calculate progress percentage
+                                $progress = ($total / $totalvalue) * 100;
+                            @endphp
+
+                            <div class="progress-bar" role="progressbar" style="width:{{ round($progress) }}%;"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%</div>
                         </div>
+
+
                     </div>
                     <div class="col text-end">
                         <div class="btn-group">
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}" class="btn btn-success">
+                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
+                                class="btn btn-sm btn-outline-success">
                                 {{ trans('global.view') }}
                             </a>
-                            <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}" class="btn btn-success">
+                            <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
+                                class="btn btn-sm btn-outline-success">
                                 {{ trans('global.edit') }}
                             </a>
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}" class="btn btn-success">
+                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
+                                class="btn btn-sm btn-outline-success">
                                 {{ trans('global.print') }}
                             </a>
 

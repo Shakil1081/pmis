@@ -8,6 +8,12 @@
             padding: 4px !important;
             margin: 0px !important;
         }
+
+        a.nav-link:hover,
+        a.nav-link {
+            padding: 2px 4px;
+            font-size: 12px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -15,11 +21,11 @@
         <div class="container">
             <div class="row">
                 @include('admin.commonemployee.commonmenuemployeeshow')
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                         <div>
-                            <h3>General Information Content</h3>
-                            <table class="table-bordered table-striped table">
+                            <strong>General Information Content</strong>
+                            <table class="table-bordered table-striped table" id="General">
                                 <tbody>
                                     <tr>
                                         <th>
@@ -436,9 +442,9 @@
                             </table>
 
 
-                            <h4>Education</h4>
+                            <strong>Education</strong>
                             @foreach ($employeeList->educations as $educationInformatione)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="Education">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -529,10 +535,10 @@
 
 
 
-                            <h4> Professionales</h4>
+                            <strong> Professionales</strong>
 
                             @foreach ($employeeList->educations as $professionale)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="Professionales">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -607,10 +613,10 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.addressdetaile.title') }}</h4>
+                            <strong> {{ trans('cruds.addressdetaile.title') }}</strong>
 
                             @foreach ($employeeList->addressdetailes as $addressdetaile)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="addressdetaile">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -690,9 +696,9 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                            <h4>{{ trans('cruds.emergenceContacte.title') }}</h4>
+                            <strong>{{ trans('cruds.emergenceContacte.title') }}</strong>
                             @foreach ($employeeList->emergencecontactes as $emergenceContacte)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="emergenceContacte">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -758,10 +764,10 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.spouseInformatione.title') }}</h4>
+                            <strong> {{ trans('cruds.spouseInformatione.title') }}</strong>
 
                             @foreach ($employeeList->spouseinformationes as $spouseInformatione)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="spouseInformatione">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -865,10 +871,10 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.child.title') }}</h4>
+                            <strong> {{ trans('cruds.child.title') }}</strong>
 
                             @foreach ($employeeList->childinformationes as $child)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="child">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -993,10 +999,10 @@
                                 </table>
                             @endforeach
 
-                            <h4> {{ trans('cruds.jobHistory.title') }}</h4>
+                            <strong> {{ trans('cruds.jobHistory.title') }}</strong>
 
                             @foreach ($employeeList->jobhistories as $jobHistory)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="jobHistory">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -1118,10 +1124,10 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.employeePromotion.title') }}</h4>
+                            <strong> {{ trans('cruds.employeePromotion.title') }}</strong>
 
                             @foreach ($employeeList->employeepromotions as $employeePromotion)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="employeePromotion">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -1192,10 +1198,10 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.leaveRecord.title') }}</h4>
+                            <strong> {{ trans('cruds.leaveRecord.title') }}</strong>
 
                             @foreach ($employeeList->leaverecords as $leaveRecord)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="leaveRecord">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -1269,9 +1275,9 @@
                                 </table>
                             @endforeach
 
-                            <h4> {{ trans('cruds.serviceParticular.title') }}</h4>
+                            <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
                             @foreach ($employeeList->serviceparticulars as $serviceParticular)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="serviceParticular">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -1344,12 +1350,12 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                            <h4>
+                            <strong>
                                 {{ trans('cruds.training.title') }}
-                            </h4>
+                            </strong>
 
                             @foreach ($employeeList->trainings as $training)
-                                <table class="table-bordered table-striped table">
+                                <table class="table-bordered table-striped table" id="training">
                                     <tbody>
                                         <tr>
                                             <th>
@@ -1434,7 +1440,7 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                            <h4>{{ trans('cruds.travelRecord.title') }}</h4>
+                            <strong id="travelRecords">{{ trans('cruds.travelRecord.title') }}</strong>
 
 
                             @foreach ($employeeList->travelRecords as $travelRecord)
@@ -1513,7 +1519,7 @@
 
 
 
-                            <h4> {{ trans('cruds.foreignTravelPersonal.title') }}</h4>
+                            <strong id="foreignTravelPersonal"> {{ trans('cruds.foreignTravelPersonal.title') }}</strong>
 
                             @foreach ($employeeList->foreigntravelpersonals as $foreignTravelPersonal)
                                 <table class="table-bordered table-striped table">
@@ -1579,7 +1585,7 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.socialAssPrAttachment.title') }}</h4>
+                            <strong id="socialAssPrAttachment"> {{ trans('cruds.socialAssPrAttachment.title') }}</strong>
 
                             @foreach ($employeeList->socialassprattachments as $socialAssPrAttachment)
                                 <table class="table-bordered table-striped table">
@@ -1638,7 +1644,7 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                            <h4> {{ trans('cruds.extracurriculam.title') }}</h4>
+                            <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                             @foreach ($employeeList->extracurriculams as $extracurriculam)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
@@ -1742,7 +1748,7 @@
                                 </table>
                             @endforeach
 
-                            <h4> {{ trans('cruds.publication.title') }}</h4>
+                            <strong id="publication"> {{ trans('cruds.publication.title') }}</strong>
 
                             @foreach ($employeeList->publications as $publication)
                                 <table class="table-bordered table-striped table">
@@ -1825,7 +1831,7 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                            <h4> {{ trans('cruds.award.title') }}</h4>
+                            <strong id="awards"> {{ trans('cruds.award.title') }}</strong>
 
                             @foreach ($employeeList->awards as $award)
                                 <table class="table-bordered table-striped table">
@@ -1901,7 +1907,7 @@
                             @endforeach
 
 
-                            <h4> {{ trans('cruds.otherServiceJob.title') }}</h4>
+                            <strong id="otherservicejobs"> {{ trans('cruds.otherServiceJob.title') }}</strong>
 
                             @foreach ($employeeList->otherservicejobs as $otherServiceJob)
                                 <table class="table-bordered table-striped table">
@@ -1992,7 +1998,7 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                            <h4> {{ trans('cruds.language.title') }}</h4>
+                            <strong id="languages"> {{ trans('cruds.language.title') }}</strong>
 
                             @foreach ($employeeList->languages as $language)
                                 <table class="table-bordered table-striped table">
@@ -2060,7 +2066,7 @@
                                 </table>
                             @endforeach
 
-                            <h4> {{ trans('cruds.criminalProsecutione.title') }}</h4>
+                            <strong id="criminalProsecutione"> {{ trans('cruds.criminalProsecutione.title') }}</strong>
 
                             @foreach ($employeeList->criminalprosecutiones as $criminalProsecutione)
                                 <table class="table-bordered table-striped table">
@@ -2143,7 +2149,8 @@
                                 </table>
                             @endforeach
 
-                            <h4> {{ trans('cruds.criminalproDisciplinary.title') }}</h4>
+                            <strong id="criminalproDisciplinary">
+                                {{ trans('cruds.criminalproDisciplinary.title') }}</strong>
 
                             @foreach ($employeeList->criminalprodisciplinaries as $criminalproDisciplinary)
                                 <table class="table-bordered table-striped table">
@@ -2220,7 +2227,7 @@
 
 
 
-                            <h4>{{ trans('cruds.acrMonitoring.title') }}</h4>
+                            <strong id="acrMonitoring">{{ trans('cruds.acrMonitoring.title') }}</strong>
 
                             @foreach ($employeeList->acrmonitorings as $acrMonitoring)
                                 <table class="table-bordered table-striped table">
@@ -2290,4 +2297,22 @@
                         </div>
                     </div>
                 </div>
+            @endsection
+
+            @section('scripts')
+                @parent
+
+                <script>
+                    $(document).ready(function() {
+                        // Add active class to clicked menu item and remove from others
+                        $('.nav-link').on('click', function() {
+                            $('.nav-link').removeClass('active');
+                            $(this).addClass('active');
+                        });
+
+                        // Add active class on page load based on URL hash
+                        var hash = window.location.hash;
+                        $('.nav-link[href="' + hash + '"]').addClass('active');
+                    });
+                </script>
             @endsection

@@ -36,7 +36,7 @@ class EmployeeListController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $data['allresult'] = EmployeeList::paginate(10);
+        $data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
         $data['total'] = EmployeeList::count();
 
         // You can specify the number of items per page, for example, 10
