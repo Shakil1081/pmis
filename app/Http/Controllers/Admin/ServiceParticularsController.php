@@ -7,7 +7,6 @@ use App\Http\Requests\MassDestroyServiceParticularRequest;
 use App\Http\Requests\StoreServiceParticularRequest;
 use App\Http\Requests\UpdateServiceParticularRequest;
 use App\Models\Designation;
-use App\Models\EmployeeList;
 use App\Models\ServiceParticular;
 use Gate;
 use Illuminate\Http\Request;
@@ -19,7 +18,7 @@ class ServiceParticularsController extends Controller
     {
         abort_if(Gate::denies('service_particular_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $serviceParticulars = ServiceParticular::with(['designation', 'employee'])->get();
+        $serviceParticulars = ServiceParticular::with(['designation'])->get();
 
         return view('admin.serviceParticulars.index', compact('serviceParticulars'));
     }
@@ -30,9 +29,7 @@ class ServiceParticularsController extends Controller
 
         $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.serviceParticulars.create', compact('designations', 'employees'));
+        return view('admin.serviceParticulars.create', compact('designations'));
     }
 
     public function store(StoreServiceParticularRequest $request)
@@ -48,11 +45,9 @@ class ServiceParticularsController extends Controller
 
         $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $serviceParticular->load('designation');
 
-        $serviceParticular->load('designation', 'employee');
-
-        return view('admin.serviceParticulars.edit', compact('designations', 'employees', 'serviceParticular'));
+        return view('admin.serviceParticulars.edit', compact('designations', 'serviceParticular'));
     }
 
     public function update(UpdateServiceParticularRequest $request, ServiceParticular $serviceParticular)
@@ -66,7 +61,7 @@ class ServiceParticularsController extends Controller
     {
         abort_if(Gate::denies('service_particular_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $serviceParticular->load('designation', 'employee');
+        $serviceParticular->load('designation');
 
         return view('admin.serviceParticulars.show', compact('serviceParticular'));
     }

@@ -63,14 +63,6 @@
                             {{ $serviceParticular->release_date }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.serviceParticular.fields.employee') }}
-                        </th>
-                        <td>
-                            {{ $serviceParticular->employee->employeeid ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
