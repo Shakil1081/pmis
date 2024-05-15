@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroyForeignTravelPersonalRequest;
 use App\Http\Requests\StoreForeignTravelPersonalRequest;
 use App\Http\Requests\UpdateForeignTravelPersonalRequest;
 use App\Models\Country;
+use App\Models\EmployeeList;
 use App\Models\ForeignTravelPersonal;
 use App\Models\TravelPurpose;
 use App\Models\TravelRecord;
@@ -22,7 +23,7 @@ class ForeignTravelPersonalController extends Controller
         abort_if(Gate::denies('foreign_travel_personal_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ForeignTravelPersonal::with(['country', 'purpose', 'leave'])->select(sprintf('%s.*', (new ForeignTravelPersonal)->table));
+            $query = ForeignTravelPersonal::with(['country', 'purpose', 'leave', 'employee'])->select(sprintf('%s.*', (new ForeignTravelPersonal)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -64,8 +65,15 @@ class ForeignTravelPersonalController extends Controller
             $table->editColumn('leave.title', function ($row) {
                 return $row->leave ? (is_string($row->leave) ? $row->leave : $row->leave->title) : '';
             });
+            $table->addColumn('employee_employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'country', 'purpose', 'leave']);
+            $table->editColumn('employee.fullname_bn', function ($row) {
+                return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'country', 'purpose', 'leave', 'employee']);
 
             return $table->make(true);
         }
@@ -83,7 +91,9 @@ class ForeignTravelPersonalController extends Controller
 
         $leaves = TravelRecord::pluck('start_date', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.foreignTravelPersonals.create', compact('countries', 'leaves', 'purposes'));
+        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.foreignTravelPersonals.create', compact('countries', 'employees', 'leaves', 'purposes'));
     }
 
     public function store(StoreForeignTravelPersonalRequest $request)
@@ -103,9 +113,11 @@ class ForeignTravelPersonalController extends Controller
 
         $leaves = TravelRecord::pluck('start_date', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $foreignTravelPersonal->load('country', 'purpose', 'leave');
+        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.foreignTravelPersonals.edit', compact('countries', 'foreignTravelPersonal', 'leaves', 'purposes'));
+        $foreignTravelPersonal->load('country', 'purpose', 'leave', 'employee');
+
+        return view('admin.foreignTravelPersonals.edit', compact('countries', 'employees', 'foreignTravelPersonal', 'leaves', 'purposes'));
     }
 
     public function update(UpdateForeignTravelPersonalRequest $request, ForeignTravelPersonal $foreignTravelPersonal)
@@ -119,7 +131,7 @@ class ForeignTravelPersonalController extends Controller
     {
         abort_if(Gate::denies('foreign_travel_personal_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $foreignTravelPersonal->load('country', 'purpose', 'leave');
+        $foreignTravelPersonal->load('country', 'purpose', 'leave', 'employee');
 
         return view('admin.foreignTravelPersonals.show', compact('foreignTravelPersonal'));
     }

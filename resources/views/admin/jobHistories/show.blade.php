@@ -111,6 +111,14 @@
                             {{ $jobHistory->employee->employeeid ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.grade') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->grade->name_bn ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

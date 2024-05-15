@@ -30,6 +30,14 @@ class StoreGradeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'current_basic_pay' => [
+                'string',
+                'nullable',
+            ],
+            'basic_pay_scale' => [
+                'string',
+                'required',
+            ],
         ];
     }
 }

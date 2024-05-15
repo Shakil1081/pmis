@@ -23,6 +23,8 @@ class Grade extends Model
         'name_bn',
         'name_en',
         'salary_range',
+        'current_basic_pay',
+        'basic_pay_scale',
         'created_at',
         'updated_at',
         'deleted_at',

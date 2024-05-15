@@ -65,6 +65,12 @@
                         {{ trans('cruds.employeeList.fields.fullname_bn') }}
                     </th>
                     <th>
+                        {{ trans('cruds.jobHistory.fields.grade') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.grade.fields.salary_range') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -133,6 +139,8 @@
 { data: 'level_5', name: 'level_5' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'employee.fullname_bn', name: 'employee.fullname_bn' },
+{ data: 'grade_name_bn', name: 'grade.name_bn' },
+{ data: 'grade.salary_range', name: 'grade.salary_range' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

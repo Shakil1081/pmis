@@ -40,6 +40,26 @@
                 <span class="help-block">{{ trans('cruds.grade.fields.salary_range_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="current_basic_pay">{{ trans('cruds.grade.fields.current_basic_pay') }}</label>
+                <input class="form-control {{ $errors->has('current_basic_pay') ? 'is-invalid' : '' }}" type="text" name="current_basic_pay" id="current_basic_pay" value="{{ old('current_basic_pay', '') }}">
+                @if($errors->has('current_basic_pay'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('current_basic_pay') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.grade.fields.current_basic_pay_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="basic_pay_scale">{{ trans('cruds.grade.fields.basic_pay_scale') }}</label>
+                <input class="form-control {{ $errors->has('basic_pay_scale') ? 'is-invalid' : '' }}" type="text" name="basic_pay_scale" id="basic_pay_scale" value="{{ old('basic_pay_scale', '') }}" required>
+                @if($errors->has('basic_pay_scale'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('basic_pay_scale') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.grade.fields.basic_pay_scale_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
