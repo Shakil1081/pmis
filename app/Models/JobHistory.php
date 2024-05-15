@@ -34,6 +34,7 @@ class JobHistory extends Model
         'level_4',
         'level_5',
         'employee_id',
+        'grade_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -77,5 +78,10 @@ class JobHistory extends Model
     public function employee()
     {
         return $this->belongsTo(EmployeeList::class, 'employee_id');
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
     }
 }

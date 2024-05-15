@@ -22,6 +22,7 @@ class SocialAssPrAttachment extends Model
         'degree_membership_organization',
         'description',
         'certificate_achievement',
+        'employee_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -30,5 +31,10 @@ class SocialAssPrAttachment extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(EmployeeList::class, 'employee_id');
     }
 }

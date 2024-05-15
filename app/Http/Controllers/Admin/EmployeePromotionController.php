@@ -89,8 +89,8 @@ class EmployeePromotionController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $employeePromotion->id]);
         }
-
-        return redirect()->route('admin.employee-promotions.index');
+        return redirect()->back()->with('status', 'Action successful!');
+       // return redirect()->route('admin.employee-promotions.index');
     }
 
     public function edit(EmployeePromotion $employeePromotion)

@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'site_title' => 'Pims2024',
+    'site_title' => 'TEST2024',
 
 ];
