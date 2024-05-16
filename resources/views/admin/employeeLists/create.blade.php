@@ -3,7 +3,8 @@
     <div class="">
         <div class="container my-3">
             <h4> Add Employee</h4>
-            <form method="POST" action="{{ route('admin.employee-lists.store', ['employee_id' => request()->query('id')]) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.employee-lists.store', ['employee_id' => request()->query('id')]) }}"
+                enctype="multipart/form-data">
                 @csrf
 
 
@@ -128,8 +129,9 @@
                         <div class="form-group">
                             <label class="required"
                                 for="date_of_birth">{{ trans('cruds.employeeList.fields.date_of_birth') }}</label>
-                            <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
-                                type="text" name="date_of_birth" id="date_of_birth"
+                            <input
+                                class="form-control date___remove {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
+                                type="date" name="date_of_birth" id="date_of_birth"
                                 value="{{ old('date_of_birth') }}" required>
                             @if ($errors->has('date_of_birth'))
                                 <div class="invalid-feedback">
@@ -137,6 +139,18 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.date_of_birth_helper') }}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prl_date">{{ trans('cruds.employeeList.fields.prl_date') }}</label>
+                            <input class="form-control date {{ $errors->has('prl_date') ? 'is-invalid' : '' }}"
+                                type="text" name="prl_date" id="prl_date" value="{{ old('prl_date') }}" disabled>
+                            @if ($errors->has('prl_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('prl_date') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.prl_date_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label
@@ -151,17 +165,6 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.birth_certificate_upload_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="prl_date">{{ trans('cruds.employeeList.fields.prl_date') }}</label>
-                            <input class="form-control date {{ $errors->has('prl_date') ? 'is-invalid' : '' }}"
-                                type="text" name="prl_date" id="prl_date" value="{{ old('prl_date') }}">
-                            @if ($errors->has('prl_date'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('prl_date') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.prl_date_helper') }}</span>
                         </div>
                     </div>
 
@@ -687,6 +690,76 @@
 @endsection
 
 @section('scripts')
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateOfBirthInput = document.getElementById('date_of_birth');
+            const prlDateInput = document.getElementById('prl_date');
+
+            dateOfBirthInput.addEventListener('change', function() {
+                const dateOfBirth = new Date(dateOfBirthInput.value);
+
+                if (!isNaN(dateOfBirth)) {
+                    const prlDate = new Date(dateOfBirth);
+                    prlDate.setFullYear(prlDate.getFullYear() + 59);
+                    prlDate.setDate(prlDate.getDate() - 1); // Last day before turning 59
+
+                    const formattedPrlDate = prlDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+                    prlDateInput.value = formattedPrlDate;
+                } else {
+                    prlDateInput.value = ''; // Clear PRL date if date_of_birth is invalid
+                }
+            });
+        });
+    </script> --}}
+    <!-- Include flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Include flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#date_of_birth", {
+                dateFormat: "d/m/Y",
+                onChange: function(selectedDates, dateStr, instance) {
+                    const dateOfBirth = selectedDates[0];
+
+                    if (dateOfBirth) {
+                        const prlDate = new Date(dateOfBirth);
+                        prlDate.setFullYear(prlDate.getFullYear() + 59);
+                        prlDate.setDate(prlDate.getDate() - 1); // Last day before turning 59
+
+                        const formattedPrlDate = flatpickr.formatDate(prlDate, "d/m/Y");
+                        document.getElementById('prl_date').value = formattedPrlDate;
+                    } else {
+                        document.getElementById('prl_date').value =
+                            ''; // Clear PRL date if date_of_birth is invalid
+                    }
+                }
+            });
+
+            flatpickr("#prl_date", {
+                dateFormat: "d/m/Y"
+            });
+
+            document.getElementById('employee-form').addEventListener('submit', function() {
+                const dateOfBirthInput = document.getElementById('date_of_birth');
+                const prlDateInput = document.getElementById('prl_date');
+
+                if (dateOfBirthInput.value) {
+                    const dateParts = dateOfBirthInput.value.split('/');
+                    dateOfBirthInput.value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+                }
+
+                if (prlDateInput.value) {
+                    const dateParts = prlDateInput.value.split('/');
+                    prlDateInput.value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+                }
+            });
+        });
+    </script>
+
+
     <script>
         Dropzone.options.birthCertificateUploadDropzone = {
             url: '{{ route('admin.employee-lists.storeMedia') }}',

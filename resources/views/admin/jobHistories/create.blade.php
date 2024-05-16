@@ -65,6 +65,25 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="required"
+                                        for="grade_id">{{ trans('cruds.jobHistory.fields.grade') }}</label>
+                                    <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
+                                        name="grade_id" id="grade_id" required>
+                                        @foreach ($grades as $id => $entry)
+                                            <option value="{{ $id }}"
+                                                {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('grade'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('grade') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.grade_helper') }}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required"
                                         for="joining_date">{{ trans('cruds.jobHistory.fields.joining_date') }}</label>
                                     <input class="form-control date {{ $errors->has('joining_date') ? 'is-invalid' : '' }}"
                                         type="text" name="joining_date" id="joining_date"
@@ -135,28 +154,6 @@
                                         id="head_office_input">
                                 </div>
 
-
-                                <div class="form-group">
-                                    <label class="required"
-                                        for="grade_id">{{ trans('cruds.jobHistory.fields.grade') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
-                                        name="grade_id" id="grade_id" required>
-                                        @foreach ($grades as $id => $entry)
-                                            <option value="{{ $id }}"
-                                                {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('grade'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('grade') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.grade_helper') }}</span>
-                                </div>
-
-
-
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
@@ -191,14 +188,10 @@
                 level2Select.disabled = true;
                 level3Select.disabled = true;
                 level4Select.disabled = true;
-
                 if (this.value === 'Head Office') {
-                    level2Select.disabled = false;
-                    level2Select.innerHTML = `
-                        <option value="">Select Unit</option>
-                        <option value="Posting in Office">Posting in Office</option>
-                        <option value="Division">Division</option>
-                    `;
+                    inputFieldContainer.style.display = 'block';
+                } else {
+                    inputFieldContainer.style.display = 'none';
                 }
 
                 if (this.value === 'Circle') {

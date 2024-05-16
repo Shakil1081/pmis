@@ -15,6 +15,8 @@ class AddRelationshipFieldsToJobHistoriesTable extends Migration
             $table->foreign('designation_id', 'designation_fk_9732855')->references('id')->on('designations');
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->foreign('employee_id', 'employee_fk_9733003')->references('id')->on('employee_lists');
+            $table->unsignedBigInteger('grade_id')->nullable();
+            $table->foreign('grade_id', 'grade_fk_9789447')->references('id')->on('grades');
         });
     }
 }
