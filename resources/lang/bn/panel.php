@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'site_title' => 'TEST2024',
+    'site_title' => 'বন অধিদপ্তর',
 
 ];

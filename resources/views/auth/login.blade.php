@@ -87,11 +87,9 @@
                 </div>
                 <div class="col-lg-6 d-lg-flex d-none">
                     <div class="rounded-4 w-100 d-flex align-items-center justify-content-center bg-light p-3">
-                        <img src="assets/images/auth/bg-login.png"
-                            style="
-                        height: 100%;
-                    " class="img-fluid"
-                            alt="">
+                        <img src="assets/images/auth/bg-login.png" style="height: 100%;" class="img-fluid"
+                            alt="Background Login Image" loading="lazy">
+
                     </div>
                 </div>
 
