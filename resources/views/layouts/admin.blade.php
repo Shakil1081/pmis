@@ -152,6 +152,13 @@
     </style>
     @yield('styles')
     @stack('css')
+    <style>
+        html,
+        body,
+        div {
+            font-family: bangla;
+        }
+    </style>
 </head>
 
 <body class="c-app">

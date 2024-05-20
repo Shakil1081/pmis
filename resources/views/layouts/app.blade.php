@@ -21,6 +21,13 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dark-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+    <style>
+        html,
+        body,
+        div {
+            font-family: bangla;
+        }
+    </style>
 </head>
 
 
