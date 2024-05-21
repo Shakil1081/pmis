@@ -639,7 +639,11 @@ return [
             'thana_upazila_helper' => ' ',
             'phone_number'         => 'টেলিফোন/মোবাইল নাম্বার',
             'phone_number_helper'  => ' ',
+<<<<<<< HEAD
             'status'               => 'Status',
+=======
+            'status'               => 'অবস্থা',
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
             'status_helper'        => ' ',
         ],
     ],
@@ -1448,7 +1452,10 @@ return [
         ],
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
     'employeeListDetail' => [
         'title'          => 'কর্মকর্তা/কর্মচারী তালিকার বিস্তারিত',
         'title_singular' => 'কর্মকর্তা/কর্মচারী তালিকার বিস্তারিত',
@@ -1505,6 +1512,7 @@ return [
             'updated_at_helper'                 => ' ',
             'deleted_at'                        => 'মুছে ফেলা হয়েছে',
             'deleted_at_helper'                 => ' ',
+<<<<<<< HEAD
 
     'freedomFighteRelation' => [
         'title'          => 'Freedom Fighte Relation',
@@ -1599,6 +1607,8 @@ return [
             'deleted_at'                        => 'Deleted at',
             'deleted_at_helper'                 => ' ',
 >>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
         ],
     ],
 

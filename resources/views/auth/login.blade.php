@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
     <!--authentication-->
 
     <div class="mx-lg-0 mx-3">
@@ -34,6 +37,7 @@
     <!--authentication-->
 >>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
 
+<<<<<<< HEAD
     <div class="mx-lg-0 mx-3">
 
         <div class="card col-xl-9 col-xxl-8 rounded-4 mx-auto my-5 overflow-hidden p-4">
@@ -58,6 +62,11 @@
 
                             <form method="POST" class="row g-3" action="{{ route('login') }}">
 
+=======
+
+                            <form method="POST" class="row g-3" action="{{ route('login') }}">
+
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
                                 @csrf
 
                                 <div class="col-12">
@@ -102,7 +111,10 @@
                                         </a><br>
                                     @endif
 
+<<<<<<< HEAD
 >>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
@@ -145,9 +157,12 @@
 
             </div><!--end row-->
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
         </div>
 
     </div>

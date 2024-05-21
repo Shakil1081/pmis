@@ -3,7 +3,10 @@
 
 <head>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ env('APP_TITLE', 'PIMS') }}</title>
@@ -39,9 +42,12 @@
             font-family: bangla;
         }
     </style>
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
+=======
+>>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
 </head>
 
 
