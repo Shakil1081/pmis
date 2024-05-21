@@ -90,8 +90,8 @@ class CriminalProsecutioneController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $criminalProsecutione->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.criminal-prosecutiones.index');
+
+        return redirect()->route('admin.criminal-prosecutiones.index');
     }
 
     public function edit(CriminalProsecutione $criminalProsecutione)

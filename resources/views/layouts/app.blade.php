@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ env('APP_TITLE', 'PIMS') }}</title>
@@ -28,13 +29,14 @@
             font-family: bangla;
         }
     </style>
+
 </head>
 
-
-<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page" style="background: #75553c;">
-    <div class="c-app align-items-center flex-row">
-
-        @yield('content')
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
+    <div class="c-app flex-row align-items-center">
+        <div class="container">
+            @yield("content")
+        </div>
     </div>
     @yield('scripts')
 </body>
