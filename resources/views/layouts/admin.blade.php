@@ -9,20 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ trans('panel.site_title') }}</title>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png">
 
-=======
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
-
-=======
-    <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png">
-
->>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />
@@ -30,11 +19,7 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
-<<<<<<< HEAD
-    <!--=====-->
-=======
 
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
@@ -47,259 +32,257 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css"
         rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-<<<<<<< HEAD
+    <<<<<<< HEAD <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}"
+        rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
+        <!--bootstrap css-->
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+        <!--main css-->
+        <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+        <style>
+            .dropzone .dz-preview .dz-image {
+                height: 20px;
+            }
+
+            .dropzone {
+                min-height: 40px !important;
+                padding: 7px;
+                background-color: #4c944e45;
+                border: gainsboro;
+                border-radius: 5px;
+            }
+
+            .dropzone .dz-message {
+                margin: 0px;
+            }
+
+            .dropzone .dz-preview {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                margin: 0px 4px;
+                min-height: 39px;
+                width: 98%;
+            }
+
+            .dropzone .dz-preview .dz-details {
+                padding: 0px !important;
+            }
+
+            .dropzone .dz-preview .dz-details {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                font-size: 13px;
+                min-width: unset;
+                max-width: unset;
+                padding: 0;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.9);
+                line-height: 150%;
+            }
+
+            .dropzone .dz-preview .dz-details .dz-size {
+                margin: 0px;
+            }
+
+            ul.c-sidebar-nav.ps {
+                background: #4c944e !important;
+            }
+
+            .c-sidebar .c-sidebar-brand,
+            .c-sidebar .c-sidebar-header {
+                background: #f5f5f5 !important;
+            }
+
+            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
+            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+                color: #fff;
+            }
+
+            .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+            .c-sidebar .c-sidebar-nav-link:hover {
+                background: #4c944e !important;
+            }
+
+            .border-secondary {
+                border-color: rgb(108 117 125 / 14%) !important;
+            }
+
+            a.nav-link.c-active {
+                font-weight: bold;
+                color: #4c944e;
+                border-color: #3d763e !important;
+            }
+
+            a.nav-link:hover,
+            a.nav-link {
+                border-left: 1px solid #d2d2d2;
+                margin-bottom: 1px;
+                padding: 6px 12px;
+                margin-bottom: 0px;
+                border-radius: 0 !important;
+                /* border-bottom: 1px dashed #d1e3d1; */
+
+                /*font-size: 12px; */
+            }
+
+            .buttons-pdf,
+            .buttons-copy,
+            .buttons-print,
+            .buttons-csv {
+                display: none;
+            }
+
+            .pagination a {
+                font-size: 14px;
+                /* Adjust the font size as needed */
+            }
+        </style>
+        @yield('styles')
 
 
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
-    <!--bootstrap css-->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
-    <!--main css-->
-    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
-    <style>
-        .dropzone .dz-preview .dz-image {
-            height: 20px;
-        }
 
-        .dropzone {
-            min-height: 40px !important;
-            padding: 7px;
-            background-color: #4c944e45;
-            border: gainsboro;
-            border-radius: 5px;
-        }
+        <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
+        <!--bootstrap css-->
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+        <!--main css-->
+        <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+        <style>
+            .dropzone .dz-preview .dz-image {
+                height: 20px;
+            }
 
-        .dropzone .dz-message {
-            margin: 0px;
-        }
+            .dropzone {
+                min-height: 40px !important;
+                padding: 7px;
+                background-color: #4c944e45;
+                border: gainsboro;
+                border-radius: 5px;
+            }
 
-        .dropzone .dz-preview {
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            margin: 0px 4px;
-            min-height: 39px;
-            width: 98%;
-        }
+            .dropzone .dz-message {
+                margin: 0px;
+            }
 
-        .dropzone .dz-preview .dz-details {
-            padding: 0px !important;
-        }
+            .dropzone .dz-preview {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+                margin: 0px 4px;
+                min-height: 39px;
+                width: 98%;
+            }
 
-        .dropzone .dz-preview .dz-details {
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            font-size: 13px;
-            min-width: unset;
-            max-width: unset;
-            padding: 0;
-            text-align: center;
-            color: rgba(0, 0, 0, 0.9);
-            line-height: 150%;
-        }
+            .dropzone .dz-preview .dz-details {
+                padding: 0px !important;
+            }
 
-        .dropzone .dz-preview .dz-details .dz-size {
-            margin: 0px;
-        }
+            .dropzone .dz-preview .dz-details {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                font-size: 13px;
+                min-width: unset;
+                max-width: unset;
+                padding: 0;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.9);
+                line-height: 150%;
+            }
 
-        ul.c-sidebar-nav.ps {
-            background: #4c944e !important;
-        }
+            .dropzone .dz-preview .dz-details .dz-size {
+                margin: 0px;
+            }
 
-        .c-sidebar .c-sidebar-brand,
-        .c-sidebar .c-sidebar-header {
-            background: #f5f5f5 !important;
-        }
+            ul.c-sidebar-nav.ps {
+                background: #4c944e !important;
+            }
 
-        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
-        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
-            color: #fff;
-        }
+            .c-sidebar .c-sidebar-brand,
+            .c-sidebar .c-sidebar-header {
+                background: #f5f5f5 !important;
+            }
 
-        .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
-        .c-sidebar .c-sidebar-nav-link:hover {
-            background: #4c944e !important;
-        }
+            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
+            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+                color: #fff;
+            }
 
-        .border-secondary {
-            border-color: rgb(108 117 125 / 14%) !important;
-        }
+            .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+            .c-sidebar .c-sidebar-nav-link:hover {
+                background: #4c944e !important;
+            }
 
-        a.nav-link.c-active {
-            font-weight: bold;
-            color: #4c944e;
-            border-color: #3d763e !important;
-        }
+            .border-secondary {
+                border-color: rgb(108 117 125 / 14%) !important;
+            }
 
-        a.nav-link:hover,
-        a.nav-link {
-            border-left: 1px solid #d2d2d2;
-            margin-bottom: 1px;
-            padding: 6px 12px;
-            margin-bottom: 0px;
-            border-radius: 0 !important;
-            /* border-bottom: 1px dashed #d1e3d1; */
+            a.nav-link.c-active {
+                font-weight: bold;
+                color: #4c944e;
+                border-color: #3d763e !important;
+            }
 
-            /*font-size: 12px; */
-        }
+            a.nav-link:hover,
+            a.nav-link {
+                border-left: 1px solid #d2d2d2;
+                margin-bottom: 1px;
+                padding: 6px 12px;
+                margin-bottom: 0px;
+                border-radius: 0 !important;
+                /* border-bottom: 1px dashed #d1e3d1; */
 
-        .buttons-pdf,
-        .buttons-copy,
-        .buttons-print,
-        .buttons-csv {
-            display: none;
-        }
+                /*font-size: 12px; */
+            }
 
-        .pagination a {
-            font-size: 14px;
-            /* Adjust the font size as needed */
-        }
-    </style>
-    @yield('styles')
-<<<<<<< HEAD
-=======
->>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
+            .buttons-pdf,
+            .buttons-copy,
+            .buttons-print,
+            .buttons-csv {
+                display: none;
+            }
 
+            .pagination a {
+                font-size: 14px;
+                /* Adjust the font size as needed */
+            }
+        </style>
+        @yield('styles')
+        @stack('css')
+        <style>
+            html,
+            body,
+            div {
+                font-family: bangla;
+            }
+        </style>
 
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
-    <!--bootstrap css-->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
-    <!--main css-->
-    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
-    <style>
-        .dropzone .dz-preview .dz-image {
-            height: 20px;
-        }
+        @stack('css')
 
-        .dropzone {
-            min-height: 40px !important;
-            padding: 7px;
-            background-color: #4c944e45;
-            border: gainsboro;
-            border-radius: 5px;
-        }
-
-        .dropzone .dz-message {
-            margin: 0px;
-        }
-
-        .dropzone .dz-preview {
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            margin: 0px 4px;
-            min-height: 39px;
-            width: 98%;
-        }
-
-        .dropzone .dz-preview .dz-details {
-            padding: 0px !important;
-        }
-
-        .dropzone .dz-preview .dz-details {
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            font-size: 13px;
-            min-width: unset;
-            max-width: unset;
-            padding: 0;
-            text-align: center;
-            color: rgba(0, 0, 0, 0.9);
-            line-height: 150%;
-        }
-
-        .dropzone .dz-preview .dz-details .dz-size {
-            margin: 0px;
-        }
-
-        ul.c-sidebar-nav.ps {
-            background: #4c944e !important;
-        }
-
-        .c-sidebar .c-sidebar-brand,
-        .c-sidebar .c-sidebar-header {
-            background: #f5f5f5 !important;
-        }
-
-        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
-        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
-            color: #fff;
-        }
-
-        .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
-        .c-sidebar .c-sidebar-nav-link:hover {
-            background: #4c944e !important;
-        }
-
-        .border-secondary {
-            border-color: rgb(108 117 125 / 14%) !important;
-        }
-
-        a.nav-link.c-active {
-            font-weight: bold;
-            color: #4c944e;
-            border-color: #3d763e !important;
-        }
-
-        a.nav-link:hover,
-        a.nav-link {
-            border-left: 1px solid #d2d2d2;
-            margin-bottom: 1px;
-            padding: 6px 12px;
-            margin-bottom: 0px;
-            border-radius: 0 !important;
-            /* border-bottom: 1px dashed #d1e3d1; */
-
-            /*font-size: 12px; */
-        }
-
-        .buttons-pdf,
-        .buttons-copy,
-        .buttons-print,
-        .buttons-csv {
-            display: none;
-        }
-
-        .pagination a {
-            font-size: 14px;
-            /* Adjust the font size as needed */
-        }
-    </style>
-    @yield('styles')
-    @stack('css')
-    <style>
-        html,
-        body,
-        div {
-            font-family: bangla;
-        }
-    </style>
-=======
-    @stack('css')
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
 </head>
 
 <body class="c-app">

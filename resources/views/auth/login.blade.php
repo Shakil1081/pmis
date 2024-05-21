@@ -1,15 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
-    <!--authentication-->
-
     <div class="mx-lg-0 mx-3">
 
-        <div class="card col-xl-8 col-xxl-8 rounded-4 mx-auto my-5 overflow-hidden p-3">
+        <div class="card col-xl-9 col-xxl-8 rounded-4 mx-auto my-5 overflow-hidden p-4">
             <div class="row g-4">
                 <div class="col-lg-6 d-flex">
                     <div class="card-body mt-3">
@@ -25,28 +18,6 @@
                                 <p class="mb-0">Enter your credentials to login your account</p>
                             </div>
                         </div>
-                        <div class="form-body mt-4">
-                            @if (session('message'))
-                                <div class="alert alert-info" role="alert">
-                                    {{ session('message') }}
-                                </div>
-                            @endif
-
-
-=======
-    <!--authentication-->
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
-
-<<<<<<< HEAD
-    <div class="mx-lg-0 mx-3">
-
-        <div class="card col-xl-9 col-xxl-8 rounded-4 mx-auto my-5 overflow-hidden p-4">
-            <div class="row g-4">
-                <div class="col-lg-6 d-flex">
-                    <div class="card-body">
-                        <img src="assets/images/logo1.png" class="mb-4" width="145" alt="">
-                        <h4 class="fw-bold">Get Started Now</h4>
-                        <p class="mb-0">Enter your credentials to login your account</p>
 
                         <div class="form-body mt-4">
                             @if (session('message'))
@@ -54,19 +25,8 @@
                                     {{ session('message') }}
                                 </div>
                             @endif
-<<<<<<< HEAD
-=======
-
-
-
-
                             <form method="POST" class="row g-3" action="{{ route('login') }}">
 
-=======
-
-                            <form method="POST" class="row g-3" action="{{ route('login') }}">
-
->>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
                                 @csrf
 
                                 <div class="col-12">
@@ -111,64 +71,29 @@
                                         </a><br>
                                     @endif
 
-<<<<<<< HEAD
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
-=======
->>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
+
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
                                         <button type="submit" class="btn btn-primary">Login</button>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                                {{-- <div class="col-12">
-=======
-                                <div class="col-12">
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
-                                    <div class="text-start">
-                                        <p class="mb-0">Don't have an account yet? <a href="auth-boxed-register.html">Sign
-                                                up here</a>
-                                        </p>
-                                    </div>
-<<<<<<< HEAD
-                                </div> --}}
-=======
-                                </div>
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
+
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 d-lg-flex d-none">
                     <div class="rounded-4 w-100 d-flex align-items-center justify-content-center bg-light p-3">
-<<<<<<< HEAD
                         <img src="assets/images/auth/bg-login.png" class="img-fluid"style="max-height: 464px;width: 100%;"
                             class="img-fluid" alt="Background Login Image" loading="lazy">
-=======
-                        <img src="assets/images/auth/bg-login.png"
-                            style="
-                        height: 100%;
-                    " class="img-fluid"
-                            alt="">
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
                     </div>
                 </div>
 
             </div><!--end row-->
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
-=======
->>>>>>> parent of 90e809a (Merge branch 'quickadminpanel_2024_05_21_12_41_09' into shakil-dev)
         </div>
 
     </div>
-
-
-
-
     <!--authentication-->
 @endsection
