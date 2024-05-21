@@ -120,8 +120,8 @@ return [
         ],
     ],
     'maritalstatus' => [
-        'title'          => 'Maritalstatu',
-        'title_singular' => 'Maritalstatu',
+        'title'          => 'Marital Status',
+        'title_singular' => 'Marital Status',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -194,7 +194,7 @@ return [
         ],
     ],
     'quotum' => [
-        'title'          => 'Quota',
+        'title'          => 'Recruitment Quota',
         'title_singular' => 'Quotum',
         'fields'         => [
             'id'                => 'ID',
@@ -415,7 +415,7 @@ return [
             'mname_en_helper'                      => ' ',
             'date_of_birth'                        => 'Date Of Birth',
             'date_of_birth_helper'                 => ' ',
-            'height'                               => 'Height',
+            'height'                               => 'Height(In CM)',
             'height_helper'                        => ' ',
             'special_identity'                     => 'Special Sign/ Identification Sign (If applicable)',
             'special_identity_helper'              => ' ',
@@ -453,9 +453,9 @@ return [
             'fjoining_letter_helper'               => ' ',
             'date_of_con_serviec'                  => 'Date of Confirmation in service',
             'date_of_con_serviec_helper'           => ' ',
-            'quota'                                => 'Quota',
+            'quota'                                => 'Recruitment Quota',
             'quota_helper'                         => ' ',
-            'electric_signature'                   => 'Electric Signature',
+            'electric_signature'                   => 'Digital Signature',
             'electric_signature_helper'            => 'Max file size 2MB jpg',
             'employee_photo'                       => 'Employee Photo',
             'employee_photo_helper'                => ' ',
@@ -475,7 +475,7 @@ return [
             'batch_helper'                         => ' ',
             'birth_certificate_upload'             => 'Birth Certificate Upload',
             'birth_certificate_upload_helper'      => ' ',
-            'prl_date'                             => 'PRD Date',
+            'prl_date'                             => 'PRL Date',
             'prl_date_helper'                      => ' ',
             'first_joining_office_name'            => 'First Joining Office Name',
             'first_joining_office_name_helper'     => ' ',
@@ -796,7 +796,7 @@ return [
         ],
     ],
     'employeePromotion' => [
-        'title'          => 'Promotion Information',
+        'title'          => 'Promotion/Time Scale/Selection Grade',
         'title_singular' => 'Promotion Information',
         'fields'         => [
             'id'                       => 'ID',

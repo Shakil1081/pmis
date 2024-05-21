@@ -120,7 +120,7 @@ return [
         ],
     ],
     'maritalstatus' => [
-        'title'          => 'Maritalstatu',
+        'title'          => 'Marital Status',
         'title_singular' => 'Maritalstatu',
         'fields'         => [
             'id'                => 'ID',
@@ -194,7 +194,7 @@ return [
         ],
     ],
     'quotum' => [
-        'title'          => 'Quota',
+        'title'          => 'Recruitment Quota',
         'title_singular' => 'Quotum',
         'fields'         => [
             'id'                => 'ID',
@@ -415,7 +415,7 @@ return [
             'mname_en_helper'                      => ' ',
             'date_of_birth'                        => 'Date Of Birth',
             'date_of_birth_helper'                 => ' ',
-            'height'                               => 'Height',
+            'height'                               => 'Height(In CM)',
             'height_helper'                        => ' ',
             'special_identity'                     => 'Special Sign/ Identification Sign (If applicable)',
             'special_identity_helper'              => ' ',
@@ -453,9 +453,9 @@ return [
             'fjoining_letter_helper'               => ' ',
             'date_of_con_serviec'                  => 'Date of Confirmation in service',
             'date_of_con_serviec_helper'           => ' ',
-            'quota'                                => 'Quota',
+            'quota'                                => 'Recruitment Quota',
             'quota_helper'                         => ' ',
-            'electric_signature'                   => 'Electric Signature',
+            'electric_signature'                   => 'Digital Signature',
             'electric_signature_helper'            => 'Max file size 2MB jpg',
             'employee_photo'                       => 'Employee Photo',
             'employee_photo_helper'                => ' ',
@@ -796,7 +796,7 @@ return [
         ],
     ],
     'employeePromotion' => [
-        'title'          => 'Promotion Information',
+        'title'          => 'Promotion/Time Scale/Selection Grade',
         'title_singular' => 'Promotion Information',
         'fields'         => [
             'id'                       => 'ID',
