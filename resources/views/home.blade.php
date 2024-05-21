@@ -2,8 +2,8 @@
 @section('content')
     <div class="content">
         <div class="row">
-            {{-- 
-            <div class="row">
+
+            {{-- <div class="row">
                 <div class="col-12 col-lg-6 col-xl-3">
                     <div class="card">
                         <div class="card-body">
@@ -1269,7 +1269,6 @@
             </div> --}}
 
 
-
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
@@ -1321,7 +1320,6 @@
                                 <h3>{!! $chart9->options['chart_title'] !!}</h3>
                                 {!! $chart9->renderHtml() !!}
                             </div>
-
                         </div>
                     </div>
                 </div>
