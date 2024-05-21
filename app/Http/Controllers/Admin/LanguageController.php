@@ -87,8 +87,8 @@ class LanguageController extends Controller
     public function store(StoreLanguageRequest $request)
     {
         $language = Language::create($request->all());
-
-        return redirect()->route('admin.languages.index');
+        return redirect()->back()->with('status', 'Action successful!');
+       // return redirect()->route('admin.languages.index');
     }
 
     public function edit(Language $language)

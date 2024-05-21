@@ -90,8 +90,8 @@ class CriminalproDisciplinaryController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $criminalproDisciplinary->id]);
         }
-
-        return redirect()->route('admin.criminalpro-disciplinaries.index');
+return redirect()->back()->with('status', 'Action successful!');
+       // return redirect()->route('admin.criminalpro-disciplinaries.index');
     }
 
     public function edit(CriminalproDisciplinary $criminalproDisciplinary)

@@ -1,8 +1,14 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\EmployeeListController;
 Route::redirect('/', '/login')->name('home');
 
+=======
+
+use App\Http\Controllers\Admin\EmployeeListController;
+Route::redirect('/', '/login');
+>>>>>>> parent of 0a6c57d (QuickAdminPanel automatic commit)
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -14,6 +20,13 @@ Route::get('/home', function () {
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
+
+
+    Route::get('add-employee', [EmployeeListController::class,'Commonemployeecreate'])->name('creatrmployee');
+    Route::get('show-employee', [EmployeeListController::class,'commonemployeeshow'])->name('commonemployeeshow');
+    Route::get('employee-data/{id}', [EmployeeListController::class,'employeedata'])->name('employeedata');
+
+    
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::resource('permissions', 'PermissionsController', ['except' => ['destroy']]);
@@ -125,6 +138,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('employee-lists/media', 'EmployeeListController@storeMedia')->name('employee-lists.storeMedia');
     Route::post('employee-lists/ckmedia', 'EmployeeListController@storeCKEditorImages')->name('employee-lists.storeCKEditorImages');
     Route::resource('employee-lists', 'EmployeeListController');
+   
+   
+   
 
     // License Type
     Route::delete('license-types/destroy', 'LicenseTypeController@massDestroy')->name('license-types.massDestroy');
@@ -295,7 +311,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('foreign-travel-personals', 'ForeignTravelPersonalController');
 
     // Social Ass Pr Attachment
-    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController', ['except' => ['destroy']]);
+    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController');
 
     // Awards
     Route::delete('awards/destroy', 'AwardsController@massDestroy')->name('awards.massDestroy');
@@ -325,13 +341,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('years/destroy', 'YearController@massDestroy')->name('years.massDestroy');
     Route::resource('years', 'YearController');
 
-    // Freedom Fighte Relation
-    Route::delete('freedom-fighte-relations/destroy', 'FreedomFighteRelationController@massDestroy')->name('freedom-fighte-relations.massDestroy');
-    Route::resource('freedom-fighte-relations', 'FreedomFighteRelationController');
-
-    // Achievementschools Universities
-    Route::delete('achievementschools-universities/destroy', 'AchievementschoolsUniversitiesController@massDestroy')->name('achievementschools-universities.massDestroy');
-    Route::resource('achievementschools-universities', 'AchievementschoolsUniversitiesController');
+    // Employee List Details
+    Route::resource('employee-list-details', 'EmployeeListDetailsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

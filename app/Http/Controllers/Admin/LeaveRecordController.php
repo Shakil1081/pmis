@@ -88,8 +88,8 @@ class LeaveRecordController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $leaveRecord->id]);
         }
-
-        return redirect()->route('admin.leave-records.index');
+        return redirect()->back()->with('status', 'Action successful!');
+       // return redirect()->route('admin.leave-records.index');
     }
 
     public function edit(LeaveRecord $leaveRecord)

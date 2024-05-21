@@ -22,11 +22,10 @@ class CreateEmployeeListsTable extends Migration
             $table->date('prl_date')->nullable();
             $table->string('height')->nullable();
             $table->string('special_identity')->nullable();
-            $table->integer('nid');
+            $table->bigInteger('nid');
             $table->string('passport')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile_number');
-            $table->string('project_revenue')->nullable();
             $table->date('fjoining_date');
             $table->string('first_joining_office_name')->nullable();
             $table->date('first_joining_g_o_date')->nullable();
@@ -35,7 +34,6 @@ class CreateEmployeeListsTable extends Migration
             $table->date('date_of_regularization')->nullable();
             $table->date('regularization_issue_date')->nullable();
             $table->date('date_of_con_serviec')->nullable();
-            $table->string('freedomfighter')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

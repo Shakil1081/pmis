@@ -32,12 +32,6 @@
                             {{ trans('cruds.grade.fields.salary_range') }}
                         </th>
                         <th>
-                            {{ trans('cruds.grade.fields.current_basic_pay') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.grade.fields.basic_pay_scale') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,12 +50,6 @@
                             </td>
                             <td>
                                 {{ $grade->salary_range ?? '' }}
-                            </td>
-                            <td>
-                                {{ $grade->current_basic_pay ?? '' }}
-                            </td>
-                            <td>
-                                {{ $grade->basic_pay_scale ?? '' }}
                             </td>
                             <td>
                                 @can('grade_show')
