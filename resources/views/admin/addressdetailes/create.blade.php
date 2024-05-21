@@ -34,8 +34,7 @@
                                         class="help-block">{{ trans('cruds.addressdetaile.fields.address_type_helper') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="required"
-                                        for="flat_house">{{ trans('cruds.addressdetaile.fields.flat_house') }}</label>
+                                    <label for="flat_house">{{ trans('cruds.addressdetaile.fields.flat_house') }}</label>
                                     <input class="form-control {{ $errors->has('flat_house') ? 'is-invalid' : '' }}"
                                         type="text" name="flat_house" id="flat_house"
                                         value="{{ old('flat_house', '') }}" required>
@@ -61,8 +60,7 @@
                                         class="help-block">{{ trans('cruds.addressdetaile.fields.post_office_helper') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="required"
-                                        for="post_code">{{ trans('cruds.addressdetaile.fields.post_code') }}</label>
+                                    <label for="post_code">{{ trans('cruds.addressdetaile.fields.post_code') }}</label>
                                     <input class="form-control {{ $errors->has('post_code') ? 'is-invalid' : '' }}"
                                         type="text" name="post_code" id="post_code" value="{{ old('post_code', '') }}"
                                         required>

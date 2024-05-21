@@ -39,19 +39,7 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.child.fields.name_en_helper') }}</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="date_of_birth">{{ trans('cruds.child.fields.date_of_birth') }}</label>
-                                    <input
-                                        class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
-                                        type="text" name="date_of_birth" id="date_of_birth"
-                                        value="{{ old('date_of_birth') }}">
-                                    @if ($errors->has('date_of_birth'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('date_of_birth') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.child.fields.date_of_birth_helper') }}</span>
-                                </div>
+
                                 <div class="form-group">
                                     <label
                                         for="birth_certificate">{{ trans('cruds.child.fields.birth_certificate') }}</label>
@@ -67,11 +55,24 @@
                                         class="help-block">{{ trans('cruds.child.fields.birth_certificate_helper') }}</span>
                                 </div>
                                 <div class="form-group">
+                                    <label for="date_of_birth">{{ trans('cruds.child.fields.date_of_birth') }}</label>
+                                    <input class="form-select date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
+                                        type="text" name="date_of_birth" id="date_of_birth"
+                                        value="{{ old('date_of_birth') }}">
+                                    @if ($errors->has('date_of_birth'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('date_of_birth') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.child.fields.date_of_birth_helper') }}</span>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="required"
                                         for="complite_21">{{ trans('cruds.child.fields.complite_21') }}</label>
                                     <input class="form-control {{ $errors->has('complite_21') ? 'is-invalid' : '' }}"
                                         type="text" name="complite_21" id="complite_21"
-                                        value="{{ old('complite_21', '') }}" required>
+                                        value="{{ old('complite_21', '') }}" readonly>
                                     @if ($errors->has('complite_21'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('complite_21') }}
@@ -79,6 +80,7 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.child.fields.complite_21_helper') }}</span>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="required"
                                         for="gender_id">{{ trans('cruds.child.fields.gender') }}</label>
@@ -97,7 +99,17 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.child.fields.gender_helper') }}</span>
                                 </div>
+                                <!-- NID Yes/No -->
                                 <div class="form-group">
+                                    <label for="nid_option">Do you have NID?</label>
+                                    <select class="form-control" id="nid_option" name="nid_option">
+                                        <option value="no">No</option>
+                                        <option value="yes">Yes</option>
+                                    </select>
+                                </div>
+
+                                <!-- NID Number Field -->
+                                <div class="form-group" id="nid_number_field" style="display: none;">
                                     <label for="nid_number">{{ trans('cruds.child.fields.nid_number') }}</label>
                                     <input class="form-control {{ $errors->has('nid_number') ? 'is-invalid' : '' }}"
                                         type="text" name="nid_number" id="nid_number"
@@ -109,7 +121,35 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.child.fields.nid_number_helper') }}</span>
                                 </div>
+
+
+
+                                <!-- NID Upload Field -->
+                                <div class="form-group" id="childdren_nid_field" style="display: none;">
+                                    <label for="childdren_nid">{{ trans('cruds.child.fields.childdren_nid') }}</label>
+                                    <div class="needsclick dropzone {{ $errors->has('childdren_nid') ? 'is-invalid' : '' }}"
+                                        id="childdren_nid-dropzone">
+                                    </div>
+                                    @if ($errors->has('childdren_nid'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('childdren_nid') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.child.fields.childdren_nid_helper') }}</span>
+                                </div>
+
+
+                                <!-- Passport Yes/No -->
                                 <div class="form-group">
+                                    <label for="passport_option">Do you have a passport?</label>
+                                    <select class="form-control" id="passport_option" name="passport_option">
+                                        <option value="no">No</option>
+                                        <option value="yes">Yes</option>
+                                    </select>
+                                </div>
+
+                                <!-- Passport Number Field -->
+                                <div class="form-group" id="passport_number_field" style="display: none;">
                                     <label for="passport_number">{{ trans('cruds.child.fields.passport_number') }}</label>
                                     <input class="form-control {{ $errors->has('passport_number') ? 'is-invalid' : '' }}"
                                         type="text" name="passport_number" id="passport_number"
@@ -122,19 +162,8 @@
                                     <span
                                         class="help-block">{{ trans('cruds.child.fields.passport_number_helper') }}</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="childdren_nid">{{ trans('cruds.child.fields.childdren_nid') }}</label>
-                                    <div class="needsclick dropzone {{ $errors->has('childdren_nid') ? 'is-invalid' : '' }}"
-                                        id="childdren_nid-dropzone">
-                                    </div>
-                                    @if ($errors->has('childdren_nid'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('childdren_nid') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.child.fields.childdren_nid_helper') }}</span>
-                                </div>
-                                <div class="form-group">
+                                <!-- Passport Upload Field -->
+                                <div class="form-group" id="childdren_passporft_field" style="display: none;">
                                     <label
                                         for="childdren_passporft">{{ trans('cruds.child.fields.childdren_passporft') }}</label>
                                     <div class="needsclick dropzone {{ $errors->has('childdren_passporft') ? 'is-invalid' : '' }}"
@@ -315,4 +344,69 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#date_of_birth", {
+                dateFormat: "d/m/Y",
+                onChange: function(selectedDates, dateStr, instance) {
+                    const dateOfBirth = selectedDates[0];
+
+                    if (dateOfBirth) {
+                        const complete21Date = new Date(dateOfBirth);
+                        complete21Date.setFullYear(complete21Date.getFullYear() + 21);
+
+                        const formattedComplete21Date = flatpickr.formatDate(complete21Date, "d/m/Y");
+                        document.getElementById('complite_21').value = formattedComplete21Date;
+                    } else {
+                        document.getElementById('complite_21').value =
+                            ''; // Clear complete_21 if date_of_birth is invalid
+                    }
+                }
+            });
+
+            // Toggle NID and Passport fields based on Yes/No selection
+            document.getElementById('nid_option').addEventListener('change', function() {
+                const nidField = document.getElementById('nid_number_field');
+                const nidUploadField = document.getElementById('childdren_nid_field');
+                if (this.value === 'yes') {
+                    nidField.style.display = '';
+                    nidUploadField.style.display = '';
+                } else {
+                    nidField.style.display = 'none';
+                    nidUploadField.style.display = 'none';
+                }
+            });
+
+            document.getElementById('passport_option').addEventListener('change', function() {
+                const passportField = document.getElementById('passport_number_field');
+                const passportUploadField = document.getElementById('childdren_passporft_field');
+                if (this.value === 'yes') {
+                    passportField.style.display = '';
+                    passportUploadField.style.display = '';
+                } else {
+                    passportField.style.display = 'none';
+                    passportUploadField.style.display = 'none';
+                }
+            });
+
+            // Form submission handler
+            document.getElementById('employee-form').addEventListener('submit', function(event) {
+                const dateOfBirthInput = document.getElementById('date_of_birth');
+                const complite21Input = document.getElementById('complite_21');
+
+                if (dateOfBirthInput.value) {
+                    const dateParts = dateOfBirthInput.value.split('/');
+                    dateOfBirthInput.value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+                }
+
+                if (complite21Input.value) {
+                    const dateParts = complite21Input.value.split('/');
+                    complite21Input.value = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+                }
+            });
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
 @endsection
