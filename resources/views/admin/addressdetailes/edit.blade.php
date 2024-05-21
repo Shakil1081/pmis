@@ -40,8 +40,8 @@
                 <span class="help-block">{{ trans('cruds.addressdetaile.fields.address_type_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="flat_house">{{ trans('cruds.addressdetaile.fields.flat_house') }}</label>
-                <input class="form-control {{ $errors->has('flat_house') ? 'is-invalid' : '' }}" type="text" name="flat_house" id="flat_house" value="{{ old('flat_house', $addressdetaile->flat_house) }}" required>
+                <label for="flat_house">{{ trans('cruds.addressdetaile.fields.flat_house') }}</label>
+                <input class="form-control {{ $errors->has('flat_house') ? 'is-invalid' : '' }}" type="text" name="flat_house" id="flat_house" value="{{ old('flat_house', $addressdetaile->flat_house) }}">
                 @if($errors->has('flat_house'))
                     <div class="invalid-feedback">
                         {{ $errors->first('flat_house') }}
@@ -60,8 +60,8 @@
                 <span class="help-block">{{ trans('cruds.addressdetaile.fields.post_office_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="post_code">{{ trans('cruds.addressdetaile.fields.post_code') }}</label>
-                <input class="form-control {{ $errors->has('post_code') ? 'is-invalid' : '' }}" type="text" name="post_code" id="post_code" value="{{ old('post_code', $addressdetaile->post_code) }}" required>
+                <label for="post_code">{{ trans('cruds.addressdetaile.fields.post_code') }}</label>
+                <input class="form-control {{ $errors->has('post_code') ? 'is-invalid' : '' }}" type="text" name="post_code" id="post_code" value="{{ old('post_code', $addressdetaile->post_code) }}">
                 @if($errors->has('post_code'))
                     <div class="invalid-feedback">
                         {{ $errors->first('post_code') }}

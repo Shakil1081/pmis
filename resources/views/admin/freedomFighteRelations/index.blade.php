@@ -1,41 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-@can('grade_create')
+@can('freedom_fighte_relation_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.grades.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.grade.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.freedom-fighte-relations.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.freedomFighteRelation.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.grade.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.freedomFighteRelation.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Grade">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-FreedomFighteRelation">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.grade.fields.name_bn') }}
+                            {{ trans('cruds.freedomFighteRelation.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.grade.fields.name_en') }}
+                            {{ trans('cruds.freedomFighteRelation.fields.name_bn') }}
                         </th>
                         <th>
-                            {{ trans('cruds.grade.fields.salary_range') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.grade.fields.current_basic_pay') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.grade.fields.basic_pay_scale') }}
+                            {{ trans('cruds.freedomFighteRelation.fields.name_en') }}
                         </th>
                         <th>
                             &nbsp;
@@ -43,41 +37,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($grades as $key => $grade)
-                        <tr data-entry-id="{{ $grade->id }}">
+                    @foreach($freedomFighteRelations as $key => $freedomFighteRelation)
+                        <tr data-entry-id="{{ $freedomFighteRelation->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $grade->name_bn ?? '' }}
+                                {{ $freedomFighteRelation->id ?? '' }}
                             </td>
                             <td>
-                                {{ $grade->name_en ?? '' }}
+                                {{ $freedomFighteRelation->name_bn ?? '' }}
                             </td>
                             <td>
-                                {{ $grade->salary_range ?? '' }}
+                                {{ $freedomFighteRelation->name_en ?? '' }}
                             </td>
                             <td>
-                                {{ $grade->current_basic_pay ?? '' }}
-                            </td>
-                            <td>
-                                {{ $grade->basic_pay_scale ?? '' }}
-                            </td>
-                            <td>
-                                @can('grade_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.grades.show', $grade->id) }}">
+                                @can('freedom_fighte_relation_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.freedom-fighte-relations.show', $freedomFighteRelation->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('grade_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.grades.edit', $grade->id) }}">
+                                @can('freedom_fighte_relation_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.freedom-fighte-relations.edit', $freedomFighteRelation->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('grade_delete')
-                                    <form action="{{ route('admin.grades.destroy', $grade->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('freedom_fighte_relation_delete')
+                                    <form action="{{ route('admin.freedom-fighte-relations.destroy', $freedomFighteRelation->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -102,11 +90,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('grade_delete')
+@can('freedom_fighte_relation_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.grades.massDestroy') }}",
+    url: "{{ route('admin.freedom-fighte-relations.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -137,7 +125,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 10,
   });
-  let table = $('.datatable-Grade:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-FreedomFighteRelation:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
