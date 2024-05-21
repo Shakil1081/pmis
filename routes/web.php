@@ -1,8 +1,9 @@
 <?php
 
-
 use App\Http\Controllers\Admin\EmployeeListController;
-Route::redirect('/', '/login');
+Route::redirect('/', '/login')->name('home');
+
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));

@@ -2,12 +2,12 @@
 
 return [
     'userManagement' => [
-        'title'          => 'User management',
-        'title_singular' => 'User management',
+        'title'          => 'ব্যবহারকারী ব্যবস্থাপনা',
+        'title_singular' => 'ব্যবহারকারী ব্যবস্থাপনা',
     ],
     'permission' => [
-        'title'          => 'Permissions',
-        'title_singular' => 'Permission',
+        'title'          => 'অনুমতিসমূহ',
+        'title_singular' => 'অনুমতি',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -22,8 +22,8 @@ return [
         ],
     ],
     'role' => [
-        'title'          => 'Roles',
-        'title_singular' => 'Role',
+        'title'          => 'ভূমিকা/রোলগুলি',
+        'title_singular' => 'ভূমিকা/রোল',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
@@ -40,8 +40,8 @@ return [
         ],
     ],
     'user' => [
-        'title'          => 'Users',
-        'title_singular' => 'User',
+        'title'          => 'ব্যবহারকারীগণ',
+        'title_singular' => 'ব্যবহারকারী',
         'fields'         => [
             'id'                           => 'ID',
             'id_helper'                    => ' ',
@@ -195,7 +195,7 @@ return [
     ],
     'quotum' => [
         'title'          => 'Recruitment Quota',
-        'title_singular' => 'Recruitment Quota',
+        'title_singular' => 'Quotum',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -797,7 +797,7 @@ return [
     ],
     'employeePromotion' => [
         'title'          => 'Promotion/Time Scale/Selection Grade',
-        'title_singular' => 'Promotion/Time Scale/Selection Grade',
+        'title_singular' => 'Promotion Information',
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => ' ',
