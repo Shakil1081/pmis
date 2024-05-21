@@ -121,6 +121,10 @@ class UpdateEmployeeListRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'project_revenue' => [
+                'string',
+                'nullable',
+            ],
             'fjoining_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
@@ -151,6 +155,10 @@ class UpdateEmployeeListRequest extends FormRequest
             ],
             'date_of_con_serviec' => [
                 'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'freedomfighter' => [
+                'string',
                 'nullable',
             ],
         ];

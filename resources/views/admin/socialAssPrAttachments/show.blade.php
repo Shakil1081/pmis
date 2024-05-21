@@ -47,6 +47,14 @@
                             {{ $socialAssPrAttachment->certificate_achievement }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.socialAssPrAttachment.fields.employee') }}
+                        </th>
+                        <td>
+                            {{ $socialAssPrAttachment->employee->employeeid ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

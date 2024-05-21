@@ -95,8 +95,8 @@ class TrainingController extends Controller
     public function store(StoreTrainingRequest $request)
     {
         $training = Training::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.trainings.index');
+
+        return redirect()->route('admin.trainings.index');
     }
 
     public function edit(Training $training)

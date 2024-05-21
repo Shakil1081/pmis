@@ -111,8 +111,8 @@ class ChildController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $child->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.children.index');
+
+        return redirect()->route('admin.children.index');
     }
 
     public function edit(Child $child)
