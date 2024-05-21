@@ -35,8 +35,8 @@ class OtherServiceJobController extends Controller
     public function store(StoreOtherServiceJobRequest $request)
     {
         $otherServiceJob = OtherServiceJob::create($request->all());
-
-        return redirect()->route('admin.other-service-jobs.index');
+        return redirect()->back()->with('status', 'Action successful!');
+       /// return redirect()->route('admin.other-service-jobs.index');
     }
 
     public function edit(OtherServiceJob $otherServiceJob)

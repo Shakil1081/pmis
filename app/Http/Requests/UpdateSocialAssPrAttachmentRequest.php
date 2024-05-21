@@ -29,10 +29,6 @@ class UpdateSocialAssPrAttachmentRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'employee_id' => [
-                'required',
-                'integer',
-            ],
         ];
     }
 }

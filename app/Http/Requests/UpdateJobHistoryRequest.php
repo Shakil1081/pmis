@@ -49,10 +49,6 @@ class UpdateJobHistoryRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'grade_id' => [
-                'required',
-                'integer',
-            ],
         ];
     }
 }

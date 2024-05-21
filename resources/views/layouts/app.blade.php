@@ -9,6 +9,13 @@
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png">
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home | Bootstrap demo</title>
+    <!--favicon-->
+    <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png">
+
+
     <!--plugins-->
     <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
@@ -22,6 +29,7 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dark-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+
     <style>
         html,
         body,
@@ -32,11 +40,11 @@
 
 </head>
 
-<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
-    <div class="c-app flex-row align-items-center">
-        <div class="container">
-            @yield("content")
-        </div>
+
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page" style="background: #75553c;">
+    <div class="c-app align-items-center flex-row">
+
+        @yield('content')
     </div>
     @yield('scripts')
 </body>

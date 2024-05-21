@@ -41,12 +41,6 @@
                             {{ trans('cruds.serviceParticular.fields.release_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.serviceParticular.fields.employee') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -74,12 +68,6 @@
                             </td>
                             <td>
                                 {{ $serviceParticular->release_date ?? '' }}
-                            </td>
-                            <td>
-                                {{ $serviceParticular->employee->employeeid ?? '' }}
-                            </td>
-                            <td>
-                                {{ $serviceParticular->employee->fullname_bn ?? '' }}
                             </td>
                             <td>
                                 @can('service_particular_show')

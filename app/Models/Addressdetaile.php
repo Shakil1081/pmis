@@ -14,15 +14,15 @@ class Addressdetaile extends Model
 
     public $table = 'addressdetailes';
 
-    public const STATUS_SELECT = [
-        'No'  => 'No',
-        'Yes' => 'Yes',
-    ];
-
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
+    ];
+
+    public const STATUS_SELECT = [
+        'Active'   => 'Active',
+        'Inactive' => 'Iinactive',
     ];
 
     public const ADDRESS_TYPE_SELECT = [
