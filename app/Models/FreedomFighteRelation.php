@@ -5,12 +5,13 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SocialAssPrAttachment extends Model
+class FreedomFighteRelation extends Model
 {
-    use HasFactory;
+    use SoftDeletes, HasFactory;
 
-    public $table = 'social_ass_pr_attachments';
+    public $table = 'freedom_fighte_relations';
 
     protected $dates = [
         'created_at',
@@ -19,10 +20,8 @@ class SocialAssPrAttachment extends Model
     ];
 
     protected $fillable = [
-        'degree_membership_organization',
-        'description',
-        'certificate_achievement',
-        'employee_id',
+        'name_bn',
+        'name_en',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,10 +30,5 @@ class SocialAssPrAttachment extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
-    }
-
-    public function employee()
-    {
-        return $this->belongsTo(EmployeeList::class, 'employee_id');
     }
 }

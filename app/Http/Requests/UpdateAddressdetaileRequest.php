@@ -26,8 +26,7 @@ class UpdateAddressdetaileRequest extends FormRequest
             ],
             'flat_house' => [
                 'string',
-                'required',
-                'unique:addressdetailes,flat_house,' . request()->route('addressdetaile')->id,
+                'nullable',
             ],
             'post_office' => [
                 'string',
@@ -35,7 +34,7 @@ class UpdateAddressdetaileRequest extends FormRequest
             ],
             'post_code' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'thana_upazila_id' => [
                 'required',
