@@ -71,14 +71,6 @@
                             {{ $foreignTravelPersonal->leave->start_date ?? '' }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.foreignTravelPersonal.fields.employee') }}
-                        </th>
-                        <td>
-                            {{ $foreignTravelPersonal->employee->employeeid ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

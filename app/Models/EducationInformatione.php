@@ -31,7 +31,6 @@ class EducationInformatione extends Model implements HasMedia
         'name_of_exam_id',
         'exam_board_id',
         'school_university_name',
-        'achievement_types_id',
         'achivement',
         'passing_year',
         'employee_id',
@@ -59,11 +58,6 @@ class EducationInformatione extends Model implements HasMedia
     public function exam_board()
     {
         return $this->belongsTo(ExamBoard::class, 'exam_board_id');
-    }
-
-    public function achievement_types()
-    {
-        return $this->belongsTo(AchievementschoolsUniversity::class, 'achievement_types_id');
     }
 
     public function getCatificarteAttribute()

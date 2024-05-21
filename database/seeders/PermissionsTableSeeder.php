@@ -1184,46 +1184,14 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 294,
-                'title' => 'freedom_fighte_relation_create',
+                'title' => 'employee_list_detail_show',
             ],
             [
                 'id'    => 295,
-                'title' => 'freedom_fighte_relation_edit',
+                'title' => 'employee_list_detail_access',
             ],
             [
                 'id'    => 296,
-                'title' => 'freedom_fighte_relation_show',
-            ],
-            [
-                'id'    => 297,
-                'title' => 'freedom_fighte_relation_delete',
-            ],
-            [
-                'id'    => 298,
-                'title' => 'freedom_fighte_relation_access',
-            ],
-            [
-                'id'    => 299,
-                'title' => 'achievementschools_university_create',
-            ],
-            [
-                'id'    => 300,
-                'title' => 'achievementschools_university_edit',
-            ],
-            [
-                'id'    => 301,
-                'title' => 'achievementschools_university_show',
-            ],
-            [
-                'id'    => 302,
-                'title' => 'achievementschools_university_delete',
-            ],
-            [
-                'id'    => 303,
-                'title' => 'achievementschools_university_access',
-            ],
-            [
-                'id'    => 304,
                 'title' => 'profile_password_edit',
             ],
         ];

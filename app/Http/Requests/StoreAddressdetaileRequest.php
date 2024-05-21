@@ -26,7 +26,8 @@ class StoreAddressdetaileRequest extends FormRequest
             ],
             'flat_house' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:addressdetailes',
             ],
             'post_office' => [
                 'string',
@@ -34,7 +35,7 @@ class StoreAddressdetaileRequest extends FormRequest
             ],
             'post_code' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'thana_upazila_id' => [
                 'required',

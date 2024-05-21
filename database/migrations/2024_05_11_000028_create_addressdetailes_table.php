@@ -11,9 +11,9 @@ class CreateAddressdetailesTable extends Migration
         Schema::create('addressdetailes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('address_type');
-            $table->string('flat_house')->nullable();
+            $table->string('flat_house')->unique();
             $table->string('post_office')->nullable();
-            $table->string('post_code')->nullable();
+            $table->string('post_code');
             $table->string('phone_number')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

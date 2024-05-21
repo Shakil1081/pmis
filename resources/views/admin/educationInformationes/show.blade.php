@@ -41,14 +41,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.educationInformatione.fields.achievement_types') }}
-                        </th>
-                        <td>
-                            {{ $educationInformatione->achievement_types->name_bn ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.educationInformatione.fields.achivement') }}
                         </th>
                         <td>

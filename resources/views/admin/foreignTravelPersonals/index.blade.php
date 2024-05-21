@@ -46,12 +46,6 @@
                         {{ trans('cruds.travelRecord.fields.title') }}
                     </th>
                     <th>
-                        {{ trans('cruds.foreignTravelPersonal.fields.employee') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -115,8 +109,6 @@
 { data: 'to_date', name: 'to_date' },
 { data: 'leave_start_date', name: 'leave.start_date' },
 { data: 'leave.title', name: 'leave.title' },
-{ data: 'employee_employeeid', name: 'employee.employeeid' },
-{ data: 'employee.fullname_bn', name: 'employee.fullname_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

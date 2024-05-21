@@ -97,8 +97,9 @@ class AddressdetaileController extends Controller
     public function store(StoreAddressdetaileRequest $request)
     {
         $addressdetaile = Addressdetaile::create($request->all());
+        return redirect()->back()->with('status', 'Action successful!');
 
-        return redirect()->route('admin.addressdetailes.index');
+        //return redirect()->route('admin.addressdetailes.index');
     }
 
     public function edit(Addressdetaile $addressdetaile)
