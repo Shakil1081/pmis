@@ -111,7 +111,7 @@
                                             class="form-select {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
                                             name="achievement_types_id" id="achievement_types_id" required>
                                             <option value="">Select</option>
-                                            <option value="Division"
+                                            {{-- <option value="Division"
                                                 {{ old('achievement_types_id') == 'Division' ? 'selected' : '' }}>Division
                                             </option>
                                             <option value="Class"
@@ -122,12 +122,12 @@
                                                 out of 5</option>
                                             <option value="GPA out of 4"
                                                 {{ old('achievement_types_id') == 'GPA out of 4' ? 'selected' : '' }}>GPA
-                                                out of 4</option>
-                                            {{-- @foreach ($achievement_types as $id => $entry)
+                                                out of 4</option> --}}
+                                            @foreach ($achievement_types as $id => $entry)
                                                 <option value="{{ $id }}"
                                                     {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
                                                     {{ $entry }}</option>
-                                            @endforeach --}}
+                                            @endforeach
                                         </select>
                                         @if ($errors->has('achievement_types'))
                                             <div class="invalid-feedback">
