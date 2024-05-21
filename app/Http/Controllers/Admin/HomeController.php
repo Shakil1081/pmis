@@ -9,7 +9,7 @@ class HomeController
     public function index()
     {
         $settings1 = [
-            'chart_title'           => 'Office Unite',
+            'chart_title'           => 'Office Unit',
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\OfficeUnit',
@@ -62,7 +62,7 @@ class HomeController
         $chart3 = new LaravelChart($settings3);
 
         $settings4 = [
-            'chart_title'           => 'Criminal Prosecition',
+            'chart_title'           => 'Criminal Prosecution',
             'chart_type'            => 'bar',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\CriminalProsecutione',
