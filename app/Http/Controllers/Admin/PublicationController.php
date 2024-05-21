@@ -86,8 +86,8 @@ class PublicationController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $publication->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
-       // return redirect()->route('admin.publications.index');
+
+        return redirect()->route('admin.publications.index');
     }
 
     public function edit(Publication $publication)
