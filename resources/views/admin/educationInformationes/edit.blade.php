@@ -49,6 +49,20 @@
                 <span class="help-block">{{ trans('cruds.educationInformatione.fields.school_university_name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
+                <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}" name="achievement_types_id" id="achievement_types_id" required>
+                    @foreach($achievement_types as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('achievement_types_id') ? old('achievement_types_id') : $educationInformatione->achievement_types->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('achievement_types'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('achievement_types') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="achivement">{{ trans('cruds.educationInformatione.fields.achivement') }}</label>
                 <input class="form-control {{ $errors->has('achivement') ? 'is-invalid' : '' }}" type="text" name="achivement" id="achivement" value="{{ old('achivement', $educationInformatione->achivement) }}">
                 @if($errors->has('achivement'))

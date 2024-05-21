@@ -226,8 +226,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.blood_group_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
-                <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number" name="nid" id="nid" value="{{ old('nid', $employeeList->nid) }}" step="1" required>
+                <label for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
+                <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number" name="nid" id="nid" value="{{ old('nid', $employeeList->nid) }}" step="1">
                 @if($errors->has('nid'))
                     <div class="invalid-feedback">
                         {{ $errors->first('nid') }}
@@ -325,6 +325,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="project_revenue">{{ trans('cruds.employeeList.fields.project_revenue') }}</label>
+                <input class="form-control {{ $errors->has('project_revenue') ? 'is-invalid' : '' }}" type="text" name="project_revenue" id="project_revenue" value="{{ old('project_revenue', $employeeList->project_revenue) }}">
+                @if($errors->has('project_revenue'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('project_revenue') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.project_revenue_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
@@ -510,6 +520,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.employee_photo_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="freedomfighter">{{ trans('cruds.employeeList.fields.freedomfighter') }}</label>
+                <input class="form-control {{ $errors->has('freedomfighter') ? 'is-invalid' : '' }}" type="text" name="freedomfighter" id="freedomfighter" value="{{ old('freedomfighter', $employeeList->freedomfighter) }}">
+                @if($errors->has('freedomfighter'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('freedomfighter') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.freedomfighter_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

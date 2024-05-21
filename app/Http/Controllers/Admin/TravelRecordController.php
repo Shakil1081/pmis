@@ -82,8 +82,8 @@ class TravelRecordController extends Controller
     public function store(StoreTravelRecordRequest $request)
     {
         $travelRecord = TravelRecord::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
-       // return redirect()->route('admin.travel-records.index');
+
+        return redirect()->route('admin.travel-records.index');
     }
 
     public function edit(TravelRecord $travelRecord)
