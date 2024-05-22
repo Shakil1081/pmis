@@ -488,6 +488,11 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
                         </div>
+                    </div>
+                </div>
+
+                <div class="card border-secondary border p-4">
+                    <div class="row row-cols-3">
                         <div class="form-group">
                             <label
                                 for="first_joining_office_name">{{ trans('cruds.employeeList.fields.first_joining_office_name') }}</label>
