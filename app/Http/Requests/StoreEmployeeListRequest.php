@@ -98,7 +98,7 @@ class StoreEmployeeListRequest extends FormRequest
                 'integer',
             ],
             'nid' => [
-                'required',
+                'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
@@ -117,13 +117,9 @@ class StoreEmployeeListRequest extends FormRequest
                 'max:15',
                 'required',
             ],
-            'joiningexaminfo_id' => [
+            'projectrevenue_id' => [
                 'required',
                 'integer',
-            ],
-            'project_revenue' => [
-                'string',
-                'nullable',
             ],
             'fjoining_date' => [
                 'required',

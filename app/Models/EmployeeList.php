@@ -37,6 +37,7 @@ class EmployeeList extends Model implements HasMedia
         'nid_upload',
         'passport_upload',
         'license_upload',
+        'certificate_upload',
         'first_joining_order',
         'fjoining_letter',
         'date_of_gazette_if_any',
@@ -70,7 +71,10 @@ class EmployeeList extends Model implements HasMedia
         'license_type_id',
         'email',
         'mobile_number',
+        'projectrevenue_id',
         'joiningexaminfo_id',
+        'departmental_exam_id',
+        'project_id',
         'grade_id',
         'fjoining_date',
         'first_joining_office_name',
@@ -81,11 +85,10 @@ class EmployeeList extends Model implements HasMedia
         'regularization_issue_date',
         'date_of_con_serviec',
         'quota_id',
+        'freedomfighter',
         'created_at',
         'updated_at',
         'deleted_at',
-        'project_revenue', 
-         'freedomfighter',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -174,9 +177,29 @@ class EmployeeList extends Model implements HasMedia
         return $this->getMedia('license_upload')->last();
     }
 
+    public function projectrevenue()
+    {
+        return $this->belongsTo(Joininginfo::class, 'projectrevenue_id');
+    }
+
     public function joiningexaminfo()
     {
         return $this->belongsTo(ProjectRevenueExam::class, 'joiningexaminfo_id');
+    }
+
+    public function departmental_exam()
+    {
+        return $this->belongsTo(ProjectRevenuelone::class, 'departmental_exam_id');
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
+
+    public function getCertificateUploadAttribute()
+    {
+        return $this->getMedia('certificate_upload')->last();
     }
 
     public function grade()
@@ -297,104 +320,4 @@ class EmployeeList extends Model implements HasMedia
 
         return $file;
     }
-
-    public function detail()
-    {
-        return $this->hasOne(EmployeeListDetail::class, 'general_information_id');
-    }
-
- 
-    public function educations()
-    {
-        return $this->hasMany(EducationInformatione::class, 'employee_id');
-    }
-    public function professionales()
-    {
-        return $this->hasMany(Professionale::class, 'employee_id');
-    }
-    public function addressdetailes()
-    {
-        return $this->hasMany(Addressdetaile::class, 'employee_id');
-    }
-    public function emergencecontactes()
-    {
-        return $this->hasMany(EmergenceContacte::class, 'employee_id');
-    }
-    public function spouseinformationes()
-    {
-        return $this->hasMany(SpouseInformatione::class, 'employee_id');
-    }
-
-    public function childinformationes()
-    {
-        return $this->hasMany(Child::class, 'employee_id');
-    }
-    public function jobhistories()
-    {
-        return $this->hasMany(JobHistory::class, 'employee_id');
-    }
-    public function employeepromotions()
-    {
-        return $this->hasMany(EmployeePromotion::class, 'employee_id');
-    }
-     
-    public function leaverecords()
-    {
-        return $this->hasMany(LeaveRecord::class, 'employee_id');
-    }
-    public function serviceparticulars()
-    {
-        return $this->hasMany(ServiceParticular::class, 'employee_id');
-    }
-    public function trainings()
-    {
-        return $this->hasMany(Training::class, 'employee_id');
-    }
-
-    public function travelRecords()
-    {
-        return $this->hasMany(TravelRecord::class, 'employee_id');
-    }
-    public function foreigntravelpersonals()
-    {
-        return $this->hasMany(ForeignTravelPersonal::class, 'employee_id');
-    }
-    public function socialassprattachments()
-    {
-        return $this->hasMany(SocialAssPrAttachment::class, 'employee_id');
-    }
-    public function extracurriculams()
-    {
-        return $this->hasMany(Extracurriculam::class, 'employee_id');
-    }
-    public function publications()
-    {
-        return $this->hasMany(Publication::class, 'employee_id');
-    }
-    public function awards()
-    {
-        return $this->hasMany(Award::class, 'employee_id');
-    }
-    public function otherservicejobs()
-    {
-        return $this->hasMany(OtherServiceJob::class, 'employee_id');
-    }
-    public function languages()
-    {
-        return $this->hasMany(Language::class, 'employee_id');
-    }
-    
-    public function criminalprosecutiones()
-    {
-        return $this->hasMany(CriminalProsecutione::class, 'employee_id');
-    }
-    public function criminalprodisciplinaries()
-    {
-        return $this->hasMany(CriminalProsecutione::class, 'employee_id');
-    }
-    public function acrmonitorings()
-    {
-        return $this->hasMany(AcrMonitoring::class, 'employee_id');
-    }
-    
 }

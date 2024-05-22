@@ -70,7 +70,9 @@ class EmployeeList extends Model implements HasMedia
         'license_type_id',
         'email',
         'mobile_number',
+        'projectrevenue_id',
         'joiningexaminfo_id',
+        'departmentalexam',
         'grade_id',
         'fjoining_date',
         'first_joining_office_name',
@@ -81,6 +83,7 @@ class EmployeeList extends Model implements HasMedia
         'regularization_issue_date',
         'date_of_con_serviec',
         'quota_id',
+        'freedomfighter',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -170,6 +173,11 @@ class EmployeeList extends Model implements HasMedia
     public function getLicenseUploadAttribute()
     {
         return $this->getMedia('license_upload')->last();
+    }
+
+    public function projectrevenue()
+    {
+        return $this->belongsTo(Joininginfo::class, 'projectrevenue_id');
     }
 
     public function joiningexaminfo()

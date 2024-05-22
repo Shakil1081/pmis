@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Grade extends Model
+class Project extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, Auditable, HasFactory;
 
-    public $table = 'grades';
+    public $table = 'projects';
 
     protected $dates = [
         'created_at',
@@ -22,9 +23,6 @@ class Grade extends Model
     protected $fillable = [
         'name_bn',
         'name_en',
-        'salary_range',
-        'current_basic_pay',
-        'basic_pay_scale',
         'created_at',
         'updated_at',
         'deleted_at',

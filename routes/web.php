@@ -344,7 +344,12 @@ Route::resource('freedom-fighte-relations', 'FreedomFighteRelationController');
 // Achievementschools Universities
 Route::delete('achievementschools-universities/destroy', 'AchievementschoolsUniversitiesController@massDestroy')->name('achievementschools-universities.massDestroy');
 Route::resource('achievementschools-universities', 'AchievementschoolsUniversitiesController');
-
+ // Project
+ Route::delete('projects/destroy', 'ProjectController@massDestroy')->name('projects.massDestroy');
+ Route::post('projects/parse-csv-import', 'ProjectController@parseCsvImport')->name('projects.parseCsvImport');
+ Route::post('projects/process-csv-import', 'ProjectController@processCsvImport')->name('projects.processCsvImport');
+ Route::resource('projects', 'ProjectController');
+ 
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

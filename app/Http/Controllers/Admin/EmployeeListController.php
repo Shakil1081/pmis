@@ -17,9 +17,12 @@ use App\Models\Examination;
 use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\JobType;
+use App\Models\Joininginfo;
 use App\Models\LicenseType;
 use App\Models\Maritalstatus;
+use App\Models\Project;
 use App\Models\ProjectRevenueExam;
+use App\Models\ProjectRevenuelone;
 use App\Models\Quotum;
 use App\Models\Religion;
 use App\Models\Upazila;
@@ -167,13 +170,19 @@ class EmployeeListController extends Controller
 
         $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $projectrevenues = Joininginfo::pluck('project_revenue_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $departmental_exams = ProjectRevenuelone::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $projects = Project::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employeeLists.create', compact('batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions'));
+        return view('admin.employeeLists.create', compact('batches', 'blood_groups', 'departmental_exams', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'projectrevenues', 'projects', 'quotas', 'religions'));
     }
 
 
