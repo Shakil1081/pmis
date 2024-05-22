@@ -489,6 +489,37 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
                         </div>
                     </div>
+
+
+                    only for project <div class="form-group">
+                        <label
+                            for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
+                        <input class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}"
+                            type="text" name="date_of_regularization" id="date_of_regularization"
+                            value="{{ old('date_of_regularization') }}">
+                        @if ($errors->has('date_of_regularization'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('date_of_regularization') }}
+                            </div>
+                        @endif
+                        <span
+                            class="help-block">{{ trans('cruds.employeeList.fields.date_of_regularization_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label
+                            for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
+                        <input
+                            class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}"
+                            type="text" name="regularization_issue_date" id="regularization_issue_date"
+                            value="{{ old('regularization_issue_date') }}">
+                        @if ($errors->has('regularization_issue_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('regularization_issue_date') }}
+                            </div>
+                        @endif
+                        <span
+                            class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
+                    </div>
                 </div>
 
                 <div class="card border-secondary border p-4">
@@ -591,36 +622,7 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.date_of_gazette_if_any_helper') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label
-                                for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
-                            <input
-                                class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}"
-                                type="text" name="date_of_regularization" id="date_of_regularization"
-                                value="{{ old('date_of_regularization') }}">
-                            @if ($errors->has('date_of_regularization'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('date_of_regularization') }}
-                                </div>
-                            @endif
-                            <span
-                                class="help-block">{{ trans('cruds.employeeList.fields.date_of_regularization_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label
-                                for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
-                            <input
-                                class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}"
-                                type="text" name="regularization_issue_date" id="regularization_issue_date"
-                                value="{{ old('regularization_issue_date') }}">
-                            @if ($errors->has('regularization_issue_date'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('regularization_issue_date') }}
-                                </div>
-                            @endif
-                            <span
-                                class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
-                        </div>
+
                         <div class="form-group">
                             <label
                                 for="regularization_office_orde_go">{{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}</label>
