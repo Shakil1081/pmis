@@ -1242,8 +1242,8 @@ return [
         ],
     ],
     'projectRevenueExam' => [
-        'title'          => 'Exam',
-        'title_singular' => 'Exam',
+        'title'          => 'Project/Revenue configuration',
+        'title_singular' => 'Project/Revenue configuration',
         'fields'         => [
             'id'                  => 'ID',
             'id_helper'           => ' ',

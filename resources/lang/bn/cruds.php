@@ -1242,9 +1242,9 @@ return [
             'deleted_at_helper'      => ' ',
         ],
     ],
-    'projectRevenueপরীক্ষা' => [
-        'title'          => 'পরীক্ষা',
-        'title_singular' => 'পরীক্ষা',
+    'projectRevenue' => [
+        'title'          => 'Project/Revenue configuration',
+        'title_singular' => 'Project/Revenue configuration',
         'fields'         => [
             'id'                  => 'আইডি',
             'id_helper'           => ' ',
