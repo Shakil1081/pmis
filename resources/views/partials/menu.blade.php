@@ -1,8 +1,19 @@
 <div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
 
-    <div class="c-sidebar-brand d-md-down-none">
-        <a class="c-sidebar-brand-full h4" href="#">
-            {{ trans('panel.site_title') }}
+    <div class="c-sidebar-brand-2 d-md-down-none">
+        <a class="c-sidebar-brand-full h4" href="#" style="text-decoration: none">
+            <div class="row g-4 d-flex align-items-center" style="
+            background: white;
+        ">
+                <div class="col-md-4 d-flex justify-content-center p-1">
+                    <img src="{{ asset('assets/images/logo1.png') }}" height="50" alt="Logo" />
+                </div>
+                <div class="col-md-8 d-flex">
+                    <small class="text-dark">{{ trans('panel.site_title') }}</small>
+                </div>
+            </div>
+
+
         </a>
     </div>
 

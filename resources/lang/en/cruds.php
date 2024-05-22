@@ -94,8 +94,8 @@ return [
         ],
     ],
     'configuration' => [
-        'title'          => 'General Config',
-        'title_singular' => 'General Config',
+        'title'          => 'General Configuration',
+        'title_singular' => 'General Configuration',
     ],
     'district' => [
         'title'          => 'District',
@@ -1150,12 +1150,12 @@ return [
         ],
     ],
     'eduConfig' => [
-        'title'          => 'Edu Config',
-        'title_singular' => 'Edu Config',
+        'title'          => 'Education Configuration',
+        'title_singular' => 'Education Configuration',
     ],
     'officeConfig' => [
-        'title'          => 'Office Config',
-        'title_singular' => 'Office Config',
+        'title'          => 'Office Configuration',
+        'title_singular' => 'Office Configuration',
     ],
     'siteSetting' => [
         'title'          => 'Site Setting',

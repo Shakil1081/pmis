@@ -177,7 +177,7 @@
             </button>
 
             <ul class="c-header-nav ml-auto">
-                <li>Welcome, {{ Auth::user()->name }}</>:</li>
+                <li>@lang('dashboard.welcome'), {{ Auth::user()->name }}</>:</li>
                 @if (count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none">
                         <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button"
