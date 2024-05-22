@@ -313,42 +313,7 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.mobile_number_helper') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
-                            <select
-                                class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}"
-                                name="joiningexaminfo_id" id="joiningexaminfo_id" required>
-                                @foreach ($joiningexaminfos as $id => $entry)
-                                    <option value="{{ $id }}"
-                                        {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('joiningexaminfo'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('joiningexaminfo') }}
-                                </div>
-                            @endif
-                            <span
-                                class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
-                            <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
-                                name="grade_id" id="grade_id">
-                                @foreach ($grades as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('grade'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('grade') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
-                        </div>
+
                     </div>
                 </div>
 
@@ -474,7 +439,42 @@
                 <h5 class="text-secondary mt-3"> First joining information</h5>
                 <div class="card border-secondary border p-4">
                     <div class="row row-cols-3">
-
+                        <div class="form-group">
+                            <label class="required"
+                                for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
+                            <select
+                                class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}"
+                                name="joiningexaminfo_id" id="joiningexaminfo_id" required>
+                                @foreach ($joiningexaminfos as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('joiningexaminfo'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('joiningexaminfo') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
+                            <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
+                                name="grade_id" id="grade_id">
+                                @foreach ($grades as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('grade'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('grade') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
+                        </div>
                         <div class="form-group">
                             <label class="required"
                                 for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
