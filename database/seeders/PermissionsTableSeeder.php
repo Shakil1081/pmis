@@ -1184,14 +1184,66 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 294,
-                'title' => 'employee_list_detail_show',
+                'title' => 'freedom_fighte_relation_create',
             ],
             [
                 'id'    => 295,
-                'title' => 'employee_list_detail_access',
+                'title' => 'freedom_fighte_relation_edit',
             ],
             [
                 'id'    => 296,
+                'title' => 'freedom_fighte_relation_show',
+            ],
+            [
+                'id'    => 297,
+                'title' => 'freedom_fighte_relation_delete',
+            ],
+            [
+                'id'    => 298,
+                'title' => 'freedom_fighte_relation_access',
+            ],
+            [
+                'id'    => 299,
+                'title' => 'achievementschools_university_create',
+            ],
+            [
+                'id'    => 300,
+                'title' => 'achievementschools_university_edit',
+            ],
+            [
+                'id'    => 301,
+                'title' => 'achievementschools_university_show',
+            ],
+            [
+                'id'    => 302,
+                'title' => 'achievementschools_university_delete',
+            ],
+            [
+                'id'    => 303,
+                'title' => 'achievementschools_university_access',
+            ],
+            [
+                'id'    => 304,
+                'title' => 'project_create',
+            ],
+            [
+                'id'    => 305,
+                'title' => 'project_edit',
+            ],
+            [
+                'id'    => 306,
+                'title' => 'project_show',
+            ],
+            [
+                'id'    => 307,
+                'title' => 'project_delete',
+            ],
+            [
+                'id'    => 308,
+                'title' => 'project_access',
+            ],
+            [
+                'id'    => 309,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -117,8 +117,8 @@ class JobHistorieController extends Controller
     public function store(StoreJobHistoryRequest $request)
     {
         $jobHistory = JobHistory::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
-       // return redirect()->route('admin.job-histories.index');
+
+        return redirect()->route('admin.job-histories.index');
     }
 
     public function edit(JobHistory $jobHistory)

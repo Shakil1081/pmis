@@ -20,7 +20,7 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource(EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->get());
+        return new EmployeeListResource(EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'projectrevenue', 'joiningexaminfo', 'grade', 'quota'])->get());
     }
 
     public function store(StoreEmployeeListRequest $request)
@@ -80,7 +80,7 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource($employeeList->load(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota']));
+        return new EmployeeListResource($employeeList->load(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'projectrevenue', 'joiningexaminfo', 'grade', 'quota']));
     }
 
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)

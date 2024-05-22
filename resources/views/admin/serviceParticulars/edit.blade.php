@@ -65,6 +65,20 @@
                 <span class="help-block">{{ trans('cruds.serviceParticular.fields.release_date_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="employee_id">{{ trans('cruds.serviceParticular.fields.employee') }}</label>
+                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id" id="employee_id">
+                    @foreach($employees as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('employee_id') ? old('employee_id') : $serviceParticular->employee->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('employee'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('employee') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.serviceParticular.fields.employee_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

@@ -39,6 +39,22 @@
                             {{ $grade->salary_range }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.grade.fields.current_basic_pay') }}
+                        </th>
+                        <td>
+                            {{ $grade->current_basic_pay }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.grade.fields.basic_pay_scale') }}
+                        </th>
+                        <td>
+                            {{ $grade->basic_pay_scale }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
