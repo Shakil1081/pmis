@@ -497,6 +497,8 @@ return [
             'freedomfighter_helper'                => ' ',
             'project_revenue'                      => 'Revenue',
             'project_revenue_helper'               => ' ',
+            'has_passport' => 'Do you have a passport?',
+            'has_license'  => 'Do you have a driving license?',
         ],
     ],
     'licenseType' => [
