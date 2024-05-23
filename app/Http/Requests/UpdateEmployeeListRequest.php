@@ -98,7 +98,7 @@ class UpdateEmployeeListRequest extends FormRequest
                 'integer',
             ],
             'nid' => [
-                'required',
+                'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
@@ -117,7 +117,7 @@ class UpdateEmployeeListRequest extends FormRequest
                 'max:15',
                 'required',
             ],
-            'joiningexaminfo_id' => [
+            'projectrevenue_id' => [
                 'required',
                 'integer',
             ],
@@ -151,6 +151,10 @@ class UpdateEmployeeListRequest extends FormRequest
             ],
             'date_of_con_serviec' => [
                 'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'freedomfighter' => [
+                'string',
                 'nullable',
             ],
         ];

@@ -35,6 +35,10 @@ class UpdateUpazilaRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'forest_state_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

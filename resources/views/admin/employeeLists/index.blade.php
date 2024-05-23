@@ -1,238 +1,219 @@
 @extends('layouts.admin')
-
 @section('content')
-    <h4> {{ trans('cruds.employeeList.title_singular') }} {{ trans('global.list') }}</h4>
-    <div class="card mb-1">
-        <div class="table-responsive p-3">
-
-            <div class="row justify-content-center align-items-center g-1">
-                <div class="col">
-                    <div class="position-relative">
-                        <input class="form-control px-5" type="search" placeholder="Search Customers">
-                        <span
-                            class="material-icons-outlined position-absolute translate-middle-y top-50 fs-5 start-0 ms-3">search</span>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <strong>Total Employee: {{ $data['total'] }}</strong>
-
-                </div>
-                <div class="col text-end">
-
-                    @can('employee_list_create')
-                        <a class="btn btn-success" href="{{ route('admin.employee-lists.create') }}"> <i class="fa fa-plus"
-                                aria-hidden="true"></i>
-                            {{ trans('global.add') }} {{ trans('cruds.employeeList.title_singular') }}
-                        </a>
-                    @endcan
-                    <button type="button" class="btn btn- btn-success">
-                        <i class="fa fa-filter" aria-hidden="true"></i> Filter
-                    </button>
-
-
-                </div>
-            </div>
+@can('employee_list_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('admin.employee-lists.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.employeeList.title_singular') }}
+            </a>
         </div>
     </div>
-    @foreach ($data['allresult'] as $result)
-        @php
-            $empID = $result['id'];
-        @endphp
-        <div class="card mb-1">
-            <div class="table-responsive p-3">
-                <div class="row justify-content-center align-items-center g-1">
-                    <div class="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="customer-pic">
-                                <img src="http://127.0.0.1:8000/assets/images/logo1.png" class="rounded-circle"
-                                    width="80" height="80" alt="">
-                            </div>
-                            <div>
-                                <p class="customer-name fw-bold mb-0">{{ $result['fullname_bn'] }}</p>
-                                <p class="mb-0">{{ $result['employeeid'] }}</p>
-                                <p>
-                                    @php
-                                        $lastJobHistory = $result->jobhistories->last();
-                                        if ($lastJobHistory && $lastJobHistory->relationLoaded('designation')) {
-                                            $designation = $lastJobHistory->designation;
-                                            @$designationName = $designation->name_bn;
-                                        } else {
-                                            $designationName = 'NA';
-                                        }
-                                    @endphp
-                                    <small>{{ $designationName }}</small>
-
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <small>Profile progress</small>
-                        <div class="progress">
-                            @php
-                                $total = 0;
-                                $totalvalue = 17;
-
-                                $relationships = [
-                                    'batch',
-                                    'educations',
-                                    'professionales',
-                                    'addressdetailes',
-                                    'emergencecontactes',
-                                    'spouseinformationes',
-                                    'childinformationes',
-                                    'jobhistories',
-                                    'employeepromotions',
-                                    'trainings',
-                                    'travelRecords',
-                                    'foreigntravelpersonals',
-                                    'socialassprattachments',
-                                    'extracurriculams',
-                                    'otherservicejobs',
-                                    'languages',
-                                    'acrmonitorings',
-                                ];
-                                foreach ($relationships as $relationship) {
-                                    if ($result->{$relationship}->count()) {
-                                        $total++;
-                                    }
-                                }
-
-                                // Calculate progress percentage
-                                $progress = ($total / $totalvalue) * 100;
-                            @endphp
-
-                            <div class="progress-bar" role="progressbar" style="width:{{ round($progress) }}%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%</div>
-                        </div>
-
-
-                    </div>
-                    <div class="col text-end">
-                        <div class="btn-group">
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
-                                class="btn btn-sm btn-outline-success">
-                                {{ trans('global.view') }}
-                            </a>
-                            <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
-                                class="btn btn-sm btn-outline-success">
-                                {{ trans('global.edit') }}
-                            </a>
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
-                                class="btn btn-sm btn-outline-success">
-                                {{ trans('global.print') }}
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
-
-
-    <div class="pagination">
-        {{ $data['allresult']->links('pagination::bootstrap-4') }}
+@endcan
+<div class="card">
+    <div class="card-header">
+        {{ trans('cruds.employeeList.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    {{-- <div class="card d-none">
-        <div class="card-body">
-            <table class="table-bordered table-striped table-hover ajaxTable datatable datatable-EmployeeList table">
-                <thead>
-                    <tr>
-                        <th width="10">
+    <div class="card-body">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-EmployeeList">
+            <thead>
+                <tr>
+                    <th width="10">
 
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.employeeid') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.batch') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.home_district') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.marital_statu') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.gender') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.religion') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.blood_group') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.nid') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.license_type') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.mobile_number') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.grade') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fjoining_date') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.first_joining_order') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fjoining_letter') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.date_of_gazette') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.date_of_regularization') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.quota') }}
-                        </th>
-                        <th>
-                            &nbsp;
-                        </th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </div> --}}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.employeeid') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.batch') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.home_district') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.marital_statu') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.gender') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.religion') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.blood_group') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.license_type') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.email') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.mobile_number') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.projectrevenue') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.departmental_exam') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.project') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.certificate_upload') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.grade') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.fjoining_date') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.first_joining_order') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.fjoining_letter') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.date_of_gazette') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.date_of_regularization') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.quota') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.freedomfighter') }}
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+
+@endsection
+@section('scripts')
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+@can('employee_list_delete')
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('admin.employee-lists.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
+          return entry.id
+      });
+
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+@endcan
+
+  let dtOverrideGlobals = {
+    buttons: dtButtons,
+    processing: true,
+    serverSide: true,
+    retrieve: true,
+    aaSorting: [],
+    ajax: "{{ route('admin.employee-lists.index') }}",
+    columns: [
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'employeeid', name: 'employeeid' },
+{ data: 'batch_batch_bn', name: 'batch.batch_bn' },
+{ data: 'home_district_name_bn', name: 'home_district.name_bn' },
+{ data: 'marital_statu_name', name: 'marital_statu.name' },
+{ data: 'gender_name_bn', name: 'gender.name_bn' },
+{ data: 'religion_name_bn', name: 'religion.name_bn' },
+{ data: 'blood_group_name_bn', name: 'blood_group.name_bn' },
+{ data: 'license_type_name_bn', name: 'license_type.name_bn' },
+{ data: 'email', name: 'email' },
+{ data: 'mobile_number', name: 'mobile_number' },
+{ data: 'projectrevenue_project_revenue_bn', name: 'projectrevenue.project_revenue_bn' },
+{ data: 'joiningexaminfo_exam_name_bn', name: 'joiningexaminfo.exam_name_bn' },
+{ data: 'departmental_exam_name_bn', name: 'departmental_exam.name_bn' },
+{ data: 'project_name_bn', name: 'project.name_bn' },
+{ data: 'certificate_upload', name: 'certificate_upload', sortable: false, searchable: false },
+{ data: 'grade_name_bn', name: 'grade.name_bn' },
+{ data: 'fjoining_date', name: 'fjoining_date' },
+{ data: 'first_joining_office_name', name: 'first_joining_office_name' },
+{ data: 'first_joining_g_o_date', name: 'first_joining_g_o_date' },
+{ data: 'first_joining_memo_no', name: 'first_joining_memo_no' },
+{ data: 'first_joining_order', name: 'first_joining_order', sortable: false, searchable: false },
+{ data: 'fjoining_letter', name: 'fjoining_letter', sortable: false, searchable: false },
+{ data: 'date_of_gazette', name: 'date_of_gazette' },
+{ data: 'date_of_gazette_if_any', name: 'date_of_gazette_if_any', sortable: false, searchable: false },
+{ data: 'date_of_regularization', name: 'date_of_regularization' },
+{ data: 'regularization_issue_date', name: 'regularization_issue_date' },
+{ data: 'regularization_office_orde_go', name: 'regularization_office_orde_go', sortable: false, searchable: false },
+{ data: 'date_of_con_serviec', name: 'date_of_con_serviec' },
+{ data: 'confirmation_in_service', name: 'confirmation_in_service', sortable: false, searchable: false },
+{ data: 'quota_name_bn', name: 'quota.name_bn' },
+{ data: 'freedomfighter', name: 'freedomfighter' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
+    ],
+    orderCellsTop: true,
+    order: [[ 1, 'desc' ]],
+    pageLength: 25,
+  };
+  let table = $('.datatable-EmployeeList').DataTable(dtOverrideGlobals);
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+  
+});
+
+</script>
 @endsection

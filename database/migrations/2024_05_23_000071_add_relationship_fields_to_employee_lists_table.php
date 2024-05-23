@@ -23,8 +23,14 @@ class AddRelationshipFieldsToEmployeeListsTable extends Migration
             $table->foreign('blood_group_id', 'blood_group_fk_9732645')->references('id')->on('blood_groups');
             $table->unsignedBigInteger('license_type_id')->nullable();
             $table->foreign('license_type_id', 'license_type_fk_9732658')->references('id')->on('license_types');
+            $table->unsignedBigInteger('projectrevenue_id')->nullable();
+            $table->foreign('projectrevenue_id', 'projectrevenue_fk_9810612')->references('id')->on('joininginfos');
             $table->unsignedBigInteger('joiningexaminfo_id')->nullable();
             $table->foreign('joiningexaminfo_id', 'joiningexaminfo_fk_9751239')->references('id')->on('project_revenue_exams');
+            $table->unsignedBigInteger('departmental_exam_id')->nullable();
+            $table->foreign('departmental_exam_id', 'departmental_exam_fk_9810640')->references('id')->on('project_revenuelones');
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->foreign('project_id', 'project_fk_9810849')->references('id')->on('projects');
             $table->unsignedBigInteger('grade_id')->nullable();
             $table->foreign('grade_id', 'grade_fk_9751240')->references('id')->on('grades');
             $table->unsignedBigInteger('quota_id')->nullable();

@@ -26,6 +26,10 @@ class StoreEducationInformationeRequest extends FormRequest
                 'required',
                 'unique:education_informationes',
             ],
+            'achievement_types_id' => [
+                'required',
+                'integer',
+            ],
             'achivement' => [
                 'string',
                 'nullable',

@@ -38,6 +38,9 @@
                         {{ trans('cruds.upazila.fields.grocode') }}
                     </th>
                     <th>
+                        {{ trans('cruds.upazila.fields.forest_state') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -97,6 +100,7 @@
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
 { data: 'grocode', name: 'grocode' },
+{ data: 'forest_state_name_bn', name: 'forest_state.name_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

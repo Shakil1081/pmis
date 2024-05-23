@@ -34,6 +34,12 @@
                         {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
                     </th>
                     <th>
+                        {{ trans('cruds.socialAssPrAttachment.fields.employee') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.employeeList.fields.fullname_bn') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -64,6 +70,8 @@
 { data: 'degree_membership_organization', name: 'degree_membership_organization' },
 { data: 'description', name: 'description' },
 { data: 'certificate_achievement', name: 'certificate_achievement' },
+{ data: 'employee_employeeid', name: 'employee.employeeid' },
+{ data: 'employee.fullname_bn', name: 'employee.fullname_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
