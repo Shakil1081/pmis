@@ -1594,7 +1594,7 @@ return [
             'created_at'        => 'তৈরী করা হয়েছে',
             'created_at_helper' => ' ',
             'updated_at'        => 'আপডেট করা হয়েছে',
-            'updated_at_helper' => ' '
+            'updated_at_helper' => ' ',
             'deleted_at'        => 'মুছে ফেলা হয়েছে',
             'deleted_at_helper' => ' ',
         ],
