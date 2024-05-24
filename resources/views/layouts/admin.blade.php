@@ -171,7 +171,12 @@
                 <i class="fas fa-fw fa-bars"></i>
             </button>
 
-            <a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
+            <a class="c-header-brand d-lg-none" href="#">
+
+
+                <img src="{{ asset('assets/images/logo1.png') }}" height="40" alt="Logo" />
+
+            </a>
 
             <button class="c-header-toggler mfs-3 d-md-down-none" type="button" responsive="true">
                 <i class="fas fa-fw fa-bars"></i>
