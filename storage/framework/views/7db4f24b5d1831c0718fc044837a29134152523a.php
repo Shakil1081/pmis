@@ -31,10 +31,6 @@
 
                     </th>
                     <th>
-                        <?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code')); ?>
-
-                    </th>
-                    <th>
                         <?php echo e(trans('cruds.forestRange.fields.status')); ?>
 
                     </th>
@@ -48,6 +44,10 @@
                     </th>
                     <th>
                         <?php echo e(trans('cruds.forestRange.fields.name_en')); ?>
+
+                    </th>
+                    <th>
+                        <?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code')); ?>
 
                     </th>
                     <th>
@@ -108,11 +108,11 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'forest_state_name_bn', name: 'forest_state.name_bn' },
-{ data: 'forest_division_bbs_code', name: 'forest_division_bbs_code' },
 { data: 'status_name', name: 'status.name' },
 { data: 'forest_division_name_bn', name: 'forest_division.name_bn' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
+{ data: 'forest_division_bbs_code', name: 'forest_division_bbs_code' },
 { data: 'actions', name: '<?php echo e(trans('global.actions')); ?>' }
     ],
     orderCellsTop: true,

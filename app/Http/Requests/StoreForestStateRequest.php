@@ -26,10 +26,6 @@ class StoreForestStateRequest extends FormRequest
                 'required',
                 'unique:forest_states',
             ],
-            'bbs_code' => [
-                'string',
-                'nullable',
-            ],
             'status_id' => [
                 'required',
                 'integer',

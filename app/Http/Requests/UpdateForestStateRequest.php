@@ -26,10 +26,6 @@ class UpdateForestStateRequest extends FormRequest
                 'required',
                 'unique:forest_states,name_en,' . request()->route('forest_state')->id,
             ],
-            'bbs_code' => [
-                'string',
-                'nullable',
-            ],
             'status_id' => [
                 'required',
                 'integer',

@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyForestRangeRequest;
 use App\Http\Requests\StoreForestRangeRequest;
 use App\Http\Requests\UpdateForestRangeRequest;
-use App\Models\Division;
+use App\Models\ForestDivision;
 use App\Models\ForestRange;
 use App\Models\ForestState;
-use App\Models\Status;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +21,7 @@ class ForestRangesController extends Controller
         abort_if(Gate::denies('forest_range_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ForestRange::with(['forest_state', 'status', 'forest_division'])->select(sprintf('%s.*', (new ForestRange)->table));
+            $query = ForestRange::with(['forest_state', 'forest_division'])->select(sprintf('%s.*', (new ForestRange)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -50,25 +49,18 @@ class ForestRangesController extends Controller
                 return $row->forest_state ? $row->forest_state->name_bn : '';
             });
 
-            $table->editColumn('forest_division_bbs_code', function ($row) {
-                return $row->forest_division_bbs_code ? $row->forest_division_bbs_code : '';
+            $table->editColumn('name_bn', function ($row) {
+                return $row->name_bn ? $row->name_bn : '';
             });
-            $table->addColumn('status_name', function ($row) {
-                return $row->status ? $row->status->name : '';
-            });
-
             $table->addColumn('forest_division_name_bn', function ($row) {
                 return $row->forest_division ? $row->forest_division->name_bn : '';
             });
 
-            $table->editColumn('name_bn', function ($row) {
-                return $row->name_bn ? $row->name_bn : '';
-            });
             $table->editColumn('name_en', function ($row) {
                 return $row->name_en ? $row->name_en : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'forest_state', 'status', 'forest_division']);
+            $table->rawColumns(['actions', 'placeholder', 'forest_state', 'forest_division']);
 
             return $table->make(true);
         }
@@ -82,11 +74,9 @@ class ForestRangesController extends Controller
 
         $forest_states = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = Status::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $forest_divisions = ForestDivision::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $forest_divisions = Division::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.forestRanges.create', compact('forest_divisions', 'forest_states', 'statuses'));
+        return view('admin.forestRanges.create', compact('forest_divisions', 'forest_states'));
     }
 
     public function store(StoreForestRangeRequest $request)
@@ -102,13 +92,11 @@ class ForestRangesController extends Controller
 
         $forest_states = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = Status::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $forest_divisions = ForestDivision::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $forest_divisions = Division::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $forestRange->load('forest_state', 'forest_division');
 
-        $forestRange->load('forest_state', 'status', 'forest_division');
-
-        return view('admin.forestRanges.edit', compact('forestRange', 'forest_divisions', 'forest_states', 'statuses'));
+        return view('admin.forestRanges.edit', compact('forestRange', 'forest_divisions', 'forest_states'));
     }
 
     public function update(UpdateForestRangeRequest $request, ForestRange $forestRange)
@@ -122,7 +110,7 @@ class ForestRangesController extends Controller
     {
         abort_if(Gate::denies('forest_range_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $forestRange->load('forest_state', 'status', 'forest_division');
+        $forestRange->load('forest_state', 'forest_division');
 
         return view('admin.forestRanges.show', compact('forestRange'));
     }

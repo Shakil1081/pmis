@@ -26,8 +26,21 @@
         @endif
 
         @if ($selectedValue == 2)
+
+
             <div class="form-group">
-                <label class="required" for="level_2"> Circle</label>
+                <label class="required" for="level_2"> Circle list</label>
+                <!-- Your second dropdown goes here -->
+                <select class="form-select" required>
+                    <option>Select</option>
+                    <option value="Posting in Office">Circle 1</option>
+                    <option value="Division">Circle 2</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label class="required" for="level_2"> Posting in Circle</label>
                 <!-- Your second dropdown goes here -->
                 <select wire:model="selectedLevel2" class="form-select"
                     wire:change="onSelectChangel2($event.target.value)" required>
@@ -38,9 +51,12 @@
             </div>
 
 
+
+
+
             @if ($selectedValue2 == 'Division')
                 <div class="form-group">
-                    <label class="required" for="level_3">Division</label>
+                    <label class="required" for="level_3">Division List</label>
                     <select wire:model="onSelctDivisionmodel" class="form-select select2" name="division" name="level_2"
                         id="level_2" wire:change="onSelctDivision($event.target.value)" required>
                         <option value="">Select </option>
@@ -53,7 +69,7 @@
             @endif
             @if ($onSelctDivisionmodel && $selectedValue2 == 'Division')
                 <div class="form-group">
-                    <label class="required"> Beat/SFNT/Camp Or Posting </label>
+                    <label class="required"> Posting in Division</label>
                     <select wire:model="beatSFPCCamp" class="form-select"
                         wire:change="onbeatSFPCCamp($event.target.value)" required>
                         <option>Select</option>
@@ -67,7 +83,7 @@
 
             @if ($onSelctDivisionmodel && $selectedValue2 == 'Division' && $beatSFPCCamp == 'Range/SFNTC/Station')
                 <div class="form-group">
-                    <label class="required" for="level_5">{{ trans('Range') }}</label>
+                    <label class="required" for="level_5">{{ trans('Range List') }}</label>
                     <select wire:model="rangeForbeat" wire:change="onbeat($event.target.value)"
                         class="form-select select2" name="level_3" id="level_3" required>
                         <option>Select</option>
@@ -88,7 +104,7 @@
 
             @if ($rangeForbeat)
                 <div class="form-group">
-                    <label class="required" for="beatSFPCCamp"> Beat/SFPC/Camp OR Posting </label>
+                    <label class="required" for="beatSFPCCamp"> Posting in Range </label>
                     <select wire:model="beatlistshow" class="form-select" id="beatSFPCCamp" required>
                         <option>Select</option>
                         <option value="Posting in Office">Posting in Office</option>
@@ -100,7 +116,7 @@
 
             @if ($beatlistshow == 'beatlistshow')
                 <div class="form-group">
-                    <label class="required" for="level_5">{{ trans('Beat/SFPC/Camp') }}</label>
+                    <label class="required" for="level_5">{{ trans('Beat list') }}</label>
                     <select class="form-select select2" name="level_4" id="level_4">
                         <option value="">Select</option>
                         @foreach ($beatList as $option)

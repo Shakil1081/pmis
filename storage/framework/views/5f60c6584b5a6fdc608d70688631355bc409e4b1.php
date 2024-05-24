@@ -25,17 +25,6 @@
                 <span class="help-block"><?php echo e(trans('cruds.forestRange.fields.forest_state_helper')); ?></span>
             </div>
             <div class="form-group">
-                <label for="forest_division_bbs_code"><?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code')); ?></label>
-                <input class="form-control <?php echo e($errors->has('forest_division_bbs_code') ? 'is-invalid' : ''); ?>" type="text" name="forest_division_bbs_code" id="forest_division_bbs_code" value="<?php echo e(old('forest_division_bbs_code', '')); ?>">
-                <?php if($errors->has('forest_division_bbs_code')): ?>
-                    <div class="invalid-feedback">
-                        <?php echo e($errors->first('forest_division_bbs_code')); ?>
-
-                    </div>
-                <?php endif; ?>
-                <span class="help-block"><?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code_helper')); ?></span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="status_id"><?php echo e(trans('cruds.forestRange.fields.status')); ?></label>
                 <select class="form-control select2 <?php echo e($errors->has('status') ? 'is-invalid' : ''); ?>" name="status_id" id="status_id" required>
                     <?php $__currentLoopData = $statuses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $id => $entry): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -86,6 +75,17 @@
                     </div>
                 <?php endif; ?>
                 <span class="help-block"><?php echo e(trans('cruds.forestRange.fields.name_en_helper')); ?></span>
+            </div>
+            <div class="form-group">
+                <label for="forest_division_bbs_code"><?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code')); ?></label>
+                <input class="form-control <?php echo e($errors->has('forest_division_bbs_code') ? 'is-invalid' : ''); ?>" type="text" name="forest_division_bbs_code" id="forest_division_bbs_code" value="<?php echo e(old('forest_division_bbs_code', '')); ?>">
+                <?php if($errors->has('forest_division_bbs_code')): ?>
+                    <div class="invalid-feedback">
+                        <?php echo e($errors->first('forest_division_bbs_code')); ?>
+
+                    </div>
+                <?php endif; ?>
+                <span class="help-block"><?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code_helper')); ?></span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -53,9 +53,6 @@ class ForestStatesController extends Controller
             $table->editColumn('name_en', function ($row) {
                 return $row->name_en ? $row->name_en : '';
             });
-            $table->editColumn('bbs_code', function ($row) {
-                return $row->bbs_code ? $row->bbs_code : '';
-            });
             $table->addColumn('status_name', function ($row) {
                 return $row->status ? $row->status->name : '';
             });

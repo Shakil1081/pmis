@@ -21,22 +21,14 @@ class StoreForestRangeRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'forest_division_bbs_code' => [
-                'string',
-                'nullable',
-            ],
-            'status_id' => [
-                'required',
-                'integer',
-            ],
-            'forest_division_id' => [
-                'required',
-                'integer',
-            ],
             'name_bn' => [
                 'string',
                 'required',
                 'unique:forest_ranges',
+            ],
+            'forest_division_id' => [
+                'required',
+                'integer',
             ],
             'name_en' => [
                 'string',

@@ -4,29 +4,35 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\CsvImportTrait;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyJobHistoryRequest;
 use App\Http\Requests\StoreJobHistoryRequest;
 use App\Http\Requests\UpdateJobHistoryRequest;
 use App\Models\Designation;
 use App\Models\EmployeeList;
+use App\Models\ForestBeat;
+use App\Models\ForestDivision;
+use App\Models\ForestRange;
+use App\Models\ForestState;
 use App\Models\Grade;
 use App\Models\JobHistory;
-use App\Models\JobType;
+use App\Models\OfficeUnit;
 use Gate;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class JobHistorieController extends Controller
 {
-    use CsvImportTrait;
+    use MediaUploadingTrait, CsvImportTrait;
 
     public function index(Request $request)
     {
         abort_if(Gate::denies('job_history_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = JobHistory::with(['job_type', 'designation', 'employee', 'grade'])->select(sprintf('%s.*', (new JobHistory)->table));
+            $query = JobHistory::with(['designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit'])->select(sprintf('%s.*', (new JobHistory)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -50,20 +56,13 @@ class JobHistorieController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->editColumn('institute_name', function ($row) {
-                return $row->institute_name ? $row->institute_name : '';
+            $table->editColumn('level_1', function ($row) {
+                return $row->level_1 ? $row->level_1 : '';
             });
-            $table->addColumn('job_type_name_bn', function ($row) {
-                return $row->job_type ? $row->job_type->name_bn : '';
-            });
-
             $table->addColumn('designation_name_bn', function ($row) {
                 return $row->designation ? $row->designation->name_bn : '';
             });
 
-            $table->editColumn('level_1', function ($row) {
-                return $row->level_1 ? $row->level_1 : '';
-            });
             $table->editColumn('level_2', function ($row) {
                 return $row->level_2 ? $row->level_2 : '';
             });
@@ -90,8 +89,52 @@ class JobHistorieController extends Controller
             $table->editColumn('grade.salary_range', function ($row) {
                 return $row->grade ? (is_string($row->grade) ? $row->grade : $row->grade->salary_range) : '';
             });
+            $table->editColumn('institutename', function ($row) {
+                return $row->institutename ? $row->institutename : '';
+            });
+            $table->editColumn('academy_type', function ($row) {
+                return $row->academy_type ? $row->academy_type : '';
+            });
+            $table->editColumn('acadaylocation', function ($row) {
+                return $row->acadaylocation ? $row->acadaylocation : '';
+            });
+            $table->editColumn('posting_in_circle', function ($row) {
+                return $row->posting_in_circle ? $row->posting_in_circle : '';
+            });
+            $table->editColumn('postingindivision', function ($row) {
+                return $row->postingindivision ? $row->postingindivision : '';
+            });
+            $table->editColumn('posting_in_range', function ($row) {
+                return $row->posting_in_range ? $row->posting_in_range : '';
+            });
+            $table->addColumn('circle_list_name_bn', function ($row) {
+                return $row->circle_list ? $row->circle_list->name_bn : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'job_type', 'designation', 'employee', 'grade']);
+            $table->addColumn('division_list_name_bn', function ($row) {
+                return $row->division_list ? $row->division_list->name_bn : '';
+            });
+
+            $table->addColumn('range_list_name_bn', function ($row) {
+                return $row->range_list ? $row->range_list->name_bn : '';
+            });
+
+            $table->editColumn('range_list.name_bn', function ($row) {
+                return $row->range_list ? (is_string($row->range_list) ? $row->range_list : $row->range_list->name_bn) : '';
+            });
+            $table->addColumn('beat_list_name_bn', function ($row) {
+                return $row->beat_list ? $row->beat_list->name_bn : '';
+            });
+
+            $table->addColumn('office_unit_name_bn', function ($row) {
+                return $row->office_unit ? $row->office_unit->name_bn : '';
+            });
+
+            $table->editColumn('go_upload', function ($row) {
+                return $row->go_upload ? '<a href="' . $row->go_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit', 'go_upload']);
 
             return $table->make(true);
         }
@@ -103,44 +146,79 @@ class JobHistorieController extends Controller
     {
         abort_if(Gate::denies('job_history_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $job_types = JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.jobHistories.create', compact('designations', 'employees', 'grades', 'job_types'));
+        $circle_lists = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $division_lists = ForestDivision::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $range_lists = ForestRange::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $beat_lists = ForestBeat::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $office_units = OfficeUnit::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.jobHistories.create', compact('beat_lists', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'office_units', 'range_lists'));
     }
 
     public function store(StoreJobHistoryRequest $request)
     {
         $jobHistory = JobHistory::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
-       // return redirect()->route('admin.job-histories.index');
+
+        if ($request->input('go_upload', false)) {
+            $jobHistory->addMedia(storage_path('tmp/uploads/' . basename($request->input('go_upload'))))->toMediaCollection('go_upload');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $jobHistory->id]);
+        }
+
+        return redirect()->route('admin.job-histories.index');
     }
 
     public function edit(JobHistory $jobHistory)
     {
         abort_if(Gate::denies('job_history_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $job_types = JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $jobHistory->load('job_type', 'designation', 'employee', 'grade');
+        $circle_lists = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.jobHistories.edit', compact('designations', 'employees', 'grades', 'jobHistory', 'job_types'));
+        $division_lists = ForestDivision::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $range_lists = ForestRange::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $beat_lists = ForestBeat::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $office_units = OfficeUnit::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $jobHistory->load('designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
+
+        return view('admin.jobHistories.edit', compact('beat_lists', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
     }
 
     public function update(UpdateJobHistoryRequest $request, JobHistory $jobHistory)
     {
         $jobHistory->update($request->all());
+
+        if ($request->input('go_upload', false)) {
+            if (! $jobHistory->go_upload || $request->input('go_upload') !== $jobHistory->go_upload->file_name) {
+                if ($jobHistory->go_upload) {
+                    $jobHistory->go_upload->delete();
+                }
+                $jobHistory->addMedia(storage_path('tmp/uploads/' . basename($request->input('go_upload'))))->toMediaCollection('go_upload');
+            }
+        } elseif ($jobHistory->go_upload) {
+            $jobHistory->go_upload->delete();
+        }
 
         return redirect()->route('admin.job-histories.index');
     }
@@ -149,7 +227,7 @@ class JobHistorieController extends Controller
     {
         abort_if(Gate::denies('job_history_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $jobHistory->load('job_type', 'designation', 'employee', 'grade');
+        $jobHistory->load('designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
 
         return view('admin.jobHistories.show', compact('jobHistory'));
     }
@@ -172,5 +250,17 @@ class JobHistorieController extends Controller
         }
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('job_history_create') && Gate::denies('job_history_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new JobHistory();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }

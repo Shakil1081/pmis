@@ -44,10 +44,13 @@ class ForestBeatsController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->addColumn('forest_range_forest_division_bbs_code', function ($row) {
-                return $row->forest_range ? $row->forest_range->forest_division_bbs_code : '';
+            $table->addColumn('forest_range_name_bn', function ($row) {
+                return $row->forest_range ? $row->forest_range->name_bn : '';
             });
 
+            $table->editColumn('forest_range.name_en', function ($row) {
+                return $row->forest_range ? (is_string($row->forest_range) ? $row->forest_range : $row->forest_range->name_en) : '';
+            });
             $table->editColumn('name_bn', function ($row) {
                 return $row->name_bn ? $row->name_bn : '';
             });
@@ -67,7 +70,7 @@ class ForestBeatsController extends Controller
     {
         abort_if(Gate::denies('forest_beat_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $forest_ranges = ForestRange::pluck('forest_division_bbs_code', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $forest_ranges = ForestRange::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.forestBeats.create', compact('forest_ranges'));
     }
@@ -83,7 +86,7 @@ class ForestBeatsController extends Controller
     {
         abort_if(Gate::denies('forest_beat_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $forest_ranges = ForestRange::pluck('forest_division_bbs_code', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $forest_ranges = ForestRange::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $forestBeat->load('forest_range');
 

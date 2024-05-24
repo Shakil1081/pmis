@@ -1308,6 +1308,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 325,
+                'title' => 'forest_division_create',
+            ],
+            [
+                'id'    => 326,
+                'title' => 'forest_division_edit',
+            ],
+            [
+                'id'    => 327,
+                'title' => 'forest_division_show',
+            ],
+            [
+                'id'    => 328,
+                'title' => 'forest_division_delete',
+            ],
+            [
+                'id'    => 329,
+                'title' => 'forest_division_access',
+            ],
+            [
+                'id'    => 330,
                 'title' => 'profile_password_edit',
             ],
         ];
