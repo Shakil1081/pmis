@@ -1645,7 +1645,7 @@ return [
     'forestBeat' => [
         'title'          => 'এসএফএনটিসি/বিট',
         'title_singular' => 'এসএফএনটিসি/বিট',
-        'fields'         =>
+        'fields'         =>[
             'id'                  => 'আইডি',
             'id_helper'           => ' ',
             'forest_range'        => 'এসএফপিসি/রেঞ্জ',
