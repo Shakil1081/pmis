@@ -156,7 +156,9 @@ class EmployeeListController extends Controller
     {
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        if (app()->getLocale() === 'bn'){
+            $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $home_districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -182,6 +184,34 @@ class EmployeeListController extends Controller
 
         $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        }else{
+            $batches = Batch::pluck('batch_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $home_districts = District::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $marital_status = Maritalstatus::pluck('name_en as name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $genders = Gender::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $religions = Religion::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $blood_groups = BloodGroup::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $license_types = LicenseType::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $projectrevenues = Joininginfo::pluck('project_revenue_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $departmental_exams = ProjectRevenuelone::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $projects = Project::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $grades = Grade::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $quotas = Quotum::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        } 
         return view('admin.employeeLists.create', compact('batches', 'blood_groups', 'departmental_exams', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'projectrevenues', 'projects', 'quotas', 'religions'));
     }
 

@@ -6,7 +6,13 @@
                 wire:change="onSelectChange($event.target.value)" required>
                 <option value="">Select</option>
                 @foreach ($optionsLevel1 as $option)
-                    <option value="{{ $option->id }}">{{ $option->name_bn }}</option>
+                    <option value="{{ $option->id }}">
+                        @if (app()->getLocale() === 'bn')
+                            {{ $option->name_bn }}
+                        @else
+                            {{ $option->name_en }}
+                        @endif
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -66,7 +72,13 @@
                         class="form-select select2" name="level_3" id="level_3" required>
                         <option>Select</option>
                         @foreach ($range as $option)
-                            <option value="{{ $option->id }}">{{ $option->name_bn }}</option>
+                            <option value="{{ $option->id }}">
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $option->name_bn }}
+                                @else
+                                    {{ $option->name_en }}
+                                @endif
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -92,7 +104,13 @@
                     <select class="form-select select2" name="level_4" id="level_4">
                         <option value="">Select</option>
                         @foreach ($beatList as $option)
-                            <option value="{{ $option->name_bn }}">{{ $option->name_bn }}</option>
+                            <option value="{{ $option->name_bn }}">
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $option->name_bn }}
+                                @else
+                                    {{ $option->name_en }}
+                                @endif
+                            </option>
                         @endforeach
                     </select>
                 </div>
