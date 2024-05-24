@@ -1244,6 +1244,70 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 309,
+                'title' => 'forest_state_create',
+            ],
+            [
+                'id'    => 310,
+                'title' => 'forest_state_edit',
+            ],
+            [
+                'id'    => 311,
+                'title' => 'forest_state_show',
+            ],
+            [
+                'id'    => 312,
+                'title' => 'forest_state_delete',
+            ],
+            [
+                'id'    => 313,
+                'title' => 'forest_state_access',
+            ],
+            [
+                'id'    => 314,
+                'title' => 'forest_range_create',
+            ],
+            [
+                'id'    => 315,
+                'title' => 'forest_range_edit',
+            ],
+            [
+                'id'    => 316,
+                'title' => 'forest_range_show',
+            ],
+            [
+                'id'    => 317,
+                'title' => 'forest_range_delete',
+            ],
+            [
+                'id'    => 318,
+                'title' => 'forest_range_access',
+            ],
+            [
+                'id'    => 319,
+                'title' => 'forest_beat_create',
+            ],
+            [
+                'id'    => 320,
+                'title' => 'forest_beat_edit',
+            ],
+            [
+                'id'    => 321,
+                'title' => 'forest_beat_show',
+            ],
+            [
+                'id'    => 322,
+                'title' => 'forest_beat_delete',
+            ],
+            [
+                'id'    => 323,
+                'title' => 'forest_beat_access',
+            ],
+            [
+                'id'    => 324,
+                'title' => 'job_configuration_access',
+            ],
+            [
+                'id'    => 325,
                 'title' => 'profile_password_edit',
             ],
         ];

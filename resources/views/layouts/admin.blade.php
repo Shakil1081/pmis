@@ -159,6 +159,7 @@
             font-family: bangla;
         }
     </style>
+    @livewireStyles
 </head>
 
 <body class="c-app">
@@ -396,6 +397,7 @@
         });
     </script>
     @yield('scripts')
+    @livewireScripts
 </body>
 
 </html>

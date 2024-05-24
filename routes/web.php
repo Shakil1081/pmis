@@ -349,6 +349,22 @@ Route::resource('achievementschools-universities', 'AchievementschoolsUniversiti
  Route::post('projects/parse-csv-import', 'ProjectController@parseCsvImport')->name('projects.parseCsvImport');
  Route::post('projects/process-csv-import', 'ProjectController@processCsvImport')->name('projects.processCsvImport');
  Route::resource('projects', 'ProjectController');
+
+
+    // Forest States
+    Route::delete('forest-states/destroy', 'ForestStatesController@massDestroy')->name('forest-states.massDestroy');
+    Route::post('forest-states/parse-csv-import', 'ForestStatesController@parseCsvImport')->name('forest-states.parseCsvImport');
+    Route::post('forest-states/process-csv-import', 'ForestStatesController@processCsvImport')->name('forest-states.processCsvImport');
+    Route::resource('forest-states', 'ForestStatesController');
+
+    // Forest Ranges
+    Route::delete('forest-ranges/destroy', 'ForestRangesController@massDestroy')->name('forest-ranges.massDestroy');
+    Route::resource('forest-ranges', 'ForestRangesController');
+
+    // Forest Beats
+    Route::delete('forest-beats/destroy', 'ForestBeatsController@massDestroy')->name('forest-beats.massDestroy');
+    Route::resource('forest-beats', 'ForestBeatsController');
+    
  
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {

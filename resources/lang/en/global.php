@@ -6,7 +6,7 @@ return [
     'allRightsReserved'              => 'All rights reserved.',
     'areYouSure'                     => 'Are you sure?',
     'clickHereToVerify'              => 'Click here to verify',
-    'create'                         => 'Add',
+    'create'                         => 'Create',
     'dashboard'                      => 'Dashboard',
     'delete'                         => 'Delete',
     'cancel'                         => 'Cancel',

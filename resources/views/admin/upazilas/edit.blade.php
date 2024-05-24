@@ -55,6 +55,20 @@
                 <span class="help-block">{{ trans('cruds.upazila.fields.grocode_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="forest_state_id">{{ trans('cruds.upazila.fields.forest_state') }}</label>
+                <select class="form-control select2 {{ $errors->has('forest_state') ? 'is-invalid' : '' }}" name="forest_state_id" id="forest_state_id" required>
+                    @foreach($forest_states as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('forest_state_id') ? old('forest_state_id') : $upazila->forest_state->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('forest_state'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('forest_state') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.upazila.fields.forest_state_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

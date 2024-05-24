@@ -23,6 +23,7 @@ class Upazila extends Model
         'name_bn',
         'name_en',
         'grocode',
+        'forest_state_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -36,5 +37,10 @@ class Upazila extends Model
     public function district()
     {
         return $this->belongsTo(District::class, 'district_id');
+    }
+
+    public function forest_state()
+    {
+        return $this->belongsTo(ForestState::class, 'forest_state_id');
     }
 }

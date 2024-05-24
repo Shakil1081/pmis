@@ -114,7 +114,7 @@
 
 
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="level_1">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
                                     <select class="form-control" name="level_1" id="level_1">
                                         <option value="">Select Office</option>
@@ -143,24 +143,64 @@
                                     <select class="form-control" name="level_4" id="level_4" disabled>
                                         <option value="">Select Sub-Subunit</option>
                                     </select>
-                                </div>
+                                </div> --}}
 
                                 <!-- Add more select elements for additional levels as needed -->
 
-                                <div class="form-group" id="inputFieldContainer" style="display: none;">
+
+
+
+
+
+                                {{-- <div class="form-group" id="inputFieldContainer" style="display: none;">
                                     <label
                                         for="head_office_input">{{ trans('cruds.jobHistory.fields.head_office_input') }}</label>
                                     <input class="form-control" type="text" name="head_office_input"
                                         id="head_office_input">
-                                </div>
+                                </div> --}}
+
+                                {{-- head_office_input --}}
 
                             </div>
+
+
+                            @livewire('multi-level-dropdown')
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
                                     {{ trans('global.save') }}
                                 </button>
                             </div>
                         </form>
+
+                        {{-- <div class="row">
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="level_3">Ofice Unit</label>
+                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                        <option value="">Select Subunit</option>
+                                        <option value="">Select Subunit</option>
+                                        <option value="">Select Subunit</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="level_3">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                        <option value="">Select Subunit</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="level_3">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                        <option value="">Select Subunit</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div> --}}
                     </div>
                 </div>
 
@@ -170,7 +210,7 @@
 @endsection
 
 
-@section('scripts')
+{{-- @section('scripts')
     @parent
     <!-- Add more select elements for additional levels as needed -->
 
@@ -269,4 +309,4 @@
             });
         });
     </script>
-@endsection
+@endsection --}}
