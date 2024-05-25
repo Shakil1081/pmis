@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use CountrySeeder;
 use Illuminate\Database\Seeder;
+use JobDesignationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
             ResultGroupsTableSeeder::class, 
             ResultsTableSeeder::class, 
             CountrySeeder::class, 
+            JobDesignationSeeder::class, 
         ]);
     }
 }
