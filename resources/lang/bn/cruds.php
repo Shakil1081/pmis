@@ -601,7 +601,6 @@ return [
             'achivement_helper'             => ' ',
             'achievement_types'             => 'অর্জনের ধরণ',
             'achievement_types_helper'      => ' ',
-            'achievement_types_helper'         => ' ',
             'concentration_major_group'        => 'বিষয়',
             'concentration_major_group_helper' => ' ',
             'result'                           => 'ফলাফল',
@@ -1152,8 +1151,8 @@ return [
         ],
     ],
     'faqManagement' => [
-        'title'          => 'সচরাচর জিজ্ঞাসিত প্রশ্ন ব্যবস্থাপনা',
-        'title_singular' => 'সচরাচর জিজ্ঞাসিত প্রশ্ন ব্যবস্থাপনা',
+        'title'          => 'জিজ্ঞাসিত ',
+        'title_singular' => 'জিজ্ঞাসিত ',
     ],
     'faqCategory' => [
         'title'          => 'শ্রেণী',
