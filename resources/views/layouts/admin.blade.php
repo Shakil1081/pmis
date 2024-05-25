@@ -163,6 +163,20 @@
         .table td:last-child {
             text-align: right;
         }
+
+
+        a.btn.buttons-select-none.btn-primary.disabled,
+        a.btn.buttons-select-all.btn-primary {
+            background-color: #fff;
+            color: #000;
+            border: 0;
+            font-size: inherit;
+        }
+
+        .dt-buttons a {
+            padding: 1px 10px;
+            border: 0px solid #d5d4d2 !important;
+        }
     </style>
 
     @livewireStyles
