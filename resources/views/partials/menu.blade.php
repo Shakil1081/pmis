@@ -542,7 +542,7 @@
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.result-groups.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/result-groups') || request()->is('admin/result-groups/*') ? 'c-active' : '' }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.resultGroup.title') }}
@@ -553,7 +553,7 @@
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.results.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/results') || request()->is('admin/results/*') ? 'c-active' : '' }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.result.title') }}
@@ -564,7 +564,7 @@
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.achievementschools-universities.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/achievementschools-universities') || request()->is('admin/achievementschools-universities/*') ? 'c-active' : '' }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.achievementschoolsUniversity.title') }}
