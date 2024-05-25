@@ -1,12 +1,16 @@
 <div>
     <div class="row row-cols-2">
+
+
         <div class="form-group">
-            <label class="required" for="level_1">Office Unit</label>
-            <select wire:model="selectedLevel1" class="form-select" name="level_1" id="level_1"
-                wire:change="onSelectChange($event.target.value)" required>
-                <option value="">Select</option>
+            <label class="required" for="office_unit_id">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
+            <select wire:model="selectedLevel1" wire:change="onSelectChange($event.target.value)"
+                class="form-select {{ $errors->has('office_unit') ? 'is-invalid' : '' }}" name="office_unit_id"
+                id="office_unit_id" required>
+
                 @foreach ($optionsLevel1 as $option)
-                    <option value="{{ $option->id }}">
+                    <option value="{{ $option->id }}" {{ old('office_unit_id') == $option->id ? 'selected' : '' }}>
+
                         @if (app()->getLocale() === 'bn')
                             {{ $option->name_bn }}
                         @else
@@ -15,7 +19,23 @@
                     </option>
                 @endforeach
             </select>
+            @if ($errors->has('office_unit'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('office_unit') }}
+                </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.jobHistory.fields.office_unit_helper') }}</span>
         </div>
+
+
+        {{-- <div class="form-group">
+            <label class="required" for="level_1">Office Unit</label>
+            <select  class="form-select" name="level_1" id="level_1"
+                required>
+                <option value="">Select</option>
+
+            </select>
+        </div> --}}
 
         @if ($selectedValue == 1)
             <div class="form-group">
@@ -63,8 +83,6 @@
                     <option value="Division">Division</option>
                 </select>
             </div>
-
-
 
 
 

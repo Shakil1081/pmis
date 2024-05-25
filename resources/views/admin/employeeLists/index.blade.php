@@ -96,7 +96,7 @@
                                     'acrmonitorings',
                                 ];
                                 // foreach ($relationships as $relationship) {
-                                //     if ($result->{$relationship}->count()) {
+                                //     if ($result->{$relationship}) {
                                 //         $total++;
                                 //     }
                                 // }

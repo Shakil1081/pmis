@@ -318,27 +318,45 @@
                                 @endif
                                 <span class="help-block">{{ trans('cruds.jobHistory.fields.office_unit_helper') }}</span>
                             </div> --}}
+
                                 <div class="form-group">
                                     <label class="required"
-                                        for="go_upload">{{ trans('cruds.jobHistory.fields.go_upload') }}</label>
-                                    <div class="needsclick dropzone {{ $errors->has('go_upload') ? 'is-invalid' : '' }}"
-                                        id="go_upload-dropzone">
-                                    </div>
-                                    @if ($errors->has('go_upload'))
+                                        for="grade_id">{{ trans('cruds.jobHistory.fields.grade') }}</label>
+                                    <select class="form-select select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
+                                        name="grade_id" id="grade_id" required>
+                                        @foreach ($grades as $id => $entry)
+                                            <option value="{{ $id }}"
+                                                {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('grade'))
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('go_upload') }}
+                                            {{ $errors->first('grade') }}
                                         </div>
                                     @endif
-                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.go_upload_helper') }}</span>
+                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.grade_helper') }}</span>
+                                </div <div class="form-group">
+                                <label class="required"
+                                    for="go_upload">{{ trans('cruds.jobHistory.fields.go_upload') }}</label>
+                                <div class="needsclick dropzone {{ $errors->has('go_upload') ? 'is-invalid' : '' }}"
+                                    id="go_upload-dropzone">
                                 </div>
+                                @if ($errors->has('go_upload'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('go_upload') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.jobHistory.fields.go_upload_helper') }}</span>
                             </div>
-                            <div class="form-group">
-                                <button class="btn btn-danger" type="submit">
-                                    {{ trans('global.save') }}
-                                </button>
-                            </div>
-                        </form>
-                        {{-- <div class="row">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-danger" type="submit">
+                            {{ trans('global.save') }}
+                        </button>
+                    </div>
+                    </form>
+                    {{-- <div class="row">
 
                             <div class="col-4">
                                 <div class="form-group">
@@ -367,11 +385,11 @@
                             </div>
 
                         </div> --}}
-                    </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
     </div>
 @endsection
 
