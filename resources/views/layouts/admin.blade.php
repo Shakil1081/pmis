@@ -97,8 +97,34 @@
             margin: 0px;
         }
 
-        ul.c-sidebar-nav.ps {
+        .c-app {
+            background: rgb(221, 255, 230) !important;
+            background: radial-gradient(circle, rgb(113 163 107 / 21%) 0%, rgb(84 148 65 / 0%) 100%) !important;
+        }
+
+        /* ul.c-sidebar-nav.ps {
             background: #4c944e !important;
+        } */
+
+        ul.c-sidebar-nav.ps {
+            background: #081e01 !important;
+        }
+
+        .btn-success {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #061801;
+            --bs-btn-border-color: #061801;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #05100199;
+            --bs-btn-hover-border-color: #061801;
+            --bs-btn-focus-shadow-rgb: 60, 153, 110;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #061801;
+            --bs-btn-active-border-color: #13240e99;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #02c27a;
+            --bs-btn-disabled-border-color: #198754;
         }
 
         .c-sidebar .c-sidebar-brand,
@@ -120,10 +146,14 @@
             border-color: rgb(108 117 125 / 14%) !important;
         }
 
-        a.nav-link.c-active {
+        /* a.nav-link.c-active {
             font-weight: bold;
             color: #4c944e;
             border-color: #3d763e !important;
+        } */
+        .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+        .c-sidebar .c-sidebar-nav-link:hover {
+            background: #41493fd6 !important;
         }
 
         a.nav-link:hover,
@@ -148,6 +178,23 @@
         .pagination a {
             font-size: 14px;
             /* Adjust the font size as needed */
+        }
+
+        .btn-danger {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #f51313;
+            --bs-btn-border-color: #f51313;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #f34a4a;
+            --bs-btn-hover-border-color: #f51313ab;
+            --bs-btn-focus-shadow-rgb: 225, 83, 97;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #f51313;
+            --bs-btn-active-border-color: #f51313;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #f51313;
+            --bs-btn-disabled-border-color: #f51313;
         }
     </style>
     @yield('styles')
