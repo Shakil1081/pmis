@@ -17,6 +17,7 @@
                     </option>
                 @endforeach
             </select>
+
         </div>
 
         @if ($joininginfo && $joininginfo != 2)

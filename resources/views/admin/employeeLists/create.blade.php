@@ -397,7 +397,7 @@
                             <label class="required"
                                 for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
                             <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}"
-                                name="license_type_id" id="license_type_id" required>
+                                name="license_type_id" id="license_type_id">
                                 @foreach ($license_types as $id => $entry)
                                     <option value="{{ $id }}"
                                         {{ old('license_type_id') == $id ? 'selected' : '' }}>{{ $entry }}
