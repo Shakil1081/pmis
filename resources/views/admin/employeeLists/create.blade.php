@@ -308,7 +308,7 @@
                                 for="mobile_number">{{ trans('cruds.employeeList.fields.mobile_number') }}</label>
                             <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}"
                                 type="text" name="mobile_number" id="mobile_number"
-                                value="{{ old('mobile_number', '') }}" required>
+                                value="{{ old('mobile_number', '') }}" min="11" maxlength="20" required>
                             @if ($errors->has('mobile_number'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('mobile_number') }}
@@ -327,7 +327,8 @@
                         <div class="form-group">
                             <label class="required" for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
                             <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number"
-                                name="nid" id="nid" value="{{ old('nid', '') }}" step="1" required>
+                                name="nid" id="nid" value="{{ old('nid', '') }}" step="1"
+                                minlength="8" maxlength="20" required>
                             @if ($errors->has('nid'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('nid') }}
