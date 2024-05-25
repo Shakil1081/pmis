@@ -353,4 +353,70 @@ class EmployeeListController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+
+
+    public function Commonemployeecreate()
+    {
+        abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $home_districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $genders = Gender::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $religions = Religion::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $blood_groups = BloodGroup::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $name_of_exams = Examination::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $exam_boards = ExamBoard::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
+        $job_types = JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $new_designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $thana_upazilas = Upazila::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
+        return view('admin.commonemployee.create', compact('new_designations','designations','job_types','thana_upazilas','batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions','employees', 'exam_boards', 'name_of_exams'));
+    }
+
+
+    public function commonemployeeshow(Request $request)
+    {
+
+
+        //EmployeeList $employeeList
+
+        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeList = EmployeeList::findOrFail($request->id);
+
+        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
+
+        return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
+    }
+    public function employeedata(Request $request)
+    {     
+        
+       
+        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+        ->find($request->id);
+
+        return view('admin.employeeLists.employeedata', compact('employeeList'));
+    }
 }
