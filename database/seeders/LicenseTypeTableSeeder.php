@@ -24,6 +24,10 @@ class LicenseTypeTableSeeder extends Seeder
                 'name_bn' => 'হালকা',
                 'name_en' => 'Light',
             ],
+            [
+                'name_bn' => 'লাইসেন্স নেই',
+                'name_en' => 'No licence',
+            ],
         ]);
     }
 }

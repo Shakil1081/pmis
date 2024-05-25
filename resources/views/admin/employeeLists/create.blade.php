@@ -385,15 +385,15 @@
                         </div>
 
 
-                        <div class="form-group has_license_group">
+                        {{-- <div class="form-group has_license_group">
                             <label for="has_license">{{ trans('cruds.employeeList.fields.has_license') }}</label>
                             <select class="form-control" id="has_license">
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>
                             </select>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group license_fields" style="display: none;">
+                        <div class="form-group license_fields">
                             <label class="required"
                                 for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
                             <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}"
@@ -403,6 +403,7 @@
                                         {{ old('license_type_id') == $id ? 'selected' : '' }}>{{ $entry }}
                                     </option>
                                 @endforeach
+
                             </select>
                             @if ($errors->has('license_type'))
                                 <div class="invalid-feedback">
