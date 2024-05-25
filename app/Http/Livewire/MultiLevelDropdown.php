@@ -84,7 +84,7 @@ class MultiLevelDropdown extends Component
     public function onSelctDivision($value)
     {       
         $this->onSelctDivision = $value;  
-        $this->range = ForestRange::where('forest_state_id',$value)->get();
+        $this->range = ForestRange::where('forest_division_id',$value)->get();
        
     }
     public function onducusionRange($value)

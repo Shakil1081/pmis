@@ -94,7 +94,7 @@
                         id="postingindivision" required>
                         <option>Select</option>
                         <option value="Posting in Office">Posting in Office</option>
-                        <option value="Range/SFNTC/Station">Range/SFNTC/Station</option>
+                        <option value="Range/SFNTC/Station">Range/SFPC/Station</option>
                     </select>
                 </div>
             @endif
@@ -129,13 +129,13 @@
                         id="posting_in_range"required>
                         <option>Select</option>
                         <option value="Posting in Office">Posting in Office</option>
-                        <option value="beatlistshow">Beat/SFPC/Camp</option>
+                        <option value="Beat/SFNTC/Camp">Beat/SFNTC/Camp</option>
                     </select>
                 </div>
             @endif
 
 
-            @if ($beatlistshow == 'beatlistshow')
+            @if ($beatlistshow == 'Beat/SFNTC/Camp')
                 <div class="form-group">
                     <label class="required" for="beat_list_id">{{ trans('Beat list') }}</label>
                     <select class="form-select select2" name="beat_list_id" id="beat_list_id">

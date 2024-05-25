@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col">
-                    <strong>Total Employee: {{ $data['total'] }}</strong>
+                    <strong>Total Employee: {{ $data['total'] ?? 0 }}</strong>
 
                 </div>
                 <div class="col text-end">

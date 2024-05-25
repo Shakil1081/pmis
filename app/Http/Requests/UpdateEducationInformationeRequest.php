@@ -21,18 +21,22 @@ class UpdateEducationInformationeRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'exam_board_id' => [
+                'required',
+                'integer',
+            ],
+            'concentration_major_group' => [
+                'string',
+                'nullable',
+            ],
             'school_university_name' => [
                 'string',
                 'required',
                 'unique:education_informationes,school_university_name,' . request()->route('education_informatione')->id,
             ],
-            'achievement_types_id' => [
+            'result_id' => [
                 'required',
                 'integer',
-            ],
-            'achivement' => [
-                'string',
-                'nullable',
             ],
             'passing_year' => [
                 'nullable',
@@ -40,12 +44,17 @@ class UpdateEducationInformationeRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
-            'catificarte' => [
-                'required',
+            'achivement' => [
+                'string',
+                'nullable',
             ],
             'employee_id' => [
                 'required',
                 'integer',
+            ],
+            'exam_degree' => [
+                'string',
+                'nullable',
             ],
         ];
     }

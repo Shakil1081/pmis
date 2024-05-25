@@ -348,24 +348,36 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('projects/process-csv-import', 'ProjectController@processCsvImport')->name('projects.processCsvImport');
     Route::resource('projects', 'ProjectController');
 
-    // Forest States
-    Route::delete('forest-states/destroy', 'ForestStatesController@massDestroy')->name('forest-states.massDestroy');
-    Route::post('forest-states/parse-csv-import', 'ForestStatesController@parseCsvImport')->name('forest-states.parseCsvImport');
-    Route::post('forest-states/process-csv-import', 'ForestStatesController@processCsvImport')->name('forest-states.processCsvImport');
-    Route::resource('forest-states', 'ForestStatesController');
-
-    // Forest Ranges
-    Route::delete('forest-ranges/destroy', 'ForestRangesController@massDestroy')->name('forest-ranges.massDestroy');
-    Route::resource('forest-ranges', 'ForestRangesController');
-
-    // Forest Beats
-    Route::delete('forest-beats/destroy', 'ForestBeatsController@massDestroy')->name('forest-beats.massDestroy');
-    Route::resource('forest-beats', 'ForestBeatsController');
-
-    // Forest Divisions
-    Route::delete('forest-divisions/destroy', 'ForestDivisionsController@massDestroy')->name('forest-divisions.massDestroy');
-    Route::resource('forest-divisions', 'ForestDivisionsController');
-});
+        // Forest States
+        Route::delete('forest-states/destroy', 'ForestStatesController@massDestroy')->name('forest-states.massDestroy');
+        Route::post('forest-states/parse-csv-import', 'ForestStatesController@parseCsvImport')->name('forest-states.parseCsvImport');
+        Route::post('forest-states/process-csv-import', 'ForestStatesController@processCsvImport')->name('forest-states.processCsvImport');
+        Route::resource('forest-states', 'ForestStatesController');
+    
+        // Forest Ranges
+        Route::delete('forest-ranges/destroy', 'ForestRangesController@massDestroy')->name('forest-ranges.massDestroy');
+        Route::resource('forest-ranges', 'ForestRangesController');
+    
+        // Forest Beats
+        Route::delete('forest-beats/destroy', 'ForestBeatsController@massDestroy')->name('forest-beats.massDestroy');
+        Route::resource('forest-beats', 'ForestBeatsController');
+    
+        // Forest Divisions
+        Route::delete('forest-divisions/destroy', 'ForestDivisionsController@massDestroy')->name('forest-divisions.massDestroy');
+        Route::resource('forest-divisions', 'ForestDivisionsController');
+    
+        // Exam Degree
+        Route::delete('exam-degrees/destroy', 'ExamDegreeController@massDestroy')->name('exam-degrees.massDestroy');
+        Route::resource('exam-degrees', 'ExamDegreeController');
+    
+        // Result Group
+        Route::delete('result-groups/destroy', 'ResultGroupController@massDestroy')->name('result-groups.massDestroy');
+        Route::resource('result-groups', 'ResultGroupController');
+    
+        // Result
+        Route::delete('results/destroy', 'ResultController@massDestroy')->name('results.massDestroy');
+        Route::resource('results', 'ResultController');
+    });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {

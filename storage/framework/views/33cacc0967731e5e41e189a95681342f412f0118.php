@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col">
-                    <strong>Total Employee: <?php echo e($data['total']); ?></strong>
+                    <strong>Total Employee: <?php echo e($data['total'] ?? 0); ?></strong>
 
                 </div>
                 <div class="col text-end">

@@ -1328,6 +1328,66 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 330,
+                'title' => 'exam_degree_create',
+            ],
+            [
+                'id'    => 331,
+                'title' => 'exam_degree_edit',
+            ],
+            [
+                'id'    => 332,
+                'title' => 'exam_degree_show',
+            ],
+            [
+                'id'    => 333,
+                'title' => 'exam_degree_delete',
+            ],
+            [
+                'id'    => 334,
+                'title' => 'exam_degree_access',
+            ],
+            [
+                'id'    => 335,
+                'title' => 'result_group_create',
+            ],
+            [
+                'id'    => 336,
+                'title' => 'result_group_edit',
+            ],
+            [
+                'id'    => 337,
+                'title' => 'result_group_show',
+            ],
+            [
+                'id'    => 338,
+                'title' => 'result_group_delete',
+            ],
+            [
+                'id'    => 339,
+                'title' => 'result_group_access',
+            ],
+            [
+                'id'    => 340,
+                'title' => 'result_create',
+            ],
+            [
+                'id'    => 341,
+                'title' => 'result_edit',
+            ],
+            [
+                'id'    => 342,
+                'title' => 'result_show',
+            ],
+            [
+                'id'    => 343,
+                'title' => 'result_delete',
+            ],
+            [
+                'id'    => 344,
+                'title' => 'result_access',
+            ],
+            [
+                'id'    => 345,
                 'title' => 'profile_password_edit',
             ],
         ];

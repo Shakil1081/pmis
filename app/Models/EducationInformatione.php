@@ -30,10 +30,12 @@ class EducationInformatione extends Model implements HasMedia
     protected $fillable = [
         'name_of_exam_id',
         'exam_board_id',
+        'concentration_major_group',
         'school_university_name',
+        'result_id',
+        'passing_year',
         'achievement_types_id',
         'achivement',
-        'passing_year',
         'employee_id',
         'created_at',
         'updated_at',
@@ -59,6 +61,11 @@ class EducationInformatione extends Model implements HasMedia
     public function exam_board()
     {
         return $this->belongsTo(ExamBoard::class, 'exam_board_id');
+    }
+
+    public function result()
+    {
+        return $this->belongsTo(Result::class, 'result_id');
     }
 
     public function achievement_types()

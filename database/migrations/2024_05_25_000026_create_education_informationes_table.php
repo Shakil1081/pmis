@@ -10,9 +10,11 @@ class CreateEducationInformationesTable extends Migration
     {
         Schema::create('education_informationes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('concentration_major_group')->nullable();
             $table->string('school_university_name')->unique();
-            $table->string('achivement')->nullable();
             $table->integer('passing_year')->nullable();
+            $table->string('achivement')->nullable();
+            $table->string('exam_degree')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

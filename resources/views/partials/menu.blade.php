@@ -497,7 +497,7 @@
         @endcan
         @can('edu_config_access')
             <li
-                class="c-sidebar-nav-dropdown {{ request()->is('admin/examinations*') ? 'c-show' : '' }} {{ request()->is('admin/exam-boards*') ? 'c-show' : '' }} {{ request()->is('admin/achievementschools-universities*') ? 'c-show' : '' }}">
+                class="c-sidebar-nav-dropdown {{ request()->is('admin/examinations*') ? 'c-show' : '' }} {{ request()->is('admin/exam-degrees*') ? 'c-show' : '' }} {{ request()->is('admin/exam-boards*') ? 'c-show' : '' }} {{ request()->is('admin/result-groups*') ? 'c-show' : '' }} {{ request()->is('admin/results*') ? 'c-show' : '' }} {{ request()->is('admin/achievementschools-universities*') ? 'c-show' : '' }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-book c-sidebar-nav-icon">
 
@@ -516,6 +516,17 @@
                             </a>
                         </li>
                     @endcan
+                    @can('exam_degree_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.exam-degrees.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/exam-degrees') || request()->is('admin/exam-degrees/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.examDegree.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('exam_board_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.exam-boards.index') }}"
@@ -524,6 +535,28 @@
 
                                 </i>
                                 {{ trans('cruds.examBoard.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('result_group_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.result-groups.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/result-groups') || request()->is('admin/result-groups/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.resultGroup.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('result_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.results.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/results') || request()->is('admin/results/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.result.title') }}
                             </a>
                         </li>
                     @endcan
@@ -864,5 +897,6 @@
             </a>
         </li>
     </ul>
+
 
 </div>

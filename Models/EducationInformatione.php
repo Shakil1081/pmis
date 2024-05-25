@@ -30,10 +30,14 @@ class EducationInformatione extends Model implements HasMedia
     protected $fillable = [
         'name_of_exam_id',
         'exam_board_id',
+        'concentration_major_group',
         'school_university_name',
-        'achivement',
+        'result_id',
         'passing_year',
+        'achievement_types_id',
+        'achivement',
         'employee_id',
+        'exam_degree',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -58,6 +62,16 @@ class EducationInformatione extends Model implements HasMedia
     public function exam_board()
     {
         return $this->belongsTo(ExamBoard::class, 'exam_board_id');
+    }
+
+    public function result()
+    {
+        return $this->belongsTo(Result::class, 'result_id');
+    }
+
+    public function achievement_types()
+    {
+        return $this->belongsTo(AchievementschoolsUniversity::class, 'achievement_types_id');
     }
 
     public function getCatificarteAttribute()

@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.educationInformatione.fields.concentration_major_group') }}
+                        </th>
+                        <td>
+                            {{ $educationInformatione->concentration_major_group }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.educationInformatione.fields.school_university_name') }}
                         </th>
                         <td>
@@ -41,10 +49,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.educationInformatione.fields.achivement') }}
+                            {{ trans('cruds.educationInformatione.fields.result') }}
                         </th>
                         <td>
-                            {{ $educationInformatione->achivement }}
+                            {{ $educationInformatione->result->name_bn ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -53,6 +61,22 @@
                         </th>
                         <td>
                             {{ $educationInformatione->passing_year }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.educationInformatione.fields.achievement_types') }}
+                        </th>
+                        <td>
+                            {{ $educationInformatione->achievement_types->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.educationInformatione.fields.achivement') }}
+                        </th>
+                        <td>
+                            {{ $educationInformatione->achivement }}
                         </td>
                     </tr>
                     <tr>
@@ -73,6 +97,14 @@
                         </th>
                         <td>
                             {{ $educationInformatione->employee->employeeid ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.educationInformatione.fields.exam_degree') }}
+                        </th>
+                        <td>
+                            {{ $educationInformatione->exam_degree }}
                         </td>
                     </tr>
                 </tbody>

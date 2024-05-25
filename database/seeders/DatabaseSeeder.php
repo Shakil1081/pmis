@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             GenderSeeder::class,
             DivisionSeeder::class,
             DistrictSeeder::class,
+            ExaminationsTableSeeder::class,
         ]);
     }
 }

@@ -68,7 +68,10 @@
         @endif
 
 
-        @if ($projectRevenueExam)
+
+
+        @if (empty($projectRevenueExam) || count($projectRevenueExam) === 0)
+        @else
             <div class="form-group">
                 <label class="required" for="departmental_exam_id">non-Cader Exam</label>
                 <select wire:model="departmentalOrDepartmental" class="form-select" name="departmental_exam_id"
@@ -90,20 +93,24 @@
                     <option value="Senior Scale Exam">Senior Scale Exam</option> --}}
                 </select>
             </div>
+
+            @if ($departmentalOrDepartmental)
+                <div class="form-group">
+                    <label class="required" for="level_1">Exam Pass</label>
+                    <select wire:model="exampass" class="form-select" name="level_1" id="level_1"
+                        wire:change="onSelectexampass($event.target.value)" required>
+
+                        <option>Select</option>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+            @endif
         @endif
 
-        @if ($departmentalOrDepartmental)
-            <div class="form-group">
-                <label class="required" for="level_1">Exam Pass</label>
-                <select wire:model="exampass" class="form-select" name="level_1" id="level_1"
-                    wire:change="onSelectexampass($event.target.value)" required>
 
-                    <option>Select</option>
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-            </div>
-        @endif
+
+
         @if ($exampass == 'Yes')
             <div class="form-group">
 
