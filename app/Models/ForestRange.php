@@ -22,11 +22,9 @@ class ForestRange extends Model
 
     protected $fillable = [
         'forest_state_id',
-        'status_id',
-        'forest_division_id',
         'name_bn',
+        'forest_division_id',
         'name_en',
-        'forest_division_bbs_code',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -40,11 +38,6 @@ class ForestRange extends Model
     public function forest_state()
     {
         return $this->belongsTo(ForestState::class, 'forest_state_id');
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(Status::class, 'status_id');
     }
 
     public function forest_division()

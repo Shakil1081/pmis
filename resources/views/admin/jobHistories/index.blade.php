@@ -26,15 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.jobHistory.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.institute_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.job_type') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.jobHistory.fields.designation') }}
                     </th>
                     <th>
@@ -42,21 +33,6 @@
                     </th>
                     <th>
                         {{ trans('cruds.jobHistory.fields.release_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.level_1') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.level_2') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.level_3') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.level_4') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.jobHistory.fields.level_5') }}
                     </th>
                     <th>
                         {{ trans('cruds.jobHistory.fields.employee') }}
@@ -69,6 +45,15 @@
                     </th>
                     <th>
                         {{ trans('cruds.grade.fields.salary_range') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.jobHistory.fields.institutename') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.jobHistory.fields.circle_list') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.jobHistory.fields.division_list') }}
                     </th>
                     <th>
                         &nbsp;
@@ -126,21 +111,16 @@
     ajax: "{{ route('admin.job-histories.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'institute_name', name: 'institute_name' },
-{ data: 'job_type_name_bn', name: 'job_type.name_bn' },
 { data: 'designation_name_bn', name: 'designation.name_bn' },
 { data: 'joining_date', name: 'joining_date' },
 { data: 'release_date', name: 'release_date' },
-{ data: 'level_1', name: 'level_1' },
-{ data: 'level_2', name: 'level_2' },
-{ data: 'level_3', name: 'level_3' },
-{ data: 'level_4', name: 'level_4' },
-{ data: 'level_5', name: 'level_5' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'employee.fullname_bn', name: 'employee.fullname_bn' },
 { data: 'grade_name_bn', name: 'grade.name_bn' },
 { data: 'grade.salary_range', name: 'grade.salary_range' },
+{ data: 'institutename', name: 'institutename' },
+{ data: 'circle_list_name_bn', name: 'circle_list.name_bn' },
+{ data: 'division_list_name_bn', name: 'division_list.name_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

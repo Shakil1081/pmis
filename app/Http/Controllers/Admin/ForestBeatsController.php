@@ -41,9 +41,6 @@ class ForestBeatsController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->addColumn('forest_range_name_bn', function ($row) {
                 return $row->forest_range ? $row->forest_range->name_bn : '';
             });

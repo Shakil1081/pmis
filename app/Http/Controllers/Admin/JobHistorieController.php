@@ -53,28 +53,10 @@ class JobHistorieController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
-            $table->editColumn('level_1', function ($row) {
-                return $row->level_1 ? $row->level_1 : '';
-            });
             $table->addColumn('designation_name_bn', function ($row) {
                 return $row->designation ? $row->designation->name_bn : '';
             });
 
-            $table->editColumn('level_2', function ($row) {
-                return $row->level_2 ? $row->level_2 : '';
-            });
-            $table->editColumn('level_3', function ($row) {
-                return $row->level_3 ? $row->level_3 : '';
-            });
-            $table->editColumn('level_4', function ($row) {
-                return $row->level_4 ? $row->level_4 : '';
-            });
-            $table->editColumn('level_5', function ($row) {
-                return $row->level_5 ? $row->level_5 : '';
-            });
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
             });
@@ -92,21 +74,6 @@ class JobHistorieController extends Controller
             $table->editColumn('institutename', function ($row) {
                 return $row->institutename ? $row->institutename : '';
             });
-            $table->editColumn('academy_type', function ($row) {
-                return $row->academy_type ? $row->academy_type : '';
-            });
-            $table->editColumn('acadaylocation', function ($row) {
-                return $row->acadaylocation ? $row->acadaylocation : '';
-            });
-            $table->editColumn('posting_in_circle', function ($row) {
-                return $row->posting_in_circle ? $row->posting_in_circle : '';
-            });
-            $table->editColumn('postingindivision', function ($row) {
-                return $row->postingindivision ? $row->postingindivision : '';
-            });
-            $table->editColumn('posting_in_range', function ($row) {
-                return $row->posting_in_range ? $row->posting_in_range : '';
-            });
             $table->addColumn('circle_list_name_bn', function ($row) {
                 return $row->circle_list ? $row->circle_list->name_bn : '';
             });
@@ -115,26 +82,7 @@ class JobHistorieController extends Controller
                 return $row->division_list ? $row->division_list->name_bn : '';
             });
 
-            $table->addColumn('range_list_name_bn', function ($row) {
-                return $row->range_list ? $row->range_list->name_bn : '';
-            });
-
-            $table->editColumn('range_list.name_bn', function ($row) {
-                return $row->range_list ? (is_string($row->range_list) ? $row->range_list : $row->range_list->name_bn) : '';
-            });
-            $table->addColumn('beat_list_name_bn', function ($row) {
-                return $row->beat_list ? $row->beat_list->name_bn : '';
-            });
-
-            $table->addColumn('office_unit_name_bn', function ($row) {
-                return $row->office_unit ? $row->office_unit->name_bn : '';
-            });
-
-            $table->editColumn('go_upload', function ($row) {
-                return $row->go_upload ? '<a href="' . $row->go_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit', 'go_upload']);
+            $table->rawColumns(['actions', 'placeholder', 'designation', 'employee', 'grade', 'circle_list', 'division_list']);
 
             return $table->make(true);
         }
@@ -176,8 +124,8 @@ class JobHistorieController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $jobHistory->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.job-histories.index');
+
+        return redirect()->route('admin.job-histories.index');
     }
 
     public function edit(JobHistory $jobHistory)
@@ -219,8 +167,8 @@ class JobHistorieController extends Controller
         } elseif ($jobHistory->go_upload) {
             $jobHistory->go_upload->delete();
         }
-
-        return redirect()->route('admin.job-histories.index');
+        return redirect()->back()->with('status', 'Action successful!');
+        //return redirect()->route('admin.job-histories.index');
     }
 
     public function show(JobHistory $jobHistory)

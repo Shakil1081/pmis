@@ -17,26 +17,10 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.jobHistory.fields.id') }}
+                            {{ trans('cruds.jobHistory.fields.level_1') }}
                         </th>
                         <td>
-                            {{ $jobHistory->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.institute_name') }}
-                        </th>
-                        <td>
-                            {{ $jobHistory->institute_name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.job_type') }}
-                        </th>
-                        <td>
-                            {{ $jobHistory->job_type->name_bn ?? '' }}
+                            {{ $jobHistory->level_1 }}
                         </td>
                     </tr>
                     <tr>
@@ -61,14 +45,6 @@
                         </th>
                         <td>
                             {{ $jobHistory->release_date }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.level_1') }}
-                        </th>
-                        <td>
-                            {{ $jobHistory->level_1 }}
                         </td>
                     </tr>
                     <tr>
@@ -117,6 +93,106 @@
                         </th>
                         <td>
                             {{ $jobHistory->grade->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.institutename') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->institutename }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.academy_type') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->academy_type }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.acadaylocation') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->acadaylocation }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.posting_in_circle') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->posting_in_circle }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.postingindivision') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->postingindivision }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.posting_in_range') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->posting_in_range }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.circle_list') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->circle_list->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.division_list') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->division_list->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.range_list') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->range_list->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.beat_list') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->beat_list->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.office_unit') }}
+                        </th>
+                        <td>
+                            {{ $jobHistory->office_unit->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.go_upload') }}
+                        </th>
+                        <td>
+                            @if($jobHistory->go_upload)
+                                <a href="{{ $jobHistory->go_upload->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

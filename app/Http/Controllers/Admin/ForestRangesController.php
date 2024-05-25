@@ -42,9 +42,6 @@ class ForestRangesController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->addColumn('forest_state_name_bn', function ($row) {
                 return $row->forest_state ? $row->forest_state->name_bn : '';
             });
