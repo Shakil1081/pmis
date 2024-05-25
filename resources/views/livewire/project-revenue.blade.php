@@ -73,7 +73,7 @@
         @if (empty($projectRevenueExam) || count($projectRevenueExam) === 0)
         @else
             <div class="form-group">
-                <label class="required" for="departmental_exam_id">non-Cader Exam</label>
+                <label class="required" for="departmental_exam_id">Cadre Exam</label>
                 <select wire:model="departmentalOrDepartmental" class="form-select" name="departmental_exam_id"
                     id="departmental_exam_id" wire:change="onSelectdepartmentalOrDepartmental($event.target.value)"
                     required>

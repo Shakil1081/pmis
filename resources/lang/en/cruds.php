@@ -505,6 +505,7 @@ return [
             'project_helper'                       => ' ',
             'freedomfighter'                       => 'Relation with theFreedom Fighter',
             'freedomfighter_helper'                => ' ',
+            'has_passport'                          =>'Has Passport'
         ],
     ],
     'licenseType' => [
