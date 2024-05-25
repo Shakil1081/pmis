@@ -250,23 +250,19 @@
             </button>
 
             <ul class="c-header-nav ml-auto">
-                <li>@lang('dashboard.welcome'), {{ Auth::user()->name }}</>:</li>
-                @if (count(config('panel.available_languages', [])) > 1)
-                    <li class="c-header-nav-item dropdown d-md-down-none">
-                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">
-                            <strong class="text-danger"> {{ strtoupper(app()->getLocale()) }}</strong>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            @foreach (config('panel.available_languages') as $langLocale => $langName)
-                                <a class="dropdown-item"
-                                    href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }}
-                                    ({{ $langName }})
-                                </a>
-                            @endforeach
-                        </div>
-                    </li>
+                <li>@lang('dashboard.welcome'), {{ Auth::user()->name }} </li>
+
+                @if (app()->getLocale() === 'bn')
+                    <li><a href="{{ url()->current() }}?change_language=en" class="btn btn-sm btn-danger mx-2">
+                            English
+                        </a></li>
+                @else
+                    <li><a href="{{ url()->current() }}?change_language=bn" class="btn btn-sm btn-danger mx-2">
+                            বাংলা
+                        </a></li>
                 @endif
+
+
 
 
             </ul>
