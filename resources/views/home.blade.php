@@ -2,10 +2,10 @@
 @section('content')
     <div class="content">
         <div class="row">
-            <div class="row row-cols-1 row-cols-xl-4">
+            <div class="row row-cols-1 row-cols-xl-2 row-cols-md-2">
 
                 <div class="col">
-                    <div class="card border-success border-bottom rounded-4">
+                    <div class="card border-bottom rounded-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <p class="fs-6 mb-0">Updating..</p>
@@ -206,7 +206,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card border-success border-bottom rounded-4">
+                    <div class="card border-bottom rounded-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <p class="fs-6 mb-0">Updating..</p>
@@ -408,7 +408,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card border-success border-bottom rounded-4">
+                    <div class="card border-bottom rounded-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <p class="fs-6 mb-0">Updating..</p>
@@ -610,7 +610,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card border-success border-bottom rounded-4">
+                    <div class="card border-bottom rounded-4">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <p class="fs-6 mb-0">Updating..</p>
@@ -2098,7 +2098,7 @@
 
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart1->options['chart_title'] !!}</h3>
@@ -2106,7 +2106,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart2->options['chart_title'] !!}</h3>
@@ -2114,7 +2114,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card bg-success mb-0 mb-4 border shadow-none">
                         <div class="card-body">
                             <h3>{!! $chart3->options['chart_title'] !!}</h3>
@@ -2122,9 +2122,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
+
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart4->options['chart_title'] !!}</h3>
@@ -2132,7 +2131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart5->options['chart_title'] !!}</h3>
@@ -2140,7 +2139,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart6->options['chart_title'] !!}</h3>
@@ -2148,9 +2147,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
+
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart7->options['chart_title'] !!}</h3>
@@ -2158,7 +2156,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart8->options['chart_title'] !!}</h3>
@@ -2166,7 +2164,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart9->options['chart_title'] !!}</h3>
