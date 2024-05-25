@@ -14,7 +14,7 @@ class JobDesignationSeederlist extends Seeder
      */
     public function run()
     {
-        DB::table('designations')->insert([
+        DB::table('designations')->insertOrIgnore([
             [
                 'name_en' => 'Forest Officer',
                 'name_bn' => 'বন কর্মকর্তা',
