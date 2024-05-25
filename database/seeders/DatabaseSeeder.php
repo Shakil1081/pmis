@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
             GradeSeeder::class, 
             BCSBatchSeeder::class, 
             LeaveCategorySeeder::class, 
+            TrainingTypeSeeder::class, 
         ]);
     }
 }
