@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ReligionTableSeeder::class,
             OfficeUnitTableSeeder::class,
             ForestStateTableSeeder::class,
-            ForestDivisionSeeder::class,
+            ForestDivisionTableSeeder::class,
             JoiningInfoTableSeeder::class,
             ProjectRevenueLonesTableSeeder::class,
             MaritalStatusTableSeeder::class,
