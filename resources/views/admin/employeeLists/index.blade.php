@@ -52,7 +52,7 @@
                                 <p class="customer-name fw-bold mb-0">{{ $result['fullname_bn'] }}</p>
                                 <p class="mb-0">{{ $result['employeeid'] }}</p>
                                 <p>
-                                    @php
+                                    {{-- @php
                                         $lastJobHistory = $result->jobhistories->last();
                                         if ($lastJobHistory && $lastJobHistory->relationLoaded('designation')) {
                                             $designation = $lastJobHistory->designation;
@@ -61,7 +61,7 @@
                                             $designationName = 'NA';
                                         }
                                     @endphp
-                                    <small>{{ $designationName }}</small>
+                                    <small>{{ $designationName }}</small> --}}
 
 
                                 </p>
@@ -95,8 +95,16 @@
                                     'languages',
                                     'acrmonitorings',
                                 ];
+                                // foreach ($relationships as $relationship) {
+                                //     if ($result->{$relationship}->count()) {
+                                //         $total++;
+                                //     }
+                                // }
+
                                 foreach ($relationships as $relationship) {
-                                    if ($result->{$relationship}->count()) {
+                                    // Use null coalescing operator to provide an empty collection if the relationship is null
+                                    $countable = $result->{$relationship} ?? collect();
+                                    if ($countable->count()) {
                                         $total++;
                                     }
                                 }

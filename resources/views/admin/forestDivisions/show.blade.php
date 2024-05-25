@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.forestDivision.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $forestDivision->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.forestDivision.fields.forest_state') }}
                         </th>
                         <td>

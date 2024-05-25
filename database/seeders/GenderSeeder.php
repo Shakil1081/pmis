@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class BatchTableSeeder extends Seeder
+class GenderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,9 @@ class BatchTableSeeder extends Seeder
      */
     public function run()
     {
-        // Insert data into the batches table
-        DB::table('batches')->insert([
-            'batch_bn' => '১৯৮২',
-            'batch_en' => '1982',
+        DB::table('genders')->insert([
+            ['name_bn' => 'পুরুষ', 'name_en' => 'Male'],
+            ['name_bn' => 'মহিলা', 'name_en' => 'Female'],
         ]);
     }
 }

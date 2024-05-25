@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.languageProficiency.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.languageProficiency.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $languageProficiency->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $languageProficiency->id ?? '' }}
                             </td>
                             <td>
                                 {{ $languageProficiency->name ?? '' }}

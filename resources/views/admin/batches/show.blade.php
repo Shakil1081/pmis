@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.batch.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $batch->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.batch.fields.batch_bn') }}
                         </th>
                         <td>

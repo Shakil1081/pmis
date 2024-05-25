@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.project.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $project->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.project.fields.name_bn') }}
                         </th>
                         <td>

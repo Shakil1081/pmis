@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class BloodGroupTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database  seeds.
      *
      * @return void
      */

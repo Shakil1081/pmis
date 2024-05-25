@@ -34,7 +34,6 @@ class CreateEmployeeListsTable extends Migration
             $table->date('date_of_regularization')->nullable();
             $table->date('regularization_issue_date')->nullable();
             $table->date('date_of_con_serviec')->nullable();
-            $table->string('freedomfighter')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

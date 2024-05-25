@@ -108,7 +108,7 @@ class StoreEmployeeListRequest extends FormRequest
                 'nullable',
             ],
             'license_type_id' => [
-                'required',
+                'nullable',
                 'integer',
             ],
             'mobile_number' => [

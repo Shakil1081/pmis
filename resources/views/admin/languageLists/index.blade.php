@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.languageList.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.languageList.fields.name') }}
                     </th>
                     <th>
@@ -87,7 +84,6 @@
     ajax: "{{ route('admin.language-lists.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

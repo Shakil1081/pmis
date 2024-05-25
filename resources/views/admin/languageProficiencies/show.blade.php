@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.languageProficiency.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $languageProficiency->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.languageProficiency.fields.name') }}
                         </th>
                         <td>

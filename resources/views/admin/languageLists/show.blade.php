@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.languageList.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $languageList->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.languageList.fields.name') }}
                         </th>
                         <td>

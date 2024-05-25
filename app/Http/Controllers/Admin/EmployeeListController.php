@@ -14,6 +14,7 @@ use App\Models\District;
 use App\Models\EmployeeList;
 use App\Models\ExamBoard;
 use App\Models\Examination;
+use App\Models\FreedomFighteRelation;
 use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\JobType;
@@ -183,6 +184,7 @@ class EmployeeListController extends Controller
         $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $freedomfighters = FreedomFighteRelation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         }else{
             $batches = Batch::pluck('batch_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -210,9 +212,10 @@ class EmployeeListController extends Controller
         $grades = Grade::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $quotas = Quotum::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $freedomfighters = FreedomFighteRelation::pluck('name_en as name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         } 
-        return view('admin.employeeLists.create', compact('batches', 'blood_groups', 'departmental_exams', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'projectrevenues', 'projects', 'quotas', 'religions'));
+        return view('admin.employeeLists.create', compact('batches','freedomfighters', 'blood_groups', 'departmental_exams', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'projectrevenues', 'projects', 'quotas', 'religions'));
     }
 
 
@@ -250,9 +253,9 @@ class EmployeeListController extends Controller
 
         $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
         $thana_upazilas = Upazila::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $freedomfighters = FreedomFighteRelation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-
-        return view('admin.commonemployee.create', compact('new_designations','designations','job_types','thana_upazilas','batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions','employees', 'exam_boards', 'name_of_exams'));
+        return view('admin.commonemployee.create', compact('new_designations','freedomfighters','designations','job_types','thana_upazilas','batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions','employees', 'exam_boards', 'name_of_exams'));
     }
     public function store(StoreEmployeeListRequest $request)
     {
@@ -485,7 +488,7 @@ class EmployeeListController extends Controller
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $employeeList = EmployeeList::findOrFail($request->id);
 
-        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
+        $employeeList->load('educations','batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
 
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }

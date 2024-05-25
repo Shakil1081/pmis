@@ -23,19 +23,7 @@
 
                     </th>
                     <th>
-                        <?php echo e(trans('cruds.forestRange.fields.id')); ?>
-
-                    </th>
-                    <th>
                         <?php echo e(trans('cruds.forestRange.fields.forest_state')); ?>
-
-                    </th>
-                    <th>
-                        <?php echo e(trans('cruds.forestRange.fields.status')); ?>
-
-                    </th>
-                    <th>
-                        <?php echo e(trans('cruds.forestRange.fields.forest_division')); ?>
 
                     </th>
                     <th>
@@ -43,11 +31,11 @@
 
                     </th>
                     <th>
-                        <?php echo e(trans('cruds.forestRange.fields.name_en')); ?>
+                        <?php echo e(trans('cruds.forestRange.fields.forest_division')); ?>
 
                     </th>
                     <th>
-                        <?php echo e(trans('cruds.forestRange.fields.forest_division_bbs_code')); ?>
+                        <?php echo e(trans('cruds.forestRange.fields.name_en')); ?>
 
                     </th>
                     <th>
@@ -106,13 +94,10 @@
     ajax: "<?php echo e(route('admin.forest-ranges.index')); ?>",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'forest_state_name_bn', name: 'forest_state.name_bn' },
-{ data: 'status_name', name: 'status.name' },
-{ data: 'forest_division_name_bn', name: 'forest_division.name_bn' },
 { data: 'name_bn', name: 'name_bn' },
+{ data: 'forest_division_name_bn', name: 'forest_division.name_bn' },
 { data: 'name_en', name: 'name_en' },
-{ data: 'forest_division_bbs_code', name: 'forest_division_bbs_code' },
 { data: 'actions', name: '<?php echo e(trans('global.actions')); ?>' }
     ],
     orderCellsTop: true,

@@ -20,12 +20,16 @@ class DatabaseSeeder extends Seeder
             ReligionTableSeeder::class,
             OfficeUnitTableSeeder::class,
             ForestStateTableSeeder::class,
+            ForestDivisionSeeder::class,
             JoiningInfoTableSeeder::class,
             ProjectRevenueLonesTableSeeder::class,
             MaritalStatusTableSeeder::class,
             LicenseTypeTableSeeder::class,
             LanguageListTableSeeder::class,
-            ForestDivisionTableSeeder::class,
+            ExamBoardSeeder::class,
+            GenderSeeder::class,
+            DivisionSeeder::class,
+            DistrictSeeder::class,
         ]);
     }
 }

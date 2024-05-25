@@ -53,16 +53,7 @@
                                 <p class="customer-name fw-bold mb-0"><?php echo e($result['fullname_bn']); ?></p>
                                 <p class="mb-0"><?php echo e($result['employeeid']); ?></p>
                                 <p>
-                                    <?php
-                                        $lastJobHistory = $result->jobhistories->last();
-                                        if ($lastJobHistory && $lastJobHistory->relationLoaded('designation')) {
-                                            $designation = $lastJobHistory->designation;
-                                            @$designationName = $designation->name_bn;
-                                        } else {
-                                            $designationName = 'NA';
-                                        }
-                                    ?>
-                                    <small><?php echo e($designationName); ?></small>
+                                    
 
 
                                 </p>
@@ -96,8 +87,16 @@
                                     'languages',
                                     'acrmonitorings',
                                 ];
+                                // foreach ($relationships as $relationship) {
+                                //     if ($result->{$relationship}->count()) {
+                                //         $total++;
+                                //     }
+                                // }
+
                                 foreach ($relationships as $relationship) {
-                                    if ($result->{$relationship}->count()) {
+                                    // Use null coalescing operator to provide an empty collection if the relationship is null
+                                    $countable = $result->{$relationship} ?? collect();
+                                    if ($countable->count()) {
                                         $total++;
                                     }
                                 }

@@ -35,6 +35,8 @@ class AddRelationshipFieldsToEmployeeListsTable extends Migration
             $table->foreign('grade_id', 'grade_fk_9751240')->references('id')->on('grades');
             $table->unsignedBigInteger('quota_id')->nullable();
             $table->foreign('quota_id', 'quota_fk_9732701')->references('id')->on('quota');
+            $table->unsignedBigInteger('freedomfighter_id')->nullable();
+            $table->foreign('freedomfighter_id', 'freedomfighter_fk_9817545')->references('id')->on('freedom_fighte_relations');
         });
     }
 }

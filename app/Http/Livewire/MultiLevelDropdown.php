@@ -5,7 +5,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Division;
 use App\Models\ForestBeat;
+use App\Models\ForestDivision;
 use App\Models\ForestRange;
+use App\Models\ForestState;
 use Livewire\Component;
 use App\Models\OfficeUnit;
 
@@ -28,6 +30,8 @@ class MultiLevelDropdown extends Component
     public $institution;
     public $institutionother;
     public $fsit;
+    public $division;
+    public $circlelistid;
     
 
 
@@ -36,11 +40,11 @@ class MultiLevelDropdown extends Component
     {
         // Load options for the first level
         $optionsLevel1 = OfficeUnit::orderBy('name_en')->get();
-        $division = Division::orderBy('name_en')->get();
+        $circle_lists = ForestState::all();
 
         return view('livewire.multi-level-dropdown', [
             'optionsLevel1' => $optionsLevel1,
-            'division'=> $division,
+            'circle_lists'=> $circle_lists,
         ]);
     }
 
@@ -73,10 +77,14 @@ class MultiLevelDropdown extends Component
         //     $this->optionsLevel2 = [];
         // }
     }
+
+    public function onSelectcirclelistid($value){
+        $this->division = ForestDivision::where('forest_state_id',$value)->get();
+    }
     public function onSelctDivision($value)
     {       
         $this->onSelctDivision = $value;  
-        $this->range = ForestRange::where('forest_division_id',$value)->get();
+        $this->range = ForestRange::where('forest_state_id',$value)->get();
        
     }
     public function onducusionRange($value)

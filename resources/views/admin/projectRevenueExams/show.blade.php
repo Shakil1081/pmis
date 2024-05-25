@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.projectRevenueExam.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $projectRevenueExam->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.projectRevenueExam.fields.exam') }}
                         </th>
                         <td>
@@ -45,18 +37,6 @@
                         </th>
                         <td>
                             {{ $projectRevenueExam->exam_name_en }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.projectRevenueExam.fields.upload') }}
-                        </th>
-                        <td>
-                            @if($projectRevenueExam->upload)
-                                <a href="{{ $projectRevenueExam->upload->getUrl() }}" target="_blank">
-                                    {{ trans('global.view_file') }}
-                                </a>
-                            @endif
                         </td>
                     </tr>
                 </tbody>

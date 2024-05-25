@@ -22,9 +22,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.forestBeat.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.forestBeat.fields.forest_range') }}
                     </th>
                     <th>
@@ -92,7 +89,6 @@
     ajax: "{{ route('admin.forest-beats.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'forest_range_name_bn', name: 'forest_range.name_bn' },
 { data: 'forest_range.name_en', name: 'forest_range.name_en' },
 { data: 'name_bn', name: 'name_bn' },

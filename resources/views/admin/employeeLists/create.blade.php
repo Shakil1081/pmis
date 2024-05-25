@@ -2,15 +2,18 @@
 @section('content')
     <div class="">
         <div class="container my-3">
-            <h4> Add Employee</h4>
             <form method="POST" action="{{ route('admin.employee-lists.store', ['employee_id' => request()->query('id')]) }}"
                 enctype="multipart/form-data">
                 @csrf
 
+                <h5 class="text-secondary">
 
-
-
-                <h5 class="text-secondary"> Personel information</h5>
+                    @if (app()->getLocale() === 'bn')
+                        ব্যক্তিগত তথ্য
+                    @else
+                        Personal information
+                    @endif
+                </h5>
                 <div class="card border-secondary border p-4">
 
                     <div class="row row-cols-3">
@@ -169,7 +172,7 @@
                     </div>
 
                 </div>
-                <h5 class="text-secondary mt-3"> Personel information</h5>
+                {{-- <h5 class="text-secondary mt-3"> Personel information</h5> --}}
                 <div class="card border-secondary border p-4">
                     <div class="row row-cols-3">
 
@@ -317,7 +320,7 @@
                     </div>
                 </div>
 
-                <h5 class="text-secondary mt-3"> Personal</h5>
+                {{-- <h5 class="text-secondary mt-3"> Personal</h5> --}}
                 <div class="card border-secondary border p-4">
                     <div class="row row-cols-3">
 
@@ -426,10 +429,17 @@
                     </div>
                 </div>
 
-                <h5 class="text-secondary mt-3"> First joining information</h5>
+                {{-- <h5 class="text-secondary mt-3"> First joining information</h5> --}}
+
+
                 <div class="card border-secondary border p-4">
+
+
+
+                    @livewire('project-revenue')
+
                     <div class="row row-cols-3">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="required"
                                 for="projectrevenue_id">{{ trans('cruds.employeeList.fields.projectrevenue') }}</label>
                             <select class="form-select select2 {{ $errors->has('projectrevenue') ? 'is-invalid' : '' }}"
@@ -533,44 +543,16 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.certificate_upload_helper') }}</span>
-                        </div>
+                        </div> --}}
 
 
-                        <div class="form-group">
-                            <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
-                            <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
-                                name="grade_id" id="grade_id">
-                                @foreach ($grades as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('grade'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('grade') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
-                            <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}"
-                                type="text" name="fjoining_date" id="fjoining_date"
-                                value="{{ old('fjoining_date') }}" required>
-                            @if ($errors->has('fjoining_date'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('fjoining_date') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
-                        </div>
+
 
 
                         {{-- only for project --}}
 
 
-                        <div class="form-group project" style="display: none;">
+                        {{-- <div class="form-group project" style="display: none;">
                             <label
                                 for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
                             <input
@@ -599,7 +581,7 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -747,24 +729,7 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.confirmation_in_service_helper') }}</span>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="quota_id">{{ trans('cruds.employeeList.fields.quota') }}</label>
-                            <select class="form-control select2 {{ $errors->has('quota') ? 'is-invalid' : '' }}"
-                                name="quota_id" id="quota_id">
-                                @foreach ($quotas as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('quota_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                    <option value="500" {{ old('quota_id') == 500 ? 'selected' : '' }}>
-                                        Freedom fighter</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('quota'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('quota') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.quota_helper') }}</span>
-                        </div> --}}
+
 
                         <div class="form-group">
                             <label class="required"
@@ -775,8 +740,7 @@
                                     <option value="{{ $id }}" {{ old('quota_id') == $id ? 'selected' : '' }}>
                                         {{ $entry }}</option>
                                 @endforeach
-                                <option value="500" {{ old('quota_id') == 500 ? 'selected' : '' }}>Freedom fighter
-                                </option>
+
                             </select>
                             @if ($errors->has('quota'))
                                 <div class="invalid-feedback">
@@ -789,22 +753,16 @@
                         <div id="freedomfighter_field" style="display: none;">
                             <div class="form-group">
                                 <label
-                                    for="freedomfighter">{{ trans('cruds.employeeList.fields.freedomfighter') }}</label>
-
-
-                                <select class="form-select {{ $errors->has('freedomfighter') ? 'is-invalid' : '' }}"
-                                    name="freedomfighter" id="freedomfighter">
-
-                                    <option value="Himself" {{ old('freedomfighter') == 'Himself' ? 'selected' : '' }}>
-                                        Himself</option>
-                                    <option value="Father" {{ old('freedomfighter') == 'Father' ? 'selected' : '' }}>
-                                        Father</option>
-                                    <option value="Grandfather"
-                                        {{ old('freedomfighter') == 'Grandfather' ? 'selected' : '' }}>Grandfather
-                                    </option>
+                                    for="freedomfighter_id">{{ trans('cruds.employeeList.fields.freedomfighter') }}</label>
+                                <select
+                                    class="form-control select2 {{ $errors->has('freedomfighter') ? 'is-invalid' : '' }}"
+                                    name="freedomfighter_id" id="freedomfighter_id">
+                                    @foreach ($freedomfighters as $id => $entry)
+                                        <option value="{{ $id }}"
+                                            {{ old('freedomfighter_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                        </option>
+                                    @endforeach
                                 </select>
-
-
                                 @if ($errors->has('freedomfighter'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('freedomfighter') }}
@@ -904,7 +862,7 @@
                         document.getElementById('prl_date').value = formattedPrlDate;
                     } else {
                         document.getElementById('prl_date').value =
-                            ''; // Clear PRL date if date_of_birth is invalid
+                            '{{ old('date_of_birth') }}'; // Clear PRL date if date_of_birth is invalid
                     }
                 }
             });
@@ -1525,7 +1483,7 @@
     <script>
         document.getElementById('quota_id').addEventListener('change', function() {
             var freedomfighterField = document.getElementById('freedomfighter_field');
-            if (this.value === '500') {
+            if (this.value === '1') {
                 freedomfighterField.style.display = 'block';
             } else {
                 freedomfighterField.style.display = 'none';
@@ -1589,32 +1547,32 @@
 
 
     <script>
-        $(document).ready(function() {
-            function toggleFields() {
-                var selectedValue = $('#projectrevenue_id').val();
-                if (selectedValue ==
-                    '1') { // Replace '1' with the actual value that should trigger the fields to show
-                    $('.form-group.projectlist').show();
-                    $('.form-group.Project').show();
-                    $('.form-group.notgotproject').hide();
-                } else {
-                    $('.form-group.projectlist').hide();
-                    $('.form-group.notgotproject').show();
-                    $('.form-group.project').hide();
-                }
-            }
+        // $(document).ready(function() {
+        //     function toggleFields() {
+        //         var selectedValue = $('#projectrevenue_id').val();
+        //         if (selectedValue ==
+        //             '1') { // Replace '1' with the actual value that should trigger the fields to show
+        //             $('.form-group.projectlist').show();
+        //             $('.form-group.Project').show();
+        //             $('.form-group.notgotproject').hide();
+        //         } else {
+        //             $('.form-group.projectlist').hide();
+        //             $('.form-group.notgotproject').show();
+        //             $('.form-group.project').hide();
+        //         }
+        //     }
 
-            // Initialize select2
-            //$('.select2').select2();
+        //     // Initialize select2
+        //     //$('.select2').select2();
 
-            // Attach change event listener
-            $('#projectrevenue_id').change(function() {
-                toggleFields();
-            });
+        //     // Attach change event listener
+        //     $('#projectrevenue_id').change(function() {
+        //         toggleFields();
+        //     });
 
-            // Initial check in case the dropdown has a preselected value
-            // toggleFields();
-        });
+        //     // Initial check in case the dropdown has a preselected value
+        //     // toggleFields();
+        // });
     </script>
 
 

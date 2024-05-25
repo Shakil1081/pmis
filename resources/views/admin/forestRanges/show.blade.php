@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.forestRange.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $forestRange->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.forestRange.fields.forest_state') }}
                         </th>
                         <td>

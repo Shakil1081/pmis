@@ -443,7 +443,7 @@
 
 
                             <strong>Education</strong>
-                            @foreach ($employeeList->educations as $educationInformatione)
+                            @foreach ($employeeList->educations ?? [] as $educationInformatione)
                                 <table class="table-bordered table-striped table" id="Education">
                                     <tbody>
                                         <tr>
@@ -537,7 +537,7 @@
 
                             <strong> Professionales</strong>
 
-                            @foreach ($employeeList->educations as $professionale)
+                            @foreach ($employeeList->educations ?? [] as $professionale)
                                 <table class="table-bordered table-striped table" id="Professionales">
                                     <tbody>
                                         <tr>
@@ -615,7 +615,7 @@
 
                             <strong> {{ trans('cruds.addressdetaile.title') }}</strong>
 
-                            @foreach ($employeeList->addressdetailes as $addressdetaile)
+                            @foreach ($employeeList->addressdetailes ?? [] as $addressdetaile)
                                 <table class="table-bordered table-striped table" id="addressdetaile">
                                     <tbody>
                                         <tr>
@@ -697,7 +697,7 @@
                                 </table>
                             @endforeach
                             <strong>{{ trans('cruds.emergenceContacte.title') }}</strong>
-                            @foreach ($employeeList->emergencecontactes as $emergenceContacte)
+                            @foreach ($employeeList->emergencecontactes ?? [] as $emergenceContacte)
                                 <table class="table-bordered table-striped table" id="emergenceContacte">
                                     <tbody>
                                         <tr>
@@ -766,7 +766,7 @@
 
                             <strong> {{ trans('cruds.spouseInformatione.title') }}</strong>
 
-                            @foreach ($employeeList->spouseinformationes as $spouseInformatione)
+                            @foreach ($employeeList->spouseinformationes ?? [] as $spouseInformatione)
                                 <table class="table-bordered table-striped table" id="spouseInformatione">
                                     <tbody>
                                         <tr>
@@ -873,7 +873,7 @@
 
                             <strong> {{ trans('cruds.child.title') }}</strong>
 
-                            @foreach ($employeeList->childinformationes as $child)
+                            @foreach ($employeeList->childinformationes ?? [] as $child)
                                 <table class="table-bordered table-striped table" id="child">
                                     <tbody>
                                         <tr>
@@ -1001,7 +1001,7 @@
 
                             <strong> {{ trans('cruds.jobHistory.title') }}</strong>
 
-                            @foreach ($employeeList->jobhistories as $jobHistory)
+                            @foreach ($employeeList->jobhistories ?? [] as $jobHistory)
                                 <table class="table-bordered table-striped table" id="jobHistory">
                                     <tbody>
                                         <tr>
@@ -1126,7 +1126,7 @@
 
                             <strong> {{ trans('cruds.employeePromotion.title') }}</strong>
 
-                            @foreach ($employeeList->employeepromotions as $employeePromotion)
+                            @foreach ($employeeList->employeepromotions ?? [] as $employeePromotion)
                                 <table class="table-bordered table-striped table" id="employeePromotion">
                                     <tbody>
                                         <tr>
@@ -1200,7 +1200,7 @@
 
                             <strong> {{ trans('cruds.leaveRecord.title') }}</strong>
 
-                            @foreach ($employeeList->leaverecords as $leaveRecord)
+                            @foreach ($employeeList->leaverecords ?? [] as $leaveRecord)
                                 <table class="table-bordered table-striped table" id="leaveRecord">
                                     <tbody>
                                         <tr>
@@ -1276,7 +1276,7 @@
                             @endforeach
 
                             <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
-                            @foreach ($employeeList->serviceparticulars as $serviceParticular)
+                            @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
                                 <table class="table-bordered table-striped table" id="serviceParticular">
                                     <tbody>
                                         <tr>
@@ -1354,7 +1354,7 @@
                                 {{ trans('cruds.training.title') }}
                             </strong>
 
-                            @foreach ($employeeList->trainings as $training)
+                            @foreach ($employeeList->trainings ?? [] as $training)
                                 <table class="table-bordered table-striped table" id="training">
                                     <tbody>
                                         <tr>
@@ -1443,7 +1443,7 @@
                             <strong id="travelRecords">{{ trans('cruds.travelRecord.title') }}</strong>
 
 
-                            @foreach ($employeeList->travelRecords as $travelRecord)
+                            @foreach ($employeeList->travelRecords ?? [] as $travelRecord)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -1521,7 +1521,7 @@
 
                             <strong id="foreignTravelPersonal"> {{ trans('cruds.foreignTravelPersonal.title') }}</strong>
 
-                            @foreach ($employeeList->foreigntravelpersonals as $foreignTravelPersonal)
+                            @foreach ($employeeList->foreigntravelpersonals ?? [] as $foreignTravelPersonal)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -1587,7 +1587,7 @@
 
                             <strong id="socialAssPrAttachment"> {{ trans('cruds.socialAssPrAttachment.title') }}</strong>
 
-                            @foreach ($employeeList->socialassprattachments as $socialAssPrAttachment)
+                            @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -1645,7 +1645,7 @@
                                 </table>
                             @endforeach
                             <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
-                            @foreach ($employeeList->extracurriculams as $extracurriculam)
+                            @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -1750,7 +1750,7 @@
 
                             <strong id="publication"> {{ trans('cruds.publication.title') }}</strong>
 
-                            @foreach ($employeeList->publications as $publication)
+                            @foreach ($employeeList->publications ?? [] as $publication)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -1833,7 +1833,7 @@
                             @endforeach
                             <strong id="awards"> {{ trans('cruds.award.title') }}</strong>
 
-                            @foreach ($employeeList->awards as $award)
+                            @foreach ($employeeList->awards ?? [] as $award)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
 
@@ -1909,7 +1909,7 @@
 
                             <strong id="otherservicejobs"> {{ trans('cruds.otherServiceJob.title') }}</strong>
 
-                            @foreach ($employeeList->otherservicejobs as $otherServiceJob)
+                            @foreach ($employeeList->otherservicejobs ?? [] as $otherServiceJob)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -2000,7 +2000,7 @@
                             @endforeach
                             <strong id="languages"> {{ trans('cruds.language.title') }}</strong>
 
-                            @foreach ($employeeList->languages as $language)
+                            @foreach ($employeeList->languages ?? [] as $language)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -2068,7 +2068,7 @@
 
                             <strong id="criminalProsecutione"> {{ trans('cruds.criminalProsecutione.title') }}</strong>
 
-                            @foreach ($employeeList->criminalprosecutiones as $criminalProsecutione)
+                            @foreach ($employeeList->criminalprosecutiones ?? [] as $criminalProsecutione)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -2152,7 +2152,7 @@
                             <strong id="criminalproDisciplinary">
                                 {{ trans('cruds.criminalproDisciplinary.title') }}</strong>
 
-                            @foreach ($employeeList->criminalprodisciplinaries as $criminalproDisciplinary)
+                            @foreach ($employeeList->criminalprodisciplinaries ?? [] as $criminalproDisciplinary)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
@@ -2229,7 +2229,7 @@
 
                             <strong id="acrMonitoring">{{ trans('cruds.acrMonitoring.title') }}</strong>
 
-                            @foreach ($employeeList->acrmonitorings as $acrMonitoring)
+                            @foreach ($employeeList->acrmonitorings ?? [] as $acrMonitoring)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>

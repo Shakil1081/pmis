@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.freedomFighteRelation.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.freedomFighteRelation.fields.name_bn') }}
                         </th>
                         <th>
@@ -41,9 +38,6 @@
                         <tr data-entry-id="{{ $freedomFighteRelation->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $freedomFighteRelation->id ?? '' }}
                             </td>
                             <td>
                                 {{ $freedomFighteRelation->name_bn ?? '' }}

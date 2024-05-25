@@ -22,9 +22,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.forestDivision.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.forestDivision.fields.forest_state') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.forest-divisions.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'forest_state_name_bn', name: 'forest_state.name_bn' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },

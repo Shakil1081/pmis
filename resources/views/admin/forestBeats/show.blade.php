@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.forestBeat.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $forestBeat->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.forestBeat.fields.forest_range') }}
                         </th>
                         <td>
