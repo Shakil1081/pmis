@@ -50,7 +50,7 @@
     </div>
     <div class="form-group">
         <label for="employee_id">{{ trans('cruds.emergenceContacte.fields.employee') }}</label>
-        <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
+        <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
             id="employee_id">
             @foreach ($employees as $id => $entry)
                 <option value="{{ $id }}" {{ old('employee_id') == $id ? 'selected' : '' }}>

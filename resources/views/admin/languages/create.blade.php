@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="read_id">{{ trans('cruds.language.fields.read') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('read') ? 'is-invalid' : '' }}"
+                                    <select class="form-select select2 {{ $errors->has('read') ? 'is-invalid' : '' }}"
                                         name="read_id" id="read_id">
                                         @foreach ($reads as $id => $entry)
                                             <option value="{{ $id }}"
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="write_id">{{ trans('cruds.language.fields.write') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('write') ? 'is-invalid' : '' }}"
+                                    <select class="form-select select2 {{ $errors->has('write') ? 'is-invalid' : '' }}"
                                         name="write_id" id="write_id">
                                         @foreach ($writes as $id => $entry)
                                             <option value="{{ $id }}"
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="speak_id">{{ trans('cruds.language.fields.speak') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('speak') ? 'is-invalid' : '' }}"
+                                    <select class="form-select select2 {{ $errors->has('speak') ? 'is-invalid' : '' }}"
                                         name="speak_id" id="speak_id">
                                         @foreach ($speaks as $id => $entry)
                                             <option value="{{ $id }}"

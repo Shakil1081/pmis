@@ -49,7 +49,6 @@ class EmployeeListController extends Controller
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $home_districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');

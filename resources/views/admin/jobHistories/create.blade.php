@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="employee_id">{{ trans('cruds.jobHistory.fields.employee') }}</label>
-                                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
+                                <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                                     name="employee_id" id="employee_id">
                                     @foreach ($employees as $id => $entry)
                                         <option value="{{ $id }}"
@@ -135,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="required" for="grade_id">{{ trans('cruds.jobHistory.fields.grade') }}</label>
-                                <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
+                                <select class="form-select select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
                                     name="grade_id" id="grade_id" required>
                                     @foreach ($grades as $id => $entry)
                                         <option value="{{ $id }}"
@@ -231,7 +231,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="circle_list_id">{{ trans('cruds.jobHistory.fields.circle_list') }}</label>
-                                <select class="form-control select2 {{ $errors->has('circle_list') ? 'is-invalid' : '' }}"
+                                <select class="form-select select2 {{ $errors->has('circle_list') ? 'is-invalid' : '' }}"
                                     name="circle_list_id" id="circle_list_id">
                                     @foreach ($circle_lists as $id => $entry)
                                         <option value="{{ $id }}"
@@ -267,7 +267,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="range_list_id">{{ trans('cruds.jobHistory.fields.range_list') }}</label>
-                                <select class="form-control select2 {{ $errors->has('range_list') ? 'is-invalid' : '' }}"
+                                <select class="form-select select2 {{ $errors->has('range_list') ? 'is-invalid' : '' }}"
                                     name="range_list_id" id="range_list_id">
                                     @foreach ($range_lists as $id => $entry)
                                         <option value="{{ $id }}"
@@ -284,7 +284,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="beat_list_id">{{ trans('cruds.jobHistory.fields.beat_list') }}</label>
-                                <select class="form-control select2 {{ $errors->has('beat_list') ? 'is-invalid' : '' }}"
+                                <select class="form-select select2 {{ $errors->has('beat_list') ? 'is-invalid' : '' }}"
                                     name="beat_list_id" id="beat_list_id">
                                     @foreach ($beat_lists as $id => $entry)
                                         <option value="{{ $id }}"
@@ -343,7 +343,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="level_3">Ofice Unit</label>
-                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                    <select class="form-select" name="level_3" id="level_3" disabled>
                                         <option value="">Select Subunit</option>
                                         <option value="">Select Subunit</option>
                                         <option value="">Select Subunit</option>
@@ -352,14 +352,14 @@
 
                                 <div class="form-group">
                                     <label for="level_3">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
-                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                    <select class="form-select" name="level_3" id="level_3" disabled>
                                         <option value="">Select Subunit</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="level_3">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
-                                    <select class="form-control" name="level_3" id="level_3" disabled>
+                                    <select class="form-select" name="level_3" id="level_3" disabled>
                                         <option value="">Select Subunit</option>
                                     </select>
                                 </div>

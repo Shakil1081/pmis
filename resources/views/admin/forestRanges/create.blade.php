@@ -10,7 +10,7 @@
                 @csrf
                 <div class="form-group">
                     <label class="required" for="forest_state_id">{{ trans('cruds.forestRange.fields.forest_state') }}</label>
-                    <select class="form-control select2 {{ $errors->has('forest_state') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('forest_state') ? 'is-invalid' : '' }}"
                         name="forest_state_id" id="forest_state_id" required>
                         @foreach ($forest_states as $id => $entry)
                             <option value="{{ $id }}" {{ old('forest_state_id') == $id ? 'selected' : '' }}>
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label class="required"
                         for="forest_division_id">{{ trans('cruds.forestRange.fields.forest_division') }}</label>
-                    <select class="form-control select2 {{ $errors->has('forest_division') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('forest_division') ? 'is-invalid' : '' }}"
                         name="forest_division_id" id="forest_division_id" required>
                         @foreach ($forest_divisions as $id => $entry)
                             <option value="{{ $id }}" {{ old('forest_division_id') == $id ? 'selected' : '' }}>

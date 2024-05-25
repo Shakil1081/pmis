@@ -84,7 +84,7 @@
                                 <div class="form-group">
                                     <label class="required"
                                         for="gender_id">{{ trans('cruds.child.fields.gender') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}"
+                                    <select class="form-select select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}"
                                         name="gender_id" id="gender_id" required>
                                         @foreach ($genders as $id => $entry)
                                             <option value="{{ $id }}"
@@ -102,7 +102,7 @@
                                 <!-- NID Yes/No -->
                                 <div class="form-group">
                                     <label for="nid_option">Do you have NID?</label>
-                                    <select class="form-control" id="nid_option" name="nid_option">
+                                    <select class="form-select" id="nid_option" name="nid_option">
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
@@ -142,7 +142,7 @@
                                 <!-- Passport Yes/No -->
                                 <div class="form-group">
                                     <label for="passport_option">Do you have a passport?</label>
-                                    <select class="form-control" id="passport_option" name="passport_option">
+                                    <select class="form-select" id="passport_option" name="passport_option">
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>

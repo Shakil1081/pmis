@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="required">{{ trans('cruds.publication.fields.publication_type') }}</label>
-                                    <select class="form-control {{ $errors->has('publication_type') ? 'is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('publication_type') ? 'is-invalid' : '' }}"
                                         name="publication_type" id="publication_type" required>
                                         <option value disabled
                                             {{ old('publication_type', null) === null ? 'selected' : '' }}>

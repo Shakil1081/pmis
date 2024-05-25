@@ -15,7 +15,7 @@
 
                                 <div class="form-group">
                                     <label class="required">{{ trans('cruds.addressdetaile.fields.address_type') }}</label>
-                                    <select class="form-control {{ $errors->has('address_type') ? 'is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('address_type') ? 'is-invalid' : '' }}"
                                         name="address_type" id="address_type" required>
                                         <option value disabled {{ old('address_type', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{{ trans('cruds.addressdetaile.fields.status') }}</label>
-                                    <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}"
+                                    <select class="form-select {{ $errors->has('status') ? 'is-invalid' : '' }}"
                                         name="status" id="status">
                                         <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
