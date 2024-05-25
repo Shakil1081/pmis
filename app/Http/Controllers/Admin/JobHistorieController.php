@@ -149,11 +149,11 @@ class JobHistorieController extends Controller
 
         $office_units = OfficeUnit::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_type= JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $job_types= JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $jobHistory->load('designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
 
-        return view('admin.jobHistories.edit', compact('beat_lists','job_type', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
+        return view('admin.jobHistories.edit', compact('beat_lists','job_types', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
     }
 
     public function update(UpdateJobHistoryRequest $request, JobHistory $jobHistory)
