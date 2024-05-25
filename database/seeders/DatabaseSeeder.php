@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder
             DivisionSeeder::class,
             DistrictSeeder::class,
             ExaminationsTableSeeder::class,
+            ExamBoardsTableSeeder::class, 
+            ResultGroupsTableSeeder::class, 
+            ResultsTableSeeder::class, 
         ]);
     }
 }
