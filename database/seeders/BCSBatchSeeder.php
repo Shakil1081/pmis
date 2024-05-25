@@ -15,7 +15,7 @@ class BCSBatchSeeder extends Seeder
     public function run()
     {
         // Seed BCS batches
-        DB::table('bcs_batches')->insert([
+        DB::table('batches')->insert([
             [
                 'name_bn' => 'বিসিএস ১',
                 'name_en' => 'BCS 1',
