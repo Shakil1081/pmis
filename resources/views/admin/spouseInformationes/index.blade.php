@@ -28,6 +28,9 @@
                         {{ trans('cruds.spouseInformatione.fields.name_en') }}
                     </th>
                     <th>
+                        {{ trans('cruds.spouseInformatione.fields.nid_number') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
                     </th>
                     <th>
@@ -97,6 +100,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
+{ data: 'nid_number', name: 'nid_number' },
 { data: 'nid_upload', name: 'nid_upload', sortable: false, searchable: false },
 { data: 'occupation', name: 'occupation' },
 { data: 'office_address', name: 'office_address' },

@@ -15,7 +15,15 @@
                 </div>
 
                 <div class="col">
-                    <strong>Total Employee: {{ $data['total'] ?? 0 }}</strong>
+                    <strong>
+                        @if (app()->getLocale() === 'bn')
+                            মোট কর্মকর্তা/কর্মচারী
+                        @else
+                            Total Employee
+                        @endif
+
+                        : {{ $data['total'] ?? 0 }}
+                    </strong>
 
                 </div>
                 <div class="col text-end">
@@ -27,7 +35,14 @@
                         </a>
                     @endcan
                     <button type="button" class="btn btn- btn-success">
-                        <i class="fa fa-filter" aria-hidden="true"></i> Filter
+                        <i class="fa fa-filter" aria-hidden="true"></i>
+
+                        @if (app()->getLocale() === 'bn')
+                            ফিল্টার
+                        @else
+                            Filter
+                        @endif
+
                     </button>
 
 
@@ -45,11 +60,20 @@
                     <div class="col">
                         <div class="d-flex align-items-center gap-3">
                             <div class="customer-pic">
-                                <img src="http://127.0.0.1:8000/assets/images/logo1.png" class="rounded-circle"
-                                    width="80" height="80" alt="">
+                                <img src="{{ asset('assets/images/logo1.png') }}" class="rounded-circle" width="80"
+                                    height="80" alt="">
                             </div>
                             <div>
-                                <p class="customer-name fw-bold mb-0">{{ $result['fullname_bn'] }}</p>
+                                <p class="customer-name fw-bold mb-0">
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $result['fullname_en'] }}
+                                    @else
+                                        {{ $result['fullname_bn'] }}
+                                    @endif
+
+
+                                </p>
                                 <p class="mb-0">{{ $result['employeeid'] }}</p>
                                 <p>
                                     {{-- @php
@@ -70,7 +94,15 @@
                     </div>
 
                     <div class="col">
-                        <small>Profile progress</small>
+
+                        @if (app()->getLocale() === 'bn')
+                            প্রোফাইলের অগ্রগতি
+                        @else
+                            Profile progress
+                        @endif
+
+
+
                         <div class="progress">
                             @php
                                 $total = 0;
@@ -131,7 +163,16 @@
                             </a>
                             <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
                                 class="btn btn-sm btn-outline-success">
-                                {{ trans('global.print') }}
+
+                                @if (app()->getLocale() === 'bn')
+                                    পিডিএফ
+                                @else
+                                    PDF
+                                @endif
+
+
+
+
                             </a>
 
                         </div>

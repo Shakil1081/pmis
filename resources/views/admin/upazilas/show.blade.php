@@ -47,14 +47,6 @@
                             {{ $upazila->grocode }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.upazila.fields.forest_state') }}
-                        </th>
-                        <td>
-                            {{ $upazila->forest_state->name_bn ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

@@ -8,7 +8,6 @@ use App\Http\Requests\MassDestroyUpazilaRequest;
 use App\Http\Requests\StoreUpazilaRequest;
 use App\Http\Requests\UpdateUpazilaRequest;
 use App\Models\District;
-use App\Models\ForestState;
 use App\Models\Upazila;
 use Gate;
 use Illuminate\Http\Request;
@@ -24,7 +23,7 @@ class UpazilaController extends Controller
         abort_if(Gate::denies('upazila_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Upazila::with(['district', 'forest_state'])->select(sprintf('%s.*', (new Upazila)->table));
+            $query = Upazila::with(['district'])->select(sprintf('%s.*', (new Upazila)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -58,11 +57,8 @@ class UpazilaController extends Controller
             $table->editColumn('grocode', function ($row) {
                 return $row->grocode ? $row->grocode : '';
             });
-            $table->addColumn('forest_state_name_bn', function ($row) {
-                return $row->forest_state ? $row->forest_state->name_bn : '';
-            });
 
-            $table->rawColumns(['actions', 'placeholder', 'district', 'forest_state']);
+            $table->rawColumns(['actions', 'placeholder', 'district']);
 
             return $table->make(true);
         }
@@ -76,9 +72,7 @@ class UpazilaController extends Controller
 
         $districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $forest_states = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.upazilas.create', compact('districts', 'forest_states'));
+        return view('admin.upazilas.create', compact('districts'));
     }
 
     public function store(StoreUpazilaRequest $request)
@@ -94,11 +88,9 @@ class UpazilaController extends Controller
 
         $districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $forest_states = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $upazila->load('district');
 
-        $upazila->load('district', 'forest_state');
-
-        return view('admin.upazilas.edit', compact('districts', 'forest_states', 'upazila'));
+        return view('admin.upazilas.edit', compact('districts', 'upazila'));
     }
 
     public function update(UpdateUpazilaRequest $request, Upazila $upazila)
@@ -112,7 +104,7 @@ class UpazilaController extends Controller
     {
         abort_if(Gate::denies('upazila_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $upazila->load('district', 'forest_state');
+        $upazila->load('district');
 
         return view('admin.upazilas.show', compact('upazila'));
     }

@@ -12,6 +12,7 @@ class CreateSpouseInformationesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name_bn');
             $table->string('name_en')->nullable();
+            $table->string('nid_number')->nullable();
             $table->string('occupation')->nullable();
             $table->string('office_address')->nullable();
             $table->string('phone_number')->nullable();

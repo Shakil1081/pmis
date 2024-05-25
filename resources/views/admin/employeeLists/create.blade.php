@@ -385,15 +385,15 @@
                         </div>
 
 
-                        {{-- <div class="form-group has_license_group">
+                        <div class="form-group has_license_group">
                             <label for="has_license">{{ trans('cruds.employeeList.fields.has_license') }}</label>
                             <select class="form-control" id="has_license">
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>
                             </select>
-                        </div> --}}
+                        </div>
 
-                        <div class="form-group license_fields">
+                        <div class="form-group license_fields" style="display: none;">
                             <label class="required"
                                 for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
                             <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}"
@@ -403,7 +403,6 @@
                                         {{ old('license_type_id') == $id ? 'selected' : '' }}>{{ $entry }}
                                     </option>
                                 @endforeach
-
                             </select>
                             @if ($errors->has('license_type'))
                                 <div class="invalid-feedback">
@@ -413,7 +412,20 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.license_type_helper') }}</span>
                         </div>
 
-                        <div class="form-group license_upload">
+                        <div class="form-group license_number" style="display: none">
+                            <label for="license_number">{{ trans('cruds.employeeList.fields.license_number') }}</label>
+                            <input class="form-control {{ $errors->has('license_number') ? 'is-invalid' : '' }}"
+                                type="text" name="license_number" id="license_number"
+                                value="{{ old('license_number', '') }}">
+                            @if ($errors->has('license_number'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('license_number') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.license_number_helper') }}</span>
+                        </div>
+                        <div class="form-group license_upload" style="display: none;">
                             <label for="license_upload">{{ trans('cruds.employeeList.fields.license_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('license_upload') ? 'is-invalid' : '' }}"
                                 id="license_upload-dropzone">
@@ -1593,12 +1605,15 @@
         document.getElementById('has_license').addEventListener('change', function() {
             var licenseFields = document.querySelector('.license_fields');
             var licenseUpload = document.querySelector('.license_upload');
+            var licenseNumber = document.querySelector('.license_number');
             if (this.value === 'yes') {
                 licenseFields.style.display = 'block';
                 licenseUpload.style.display = 'block';
+                licenseNumber.style.display = 'block';
             } else {
                 licenseFields.style.display = 'none';
                 licenseUpload.style.display = 'none';
+                licenseNumber.style.display = 'none';
             }
         });
 

@@ -100,26 +100,16 @@ class UpdateEmployeeListRequest extends FormRequest
             'nid' => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'passport' => [
                 'string',
                 'nullable',
-            ],
-            'license_type_id' => [
-                'required',
-                'integer',
             ],
             'mobile_number' => [
                 'string',
                 'min:11',
                 'max:15',
                 'required',
-            ],
-            'projectrevenue_id' => [
-                'required',
-                'integer',
             ],
             'fjoining_date' => [
                 'required',
@@ -153,7 +143,7 @@ class UpdateEmployeeListRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'freedomfighter' => [
+            'license_number' => [
                 'string',
                 'nullable',
             ],

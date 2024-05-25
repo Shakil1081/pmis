@@ -23,7 +23,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-3">
                                 <div class="">
-                                    <h4 class="fw-bold mb-0">Comming..</h4>
+                                    <h4 class="fw-bold mb-0">Coming..</h4>
                                     <div class="d-flex align-items-center justify-content-start text-success mt-3 gap-1">
                                         <span class="material-icons-outlined fs-6">north</span>
                                         <p class="fs-6 mb-0">5.6%</p>
@@ -224,7 +224,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-3">
                                 <div class="">
-                                    <h4 class="fw-bold mb-0">Comming..</h4>
+                                    <h4 class="fw-bold mb-0">Coming..</h4>
                                     <div class="d-flex align-items-center justify-content-start text-success mt-3 gap-1">
                                         <span class="material-icons-outlined fs-6">north</span>
                                         <p class="fs-6 mb-0">5.6%</p>
@@ -426,7 +426,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-3">
                                 <div class="">
-                                    <h4 class="fw-bold mb-0">Comming..</h4>
+                                    <h4 class="fw-bold mb-0">Coming..</h4>
                                     <div class="d-flex align-items-center justify-content-start text-success mt-3 gap-1">
                                         <span class="material-icons-outlined fs-6">north</span>
                                         <p class="fs-6 mb-0">5.6%</p>
@@ -628,7 +628,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-3">
                                 <div class="">
-                                    <h4 class="fw-bold mb-0">Comming..</h4>
+                                    <h4 class="fw-bold mb-0">Coming..</h4>
                                     <div class="d-flex align-items-center justify-content-start text-success mt-3 gap-1">
                                         <span class="material-icons-outlined fs-6">north</span>
                                         <p class="fs-6 mb-0">5.6%</p>

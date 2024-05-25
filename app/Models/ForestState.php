@@ -22,7 +22,6 @@ class ForestState extends Model
     protected $fillable = [
         'name_bn',
         'name_en',
-        'bbs_code',
         'status_id',
         'created_at',
         'updated_at',
