@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             CountrySeederlist::class, 
             JobDesignationSeederlist::class, 
             GradeSeeder::class, 
+            BCSBatchSeeder::class, 
         ]);
     }
 }
