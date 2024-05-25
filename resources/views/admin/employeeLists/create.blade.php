@@ -413,7 +413,7 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.license_type_helper') }}</span>
                         </div>
 
-                        <div class="form-group license_upload" style="display: none;">
+                        <div class="form-group license_upload">
                             <label for="license_upload">{{ trans('cruds.employeeList.fields.license_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('license_upload') ? 'is-invalid' : '' }}"
                                 id="license_upload-dropzone">
