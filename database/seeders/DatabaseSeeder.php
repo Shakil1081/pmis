@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             ResultsTableSeeder::class, 
             CountrySeederlist::class, 
             JobDesignationSeederlist::class, 
+            GradeSeeder::class, 
         ]);
     }
 }
