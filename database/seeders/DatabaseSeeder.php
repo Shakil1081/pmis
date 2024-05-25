@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             JobDesignationSeederlist::class, 
             GradeSeeder::class, 
             BCSBatchSeeder::class, 
+            LeaveCategorySeeder::class, 
         ]);
     }
 }
