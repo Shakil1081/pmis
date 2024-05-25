@@ -14,10 +14,7 @@
                                 @csrf
 
 
-
-
-
-
+                                <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
 
                                 @livewire('education-form')
                                 {{-- <div class="form-group">

@@ -130,8 +130,9 @@ class EducationInformationeController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $educationInformatione->id]);
         }
-
-        return redirect()->route('admin.education-informationes.index');
+        return redirect()->back()->with('status', 'Action successful!');
+        //return redirect()->route('admin.education-informationes.index');
+        //return redirect()->route('admin.education-informationes.index');
     }
 
     public function edit(EducationInformatione $educationInformatione)
