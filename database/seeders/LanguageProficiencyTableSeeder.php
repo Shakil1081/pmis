@@ -17,13 +17,24 @@ class LanguageProficiencyTableSeeder extends Seeder
         // Insert data into the language_proficiencies table
         DB::table('language_proficiencies')->insert([
             [
-                'name' => 'Basic',
+                'name_en' => 'Beginner',
+                'name_bn' => 'শুরুকারী',
             ],
             [
-                'name' => 'Good',
+                'name_en' => 'Elementary',
+                'name_bn' => 'প্রাথমিক',
             ],
             [
-                'name' => 'Very Good',
+                'name_en' => 'Intermediate',
+                'name_bn' => 'মধ্যম',
+            ],
+            [
+                'name_en' => 'Advanced',
+                'name_bn' => 'উন্নত',
+            ],
+            [
+                'name_en' => 'Fluent',
+                'name_bn' => 'পরিপন্থী',
             ],
         ]);
     }

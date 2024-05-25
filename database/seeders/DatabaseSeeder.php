@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use CountrySeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             ExamBoardsTableSeeder::class, 
             ResultGroupsTableSeeder::class, 
             ResultsTableSeeder::class, 
+            CountrySeeder::class, 
         ]);
     }
 }

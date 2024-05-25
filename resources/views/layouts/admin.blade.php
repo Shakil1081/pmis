@@ -153,12 +153,18 @@
     @yield('styles')
     @stack('css')
     <style>
-        html,
+        /* html,
         body,
         div {
             font-family: bangla;
+        } */
+
+        .table th:last-child,
+        .table td:last-child {
+            text-align: right;
         }
     </style>
+
     @livewireStyles
 </head>
 

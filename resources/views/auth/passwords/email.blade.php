@@ -4,7 +4,7 @@
 
     <div class="mx-lg-0 mx-3">
 
-        <div class="card col-xl-9 col-xxl-8 rounded-4 mx-auto my-5 overflow-hidden p-4">
+        <div class="card rounded-4 mx-auto my-5 overflow-hidden p-4">
             <div class="row g-4">
                 <div class="col-lg-6 d-flex">
                     <div class="card-body">
