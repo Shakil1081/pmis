@@ -601,6 +601,13 @@ return [
             'achivement_helper'             => ' ',
             'achievement_types'             => 'অর্জনের ধরণ',
             'achievement_types_helper'      => ' ',
+            'achievement_types_helper'         => ' ',
+            'concentration_major_group'        => 'বিষয়',
+            'concentration_major_group_helper' => ' ',
+            'result'                           => 'ফলাফল',
+            'result_helper'                    => ' ',
+            'exam_degree'                      => 'ডিগ্রী',
+            'exam_degree_helper'               => ' ',
             
         ],
     ],
