@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             ExamBoardsTableSeeder::class, 
             ResultGroupsTableSeeder::class, 
             ResultsTableSeeder::class, 
-            CountrySeeder::class, 
+            CountrySeederlist::class, 
             JobDesignationSeeder::class, 
         ]);
     }
