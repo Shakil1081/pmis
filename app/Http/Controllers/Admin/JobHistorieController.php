@@ -147,10 +147,11 @@ class JobHistorieController extends Controller
         $beat_lists = ForestBeat::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $office_units = OfficeUnit::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        
 
-        $jobHistory->load('designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
+        $jobHistory->load('designation', 'employee', 'job_type','grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
 
-        return view('admin.jobHistories.edit', compact('beat_lists', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
+        return view('admin.jobHistories.edit', compact('beat_lists', 'circle_lists', 'designations', 'job_type','division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
     }
 
     public function update(UpdateJobHistoryRequest $request, JobHistory $jobHistory)
