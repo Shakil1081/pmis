@@ -34,10 +34,6 @@ class StoreEducationInformationeRequest extends FormRequest
                 'required',
                 'unique:education_informationes',
             ],
-            'result_id' => [
-                'required',
-                'integer',
-            ],
             'passing_year' => [
                 'nullable',
                 'integer',
@@ -53,6 +49,10 @@ class StoreEducationInformationeRequest extends FormRequest
                 'integer',
             ],
             'exam_degree' => [
+                'string',
+                'nullable',
+            ],
+            'cgpa' => [
                 'string',
                 'nullable',
             ],

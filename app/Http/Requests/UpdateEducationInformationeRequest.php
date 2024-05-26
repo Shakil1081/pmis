@@ -34,10 +34,6 @@ class UpdateEducationInformationeRequest extends FormRequest
                 'required',
                 'unique:education_informationes,school_university_name,' . request()->route('education_informatione')->id,
             ],
-            'result_id' => [
-                'required',
-                'integer',
-            ],
             'passing_year' => [
                 'nullable',
                 'integer',
@@ -53,6 +49,10 @@ class UpdateEducationInformationeRequest extends FormRequest
                 'integer',
             ],
             'exam_degree' => [
+                'string',
+                'nullable',
+            ],
+            'cgpa' => [
                 'string',
                 'nullable',
             ],

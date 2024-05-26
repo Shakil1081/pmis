@@ -15,6 +15,7 @@ class CreateEducationInformationesTable extends Migration
             $table->integer('passing_year')->nullable();
             $table->string('achivement')->nullable();
             $table->string('exam_degree')->nullable();
+            $table->string('cgpa')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

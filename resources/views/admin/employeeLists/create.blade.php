@@ -398,8 +398,7 @@
                             <label for="has_license">{{ trans('cruds.employeeList.fields.has_license') }}</label>
                             <select class="form-control" id="has_license">
                                 @if (app()->getLocale() === 'bn')
-                                    <option>
-                                        নির্বাচন করুন</option>
+                                    <option>নির্বাচন করুন</option>
                                     <option value="No">না</option>
                                     <option value="Yes">হ্যাঁ</option>
                                 @else
@@ -409,6 +408,7 @@
                                 @endif
                             </select>
                         </div>
+
 
                         <div class="form-group license_fields" style="display: none;">
                             <label class="required"
@@ -1488,7 +1488,7 @@
         }
     </script>
 
-    <script>
+    {{-- <script>
         document.getElementById('has_license').addEventListener('change', function() {
             var licenseFields = document.getElementById('license_fields');
             if (this.value === 'yes') {
@@ -1497,7 +1497,7 @@
                 licenseFields.style.display = 'none';
             }
         });
-    </script>
+    </script> --}}
 
     <script>
         document.getElementById('has_passport').addEventListener('change', function() {
@@ -1620,10 +1620,12 @@
         });
 
         document.getElementById('has_license').addEventListener('change', function() {
+
+
             var licenseFields = document.querySelector('.license_fields');
             var licenseUpload = document.querySelector('.license_upload');
             var licenseNumber = document.querySelector('.license_number');
-            if (this.value === 'yes') {
+            if (this.value === 'Yes') {
                 licenseFields.style.display = 'block';
                 licenseUpload.style.display = 'block';
                 licenseNumber.style.display = 'block';

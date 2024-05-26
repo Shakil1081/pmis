@@ -93,6 +93,9 @@ class EducationInformationeController extends Controller
             $table->editColumn('exam_degree', function ($row) {
                 return $row->exam_degree ? $row->exam_degree : '';
             });
+            $table->editColumn('cgpa', function ($row) {
+                return $row->cgpa ? $row->cgpa : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'name_of_exam', 'exam_board', 'result', 'achievement_types', 'catificarte', 'employee']);
 
@@ -130,9 +133,8 @@ class EducationInformationeController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $educationInformatione->id]);
         }
+
         return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.education-informationes.index');
-        //return redirect()->route('admin.education-informationes.index');
     }
 
     public function edit(EducationInformatione $educationInformatione)

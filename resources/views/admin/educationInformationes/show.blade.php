@@ -107,6 +107,14 @@
                             {{ $educationInformatione->exam_degree }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.educationInformatione.fields.cgpa') }}
+                        </th>
+                        <td>
+                            {{ $educationInformatione->cgpa }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

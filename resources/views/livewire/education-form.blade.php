@@ -111,11 +111,16 @@
 
         @if (empty($resultlist) || count($resultlist) === 0)
             @if ($resultGroup)
-                <div class="mb-3">
-                    <label for="" class="form-label">CGPA </label>
-                    <input type="text" class="form-control" name="result_id" id="" aria-describedby="helpId"
-                        placeholder="" />
-                    <small id="helpId" class="form-text text-muted">Help text</small>
+                <div class="form-group">
+                    <label for="cgpa">{{ trans('cruds.educationInformatione.fields.cgpa') }}</label>
+                    <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="text"
+                        name="cgpa" id="cgpa" value="{{ old('cgpa', '') }}">
+                    @if ($errors->has('cgpa'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cgpa') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.educationInformatione.fields.cgpa_helper') }}</span>
                 </div>
             @endif
         @else

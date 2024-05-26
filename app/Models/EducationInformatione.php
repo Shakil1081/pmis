@@ -37,6 +37,8 @@ class EducationInformatione extends Model implements HasMedia
         'achievement_types_id',
         'achivement',
         'employee_id',
+        'exam_degree',
+        'cgpa',
         'created_at',
         'updated_at',
         'deleted_at',
