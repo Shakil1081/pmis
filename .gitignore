@@ -14,3 +14,4 @@ yarn-error.log
 /storage/*
 storage*
 storage/logs/laravel.log
+/resources/lang/*
