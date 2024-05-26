@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             MaritalStatusTableSeeder::class,
             LicenseTypeTableSeeder::class,
             LanguageListTableSeeder::class,
+            ExamBoardSeeder::class,
             GenderSeeder::class,
             DivisionSeeder::class,
             DistrictSeeder::class,
@@ -37,9 +38,9 @@ class DatabaseSeeder extends Seeder
             ResultsTableSeeder::class, 
             CountrySeederlist::class, 
             JobDesignationSeederlist::class, 
-            //GradeSeeder::class, 
-            //BCSBatchSeeder::class, 
-            //LeaveCategorySeeder::class, 
+            GradeSeeder::class, 
+            BCSBatchSeeder::class, 
+            LeaveCategorySeeder::class, 
             TrainingTypeSeeder::class, 
         ]);
     }
