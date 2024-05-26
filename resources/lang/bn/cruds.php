@@ -485,7 +485,7 @@ return [
             'first_joining_memo_no_helper'         => ' ',
             'first_joining_order'                  => 'প্রথম যোগদানের অর্ডার',
             'first_joining_order_helper'           => ' ',
-            'date_of_gazette'                      => 'গেজটের তারিখ',
+            'date_of_gazette'                      => 'গেজেটের তারিখ',
             'date_of_gazette_helper'               => ' ',
             'date_of_regularization'               => 'নিয়মিত হওয়ার তারিখ',
             'date_of_regularization_helper'        => ' ',
