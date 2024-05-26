@@ -3,16 +3,15 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.employeeList.title_singular') }}
+        {{ trans('global.create') }} {{ trans('cruds.employeeList.title_singular') }}
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.employee-lists.update", [$employeeList->id]) }}" enctype="multipart/form-data">
-            @method('PUT')
+        <form method="POST" action="{{ route("admin.employee-lists.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="employeeid">{{ trans('cruds.employeeList.fields.employeeid') }}</label>
-                <input class="form-control {{ $errors->has('employeeid') ? 'is-invalid' : '' }}" type="text" name="employeeid" id="employeeid" value="{{ old('employeeid', $employeeList->employeeid) }}" required>
+                <input class="form-control {{ $errors->has('employeeid') ? 'is-invalid' : '' }}" type="text" name="employeeid" id="employeeid" value="{{ old('employeeid', '') }}" required>
                 @if($errors->has('employeeid'))
                     <div class="invalid-feedback">
                         {{ $errors->first('employeeid') }}
@@ -22,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="cadreid">{{ trans('cruds.employeeList.fields.cadreid') }}</label>
-                <input class="form-control {{ $errors->has('cadreid') ? 'is-invalid' : '' }}" type="text" name="cadreid" id="cadreid" value="{{ old('cadreid', $employeeList->cadreid) }}">
+                <input class="form-control {{ $errors->has('cadreid') ? 'is-invalid' : '' }}" type="text" name="cadreid" id="cadreid" value="{{ old('cadreid', '') }}">
                 @if($errors->has('cadreid'))
                     <div class="invalid-feedback">
                         {{ $errors->first('cadreid') }}
@@ -34,7 +33,7 @@
                 <label for="batch_id">{{ trans('cruds.employeeList.fields.batch') }}</label>
                 <select class="form-control select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}" name="batch_id" id="batch_id">
                     @foreach($batches as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('batch_id') ? old('batch_id') : $employeeList->batch->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('batch_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('batch'))
@@ -46,7 +45,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="fullname_bn">{{ trans('cruds.employeeList.fields.fullname_bn') }}</label>
-                <input class="form-control {{ $errors->has('fullname_bn') ? 'is-invalid' : '' }}" type="text" name="fullname_bn" id="fullname_bn" value="{{ old('fullname_bn', $employeeList->fullname_bn) }}" required>
+                <input class="form-control {{ $errors->has('fullname_bn') ? 'is-invalid' : '' }}" type="text" name="fullname_bn" id="fullname_bn" value="{{ old('fullname_bn', '') }}" required>
                 @if($errors->has('fullname_bn'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fullname_bn') }}
@@ -56,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="fullname_en">{{ trans('cruds.employeeList.fields.fullname_en') }}</label>
-                <input class="form-control {{ $errors->has('fullname_en') ? 'is-invalid' : '' }}" type="text" name="fullname_en" id="fullname_en" value="{{ old('fullname_en', $employeeList->fullname_en) }}" required>
+                <input class="form-control {{ $errors->has('fullname_en') ? 'is-invalid' : '' }}" type="text" name="fullname_en" id="fullname_en" value="{{ old('fullname_en', '') }}" required>
                 @if($errors->has('fullname_en'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fullname_en') }}
@@ -66,7 +65,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="fname_bn">{{ trans('cruds.employeeList.fields.fname_bn') }}</label>
-                <input class="form-control {{ $errors->has('fname_bn') ? 'is-invalid' : '' }}" type="text" name="fname_bn" id="fname_bn" value="{{ old('fname_bn', $employeeList->fname_bn) }}" required>
+                <input class="form-control {{ $errors->has('fname_bn') ? 'is-invalid' : '' }}" type="text" name="fname_bn" id="fname_bn" value="{{ old('fname_bn', '') }}" required>
                 @if($errors->has('fname_bn'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fname_bn') }}
@@ -76,7 +75,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="fname_en">{{ trans('cruds.employeeList.fields.fname_en') }}</label>
-                <input class="form-control {{ $errors->has('fname_en') ? 'is-invalid' : '' }}" type="text" name="fname_en" id="fname_en" value="{{ old('fname_en', $employeeList->fname_en) }}" required>
+                <input class="form-control {{ $errors->has('fname_en') ? 'is-invalid' : '' }}" type="text" name="fname_en" id="fname_en" value="{{ old('fname_en', '') }}" required>
                 @if($errors->has('fname_en'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fname_en') }}
@@ -86,7 +85,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="mname_bn">{{ trans('cruds.employeeList.fields.mname_bn') }}</label>
-                <input class="form-control {{ $errors->has('mname_bn') ? 'is-invalid' : '' }}" type="text" name="mname_bn" id="mname_bn" value="{{ old('mname_bn', $employeeList->mname_bn) }}" required>
+                <input class="form-control {{ $errors->has('mname_bn') ? 'is-invalid' : '' }}" type="text" name="mname_bn" id="mname_bn" value="{{ old('mname_bn', '') }}" required>
                 @if($errors->has('mname_bn'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mname_bn') }}
@@ -96,7 +95,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="mname_en">{{ trans('cruds.employeeList.fields.mname_en') }}</label>
-                <input class="form-control {{ $errors->has('mname_en') ? 'is-invalid' : '' }}" type="text" name="mname_en" id="mname_en" value="{{ old('mname_en', $employeeList->mname_en) }}" required>
+                <input class="form-control {{ $errors->has('mname_en') ? 'is-invalid' : '' }}" type="text" name="mname_en" id="mname_en" value="{{ old('mname_en', '') }}" required>
                 @if($errors->has('mname_en'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mname_en') }}
@@ -106,7 +105,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="date_of_birth">{{ trans('cruds.employeeList.fields.date_of_birth') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth', $employeeList->date_of_birth) }}" required>
+                <input class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}" type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}" required>
                 @if($errors->has('date_of_birth'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date_of_birth') }}
@@ -127,7 +126,7 @@
             </div>
             <div class="form-group">
                 <label for="prl_date">{{ trans('cruds.employeeList.fields.prl_date') }}</label>
-                <input class="form-control date {{ $errors->has('prl_date') ? 'is-invalid' : '' }}" type="text" name="prl_date" id="prl_date" value="{{ old('prl_date', $employeeList->prl_date) }}">
+                <input class="form-control date {{ $errors->has('prl_date') ? 'is-invalid' : '' }}" type="text" name="prl_date" id="prl_date" value="{{ old('prl_date') }}">
                 @if($errors->has('prl_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('prl_date') }}
@@ -137,7 +136,7 @@
             </div>
             <div class="form-group">
                 <label for="height">{{ trans('cruds.employeeList.fields.height') }}</label>
-                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}" type="text" name="height" id="height" value="{{ old('height', $employeeList->height) }}">
+                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}" type="text" name="height" id="height" value="{{ old('height', '') }}">
                 @if($errors->has('height'))
                     <div class="invalid-feedback">
                         {{ $errors->first('height') }}
@@ -147,7 +146,7 @@
             </div>
             <div class="form-group">
                 <label for="special_identity">{{ trans('cruds.employeeList.fields.special_identity') }}</label>
-                <input class="form-control {{ $errors->has('special_identity') ? 'is-invalid' : '' }}" type="text" name="special_identity" id="special_identity" value="{{ old('special_identity', $employeeList->special_identity) }}">
+                <input class="form-control {{ $errors->has('special_identity') ? 'is-invalid' : '' }}" type="text" name="special_identity" id="special_identity" value="{{ old('special_identity', '') }}">
                 @if($errors->has('special_identity'))
                     <div class="invalid-feedback">
                         {{ $errors->first('special_identity') }}
@@ -159,7 +158,7 @@
                 <label class="required" for="home_district_id">{{ trans('cruds.employeeList.fields.home_district') }}</label>
                 <select class="form-control select2 {{ $errors->has('home_district') ? 'is-invalid' : '' }}" name="home_district_id" id="home_district_id" required>
                     @foreach($home_districts as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('home_district_id') ? old('home_district_id') : $employeeList->home_district->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('home_district_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('home_district'))
@@ -173,7 +172,7 @@
                 <label class="required" for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
                 <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}" name="marital_statu_id" id="marital_statu_id" required>
                     @foreach($marital_status as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('marital_statu_id') ? old('marital_statu_id') : $employeeList->marital_statu->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('marital_statu_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('marital_statu'))
@@ -187,7 +186,7 @@
                 <label class="required" for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
                 <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender_id" id="gender_id" required>
                     @foreach($genders as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('gender_id') ? old('gender_id') : $employeeList->gender->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('gender'))
@@ -201,7 +200,7 @@
                 <label class="required" for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
                 <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}" name="religion_id" id="religion_id" required>
                     @foreach($religions as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('religion_id') ? old('religion_id') : $employeeList->religion->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('religion_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('religion'))
@@ -215,7 +214,7 @@
                 <label class="required" for="blood_group_id">{{ trans('cruds.employeeList.fields.blood_group') }}</label>
                 <select class="form-control select2 {{ $errors->has('blood_group') ? 'is-invalid' : '' }}" name="blood_group_id" id="blood_group_id" required>
                     @foreach($blood_groups as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('blood_group_id') ? old('blood_group_id') : $employeeList->blood_group->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('blood_group_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('blood_group'))
@@ -238,7 +237,7 @@
             </div>
             <div class="form-group">
                 <label for="passport">{{ trans('cruds.employeeList.fields.passport') }}</label>
-                <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}" type="text" name="passport" id="passport" value="{{ old('passport', $employeeList->passport) }}">
+                <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}" type="text" name="passport" id="passport" value="{{ old('passport', '') }}">
                 @if($errors->has('passport'))
                     <div class="invalid-feedback">
                         {{ $errors->first('passport') }}
@@ -261,7 +260,7 @@
                 <label for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
                 <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}" name="license_type_id" id="license_type_id">
                     @foreach($license_types as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('license_type_id') ? old('license_type_id') : $employeeList->license_type->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('license_type_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('license_type'))
@@ -284,7 +283,7 @@
             </div>
             <div class="form-group">
                 <label for="email">{{ trans('cruds.employeeList.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $employeeList->email) }}">
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}">
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -294,7 +293,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="mobile_number">{{ trans('cruds.employeeList.fields.mobile_number') }}</label>
-                <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}" type="text" name="mobile_number" id="mobile_number" value="{{ old('mobile_number', $employeeList->mobile_number) }}" required>
+                <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}" type="text" name="mobile_number" id="mobile_number" value="{{ old('mobile_number', '') }}" required>
                 @if($errors->has('mobile_number'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mobile_number') }}
@@ -306,7 +305,7 @@
                 <label for="projectrevenue_id">{{ trans('cruds.employeeList.fields.projectrevenue') }}</label>
                 <select class="form-control select2 {{ $errors->has('projectrevenue') ? 'is-invalid' : '' }}" name="projectrevenue_id" id="projectrevenue_id">
                     @foreach($projectrevenues as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('projectrevenue_id') ? old('projectrevenue_id') : $employeeList->projectrevenue->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('projectrevenue_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('projectrevenue'))
@@ -320,7 +319,7 @@
                 <label for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
                 <select class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}" name="joiningexaminfo_id" id="joiningexaminfo_id">
                     @foreach($joiningexaminfos as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('joiningexaminfo_id') ? old('joiningexaminfo_id') : $employeeList->joiningexaminfo->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('joiningexaminfo'))
@@ -334,7 +333,7 @@
                 <label for="departmental_exam_id">{{ trans('cruds.employeeList.fields.departmental_exam') }}</label>
                 <select class="form-control select2 {{ $errors->has('departmental_exam') ? 'is-invalid' : '' }}" name="departmental_exam_id" id="departmental_exam_id">
                     @foreach($departmental_exams as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('departmental_exam_id') ? old('departmental_exam_id') : $employeeList->departmental_exam->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('departmental_exam_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('departmental_exam'))
@@ -348,7 +347,7 @@
                 <label for="project_id">{{ trans('cruds.employeeList.fields.project') }}</label>
                 <select class="form-control select2 {{ $errors->has('project') ? 'is-invalid' : '' }}" name="project_id" id="project_id">
                     @foreach($projects as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('project_id') ? old('project_id') : $employeeList->project->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('project_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('project'))
@@ -373,7 +372,7 @@
                 <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
                 <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id" id="grade_id">
                     @foreach($grades as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('grade_id') ? old('grade_id') : $employeeList->grade->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('grade'))
@@ -385,7 +384,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
-                <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}" type="text" name="fjoining_date" id="fjoining_date" value="{{ old('fjoining_date', $employeeList->fjoining_date) }}" required>
+                <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}" type="text" name="fjoining_date" id="fjoining_date" value="{{ old('fjoining_date') }}" required>
                 @if($errors->has('fjoining_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fjoining_date') }}
@@ -395,7 +394,7 @@
             </div>
             <div class="form-group">
                 <label for="first_joining_office_name">{{ trans('cruds.employeeList.fields.first_joining_office_name') }}</label>
-                <input class="form-control {{ $errors->has('first_joining_office_name') ? 'is-invalid' : '' }}" type="text" name="first_joining_office_name" id="first_joining_office_name" value="{{ old('first_joining_office_name', $employeeList->first_joining_office_name) }}">
+                <input class="form-control {{ $errors->has('first_joining_office_name') ? 'is-invalid' : '' }}" type="text" name="first_joining_office_name" id="first_joining_office_name" value="{{ old('first_joining_office_name', '') }}">
                 @if($errors->has('first_joining_office_name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('first_joining_office_name') }}
@@ -405,7 +404,7 @@
             </div>
             <div class="form-group">
                 <label for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}</label>
-                <input class="form-control date {{ $errors->has('first_joining_g_o_date') ? 'is-invalid' : '' }}" type="text" name="first_joining_g_o_date" id="first_joining_g_o_date" value="{{ old('first_joining_g_o_date', $employeeList->first_joining_g_o_date) }}">
+                <input class="form-control date {{ $errors->has('first_joining_g_o_date') ? 'is-invalid' : '' }}" type="text" name="first_joining_g_o_date" id="first_joining_g_o_date" value="{{ old('first_joining_g_o_date') }}">
                 @if($errors->has('first_joining_g_o_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('first_joining_g_o_date') }}
@@ -415,7 +414,7 @@
             </div>
             <div class="form-group">
                 <label for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
-                <input class="form-control {{ $errors->has('first_joining_memo_no') ? 'is-invalid' : '' }}" type="text" name="first_joining_memo_no" id="first_joining_memo_no" value="{{ old('first_joining_memo_no', $employeeList->first_joining_memo_no) }}">
+                <input class="form-control {{ $errors->has('first_joining_memo_no') ? 'is-invalid' : '' }}" type="text" name="first_joining_memo_no" id="first_joining_memo_no" value="{{ old('first_joining_memo_no', '') }}">
                 @if($errors->has('first_joining_memo_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('first_joining_memo_no') }}
@@ -447,7 +446,7 @@
             </div>
             <div class="form-group">
                 <label for="date_of_gazette">{{ trans('cruds.employeeList.fields.date_of_gazette') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_gazette') ? 'is-invalid' : '' }}" type="text" name="date_of_gazette" id="date_of_gazette" value="{{ old('date_of_gazette', $employeeList->date_of_gazette) }}">
+                <input class="form-control date {{ $errors->has('date_of_gazette') ? 'is-invalid' : '' }}" type="text" name="date_of_gazette" id="date_of_gazette" value="{{ old('date_of_gazette') }}">
                 @if($errors->has('date_of_gazette'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date_of_gazette') }}
@@ -468,7 +467,7 @@
             </div>
             <div class="form-group">
                 <label for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}" type="text" name="date_of_regularization" id="date_of_regularization" value="{{ old('date_of_regularization', $employeeList->date_of_regularization) }}">
+                <input class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}" type="text" name="date_of_regularization" id="date_of_regularization" value="{{ old('date_of_regularization') }}">
                 @if($errors->has('date_of_regularization'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date_of_regularization') }}
@@ -478,7 +477,7 @@
             </div>
             <div class="form-group">
                 <label for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
-                <input class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}" type="text" name="regularization_issue_date" id="regularization_issue_date" value="{{ old('regularization_issue_date', $employeeList->regularization_issue_date) }}">
+                <input class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}" type="text" name="regularization_issue_date" id="regularization_issue_date" value="{{ old('regularization_issue_date') }}">
                 @if($errors->has('regularization_issue_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('regularization_issue_date') }}
@@ -499,7 +498,7 @@
             </div>
             <div class="form-group">
                 <label for="date_of_con_serviec">{{ trans('cruds.employeeList.fields.date_of_con_serviec') }}</label>
-                <input class="form-control date {{ $errors->has('date_of_con_serviec') ? 'is-invalid' : '' }}" type="text" name="date_of_con_serviec" id="date_of_con_serviec" value="{{ old('date_of_con_serviec', $employeeList->date_of_con_serviec) }}">
+                <input class="form-control date {{ $errors->has('date_of_con_serviec') ? 'is-invalid' : '' }}" type="text" name="date_of_con_serviec" id="date_of_con_serviec" value="{{ old('date_of_con_serviec') }}">
                 @if($errors->has('date_of_con_serviec'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date_of_con_serviec') }}
@@ -522,7 +521,7 @@
                 <label for="quota_id">{{ trans('cruds.employeeList.fields.quota') }}</label>
                 <select class="form-control select2 {{ $errors->has('quota') ? 'is-invalid' : '' }}" name="quota_id" id="quota_id">
                     @foreach($quotas as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('quota_id') ? old('quota_id') : $employeeList->quota->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('quota_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('quota'))
@@ -558,7 +557,7 @@
                 <label for="freedomfighter_id">{{ trans('cruds.employeeList.fields.freedomfighter') }}</label>
                 <select class="form-control select2 {{ $errors->has('freedomfighter') ? 'is-invalid' : '' }}" name="freedomfighter_id" id="freedomfighter_id">
                     @foreach($freedomfighters as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('freedomfighter_id') ? old('freedomfighter_id') : $employeeList->freedomfighter->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" {{ old('freedomfighter_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('freedomfighter'))
@@ -570,7 +569,7 @@
             </div>
             <div class="form-group">
                 <label for="license_number">{{ trans('cruds.employeeList.fields.license_number') }}</label>
-                <input class="form-control {{ $errors->has('license_number') ? 'is-invalid' : '' }}" type="text" name="license_number" id="license_number" value="{{ old('license_number', $employeeList->license_number) }}">
+                <input class="form-control {{ $errors->has('license_number') ? 'is-invalid' : '' }}" type="text" name="license_number" id="license_number" value="{{ old('license_number', '') }}">
                 @if($errors->has('license_number'))
                     <div class="invalid-feedback">
                         {{ $errors->first('license_number') }}
@@ -580,7 +579,7 @@
             </div>
             <div class="form-group">
                 <label for="approve">{{ trans('cruds.employeeList.fields.approve') }}</label>
-                <input class="form-control {{ $errors->has('approve') ? 'is-invalid' : '' }}" type="text" name="approve" id="approve" value="{{ old('approve', $employeeList->approve) }}">
+                <input class="form-control {{ $errors->has('approve') ? 'is-invalid' : '' }}" type="text" name="approve" id="approve" value="{{ old('approve', '0') }}">
                 @if($errors->has('approve'))
                     <div class="invalid-feedback">
                         {{ $errors->first('approve') }}
@@ -590,7 +589,7 @@
             </div>
             <div class="form-group">
                 <label for="approveby">{{ trans('cruds.employeeList.fields.approveby') }}</label>
-                <input class="form-control {{ $errors->has('approveby') ? 'is-invalid' : '' }}" type="text" name="approveby" id="approveby" value="{{ old('approveby', $employeeList->approveby) }}">
+                <input class="form-control {{ $errors->has('approveby') ? 'is-invalid' : '' }}" type="text" name="approveby" id="approveby" value="{{ old('approveby', '0') }}">
                 @if($errors->has('approveby'))
                     <div class="invalid-feedback">
                         {{ $errors->first('approveby') }}
@@ -600,7 +599,7 @@
             </div>
             <div class="form-group">
                 <label for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
-                <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number" name="nid" id="nid" value="{{ old('nid', $employeeList->nid) }}" step="0.01">
+                <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number" name="nid" id="nid" value="{{ old('nid', '') }}" step="0.01">
                 @if($errors->has('nid'))
                     <div class="invalid-feedback">
                         {{ $errors->first('nid') }}

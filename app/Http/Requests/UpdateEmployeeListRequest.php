@@ -97,10 +97,6 @@ class UpdateEmployeeListRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'nid' => [
-                'nullable',
-                'integer',
-            ],
             'passport' => [
                 'string',
                 'nullable',
@@ -146,6 +142,17 @@ class UpdateEmployeeListRequest extends FormRequest
             'license_number' => [
                 'string',
                 'nullable',
+            ],
+            'approve' => [
+                'string',
+                'nullable',
+            ],
+            'approveby' => [
+                'string',
+                'nullable',
+            ],
+            'nid' => [
+                'numeric',
             ],
         ];
     }

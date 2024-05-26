@@ -22,7 +22,6 @@ class CreateEmployeeListsTable extends Migration
             $table->date('prl_date')->nullable();
             $table->string('height')->nullable();
             $table->string('special_identity')->nullable();
-            $table->decimal('nid',20,0)->nullable();
             $table->string('passport')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile_number');
@@ -35,6 +34,9 @@ class CreateEmployeeListsTable extends Migration
             $table->date('regularization_issue_date')->nullable();
             $table->date('date_of_con_serviec')->nullable();
             $table->string('license_number')->nullable();
+            $table->string('approve')->nullable();
+            $table->string('approveby')->nullable();
+            $table->float('nid')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

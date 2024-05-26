@@ -65,7 +65,6 @@ class EmployeeList extends Model implements HasMedia
         'gender_id',
         'religion_id',
         'blood_group_id',
-        'nid',
         'passport',
         'license_type_id',
         'email',
@@ -87,6 +86,11 @@ class EmployeeList extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+        'freedomfighter_id',
+        'license_number',
+        'approve',
+        'approveby',
+        'nid',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
