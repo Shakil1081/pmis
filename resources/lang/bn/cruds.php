@@ -481,7 +481,7 @@ return [
             'first_joining_office_name_helper'     => ' ',
             'first_joining_g_o_date'               => 'প্রথম যোগদানের জিও তারিখ',
             'first_joining_g_o_date_helper'        => ' ',
-            'first_joining_memo_no'                => 'প্রথম যোগদানের মেমো নাম্বার',
+            'first_joining_memo_no'                => 'মেমো নাম্বার',
             'first_joining_memo_no_helper'         => ' ',
             'first_joining_order'                  => 'প্রথম যোগদানের অর্ডার',
             'first_joining_order_helper'           => ' ',
