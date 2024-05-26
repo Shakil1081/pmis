@@ -402,7 +402,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('year_access')
+                    {{-- @can('year_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.years.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/years') || request()->is('admin/years/*') ? 'c-active' : '' }}">
@@ -412,7 +412,7 @@
                                 {{ trans('cruds.year.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                     @can('project_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.projects.index') }}"
