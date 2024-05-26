@@ -46,7 +46,15 @@
 
         @if ($joininginfo == 2)
             <div class="form-group">
-                <label class="required" for="projectrevenue_id">Revenue Type</label>
+                <label class="required" for="projectrevenue_id">
+
+
+                    @if (app()->getLocale() === 'bn')
+                        রাজস্ব ভিন্নতা
+                    @else
+                        Revenue Type
+                    @endif
+                </label>
                 <select wire:model="revenueType" class="form-select" name="projectrevenue_id" id="projectrevenue_id"
                     wire:change="onSelectrevenueType($event.target.value)" required>
 
@@ -74,7 +82,15 @@
         @if (empty($projectRevenueExam) || count($projectRevenueExam) === 0)
         @else
             <div class="form-group">
-                <label class="required" for="departmental_exam_id">Cadre Exam</label>
+                <label class="required" for="departmental_exam_id">
+
+                    @if (app()->getLocale() === 'bn')
+                        ক্যাডার পরীক্ষা
+                    @else
+                        Cadre Exam
+                    @endif
+
+                </label>
                 <select wire:model="departmentalOrDepartmental" class="form-select" name="departmental_exam_id"
                     id="departmental_exam_id" wire:change="onSelectdepartmentalOrDepartmental($event.target.value)"
                     required>
@@ -97,13 +113,30 @@
 
             @if ($departmentalOrDepartmental)
                 <div class="form-group">
-                    <label class="required" for="level_1">Exam Pass</label>
+                    <label class="required" for="level_1">
+                        @if (app()->getLocale() === 'bn')
+                            পরীক্ষায় উত্তীর্ণ
+                        @else
+                            Exam Pass
+                        @endif
+
+                    </label>
                     <select wire:model="exampass" class="form-select" name="level_1" id="level_1"
                         wire:change="onSelectexampass($event.target.value)" required>
 
-                        <option>Select</option>
-                        <option value="No">No</option>
-                        <option value="Yes">Yes</option>
+
+                        @if (app()->getLocale() === 'bn')
+                            <option>
+                                নির্বাচন করুন</option>
+                            <option value="No">না</option>
+                            <option value="Yes">হ্যাঁ</option>
+                        @else
+                            <option>Select</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        @endif
+
+
                     </select>
                 </div>
             @endif

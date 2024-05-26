@@ -354,8 +354,16 @@
                         <div class="form-group has_passport_group">
                             <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
                             <select class="form-control" id="has_passport">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
+                                @if (app()->getLocale() === 'bn')
+                                    <option>
+                                        নির্বাচন করুন</option>
+                                    <option value="No">না</option>
+                                    <option value="Yes">হ্যাঁ</option>
+                                @else
+                                    <option>Select</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                @endif
                             </select>
                         </div>
 
@@ -389,8 +397,16 @@
                         <div class="form-group has_license_group">
                             <label for="has_license">{{ trans('cruds.employeeList.fields.has_license') }}</label>
                             <select class="form-control" id="has_license">
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
+                                @if (app()->getLocale() === 'bn')
+                                    <option>
+                                        নির্বাচন করুন</option>
+                                    <option value="No">না</option>
+                                    <option value="Yes">হ্যাঁ</option>
+                                @else
+                                    <option>Select</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                @endif
                             </select>
                         </div>
 
