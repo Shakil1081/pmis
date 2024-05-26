@@ -1458,7 +1458,8 @@ return [
         'fields'         => [
             'id'                => 'আইডি',
             'id_helper'         => ' ',
-            'name'              => 'নাম',
+            'name'              => 'নাম (বাংলা)',
+            'name_en'              => 'নাম (ইংরেজী)',
             'name_helper'       => ' ',
             'created_at' => 'তৈরী করা হয়েছে',
             'created_at_helper' => ' ',
