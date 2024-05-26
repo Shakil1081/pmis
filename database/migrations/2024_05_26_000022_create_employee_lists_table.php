@@ -36,7 +36,7 @@ class CreateEmployeeListsTable extends Migration
             $table->string('license_number')->nullable();
             $table->string('approve')->nullable();
             $table->string('approveby')->nullable();
-            $table->float('nid')->nullable();
+            $table->decimal('nid',20,0)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

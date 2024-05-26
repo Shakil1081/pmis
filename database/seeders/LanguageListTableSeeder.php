@@ -18,9 +18,11 @@ class LanguageListTableSeeder extends Seeder
         DB::table('language_lists')->insert([
             [
                 'name' => 'Bengali',
+                'nmae_en' => 'Bengali',
             ],
             [
                 'name' => 'English',
+                'nmae_en' => 'English',
             ],
         ]);
     }

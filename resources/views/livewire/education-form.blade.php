@@ -1,7 +1,13 @@
 <div>
     <div class="row row-cols-2">
         <div class="form-group">
-            <label for="circle_list_id">{{ trans('Level of Education') }}</label>
+            <label for="circle_list_id">
+                @if (app()->getLocale() === 'bn')
+                    শিক্ষা শ্রেণী
+                @else
+                    {{ trans('Level of Education') }}
+                @endif
+            </label>
             <select wire:model="levelofEducation" wire:change="onlevelofEducation($event.target.value)"
                 class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="circle_list_id"
                 id="circle_list_id">

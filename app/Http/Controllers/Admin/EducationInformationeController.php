@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyEducationInformationeRequest;
@@ -107,15 +107,17 @@ class EducationInformationeController extends Controller
 
     public function create()
     {
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('education_informatione_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $name_of_exams = Examination::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $exam_boards = ExamBoard::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $exam_boards = ExamBoard::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $results = Result::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $results = Result::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $achievement_types = AchievementschoolsUniversity::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $achievement_types = AchievementschoolsUniversity::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -139,15 +141,17 @@ class EducationInformationeController extends Controller
 
     public function edit(EducationInformatione $educationInformatione)
     {
+        $locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('education_informatione_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $name_of_exams = Examination::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $exam_boards = ExamBoard::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $exam_boards = ExamBoard::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $results = Result::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $results = Result::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $achievement_types = AchievementschoolsUniversity::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $achievement_types = AchievementschoolsUniversity::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
