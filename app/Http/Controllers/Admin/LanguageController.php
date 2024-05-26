@@ -8,6 +8,7 @@ use App\Http\Requests\StoreLanguageRequest;
 use App\Http\Requests\UpdateLanguageRequest;
 use App\Models\EmployeeList;
 use App\Models\Language;
+use App\Models\LanguageList;
 use App\Models\LanguageProficiency;
 use Gate;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class LanguageController extends Controller
         abort_if(Gate::denies('language_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Language::with(['employee', 'read', 'write', 'speak'])->select(sprintf('%s.*', (new Language)->table));
+            $query = Language::with(['employee', 'read', 'write', 'speak', 'language'])->select(sprintf('%s.*', (new Language)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -46,9 +47,6 @@ class LanguageController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
-            $table->editColumn('language', function ($row) {
-                return $row->language ? $row->language : '';
-            });
             $table->addColumn('read_name', function ($row) {
                 return $row->read ? $row->read->name : '';
             });
@@ -61,7 +59,11 @@ class LanguageController extends Controller
                 return $row->speak ? $row->speak->name : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'employee', 'read', 'write', 'speak']);
+            $table->addColumn('language_name', function ($row) {
+                return $row->language ? $row->language->name : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'employee', 'read', 'write', 'speak', 'language']);
 
             return $table->make(true);
         }
@@ -73,22 +75,22 @@ class LanguageController extends Controller
     {
         abort_if(Gate::denies('language_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+        
 
         $reads = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $writes = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $speaks = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $languages = LanguageList::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        
 
-        return view('admin.languages.create', compact('employees', 'reads', 'speaks', 'writes'));
+        return view('admin.languages.create', compact( 'languages', 'reads', 'speaks', 'writes'));
     }
 
     public function store(StoreLanguageRequest $request)
     {
         $language = Language::create($request->all());
+
         return redirect()->back()->with('status', 'Action successful!');
-       // return redirect()->route('admin.languages.index');
     }
 
     public function edit(Language $language)
@@ -103,9 +105,11 @@ class LanguageController extends Controller
 
         $speaks = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $language->load('employee', 'read', 'write', 'speak');
+        $languages = LanguageList::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.languages.edit', compact('employees', 'language', 'reads', 'speaks', 'writes'));
+        $language->load('employee', 'read', 'write', 'speak', 'language');
+
+        return view('admin.languages.edit', compact('employees', 'language', 'languages', 'reads', 'speaks', 'writes'));
     }
 
     public function update(UpdateLanguageRequest $request, Language $language)
@@ -119,7 +123,7 @@ class LanguageController extends Controller
     {
         abort_if(Gate::denies('language_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $language->load('employee', 'read', 'write', 'speak');
+        $language->load('employee', 'read', 'write', 'speak', 'language');
 
         return view('admin.languages.show', compact('language'));
     }

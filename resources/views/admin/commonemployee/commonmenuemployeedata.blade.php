@@ -5,7 +5,7 @@
     @endphp
 
 
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <div class="nav flex-column nav-pills w-100" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         @can('education_informatione_access')
             <a href="{{ route('admin.commonemployeeshow', ['id' => $id]) }}"
                 class="nav-link {{ request()->is('admin/show-employee') || request()->is('admin/show-employee/*') ? 'c-active' : '' }}">

@@ -336,27 +336,27 @@
                                         </div>
                                     @endif
                                     <span class="help-block">{{ trans('cruds.jobHistory.fields.grade_helper') }}</span>
-                                </div <div class="form-group">
-                                <label class="required"
-                                    for="go_upload">{{ trans('cruds.jobHistory.fields.go_upload') }}</label>
-                                <div class="needsclick dropzone {{ $errors->has('go_upload') ? 'is-invalid' : '' }}"
-                                    id="go_upload-dropzone">
                                 </div>
-                                @if ($errors->has('go_upload'))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('go_upload') }}
+                                <div class="form-group">
+                                    <label for="go_upload">{{ trans('cruds.jobHistory.fields.go_upload') }}</label>
+                                    <div class="needsclick dropzone {{ $errors->has('go_upload') ? 'is-invalid' : '' }}"
+                                        id="go_upload-dropzone">
                                     </div>
-                                @endif
-                                <span class="help-block">{{ trans('cruds.jobHistory.fields.go_upload_helper') }}</span>
+                                    @if ($errors->has('go_upload'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('go_upload') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.jobHistory.fields.go_upload_helper') }}</span>
+                                </div>
                             </div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-danger" type="submit">
-                            {{ trans('global.save') }}
-                        </button>
-                    </div>
-                    </form>
-                    {{-- <div class="row">
+                            <div class="form-group">
+                                <button class="btn btn-danger" type="submit">
+                                    {{ trans('global.save') }}
+                                </button>
+                            </div>
+                        </form>
+                        {{-- <div class="row">
 
                             <div class="col-4">
                                 <div class="form-group">
@@ -385,11 +385,11 @@
                             </div>
 
                         </div> --}}
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 

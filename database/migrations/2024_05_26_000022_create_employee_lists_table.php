@@ -22,7 +22,7 @@ class CreateEmployeeListsTable extends Migration
             $table->date('prl_date')->nullable();
             $table->string('height')->nullable();
             $table->string('special_identity')->nullable();
-            $table->integer('nid')->nullable();
+            $table->decimal('nid',20,0)->nullable();
             $table->string('passport')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile_number');

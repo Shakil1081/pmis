@@ -224,6 +224,11 @@
             padding: 1px 10px;
             border: 0px solid #d5d4d2 !important;
         }
+
+        .mycustommenu .c-active {
+            background: #898b8d;
+            color: #fff;
+        }
     </style>
 
     @livewireStyles

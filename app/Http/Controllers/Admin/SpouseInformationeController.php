@@ -96,7 +96,7 @@ class SpouseInformationeController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $spouseInformatione->id]);
         }
 
-        return redirect()->route('admin.spouse-informationes.index');
+        return redirect()->back()->with('status', 'Action successful!');
     }
 
     public function edit(SpouseInformatione $spouseInformatione)

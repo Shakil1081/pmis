@@ -75,13 +75,13 @@
         <a href="#publication" class="nav-link">
             {{ trans('cruds.publication.title') }}
         </a>
-        <a href="#" class="nav-link">
+        <a href="#awards" class="nav-link">
             {{ trans('cruds.award.title') }}
         </a>
         <a href="#otherServiceJob" class="nav-link">
             {{ trans('cruds.otherServiceJob.title') }}
         </a>
-        <a href="#" class="nav-link">
+        <a href="#languages" class="nav-link">
             {{ trans('cruds.language.title') }}
         </a>
         <a href="#criminalProsecutione" class="nav-link">

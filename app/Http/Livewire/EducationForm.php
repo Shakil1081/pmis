@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AchievementschoolsUniversity;
 use App\Models\ExamBoard;
 use App\Models\ExamDegree;
 use App\Models\Examination;
@@ -21,10 +22,11 @@ class EducationForm extends Component
     public $resultlist;
     public function render()
     {
-
+        $achievement_types = AchievementschoolsUniversity::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
         $examinations=Examination::all();
         return view('livewire.education-form',[
-            'examinations'=>$examinations
+            'examinations'=>$examinations,
+            'achievement_types'=>$achievement_types
         ]);
     }
     public function onlevelofEducation($value){

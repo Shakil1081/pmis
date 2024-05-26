@@ -122,6 +122,26 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.educationInformatione.fields.cgpa_helper') }}</span>
                 </div>
+
+                <div class="form-group">
+                    <label
+                        for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
+                    <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
+                        name="achievement_types_id" id="achievement_types_id">
+                        @foreach ($achievement_types as $id => $entry)
+                            <option value="{{ $id }}"
+                                {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
+                                {{ $entry }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('achievement_types'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('achievement_types') }}
+                        </div>
+                    @endif
+                    <span
+                        class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
+                </div>
             @endif
         @else
             <div class="form-group">

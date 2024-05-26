@@ -21,10 +21,10 @@ class Language extends Model
 
     protected $fillable = [
         'employee_id',
-        'language',
         'read_id',
         'write_id',
         'speak_id',
+        'language_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -53,5 +53,10 @@ class Language extends Model
     public function speak()
     {
         return $this->belongsTo(LanguageProficiency::class, 'speak_id');
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(LanguageList::class, 'language_id');
     }
 }

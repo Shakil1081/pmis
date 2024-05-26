@@ -1632,13 +1632,13 @@
                                                     class="btn btn-sm btn-primary">Edit</a>
 
                                                 <!-- Delete button -->
-                                                <form
+                                                {{-- <form
                                                     action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     </tbody>

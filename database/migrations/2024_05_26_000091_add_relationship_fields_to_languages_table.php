@@ -17,6 +17,8 @@ class AddRelationshipFieldsToLanguagesTable extends Migration
             $table->foreign('write_id', 'write_fk_9751303')->references('id')->on('language_proficiencies');
             $table->unsignedBigInteger('speak_id')->nullable();
             $table->foreign('speak_id', 'speak_fk_9751304')->references('id')->on('language_proficiencies');
+            $table->unsignedBigInteger('language_id')->nullable();
+            $table->foreign('language_id', 'language_fk_9820299')->references('id')->on('language_lists');
         });
     }
 }

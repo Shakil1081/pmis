@@ -58,7 +58,7 @@
                                     <span
                                         class="help-block">{{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="required"
                                         for="employee_id">{{ trans('cruds.socialAssPrAttachment.fields.employee') }}</label>
                                     <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
@@ -76,7 +76,7 @@
                                     @endif
                                     <span
                                         class="help-block">{{ trans('cruds.socialAssPrAttachment.fields.employee_helper') }}</span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
