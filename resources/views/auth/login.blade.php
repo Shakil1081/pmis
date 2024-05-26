@@ -89,7 +89,14 @@
                                     <div class="input-group">
                                         <input id="password" name="password" type="password"
                                             class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                            required placeholder="{{ trans('global.login_password') }}">
+                                            required
+                                            placeholder=" 
+                                            @if (app()->getLocale() === 'bn') পাসওয়ার্ড ভুলে গেছেন?
+                                        @else
+                                        Forgot your password @endif
+
+                                            
+                                            ">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="togglePassword">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
