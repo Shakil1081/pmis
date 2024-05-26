@@ -1475,6 +1475,8 @@ return [
             'id'                => 'আইডি',
             'id_helper'         => ' ',
             'name'              => 'নাম',
+            'name_en'              => 'নাম (ইংরেজী)',
+            'name_en_helper'              => ' ',
             'name_helper'       => ' ',
             'created_at' => 'তৈরী করা হয়েছে',
             'created_at_helper' => ' ',

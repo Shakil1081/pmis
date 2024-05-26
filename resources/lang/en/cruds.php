@@ -1433,7 +1433,9 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Name BN',
+            'name_en'              => 'Name EN',
+            'name_en_helper'              => ' ',
             'name_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
@@ -1449,7 +1451,9 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Name BN',
+            'name_en'              => 'Name EN',
+            'name_en_helper'              => ' ',
             'name_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
