@@ -89,13 +89,7 @@
                                     <div class="input-group">
                                         <input id="password" name="password" type="password"
                                             class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                            required
-                                            placeholder=" 
-                                            @if (app()->getLocale() === 'bn') পাসওয়ার্ড ভুলে গেছেন?
-                                        @else
-                                        Forgot your password @endif
-
-                                            
+                                            required placeholder=" 
                                             ">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button" id="togglePassword">
@@ -129,7 +123,11 @@
                                 <div class="col-md-6 text-end">
                                     @if (Route::has('password.request'))
                                         <a href="{{ route('password.request') }}">
-                                            {{ trans('global.forgot_password') }}
+                                            @if (app()->getLocale() === 'bn')
+                                                পাসওয়ার্ড ভুলে গেছেন?
+                                            @else
+                                                Forgot your password
+                                            @endif
                                         </a><br>
                                     @endif
 
