@@ -8,11 +8,42 @@
             <div class="row g-4">
                 <div class="col-lg-6 d-flex">
                     <div class="card-body">
-                        <a href="{{ route('home') }}">
-                            <img src="{{ asset('assets/images/logo1.png') }}" class="mb-4" width="145" alt="Logo" />
-                        </a>
-                        <h4 class="fw-bold">Reset Password</h4>
-                        <p class="mb-0">Enter your credentials to Reset Password</p>
+
+                        <div class="row mt-5">
+                            <div class="col-md-3">
+                                <a href="{{ route('home') }}">
+                                    <img src="{{ asset('assets/images/logo1.png') }}" class="mb-4" width="80"
+                                        alt="Logo" />
+                                </a>
+                            </div>
+                            <div class="col-md-9 text center">
+
+
+
+
+
+
+                                @if (app()->getLocale() === 'bn')
+                                    <h5 class="fw-bold mt-3">পাসওয়ার্ড পুনরুদ্ধার করুন</h5>
+
+                                    Change language to <a href="{{ url()->current() }}?change_language=en">
+                                        English
+                                    </a>
+                                @else
+                                    <h4 class="fw-bold mt-3">Reset Password</h4>
+
+                                    ভাষা পরিবর্তন করুন <a href="{{ url()->current() }}?change_language=bn">
+                                        বাংলা
+                                    </a>
+                                @endif
+
+                            </div>
+                        </div>
+
+
+
+
+
 
                         <div class="form-body mt-4">
                             @if (session('message'))
@@ -28,6 +59,14 @@
                                 @csrf
 
                                 <div class="form-group">
+                                    <label for="inputEmailAddress" class="form-label">
+
+                                        @if (app()->getLocale() === 'bn')
+                                            ইমেইল
+                                        @else
+                                            Email
+                                        @endif
+                                    </label>
                                     <input id="email" type="email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                         required autocomplete="email" autofocus
