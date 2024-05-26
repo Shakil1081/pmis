@@ -22,6 +22,7 @@ class LanguageList extends Model
 
     protected $fillable = [
         'name',
+        'nmae_en',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -22,9 +22,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.joininginfo.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.joininginfo.fields.project_revenue_bn') }}
                     </th>
                     <th>
@@ -86,7 +83,6 @@
     ajax: "{{ route('admin.joininginfos.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'project_revenue_bn', name: 'project_revenue_bn' },
 { data: 'project_revenue_en', name: 'project_revenue_en' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.joininginfo.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $joininginfo->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.joininginfo.fields.project_revenue_bn') }}
                         </th>
                         <td>

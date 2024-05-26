@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.religion.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.religion.fields.name_bn') }}
                     </th>
                     <th>
@@ -90,7 +87,6 @@
     ajax: "{{ route('admin.religions.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

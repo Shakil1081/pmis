@@ -40,9 +40,6 @@ class YearController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->editColumn('year', function ($row) {
                 return $row->year ? $row->year : '';
             });

@@ -20,7 +20,7 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource(EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->get());
+        return new EmployeeListResource(EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'projectrevenue', 'joiningexaminfo', 'departmental_exam', 'project', 'grade', 'quota', 'freedomfighter'])->get());
     }
 
     public function store(StoreEmployeeListRequest $request)
@@ -41,6 +41,10 @@ class EmployeeListApiController extends Controller
 
         if ($request->input('license_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('license_upload'))))->toMediaCollection('license_upload');
+        }
+
+        if ($request->input('certificate_upload', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('certificate_upload'))))->toMediaCollection('certificate_upload');
         }
 
         if ($request->input('first_joining_order', false)) {
@@ -80,7 +84,7 @@ class EmployeeListApiController extends Controller
     {
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EmployeeListResource($employeeList->load(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota']));
+        return new EmployeeListResource($employeeList->load(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'projectrevenue', 'joiningexaminfo', 'departmental_exam', 'project', 'grade', 'quota', 'freedomfighter']));
     }
 
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)
@@ -129,6 +133,17 @@ class EmployeeListApiController extends Controller
             }
         } elseif ($employeeList->license_upload) {
             $employeeList->license_upload->delete();
+        }
+
+        if ($request->input('certificate_upload', false)) {
+            if (! $employeeList->certificate_upload || $request->input('certificate_upload') !== $employeeList->certificate_upload->file_name) {
+                if ($employeeList->certificate_upload) {
+                    $employeeList->certificate_upload->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('certificate_upload'))))->toMediaCollection('certificate_upload');
+            }
+        } elseif ($employeeList->certificate_upload) {
+            $employeeList->certificate_upload->delete();
         }
 
         if ($request->input('first_joining_order', false)) {

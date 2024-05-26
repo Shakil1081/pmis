@@ -31,6 +31,7 @@ class SpouseInformatione extends Model implements HasMedia
         'employee_id',
         'name_bn',
         'name_en',
+        'nid_number',
         'occupation',
         'office_address',
         'phone_number',

@@ -17,18 +17,18 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.languageProficiency.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $languageProficiency->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.languageProficiency.fields.name') }}
                         </th>
                         <td>
                             {{ $languageProficiency->name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.languageProficiency.fields.name_en') }}
+                        </th>
+                        <td>
+                            {{ $languageProficiency->name_en }}
                         </td>
                     </tr>
                 </tbody>

@@ -43,9 +43,6 @@ class BatchController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->editColumn('batch_bn', function ($row) {
                 return $row->batch_bn ? $row->batch_bn : '';
             });

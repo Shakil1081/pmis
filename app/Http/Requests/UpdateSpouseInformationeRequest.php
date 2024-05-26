@@ -29,6 +29,10 @@ class UpdateSpouseInformationeRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'nid_number' => [
+                'string',
+                'nullable',
+            ],
             'occupation' => [
                 'string',
                 'nullable',

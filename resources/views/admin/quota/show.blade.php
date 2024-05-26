@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.quotum.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $quotum->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.quotum.fields.name_bn') }}
                         </th>
                         <td>

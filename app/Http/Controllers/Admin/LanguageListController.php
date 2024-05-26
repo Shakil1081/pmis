@@ -43,11 +43,11 @@ class LanguageListController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
+            });
+            $table->editColumn('nmae_en', function ($row) {
+                return $row->nmae_en ? $row->nmae_en : '';
             });
 
             $table->rawColumns(['actions', 'placeholder']);

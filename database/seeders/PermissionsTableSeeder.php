@@ -1184,14 +1184,210 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 294,
-                'title' => 'employee_list_detail_show',
+                'title' => 'freedom_fighte_relation_create',
             ],
             [
                 'id'    => 295,
-                'title' => 'employee_list_detail_access',
+                'title' => 'freedom_fighte_relation_edit',
             ],
             [
                 'id'    => 296,
+                'title' => 'freedom_fighte_relation_show',
+            ],
+            [
+                'id'    => 297,
+                'title' => 'freedom_fighte_relation_delete',
+            ],
+            [
+                'id'    => 298,
+                'title' => 'freedom_fighte_relation_access',
+            ],
+            [
+                'id'    => 299,
+                'title' => 'achievementschools_university_create',
+            ],
+            [
+                'id'    => 300,
+                'title' => 'achievementschools_university_edit',
+            ],
+            [
+                'id'    => 301,
+                'title' => 'achievementschools_university_show',
+            ],
+            [
+                'id'    => 302,
+                'title' => 'achievementschools_university_delete',
+            ],
+            [
+                'id'    => 303,
+                'title' => 'achievementschools_university_access',
+            ],
+            [
+                'id'    => 304,
+                'title' => 'project_create',
+            ],
+            [
+                'id'    => 305,
+                'title' => 'project_edit',
+            ],
+            [
+                'id'    => 306,
+                'title' => 'project_show',
+            ],
+            [
+                'id'    => 307,
+                'title' => 'project_delete',
+            ],
+            [
+                'id'    => 308,
+                'title' => 'project_access',
+            ],
+            [
+                'id'    => 309,
+                'title' => 'forest_state_create',
+            ],
+            [
+                'id'    => 310,
+                'title' => 'forest_state_edit',
+            ],
+            [
+                'id'    => 311,
+                'title' => 'forest_state_show',
+            ],
+            [
+                'id'    => 312,
+                'title' => 'forest_state_delete',
+            ],
+            [
+                'id'    => 313,
+                'title' => 'forest_state_access',
+            ],
+            [
+                'id'    => 314,
+                'title' => 'forest_range_create',
+            ],
+            [
+                'id'    => 315,
+                'title' => 'forest_range_edit',
+            ],
+            [
+                'id'    => 316,
+                'title' => 'forest_range_show',
+            ],
+            [
+                'id'    => 317,
+                'title' => 'forest_range_delete',
+            ],
+            [
+                'id'    => 318,
+                'title' => 'forest_range_access',
+            ],
+            [
+                'id'    => 319,
+                'title' => 'forest_beat_create',
+            ],
+            [
+                'id'    => 320,
+                'title' => 'forest_beat_edit',
+            ],
+            [
+                'id'    => 321,
+                'title' => 'forest_beat_show',
+            ],
+            [
+                'id'    => 322,
+                'title' => 'forest_beat_delete',
+            ],
+            [
+                'id'    => 323,
+                'title' => 'forest_beat_access',
+            ],
+            [
+                'id'    => 324,
+                'title' => 'job_configuration_access',
+            ],
+            [
+                'id'    => 325,
+                'title' => 'forest_division_create',
+            ],
+            [
+                'id'    => 326,
+                'title' => 'forest_division_edit',
+            ],
+            [
+                'id'    => 327,
+                'title' => 'forest_division_show',
+            ],
+            [
+                'id'    => 328,
+                'title' => 'forest_division_delete',
+            ],
+            [
+                'id'    => 329,
+                'title' => 'forest_division_access',
+            ],
+            [
+                'id'    => 330,
+                'title' => 'exam_degree_create',
+            ],
+            [
+                'id'    => 331,
+                'title' => 'exam_degree_edit',
+            ],
+            [
+                'id'    => 332,
+                'title' => 'exam_degree_show',
+            ],
+            [
+                'id'    => 333,
+                'title' => 'exam_degree_delete',
+            ],
+            [
+                'id'    => 334,
+                'title' => 'exam_degree_access',
+            ],
+            [
+                'id'    => 335,
+                'title' => 'result_group_create',
+            ],
+            [
+                'id'    => 336,
+                'title' => 'result_group_edit',
+            ],
+            [
+                'id'    => 337,
+                'title' => 'result_group_show',
+            ],
+            [
+                'id'    => 338,
+                'title' => 'result_group_delete',
+            ],
+            [
+                'id'    => 339,
+                'title' => 'result_group_access',
+            ],
+            [
+                'id'    => 340,
+                'title' => 'result_create',
+            ],
+            [
+                'id'    => 341,
+                'title' => 'result_edit',
+            ],
+            [
+                'id'    => 342,
+                'title' => 'result_show',
+            ],
+            [
+                'id'    => 343,
+                'title' => 'result_delete',
+            ],
+            [
+                'id'    => 344,
+                'title' => 'result_access',
+            ],
+            [
+                'id'    => 345,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.examBoard.fields.examination') }}
+                        </th>
+                        <td>
+                            {{ $examBoard->examination->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.examBoard.fields.name_bn') }}
                         </th>
                         <td>

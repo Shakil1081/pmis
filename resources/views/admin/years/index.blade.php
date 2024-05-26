@@ -22,9 +22,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.year.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.year.fields.year') }}
                     </th>
                     <th>
@@ -83,7 +80,6 @@
     ajax: "{{ route('admin.years.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'year', name: 'year' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

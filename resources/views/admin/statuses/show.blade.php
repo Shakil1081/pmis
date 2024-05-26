@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.status.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $status->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.status.fields.name') }}
                         </th>
                         <td>

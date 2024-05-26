@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.religion.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $religion->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.religion.fields.name_bn') }}
                         </th>
                         <td>

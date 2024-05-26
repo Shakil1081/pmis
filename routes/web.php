@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\EmployeeListController;
-Route::redirect('/', '/login')->name('home');
-
-
+Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -15,13 +12,6 @@ Route::get('/home', function () {
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
-
-
-    Route::get('add-employee', [EmployeeListController::class,'Commonemployeecreate'])->name('creatrmployee');
-    Route::get('show-employee', [EmployeeListController::class,'commonemployeeshow'])->name('commonemployeeshow');
-    Route::get('employee-data/{id}', [EmployeeListController::class,'employeedata'])->name('employeedata');
-
-    
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::resource('permissions', 'PermissionsController', ['except' => ['destroy']]);
@@ -133,9 +123,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('employee-lists/media', 'EmployeeListController@storeMedia')->name('employee-lists.storeMedia');
     Route::post('employee-lists/ckmedia', 'EmployeeListController@storeCKEditorImages')->name('employee-lists.storeCKEditorImages');
     Route::resource('employee-lists', 'EmployeeListController');
-   
-   
-   
 
     // License Type
     Route::delete('license-types/destroy', 'LicenseTypeController@massDestroy')->name('license-types.massDestroy');
@@ -193,6 +180,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Job Historie
     Route::delete('job-histories/destroy', 'JobHistorieController@massDestroy')->name('job-histories.massDestroy');
+    Route::post('job-histories/media', 'JobHistorieController@storeMedia')->name('job-histories.storeMedia');
+    Route::post('job-histories/ckmedia', 'JobHistorieController@storeCKEditorImages')->name('job-histories.storeCKEditorImages');
     Route::post('job-histories/parse-csv-import', 'JobHistorieController@parseCsvImport')->name('job-histories.parseCsvImport');
     Route::post('job-histories/process-csv-import', 'JobHistorieController@processCsvImport')->name('job-histories.processCsvImport');
     Route::resource('job-histories', 'JobHistorieController');
@@ -293,8 +282,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('project-revenuelones', 'ProjectRevenueloneController');
 
     // Project Revenue Exam
-    Route::post('project-revenue-exams/media', 'ProjectRevenueExamController@storeMedia')->name('project-revenue-exams.storeMedia');
-    Route::post('project-revenue-exams/ckmedia', 'ProjectRevenueExamController@storeCKEditorImages')->name('project-revenue-exams.storeCKEditorImages');
     Route::resource('project-revenue-exams', 'ProjectRevenueExamController', ['except' => ['destroy']]);
 
     // Service Particulars
@@ -306,7 +293,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('foreign-travel-personals', 'ForeignTravelPersonalController');
 
     // Social Ass Pr Attachment
-    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController');
+    Route::resource('social-ass-pr-attachments', 'SocialAssPrAttachmentController', ['except' => ['destroy']]);
 
     // Awards
     Route::delete('awards/destroy', 'AwardsController@massDestroy')->name('awards.massDestroy');
@@ -336,8 +323,49 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('years/destroy', 'YearController@massDestroy')->name('years.massDestroy');
     Route::resource('years', 'YearController');
 
-    // Employee List Details
-    Route::resource('employee-list-details', 'EmployeeListDetailsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    // Freedom Fighte Relation
+    Route::delete('freedom-fighte-relations/destroy', 'FreedomFighteRelationController@massDestroy')->name('freedom-fighte-relations.massDestroy');
+    Route::resource('freedom-fighte-relations', 'FreedomFighteRelationController');
+
+    // Achievementschools Universities
+    Route::delete('achievementschools-universities/destroy', 'AchievementschoolsUniversitiesController@massDestroy')->name('achievementschools-universities.massDestroy');
+    Route::resource('achievementschools-universities', 'AchievementschoolsUniversitiesController');
+
+    // Project
+    Route::delete('projects/destroy', 'ProjectController@massDestroy')->name('projects.massDestroy');
+    Route::post('projects/parse-csv-import', 'ProjectController@parseCsvImport')->name('projects.parseCsvImport');
+    Route::post('projects/process-csv-import', 'ProjectController@processCsvImport')->name('projects.processCsvImport');
+    Route::resource('projects', 'ProjectController');
+
+    // Forest States
+    Route::delete('forest-states/destroy', 'ForestStatesController@massDestroy')->name('forest-states.massDestroy');
+    Route::post('forest-states/parse-csv-import', 'ForestStatesController@parseCsvImport')->name('forest-states.parseCsvImport');
+    Route::post('forest-states/process-csv-import', 'ForestStatesController@processCsvImport')->name('forest-states.processCsvImport');
+    Route::resource('forest-states', 'ForestStatesController');
+
+    // Forest Ranges
+    Route::delete('forest-ranges/destroy', 'ForestRangesController@massDestroy')->name('forest-ranges.massDestroy');
+    Route::resource('forest-ranges', 'ForestRangesController');
+
+    // Forest Beats
+    Route::delete('forest-beats/destroy', 'ForestBeatsController@massDestroy')->name('forest-beats.massDestroy');
+    Route::resource('forest-beats', 'ForestBeatsController');
+
+    // Forest Divisions
+    Route::delete('forest-divisions/destroy', 'ForestDivisionsController@massDestroy')->name('forest-divisions.massDestroy');
+    Route::resource('forest-divisions', 'ForestDivisionsController');
+
+    // Exam Degree
+    Route::delete('exam-degrees/destroy', 'ExamDegreeController@massDestroy')->name('exam-degrees.massDestroy');
+    Route::resource('exam-degrees', 'ExamDegreeController');
+
+    // Result Group
+    Route::delete('result-groups/destroy', 'ResultGroupController@massDestroy')->name('result-groups.massDestroy');
+    Route::resource('result-groups', 'ResultGroupController');
+
+    // Result
+    Route::delete('results/destroy', 'ResultController@massDestroy')->name('results.massDestroy');
+    Route::resource('results', 'ResultController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

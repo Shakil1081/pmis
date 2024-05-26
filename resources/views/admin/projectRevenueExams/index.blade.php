@@ -22,19 +22,16 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.projectRevenueExam.fields.id') }}
+                        {{ trans('cruds.projectRevenueExam.fields.exam') }}
                     </th>
                     <th>
-                        {{ trans('cruds.projectRevenueExam.fields.exam') }}
+                        {{ trans('cruds.projectRevenuelone.fields.name_en') }}
                     </th>
                     <th>
                         {{ trans('cruds.projectRevenueExam.fields.exam_name_bn') }}
                     </th>
                     <th>
                         {{ trans('cruds.projectRevenueExam.fields.exam_name_en') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.projectRevenueExam.fields.upload') }}
                     </th>
                     <th>
                         &nbsp;
@@ -63,11 +60,10 @@
     ajax: "{{ route('admin.project-revenue-exams.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'exam_name_bn', name: 'exam.name_bn' },
+{ data: 'exam.name_en', name: 'exam.name_en' },
 { data: 'exam_name_bn', name: 'exam_name_bn' },
 { data: 'exam_name_en', name: 'exam_name_en' },
-{ data: 'upload', name: 'upload', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

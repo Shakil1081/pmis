@@ -23,10 +23,10 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.languageProficiency.fields.id') }}
+                            {{ trans('cruds.languageProficiency.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.languageProficiency.fields.name') }}
+                            {{ trans('cruds.languageProficiency.fields.name_en') }}
                         </th>
                         <th>
                             &nbsp;
@@ -40,10 +40,10 @@
 
                             </td>
                             <td>
-                                {{ $languageProficiency->id ?? '' }}
+                                {{ $languageProficiency->name ?? '' }}
                             </td>
                             <td>
-                                {{ $languageProficiency->name ?? '' }}
+                                {{ $languageProficiency->name_en ?? '' }}
                             </td>
                             <td>
                                 @can('language_proficiency_show')
@@ -117,7 +117,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-LanguageProficiency:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

@@ -10,6 +10,20 @@
         <form method="POST" action="{{ route("admin.exam-boards.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label for="examination_id">{{ trans('cruds.examBoard.fields.examination') }}</label>
+                <select class="form-control select2 {{ $errors->has('examination') ? 'is-invalid' : '' }}" name="examination_id" id="examination_id">
+                    @foreach($examinations as $id => $entry)
+                        <option value="{{ $id }}" {{ old('examination_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('examination'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('examination') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.examBoard.fields.examination_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name_bn">{{ trans('cruds.examBoard.fields.name_bn') }}</label>
                 <input class="form-control {{ $errors->has('name_bn') ? 'is-invalid' : '' }}" type="text" name="name_bn" id="name_bn" value="{{ old('name_bn', '') }}" required>
                 @if($errors->has('name_bn'))

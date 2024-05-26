@@ -29,6 +29,10 @@ class StoreSocialAssPrAttachmentRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'employee_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

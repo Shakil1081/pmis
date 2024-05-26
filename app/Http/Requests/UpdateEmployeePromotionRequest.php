@@ -29,9 +29,6 @@ class UpdateEmployeePromotionRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
-            'office_order' => [
-                'required',
-            ],
         ];
     }
 }

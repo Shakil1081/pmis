@@ -22,6 +22,11 @@ class StoreLanguageListRequest extends FormRequest
                 'required',
                 'unique:language_lists',
             ],
+            'nmae_en' => [
+                'string',
+                'required',
+                'unique:language_lists',
+            ],
         ];
     }
 }

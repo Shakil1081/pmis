@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.quotum.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.quotum.fields.name_bn') }}
                     </th>
                     <th>
@@ -93,7 +90,6 @@
     ajax: "{{ route('admin.quota.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
 { data: 'remark', name: 'remark' },

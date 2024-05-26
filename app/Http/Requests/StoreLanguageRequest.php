@@ -21,10 +21,6 @@ class StoreLanguageRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'language' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

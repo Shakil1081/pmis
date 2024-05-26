@@ -29,6 +29,9 @@
                         {{ trans('cruds.examBoard.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.examBoard.fields.examination') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.examBoard.fields.name_bn') }}
                     </th>
                     <th>
@@ -94,6 +97,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'examination_name_bn', name: 'examination.name_bn' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },
 { data: 'description', name: 'description' },

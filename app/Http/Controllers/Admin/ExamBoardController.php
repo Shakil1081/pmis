@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyExamBoardRequest;
 use App\Http\Requests\StoreExamBoardRequest;
 use App\Http\Requests\UpdateExamBoardRequest;
 use App\Models\ExamBoard;
+use App\Models\ExamDegree;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class ExamBoardController extends Controller
         abort_if(Gate::denies('exam_board_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ExamBoard::query()->select(sprintf('%s.*', (new ExamBoard)->table));
+            $query = ExamBoard::with(['examination'])->select(sprintf('%s.*', (new ExamBoard)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -46,6 +47,10 @@ class ExamBoardController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->addColumn('examination_name_bn', function ($row) {
+                return $row->examination ? $row->examination->name_bn : '';
+            });
+
             $table->editColumn('name_bn', function ($row) {
                 return $row->name_bn ? $row->name_bn : '';
             });
@@ -56,7 +61,7 @@ class ExamBoardController extends Controller
                 return $row->description ? $row->description : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->rawColumns(['actions', 'placeholder', 'examination']);
 
             return $table->make(true);
         }
@@ -68,7 +73,9 @@ class ExamBoardController extends Controller
     {
         abort_if(Gate::denies('exam_board_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.examBoards.create');
+        $examinations = ExamDegree::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.examBoards.create', compact('examinations'));
     }
 
     public function store(StoreExamBoardRequest $request)
@@ -82,7 +89,11 @@ class ExamBoardController extends Controller
     {
         abort_if(Gate::denies('exam_board_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.examBoards.edit', compact('examBoard'));
+        $examinations = ExamDegree::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $examBoard->load('examination');
+
+        return view('admin.examBoards.edit', compact('examBoard', 'examinations'));
     }
 
     public function update(UpdateExamBoardRequest $request, ExamBoard $examBoard)
@@ -95,6 +106,8 @@ class ExamBoardController extends Controller
     public function show(ExamBoard $examBoard)
     {
         abort_if(Gate::denies('exam_board_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $examBoard->load('examination');
 
         return view('admin.examBoards.show', compact('examBoard'));
     }
