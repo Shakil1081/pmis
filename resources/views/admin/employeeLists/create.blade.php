@@ -632,7 +632,7 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_office_name_helper') }}</span>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label
                                 for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}/{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
                             <input
@@ -646,10 +646,10 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_g_o_date_helper') }}</span>
-                        </div>
-                        {{-- <div class="form-group">
+                        </div> --}}
+                        <div class="form-group">
                             <label
-                                for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
+                                for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}/{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
                             <input class="form-control {{ $errors->has('first_joining_memo_no') ? 'is-invalid' : '' }}"
                                 type="text" name="first_joining_memo_no" id="first_joining_memo_no"
                                 value="{{ old('first_joining_memo_no', '') }}">
@@ -660,7 +660,7 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_memo_no_helper') }}</span>
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <label
                                 for="first_joining_order">{{ trans('cruds.employeeList.fields.first_joining_order') }}</label>

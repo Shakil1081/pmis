@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire;
-
+use Illuminate\Support\Facades\App;
 use App\Models\Grade;
 use App\Models\Joininginfo;
 use App\Models\Project;
@@ -21,10 +21,11 @@ class ProjectRevenue extends Component
     public $projectRevenueExam;
     public function render()
     {
-
+        $locale = App::getLocale();
         $joininginfoData = Joininginfo::all();
         $projects = Project::all();
-        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $grades = Grade::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
        // dd( $joininginfoData);
         return view('livewire.project-revenue',[
