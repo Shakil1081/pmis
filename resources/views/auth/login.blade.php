@@ -16,8 +16,22 @@
                                 </a>
                             </div>
                             <div class="col-md-9">
-                                <h4 class="fw-bold mt-4">Get Started Now</h4>
-                                <p class="mb-0">Enter your credentials to login your account</p>
+
+
+
+
+
+
+                                @if (app()->getLocale() === 'bn')
+                                    <h4 class="fw-bold mt-4">লগইন করুন</h4>
+                                    <p class="mb-0">নিচের ফর্মটি পূরণ করুন</p>
+                                @else
+                                    <h4 class="fw-bold mt-4">Get Started Now</h4>
+                                    <p class="mb-0">Enter your credentials to login your account</p>
+                                @endif
+
+
+
                             </div>
                         </div>
                         <div class="form-body mt-4">
@@ -35,7 +49,14 @@
                                 @csrf
 
                                 <div class="col-12">
-                                    <label for="inputEmailAddress" class="form-label">Email</label>
+                                    <label for="inputEmailAddress" class="form-label">
+
+                                        @if (app()->getLocale() === 'bn')
+                                            ইমেইল
+                                        @else
+                                            Email
+                                        @endif
+                                    </label>
 
 
                                     <input id="email" name="email" type="text"
@@ -52,7 +73,15 @@
                                     @endif
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputChoosePassword" class="form-label">Password</label>
+                                    <label for="inputChoosePassword" class="form-label">
+
+
+                                        @if (app()->getLocale() === 'bn')
+                                            পাসওয়ার্ড
+                                        @else
+                                            Password
+                                        @endif
+                                    </label>
                                     <div class="input-group">
                                         <input id="password" name="password" type="password"
                                             class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required
@@ -77,7 +106,13 @@
                                 <div class="col-md-6">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-                                        <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">
+                                            @if (app()->getLocale() === 'bn')
+                                                আমাকে মনে রাখবেন
+                                            @else
+                                                Remember Me
+                                            @endif
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-end">
@@ -90,7 +125,13 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
-                                        <button type="submit" class="btn btn-primary">Login</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            @if (app()->getLocale() === 'bn')
+                                                লগইন
+                                            @else
+                                                Login
+                                            @endif
+                                        </button>
                                     </div>
                                 </div>
                                 {{-- <div class="col-12">
