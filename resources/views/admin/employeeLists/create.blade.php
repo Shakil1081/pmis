@@ -634,7 +634,7 @@
                         </div>
                         <div class="form-group">
                             <label
-                                for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}</label>
+                                for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}/{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
                             <input
                                 class="form-control date {{ $errors->has('first_joining_g_o_date') ? 'is-invalid' : '' }}"
                                 type="text" name="first_joining_g_o_date" id="first_joining_g_o_date"
@@ -647,7 +647,7 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_g_o_date_helper') }}</span>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label
                                 for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
                             <input class="form-control {{ $errors->has('first_joining_memo_no') ? 'is-invalid' : '' }}"
@@ -660,7 +660,7 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_memo_no_helper') }}</span>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label
                                 for="first_joining_order">{{ trans('cruds.employeeList.fields.first_joining_order') }}</label>
