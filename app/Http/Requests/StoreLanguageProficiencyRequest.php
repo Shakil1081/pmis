@@ -22,6 +22,11 @@ class StoreLanguageProficiencyRequest extends FormRequest
                 'required',
                 'unique:language_proficiencies',
             ],
+            'name_en' => [
+                'string',
+                'required',
+                'unique:language_proficiencies',
+            ],
         ];
     }
 }

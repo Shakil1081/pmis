@@ -23,6 +23,14 @@
                             {{ $languageList->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.languageList.fields.nmae_en') }}
+                        </th>
+                        <td>
+                            {{ $languageList->nmae_en }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

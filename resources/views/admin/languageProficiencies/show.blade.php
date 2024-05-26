@@ -23,6 +23,14 @@
                             {{ $languageProficiency->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.languageProficiency.fields.name_en') }}
+                        </th>
+                        <td>
+                            {{ $languageProficiency->name_en }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
