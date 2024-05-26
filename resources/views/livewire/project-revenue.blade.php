@@ -94,7 +94,14 @@
                 <select wire:model="departmentalOrDepartmental" class="form-select" name="departmental_exam_id"
                     id="departmental_exam_id" wire:change="onSelectdepartmentalOrDepartmental($event.target.value)"
                     required>
-                    <option>Select</option>
+                    <option>
+
+                        @if (app()->getLocale() === 'bn')
+                            নির্বাচন করুন
+                        @else
+                            select
+                        @endif
+                    </option>
                     @foreach ($projectRevenueExam as $option)
                         <option value="{{ $option->id }}">
                             @if (app()->getLocale() === 'bn')
