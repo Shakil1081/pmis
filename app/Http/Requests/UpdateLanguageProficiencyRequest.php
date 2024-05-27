@@ -22,6 +22,11 @@ class UpdateLanguageProficiencyRequest extends FormRequest
                 'required',
                 'unique:language_proficiencies,name,' . request()->route('language_proficiency')->id,
             ],
+            'name_en' => [
+                'string',
+                'required',
+                'unique:language_proficiencies,name_en,' . request()->route('language_proficiency')->id,
+            ],
         ];
     }
 }

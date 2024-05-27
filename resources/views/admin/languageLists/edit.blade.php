@@ -21,6 +21,16 @@
                 <span class="help-block">{{ trans('cruds.languageList.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="nmae_en">{{ trans('cruds.languageList.fields.nmae_en') }}</label>
+                <input class="form-control {{ $errors->has('nmae_en') ? 'is-invalid' : '' }}" type="text" name="nmae_en" id="nmae_en" value="{{ old('nmae_en', $languageList->nmae_en) }}" required>
+                @if($errors->has('nmae_en'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('nmae_en') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.languageList.fields.nmae_en_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

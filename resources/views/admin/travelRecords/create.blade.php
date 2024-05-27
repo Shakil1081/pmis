@@ -15,7 +15,7 @@
 
                                 <div class="form-group">
                                     <label for="country_id">{{ trans('cruds.travelRecord.fields.country') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                                    <select class="form-select select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
                                         name="country_id" id="country_id">
                                         @foreach ($countries as $id => $entry)
                                             <option value="{{ $id }}"
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="purpose_id">{{ trans('cruds.travelRecord.fields.purpose') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
+                                    <select class="form-select select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
                                         name="purpose_id" id="purpose_id">
                                         @foreach ($purposes as $id => $entry)
                                             <option value="{{ $id }}"

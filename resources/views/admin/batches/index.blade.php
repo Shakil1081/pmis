@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.batch.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.batch.fields.batch_bn') }}
                     </th>
                     <th>
@@ -90,7 +87,6 @@
     ajax: "{{ route('admin.batches.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'batch_bn', name: 'batch_bn' },
 { data: 'batch_en', name: 'batch_en' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

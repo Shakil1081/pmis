@@ -51,11 +51,10 @@
                     <span
                         class="help-block">{{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement_helper') }}</span>
                 </div>
-
                 <div class="form-group">
                     <label class="required"
                         for="employee_id">{{ trans('cruds.socialAssPrAttachment.fields.employee') }}</label>
-                    <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                         name="employee_id" id="employee_id" required>
                         @foreach ($employees as $id => $entry)
                             <option value="{{ $id }}"

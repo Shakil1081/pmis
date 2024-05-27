@@ -21,6 +21,30 @@
                 <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="name_en">{{ trans('cruds.user.fields.name_en') }}</label>
+                <input class="form-control {{ $errors->has('name_en') ? 'is-invalid' : '' }}" type="text" name="name_en" id="name_en" value="{{ old('name_en', $user->name_en) }}" required>
+                @if($errors->has('name_en'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name_en') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.name_en_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="designations_id">{{ trans('cruds.user.fields.designations') }}</label>
+                <select class="form-control select2 {{ $errors->has('designations') ? 'is-invalid' : '' }}" name="designations_id" id="designations_id">
+                    @foreach($designations as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('designations_id') ? old('designations_id') : $user->designations->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('designations'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('designations') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.designations_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $user->email) }}" required>
                 @if($errors->has('email'))

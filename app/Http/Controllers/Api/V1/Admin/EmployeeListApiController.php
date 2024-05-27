@@ -17,8 +17,7 @@ class EmployeeListApiController extends Controller
     use MediaUploadingTrait;
 
     public function index()
-    {
-        abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    { 
 
         return new EmployeeListResource(EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->get());
     }

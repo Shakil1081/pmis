@@ -45,6 +45,16 @@
                 <span class="help-block">{{ trans('cruds.spouseInformatione.fields.name_en_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="nid_number">{{ trans('cruds.spouseInformatione.fields.nid_number') }}</label>
+                <input class="form-control {{ $errors->has('nid_number') ? 'is-invalid' : '' }}" type="text" name="nid_number" id="nid_number" value="{{ old('nid_number', $spouseInformatione->nid_number) }}">
+                @if($errors->has('nid_number'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('nid_number') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_number_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="nid_upload">{{ trans('cruds.spouseInformatione.fields.nid_upload') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}" id="nid_upload-dropzone">
                 </div>

@@ -1,16 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyEducationInformationeRequest;
 use App\Http\Requests\StoreEducationInformationeRequest;
 use App\Http\Requests\UpdateEducationInformationeRequest;
+use App\Models\AchievementschoolsUniversity;
 use App\Models\EducationInformatione;
 use App\Models\EmployeeList;
 use App\Models\ExamBoard;
 use App\Models\Examination;
+use App\Models\Result;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -26,7 +28,7 @@ class EducationInformationeController extends Controller
         abort_if(Gate::denies('education_informatione_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = EducationInformatione::with(['name_of_exam', 'exam_board', 'employee'])->select(sprintf('%s.*', (new EducationInformatione)->table));
+            $query = EducationInformatione::with(['name_of_exam', 'exam_board', 'result', 'achievement_types', 'employee'])->select(sprintf('%s.*', (new EducationInformatione)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -55,14 +57,28 @@ class EducationInformationeController extends Controller
                 return $row->exam_board ? $row->exam_board->name_bn : '';
             });
 
+            $table->editColumn('concentration_major_group', function ($row) {
+                return $row->concentration_major_group ? $row->concentration_major_group : '';
+            });
             $table->editColumn('school_university_name', function ($row) {
                 return $row->school_university_name ? $row->school_university_name : '';
             });
-            $table->editColumn('achivement', function ($row) {
-                return $row->achivement ? $row->achivement : '';
+            $table->addColumn('result_name_bn', function ($row) {
+                return $row->result ? $row->result->name_bn : '';
             });
+
             $table->editColumn('passing_year', function ($row) {
                 return $row->passing_year ? $row->passing_year : '';
+            });
+            $table->addColumn('achievement_types_name_bn', function ($row) {
+                return $row->achievement_types ? $row->achievement_types->name_bn : '';
+            });
+
+            $table->editColumn('achievement_types.name_en', function ($row) {
+                return $row->achievement_types ? (is_string($row->achievement_types) ? $row->achievement_types : $row->achievement_types->name_en) : '';
+            });
+            $table->editColumn('achivement', function ($row) {
+                return $row->achivement ? $row->achivement : '';
             });
             $table->editColumn('catificarte', function ($row) {
                 return $row->catificarte ? '<a href="' . $row->catificarte->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
@@ -74,8 +90,14 @@ class EducationInformationeController extends Controller
             $table->editColumn('employee.fullname_bn', function ($row) {
                 return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
             });
+            $table->editColumn('exam_degree', function ($row) {
+                return $row->exam_degree ? $row->exam_degree : '';
+            });
+            $table->editColumn('cgpa', function ($row) {
+                return $row->cgpa ? $row->cgpa : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'name_of_exam', 'exam_board', 'catificarte', 'employee']);
+            $table->rawColumns(['actions', 'placeholder', 'name_of_exam', 'exam_board', 'result', 'achievement_types', 'catificarte', 'employee']);
 
             return $table->make(true);
         }
@@ -85,15 +107,21 @@ class EducationInformationeController extends Controller
 
     public function create()
     {
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('education_informatione_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $name_of_exams = Examination::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $exam_boards = ExamBoard::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $exam_boards = ExamBoard::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $results = Result::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $achievement_types = AchievementschoolsUniversity::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.educationInformationes.create', compact('employees', 'exam_boards', 'name_of_exams'));
+        return view('admin.educationInformationes.create', compact('achievement_types', 'employees', 'exam_boards', 'name_of_exams', 'results'));
     }
 
     public function store(StoreEducationInformationeRequest $request)
@@ -107,23 +135,29 @@ class EducationInformationeController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $educationInformatione->id]);
         }
+
         return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.education-informationes.index');
     }
 
     public function edit(EducationInformatione $educationInformatione)
     {
+        $locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('education_informatione_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $name_of_exams = Examination::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $exam_boards = ExamBoard::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $exam_boards = ExamBoard::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $results = Result::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $achievement_types = AchievementschoolsUniversity::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $educationInformatione->load('name_of_exam', 'exam_board', 'employee');
+        $educationInformatione->load('name_of_exam', 'exam_board', 'result', 'achievement_types', 'employee');
 
-        return view('admin.educationInformationes.edit', compact('educationInformatione', 'employees', 'exam_boards', 'name_of_exams'));
+        return view('admin.educationInformationes.edit', compact('achievement_types', 'educationInformatione', 'employees', 'exam_boards', 'name_of_exams', 'results'));
     }
 
     public function update(UpdateEducationInformationeRequest $request, EducationInformatione $educationInformatione)
@@ -148,15 +182,7 @@ class EducationInformationeController extends Controller
     {
         abort_if(Gate::denies('education_informatione_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $educationInformatione->load('name_of_exam', 'exam_board', 'employee');
-
-        return view('admin.educationInformationes.show', compact('educationInformatione'));
-    }
-    public function showdata(EducationInformatione $educationInformatione)
-    {
-        abort_if(Gate::denies('education_informatione_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $educationInformatione->load('name_of_exam', 'exam_board', 'employee');
+        $educationInformatione->load('name_of_exam', 'exam_board', 'result', 'achievement_types', 'employee');
 
         return view('admin.educationInformationes.show', compact('educationInformatione'));
     }

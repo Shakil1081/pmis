@@ -41,9 +41,6 @@ class ProjectRevenueloneController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->addColumn('project_revenue_project_revenue_bn', function ($row) {
                 return $row->project_revenue ? $row->project_revenue->project_revenue_bn : '';
             });

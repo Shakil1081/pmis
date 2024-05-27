@@ -51,6 +51,9 @@ class SpouseInformationeController extends Controller
             $table->editColumn('name_en', function ($row) {
                 return $row->name_en ? $row->name_en : '';
             });
+            $table->editColumn('nid_number', function ($row) {
+                return $row->nid_number ? $row->nid_number : '';
+            });
             $table->editColumn('nid_upload', function ($row) {
                 return $row->nid_upload ? '<a href="' . $row->nid_upload->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
@@ -92,8 +95,8 @@ class SpouseInformationeController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $spouseInformatione->id]);
         }
+
         return redirect()->back()->with('status', 'Action successful!');
-        //return redirect()->route('admin.spouse-informationes.index');
     }
 
     public function edit(SpouseInformatione $spouseInformatione)

@@ -19,7 +19,7 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
-
+    <!--=====-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
@@ -32,257 +32,206 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css"
         rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-    <<<<<<< HEAD <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}"
-        rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
-        <!--bootstrap css-->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap"
-            rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
-        <!--main css-->
-        <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
-        <style>
-            .dropzone .dz-preview .dz-image {
-                height: 20px;
-            }
-
-            .dropzone {
-                min-height: 40px !important;
-                padding: 7px;
-                background-color: #4c944e45;
-                border: gainsboro;
-                border-radius: 5px;
-            }
-
-            .dropzone .dz-message {
-                margin: 0px;
-            }
-
-            .dropzone .dz-preview {
-                position: relative;
-                display: inline-block;
-                vertical-align: top;
-                margin: 0px 4px;
-                min-height: 39px;
-                width: 98%;
-            }
-
-            .dropzone .dz-preview .dz-details {
-                padding: 0px !important;
-            }
-
-            .dropzone .dz-preview .dz-details {
-                z-index: 1;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-                font-size: 13px;
-                min-width: unset;
-                max-width: unset;
-                padding: 0;
-                text-align: center;
-                color: rgba(0, 0, 0, 0.9);
-                line-height: 150%;
-            }
-
-            .dropzone .dz-preview .dz-details .dz-size {
-                margin: 0px;
-            }
-
-            ul.c-sidebar-nav.ps {
-                background: #4c944e !important;
-            }
-
-            .c-sidebar .c-sidebar-brand,
-            .c-sidebar .c-sidebar-header {
-                background: #f5f5f5 !important;
-            }
-
-            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
-            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
-                color: #fff;
-            }
-
-            .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
-            .c-sidebar .c-sidebar-nav-link:hover {
-                background: #4c944e !important;
-            }
-
-            .border-secondary {
-                border-color: rgb(108 117 125 / 14%) !important;
-            }
-
-            a.nav-link.c-active {
-                font-weight: bold;
-                color: #4c944e;
-                border-color: #3d763e !important;
-            }
-
-            a.nav-link:hover,
-            a.nav-link {
-                border-left: 1px solid #d2d2d2;
-                margin-bottom: 1px;
-                padding: 6px 12px;
-                margin-bottom: 0px;
-                border-radius: 0 !important;
-                /* border-bottom: 1px dashed #d1e3d1; */
-
-                /*font-size: 12px; */
-            }
-
-            .buttons-pdf,
-            .buttons-copy,
-            .buttons-print,
-            .buttons-csv {
-                display: none;
-            }
-
-            .pagination a {
-                font-size: 14px;
-                /* Adjust the font size as needed */
-            }
-        </style>
-        @yield('styles')
 
 
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
+    <!--bootstrap css-->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    <!--main css-->
+    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
+    <style>
+        .dropzone .dz-preview .dz-image {
+            height: 20px;
+        }
 
-        <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/metisMenu.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/metismenu/mm-vertical.css') }}">
-        <!--bootstrap css-->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap"
-            rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
-        <!--main css-->
-        <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
-        <style>
-            .dropzone .dz-preview .dz-image {
-                height: 20px;
-            }
+        .dropzone {
+            min-height: 40px !important;
+            padding: 7px;
+            background-color: #4c944e45;
+            border: gainsboro;
+            border-radius: 5px;
+        }
 
-            .dropzone {
-                min-height: 40px !important;
-                padding: 7px;
-                background-color: #4c944e45;
-                border: gainsboro;
-                border-radius: 5px;
-            }
+        .dropzone .dz-message {
+            margin: 0px;
+        }
 
-            .dropzone .dz-message {
-                margin: 0px;
-            }
+        .dropzone .dz-preview {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0px 4px;
+            min-height: 39px;
+            width: 98%;
+        }
 
-            .dropzone .dz-preview {
-                position: relative;
-                display: inline-block;
-                vertical-align: top;
-                margin: 0px 4px;
-                min-height: 39px;
-                width: 98%;
-            }
+        .dropzone .dz-preview .dz-details {
+            padding: 0px !important;
+        }
 
-            .dropzone .dz-preview .dz-details {
-                padding: 0px !important;
-            }
+        .dropzone .dz-preview .dz-details {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            font-size: 13px;
+            min-width: unset;
+            max-width: unset;
+            padding: 0;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.9);
+            line-height: 150%;
+        }
 
-            .dropzone .dz-preview .dz-details {
-                z-index: 1;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-                font-size: 13px;
-                min-width: unset;
-                max-width: unset;
-                padding: 0;
-                text-align: center;
-                color: rgba(0, 0, 0, 0.9);
-                line-height: 150%;
-            }
+        .dropzone .dz-preview .dz-details .dz-size {
+            margin: 0px;
+        }
 
-            .dropzone .dz-preview .dz-details .dz-size {
-                margin: 0px;
-            }
+        .c-app {
+            background: rgb(221, 255, 230) !important;
+            background: radial-gradient(circle, rgb(113 163 107 / 21%) 0%, rgb(84 148 65 / 0%) 100%) !important;
+        }
 
-            ul.c-sidebar-nav.ps {
-                background: #4c944e !important;
-            }
+        /* ul.c-sidebar-nav.ps {
+            background: #4c944e !important;
+        } */
 
-            .c-sidebar .c-sidebar-brand,
-            .c-sidebar .c-sidebar-header {
-                background: #f5f5f5 !important;
-            }
+        ul.c-sidebar-nav.ps {
+            background: #081e01 !important;
+        }
 
-            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
-            .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
-                color: #fff;
-            }
+        .btn-success {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #061801;
+            --bs-btn-border-color: #061801;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #05100199;
+            --bs-btn-hover-border-color: #061801;
+            --bs-btn-focus-shadow-rgb: 60, 153, 110;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #061801;
+            --bs-btn-active-border-color: #13240e99;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #02c27a;
+            --bs-btn-disabled-border-color: #198754;
+        }
 
-            .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
-            .c-sidebar .c-sidebar-nav-link:hover {
-                background: #4c944e !important;
-            }
+        .c-sidebar .c-sidebar-brand,
+        .c-sidebar .c-sidebar-header {
+            background: #f5f5f5 !important;
+        }
 
-            .border-secondary {
-                border-color: rgb(108 117 125 / 14%) !important;
-            }
+        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
+        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+            color: #fff;
+        }
 
-            a.nav-link.c-active {
-                font-weight: bold;
-                color: #4c944e;
-                border-color: #3d763e !important;
-            }
+        .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+        .c-sidebar .c-sidebar-nav-link:hover {
+            background: #4c944e !important;
+        }
 
-            a.nav-link:hover,
-            a.nav-link {
-                border-left: 1px solid #d2d2d2;
-                margin-bottom: 1px;
-                padding: 6px 12px;
-                margin-bottom: 0px;
-                border-radius: 0 !important;
-                /* border-bottom: 1px dashed #d1e3d1; */
+        .border-secondary {
+            border-color: rgb(108 117 125 / 14%) !important;
+        }
 
-                /*font-size: 12px; */
-            }
+        /* a.nav-link.c-active {
+            font-weight: bold;
+            color: #4c944e;
+            border-color: #3d763e !important;
+        } */
+        .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+        .c-sidebar .c-sidebar-nav-link:hover {
+            background: #41493fd6 !important;
+        }
 
-            .buttons-pdf,
-            .buttons-copy,
-            .buttons-print,
-            .buttons-csv {
-                display: none;
-            }
+        a.nav-link:hover,
+        a.nav-link {
+            border-left: 1px solid #d2d2d2;
+            margin-bottom: 1px;
+            padding: 6px 12px;
+            margin-bottom: 0px;
+            border-radius: 0 !important;
+            /* border-bottom: 1px dashed #d1e3d1; */
 
-            .pagination a {
-                font-size: 14px;
-                /* Adjust the font size as needed */
-            }
-        </style>
-        @yield('styles')
-        @stack('css')
-        <style>
-            html,
-            body,
-            div {
-                font-family: bangla;
-            }
-        </style>
+            /*font-size: 12px; */
+        }
 
-        @stack('css')
+        .buttons-pdf,
+        .buttons-copy,
+        .buttons-print,
+        .buttons-csv {
+            display: none;
+        }
 
+        .pagination a {
+            font-size: 14px;
+            /* Adjust the font size as needed */
+        }
+
+        .btn-danger {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #f51313;
+            --bs-btn-border-color: #f51313;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #f34a4a;
+            --bs-btn-hover-border-color: #f51313ab;
+            --bs-btn-focus-shadow-rgb: 225, 83, 97;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #f51313;
+            --bs-btn-active-border-color: #f51313;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #f51313;
+            --bs-btn-disabled-border-color: #f51313;
+        }
+    </style>
+    @yield('styles')
+    @stack('css')
+    <style>
+        /* html,
+        body,
+        div {
+            font-family: bangla;
+        } */
+
+        .table th:last-child,
+        .table td:last-child {
+            text-align: right;
+        }
+
+
+        a.btn.buttons-select-none.btn-primary.disabled,
+        a.btn.buttons-select-all.btn-primary {
+            background-color: #fff;
+            color: #000;
+            border: 0;
+            font-size: inherit;
+        }
+
+        .dt-buttons a {
+            padding: 1px 10px;
+            border: 0px solid #d5d4d2 !important;
+        }
+
+        .mycustommenu .c-active {
+            background: #898b8d;
+            color: #fff;
+        }
+    </style>
+
+    @livewireStyles
 </head>
 
 <body class="c-app">
@@ -294,30 +243,31 @@
                 <i class="fas fa-fw fa-bars"></i>
             </button>
 
-            <a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
+            <a class="c-header-brand d-lg-none" href="#">
+
+
+                <img src="{{ asset('assets/images/logo1.png') }}" height="40" alt="Logo" />
+
+            </a>
 
             <button class="c-header-toggler mfs-3 d-md-down-none" type="button" responsive="true">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
 
             <ul class="c-header-nav ml-auto">
-                <li>Welcome, {{ Auth::user()->name }}</>:</li>
-                @if (count(config('panel.available_languages', [])) > 1)
-                    <li class="c-header-nav-item dropdown d-md-down-none">
-                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">
-                            <strong class="text-danger"> {{ strtoupper(app()->getLocale()) }}</strong>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            @foreach (config('panel.available_languages') as $langLocale => $langName)
-                                <a class="dropdown-item"
-                                    href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }}
-                                    ({{ $langName }})
-                                </a>
-                            @endforeach
-                        </div>
-                    </li>
+                <li>@lang('dashboard.welcome'), {{ Auth::user()->name }} </li>
+
+                @if (app()->getLocale() === 'bn')
+                    <li><a href="{{ url()->current() }}?change_language=en" class="btn btn-sm btn-danger mx-2">
+                            English
+                        </a></li>
+                @else
+                    <li><a href="{{ url()->current() }}?change_language=bn" class="btn btn-sm btn-danger mx-2">
+                            বাংলা
+                        </a></li>
                 @endif
+
+
 
 
             </ul>
@@ -520,6 +470,7 @@
         });
     </script>
     @yield('scripts')
+    @livewireScripts
 </body>
 
 </html>

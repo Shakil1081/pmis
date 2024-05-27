@@ -6,7 +6,7 @@ return [
     'allRightsReserved'              => 'সমস্ত অধিকার সংরক্ষিত.',
     'areYouSure'                     => 'আপনি কি নিশ্চিত?',
     'clickHereToVerify'              => 'যাচাই করতে এখানে ক্লিক করুন',
-    'create'                         => 'তৈরি',
+    'create'                         => '',
     'dashboard'                      => 'ড্যাশবোর্ড',
     'delete'                         => 'মুছুন',
     'cancel'                         => 'বাতিল করুন',

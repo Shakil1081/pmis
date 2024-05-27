@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Designation;
 use App\Models\Role;
 use App\Models\User;
 use Gate;
@@ -18,7 +19,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::with(['roles'])->get();
+        $users = User::with(['designations', 'roles'])->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -27,9 +28,11 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $roles = Role::pluck('title', 'id');
 
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create', compact('designations', 'roles'));
     }
 
     public function store(StoreUserRequest $request)
@@ -44,11 +47,13 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $roles = Role::pluck('title', 'id');
 
-        $user->load('roles');
+        $user->load('designations', 'roles');
 
-        return view('admin.users.edit', compact('roles', 'user'));
+        return view('admin.users.edit', compact('designations', 'roles', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -63,7 +68,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles');
+        $user->load('designations', 'roles');
 
         return view('admin.users.show', compact('user'));
     }

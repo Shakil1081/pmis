@@ -2,7 +2,7 @@
     @csrf
     <div class="form-group">
         <label for="employee_id">{{ trans('cruds.employeePromotion.fields.employee') }}</label>
-        <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
+        <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
             id="employee_id">
             @foreach ($employees as $id => $entry)
                 <option value="{{ $id }}" {{ old('employee_id') == $id ? 'selected' : '' }}>{{ $entry }}
@@ -19,7 +19,7 @@
     <div class="form-group">
         <label class="required"
             for="new_designation_id">{{ trans('cruds.employeePromotion.fields.new_designation') }}</label>
-        <select class="form-control select2 {{ $errors->has('new_designation') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('new_designation') ? 'is-invalid' : '' }}"
             name="new_designation_id" id="new_designation_id" required>
             @foreach ($new_designations as $id => $entry)
                 <option value="{{ $id }}" {{ old('new_designation_id') == $id ? 'selected' : '' }}>

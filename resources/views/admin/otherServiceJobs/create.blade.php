@@ -75,8 +75,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="to">{{ trans('cruds.otherServiceJob.fields.to') }}</label>
-                                    <input class="form-control {{ $errors->has('to') ? 'is-invalid' : '' }}" type="text"
-                                        name="to" id="to" value="{{ old('to', '') }}">
+                                    <input class="form-control date{{ $errors->has('to') ? 'is-invalid' : '' }}"
+                                        type="text" name="to" id="to" value="{{ old('to', '') }}">
                                     @if ($errors->has('to'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('to') }}

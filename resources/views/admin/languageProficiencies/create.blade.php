@@ -20,6 +20,16 @@
                 <span class="help-block">{{ trans('cruds.languageProficiency.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="name_en">{{ trans('cruds.languageProficiency.fields.name_en') }}</label>
+                <input class="form-control {{ $errors->has('name_en') ? 'is-invalid' : '' }}" type="text" name="name_en" id="name_en" value="{{ old('name_en', '') }}" required>
+                @if($errors->has('name_en'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name_en') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.languageProficiency.fields.name_en_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

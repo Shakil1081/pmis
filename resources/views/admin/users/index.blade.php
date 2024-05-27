@@ -29,6 +29,12 @@
                             {{ trans('cruds.user.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.name_en') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.designations') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
@@ -56,6 +62,12 @@
                             </td>
                             <td>
                                 {{ $user->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->name_en ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->designations->name_bn ?? '' }}
                             </td>
                             <td>
                                 {{ $user->email ?? '' }}

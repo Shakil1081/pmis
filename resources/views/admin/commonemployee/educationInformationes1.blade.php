@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
         <label for="batch_id">{{ trans('cruds.employeeList.fields.batch') }}</label>
-        <select class="form-control select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}" name="batch_id"
+        <select class="form-select select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}" name="batch_id"
             id="batch_id">
             @foreach ($batches as $id => $entry)
                 <option value="{{ $id }}" {{ old('batch_id') == $id ? 'selected' : '' }}>
@@ -163,7 +163,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="home_district_id">{{ trans('cruds.employeeList.fields.home_district') }}</label>
-        <select class="form-control select2 {{ $errors->has('home_district') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('home_district') ? 'is-invalid' : '' }}"
             name="home_district_id" id="home_district_id" required>
             @foreach ($home_districts as $id => $entry)
                 <option value="{{ $id }}" {{ old('home_district_id') == $id ? 'selected' : '' }}>
@@ -179,7 +179,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
-        <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}"
             name="marital_statu_id" id="marital_statu_id" required>
             @foreach ($marital_status as $id => $entry)
                 <option value="{{ $id }}" {{ old('marital_statu_id') == $id ? 'selected' : '' }}>
@@ -195,7 +195,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
-        <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender_id"
+        <select class="form-select select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender_id"
             id="gender_id" required>
             @foreach ($genders as $id => $entry)
                 <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>
@@ -211,7 +211,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
-        <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}" name="religion_id"
+        <select class="form-select select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}" name="religion_id"
             id="religion_id" required>
             @foreach ($religions as $id => $entry)
                 <option value="{{ $id }}" {{ old('religion_id') == $id ? 'selected' : '' }}>
@@ -227,7 +227,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="blood_group_id">{{ trans('cruds.employeeList.fields.blood_group') }}</label>
-        <select class="form-control select2 {{ $errors->has('blood_group') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('blood_group') ? 'is-invalid' : '' }}"
             name="blood_group_id" id="blood_group_id" required>
             @foreach ($blood_groups as $id => $entry)
                 <option value="{{ $id }}" {{ old('blood_group_id') == $id ? 'selected' : '' }}>
@@ -289,7 +289,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
-        <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}"
             name="license_type_id" id="license_type_id" required>
             @foreach ($license_types as $id => $entry)
                 <option value="{{ $id }}" {{ old('license_type_id') == $id ? 'selected' : '' }}>
@@ -340,7 +340,7 @@
     <div class="form-group">
         <label class="required"
             for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
-        <select class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}"
             name="joiningexaminfo_id" id="joiningexaminfo_id" required>
             @foreach ($joiningexaminfos as $id => $entry)
                 <option value="{{ $id }}" {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>
@@ -356,7 +356,7 @@
     </div>
     <div class="form-group">
         <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
-        <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id"
+        <select class="form-select select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id"
             id="grade_id">
             @foreach ($grades as $id => $entry)
                 <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>
@@ -528,7 +528,7 @@
     </div>
     <div class="form-group">
         <label for="quota_id">{{ trans('cruds.employeeList.fields.quota') }}</label>
-        <select class="form-control select2 {{ $errors->has('quota') ? 'is-invalid' : '' }}" name="quota_id"
+        <select class="form-select select2 {{ $errors->has('quota') ? 'is-invalid' : '' }}" name="quota_id"
             id="quota_id">
             @foreach ($quotas as $id => $entry)
                 <option value="{{ $id }}" {{ old('quota_id') == $id ? 'selected' : '' }}>

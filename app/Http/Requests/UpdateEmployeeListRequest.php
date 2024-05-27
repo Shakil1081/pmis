@@ -97,29 +97,15 @@ class UpdateEmployeeListRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'nid' => [
-                'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'passport' => [
                 'string',
                 'nullable',
-            ],
-            'license_type_id' => [
-                'required',
-                'integer',
             ],
             'mobile_number' => [
                 'string',
                 'min:11',
                 'max:15',
                 'required',
-            ],
-            'joiningexaminfo_id' => [
-                'required',
-                'integer',
             ],
             'fjoining_date' => [
                 'required',
@@ -152,6 +138,21 @@ class UpdateEmployeeListRequest extends FormRequest
             'date_of_con_serviec' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
+            ],
+            'license_number' => [
+                'string',
+                'nullable',
+            ],
+            'approve' => [
+                'string',
+                'nullable',
+            ],
+            'approveby' => [
+                'string',
+                'nullable',
+            ],
+            'nid' => [
+                'numeric',
             ],
         ];
     }

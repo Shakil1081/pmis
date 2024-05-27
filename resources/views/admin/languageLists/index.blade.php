@@ -26,10 +26,10 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.languageList.fields.id') }}
+                        {{ trans('cruds.languageList.fields.name') }}
                     </th>
                     <th>
-                        {{ trans('cruds.languageList.fields.name') }}
+                        {{ trans('cruds.languageList.fields.nmae_en') }}
                     </th>
                     <th>
                         &nbsp;
@@ -87,13 +87,13 @@
     ajax: "{{ route('admin.language-lists.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
+{ data: 'nmae_en', name: 'nmae_en' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   };
   let table = $('.datatable-LanguageList').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

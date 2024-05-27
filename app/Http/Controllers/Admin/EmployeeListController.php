@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyEmployeeListRequest;
@@ -14,12 +14,16 @@ use App\Models\District;
 use App\Models\EmployeeList;
 use App\Models\ExamBoard;
 use App\Models\Examination;
+use App\Models\FreedomFighteRelation;
 use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\JobType;
+use App\Models\Joininginfo;
 use App\Models\LicenseType;
 use App\Models\Maritalstatus;
+use App\Models\Project;
 use App\Models\ProjectRevenueExam;
+use App\Models\ProjectRevenuelone;
 use App\Models\Quotum;
 use App\Models\Religion;
 use App\Models\Upazila;
@@ -36,191 +40,59 @@ class EmployeeListController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
         $data['total'] = EmployeeList::count();
 
         // You can specify the number of items per page, for example, 10
     return view('admin.employeeLists.index', compact('data'));
-    
-        // if ($request->ajax()) {
-        //     $query = EmployeeList::with(['batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota'])->select(sprintf('%s.*', (new EmployeeList)->table));
-          
-        //     $table = Datatables::of($query);
-
-        //     $table->addColumn('placeholder', '&nbsp;');
-        //     $table->addColumn('actions', '&nbsp;');
-
-        //     $table->editColumn('actions', function ($row) {
-        //         $viewGate      = 'employee_list_show';
-        //         $editGate      = 'employee_list_edit';
-        //         $deleteGate    = 'employee_list_delete';
-        //         $crudRoutePart = 'employee-lists';
-
-        //         return view('partials.datatablesActions', compact(
-        //             'viewGate',
-        //             'editGate',
-        //             'deleteGate',
-        //             'crudRoutePart',
-        //             'row'
-        //         ));
-        //     });
-
-        //     $table->editColumn('employeeid', function ($row) {
-        //         return $row->employeeid ? $row->employeeid : '';
-        //     });
-        //     $table->addColumn('batch_batch_bn', function ($row) {
-        //         return $row->batch ? $row->batch->batch_bn : '';
-        //     });
-
-        //     $table->addColumn('home_district_name_bn', function ($row) {
-        //         return $row->home_district ? $row->home_district->name_bn : '';
-        //     });
-
-        //     $table->addColumn('marital_statu_name', function ($row) {
-        //         return $row->marital_statu ? $row->marital_statu->name : '';
-        //     });
-
-        //     $table->addColumn('gender_name_bn', function ($row) {
-        //         return $row->gender ? $row->gender->name_bn : '';
-        //     });
-
-        //     $table->addColumn('religion_name_bn', function ($row) {
-        //         return $row->religion ? $row->religion->name_bn : '';
-        //     });
-
-        //     $table->addColumn('blood_group_name_bn', function ($row) {
-        //         return $row->blood_group ? $row->blood_group->name_bn : '';
-        //     });
-
-        //     $table->editColumn('nid', function ($row) {
-        //         return $row->nid ? $row->nid : '';
-        //     });
-        //     $table->addColumn('license_type_name_bn', function ($row) {
-        //         return $row->license_type ? $row->license_type->name_bn : '';
-        //     });
-
-        //     $table->editColumn('email', function ($row) {
-        //         return $row->email ? $row->email : '';
-        //     });
-        //     $table->editColumn('mobile_number', function ($row) {
-        //         return $row->mobile_number ? $row->mobile_number : '';
-        //     });
-        //     $table->addColumn('joiningexaminfo_exam_name_bn', function ($row) {
-        //         return $row->joiningexaminfo ? $row->joiningexaminfo->exam_name_bn : '';
-        //     });
-
-        //     $table->addColumn('grade_name_bn', function ($row) {
-        //         return $row->grade ? $row->grade->name_bn : '';
-        //     });
-
-        //     $table->editColumn('first_joining_office_name', function ($row) {
-        //         return $row->first_joining_office_name ? $row->first_joining_office_name : '';
-        //     });
-
-        //     $table->editColumn('first_joining_memo_no', function ($row) {
-        //         return $row->first_joining_memo_no ? $row->first_joining_memo_no : '';
-        //     });
-        //     $table->editColumn('first_joining_order', function ($row) {
-        //         return $row->first_joining_order ? '<a href="' . $row->first_joining_order->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-        //     });
-        //     $table->editColumn('fjoining_letter', function ($row) {
-        //         return $row->fjoining_letter ? '<a href="' . $row->fjoining_letter->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-        //     });
-
-        //     $table->editColumn('date_of_gazette_if_any', function ($row) {
-        //         return $row->date_of_gazette_if_any ? '<a href="' . $row->date_of_gazette_if_any->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-        //     });
-
-        //     $table->editColumn('regularization_office_orde_go', function ($row) {
-        //         return $row->regularization_office_orde_go ? '<a href="' . $row->regularization_office_orde_go->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-        //     });
-
-        //     $table->editColumn('confirmation_in_service', function ($row) {
-        //         return $row->confirmation_in_service ? '<a href="' . $row->confirmation_in_service->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
-        //     });
-        //     $table->addColumn('quota_name_bn', function ($row) {
-        //         return $row->quota ? $row->quota->name_bn : '';
-        //     });
-
-        //     $table->rawColumns(['actions', 'placeholder', 'batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'first_joining_order', 'fjoining_letter', 'date_of_gazette_if_any', 'regularization_office_orde_go', 'confirmation_in_service', 'quota']);
-
-        //     return $table->make(true);
-        // }
 
     }
 
     public function create()
     {
+$locale = App::getLocale();
+$batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+$project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
+$exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $home_districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $genders = Gender::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $religions = Religion::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $religions = Religion::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $blood_groups = BloodGroup::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $blood_groups = BloodGroup::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $license_types = LicenseType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $projectrevenues = Joininginfo::pluck($project_revenue_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $joiningexaminfos = ProjectRevenueExam::pluck($exam_name_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $departmental_exams = ProjectRevenuelone::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employeeLists.create', compact('batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions'));
+        $projects = Project::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $grades = Grade::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $quotas = Quotum::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $freedomfighters = FreedomFighteRelation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.employeeLists.create', compact('batches', 'blood_groups', 'departmental_exams', 'freedomfighters', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'projectrevenues', 'projects', 'quotas', 'religions'));
     }
 
-
-    public function Commonemployeecreate()
-    {
-        abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $home_districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $genders = Gender::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $religions = Religion::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $blood_groups = BloodGroup::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $name_of_exams = Examination::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $exam_boards = ExamBoard::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-
-        $job_types = JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $new_designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $thana_upazilas = Upazila::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-
-        return view('admin.commonemployee.create', compact('new_designations','designations','job_types','thana_upazilas','batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions','employees', 'exam_boards', 'name_of_exams'));
-    }
     public function store(StoreEmployeeListRequest $request)
     {
         $employeeList = EmployeeList::create($request->all());
-        $employeeListDetail = $employeeList->detail()->create([
-              'general_information_id' => $employeeList->id,
-        ]);
+
         if ($request->input('birth_certificate_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('birth_certificate_upload'))))->toMediaCollection('birth_certificate_upload');
         }
@@ -235,6 +107,10 @@ class EmployeeListController extends Controller
 
         if ($request->input('license_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('license_upload'))))->toMediaCollection('license_upload');
+        }
+
+        if ($request->input('certificate_upload', false)) {
+            $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('certificate_upload'))))->toMediaCollection('certificate_upload');
         }
 
         if ($request->input('first_joining_order', false)) {
@@ -274,31 +150,46 @@ class EmployeeListController extends Controller
 
     public function edit(EmployeeList $employeeList)
     {
+
+        $locale = App::getLocale();
+        $batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
+        $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+
         abort_if(Gate::denies('employee_list_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $batches = Batch::pluck('batch_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $home_districts = District::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $genders = Gender::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $religions = Religion::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $religions = Religion::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $blood_groups = BloodGroup::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $blood_groups = BloodGroup::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $license_types = LicenseType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $license_types = LicenseType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $joiningexaminfos = ProjectRevenueExam::pluck('exam_name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $projectrevenues = Joininginfo::pluck($project_revenue_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $joiningexaminfos = ProjectRevenueExam::pluck( $exam_name_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $quotas = Quotum::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $departmental_exams = ProjectRevenuelone::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
+        $projects = Project::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employeeLists.edit', compact('batches', 'blood_groups', 'employeeList', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions'));
+        $grades = Grade::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $quotas = Quotum::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $freedomfighters = FreedomFighteRelation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'projectrevenue', 'joiningexaminfo', 'departmental_exam', 'project', 'grade', 'quota', 'freedomfighter');
+
+        return view('admin.employeeLists.edit', compact('batches', 'blood_groups', 'departmental_exams', 'employeeList', 'freedomfighters', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'projectrevenues', 'projects', 'quotas', 'religions'));
     }
 
     public function update(UpdateEmployeeListRequest $request, EmployeeList $employeeList)
@@ -347,6 +238,17 @@ class EmployeeListController extends Controller
             }
         } elseif ($employeeList->license_upload) {
             $employeeList->license_upload->delete();
+        }
+
+        if ($request->input('certificate_upload', false)) {
+            if (! $employeeList->certificate_upload || $request->input('certificate_upload') !== $employeeList->certificate_upload->file_name) {
+                if ($employeeList->certificate_upload) {
+                    $employeeList->certificate_upload->delete();
+                }
+                $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('certificate_upload'))))->toMediaCollection('certificate_upload');
+            }
+        } elseif ($employeeList->certificate_upload) {
+            $employeeList->certificate_upload->delete();
         }
 
         if ($request->input('first_joining_order', false)) {
@@ -433,33 +335,9 @@ class EmployeeListController extends Controller
     {
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
+        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'projectrevenue', 'joiningexaminfo', 'departmental_exam', 'project', 'grade', 'quota', 'freedomfighter');
 
         return view('admin.employeeLists.show', compact('employeeList'));
-    }
-    public function commonemployeeshow(Request $request)
-    {
-
-
-        //EmployeeList $employeeList
-
-        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $employeeList = EmployeeList::findOrFail($request->id);
-
-        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
-
-        return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
-    }
-    public function employeedata(Request $request)
-    {     
-        
-       
-        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
-        ->find($request->id);
-
-        return view('admin.employeeLists.employeedata', compact('employeeList'));
     }
 
     public function destroy(EmployeeList $employeeList)
@@ -492,5 +370,78 @@ class EmployeeListController extends Controller
         $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+    }
+
+
+    public function Commonemployeecreate()
+    {
+
+        $locale = App::getLocale();
+        $batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
+        $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+
+        abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $batches = Batch::pluck( $batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $religions = Religion::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $blood_groups = BloodGroup::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $license_types = LicenseType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $joiningexaminfos = ProjectRevenueExam::pluck($exam_name_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $exam_boards = ExamBoard::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
+        $job_types = JobType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $new_designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $grades = Grade::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $quotas = Quotum::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $thana_upazilas = Upazila::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
+        return view('admin.commonemployee.create', compact('new_designations','designations','job_types','thana_upazilas','batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions','employees', 'exam_boards', 'name_of_exams'));
+    }
+
+
+    public function commonemployeeshow(Request $request)
+    {
+
+
+        //EmployeeList $employeeList
+
+        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeList = EmployeeList::findOrFail($request->id);
+
+        $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
+
+        return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
+    }
+    public function employeedata(Request $request)
+    {     
+        
+       
+        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+        ->find($request->id);
+
+        return view('admin.employeeLists.employeedata', compact('employeeList'));
     }
 }

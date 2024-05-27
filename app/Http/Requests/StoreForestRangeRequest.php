@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Requests;
+
+use App\Models\ForestRange;
+use Gate;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Response;
+
+class StoreForestRangeRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return Gate::allows('forest_range_create');
+    }
+
+    public function rules()
+    {
+        return [
+            'forest_state_id' => [
+                'required',
+                'integer',
+            ],
+            'name_bn' => [
+                'string',
+                'required',
+                'unique:forest_ranges',
+            ],
+            'forest_division_id' => [
+                'required',
+                'integer',
+            ],
+            'name_en' => [
+                'string',
+                'required',
+                'unique:forest_ranges',
+            ],
+        ];
+    }
+}

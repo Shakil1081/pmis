@@ -25,16 +25,6 @@
                 <span class="help-block">{{ trans('cruds.language.fields.employee_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="language">{{ trans('cruds.language.fields.language') }}</label>
-                <input class="form-control {{ $errors->has('language') ? 'is-invalid' : '' }}" type="text" name="language" id="language" value="{{ old('language', $language->language) }}">
-                @if($errors->has('language'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('language') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.language.fields.language_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="read_id">{{ trans('cruds.language.fields.read') }}</label>
                 <select class="form-control select2 {{ $errors->has('read') ? 'is-invalid' : '' }}" name="read_id" id="read_id">
                     @foreach($reads as $id => $entry)
@@ -75,6 +65,20 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.language.fields.speak_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="language_id">{{ trans('cruds.language.fields.language') }}</label>
+                <select class="form-control select2 {{ $errors->has('language') ? 'is-invalid' : '' }}" name="language_id" id="language_id">
+                    @foreach($languages as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('language_id') ? old('language_id') : $language->language->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('language'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('language') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.language.fields.language_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

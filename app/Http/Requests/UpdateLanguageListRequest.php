@@ -22,6 +22,11 @@ class UpdateLanguageListRequest extends FormRequest
                 'required',
                 'unique:language_lists,name,' . request()->route('language_list')->id,
             ],
+            'nmae_en' => [
+                'string',
+                'required',
+                'unique:language_lists,nmae_en,' . request()->route('language_list')->id,
+            ],
         ];
     }
 }

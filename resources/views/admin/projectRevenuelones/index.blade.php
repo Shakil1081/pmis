@@ -22,9 +22,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.projectRevenuelone.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.projectRevenuelone.fields.project_revenue') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.project-revenuelones.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'project_revenue_project_revenue_bn', name: 'project_revenue.project_revenue_bn' },
 { data: 'name_bn', name: 'name_bn' },
 { data: 'name_en', name: 'name_en' },

@@ -65,7 +65,7 @@
                                         class="help-block">{{ trans('cruds.employeePromotion.fields.office_order_date_helper') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label
                                         for="office_order">{{ trans('cruds.employeePromotion.fields.office_order') }}</label>
                                     <div class="needsclick dropzone {{ $errors->has('office_order') ? 'is-invalid' : '' }}"
                                         id="office_order-dropzone">

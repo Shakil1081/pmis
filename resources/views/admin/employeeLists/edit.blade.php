@@ -226,16 +226,6 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.blood_group_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
-                <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number" name="nid" id="nid" value="{{ old('nid', $employeeList->nid) }}" step="1" required>
-                @if($errors->has('nid'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('nid') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employeeList.fields.nid_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}" id="nid_upload-dropzone">
                 </div>
@@ -268,8 +258,8 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.passport_upload_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
-                <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}" name="license_type_id" id="license_type_id" required>
+                <label for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
+                <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}" name="license_type_id" id="license_type_id">
                     @foreach($license_types as $id => $entry)
                         <option value="{{ $id }}" {{ (old('license_type_id') ? old('license_type_id') : $employeeList->license_type->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -313,8 +303,22 @@
                 <span class="help-block">{{ trans('cruds.employeeList.fields.mobile_number_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
-                <select class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}" name="joiningexaminfo_id" id="joiningexaminfo_id" required>
+                <label for="projectrevenue_id">{{ trans('cruds.employeeList.fields.projectrevenue') }}</label>
+                <select class="form-control select2 {{ $errors->has('projectrevenue') ? 'is-invalid' : '' }}" name="projectrevenue_id" id="projectrevenue_id">
+                    @foreach($projectrevenues as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('projectrevenue_id') ? old('projectrevenue_id') : $employeeList->projectrevenue->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('projectrevenue'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('projectrevenue') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.projectrevenue_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
+                <select class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}" name="joiningexaminfo_id" id="joiningexaminfo_id">
                     @foreach($joiningexaminfos as $id => $entry)
                         <option value="{{ $id }}" {{ (old('joiningexaminfo_id') ? old('joiningexaminfo_id') : $employeeList->joiningexaminfo->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -325,6 +329,45 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="departmental_exam_id">{{ trans('cruds.employeeList.fields.departmental_exam') }}</label>
+                <select class="form-control select2 {{ $errors->has('departmental_exam') ? 'is-invalid' : '' }}" name="departmental_exam_id" id="departmental_exam_id">
+                    @foreach($departmental_exams as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('departmental_exam_id') ? old('departmental_exam_id') : $employeeList->departmental_exam->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('departmental_exam'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('departmental_exam') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.departmental_exam_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="project_id">{{ trans('cruds.employeeList.fields.project') }}</label>
+                <select class="form-control select2 {{ $errors->has('project') ? 'is-invalid' : '' }}" name="project_id" id="project_id">
+                    @foreach($projects as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('project_id') ? old('project_id') : $employeeList->project->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('project'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('project') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.project_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="certificate_upload">{{ trans('cruds.employeeList.fields.certificate_upload') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('certificate_upload') ? 'is-invalid' : '' }}" id="certificate_upload-dropzone">
+                </div>
+                @if($errors->has('certificate_upload'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('certificate_upload') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.certificate_upload_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
@@ -510,6 +553,60 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employeeList.fields.employee_photo_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="freedomfighter_id">{{ trans('cruds.employeeList.fields.freedomfighter') }}</label>
+                <select class="form-control select2 {{ $errors->has('freedomfighter') ? 'is-invalid' : '' }}" name="freedomfighter_id" id="freedomfighter_id">
+                    @foreach($freedomfighters as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('freedomfighter_id') ? old('freedomfighter_id') : $employeeList->freedomfighter->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('freedomfighter'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('freedomfighter') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.freedomfighter_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="license_number">{{ trans('cruds.employeeList.fields.license_number') }}</label>
+                <input class="form-control {{ $errors->has('license_number') ? 'is-invalid' : '' }}" type="text" name="license_number" id="license_number" value="{{ old('license_number', $employeeList->license_number) }}">
+                @if($errors->has('license_number'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('license_number') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.license_number_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="approve">{{ trans('cruds.employeeList.fields.approve') }}</label>
+                <input class="form-control {{ $errors->has('approve') ? 'is-invalid' : '' }}" type="text" name="approve" id="approve" value="{{ old('approve', $employeeList->approve) }}">
+                @if($errors->has('approve'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('approve') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.approve_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="approveby">{{ trans('cruds.employeeList.fields.approveby') }}</label>
+                <input class="form-control {{ $errors->has('approveby') ? 'is-invalid' : '' }}" type="text" name="approveby" id="approveby" value="{{ old('approveby', $employeeList->approveby) }}">
+                @if($errors->has('approveby'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('approveby') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.approveby_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
+                <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number" name="nid" id="nid" value="{{ old('nid', $employeeList->nid) }}" step="0.01">
+                @if($errors->has('nid'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('nid') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employeeList.fields.nid_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -704,6 +801,56 @@
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="license_upload" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
+<script>
+    Dropzone.options.certificateUploadDropzone = {
+    url: '{{ route('admin.employee-lists.storeMedia') }}',
+    maxFilesize: 2, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').find('input[name="certificate_upload"]').remove()
+      $('form').append('<input type="hidden" name="certificate_upload" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="certificate_upload"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($employeeList) && $employeeList->certificate_upload)
+      var file = {!! json_encode($employeeList->certificate_upload) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="certificate_upload" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },

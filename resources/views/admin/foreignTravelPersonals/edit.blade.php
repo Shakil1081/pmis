@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="country_id">{{ trans('cruds.foreignTravelPersonal.fields.country') }}</label>
-                    <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id"
+                    <select class="form-select select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id"
                         id="country_id">
                         @foreach ($countries as $id => $entry)
                             <option value="{{ $id }}"
@@ -41,8 +41,8 @@
                 <div class="form-group">
                     <label class="required"
                         for="purpose_id">{{ trans('cruds.foreignTravelPersonal.fields.purpose') }}</label>
-                    <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
-                        name="purpose_id" id="purpose_id" required>
+                    <select class="form-select select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}" name="purpose_id"
+                        id="purpose_id" required>
                         @foreach ($purposes as $id => $entry)
                             <option value="{{ $id }}"
                                 {{ (old('purpose_id') ? old('purpose_id') : $foreignTravelPersonal->purpose->id ?? '') == $id ? 'selected' : '' }}>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="form-group">
                     <label for="leave_id">{{ trans('cruds.foreignTravelPersonal.fields.leave') }}</label>
-                    <select class="form-control select2 {{ $errors->has('leave') ? 'is-invalid' : '' }}" name="leave_id"
+                    <select class="form-select select2 {{ $errors->has('leave') ? 'is-invalid' : '' }}" name="leave_id"
                         id="leave_id">
                         @foreach ($leaves as $id => $entry)
                             <option value="{{ $id }}"
@@ -98,7 +98,7 @@
                 <div class="form-group">
                     <label class="required"
                         for="employee_id">{{ trans('cruds.foreignTravelPersonal.fields.employee') }}</label>
-                    <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                         name="employee_id" id="employee_id" required>
                         @foreach ($employees as $id => $entry)
                             <option value="{{ $id }}"

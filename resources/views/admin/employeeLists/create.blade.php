@@ -2,15 +2,18 @@
 @section('content')
     <div class="">
         <div class="container my-3">
-            <h4> Add Employee</h4>
             <form method="POST" action="{{ route('admin.employee-lists.store', ['employee_id' => request()->query('id')]) }}"
                 enctype="multipart/form-data">
                 @csrf
 
+                <h5 class="text-secondary">
 
-
-
-                <h5 class="text-secondary"> Personel information</h5>
+                    @if (app()->getLocale() === 'bn')
+                        ব্যক্তিগত তথ্য
+                    @else
+                        Personal information
+                    @endif
+                </h5>
                 <div class="card border-secondary border p-4">
 
                     <div class="row row-cols-3">
@@ -63,7 +66,7 @@
                         </div>
                         <div class="form-group">
                             <label for="batch_id">{{ trans('cruds.employeeList.fields.batch') }}</label>
-                            <select class="form-control select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}"
+                            <select class="form-select select2 {{ $errors->has('batch') ? 'is-invalid' : '' }}"
                                 name="batch_id" id="batch_id">
                                 @foreach ($batches as $id => $entry)
                                     <option value="{{ $id }}" {{ old('batch_id') == $id ? 'selected' : '' }}>
@@ -152,7 +155,7 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.prl_date_helper') }}</span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <label
                                 for="birth_certificate_upload">{{ trans('cruds.employeeList.fields.birth_certificate_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('birth_certificate_upload') ? 'is-invalid' : '' }}"
@@ -169,7 +172,7 @@
                     </div>
 
                 </div>
-                <h5 class="text-secondary mt-3"> Personel information</h5>
+                {{-- <h5 class="text-secondary mt-3"> Personel information</h5> --}}
                 <div class="card border-secondary border p-4">
                     <div class="row row-cols-3">
 
@@ -305,7 +308,7 @@
                                 for="mobile_number">{{ trans('cruds.employeeList.fields.mobile_number') }}</label>
                             <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}"
                                 type="text" name="mobile_number" id="mobile_number"
-                                value="{{ old('mobile_number', '') }}" required>
+                                value="{{ old('mobile_number', '') }}" min="11" maxlength="20" required>
                             @if ($errors->has('mobile_number'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('mobile_number') }}
@@ -313,53 +316,19 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.mobile_number_helper') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
-                            <select
-                                class="form-control select2 {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}"
-                                name="joiningexaminfo_id" id="joiningexaminfo_id" required>
-                                @foreach ($joiningexaminfos as $id => $entry)
-                                    <option value="{{ $id }}"
-                                        {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('joiningexaminfo'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('joiningexaminfo') }}
-                                </div>
-                            @endif
-                            <span
-                                class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
-                            <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}"
-                                name="grade_id" id="grade_id">
-                                @foreach ($grades as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('grade'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('grade') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
-                        </div>
+
                     </div>
                 </div>
 
-                <h5 class="text-secondary mt-3"> Personel information</h5>
+                {{-- <h5 class="text-secondary mt-3"> Personal</h5> --}}
                 <div class="card border-secondary border p-4">
                     <div class="row row-cols-3">
 
                         <div class="form-group">
                             <label class="required" for="nid">{{ trans('cruds.employeeList.fields.nid') }}</label>
                             <input class="form-control {{ $errors->has('nid') ? 'is-invalid' : '' }}" type="number"
-                                name="nid" id="nid" value="{{ old('nid', '') }}" step="1" required>
+                                name="nid" id="nid" value="{{ old('nid', '') }}" step="1"
+                                minlength="8" maxlength="20" required>
                             @if ($errors->has('nid'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('nid') }}
@@ -379,7 +348,26 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.nid_upload_helper') }}</span>
                         </div>
-                        <div class="form-group">
+
+
+
+                        <div class="form-group has_passport_group">
+                            <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
+                            <select class="form-control" id="has_passport">
+                                @if (app()->getLocale() === 'bn')
+                                    <option>
+                                        নির্বাচন করুন</option>
+                                    <option value="No">না</option>
+                                    <option value="Yes">হ্যাঁ</option>
+                                @else
+                                    <option>Select</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                @endif
+                            </select>
+                        </div>
+
+                        <div class="form-group passport_fields" style="display: none;">
                             <label for="passport">{{ trans('cruds.employeeList.fields.passport') }}</label>
                             <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}"
                                 type="text" name="passport" id="passport" value="{{ old('passport', '') }}">
@@ -390,7 +378,8 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.passport_helper') }}</span>
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group passport_upload" style="display: none;">
                             <label for="passport_upload">{{ trans('cruds.employeeList.fields.passport_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('passport_upload') ? 'is-invalid' : '' }}"
                                 id="passport_upload-dropzone">
@@ -403,15 +392,33 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.passport_upload_helper') }}</span>
                         </div>
-                        <div class="form-group">
+
+
+                        <div class="form-group has_license_group">
+                            <label for="has_license">{{ trans('cruds.employeeList.fields.has_license') }}</label>
+                            <select class="form-control" id="has_license">
+                                @if (app()->getLocale() === 'bn')
+                                    <option>নির্বাচন করুন</option>
+                                    <option value="No">না</option>
+                                    <option value="Yes">হ্যাঁ</option>
+                                @else
+                                    <option>Select</option>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                @endif
+                            </select>
+                        </div>
+
+
+                        <div class="form-group license_fields" style="display: none;">
                             <label class="required"
                                 for="license_type_id">{{ trans('cruds.employeeList.fields.license_type') }}</label>
                             <select class="form-control select2 {{ $errors->has('license_type') ? 'is-invalid' : '' }}"
-                                name="license_type_id" id="license_type_id" required>
+                                name="license_type_id" id="license_type_id">
                                 @foreach ($license_types as $id => $entry)
                                     <option value="{{ $id }}"
-                                        {{ old('license_type_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
+                                        {{ old('license_type_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                    </option>
                                 @endforeach
                             </select>
                             @if ($errors->has('license_type'))
@@ -422,7 +429,20 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.license_type_helper') }}</span>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group license_number" style="display: none">
+                            <label for="license_number">{{ trans('cruds.employeeList.fields.license_number') }}</label>
+                            <input class="form-control {{ $errors->has('license_number') ? 'is-invalid' : '' }}"
+                                type="text" name="license_number" id="license_number"
+                                value="{{ old('license_number', '') }}">
+                            @if ($errors->has('license_number'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('license_number') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.license_number_helper') }}</span>
+                        </div>
+                        <div class="form-group license_upload" style="display: none;">
                             <label for="license_upload">{{ trans('cruds.employeeList.fields.license_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('license_upload') ? 'is-invalid' : '' }}"
                                 id="license_upload-dropzone">
@@ -439,23 +459,164 @@
                     </div>
                 </div>
 
-                <h5 class="text-secondary mt-3"> First joining information</h5>
-                <div class="card border-secondary border p-4">
-                    <div class="row row-cols-3">
+                {{-- <h5 class="text-secondary mt-3"> First joining information</h5> --}}
 
-                        <div class="form-group">
+
+                <div class="card border-secondary border p-4">
+
+
+
+                    @livewire('project-revenue')
+
+                    <div class="row row-cols-3">
+                        {{-- <div class="form-group">
                             <label class="required"
-                                for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
-                            <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}"
-                                type="text" name="fjoining_date" id="fjoining_date"
-                                value="{{ old('fjoining_date') }}" required>
-                            @if ($errors->has('fjoining_date'))
+                                for="projectrevenue_id">{{ trans('cruds.employeeList.fields.projectrevenue') }}</label>
+                            <select class="form-select select2 {{ $errors->has('projectrevenue') ? 'is-invalid' : '' }}"
+                                name="projectrevenue_id" id="projectrevenue_id" required>
+                                @foreach ($projectrevenues as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('projectrevenue_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('projectrevenue'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('fjoining_date') }}
+                                    {{ $errors->first('projectrevenue') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.projectrevenue_helper') }}</span>
                         </div>
+
+
+                        <div class="form-group projectlist" style="display:none">
+                            <label for="project_id">{{ trans('cruds.employeeList.fields.project') }}</label>
+                            <select class="form-control select2 {{ $errors->has('project') ? 'is-invalid' : '' }}"
+                                name="project_id" id="project_id">
+                                @foreach ($projects as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('project_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('project'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('project') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.project_helper') }}</span>
+                        </div>
+
+
+                        <div class="form-group notgotproject" style="display: none">
+                            <label
+                                for="departmental_exam_id">{{ trans('cruds.employeeList.fields.departmental_exam') }}</label>
+                            <select
+                                class="form-control select2 {{ $errors->has('departmental_exam') ? 'is-invalid' : '' }}"
+                                name="departmental_exam_id" id="departmental_exam_id">
+                                @foreach ($departmental_exams as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('departmental_exam_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('departmental_exam'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('departmental_exam') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.departmental_exam_helper') }}</span>
+                        </div>
+                        <div class="form-group notgotproject" style="display: none">
+                            <label
+                                for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
+                            <select class="form-select {{ $errors->has('joiningexaminfo') ? 'is-invalid' : '' }}"
+                                name="joiningexaminfo_id" id="joiningexaminfo_id">
+                                @foreach ($joiningexaminfos as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('joiningexaminfo_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('joiningexaminfo'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('joiningexaminfo') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.joiningexaminfo_helper') }}</span>
+                        </div>
+
+
+                        <div class="form-group notgotproject" style="display: none">
+                            <label
+                                for="certificateupload">{{ trans('cruds.employeeList.fields.departmental_exam') }}</label>
+                            <select class="form-select" name="certificateupload" id="certificateupload">
+                                <option value="NO" {{ old('certificateupload') == 'NO' ? 'selected' : '' }}>NO
+                                </option>
+                                <option value="Yes" {{ old('certificateupload') == 'Yes' ? 'selected' : '' }}>Yes
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group certificate_upload" style="display: none;">
+                            <label
+                                for="certificate_upload">{{ trans('cruds.employeeList.fields.certificate_upload') }}</label>
+                            <div class="needsclick dropzone {{ $errors->has('certificate_upload') ? 'is-invalid' : '' }}"
+                                id="certificate_upload-dropzone">
+                            </div>
+                            @if ($errors->has('certificate_upload'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('certificate_upload') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.certificate_upload_helper') }}</span>
+                        </div> --}}
+
+
+
+
+
+                        {{-- only for project --}}
+
+
+                        {{-- <div class="form-group project" style="display: none;">
+                            <label
+                                for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
+                            <input
+                                class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}"
+                                type="text" name="date_of_regularization" id="date_of_regularization"
+                                value="{{ old('date_of_regularization') }}">
+                            @if ($errors->has('date_of_regularization'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('date_of_regularization') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.date_of_regularization_helper') }}</span>
+                        </div>
+                        <div class="form-group project" style="display: none;">
+                            <label
+                                for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
+                            <input
+                                class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}"
+                                type="text" name="regularization_issue_date" id="regularization_issue_date"
+                                value="{{ old('regularization_issue_date') }}">
+                            @if ($errors->has('regularization_issue_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('regularization_issue_date') }}
+                                </div>
+                            @endif
+                            <span
+                                class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
+                        </div> --}}
+                    </div>
+                </div>
+
+                <div class="card border-secondary border p-4">
+                    <div class="row row-cols-3">
                         <div class="form-group">
                             <label
                                 for="first_joining_office_name">{{ trans('cruds.employeeList.fields.first_joining_office_name') }}</label>
@@ -471,9 +632,9 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_office_name_helper') }}</span>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label
-                                for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}</label>
+                                for="first_joining_g_o_date">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}/{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
                             <input
                                 class="form-control date {{ $errors->has('first_joining_g_o_date') ? 'is-invalid' : '' }}"
                                 type="text" name="first_joining_g_o_date" id="first_joining_g_o_date"
@@ -485,10 +646,10 @@
                             @endif
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.first_joining_g_o_date_helper') }}</span>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label
-                                for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
+                                for="first_joining_memo_no">{{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}/{{ trans('cruds.employeeList.fields.first_joining_memo_no') }}</label>
                             <input class="form-control {{ $errors->has('first_joining_memo_no') ? 'is-invalid' : '' }}"
                                 type="text" name="first_joining_memo_no" id="first_joining_memo_no"
                                 value="{{ old('first_joining_memo_no', '') }}">
@@ -554,36 +715,7 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.date_of_gazette_if_any_helper') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label
-                                for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
-                            <input
-                                class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}"
-                                type="text" name="date_of_regularization" id="date_of_regularization"
-                                value="{{ old('date_of_regularization') }}">
-                            @if ($errors->has('date_of_regularization'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('date_of_regularization') }}
-                                </div>
-                            @endif
-                            <span
-                                class="help-block">{{ trans('cruds.employeeList.fields.date_of_regularization_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label
-                                for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
-                            <input
-                                class="form-control date {{ $errors->has('regularization_issue_date') ? 'is-invalid' : '' }}"
-                                type="text" name="regularization_issue_date" id="regularization_issue_date"
-                                value="{{ old('regularization_issue_date') }}">
-                            @if ($errors->has('regularization_issue_date'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('regularization_issue_date') }}
-                                </div>
-                            @endif
-                            <span
-                                class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
-                        </div>
+
                         <div class="form-group">
                             <label
                                 for="regularization_office_orde_go">{{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}</label>
@@ -627,14 +759,18 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.confirmation_in_service_helper') }}</span>
                         </div>
+
+
                         <div class="form-group">
-                            <label for="quota_id">{{ trans('cruds.employeeList.fields.quota') }}</label>
-                            <select class="form-control select2 {{ $errors->has('quota') ? 'is-invalid' : '' }}"
-                                name="quota_id" id="quota_id">
+                            <label class="required"
+                                for="quota_id">{{ trans('cruds.employeeList.fields.quota') }}</label>
+                            <select class="form-select {{ $errors->has('quota') ? 'is-invalid' : '' }}" name="quota_id"
+                                id="quota_id">
                                 @foreach ($quotas as $id => $entry)
                                     <option value="{{ $id }}" {{ old('quota_id') == $id ? 'selected' : '' }}>
                                         {{ $entry }}</option>
                                 @endforeach
+
                             </select>
                             @if ($errors->has('quota'))
                                 <div class="invalid-feedback">
@@ -642,6 +778,29 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.quota_helper') }}</span>
+                        </div>
+
+                        <div id="freedomfighter_field" style="display: none;">
+                            <div class="form-group">
+                                <label
+                                    for="freedomfighter_id">{{ trans('cruds.employeeList.fields.freedomfighter') }}</label>
+                                <select
+                                    class="form-control select2 {{ $errors->has('freedomfighter') ? 'is-invalid' : '' }}"
+                                    name="freedomfighter_id" id="freedomfighter_id">
+                                    @foreach ($freedomfighters as $id => $entry)
+                                        <option value="{{ $id }}"
+                                            {{ old('freedomfighter_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('freedomfighter'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('freedomfighter') }}
+                                    </div>
+                                @endif
+                                <span
+                                    class="help-block">{{ trans('cruds.employeeList.fields.freedomfighter_helper') }}</span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label
@@ -733,7 +892,7 @@
                         document.getElementById('prl_date').value = formattedPrlDate;
                     } else {
                         document.getElementById('prl_date').value =
-                            ''; // Clear PRL date if date_of_birth is invalid
+                            '{{ old('date_of_birth') }}'; // Clear PRL date if date_of_birth is invalid
                     }
                 }
             });
@@ -1327,5 +1486,175 @@
                 return _results
             }
         }
+    </script>
+
+    {{-- <script>
+        document.getElementById('has_license').addEventListener('change', function() {
+            var licenseFields = document.getElementById('license_fields');
+            if (this.value === 'yes') {
+                licenseFields.style.display = 'block';
+            } else {
+                licenseFields.style.display = 'none';
+            }
+        });
+    </script> --}}
+
+    <script>
+        document.getElementById('has_passport').addEventListener('change', function() {
+            var passportFields = document.getElementById('passport_fields');
+            if (this.value === 'yes') {
+                passportFields.style.display = 'block';
+            } else {
+                passportFields.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        document.getElementById('quota_id').addEventListener('change', function() {
+            var freedomfighterField = document.getElementById('freedomfighter_field');
+            if (this.value === '1') {
+                freedomfighterField.style.display = 'block';
+            } else {
+                freedomfighterField.style.display = 'none';
+            }
+        });
+
+        // Trigger change event on page load to handle pre-selected value
+        document.getElementById('quota_id').dispatchEvent(new Event('change'));
+    </script>
+    <script>
+        Dropzone.options.certificateUploadDropzone = {
+            url: '{{ route('admin.employee-lists.storeMedia') }}',
+            maxFilesize: 2, // MB
+            maxFiles: 1,
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            params: {
+                size: 2
+            },
+            success: function(file, response) {
+                $('form').find('input[name="certificate_upload"]').remove()
+                $('form').append('<input type="hidden" name="certificate_upload" value="' + response.name + '">')
+            },
+            removedfile: function(file) {
+                file.previewElement.remove()
+                if (file.status !== 'error') {
+                    $('form').find('input[name="certificate_upload"]').remove()
+                    this.options.maxFiles = this.options.maxFiles + 1
+                }
+            },
+            init: function() {
+                @if (isset($employeeList) && $employeeList->certificate_upload)
+                    var file = {!! json_encode($employeeList->certificate_upload) !!}
+                    this.options.addedfile.call(this, file)
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="certificate_upload" value="' + file.file_name +
+                        '">')
+                    this.options.maxFiles = this.options.maxFiles - 1
+                @endif
+            },
+            error: function(file, response) {
+                if ($.type(response) === 'string') {
+                    var message = response //dropzone sends it's own error messages in string
+                } else {
+                    var message = response.errors.file
+                }
+                file.previewElement.classList.add('dz-error')
+                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+                _results = []
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                    node = _ref[_i]
+                    _results.push(node.textContent = message)
+                }
+
+                return _results
+            }
+        }
+    </script>
+
+
+    <script>
+        // $(document).ready(function() {
+        //     function toggleFields() {
+        //         var selectedValue = $('#projectrevenue_id').val();
+        //         if (selectedValue ==
+        //             '1') { // Replace '1' with the actual value that should trigger the fields to show
+        //             $('.form-group.projectlist').show();
+        //             $('.form-group.Project').show();
+        //             $('.form-group.notgotproject').hide();
+        //         } else {
+        //             $('.form-group.projectlist').hide();
+        //             $('.form-group.notgotproject').show();
+        //             $('.form-group.project').hide();
+        //         }
+        //     }
+
+        //     // Initialize select2
+        //     //$('.select2').select2();
+
+        //     // Attach change event listener
+        //     $('#projectrevenue_id').change(function() {
+        //         toggleFields();
+        //     });
+
+        //     // Initial check in case the dropdown has a preselected value
+        //     // toggleFields();
+        // });
+    </script>
+
+
+    <script>
+        document.getElementById('has_passport').addEventListener('change', function() {
+            var passportFields = document.querySelector('.passport_fields');
+            var passportUpload = document.querySelector('.passport_upload');
+            if (this.value === 'yes') {
+                passportFields.style.display = 'block';
+                passportUpload.style.display = 'block';
+            } else {
+                passportFields.style.display = 'none';
+                passportUpload.style.display = 'none';
+            }
+        });
+
+        document.getElementById('has_license').addEventListener('change', function() {
+
+
+            var licenseFields = document.querySelector('.license_fields');
+            var licenseUpload = document.querySelector('.license_upload');
+            var licenseNumber = document.querySelector('.license_number');
+            if (this.value === 'Yes') {
+                licenseFields.style.display = 'block';
+                licenseUpload.style.display = 'block';
+                licenseNumber.style.display = 'block';
+            } else {
+                licenseFields.style.display = 'none';
+                licenseUpload.style.display = 'none';
+                licenseNumber.style.display = 'none';
+            }
+        });
+
+
+        document.getElementById('certificateupload').addEventListener('change', function() {
+            var certificateUploadFields = document.querySelector('.certificate_upload');
+            if (this.value === 'Yes') {
+                certificateUploadFields.style.display = 'block';
+            } else {
+                certificateUploadFields.style.display = 'none';
+            }
+        });
+
+        // Initial check in case the dropdown has a preselected value
+        document.addEventListener('DOMContentLoaded', function() {
+            var certificateUploadFields = document.querySelector('.certificate_upload');
+            var certificateUploadDropdown = document.getElementById('certificateupload');
+            if (certificateUploadDropdown.value === 'Yes') {
+                certificateUploadFields.style.display = 'block';
+            } else {
+                certificateUploadFields.style.display = 'none';
+            }
+        });
     </script>
 @endsection

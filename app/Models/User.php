@@ -33,6 +33,8 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
+        'name_en',
+        'designations_id',
         'email',
         'email_verified_at',
         'password',
@@ -69,6 +71,11 @@ class User extends Authenticatable
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();
+    }
+
+    public function designations()
+    {
+        return $this->belongsTo(Designation::class, 'designations_id');
     }
 
     public function getEmailVerifiedAtAttribute($value)

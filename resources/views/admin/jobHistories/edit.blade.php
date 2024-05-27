@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="job_type_id">{{ trans('cruds.jobHistory.fields.job_type') }}</label>
-                    <select class="form-control select2 {{ $errors->has('job_type') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('job_type') ? 'is-invalid' : '' }}"
                         name="job_type_id" id="job_type_id">
                         @foreach ($job_types as $id => $entry)
                             <option value="{{ $id }}"
@@ -41,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label for="designation_id">{{ trans('cruds.jobHistory.fields.designation') }}</label>
-                    <select class="form-control select2 {{ $errors->has('designation') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('designation') ? 'is-invalid' : '' }}"
                         name="designation_id" id="designation_id">
                         @foreach ($designations as $id => $entry)
                             <option value="{{ $id }}"
@@ -136,7 +136,7 @@
                 </div>
                 <div class="form-group">
                     <label for="employee_id">{{ trans('cruds.jobHistory.fields.employee') }}</label>
-                    <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
+                    <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                         name="employee_id" id="employee_id">
                         @foreach ($employees as $id => $entry)
                             <option value="{{ $id }}"
@@ -151,10 +151,9 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.jobHistory.fields.employee_helper') }}</span>
                 </div>
-
                 <div class="form-group">
                     <label class="required" for="grade_id">{{ trans('cruds.jobHistory.fields.grade') }}</label>
-                    <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id"
+                    <select class="form-select select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id"
                         id="grade_id" required>
                         @foreach ($grades as $id => $entry)
                             <option value="{{ $id }}"
@@ -169,8 +168,6 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.jobHistory.fields.grade_helper') }}</span>
                 </div>
-
-
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">
                         {{ trans('global.save') }}

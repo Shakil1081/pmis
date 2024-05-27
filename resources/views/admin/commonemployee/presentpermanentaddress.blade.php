@@ -2,7 +2,7 @@
     @csrf
     <div class="form-group">
         <label class="required" for="employee_id">{{ trans('cruds.addressdetaile.fields.employee') }}</label>
-        <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
+        <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
             id="employee_id" required>
             @foreach ($employees as $id => $entry)
                 <option value="{{ $id }}" {{ old('employee_id') == $id ? 'selected' : '' }}>{{ $entry }}
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         <label class="required">{{ trans('cruds.addressdetaile.fields.address_type') }}</label>
-        <select class="form-control {{ $errors->has('address_type') ? 'is-invalid' : '' }}" name="address_type"
+        <select class="form-select {{ $errors->has('address_type') ? 'is-invalid' : '' }}" name="address_type"
             id="address_type" required>
             <option value disabled {{ old('address_type', null) === null ? 'selected' : '' }}>
                 {{ trans('global.pleaseSelect') }}</option>
@@ -69,7 +69,7 @@
     </div>
     <div class="form-group">
         <label class="required" for="thana_upazila_id">{{ trans('cruds.addressdetaile.fields.thana_upazila') }}</label>
-        <select class="form-control select2 {{ $errors->has('thana_upazila') ? 'is-invalid' : '' }}"
+        <select class="form-select select2 {{ $errors->has('thana_upazila') ? 'is-invalid' : '' }}"
             name="thana_upazila_id" id="thana_upazila_id" required>
             @foreach ($thana_upazilas as $id => $entry)
                 <option value="{{ $id }}" {{ old('thana_upazila_id') == $id ? 'selected' : '' }}>
@@ -96,7 +96,7 @@
     </div>
     <div class="form-group">
         <label>{{ trans('cruds.addressdetaile.fields.status') }}</label>
-        <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+        <select class="form-select {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
             <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>
                 {{ trans('global.pleaseSelect') }}</option>
             @foreach (App\Models\Addressdetaile::STATUS_SELECT as $key => $label)

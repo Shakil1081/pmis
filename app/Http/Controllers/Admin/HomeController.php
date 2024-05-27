@@ -9,7 +9,7 @@ class HomeController
     public function index()
     {
         $settings1 = [
-            'chart_title'           => 'Office Unit',
+            'chart_title'           => __('cruds.officeUnit.title'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\OfficeUnit',
@@ -27,7 +27,7 @@ class HomeController
         $chart1 = new LaravelChart($settings1);
 
         $settings2 = [
-            'chart_title'           => 'Employee',
+            'chart_title'           => __('cruds.employeeList.title'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\EmployeeList',
@@ -45,7 +45,7 @@ class HomeController
         $chart2 = new LaravelChart($settings2);
 
         $settings3 = [
-            'chart_title'           => 'ACR',
+            'chart_title'           => __('cruds.acrMonitoring.title'),
             'chart_type'            => 'bar',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\AcrMonitoring',
@@ -62,7 +62,7 @@ class HomeController
         $chart3 = new LaravelChart($settings3);
 
         $settings4 = [
-            'chart_title'           => 'Criminal Prosecution',
+            'chart_title'           =>  __('cruds.criminalProsecutione.title'),
             'chart_type'            => 'bar',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\CriminalProsecutione',
@@ -80,7 +80,7 @@ class HomeController
         $chart4 = new LaravelChart($settings4);
 
         $settings5 = [
-            'chart_title'           => 'Training',
+            'chart_title'           => __('cruds.training.title'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Training',
@@ -98,7 +98,7 @@ class HomeController
         $chart5 = new LaravelChart($settings5);
 
         $settings6 = [
-            'chart_title'           => 'Travel Record',
+            'chart_title'           => __('cruds.employeeListDetail.fields.travel_records'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\TravelRecord',
@@ -115,7 +115,7 @@ class HomeController
         $chart6 = new LaravelChart($settings6);
 
         $settings7 = [
-            'chart_title'           => 'Leave Record',
+            'chart_title'           => __('cruds.leaveRecord.title'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\LeaveRecord',
@@ -132,7 +132,7 @@ class HomeController
         $chart7 = new LaravelChart($settings7);
 
         $settings8 = [
-            'chart_title'           => 'Language',
+            'chart_title'           => __('cruds.language.fields.language'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Language',
@@ -150,7 +150,7 @@ class HomeController
         $chart8 = new LaravelChart($settings8);
 
         $settings9 = [
-            'chart_title'           => 'Child Record',
+            'chart_title'           => __('cruds.child.title'),
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Child',

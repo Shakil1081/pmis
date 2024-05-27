@@ -40,9 +40,6 @@ class JoininginfoController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
             $table->editColumn('project_revenue_bn', function ($row) {
                 return $row->project_revenue_bn ? $row->project_revenue_bn : '';
             });

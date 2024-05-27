@@ -37,6 +37,7 @@ class EmployeeList extends Model implements HasMedia
         'nid_upload',
         'passport_upload',
         'license_upload',
+        'certificate_upload',
         'first_joining_order',
         'fjoining_letter',
         'date_of_gazette_if_any',
@@ -70,7 +71,10 @@ class EmployeeList extends Model implements HasMedia
         'license_type_id',
         'email',
         'mobile_number',
+        'projectrevenue_id',
         'joiningexaminfo_id',
+        'departmental_exam_id',
+        'project_id',
         'grade_id',
         'fjoining_date',
         'first_joining_office_name',
@@ -81,6 +85,7 @@ class EmployeeList extends Model implements HasMedia
         'regularization_issue_date',
         'date_of_con_serviec',
         'quota_id',
+        'freedomfighter',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -172,9 +177,29 @@ class EmployeeList extends Model implements HasMedia
         return $this->getMedia('license_upload')->last();
     }
 
+    public function projectrevenue()
+    {
+        return $this->belongsTo(Joininginfo::class, 'projectrevenue_id');
+    }
+
     public function joiningexaminfo()
     {
         return $this->belongsTo(ProjectRevenueExam::class, 'joiningexaminfo_id');
+    }
+
+    public function departmental_exam()
+    {
+        return $this->belongsTo(ProjectRevenuelone::class, 'departmental_exam_id');
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
+
+    public function getCertificateUploadAttribute()
+    {
+        return $this->getMedia('certificate_upload')->last();
     }
 
     public function grade()
@@ -271,6 +296,10 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->belongsTo(Quotum::class, 'quota_id');
     }
+    public function jobhistories()
+    {
+        return $this->belongsTo(JobHistory::class, 'employee_id');
+    }
 
     public function getElectricSignatureAttribute()
     {
@@ -296,12 +325,13 @@ class EmployeeList extends Model implements HasMedia
         return $file;
     }
 
+    
     public function detail()
     {
         return $this->hasOne(EmployeeListDetail::class, 'general_information_id');
     }
 
- 
+
     public function educations()
     {
         return $this->hasMany(EducationInformatione::class, 'employee_id');
@@ -322,20 +352,12 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->hasMany(SpouseInformatione::class, 'employee_id');
     }
-
-    public function childinformationes()
-    {
-        return $this->hasMany(Child::class, 'employee_id');
-    }
-    public function jobhistories()
-    {
-        return $this->hasMany(JobHistory::class, 'employee_id');
-    }
+  
     public function employeepromotions()
     {
         return $this->hasMany(EmployeePromotion::class, 'employee_id');
     }
-     
+
     public function leaverecords()
     {
         return $this->hasMany(LeaveRecord::class, 'employee_id');
@@ -381,7 +403,7 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->hasMany(Language::class, 'employee_id');
     }
-    
+
     public function criminalprosecutiones()
     {
         return $this->hasMany(CriminalProsecutione::class, 'employee_id');
@@ -394,5 +416,6 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->hasMany(AcrMonitoring::class, 'employee_id');
     }
+
     
 }

@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.year.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $year->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.year.fields.year') }}
                         </th>
                         <td>

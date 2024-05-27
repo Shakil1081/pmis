@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.language.fields.language') }}
-                        </th>
-                        <td>
-                            {{ $language->language }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.language.fields.read') }}
                         </th>
                         <td>
@@ -53,6 +45,14 @@
                         </th>
                         <td>
                             {{ $language->speak->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.language.fields.language') }}
+                        </th>
+                        <td>
+                            {{ $language->language->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

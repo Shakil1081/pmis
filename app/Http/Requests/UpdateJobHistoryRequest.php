@@ -17,21 +17,17 @@ class UpdateJobHistoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'institute_name' => [
+            'level_1' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'joining_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
             'release_date' => [
+                'required',
                 'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-            'level_1' => [
-                'string',
-                'nullable',
             ],
             'level_2' => [
                 'string',
@@ -48,6 +44,38 @@ class UpdateJobHistoryRequest extends FormRequest
             'level_5' => [
                 'string',
                 'nullable',
+            ],
+            'grade_id' => [
+                'required',
+                'integer',
+            ],
+            'institutename' => [
+                'string',
+                'nullable',
+            ],
+            'academy_type' => [
+                'string',
+                'nullable',
+            ],
+            'acadaylocation' => [
+                'string',
+                'nullable',
+            ],
+            'posting_in_circle' => [
+                'string',
+                'nullable',
+            ],
+            'postingindivision' => [
+                'string',
+                'nullable',
+            ],
+            'posting_in_range' => [
+                'string',
+                'nullable',
+            ],
+            'office_unit_id' => [
+                'required',
+                'integer',
             ],
         ];
     }

@@ -25,9 +25,6 @@
                         {{ trans('cruds.language.fields.employee') }}
                     </th>
                     <th>
-                        {{ trans('cruds.language.fields.language') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.language.fields.read') }}
                     </th>
                     <th>
@@ -35,6 +32,9 @@
                     </th>
                     <th>
                         {{ trans('cruds.language.fields.speak') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.language.fields.language') }}
                     </th>
                     <th>
                         &nbsp;
@@ -93,10 +93,10 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
-{ data: 'language', name: 'language' },
 { data: 'read_name', name: 'read.name' },
 { data: 'write_name', name: 'write.name' },
 { data: 'speak_name', name: 'speak.name' },
+{ data: 'language_name', name: 'language.name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

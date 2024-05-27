@@ -1,4 +1,4 @@
-<div class="col-md-4 mt-1 border p-1">
+<div class="col-md-4 mycustommenu mt-1 border p-1">
 
     @php
         $id = request()->input('id');
