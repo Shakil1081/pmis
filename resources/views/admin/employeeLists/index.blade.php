@@ -8,7 +8,7 @@
             <div class="row justify-content-center align-items-center g-1">
                 <div class="col">
                     <div class="position-relative">
-                        <input class="form-control px-5" type="search" placeholder="Search Customers">
+                        <input class="form-control px-5" type="search">
                         <span
                             class="material-icons-outlined position-absolute translate-middle-y top-50 fs-5 start-0 ms-3">search</span>
                     </div>
