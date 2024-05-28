@@ -370,7 +370,7 @@
 
                         <div class="form-group has_passport_group">
                             <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
-                            <select class="form-control" id="has_passport" name='has_passport'>
+                            <select class="form-control" onClick="showshumwnu()" name='has_passport'>
                                 @if (app()->getLocale() === 'bn')
                                     <option>
                                         নির্বাচন করুন</option>
@@ -1687,20 +1687,11 @@
         });
 
 
-        document.getElementById('has_passport').addEventListener('change', function() {
-
+  function showshumwnu(){
 
 var licenseFields1 = document.querySelector('.passport_fields');
 var licenseUpload2 = document.querySelector('.passport_upload');
-
-console.log(licenseFields1+'fffff'+licenseUpload2);
-if (this.value === 'Yes') {
-    licenseFields1.style.display = 'block';
-    licenseUpload2.style.display = 'block';
-} else {
-    licenseFields1.style.display = 'none';
-    licenseUpload2.style.display = 'none';
-}
-});
+console.log(licenseFields1+'fffff'.licenseUpload2);
+  }
     </script>
 @endsection
