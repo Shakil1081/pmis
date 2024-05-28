@@ -1685,5 +1685,22 @@
                 }
             });
         });
+
+
+        document.getElementById('has_passport').addEventListener('change', function() {
+
+
+var licenseFields1 = document.querySelector('.passport_fields');
+var licenseUpload2 = document.querySelector('.passport_upload');
+
+console.log(licenseFields1+'fffff'+licenseUpload2);
+if (this.value === 'Yes') {
+    licenseFields1.style.display = 'block';
+    licenseUpload2.style.display = 'block';
+} else {
+    licenseFields1.style.display = 'none';
+    licenseUpload2.style.display = 'none';
+}
+});
     </script>
 @endsection
