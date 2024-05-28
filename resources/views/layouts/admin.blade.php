@@ -262,6 +262,11 @@
             line-height: 1.2;
             color: #808389 !important;
         }
+
+        label {
+            display: inline-block;
+            color: #052e16;
+        }
     </style>
 
     @livewireStyles
@@ -291,11 +296,11 @@
                 <li>@lang('dashboard.welcome'), {{ Auth::user()->name }} </li>
 
                 @if (app()->getLocale() === 'bn')
-                    <li><a href="{{ url()->current() }}?change_language=en" class="btn btn-sm btn-danger mx-2">
+                    <li><a href="{{ url()->current() }}?change_language=en" class="btn btn-sm btn-success mx-2">
                             English
                         </a></li>
                 @else
-                    <li><a href="{{ url()->current() }}?change_language=bn" class="btn btn-sm btn-danger mx-2">
+                    <li><a href="{{ url()->current() }}?change_language=bn" class="btn btn-sm btn-success mx-2">
                             বাংলা
                         </a></li>
                 @endif
