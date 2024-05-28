@@ -226,8 +226,27 @@
         }
 
         .mycustommenu .c-active {
-            background: #898b8d;
-            color: #fff;
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            margin-bottom: .5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #808389 !important;
         }
     </style>
 
