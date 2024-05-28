@@ -1629,7 +1629,7 @@
         document.getElementById('has_passport').addEventListener('change', function() {
     var passportFields = document.querySelector('.passport_fields');
     var passportUpload = document.querySelector('.passport_upload');
-    if (this.value === 'yes') {
+    if (this.value === 'Yes') {
         passportFields.style.display = 'block';
         passportUpload.style.display = 'block';
     } else {
