@@ -1517,16 +1517,16 @@
     </script> --}}
 
     <script>
-        document.getElementById('has_passport').addEventListener('change', function() {
+        // document.getElementById('has_passport').addEventListener('change', function() {
            
-            var passportFields = document.getElementById('passport_fields');
-            alert(passportFields);
-            if (this.value === 'Yes') {
-                passportFields.style.display = 'block';
-            } else {
-                passportFields.style.display = 'none';
-            }
-        });
+        //     var passportFields = document.getElementById('passport_fields');
+        //     alert(passportFields);
+        //     if (this.value === 'Yes') {
+        //         passportFields.style.display = 'block';
+        //     } else {
+        //         passportFields.style.display = 'none';
+        //     }
+        // });
     </script>
 
     <script>
@@ -1627,16 +1627,17 @@
 
     <script>
         document.getElementById('has_passport').addEventListener('change', function() {
-            var passportFields = document.querySelector('.passport_fields');
-            var passportUpload = document.querySelector('.passport_upload');
-            if (this.value === 'yes') {
-                passportFields.style.display = 'block';
-                passportUpload.style.display = 'block';
-            } else {
-                passportFields.style.display = 'none';
-                passportUpload.style.display = 'none';
-            }
-        });
+    var passportFields = document.querySelector('.passport_fields');
+    var passportUpload = document.querySelector('.passport_upload');
+    if (this.value === 'yes') {
+        passportFields.style.display = 'block';
+        passportUpload.style.display = 'block';
+    } else {
+        passportFields.style.display = 'none';
+        passportUpload.style.display = 'none';
+    }
+});
+
 
         document.getElementById('has_license').addEventListener('change', function() {
 
