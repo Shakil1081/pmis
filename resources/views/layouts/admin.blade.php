@@ -53,13 +53,27 @@
             height: 20px;
         }
 
-        .dropzone {
+        /* .dropzone {
             min-height: 40px !important;
             padding: 7px;
             background-color: #4c944e45;
             border: gainsboro;
             border-radius: 5px;
+        } */
+
+        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
+        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+            color: #f0fdf4;
         }
+
+        .dropzone {
+            min-height: 40px !important;
+            padding: 7px;
+            background-color: #dcfce7;
+            border: #14532d;
+            border-radius: 5px;
+        }
+
 
         .dropzone .dz-message {
             margin: 0px;
