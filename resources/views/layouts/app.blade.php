@@ -30,9 +30,13 @@
         }
     </style>
     <style>
-        body {
+        /* body {
             background: linear-gradient(to bottom, #dbe7c1, #a1c181);
-            /* Gradient from light green to darker green */
+            
+        }*/
+
+        body {
+            background: linear-gradient(to bottom, #dbe7c1, #dcfce7);
         }
     </style>
 </head>
