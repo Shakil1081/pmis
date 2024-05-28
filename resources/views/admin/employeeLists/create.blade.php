@@ -1518,7 +1518,9 @@
 
     <script>
         document.getElementById('has_passport').addEventListener('change', function() {
-            var passportFields = document.getElementById('has_passport');
+           
+            var passportFields = document.getElementById('passport_fields');
+            alert(passportFields);
             if (this.value === 'Yes') {
                 passportFields.style.display = 'block';
             } else {
