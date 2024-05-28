@@ -260,7 +260,7 @@
             margin-bottom: .5rem;
             font-weight: 900;
             line-height: 1.2;
-            color: #808389 !important;
+            color: #000000 !important;
         }
 
         label {
