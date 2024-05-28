@@ -12,12 +12,10 @@
                             <form method="POST" action="{{ route('admin.education-informationes.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
+                                <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
 
-                                <div class="row row-cols-3">
-                                    <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
-
-                                    @livewire('education-form')
-                                    {{-- <div class="form-group">
+                                @livewire('education-form')
+                                {{-- <div class="form-group">
                                         <label class="required"
                                             for="name_of_exam_id">{{ trans('cruds.educationInformatione.fields.name_of_exam') }}</label>
                                         <select
@@ -57,10 +55,10 @@
                                         <span
                                             class="help-block">{{ trans('cruds.educationInformatione.fields.exam_board_helper') }}</span>
                                     </div> --}}
-                                    <div class="row row-cols-2">
+                                <div class="row row-cols-2">
 
 
-                                        {{-- <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label
                                             for="passing_year">{{ trans('cruds.educationInformatione.fields.passing_year') }}</label>
                                         <input class="form-control {{ $errors->has('passing_year') ? 'is-invalid' : '' }}"
@@ -75,7 +73,7 @@
                                             class="help-block">{{ trans('cruds.educationInformatione.fields.passing_year_helper') }}</span>
                                     </div> --}}
 
-                                        {{-- <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label
                                             for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
                                         <select
@@ -96,7 +94,7 @@
                                         <span
                                             class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
                                     </div> --}}
-                                        {{-- <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label
                                             for="achivement">{{ trans('cruds.educationInformatione.fields.achivement') }}</label>
                                         <input class="form-control {{ $errors->has('achivement') ? 'is-invalid' : '' }}"
@@ -110,30 +108,30 @@
                                         <span
                                             class="help-block">{{ trans('cruds.educationInformatione.fields.achivement_helper') }}</span>
                                     </div> --}}
-                                        <div class="form-group">
-                                            <label class="required"
-                                                for="passing_year">{{ trans('cruds.educationInformatione.fields.passing_year') }}</label>
-                                            <select required="required" class="form-control" name="passing_year"
-                                                id="passing_year" onchange="getEduTitle(this,'','','');">
-                                                <option value="">Select Year</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label
-                                                for="catificarte">{{ trans('cruds.educationInformatione.fields.catificarte') }}</label>
-                                            <div class="needsclick dropzone {{ $errors->has('catificarte') ? 'is-invalid' : '' }}"
-                                                id="catificarte-dropzone">
-                                            </div>
-                                            @if ($errors->has('catificarte'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('catificarte') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.educationInformatione.fields.catificarte_helper') }}</span>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="required"
+                                            for="passing_year">{{ trans('cruds.educationInformatione.fields.passing_year') }}</label>
+                                        <select required="required" class="form-control" name="passing_year"
+                                            id="passing_year" onchange="getEduTitle(this,'','','');">
+                                            <option value="">Select Year</option>
+                                        </select>
                                     </div>
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
+                                        <label
+                                            for="catificarte">{{ trans('cruds.educationInformatione.fields.catificarte') }}</label>
+                                        <div class="needsclick dropzone {{ $errors->has('catificarte') ? 'is-invalid' : '' }}"
+                                            id="catificarte-dropzone">
+                                        </div>
+                                        @if ($errors->has('catificarte'))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('catificarte') }}
+                                            </div>
+                                        @endif
+                                        <span
+                                            class="help-block">{{ trans('cruds.educationInformatione.fields.catificarte_helper') }}</span>
+                                    </div>
+                                </div>
+                                {{-- <div class="form-group">
                                         <label class="required"
                                             for="employee_id">{{ trans('cruds.educationInformatione.fields.employee') }}</label>
                                         <select
@@ -153,7 +151,7 @@
                                         <span
                                             class="help-block">{{ trans('cruds.educationInformatione.fields.employee_helper') }}</span>
                                     </div> --}}
-                                </div>
+
                                 <div class="form-group">
                                     <button class="btn btn-danger" type="submit">
                                         {{ trans('global.save') }}
