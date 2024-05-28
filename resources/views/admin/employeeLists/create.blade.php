@@ -1626,16 +1626,6 @@
 
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('').addEventListener('change', function() {
-        var passportFields = document.querySelector('.passport_fields');
-        var passportUpload = document.querySelector('.passport_upload');
-        var displayStyle = (this.value === 'Yes') ? 'block' : 'none';
-        passportFields.style.display = displayStyle;
-        passportUpload.style.display = displayStyle;
-    });
-});
-
 
 document.getElementById('has_passport').addEventListener('change', function() {
 
