@@ -370,7 +370,7 @@
 
                         <div class="form-group has_passport_group">
                             <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
-                            <select class="form-control" id="has_passport">
+                            <select class="form-control" id="has_passport" name='has_passport'>
                                 @if (app()->getLocale() === 'bn')
                                     <option>
                                         নির্বাচন করুন</option>
