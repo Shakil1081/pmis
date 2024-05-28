@@ -1627,25 +1627,30 @@
 
     <script>
 
-document.getElementById('has_passport').addEventListener('change', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('has_passport').addEventListener('change', function() {
+        var passportFields = document.querySelector('.passport_fields');
+        var passportUpload = document.querySelector('.passport_upload');
+        
+        // Check if passportFields and passportUpload are not null before accessing style properties
+        if (passportFields !== null && passportUpload !== null) {
+            var displayStyle = (this.value === 'Yes') ? 'block' : 'none';
+            passportFields.style.display = displayStyle;
+            passportUpload.style.display = displayStyle;
 
-
-var licenseFields1 = document.querySelector('.passport_fields');
-var licenseUpload2 = document.querySelector('.passport_upload');
-
-console.log(licenseFields1.+'fffff'+.licenseUpload2);
-if (this.value === 'Yes') {
-    licenseFields1.style.display = 'block';
-    licenseUpload2.style.display = 'block';
-} else {
-    licenseFields1.style.display = 'none';
-    licenseUpload2.style.display = 'none';
-}
+            // Add Bootstrap classes
+            if (displayStyle === 'block') {
+                passportFields.classList.add('d-block');
+                passportUpload.classList.add('d-block');
+            } else {
+                passportFields.classList.remove('d-block');
+                passportUpload.classList.remove('d-block');
+            }
+        } else {
+            console.error('Passport fields or upload elements not found.');
+        }
+    });
 });
-
-
-
-
 
 
         document.getElementById('has_license').addEventListener('change', function() {
