@@ -155,13 +155,14 @@
                         <div class="btn-group">
                             <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
                                 class="btn btn-sm btn-outline-success">
-                                {{ trans('global.view') }}
+                                {{ trans('cruds.employeeList.approve') }}
+                                {{ trans('cruds.employeeList.waiting') }}
                             </a>
-                            <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
+                            {{-- <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
                                 class="btn btn-sm btn-outline-success">
                                 {{ trans('global.edit') }}
-                            </a>
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
+                            </a> --}}
+                            {{-- <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
                                 class="btn btn-sm btn-outline-success">
 
                                 @if (app()->getLocale() === 'bn')
@@ -173,7 +174,7 @@
 
 
 
-                            </a>
+                            </a> --}}
 
                         </div>
                     </div>
@@ -181,8 +182,6 @@
             </div>
         </div>
     @endforeach
-
-
 
 
     <div class="pagination">

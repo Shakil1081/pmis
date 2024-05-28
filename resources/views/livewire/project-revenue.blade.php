@@ -8,7 +8,8 @@
                 wire:change="onSelectChange($event.target.value)" required>
                 <option value="">Select</option>
                 @foreach ($joininginfoData as $option)
-                    <option value="{{ $option->id }}">
+                    <option value="{{ $option->id }}"
+                        {{ old('joiningexaminfo_id') == $option->id ? 'selected' : '' }}>
                         @if (app()->getLocale() === 'bn')
                             {{ $option->project_revenue_bn }}
                         @else
@@ -26,7 +27,7 @@
                 <select class="form-control select2 {{ $errors->has('project') ? 'is-invalid' : '' }}" name="project_id"
                     id="project_id">
                     @foreach ($projects as $option)
-                        <option value="{{ $option->id }}">
+                        <option value="{{ $option->id }}" {{ old('project_id') == $option->id ? 'selected' : '' }}>
                             @if (app()->getLocale() === 'bn')
                                 {{ $option->name_bn }}
                             @else
@@ -60,7 +61,8 @@
 
                     <option>Select</option>
                     @foreach ($projectRevenueall as $option)
-                        <option value="{{ $option->id }}">
+                        <option value="{{ $option->id }}"
+                            {{ old('projectrevenue_id') == $option->id ? 'selected' : '' }}>
                             @if (app()->getLocale() === 'bn')
                                 {{ $option->name_bn }}
                             @else
@@ -103,7 +105,8 @@
                         @endif
                     </option>
                     @foreach ($projectRevenueExam as $option)
-                        <option value="{{ $option->id }}">
+                        <option value="{{ $option->id }}"
+                            {{ old('departmental_exam_id') == $option->id ? 'selected' : '' }}>
                             @if (app()->getLocale() === 'bn')
                                 {{ $option->exam_name_bn }}
                             @else
@@ -135,12 +138,12 @@
                         @if (app()->getLocale() === 'bn')
                             <option>
                                 নির্বাচন করুন</option>
-                            <option value="No">না</option>
-                            <option value="Yes">হ্যাঁ</option>
+                            <option value="No" {{ old('level_1') == $option->id ? 'selected' : '' }}>না</option>
+                            <option value="Yes" {{ old('level_1') == $option->id ? 'selected' : '' }}>হ্যাঁ</option>
                         @else
                             <option>Select</option>
-                            <option value="No">No</option>
-                            <option value="Yes">Yes</option>
+                            <option value="No" {{ old('level_1') == $option->id ? 'selected' : '' }}>No</option>
+                            <option value="Yes" {{ old('level_1') == $option->id ? 'selected' : '' }}>Yes</option>
                         @endif
 
 

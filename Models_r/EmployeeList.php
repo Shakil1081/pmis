@@ -91,6 +91,7 @@ class EmployeeList extends Model implements HasMedia
         'approve',
         'approveby',
         'nid',
+        'class'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -318,7 +319,7 @@ class EmployeeList extends Model implements HasMedia
 
     public function educations()
     {
-        return "fdsdgdfg";
+
         return $this->hasMany(EducationInformatione::class, 'employee_id')->withDefault();
     }
     public function professionales()
@@ -405,4 +406,87 @@ class EmployeeList extends Model implements HasMedia
         return $this->hasMany(AcrMonitoring::class, 'employee_id');
     }
 
+    // public static function generateEmployeeId($class)
+    // {
+    //     $prefix = '2201';
+
+    //     // Determine the class digit and the range
+    //     switch ($class) {
+    //         case '1st':
+    //             $classDigit = '1';
+    //             $min = 1;
+    //             $max = 10000;
+    //             break;
+    //         case '2nd':
+    //             $classDigit = '2';
+    //             $min = 10001;
+    //             $max = 20000;
+    //             break;
+    //         case '3rd':
+    //             $classDigit = '3';
+    //             $min = 20001;
+    //             $max = 50000;
+    //             break;
+    //         case '4th':
+    //             $classDigit = '4';
+    //             $min = 50001;
+    //             $max = 99999;
+    //             break;
+    //         default:
+    //             throw new \Exception('Invalid class');
+    //     }
+
+    //     $randomNumber = mt_rand($min, $max);
+
+    //     return $prefix . $classDigit . str_pad($randomNumber, 5, '0', STR_PAD_LEFT);
+    // }
+
+
+    public static function generateEmployeeid($class)
+    {
+        $prefix = '2201';
+        $classDigit = [
+            '1st' => '1',
+            '2nd' => '2',
+            '3rd' => '3',
+            '4th' => '4',
+            '5th' => '5',
+        ][$class] ?? '0';
+
+
+        $currentMax = [
+            '1st' => 0,
+            '2nd' => 10000,
+            '3rd' => 20000,
+            '4th' => 40000,
+            '5th' => 50000
+        ][$class];
+
+        $maxId = self::where('employeeid', 'like', $prefix . $classDigit . '%')
+                      ->max('employeeid');
+
+        if ($maxId) {
+            $currentMax = (int) substr($maxId, 5);
+        }
+
+        $newId = $prefix . $classDigit . str_pad($currentMax + 1, 5, '0', STR_PAD_LEFT);
+
+        // Ensure uniqueness
+        while (self::where('employeeid', $newId)->exists()) {
+            $currentMax++;
+            $newId = $prefix . $classDigit . str_pad($currentMax + 1, 5, '0', STR_PAD_LEFT);
+        }
+
+        return $newId;
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($employee) {
+            $employee->employeeid = self::generateEmployeeId($employee->class);
+        });
+    }
 }
+
+

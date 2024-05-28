@@ -41,7 +41,7 @@ class EmployeeListController extends Controller
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+        $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
         $data['total'] = EmployeeList::count();
 
         // You can specify the number of items per page, for example, 10
@@ -51,6 +51,8 @@ class EmployeeListController extends Controller
 
     public function create()
     {
+        // $dd= EmployeeList::generateEmployeeid('3rd'); 
+        // dd($dd); 
 $locale = App::getLocale();
 $batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
 $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
@@ -91,7 +93,19 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
     public function store(StoreEmployeeListRequest $request)
     {
-        $employeeList = EmployeeList::create($request->all());
+   
+    //$employeeList = EmployeeList::create($request->all());
+
+    $class = $request->input('class');
+
+        // Generate the employee ID
+        $employeeId = EmployeeList::generateEmployeeId($class);
+
+        // Create the employee with the generated ID
+        $employeeData = $request->all();
+        $employeeData['employeeid'] = $employeeId;
+
+        $employeeList = EmployeeList::create($employeeData);
 
         if ($request->input('birth_certificate_upload', false)) {
             $employeeList->addMedia(storage_path('tmp/uploads/' . basename($request->input('birth_certificate_upload'))))->toMediaCollection('birth_certificate_upload');
@@ -347,6 +361,16 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
         $employeeList->delete();
 
         return back();
+    }
+    public function dfo()
+    {
+        abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
+        $data['total'] = EmployeeList::count();
+
+        // You can specify the number of items per page, for example, 10
+    return view('admin.employeeLists.dfo-review-list', compact('data'));
     }
 
     public function massDestroy(MassDestroyEmployeeListRequest $request)

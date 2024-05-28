@@ -27,18 +27,7 @@
 
             </a>
         </li>
-        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('site_setting_access')): ?>
-            <li class="c-sidebar-nav-item">
-                <a href="<?php echo e(route('admin.site-settings.index')); ?>"
-                    class="c-sidebar-nav-link <?php echo e(request()->is('admin/site-settings') || request()->is('admin/site-settings/*') ? 'c-active' : ''); ?>">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    <?php echo e(trans('cruds.siteSetting.title')); ?>
-
-                </a>
-            </li>
-        <?php endif; ?>
+        
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user_management_access')): ?>
             <li
                 class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/permissions*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/roles*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/users*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/audit-logs*') ? 'c-show' : ''); ?>">
@@ -224,7 +213,7 @@
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.language-proficiencies.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/language-proficiencies') || request()->is('admin/language-proficiencies/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 <?php echo e(trans('cruds.languageProficiency.title')); ?>
@@ -273,7 +262,7 @@
         <?php endif; ?>
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('office_config_access')): ?>
             <li
-                class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/designations*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/leave-categories*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/leave-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/training-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/travel-purposes*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/license-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/grades*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/traveltypes*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/batches*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/joininginfos*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/project-revenuelones*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/project-revenue-exams*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/years*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/projects*') ? 'c-show' : ''); ?>">
+                class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/office-units*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/designations*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/leave-categories*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/leave-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/training-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/travel-purposes*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/license-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/grades*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/traveltypes*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/batches*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/joininginfos*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/project-revenuelones*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/project-revenue-exams*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/years*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/projects*') ? 'c-show' : ''); ?>">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-building c-sidebar-nav-icon">
 
@@ -282,7 +271,18 @@
 
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('office_unit_access')): ?>
+                        <li class="c-sidebar-nav-item">
+                            <a href="<?php echo e(route('admin.office-units.index')); ?>"
+                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/office-units') || request()->is('admin/office-units/*') ? 'c-active' : ''); ?>">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
+                                </i>
+                                <?php echo e(trans('cruds.officeUnit.title')); ?>
+
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('designation_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.designations.index')); ?>"
@@ -427,23 +427,12 @@
                             </a>
                         </li>
                     <?php endif; ?>
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('year_access')): ?>
-                        <li class="c-sidebar-nav-item">
-                            <a href="<?php echo e(route('admin.years.index')); ?>"
-                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/years') || request()->is('admin/years/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                <?php echo e(trans('cruds.year.title')); ?>
-
-                            </a>
-                        </li>
-                    <?php endif; ?>
+                    
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('project_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.projects.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/projects') || request()->is('admin/projects/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 <?php echo e(trans('cruds.project.title')); ?>
@@ -456,7 +445,7 @@
         <?php endif; ?>
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('job_configuration_access')): ?>
             <li
-                class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/job-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-states*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-ranges*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-beats*') ? 'c-show' : ''); ?>">
+                class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/job-types*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-states*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-divisions*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-ranges*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/forest-beats*') ? 'c-show' : ''); ?>">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
@@ -477,28 +466,26 @@
                             </a>
                         </li>
                     <?php endif; ?>
-
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('office_unit_access')): ?>
-                        <li class="c-sidebar-nav-item">
-                            <a href="<?php echo e(route('admin.office-units.index')); ?>"
-                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/office-units') || request()->is('admin/office-units/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
-
-                                </i>
-                                <?php echo e(trans('cruds.officeUnit.title')); ?>
-
-                            </a>
-                        </li>
-                    <?php endif; ?>
-
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('forest_state_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.forest-states.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/forest-states') || request()->is('admin/forest-states/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 <?php echo e(trans('cruds.forestState.title')); ?>
+
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('forest_division_access')): ?>
+                        <li class="c-sidebar-nav-item">
+                            <a href="<?php echo e(route('admin.forest-divisions.index')); ?>"
+                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/forest-divisions') || request()->is('admin/forest-divisions/*') ? 'c-active' : ''); ?>">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                <?php echo e(trans('cruds.forestDivision.title')); ?>
 
                             </a>
                         </li>
@@ -507,7 +494,7 @@
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.forest-ranges.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/forest-ranges') || request()->is('admin/forest-ranges/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 <?php echo e(trans('cruds.forestRange.title')); ?>
@@ -519,7 +506,7 @@
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.forest-beats.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/forest-beats') || request()->is('admin/forest-beats/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 <?php echo e(trans('cruds.forestBeat.title')); ?>
@@ -532,7 +519,7 @@
         <?php endif; ?>
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edu_config_access')): ?>
             <li
-                class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/examinations*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/exam-boards*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/achievementschools-universities*') ? 'c-show' : ''); ?>">
+                class="c-sidebar-nav-dropdown <?php echo e(request()->is('admin/examinations*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/exam-degrees*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/exam-boards*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/result-groups*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/results*') ? 'c-show' : ''); ?> <?php echo e(request()->is('admin/achievementschools-universities*') ? 'c-show' : ''); ?>">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-book c-sidebar-nav-icon">
 
@@ -553,6 +540,18 @@
                             </a>
                         </li>
                     <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('exam_degree_access')): ?>
+                        <li class="c-sidebar-nav-item">
+                            <a href="<?php echo e(route('admin.exam-degrees.index')); ?>"
+                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/exam-degrees') || request()->is('admin/exam-degrees/*') ? 'c-active' : ''); ?>">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                <?php echo e(trans('cruds.examDegree.title')); ?>
+
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('exam_board_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.exam-boards.index')); ?>"
@@ -565,11 +564,35 @@
                             </a>
                         </li>
                     <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('result_group_access')): ?>
+                        <li class="c-sidebar-nav-item">
+                            <a href="<?php echo e(route('admin.result-groups.index')); ?>"
+                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/result-groups') || request()->is('admin/result-groups/*') ? 'c-active' : ''); ?>">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                <?php echo e(trans('cruds.resultGroup.title')); ?>
+
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('result_access')): ?>
+                        <li class="c-sidebar-nav-item">
+                            <a href="<?php echo e(route('admin.results.index')); ?>"
+                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/results') || request()->is('admin/results/*') ? 'c-active' : ''); ?>">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                <?php echo e(trans('cruds.result.title')); ?>
+
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('achievementschools_university_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.achievementschools-universities.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/achievementschools-universities') || request()->is('admin/achievementschools-universities/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
 
                                 </i>
                                 <?php echo e(trans('cruds.achievementschoolsUniversity.title')); ?>
@@ -592,6 +615,16 @@
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('employee_list_access')): ?>
+                        <li class="c-sidebar-nav-item">
+                            <a href="<?php echo e(route('admin.dfo')); ?>"
+                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/dfo') || request()->is('admin/dfo/*') ? 'c-active' : ''); ?>">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                <?php echo e(trans('cruds.employeeList.dfo')); ?>
+
+                            </a>
+                        </li>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.employee-lists.index')); ?>"
                                 class="c-sidebar-nav-link <?php echo e(request()->is('admin/employee-lists') || request()->is('admin/employee-lists/*') ? 'c-active' : ''); ?>">
@@ -711,18 +744,7 @@
                             </a>
                         </li>
                     <?php endif; ?>
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('service_particular_access')): ?>
-                        <li class="c-sidebar-nav-item">
-                            <a href="<?php echo e(route('admin.service-particulars.index')); ?>"
-                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/service-particulars') || request()->is('admin/service-particulars/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
-
-                                </i>
-                                <?php echo e(trans('cruds.serviceParticular.title')); ?>
-
-                            </a>
-                        </li>
-                    <?php endif; ?>
+                    
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('training_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.trainings.index')); ?>"
@@ -759,18 +781,7 @@
                             </a>
                         </li>
                     <?php endif; ?>
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('social_ass_pr_attachment_access')): ?>
-                        <li class="c-sidebar-nav-item">
-                            <a href="<?php echo e(route('admin.social-ass-pr-attachments.index')); ?>"
-                                class="c-sidebar-nav-link <?php echo e(request()->is('admin/social-ass-pr-attachments') || request()->is('admin/social-ass-pr-attachments/*') ? 'c-active' : ''); ?>">
-                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
-
-                                </i>
-                                <?php echo e(trans('cruds.socialAssPrAttachment.title')); ?>
-
-                            </a>
-                        </li>
-                    <?php endif; ?>
+                    
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('extracurriculam_access')): ?>
                         <li class="c-sidebar-nav-item">
                             <a href="<?php echo e(route('admin.extracurriculams.index')); ?>"
@@ -932,6 +943,7 @@
             </a>
         </li>
     </ul>
+
 
 </div>
 <?php /**PATH J:\2024working\pims2024\pmis\resources\views/partials/menu.blade.php ENDPATH**/ ?>

@@ -17,11 +17,11 @@ class UpdateEmployeeListRequest extends FormRequest
     public function rules()
     {
         return [
-            'employeeid' => [
-                'string',
-                'required',
-                'unique:employee_lists,employeeid,' . request()->route('employee_list')->id,
-            ],
+            // 'employeeid' => [
+            //     'string',
+            //     'required',
+            //     'unique:employee_lists,employeeid,' . request()->route('employee_list')->id,
+            // ],
             'cadreid' => [
                 'string',
                 'nullable',
@@ -154,6 +154,9 @@ class UpdateEmployeeListRequest extends FormRequest
             'nid' => [
                 'numeric',
             ],
+            'class' => [
+                'required',
+            'in:1st,2nd,3rd,4th']
         ];
     }
 }
