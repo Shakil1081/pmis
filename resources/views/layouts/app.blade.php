@@ -38,6 +38,17 @@
         body {
             background: linear-gradient(to bottom, #dbe7c1, #dcfce7);
         }
+
+        a {
+            color: #02c27a !important;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        a:hover {
+            color: #02c27a !important;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
