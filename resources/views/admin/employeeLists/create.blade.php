@@ -384,7 +384,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group passport_fields" style="display: none;">
+                  <div class="form-group passport_fields d-none">
                             <label for="passport">{{ trans('cruds.employeeList.fields.passport') }}</label>
                             <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}"
                                 type="text" name="passport" id="passport" value="{{ old('passport', '') }}">
@@ -396,7 +396,7 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.passport_helper') }}</span>
                         </div>
 
-                        <div class="form-group passport_upload" style="display: none;">
+                       <div class="form-group passport_upload d-none">
                             <label for="passport_upload">{{ trans('cruds.employeeList.fields.passport_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('passport_upload') ? 'is-invalid' : '' }}"
                                 id="passport_upload-dropzone">
@@ -1517,14 +1517,14 @@
     </script> --}}
 
     <script>
-        document.getElementById('has_passport').addEventListener('change', function() {
-            var passportFields = document.getElementById('passport_fields');
-            if (this.value === 'Yes') {
-                passportFields.style.display = 'block';
-            } else {
-                passportFields.style.display = 'none';
-            }
-        });
+        // document.getElementById('has_passport').addEventListener('change', function() {
+        //     var passportFields = document.getElementById('passport_fields');
+        //     if (this.value === 'Yes') {
+        //         passportFields.style.display = 'block';
+        //     } else {
+        //         passportFields.style.display = 'none';
+        //     }
+        // });
     </script>
 
     <script>
@@ -1624,17 +1624,17 @@
 
 
     <script>
-        document.getElementById('has_passport').addEventListener('change', function() {
-            var passportFields = document.querySelector('.passport_fields');
-            var passportUpload = document.querySelector('.passport_upload');
-            if (this.value === 'yes') {
-                passportFields.style.display = 'block';
-                passportUpload.style.display = 'block';
-            } else {
-                passportFields.style.display = 'none';
-                passportUpload.style.display = 'none';
-            }
-        });
+        // document.getElementById('has_passport').addEventListener('change', function() {
+        //     var passportFields = document.querySelector('.passport_fields');
+        //     var passportUpload = document.querySelector('.passport_upload');
+        //     if (this.value === 'yes') {
+        //         passportFields.style.display = 'block';
+        //         passportUpload.style.display = 'block';
+        //     } else {
+        //         passportFields.style.display = 'none';
+        //         passportUpload.style.display = 'none';
+        //     }
+        // });
 
         document.getElementById('has_license').addEventListener('change', function() {
 
@@ -1688,5 +1688,30 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('has_passport').addEventListener('change', function() {
+        var passportFields = document.querySelector('.passport_fields');
+        var passportUpload = document.querySelector('.passport_upload');
+        
+        // Check if passportFields and passportUpload are not null before accessing style properties
+        if (passportFields !== null && passportUpload !== null) {
+            if (this.value === 'Yes') {
+                passportFields.classList.remove('d-none');
+                passportFields.classList.add('d-block');
+                passportUpload.classList.remove('d-none');
+                passportUpload.classList.add('d-block');
+            } else {
+                passportFields.classList.remove('d-block');
+                passportFields.classList.add('d-none');
+                passportUpload.classList.remove('d-block');
+                passportUpload.classList.add('d-none');
+            }
+        } else {
+            console.error('Passport fields or upload elements not found.');
+        }
+    });
+});
+
     </script>
 @endsection
