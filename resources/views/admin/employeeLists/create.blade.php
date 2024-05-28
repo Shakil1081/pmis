@@ -1626,17 +1626,34 @@
 
 
     <script>
-        document.getElementById('has_passport').addEventListener('change', function() {
-    var passportFields = document.querySelector('.passport_fields');
-    var passportUpload = document.querySelector('.passport_upload');
-    if (this.value === 'Yes') {
-        passportFields.style.display = 'block';
-        passportUpload.style.display = 'block';
-    } else {
-        passportFields.style.display = 'none';
-        passportUpload.style.display = 'none';
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('').addEventListener('change', function() {
+        var passportFields = document.querySelector('.passport_fields');
+        var passportUpload = document.querySelector('.passport_upload');
+        var displayStyle = (this.value === 'Yes') ? 'block' : 'none';
+        passportFields.style.display = displayStyle;
+        passportUpload.style.display = displayStyle;
+    });
 });
+
+
+document.getElementById('has_passport').addEventListener('change', function() {
+
+
+var licenseFields1 = document.querySelector('.passport_fields');
+var licenseUpload2 = document.querySelector('.passport_upload');
+if (this.value === 'Yes') {
+    licenseFields1.style.display = 'block';
+    licenseUpload2.style.display = 'block';
+} else {
+    licenseFields1.style.display = 'none';
+    licenseUpload2.style.display = 'none';
+}
+});
+
+
+
+
 
 
         document.getElementById('has_license').addEventListener('change', function() {
