@@ -62,7 +62,7 @@
                                   <span
                                       class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_upload_helper') }}</span>
                               </div>
-                              <div class="form-group">
+                              {{-- <div class="form-group">
                                   <label for="occupation">{{ trans('cruds.spouseInformatione.fields.occupation') }}</label>
                                   <input class="form-control {{ $errors->has('occupation') ? 'is-invalid' : '' }}"
                                       type="text" name="occupation" id="occupation" value="{{ old('occupation', '') }}">
@@ -73,8 +73,8 @@
                                   @endif
                                   <span
                                       class="help-block">{{ trans('cruds.spouseInformatione.fields.occupation_helper') }}</span>
-                              </div>
-                              <div class="form-group">
+                              </div> --}}
+                              {{-- <div class="form-group">
                                   <label
                                       for="office_address">{{ trans('cruds.spouseInformatione.fields.office_address') }}</label>
                                   <input class="form-control {{ $errors->has('office_address') ? 'is-invalid' : '' }}"
@@ -87,7 +87,7 @@
                                   @endif
                                   <span
                                       class="help-block">{{ trans('cruds.spouseInformatione.fields.office_address_helper') }}</span>
-                              </div>
+                              </div> --}}
                               <div class="form-group">
                                   <label
                                       for="phone_number">{{ trans('cruds.spouseInformatione.fields.phone_number') }}</label>

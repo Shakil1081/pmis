@@ -97,8 +97,34 @@
             margin: 0px;
         }
 
-        ul.c-sidebar-nav.ps {
+        .c-app {
+            background: rgb(221, 255, 230) !important;
+            background: radial-gradient(circle, rgb(113 163 107 / 21%) 0%, rgb(84 148 65 / 0%) 100%) !important;
+        }
+
+        /* ul.c-sidebar-nav.ps {
             background: #4c944e !important;
+        } */
+
+        ul.c-sidebar-nav.ps {
+            background: #081e01 !important;
+        }
+
+        .btn-success {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #061801;
+            --bs-btn-border-color: #061801;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #05100199;
+            --bs-btn-hover-border-color: #061801;
+            --bs-btn-focus-shadow-rgb: 60, 153, 110;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #061801;
+            --bs-btn-active-border-color: #13240e99;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #02c27a;
+            --bs-btn-disabled-border-color: #198754;
         }
 
         .c-sidebar .c-sidebar-brand,
@@ -120,10 +146,14 @@
             border-color: rgb(108 117 125 / 14%) !important;
         }
 
-        a.nav-link.c-active {
+        /* a.nav-link.c-active {
             font-weight: bold;
             color: #4c944e;
             border-color: #3d763e !important;
+        } */
+        .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+        .c-sidebar .c-sidebar-nav-link:hover {
+            background: #41493fd6 !important;
         }
 
         a.nav-link:hover,
@@ -149,16 +179,58 @@
             font-size: 14px;
             /* Adjust the font size as needed */
         }
+
+        .btn-danger {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #f51313;
+            --bs-btn-border-color: #f51313;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #f34a4a;
+            --bs-btn-hover-border-color: #f51313ab;
+            --bs-btn-focus-shadow-rgb: 225, 83, 97;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #f51313;
+            --bs-btn-active-border-color: #f51313;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #f51313;
+            --bs-btn-disabled-border-color: #f51313;
+        }
     </style>
     <?php echo $__env->yieldContent('styles'); ?>
     <?php echo $__env->yieldPushContent('css'); ?>
     <style>
-        html,
+        /* html,
         body,
         div {
             font-family: bangla;
+        } */
+
+        .table th:last-child,
+        .table td:last-child {
+            text-align: right;
+        }
+
+
+        a.btn.buttons-select-none.btn-primary.disabled,
+        a.btn.buttons-select-all.btn-primary {
+            background-color: #fff;
+            color: #000;
+            border: 0;
+            font-size: inherit;
+        }
+
+        .dt-buttons a {
+            padding: 1px 10px;
+            border: 0px solid #d5d4d2 !important;
+        }
+
+        .mycustommenu .c-active {
+            background: #898b8d;
+            color: #fff;
         }
     </style>
+
     <?php echo \Livewire\Livewire::styles(); ?>
 
 </head>
@@ -172,31 +244,31 @@
                 <i class="fas fa-fw fa-bars"></i>
             </button>
 
-            <a class="c-header-brand d-lg-none" href="#"><?php echo e(trans('panel.site_title')); ?></a>
+            <a class="c-header-brand d-lg-none" href="#">
+
+
+                <img src="<?php echo e(asset('assets/images/logo1.png')); ?>" height="40" alt="Logo" />
+
+            </a>
 
             <button class="c-header-toggler mfs-3 d-md-down-none" type="button" responsive="true">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
 
             <ul class="c-header-nav ml-auto">
-                <li><?php echo app('translator')->get('dashboard.welcome'); ?>, <?php echo e(Auth::user()->name); ?></>:</li>
-                <?php if(count(config('panel.available_languages', [])) > 1): ?>
-                    <li class="c-header-nav-item dropdown d-md-down-none">
-                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">
-                            <strong class="text-danger"> <?php echo e(strtoupper(app()->getLocale())); ?></strong>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <?php $__currentLoopData = config('panel.available_languages'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $langLocale => $langName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <a class="dropdown-item"
-                                    href="<?php echo e(url()->current()); ?>?change_language=<?php echo e($langLocale); ?>"><?php echo e(strtoupper($langLocale)); ?>
+                <li><?php echo app('translator')->get('dashboard.welcome'); ?>, <?php echo e(Auth::user()->name); ?> </li>
 
-                                    (<?php echo e($langName); ?>)
-                                </a>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                    </li>
+                <?php if(app()->getLocale() === 'bn'): ?>
+                    <li><a href="<?php echo e(url()->current()); ?>?change_language=en" class="btn btn-sm btn-danger mx-2">
+                            English
+                        </a></li>
+                <?php else: ?>
+                    <li><a href="<?php echo e(url()->current()); ?>?change_language=bn" class="btn btn-sm btn-danger mx-2">
+                            বাংলা
+                        </a></li>
                 <?php endif; ?>
+
+
 
 
             </ul>

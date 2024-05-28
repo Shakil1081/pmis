@@ -586,6 +586,15 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('employee_list_access')
                         <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.dfo') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/dfo') || request()->is('admin/dfo/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.employeeList.dfo') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.employee-lists.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/employee-lists') || request()->is('admin/employee-lists/*') ? 'c-active' : '' }}">
                                 <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
@@ -694,7 +703,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('service_particular_access')
+                    {{-- @can('service_particular_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.service-particulars.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/service-particulars') || request()->is('admin/service-particulars/*') ? 'c-active' : '' }}">
@@ -704,7 +713,7 @@
                                 {{ trans('cruds.serviceParticular.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                     @can('training_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.trainings.index') }}"
@@ -738,7 +747,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('social_ass_pr_attachment_access')
+                    {{-- @can('social_ass_pr_attachment_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.social-ass-pr-attachments.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/social-ass-pr-attachments') || request()->is('admin/social-ass-pr-attachments/*') ? 'c-active' : '' }}">
@@ -748,7 +757,7 @@
                                 {{ trans('cruds.socialAssPrAttachment.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                     @can('extracurriculam_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.extracurriculams.index') }}"

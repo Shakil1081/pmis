@@ -6,7 +6,7 @@ use App\Models\EmployeeList;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
-
+use App\Rules\ValidNid;
 class StoreEmployeeListRequest extends FormRequest
 {
     public function authorize()
@@ -17,11 +17,11 @@ class StoreEmployeeListRequest extends FormRequest
     public function rules()
     {
         return [
-            'employeeid' => [
-                'string',
-                'required',
-                'unique:employee_lists',
-            ],
+            // 'employeeid' => [
+            //     'string',
+            //     'required',
+            //     'unique:employee_lists',
+            // ],
             'cadreid' => [
                 'string',
                 'nullable',
@@ -153,7 +153,11 @@ class StoreEmployeeListRequest extends FormRequest
             ],
             'nid' => [
                 'numeric',
+                new ValidNid
             ],
+            'class' => [
+                'required',
+            'in:1st,2nd,3rd,4th']
         ];
     }
 }

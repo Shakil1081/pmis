@@ -41,18 +41,35 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.fullname_en_helper') }}</span>
                         </div>
+
                         <div class="form-group">
-                            <label class="required"
-                                for="employeeid">{{ trans('cruds.employeeList.fields.employeeid') }}</label>
-                            <input class="form-control {{ $errors->has('employeeid') ? 'is-invalid' : '' }}" type="text"
-                                name="employeeid" id="employeeid" value="{{ old('employeeid', '') }}" required>
-                            @if ($errors->has('employeeid'))
+                            <label class="required" for="class">{{ trans('cruds.employeeList.fields.class') }}</label>
+                            <select class="form-select {{ $errors->has('class') ? 'is-invalid' : '' }}" name="class"
+                                id="class" required>
+                                <option value="" disabled selected>
+                                    {{ trans('global.pleaseSelect') }}</option>
+
+                                @if (app()->getLocale() === 'bn')
+                                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>১ম</option>
+                                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>২য়</option>
+                                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>৩য়</option>
+                                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>৪র্থ</option>
+                                @else
+                                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>1st</option>
+                                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>2nd</option>
+                                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>3rd</option>
+                                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>4th</option>
+                                @endif
+                            </select>
+                            @if ($errors->has('class'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('employeeid') }}
+                                    {{ $errors->first('class') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.employeeid_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.class_helper') }}</span>
                         </div>
+
+
                         <div class="form-group">
                             <label for="cadreid">{{ trans('cruds.employeeList.fields.cadreid') }}</label>
                             <input class="form-control {{ $errors->has('cadreid') ? 'is-invalid' : '' }}" type="text"
@@ -308,7 +325,7 @@
                                 for="mobile_number">{{ trans('cruds.employeeList.fields.mobile_number') }}</label>
                             <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}"
                                 type="text" name="mobile_number" id="mobile_number"
-                                value="{{ old('mobile_number', '') }}" min="11" maxlength="20" required>
+                                value="{{ old('mobile_number', '') }}" minlength="11" maxlength="20" required>
                             @if ($errors->has('mobile_number'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('mobile_number') }}
@@ -1502,7 +1519,7 @@
     <script>
         document.getElementById('has_passport').addEventListener('change', function() {
             var passportFields = document.getElementById('passport_fields');
-            if (this.value === 'yes') {
+            if (this.value === 'Yes') {
                 passportFields.style.display = 'block';
             } else {
                 passportFields.style.display = 'none';
@@ -1655,6 +1672,21 @@
             } else {
                 certificateUploadFields.style.display = 'none';
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nidInput = document.getElementById('nid');
+            nidInput.addEventListener('input', function() {
+                const value = nidInput.value;
+                const length = value.length;
+                if (length === 10 || length === 13 || length === 17) {
+                    nidInput.setCustomValidity('');
+                } else {
+                    nidInput.setCustomValidity('{{ __('validation.nid_invalid') }}');
+                }
+            });
         });
     </script>
 @endsection

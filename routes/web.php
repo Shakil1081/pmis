@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('add-employee', [EmployeeListController::class,'Commonemployeecreate'])->name('creatrmployee');
     Route::get('show-employee', [EmployeeListController::class,'commonemployeeshow'])->name('commonemployeeshow');
     Route::get('employee-data/{id}', [EmployeeListController::class,'employeedata'])->name('employeedata');
+    Route::get('dfo', [EmployeeListController::class,'dfo'])->name('dfo');
 
    Route::get('/', 'HomeController@index')->name('home');
     // Permissions

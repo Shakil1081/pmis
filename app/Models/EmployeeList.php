@@ -417,5 +417,52 @@ class EmployeeList extends Model implements HasMedia
         return $this->hasMany(AcrMonitoring::class, 'employee_id');
     }
 
+
+    
+    public static function generateEmployeeid($class)
+    {
+
+    
+        $prefix = '2201';
+        $classDigit = [
+            '1st' => '1',
+            '2nd' => '2',
+            '3rd' => '3',
+            '4th' => '4'
+        ][$class] ?? '0';
+
+
+        $currentMax = [
+            '1st' => 0,
+            '2nd' => 10000,
+            '3rd' => 20000,
+            '4th' => 50000
+        ][$class];
+       
+        $maxId = self::where('employeeid', 'like', $prefix . $classDigit . '%')
+                      ->max('employeeid');
+
+        if ($maxId) {
+            $currentMax = (int) substr($maxId, 5);
+        }
+
+        $newId = $prefix . $classDigit . str_pad($currentMax + 1, 5, '0', STR_PAD_LEFT);
+
+        // Ensure uniqueness
+        while (self::where('employeeid', $newId)->exists()) {
+            $currentMax++;
+            $newId = $prefix . $classDigit . str_pad($currentMax + 1, 5, '0', STR_PAD_LEFT);
+        }
+
+        return $newId;
+    }
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($employee) {
+    //         $employee->employeeid = self::generateEmployeeId($employee->class);
+    //     });
+    // }
     
 }

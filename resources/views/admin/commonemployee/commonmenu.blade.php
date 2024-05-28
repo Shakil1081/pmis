@@ -93,13 +93,13 @@
                 {{ trans('cruds.foreignTravelPersonal.title') }}
             </a>
         @endcan
-        @can('social_ass_pr_attachment_access')
+        {{-- @can('social_ass_pr_attachment_access')
             <a href="{{ route('admin.social-ass-pr-attachments.create', ['id' => $id]) }}"
                 class="nav-link {{ request()->is('admin/social-ass-pr-attachments') || request()->is('admin/social-ass-pr-attachments/*') ? 'c-active' : '' }}">
 
                 {{ trans('cruds.socialAssPrAttachment.title') }}
             </a>
-        @endcan
+        @endcan --}}
 
         @can('extracurriculam_access')
             <a href="{{ route('admin.extracurriculams.create', ['id' => $id]) }}"
