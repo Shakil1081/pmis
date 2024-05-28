@@ -86,6 +86,7 @@
                                                     {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
                                                     {{ $entry }}</option>
                                             @endforeach
+                                            
                                         </select>
                                         @if ($errors->has('achievement_types'))
                                             <div class="invalid-feedback">

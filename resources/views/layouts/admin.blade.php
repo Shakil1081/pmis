@@ -107,20 +107,20 @@
         } */
 
         ul.c-sidebar-nav.ps {
-            background: #081e01 !important;
+            background: #22c55e !important;
         }
 
         .btn-success {
             --bs-btn-color: #fff;
-            --bs-btn-bg: #061801;
-            --bs-btn-border-color: #061801;
+            --bs-btn-bg: #22c55e;
+            --bs-btn-border-color: #22c55e;
             --bs-btn-hover-color: #fff;
-            --bs-btn-hover-bg: #05100199;
-            --bs-btn-hover-border-color: #061801;
+            --bs-btn-hover-bg: #22c55e;
+            --bs-btn-hover-border-color: #22c55e;
             --bs-btn-focus-shadow-rgb: 60, 153, 110;
             --bs-btn-active-color: #fff;
-            --bs-btn-active-bg: #061801;
-            --bs-btn-active-border-color: #13240e99;
+            --bs-btn-active-bg: #22c55e;
+            --bs-btn-active-border-color: #22c55e;
             --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
             --bs-btn-disabled-color: #fff;
             --bs-btn-disabled-bg: #02c27a;

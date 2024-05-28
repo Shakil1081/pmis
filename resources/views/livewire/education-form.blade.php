@@ -92,6 +92,8 @@
             </div>
         @endif
         @if ($resultGroup)
+
+
             <div class="form-group">
                 <label class="required">Gread/Class/Division</label>
                 <select wire:model="result" wire:change="onresult($event.target.value)" class="form-select" required>
@@ -105,6 +107,11 @@
                             @endif
                         </option>
                     @endforeach
+                    <option value="4" {{ old('achievement_types_id') == 4 ? 'selected' : '' }}>
+                        GPA</option>
+                    <option value="5" {{ old('achievement_types_id') == 5 ? 'selected' : '' }}>
+                        CGPA</option>
+
                 </select>
                 @if ($errors->has('exam_board'))
                     <div class="invalid-feedback">
@@ -116,11 +123,35 @@
         @endif
 
         @if (empty($resultlist) || count($resultlist) === 0)
+            <div class="form-group">
+                <label
+                    for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
+                <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
+                    name="achievement_types_id" id="achievement_types_id">
+                    @foreach ($achievement_types as $id => $entry)
+                        <option value="{{ $id }}"
+                            {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
+                            {{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('achievement_types'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('achievement_types') }}
+                    </div>
+                @endif
+                <span
+                    class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
+            </div>
+
             @if ($resultGroup)
                 <div class="form-group">
-                    <label for="cgpa">{{ trans('cruds.educationInformatione.fields.cgpa') }}</label>
-                    <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="text"
-                        name="cgpa" id="cgpa" value="{{ old('cgpa', '') }}">
+                    <label for="cgpa">
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa') : 'GPA' }}
+
+                    </label>
+                    <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="number"
+                        step="any" name="cgpa" id="cgpa" value="{{ old('cgpa', '') }}" min="1"
+                        max="{{ $result == 5 ? 5 : 4 }}">
                     @if ($errors->has('cgpa'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cgpa') }}
@@ -129,25 +160,7 @@
                     <span class="help-block">{{ trans('cruds.educationInformatione.fields.cgpa_helper') }}</span>
                 </div>
 
-                <div class="form-group">
-                    <label
-                        for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
-                    <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
-                        name="achievement_types_id" id="achievement_types_id">
-                        @foreach ($achievement_types as $id => $entry)
-                            <option value="{{ $id }}"
-                                {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
-                                {{ $entry }}</option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('achievement_types'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('achievement_types') }}
-                        </div>
-                    @endif
-                    <span
-                        class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
-                </div>
+
             @endif
         @else
             <div class="form-group">

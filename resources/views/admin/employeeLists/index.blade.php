@@ -34,7 +34,7 @@
                             {{ trans('global.add') }} {{ trans('cruds.employeeList.title_singular') }}
                         </a>
                     @endcan
-                    <button type="button" class="btn btn- btn-success">
+                    {{-- <button type="button" class="btn btn- btn-success">
                         <i class="fa fa-filter" aria-hidden="true"></i>
 
                         @if (app()->getLocale() === 'bn')
@@ -43,7 +43,7 @@
                             Filter
                         @endif
 
-                    </button>
+                    </button> --}}
 
 
                 </div>
