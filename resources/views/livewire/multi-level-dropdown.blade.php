@@ -28,18 +28,9 @@
         </div>
 
 
-        {{-- <div class="form-group">
-            <label class="required" for="level_1">Office Unit</label>
-            <select  class="form-select" name="level_1" id="level_1"
-                required>
-                <option value="">Select</option>
-
-            </select>
-        </div> --}}
-
         @if ($selectedValue == 1)
             <div class="form-group">
-                <label for="level_2" class="form-label">Name of Wing/UNit</label>
+                <label for="level_2" class="form-label">{{ trans('global.nameWingunit') }}</label>
                 <input type="text" class="form-control" name="level_2" id="level_2" aria-describedby="helpId"
                     placeholder="" />
             </div>
@@ -74,13 +65,13 @@
 
 
             <div class="form-group">
-                <label class="required" for="level_2"> Posting in Circle</label>
+                <label class="required" for="level_2">{{ trans('global.postingCircle') }}</label>
                 <!-- Your second dropdown goes here -->
                 <select wire:model="selectedLevel2" class="form-select"
                     wire:change="onSelectChangel2($event.target.value)" required>
-                    <option>Select</option>
-                    <option value="Posting in Office">Posting in Office</option>
-                    <option value="Division">Division</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
+                    <option value="Posting in Office">{{ trans('global.postingOffice') }}</option>
+                    <option value="Division">{{ trans('global.division') }}</option>
                 </select>
             </div>
 
@@ -88,10 +79,10 @@
 
             @if ($selectedValue2 == 'Division')
                 <div class="form-group">
-                    <label class="required" for="level_3">Division List</label>
+                    <label class="required" for="level_3">{{ trans('global.divisionList') }}</label>
                     <select wire:model="onSelctDivisionmodel" class="form-select select2" name="division" name="level_2"
                         id="level_2" wire:change="onSelctDivision($event.target.value)" required>
-                        <option value="">Select </option>
+                        <option>{{ trans('global.pleaseSelect') }}</option>
                         @foreach ($division as $option)
                             <option value="{{ $option->id }}">
                                 @if (app()->getLocale() === 'bn')
@@ -106,13 +97,13 @@
             @endif
             @if ($onSelctDivisionmodel && $selectedValue2 == 'Division')
                 <div class="form-group">
-                    <label class="required"> Posting in Division</label>
+                    <label class="required"> {{ trans('global.postingDivision') }}</label>
                     <select wire:model="beatSFPCCamp" class="form-select"
                         wire:change="onbeatSFPCCamp($event.target.value)" name="postingindivision"
                         id="postingindivision" required>
-                        <option>Select</option>
-                        <option value="Posting in Office">Posting in Office</option>
-                        <option value="Range/SFNTC/Station">Range/SFPC/Station</option>
+                        <option>{{ trans('global.pleaseSelect') }}</option>
+                        <option value="Posting in Office">{{ trans('global.postingOffice') }}</option>
+                        <option value="Range/SFNTC/Station">{{ trans('global.rangeSFPCStation') }}</option>
                     </select>
                 </div>
             @endif
@@ -124,7 +115,7 @@
                     <label class="required" for="posting_in_range">{{ trans('Range List') }}</label>
                     <select wire:model="rangeForbeat" wire:change="onbeat($event.target.value)"
                         class="form-select select2" name="posting_in_range" id="posting_in_range" required>
-                        <option>Select</option>
+                        <option>{{ trans('global.pleaseSelect') }}</option>
                         @foreach ($range as $option)
                             <option value="{{ $option->id }}">
                                 @if (app()->getLocale() === 'bn')
@@ -142,12 +133,12 @@
 
             @if ($rangeForbeat)
                 <div class="form-group">
-                    <label class="required" for="posting_in_range"> Posting in Range </label>
+                    <label class="required" for="posting_in_range">{{ trans('global.postinginRange') }}</label>
                     <select wire:model="beatlistshow" class="form-select" name="posting_in_range"
                         id="posting_in_range"required>
-                        <option>Select</option>
-                        <option value="Posting in Office">Posting in Office</option>
-                        <option value="Beat/SFNTC/Camp">Beat/SFNTC/Camp</option>
+                        <option>{{ trans('global.pleaseSelect') }}</option>
+                        <option value="Posting in Office">{{ trans('global.postingOffice') }}</option>
+                        <option value="Beat/SFNTC/Camp">{{ trans('global.beatSFNTCCamp') }}</option>
                     </select>
                 </div>
             @endif
@@ -157,7 +148,7 @@
                 <div class="form-group">
                     <label class="required" for="beat_list_id">{{ trans('Beat list') }}</label>
                     <select class="form-select select2" name="beat_list_id" id="beat_list_id">
-                        <option value="">Select</option>
+                        <option>{{ trans('global.pleaseSelect') }}</option>
                         @foreach ($beatList as $option)
                             <option value="{{ $option->name_bn }}">
                                 @if (app()->getLocale() === 'bn')
@@ -173,39 +164,39 @@
         @endif
         @if ($selectedValue != 1 && $selectedValue != 2 && $selectedValue)
             <div class="form-group">
-                <label class="required" for="level_2"> Others</label>
+                <label class="required" for="level_2"> {{ trans('global.others') }}</label>
                 <!-- Your second dropdown goes here -->
                 <select wire:model="institution" class="form-select" wire:change="oninstitution($event.target.value)"
                     name="institutename" id="institutename" required>
-                    <option>Select</option>
-                    <option value="Institution">Institution</option>
-                    <option value="Others">Others</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
+                    <option value="Institution">{{ trans('global.institution') }}</option>
+                    <option value="Others">{{ trans('global.others') }}</option>
                 </select>
             </div>
         @endif
         @if ($institution == 'Institution')
             <div class="form-group">
-                <label class="required" for="academy_type"> Institution</label>
+                <label class="required" for="academy_type"> {{ trans('global.institution') }}</label>
                 <!-- Your second dropdown goes here -->
                 <select wire:model="fsit" class="form-select" wire:change="onfsit($event.target.value)"
                     name="academy_type" id="academy_type" required>
-                    <option>Select</option>
-                    <option value="Forest Academy">Forest Academy</option>
-                    <option value="SKWC">SKWC</option>
-                    <option value="FSTI">FSTI</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
+                    <option value="Forest Academy">{{ trans('global.forestAcademy') }}</option>
+                    <option value="SKWC">{{ trans('global.skec') }}</option>
+                    <option value="FSTI">{{ trans('global.fsti') }}</option>
                 </select>
             </div>
         @endif
 
         @if ($fsit == 'FSTI')
             <div class="form-group">
-                <label class="required" for="posting_in_circle">FSTI</label>
+                <label class="required" for="posting_in_circle">{{ trans('global.fsti') }}</label>
 
                 <select class="form-select" name="posting_in_circle" id="posting_in_circle" required>
-                    <option>Select</option>
-                    <option value="Sylhet">Sylhet</option>
-                    <option value="Chittagong">Chittagong</option>
-                    <option value="Rajshahi">Rajshahi</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
+                    <option value="Sylhet">{{ trans('global.Sylhet') }}</option>
+                    <option value="Chittagong">{{ trans('global.Chittagong') }}</option>
+                    <option value="Rajshahi">{{ trans('global.Rajshahi') }}</option>
                 </select>
             </div>
         @endif

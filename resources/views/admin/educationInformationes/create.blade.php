@@ -113,7 +113,7 @@
                                             for="passing_year">{{ trans('cruds.educationInformatione.fields.passing_year') }}</label>
                                         <select required="required" class="form-control" name="passing_year"
                                             id="passing_year" onchange="getEduTitle(this,'','','');">
-                                            <option value="">Select Year</option>
+                                            <option>{{ trans('global.pleaseSelect') }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
