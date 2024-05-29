@@ -398,9 +398,9 @@ return [
     'employeeList' => [
         'title'          => 'সাধারণ তথ্যসমূহ',
         'title_singular' => 'সাধারণ তথ্যসমূহ',
-        'dfo'                         => 'DFO',
-        'approve'                         => 'Approve',
-        'waiting'                         => 'Waiting',
+        'dfo'                         => 'ডিএফও',
+        'approve'                         => 'অনুমোদন করুন',
+        'waiting'                         => 'অপেক্ষমান',
         'fields'         => [
             'id'                                   => 'আইডি',
             'id_helper'                            => ' ',
@@ -516,9 +516,9 @@ return [
             'certificate_upload_helper'            => ' ',
             'project'                              => 'উন্নয়ন প্রকল্প',
             'project_helper'                       => ' ',
-            'class'                         => 'Class',
+            'class'                         => 'শ্রেণী',
             'class_helper'                         => '',
-            'dfo'                         => 'DFO',
+            'dfo'                         => 'ডিএফও',
             'dfo_helper'                         => '',
             
         ],

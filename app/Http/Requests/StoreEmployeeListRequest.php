@@ -6,7 +6,7 @@ use App\Models\EmployeeList;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
-use App\Rules\ValidNid;
+use App\Rules\NidNumber;
 class StoreEmployeeListRequest extends FormRequest
 {
     public function authorize()
@@ -153,7 +153,7 @@ class StoreEmployeeListRequest extends FormRequest
             ],
             'nid' => [
                 'numeric',
-                new ValidNid
+                new NidNumber,
             ],
             'class' => [
                 'required',
