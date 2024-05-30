@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('award_create')
+    {{-- @can('award_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.awards.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.award.title_singular') }} {{ trans('global.list') }}
