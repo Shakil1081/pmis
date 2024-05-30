@@ -151,7 +151,7 @@
                     </label>
                     <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="number"
                         step="any" name="cgpa" id="cgpa" value="{{ old('cgpa', '') }}" min="1"
-                        max="{{ $result == 5 ? 5 : 4 }}">
+                        max="{{ $result == 5 ? 4 : 5 }}">
                     @if ($errors->has('cgpa'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cgpa') }}
