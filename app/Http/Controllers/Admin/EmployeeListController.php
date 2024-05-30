@@ -29,6 +29,7 @@ use App\Models\Religion;
 use App\Models\Upazila;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -41,7 +42,9 @@ class EmployeeListController extends Controller
     {
         abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+        $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
+     //$data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+
         $data['total'] = EmployeeList::count();
 
         // You can specify the number of items per page, for example, 10
@@ -64,7 +67,7 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
         $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $marital_status = Maritalstatus::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -368,9 +371,22 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
         $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
         $data['total'] = EmployeeList::count();
-
-        // You can specify the number of items per page, for example, 10
     return view('admin.employeeLists.dfo-review-list', compact('data'));
+    }
+
+    public function approve(Request $request)
+    {
+        $employee = EmployeeList::find($request->employee_id);
+        //dd($employee);
+        if ($employee) {
+            $employee->approve = 'Approved';
+            $employee->approveby = Auth::id();
+            $employee->save();
+
+            return response()->json(['status' => 'success', 'message' => 'Employee approved successfully']);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Employee not found'], 404);
     }
 
     public function massDestroy(MassDestroyEmployeeListRequest $request)

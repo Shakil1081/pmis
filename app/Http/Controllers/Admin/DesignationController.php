@@ -115,4 +115,24 @@ class DesignationController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+
+    public function parseCsvImport(Request $request)
+    {
+        $path = $request->file('csv_file')->getRealPath();
+			$row_index = file($request->file('csv_file'), FILE_SKIP_EMPTY_LINES);
+			$data = array_map('str_getcsv', file($path));
+			$csv_data = array_slice($data, 1, count($row_index));
+
+			foreach ($csv_data as $key => $value) {
+                $bname = $value[0];
+				$ename = $value[1];
+ 
+                $data['name_bn']= $bname;
+                $data['name_en']= $ename;
+                
+                Designation::create($data);
+
+            }
+    }
 }

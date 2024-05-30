@@ -772,9 +772,9 @@ return [
             'name_en_helper'             => ' ',
             'gender'                     => 'লিঙ্গ',
             'gender_helper'              => ' ',
-            'nid_number'                 => 'এনআইডি',
+            'nid_number'                 => 'এনআইডি নাম্বার',
             'nid_number_helper'          => ' ',
-            'passport_number'            => 'পাসপোর্ট',
+            'passport_number'            => 'পাসপোর্ট নাম্বার',
             'passport_number_helper'     => ' ',
             'date_of_birth'              => 'জন্ম তারিখ',
             'date_of_birth_helper'       => ' ',
@@ -1672,8 +1672,8 @@ return [
         ],
     ],
     'forestRange' => [
-        'title'          => 'এসএফপিসি/রেঞ্জ',
-        'title_singular' => 'এসএফপিসি/রেঞ্জ',
+        'title'          => 'এসএফএনটিসি/রেঞ্জ',
+        'title_singular' => 'এসএফএনটিসি/রেঞ্জ',
         'fields'         => [
             'id'                              => 'আইডি',
             'id_helper'                       => ' ',
@@ -1696,12 +1696,12 @@ return [
         ],
     ],
     'forestBeat' => [
-        'title'          => 'এসএফএনটিসি/বিট',
-        'title_singular' => 'এসএফএনটিসি/বিট',
+        'title'          => 'এসএফপিসি/বিট',
+        'title_singular' => 'এসএফপিসি/বিট',
         'fields'         =>[
             'id'                  => 'আইডি',
             'id_helper'           => ' ',
-            'forest_range'        => 'এসএফপিসি/রেঞ্জ',
+            'forest_range'        => 'এসএফএনটিসি/রেঞ্জ',
             'forest_range_helper' => ' ',
             'name_bn'             => 'নাম (বাংলা)',
             'name_bn_helper'      => ' ',

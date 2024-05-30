@@ -101,10 +101,27 @@
                                 </div>
                                 <!-- NID Yes/No -->
                                 <div class="form-group">
-                                    <label for="nid_option">Do you have NID?</label>
+                                    <label for="nid_option">@if (app()->getLocale() === 'bn')
+                এনআইডি
+            @else
+                NID
+            @endif</label>
                                     <select class="form-select" id="nid_option" name="nid_option">
-                                        <option value="no">No</option>
-                                        <option value="yes">Yes</option>
+                                    <option value="">@if (app()->getLocale() === 'bn')
+                অনুগ্রহ করে নির্বাচন করুন
+            @else
+                Please Select
+            @endif</option>
+                                        <option value="no">@if (app()->getLocale() === 'bn')
+                না
+            @else
+                No
+            @endif</option>
+                                        <option value="yes">@if (app()->getLocale() === 'bn')
+                হ্যাঁ
+            @else
+                Yes
+            @endif</option>
                                     </select>
                                 </div>
 
@@ -141,10 +158,27 @@
 
                                 <!-- Passport Yes/No -->
                                 <div class="form-group">
-                                    <label for="passport_option">Do you have a passport?</label>
+                                    <label for="passport_option">@if (app()->getLocale() === 'bn')
+                পাসপোর্ট
+            @else
+                Passport
+            @endif</label>
                                     <select class="form-select" id="passport_option" name="passport_option">
-                                        <option value="no">No</option>
-                                        <option value="yes">Yes</option>
+                                    <option value="">@if (app()->getLocale() === 'bn')
+                অনুগ্রহ করে নির্বাচন করুন
+            @else
+                Please Select
+            @endif</option>
+                                        <option value="no">@if (app()->getLocale() === 'bn')
+                না
+            @else
+                No
+            @endif</option>
+                                        <option value="yes">@if (app()->getLocale() === 'bn')
+                হ্যাঁ
+            @else
+                Yes
+            @endif</option>
                                     </select>
                                 </div>
 
