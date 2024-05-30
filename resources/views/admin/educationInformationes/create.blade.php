@@ -12,8 +12,6 @@
                             <form method="POST" action="{{ route('admin.education-informationes.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
-
-
                                 <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
 
                                 @livewire('education-form')
@@ -86,6 +84,7 @@
                                                     {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
                                                     {{ $entry }}</option>
                                             @endforeach
+                                            
                                         </select>
                                         @if ($errors->has('achievement_types'))
                                             <div class="invalid-feedback">
@@ -114,7 +113,7 @@
                                             for="passing_year">{{ trans('cruds.educationInformatione.fields.passing_year') }}</label>
                                         <select required="required" class="form-control" name="passing_year"
                                             id="passing_year" onchange="getEduTitle(this,'','','');">
-                                            <option value="">Select Year</option>
+                                            <option>{{ trans('global.pleaseSelect') }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -152,6 +151,7 @@
                                         <span
                                             class="help-block">{{ trans('cruds.educationInformatione.fields.employee_helper') }}</span>
                                     </div> --}}
+
                                 <div class="form-group">
                                     <button class="btn btn-danger" type="submit">
                                         {{ trans('global.save') }}

@@ -2115,7 +2115,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card bg-success mb-0 mb-4 border shadow-none">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart3->options['chart_title'] !!}</h3>
                             {!! $chart3->renderHtml() !!}

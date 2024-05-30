@@ -3,6 +3,17 @@
     <div class="card">
         <div class="card-header">
             {{ trans('global.edit') }} {{ trans('cruds.criminalProsecutione.title_singular') }}
+            <br><strong class="text-dark classname">
+                @if (app()->getLocale() === 'bn')
+                    {{ trans('cruds.employeeList.fields.fullname_bn') }}:{{ $criminalProsecutione->employee->fullname_bn }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $criminalProsecutione->employee->employeeid }}
+                @else
+                    {{ trans('cruds.employeeList.fields.fullname_en') }}:{{ $criminalProsecutione->employee->fullname_en }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $criminalProsecutione->employee->employeeid }}
+                @endif
+            </strong>
         </div>
 
         <div class="card-body">
@@ -10,7 +21,10 @@
                 enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
+                <div class="row row-cols-3">
+                    <x-hidden-input name="employee_id" value="{{ $criminalProsecutione->employee->id }}" />
+
+                    {{-- <div class="form-group">
                     <label for="employee_id">{{ trans('cruds.criminalProsecutione.fields.employee') }}</label>
                     <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
                         id="employee_id">
@@ -26,67 +40,70 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.employee_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="judgement_type">{{ trans('cruds.criminalProsecutione.fields.judgement_type') }}</label>
-                    <input class="form-control {{ $errors->has('judgement_type') ? 'is-invalid' : '' }}" type="text"
-                        name="judgement_type" id="judgement_type"
-                        value="{{ old('judgement_type', $criminalProsecutione->judgement_type) }}">
-                    @if ($errors->has('judgement_type'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('judgement_type') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.judgement_type_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="natureof_offence">{{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}</label>
-                    <input class="form-control {{ $errors->has('natureof_offence') ? 'is-invalid' : '' }}" type="text"
-                        name="natureof_offence" id="natureof_offence"
-                        value="{{ old('natureof_offence', $criminalProsecutione->natureof_offence) }}">
-                    @if ($errors->has('natureof_offence'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('natureof_offence') }}
-                        </div>
-                    @endif
-                    <span
-                        class="help-block">{{ trans('cruds.criminalProsecutione.fields.natureof_offence_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label
-                        for="government_order_no">{{ trans('cruds.criminalProsecutione.fields.government_order_no') }}</label>
-                    <input class="form-control {{ $errors->has('government_order_no') ? 'is-invalid' : '' }}"
-                        type="text" name="government_order_no" id="government_order_no"
-                        value="{{ old('government_order_no', $criminalProsecutione->government_order_no) }}">
-                    @if ($errors->has('government_order_no'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('government_order_no') }}
-                        </div>
-                    @endif
-                    <span
-                        class="help-block">{{ trans('cruds.criminalProsecutione.fields.government_order_no_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="court_order">{{ trans('cruds.criminalProsecutione.fields.court_order') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('court_order') ? 'is-invalid' : '' }}"
-                        id="court_order-dropzone">
+                </div> --}}
+                    <div class="form-group">
+                        <label for="judgement_type">{{ trans('cruds.criminalProsecutione.fields.judgement_type') }}</label>
+                        <input class="form-control {{ $errors->has('judgement_type') ? 'is-invalid' : '' }}" type="text"
+                            name="judgement_type" id="judgement_type"
+                            value="{{ old('judgement_type', $criminalProsecutione->judgement_type) }}">
+                        @if ($errors->has('judgement_type'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('judgement_type') }}
+                            </div>
+                        @endif
+                        <span
+                            class="help-block">{{ trans('cruds.criminalProsecutione.fields.judgement_type_helper') }}</span>
                     </div>
-                    @if ($errors->has('court_order'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('court_order') }}
+                    <div class="form-group">
+                        <label
+                            for="natureof_offence">{{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}</label>
+                        <input class="form-control {{ $errors->has('natureof_offence') ? 'is-invalid' : '' }}"
+                            type="text" name="natureof_offence" id="natureof_offence"
+                            value="{{ old('natureof_offence', $criminalProsecutione->natureof_offence) }}">
+                        @if ($errors->has('natureof_offence'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('natureof_offence') }}
+                            </div>
+                        @endif
+                        <span
+                            class="help-block">{{ trans('cruds.criminalProsecutione.fields.natureof_offence_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label
+                            for="government_order_no">{{ trans('cruds.criminalProsecutione.fields.government_order_no') }}</label>
+                        <input class="form-control {{ $errors->has('government_order_no') ? 'is-invalid' : '' }}"
+                            type="text" name="government_order_no" id="government_order_no"
+                            value="{{ old('government_order_no', $criminalProsecutione->government_order_no) }}">
+                        @if ($errors->has('government_order_no'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('government_order_no') }}
+                            </div>
+                        @endif
+                        <span
+                            class="help-block">{{ trans('cruds.criminalProsecutione.fields.government_order_no_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="court_order">{{ trans('cruds.criminalProsecutione.fields.court_order') }}</label>
+                        <div class="needsclick dropzone {{ $errors->has('court_order') ? 'is-invalid' : '' }}"
+                            id="court_order-dropzone">
                         </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.court_order_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="remzrk">{{ trans('cruds.criminalProsecutione.fields.remzrk') }}</label>
-                    <textarea class="form-control ckeditor {{ $errors->has('remzrk') ? 'is-invalid' : '' }}" name="remzrk" id="remzrk">{!! old('remzrk', $criminalProsecutione->remzrk) !!}</textarea>
-                    @if ($errors->has('remzrk'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('remzrk') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.remzrk_helper') }}</span>
+                        @if ($errors->has('court_order'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('court_order') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.court_order_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="remzrk">{{ trans('cruds.criminalProsecutione.fields.remzrk') }}</label>
+                        <textarea class="form-control ckeditor {{ $errors->has('remzrk') ? 'is-invalid' : '' }}" name="remzrk" id="remzrk">{!! old('remzrk', $criminalProsecutione->remzrk) !!}</textarea>
+                        @if ($errors->has('remzrk'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('remzrk') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.criminalProsecutione.fields.remzrk_helper') }}</span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">
@@ -184,7 +201,7 @@
                                                     .message ?
                                                     `${genericErrorText}\n${xhr.status} ${response.message}` :
                                                     `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                                    );
+                                                );
                                             }
 
                                             $('form').append(
@@ -198,7 +215,7 @@
 
                                         if (xhr.upload) {
                                             xhr.upload.addEventListener('progress', function(
-                                            e) {
+                                                e) {
                                                 if (e.lengthComputable) {
                                                     loader.uploadTotal = e.total;
                                                     loader.uploaded = e.loaded;

@@ -6,10 +6,9 @@
                 for="joiningexaminfo_id">{{ trans('cruds.employeeList.fields.joiningexaminfo') }}</label>
             <select wire:model="joininginfo" class="form-select" name="joiningexaminfo_id" id="joiningexaminfo_id"
                 wire:change="onSelectChange($event.target.value)" required>
-                <option value="">Select</option>
+                <option>{{ trans('global.pleaseSelect') }}</option>
                 @foreach ($joininginfoData as $option)
-                    <option value="{{ $option->id }}"
-                        {{ old('joiningexaminfo_id') == $option->id ? 'selected' : '' }}>
+                    <option value="{{ $option->id }}" {{ old('joiningexaminfo_id') == $option->id ? 'selected' : '' }}>
                         @if (app()->getLocale() === 'bn')
                             {{ $option->project_revenue_bn }}
                         @else
@@ -59,7 +58,7 @@
                 <select wire:model="revenueType" class="form-select" name="projectrevenue_id" id="projectrevenue_id"
                     wire:change="onSelectrevenueType($event.target.value)" required>
 
-                    <option>Select</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($projectRevenueall as $option)
                         <option value="{{ $option->id }}"
                             {{ old('projectrevenue_id') == $option->id ? 'selected' : '' }}>
@@ -96,14 +95,7 @@
                 <select wire:model="departmentalOrDepartmental" class="form-select" name="departmental_exam_id"
                     id="departmental_exam_id" wire:change="onSelectdepartmentalOrDepartmental($event.target.value)"
                     required>
-                    <option>
-
-                        @if (app()->getLocale() === 'bn')
-                            নির্বাচন করুন
-                        @else
-                            select
-                        @endif
-                    </option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($projectRevenueExam as $option)
                         <option value="{{ $option->id }}"
                             {{ old('departmental_exam_id') == $option->id ? 'selected' : '' }}>
@@ -134,14 +126,11 @@
                     <select wire:model="exampass" class="form-select" name="level_1" id="level_1"
                         wire:change="onSelectexampass($event.target.value)" required>
 
-
+                        <option>{{ trans('global.pleaseSelect') }}</option>
                         @if (app()->getLocale() === 'bn')
-                            <option>
-                                নির্বাচন করুন</option>
                             <option value="No" {{ old('level_1') == $option->id ? 'selected' : '' }}>না</option>
                             <option value="Yes" {{ old('level_1') == $option->id ? 'selected' : '' }}>হ্যাঁ</option>
                         @else
-                            <option>Select</option>
                             <option value="No" {{ old('level_1') == $option->id ? 'selected' : '' }}>No</option>
                             <option value="Yes" {{ old('level_1') == $option->id ? 'selected' : '' }}>Yes</option>
                         @endif

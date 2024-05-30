@@ -3,6 +3,17 @@
     <div class="card">
         <div class="card-header">
             {{ trans('global.edit') }} {{ trans('cruds.publication.title_singular') }}
+            <br><strong class="text-dark classname">
+                @if (app()->getLocale() === 'bn')
+                    {{ trans('cruds.employeeList.fields.fullname_bn') }}: {{ $publication->employee->fullname_bn }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $publication->employee->employeeid }}
+                @else
+                    {{ trans('cruds.employeeList.fields.fullname_en') }}: {{ $publication->employee->fullname_en }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $publication->employee->employeeid }}
+                @endif
+            </strong>
         </div>
 
         <div class="card-body">
@@ -10,84 +21,75 @@
                 enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
-                    <label class="required" for="title">{{ trans('cruds.publication.fields.title') }}</label>
-                    <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title"
-                        id="title" value="{{ old('title', $publication->title) }}" required>
-                    @if ($errors->has('title'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('title') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.publication.fields.title_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label class="required">{{ trans('cruds.publication.fields.publication_type') }}</label>
-                    <select class="form-select {{ $errors->has('publication_type') ? 'is-invalid' : '' }}"
-                        name="publication_type" id="publication_type" required>
-                        <option value disabled {{ old('publication_type', null) === null ? 'selected' : '' }}>
-                            {{ trans('global.pleaseSelect') }}</option>
-                        @foreach (App\Models\Publication::PUBLICATION_TYPE_SELECT as $key => $label)
-                            <option value="{{ $key }}"
-                                {{ old('publication_type', $publication->publication_type) === (string) $key ? 'selected' : '' }}>
-                                {{ $label }}</option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('publication_type'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('publication_type') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.publication.fields.publication_type_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="publication_media">{{ trans('cruds.publication.fields.publication_media') }}</label>
-                    <input class="form-control {{ $errors->has('publication_media') ? 'is-invalid' : '' }}" type="text"
-                        name="publication_media" id="publication_media"
-                        value="{{ old('publication_media', $publication->publication_media) }}">
-                    @if ($errors->has('publication_media'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('publication_media') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.publication.fields.publication_media_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="publication_date">{{ trans('cruds.publication.fields.publication_date') }}</label>
-                    <input class="form-control date {{ $errors->has('publication_date') ? 'is-invalid' : '' }}"
-                        type="text" name="publication_date" id="publication_date"
-                        value="{{ old('publication_date', $publication->publication_date) }}">
-                    @if ($errors->has('publication_date'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('publication_date') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.publication.fields.publication_date_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="publication_link">{{ trans('cruds.publication.fields.publication_link') }}</label>
-                    <input class="form-control {{ $errors->has('publication_link') ? 'is-invalid' : '' }}" type="text"
-                        name="publication_link" id="publication_link"
-                        value="{{ old('publication_link', $publication->publication_link) }}">
-                    @if ($errors->has('publication_link'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('publication_link') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.publication.fields.publication_link_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="description">{{ trans('cruds.publication.fields.description') }}</label>
-                    <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description"
-                        id="description">{!! old('description', $publication->description) !!}</textarea>
-                    @if ($errors->has('description'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('description') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.publication.fields.description_helper') }}</span>
-                </div>
-                <div class="form-group">
+                <div class="row row-cols-3">
+                    <div class="form-group">
+                        <label class="required" for="title">{{ trans('cruds.publication.fields.title') }}</label>
+                        <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text"
+                            name="title" id="title" value="{{ old('title', $publication->title) }}" required>
+                        @if ($errors->has('title'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('title') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.publication.fields.title_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="required">{{ trans('cruds.publication.fields.publication_type') }}</label>
+                        <select class="form-select {{ $errors->has('publication_type') ? 'is-invalid' : '' }}"
+                            name="publication_type" id="publication_type" required>
+                            <option value disabled {{ old('publication_type', null) === null ? 'selected' : '' }}>
+                                {{ trans('global.pleaseSelect') }}</option>
+                            @foreach (App\Models\Publication::PUBLICATION_TYPE_SELECT as $key => $label)
+                                <option value="{{ $key }}"
+                                    {{ old('publication_type', $publication->publication_type) === (string) $key ? 'selected' : '' }}>
+                                    {{ $label }}</option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('publication_type'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('publication_type') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.publication.fields.publication_type_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="publication_media">{{ trans('cruds.publication.fields.publication_media') }}</label>
+                        <input class="form-control {{ $errors->has('publication_media') ? 'is-invalid' : '' }}"
+                            type="text" name="publication_media" id="publication_media"
+                            value="{{ old('publication_media', $publication->publication_media) }}">
+                        @if ($errors->has('publication_media'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('publication_media') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.publication.fields.publication_media_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="publication_date">{{ trans('cruds.publication.fields.publication_date') }}</label>
+                        <input class="form-control date {{ $errors->has('publication_date') ? 'is-invalid' : '' }}"
+                            type="text" name="publication_date" id="publication_date"
+                            value="{{ old('publication_date', $publication->publication_date) }}">
+                        @if ($errors->has('publication_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('publication_date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.publication.fields.publication_date_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="publication_link">{{ trans('cruds.publication.fields.publication_link') }}</label>
+                        <input class="form-control {{ $errors->has('publication_link') ? 'is-invalid' : '' }}"
+                            type="text" name="publication_link" id="publication_link"
+                            value="{{ old('publication_link', $publication->publication_link) }}">
+                        @if ($errors->has('publication_link'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('publication_link') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.publication.fields.publication_link_helper') }}</span>
+                    </div>
+
+                    {{-- <div class="form-group">
                     <label for="employee_id">{{ trans('cruds.publication.fields.employee') }}</label>
                     <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                         name="employee_id" id="employee_id">
@@ -103,6 +105,19 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.publication.fields.employee_helper') }}</span>
+                </div> --}}
+                    <x-hidden-input name="employee_id" value="{{ $publication->employee->id }}" />
+                </div>
+                <div class="form-group">
+                    <label for="description">{{ trans('cruds.publication.fields.description') }}</label>
+                    <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description"
+                        id="description">{!! old('description', $publication->description) !!}</textarea>
+                    @if ($errors->has('description'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('description') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.publication.fields.description_helper') }}</span>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">
@@ -150,7 +165,7 @@
                                                     .message ?
                                                     `${genericErrorText}\n${xhr.status} ${response.message}` :
                                                     `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                                    );
+                                                );
                                             }
 
                                             $('form').append(
@@ -164,7 +179,7 @@
 
                                         if (xhr.upload) {
                                             xhr.upload.addEventListener('progress', function(
-                                            e) {
+                                                e) {
                                                 if (e.lengthComputable) {
                                                     loader.uploadTotal = e.total;
                                                     loader.uploaded = e.loaded;

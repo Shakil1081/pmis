@@ -54,7 +54,7 @@
                                     @endcan
 
                                     @can('freedom_fighte_relation_edit')
-                                        <a class="btn btn-xs btn-info"
+                                        <a class="btn btn-sm btn-warning px-2"
                                             href="{{ route('admin.freedom-fighte-relations.edit', $freedomFighteRelation->id) }}">
                                             {{ trans('global.edit') }}
                                         </a>
@@ -67,7 +67,7 @@
                                             style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger"
+                                            <input type="submit" class="btn btn-sm btn-danger px-2"
                                                 value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan

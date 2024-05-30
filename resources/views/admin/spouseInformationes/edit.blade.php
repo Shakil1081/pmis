@@ -3,6 +3,17 @@
     <div class="card">
         <div class="card-header">
             {{ trans('global.edit') }} {{ trans('cruds.spouseInformatione.title_singular') }}
+            <br><strong class="text-dark classname">
+                @if (app()->getLocale() === 'bn')
+                    {{ trans('cruds.employeeList.fields.fullname_bn') }}: {{ $spouseInformatione->employee->fullname_bn }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $spouseInformatione->employee->employeeid }}
+                @else
+                    {{ trans('cruds.employeeList.fields.fullname_en') }}: {{ $spouseInformatione->employee->fullname_en }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $spouseInformatione->employee->employeeid }}
+                @endif
+            </strong>
         </div>
 
         <div class="card-body">
@@ -10,7 +21,9 @@
                 enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
+                <div class="row row-cols-3">
+                    <x-hidden-input name="employee_id" value="{{ $spouseInformatione->employee->id }}" />
+                    {{-- <div class="form-group">
                     <label class="required" for="employee_id">{{ trans('cruds.spouseInformatione.fields.employee') }}</label>
                     <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                         name="employee_id" id="employee_id" required>
@@ -26,53 +39,56 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.spouseInformatione.fields.employee_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label class="required" for="name_bn">{{ trans('cruds.spouseInformatione.fields.name_bn') }}</label>
-                    <input class="form-control {{ $errors->has('name_bn') ? 'is-invalid' : '' }}" type="text"
-                        name="name_bn" id="name_bn" value="{{ old('name_bn', $spouseInformatione->name_bn) }}" required>
-                    @if ($errors->has('name_bn'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('name_bn') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.spouseInformatione.fields.name_bn_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="name_en">{{ trans('cruds.spouseInformatione.fields.name_en') }}</label>
-                    <input class="form-control {{ $errors->has('name_en') ? 'is-invalid' : '' }}" type="text"
-                        name="name_en" id="name_en" value="{{ old('name_en', $spouseInformatione->name_en) }}">
-                    @if ($errors->has('name_en'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('name_en') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.spouseInformatione.fields.name_en_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="nid_number">{{ trans('cruds.spouseInformatione.fields.nid_number') }}</label>
-                    <input class="form-control {{ $errors->has('nid_number') ? 'is-invalid' : '' }}" type="text"
-                        name="nid_number" id="nid_number" value="{{ old('nid_number', $spouseInformatione->nid_number) }}">
-                    @if ($errors->has('nid_number'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('nid_number') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_number_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="nid_upload">{{ trans('cruds.spouseInformatione.fields.nid_upload') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}"
-                        id="nid_upload-dropzone">
+                </div> --}}
+                    <div class="form-group">
+                        <label class="required"
+                            for="name_bn">{{ trans('cruds.spouseInformatione.fields.name_bn') }}</label>
+                        <input class="form-control {{ $errors->has('name_bn') ? 'is-invalid' : '' }}" type="text"
+                            name="name_bn" id="name_bn" value="{{ old('name_bn', $spouseInformatione->name_bn) }}"
+                            required>
+                        @if ($errors->has('name_bn'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('name_bn') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.spouseInformatione.fields.name_bn_helper') }}</span>
                     </div>
-                    @if ($errors->has('nid_upload'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('nid_upload') }}
+                    <div class="form-group">
+                        <label for="name_en">{{ trans('cruds.spouseInformatione.fields.name_en') }}</label>
+                        <input class="form-control {{ $errors->has('name_en') ? 'is-invalid' : '' }}" type="text"
+                            name="name_en" id="name_en" value="{{ old('name_en', $spouseInformatione->name_en) }}">
+                        @if ($errors->has('name_en'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('name_en') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.spouseInformatione.fields.name_en_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="nid_number">{{ trans('cruds.spouseInformatione.fields.nid_number') }}</label>
+                        <input class="form-control {{ $errors->has('nid_number') ? 'is-invalid' : '' }}" type="text"
+                            name="nid_number" id="nid_number"
+                            value="{{ old('nid_number', $spouseInformatione->nid_number) }}">
+                        @if ($errors->has('nid_number'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('nid_number') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_number_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="nid_upload">{{ trans('cruds.spouseInformatione.fields.nid_upload') }}</label>
+                        <div class="needsclick dropzone {{ $errors->has('nid_upload') ? 'is-invalid' : '' }}"
+                            id="nid_upload-dropzone">
                         </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_upload_helper') }}</span>
-                </div>
-                {{-- <div class="form-group">
+                        @if ($errors->has('nid_upload'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('nid_upload') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.spouseInformatione.fields.nid_upload_helper') }}</span>
+                    </div>
+                    {{-- <div class="form-group">
                 <label for="occupation">{{ trans('cruds.spouseInformatione.fields.occupation') }}</label>
                 <input class="form-control {{ $errors->has('occupation') ? 'is-invalid' : '' }}" type="text" name="occupation" id="occupation" value="{{ old('occupation', $spouseInformatione->occupation) }}">
                 @if ($errors->has('occupation'))
@@ -92,17 +108,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.spouseInformatione.fields.office_address_helper') }}</span>
             </div> --}}
-                <div class="form-group">
-                    <label for="phone_number">{{ trans('cruds.spouseInformatione.fields.phone_number') }}</label>
-                    <input class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" type="text"
-                        name="phone_number" id="phone_number"
-                        value="{{ old('phone_number', $spouseInformatione->phone_number) }}">
-                    @if ($errors->has('phone_number'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('phone_number') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.spouseInformatione.fields.phone_number_helper') }}</span>
+                    <div class="form-group">
+                        <label for="phone_number">{{ trans('cruds.spouseInformatione.fields.phone_number') }}</label>
+                        <input class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" type="text"
+                            name="phone_number" id="phone_number"
+                            value="{{ old('phone_number', $spouseInformatione->phone_number) }}">
+                        @if ($errors->has('phone_number'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('phone_number') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.spouseInformatione.fields.phone_number_helper') }}</span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="present_addess">{{ trans('cruds.spouseInformatione.fields.present_addess') }}</label>
@@ -126,6 +143,7 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.spouseInformatione.fields.permanent_addess_helper') }}</span>
                 </div>
+
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">
                         {{ trans('global.save') }}
@@ -222,7 +240,7 @@
                                                     .message ?
                                                     `${genericErrorText}\n${xhr.status} ${response.message}` :
                                                     `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                                    );
+                                                );
                                             }
 
                                             $('form').append(
@@ -236,7 +254,7 @@
 
                                         if (xhr.upload) {
                                             xhr.upload.addEventListener('progress', function(
-                                            e) {
+                                                e) {
                                                 if (e.lengthComputable) {
                                                     loader.uploadTotal = e.total;
                                                     loader.uploaded = e.loaded;

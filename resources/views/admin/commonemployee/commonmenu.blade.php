@@ -68,12 +68,12 @@
                 {{ trans('cruds.leaveRecord.title') }}
             </a>
         @endcan
-        @can('service_particular_access')
+        {{-- @can('service_particular_access')
             <a href="{{ route('admin.service-particulars.create', ['id' => $id]) }}"
                 class="nav-link {{ request()->is('admin/service-particulars') || request()->is('admin/service-particulars/*') ? 'c-active' : '' }}">
                 {{ trans('cruds.serviceParticular.title') }}
             </a>
-        @endcan
+        @endcan --}}
         @can('training_access')
             <a href="{{ route('admin.trainings.create', ['id' => $id]) }}"
                 class="nav-link {{ request()->is('admin/trainings') || request()->is('admin/trainings/*') ? 'c-active' : '' }}">

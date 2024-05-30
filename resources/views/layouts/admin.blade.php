@@ -53,13 +53,27 @@
             height: 20px;
         }
 
-        .dropzone {
+        /* .dropzone {
             min-height: 40px !important;
             padding: 7px;
             background-color: #4c944e45;
             border: gainsboro;
             border-radius: 5px;
+        } */
+
+        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
+        .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+            color: #f0fdf4;
         }
+
+        .dropzone {
+            min-height: 40px !important;
+            padding: 7px;
+            background-color: #dcfce7;
+            border: #14532d;
+            border-radius: 5px;
+        }
+
 
         .dropzone .dz-message {
             margin: 0px;
@@ -107,20 +121,20 @@
         } */
 
         ul.c-sidebar-nav.ps {
-            background: #081e01 !important;
+            background: #22c55e !important;
         }
 
         .btn-success {
             --bs-btn-color: #fff;
-            --bs-btn-bg: #061801;
-            --bs-btn-border-color: #061801;
+            --bs-btn-bg: #22c55e;
+            --bs-btn-border-color: #22c55e;
             --bs-btn-hover-color: #fff;
-            --bs-btn-hover-bg: #05100199;
-            --bs-btn-hover-border-color: #061801;
+            --bs-btn-hover-bg: #22c55e;
+            --bs-btn-hover-border-color: #22c55e;
             --bs-btn-focus-shadow-rgb: 60, 153, 110;
             --bs-btn-active-color: #fff;
-            --bs-btn-active-bg: #061801;
-            --bs-btn-active-border-color: #13240e99;
+            --bs-btn-active-bg: #22c55e;
+            --bs-btn-active-border-color: #22c55e;
             --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
             --bs-btn-disabled-color: #fff;
             --bs-btn-disabled-bg: #02c27a;
@@ -226,8 +240,32 @@
         }
 
         .mycustommenu .c-active {
-            background: #898b8d;
-            color: #fff;
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            margin-bottom: .5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #000000 !important;
+        }
+
+        label {
+            display: inline-block;
+            color: #052e16;
         }
     </style>
 
@@ -258,11 +296,11 @@
                 <li>@lang('dashboard.welcome'), {{ Auth::user()->name }} </li>
 
                 @if (app()->getLocale() === 'bn')
-                    <li><a href="{{ url()->current() }}?change_language=en" class="btn btn-sm btn-danger mx-2">
+                    <li><a href="{{ url()->current() }}?change_language=en" class="btn btn-sm btn-success mx-2">
                             English
                         </a></li>
                 @else
-                    <li><a href="{{ url()->current() }}?change_language=bn" class="btn btn-sm btn-danger mx-2">
+                    <li><a href="{{ url()->current() }}?change_language=bn" class="btn btn-sm btn-success mx-2">
                             বাংলা
                         </a></li>
                 @endif

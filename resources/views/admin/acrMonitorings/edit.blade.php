@@ -3,6 +3,19 @@
     <div class="card">
         <div class="card-header">
             {{ trans('global.edit') }} {{ trans('cruds.acrMonitoring.title_singular') }}
+            <br><strong class="text-dark">
+                @if (app()->getLocale() === 'bn')
+                    {{ trans('cruds.employeeList.fields.fullname_bn') }}: {{ $acrMonitoring->employee->fullname_bn }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $acrMonitoring->employee->employeeid }}
+                @else
+                    {{ trans('cruds.employeeList.fields.fullname_en') }}: {{ $acrMonitoring->employee->fullname_en }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $acrMonitoring->employee->employeeid }}
+                @endif
+
+
+            </strong>
         </div>
 
         <div class="card-body">
@@ -10,7 +23,10 @@
                 enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
+                <div class="row row-cols-3">
+                    <x-hidden-input name="employee_id" value="{{ $acrMonitoring->employee->id }}" />
+
+                    {{-- <div class="form-group">
                     <label class="required" for="employee_id">{{ trans('cruds.acrMonitoring.fields.employee') }}</label>
                     <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
                         id="employee_id" required>
@@ -26,40 +42,43 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.acrMonitoring.fields.employee_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label class="required" for="year">{{ trans('cruds.acrMonitoring.fields.year') }}</label>
-                    <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" type="number"
-                        name="year" id="year" value="{{ old('year', $acrMonitoring->year) }}" step="1"
-                        required>
-                    @if ($errors->has('year'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('year') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.acrMonitoring.fields.year_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="reviewer">{{ trans('cruds.acrMonitoring.fields.reviewer') }}</label>
-                    <input class="form-control {{ $errors->has('reviewer') ? 'is-invalid' : '' }}" type="text"
-                        name="reviewer" id="reviewer" value="{{ old('reviewer', $acrMonitoring->reviewer) }}">
-                    @if ($errors->has('reviewer'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('reviewer') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.acrMonitoring.fields.reviewer_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="review_date">{{ trans('cruds.acrMonitoring.fields.review_date') }}</label>
-                    <input class="form-control date {{ $errors->has('review_date') ? 'is-invalid' : '' }}" type="text"
-                        name="review_date" id="review_date" value="{{ old('review_date', $acrMonitoring->review_date) }}">
-                    @if ($errors->has('review_date'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('review_date') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.acrMonitoring.fields.review_date_helper') }}</span>
+                </div> --}}
+                    <div class="form-group">
+                        <label class="required" for="year">{{ trans('cruds.acrMonitoring.fields.year') }}</label>
+                        <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" type="number"
+                            name="year" id="year" value="{{ old('year', $acrMonitoring->year) }}" step="1"
+                            required>
+                        @if ($errors->has('year'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('year') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.acrMonitoring.fields.year_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewer">{{ trans('cruds.acrMonitoring.fields.reviewer') }}</label>
+                        <input class="form-control {{ $errors->has('reviewer') ? 'is-invalid' : '' }}" type="text"
+                            name="reviewer" id="reviewer" value="{{ old('reviewer', $acrMonitoring->reviewer) }}">
+                        @if ($errors->has('reviewer'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('reviewer') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.acrMonitoring.fields.reviewer_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="review_date">{{ trans('cruds.acrMonitoring.fields.review_date') }}</label>
+                        <input class="form-control date {{ $errors->has('review_date') ? 'is-invalid' : '' }}"
+                            type="text" name="review_date" id="review_date"
+                            value="{{ old('review_date', $acrMonitoring->review_date) }}">
+                        @if ($errors->has('review_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('review_date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.acrMonitoring.fields.review_date_helper') }}</span>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <label for="remarks">{{ trans('cruds.acrMonitoring.fields.remarks') }}</label>
@@ -118,7 +137,7 @@
                                                     .message ?
                                                     `${genericErrorText}\n${xhr.status} ${response.message}` :
                                                     `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                                    );
+                                                );
                                             }
 
                                             $('form').append(
@@ -132,7 +151,7 @@
 
                                         if (xhr.upload) {
                                             xhr.upload.addEventListener('progress', function(
-                                            e) {
+                                                e) {
                                                 if (e.lengthComputable) {
                                                     loader.uploadTotal = e.total;
                                                     loader.uploaded = e.loaded;
@@ -144,7 +163,7 @@
                                         var data = new FormData();
                                         data.append('upload', file);
                                         data.append('crud_id',
-                                        '{{ $acrMonitoring->id ?? 0 }}');
+                                            '{{ $acrMonitoring->id ?? 0 }}');
                                         xhr.send(data);
                                     });
                                 })

@@ -3,6 +3,17 @@
     <div class="card">
         <div class="card-header">
             {{ trans('global.edit') }} {{ trans('cruds.extracurriculam.title_singular') }}
+            <br><strong class="text-dark classname">
+                @if (app()->getLocale() === 'bn')
+                    {{ trans('cruds.employeeList.fields.fullname_bn') }}:{{ $extracurriculam->employee->fullname_bn }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $extracurriculam->employee->employeeid }}
+                @else
+                    {{ trans('cruds.employeeList.fields.fullname_en') }}:{{ $extracurriculam->employee->fullname_en }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $extracurriculam->employee->employeeid }}
+                @endif
+            </strong>
         </div>
 
         <div class="card-body">
@@ -10,7 +21,9 @@
                 enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
+                <div class="row row-cols-3">
+                    <x-hidden-input name="employee_id" value="{{ $extracurriculam->employee->id }}" />
+                    {{-- <div class="form-group">
                     <label for="employee_id">{{ trans('cruds.extracurriculam.fields.employee') }}</label>
                     <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id"
                         id="employee_id">
@@ -26,64 +39,79 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.extracurriculam.fields.employee_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label class="required"
-                        for="activity_name">{{ trans('cruds.extracurriculam.fields.activity_name') }}</label>
-                    <input class="form-control {{ $errors->has('activity_name') ? 'is-invalid' : '' }}" type="text"
-                        name="activity_name" id="activity_name"
-                        value="{{ old('activity_name', $extracurriculam->activity_name) }}" required>
-                    @if ($errors->has('activity_name'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('activity_name') }}
+                </div> --}}
+                    <div class="form-group">
+                        <label class="required"
+                            for="activity_name">{{ trans('cruds.extracurriculam.fields.activity_name') }}</label>
+                        <input class="form-control {{ $errors->has('activity_name') ? 'is-invalid' : '' }}" type="text"
+                            name="activity_name" id="activity_name"
+                            value="{{ old('activity_name', $extracurriculam->activity_name) }}" required>
+                        @if ($errors->has('activity_name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('activity_name') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.extracurriculam.fields.activity_name_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="organization">{{ trans('cruds.extracurriculam.fields.organization') }}</label>
+                        <input class="form-control {{ $errors->has('organization') ? 'is-invalid' : '' }}" type="text"
+                            name="organization" id="organization"
+                            value="{{ old('organization', $extracurriculam->organization) }}">
+                        @if ($errors->has('organization'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('organization') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.extracurriculam.fields.organization_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="position">{{ trans('cruds.extracurriculam.fields.position') }}</label>
+                        <input class="form-control {{ $errors->has('position') ? 'is-invalid' : '' }}" type="text"
+                            name="position" id="position" value="{{ old('position', $extracurriculam->position) }}">
+                        @if ($errors->has('position'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('position') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.extracurriculam.fields.position_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">{{ trans('cruds.extracurriculam.fields.start_date') }}</label>
+                        <input class="form-control date {{ $errors->has('start_date') ? 'is-invalid' : '' }}"
+                            type="text" name="start_date" id="start_date"
+                            value="{{ old('start_date', $extracurriculam->start_date) }}">
+                        @if ($errors->has('start_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('start_date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.extracurriculam.fields.start_date_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">{{ trans('cruds.extracurriculam.fields.end_date') }}</label>
+                        <input class="form-control date {{ $errors->has('end_date') ? 'is-invalid' : '' }}" type="text"
+                            name="end_date" id="end_date" value="{{ old('end_date', $extracurriculam->end_date) }}">
+                        @if ($errors->has('end_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('end_date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.extracurriculam.fields.end_date_helper') }}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attatchment">{{ trans('cruds.extracurriculam.fields.attatchment') }}</label>
+                        <div class="needsclick dropzone {{ $errors->has('attatchment') ? 'is-invalid' : '' }}"
+                            id="attatchment-dropzone">
                         </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.extracurriculam.fields.activity_name_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="organization">{{ trans('cruds.extracurriculam.fields.organization') }}</label>
-                    <input class="form-control {{ $errors->has('organization') ? 'is-invalid' : '' }}" type="text"
-                        name="organization" id="organization"
-                        value="{{ old('organization', $extracurriculam->organization) }}">
-                    @if ($errors->has('organization'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('organization') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.extracurriculam.fields.organization_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="position">{{ trans('cruds.extracurriculam.fields.position') }}</label>
-                    <input class="form-control {{ $errors->has('position') ? 'is-invalid' : '' }}" type="text"
-                        name="position" id="position" value="{{ old('position', $extracurriculam->position) }}">
-                    @if ($errors->has('position'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('position') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.extracurriculam.fields.position_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="start_date">{{ trans('cruds.extracurriculam.fields.start_date') }}</label>
-                    <input class="form-control date {{ $errors->has('start_date') ? 'is-invalid' : '' }}" type="text"
-                        name="start_date" id="start_date" value="{{ old('start_date', $extracurriculam->start_date) }}">
-                    @if ($errors->has('start_date'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('start_date') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.extracurriculam.fields.start_date_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="end_date">{{ trans('cruds.extracurriculam.fields.end_date') }}</label>
-                    <input class="form-control date {{ $errors->has('end_date') ? 'is-invalid' : '' }}" type="text"
-                        name="end_date" id="end_date" value="{{ old('end_date', $extracurriculam->end_date) }}">
-                    @if ($errors->has('end_date'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('end_date') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.extracurriculam.fields.end_date_helper') }}</span>
+                        @if ($errors->has('attatchment'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('attatchment') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.extracurriculam.fields.attatchment_helper') }}</span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="description">{{ trans('cruds.extracurriculam.fields.description') }}</label>
@@ -95,18 +123,6 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.extracurriculam.fields.description_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="attatchment">{{ trans('cruds.extracurriculam.fields.attatchment') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('attatchment') ? 'is-invalid' : '' }}"
-                        id="attatchment-dropzone">
-                    </div>
-                    @if ($errors->has('attatchment'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('attatchment') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.extracurriculam.fields.attatchment_helper') }}</span>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">
@@ -154,7 +170,7 @@
                                                     .message ?
                                                     `${genericErrorText}\n${xhr.status} ${response.message}` :
                                                     `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                                    );
+                                                );
                                             }
 
                                             $('form').append(
@@ -168,7 +184,7 @@
 
                                         if (xhr.upload) {
                                             xhr.upload.addEventListener('progress', function(
-                                            e) {
+                                                e) {
                                                 if (e.lengthComputable) {
                                                     loader.uploadTotal = e.total;
                                                     loader.uploaded = e.loaded;
