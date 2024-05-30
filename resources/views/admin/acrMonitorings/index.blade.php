@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('acr_monitoring_create')
+    {{-- @can('acr_monitoring_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.acr-monitorings.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.acrMonitoring.title_singular') }} {{ trans('global.list') }}

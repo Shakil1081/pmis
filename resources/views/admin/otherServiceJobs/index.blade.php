@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('other_service_job_create')
+    {{-- @can('other_service_job_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.other-service-jobs.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.otherServiceJob.title_singular') }} {{ trans('global.list') }}

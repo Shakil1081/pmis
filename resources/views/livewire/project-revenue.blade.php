@@ -214,8 +214,37 @@
             @endif
             <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
         </div>
+
         <div class="form-group">
-            <label class="required" for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
+            <label class="required" for="class">{{ trans('cruds.employeeList.fields.class') }}</label>
+            <select class="form-select {{ $errors->has('class') ? 'is-invalid' : '' }}" name="class" id="class"
+                required>
+                <option value="" disabled selected>
+                    {{ trans('global.pleaseSelect') }}</option>
+
+                @if (app()->getLocale() === 'bn')
+                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>১ম</option>
+                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>২য়</option>
+                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>৩য়</option>
+                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>৪র্থ</option>
+                @else
+                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>1st</option>
+                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>2nd</option>
+                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>3rd</option>
+                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>4th</option>
+                @endif
+            </select>
+            @if ($errors->has('class'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('class') }}
+                </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.employeeList.fields.class_helper') }}</span>
+        </div>
+
+        <div class="form-group">
+            <label class="required"
+                for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
             <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}" type="text"
                 name="fjoining_date" id="fjoining_date" value="{{ old('fjoining_date') }}" required>
             @if ($errors->has('fjoining_date'))

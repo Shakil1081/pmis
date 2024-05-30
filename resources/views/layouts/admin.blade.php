@@ -293,7 +293,7 @@
             </button>
 
             <ul class="c-header-nav ml-auto">
-                <li>@lang('dashboard.welcome'),{{ app()->getLocale() === 'bn' ? Auth::user()->name : Auth::user()->name_en }}
+                <li>@lang('dashboard.welcome'),{{ app()->getLocale() === 'bn' ? Auth::user()->name_en : Auth::user()->name_en }}
                 </li>
 
                 @if (app()->getLocale() === 'bn')
