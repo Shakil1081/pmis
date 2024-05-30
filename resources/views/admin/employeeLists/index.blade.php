@@ -156,7 +156,7 @@
                                 class="btn btn-sm btn-outline-success">
                                 {{ trans('global.edit') }}
                             </a>
-                            <a href="{{ route('admin.employeedata', ['id' => $empID]) }}"
+                            <a href="{{ route('admin.employeedata.pdf', ['id' => $empID]) }}"
                                 class="btn btn-sm btn-outline-success">
 
                                 @if (app()->getLocale() === 'bn')

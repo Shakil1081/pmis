@@ -34,6 +34,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
+USe PDF;
+
 class EmployeeListController extends Controller
 {
     use MediaUploadingTrait;
@@ -474,9 +476,6 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
     public function commonemployeeshow(Request $request)
     {
 
-
-        //EmployeeList $employeeList
-
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $employeeList = EmployeeList::findOrFail($request->id);
 
@@ -484,10 +483,31 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }
+    public function employeedata_pdf (Request $request)
+    {
+
+
+  
+        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+        // ->find($request->id);
+
+        // return view('admin.employeeLists.pdf', compact('employeeList'));
+        $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+            ->find($request->id);
+
+        // Check if employee list exists
+        if (!$employeeList) {
+            abort(404);
+        }
+
+        $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList'));
+
+        return $pdf->download('employee_list.pdf');
+    }
     public function employeedata(Request $request)
     {     
         
-       
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')

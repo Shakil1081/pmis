@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('add-employee', [EmployeeListController::class,'Commonemployeecreate'])->name('creatrmployee');
     Route::get('show-employee', [EmployeeListController::class,'commonemployeeshow'])->name('commonemployeeshow');
     Route::get('employee-data/{id}', [EmployeeListController::class,'employeedata'])->name('employeedata');
+    Route::get('employee-pdf/{id}', [EmployeeListController::class,'employeedata_pdf'])->name('employeedata.pdf');
     Route::get('dfo', [EmployeeListController::class,'dfo'])->name('dfo');
     Route::post('/approve', [EmployeeListController::class, 'approve'])->name('employee.approve');
 
