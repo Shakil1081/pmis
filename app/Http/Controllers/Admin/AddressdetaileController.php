@@ -12,6 +12,7 @@ use App\Models\EmployeeList;
 use App\Models\Upazila;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -84,12 +85,14 @@ class AddressdetaileController extends Controller
     }
 
     public function create()
-    {
+    { 
+        $locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('addressdetaile_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $thana_upazilas = Upazila::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $thana_upazilas = Upazila::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.addressdetailes.create', compact('employees', 'thana_upazilas'));
     }
