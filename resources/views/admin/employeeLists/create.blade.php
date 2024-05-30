@@ -42,32 +42,6 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.fullname_en_helper') }}</span>
                         </div>
 
-                        <div class="form-group">
-                            <label class="required" for="class">{{ trans('cruds.employeeList.fields.class') }}</label>
-                            <select class="form-select {{ $errors->has('class') ? 'is-invalid' : '' }}" name="class"
-                                id="class" required>
-                                <option value="" disabled selected>
-                                    {{ trans('global.pleaseSelect') }}</option>
-
-                                @if (app()->getLocale() === 'bn')
-                                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>১ম</option>
-                                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>২য়</option>
-                                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>৩য়</option>
-                                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>৪র্থ</option>
-                                @else
-                                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>1st</option>
-                                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>2nd</option>
-                                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>3rd</option>
-                                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>4th</option>
-                                @endif
-                            </select>
-                            @if ($errors->has('class'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('class') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.class_helper') }}</span>
-                        </div>
 
 
                         <div class="form-group">
@@ -151,8 +125,8 @@
                                 for="date_of_birth">{{ trans('cruds.employeeList.fields.date_of_birth') }}</label>
                             <input
                                 class="form-control date___remove {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
-                                type="date" name="date_of_birth" id="date_of_birth"
-                                value="{{ old('date_of_birth') }}" required>
+                                type="date" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}"
+                                required>
                             @if ($errors->has('date_of_birth'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('date_of_birth') }}
