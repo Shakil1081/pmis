@@ -44,6 +44,7 @@ class EmployeeListController extends Controller
 
         $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
      //$data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+
         $data['total'] = EmployeeList::count();
 
         // You can specify the number of items per page, for example, 10
