@@ -90,8 +90,7 @@ class StoreEmployeeListRequest extends FormRequest
                 'integer',
             ],
             'religion_id' => [
-                'required',
-                'integer',
+                'nullable'
             ],
             'blood_group_id' => [
                 'required',

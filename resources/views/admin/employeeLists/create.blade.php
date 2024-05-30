@@ -160,6 +160,62 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.birth_certificate_upload_helper') }}</span>
                         </div>
+
+                        <div class="form-group">
+                            <label class="required"
+                                for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
+                            <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}"
+                                name="marital_statu_id" id="marital_statu_id" required>
+                                @foreach ($marital_status as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('marital_statu_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('marital_statu'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('marital_statu') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.marital_statu_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required"
+                                for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
+                            <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}"
+                                name="gender_id" id="gender_id" required>
+                                @foreach ($genders as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('gender'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('gender') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.gender_helper') }}</span>
+                        </div>
+                        {{-- <div class="form-group">
+                            <label class="required"
+                                for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
+                            <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}"
+                                name="religion_id" id="religion_id" required>
+                                @foreach ($religions as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('religion_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                                <option value="other">Other</option>
+                            </select>
+                            @if ($errors->has('religion'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('religion') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.religion_helper') }}</span>
+                        </div> --}}
+                        @livewire('religion')
                     </div>
 
                 </div>
@@ -210,59 +266,7 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.home_district_helper') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
-                            <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}"
-                                name="marital_statu_id" id="marital_statu_id" required>
-                                @foreach ($marital_status as $id => $entry)
-                                    <option value="{{ $id }}"
-                                        {{ old('marital_statu_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('marital_statu'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('marital_statu') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.marital_statu_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
-                            <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}"
-                                name="gender_id" id="gender_id" required>
-                                @foreach ($genders as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('gender'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('gender') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.gender_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
-                            <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}"
-                                name="religion_id" id="religion_id" required>
-                                @foreach ($religions as $id => $entry)
-                                    <option value="{{ $id }}"
-                                        {{ old('religion_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('religion'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('religion') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.religion_helper') }}</span>
-                        </div>
+
                         <div class="form-group">
                             <label class="required"
                                 for="blood_group_id">{{ trans('cruds.employeeList.fields.blood_group') }}</label>
