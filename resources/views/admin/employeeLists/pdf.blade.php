@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee List PDF</title>
     <!-- Include any CSS styles if needed -->
     <style>
@@ -13,11 +13,11 @@
         }
 
         table {
-            widtd: 100%;
+            width: 100%;
             border-collapse: collapse;
         }
 
-        td,
+        th,
         td {
             font-weight: normal;
             border: 1px solid black;
@@ -37,7 +37,23 @@
         Your Header Content
     </htmlpageheader>
 
-
+    <table class="header w-100" cellspacing="0" cellpadding="0">
+        <tr>
+            {{-- <td width="82">
+                
+            </td> --}}
+            <td style="text-align: center;">
+                <img src="img/bforest.png" width="85" alt="">
+                <b>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</b> <br>
+                সদর দপ্তর, কুর্মিটোলা, ঢাকা-১২২১ <br>
+                www.caab.gov.bd <br>
+                সদস্য (এটিএস) এর দপ্তর <br>
+            </td>
+            {{-- <td style="text-align: right;" width="82">
+                <img src="img/mujib_borso.png" align="right" width="85" alt="">
+            </td> --}}
+        </tr>
+    </table>
 
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
@@ -46,173 +62,173 @@
                 <table class="table-bordered table-striped table" id="General">
                     <tbody>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.employeeid') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->employeeid }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.cadreid') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->cadreid }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.batch') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->batch->batch_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->fullname_bn }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.fullname_en') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->fullname_en }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.fname_bn') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->fname_bn }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.fname_en') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->fname_en }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.mname_bn') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->mname_bn }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.mname_en') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->mname_en }}
                             </td>
                         </tr>
                         <tr>
+                            <th>
+                                {{ trans('cruds.employeeList.fields.date_of_birth') }}
+                            </th>
                             <td>
-                                {{ trans('cruds.employeeList.fields.date_of_birtd') }}
-                            </td>
-                            <td>
-                                {{ $employeeList->date_of_birtd }}
+                                {{ $employeeList->date_of_birth }}
                             </td>
                         </tr>
                         <tr>
+                            <th>
+                                {{ trans('cruds.employeeList.fields.birth_certificate_upload') }}
+                            </th>
                             <td>
-                                {{ trans('cruds.employeeList.fields.birtd_certificate_upload') }}
-                            </td>
-                            <td>
-                                @if ($employeeList->birtd_certificate_upload)
-                                    <a href="{{ $employeeList->birtd_certificate_upload->getUrl() }}" target="_blank">
+                                @if ($employeeList->birth_certificate_upload)
+                                    <a href="{{ $employeeList->birth_certificate_upload->getUrl() }}" target="_blank">
                                         {{ trans('global.view_file') }}
                                     </a>
                                 @endif
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.prl_date') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->prl_date }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.height') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->height }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.special_identity') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->special_identity }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.home_district') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->home_district->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.marital_statu') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->marital_statu->name ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.gender') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->gender->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.religion') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->religion->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.blood_group') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->blood_group->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.nid') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->nid }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.nid_upload') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->nid_upload)
                                     <a href="{{ $employeeList->nid_upload->getUrl() }}" target="_blank">
@@ -222,17 +238,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.passport') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->passport }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.passport_upload') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->passport_upload)
                                     <a href="{{ $employeeList->passport_upload->getUrl() }}" target="_blank">
@@ -242,17 +258,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.license_type') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->license_type->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.license_upload') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->license_upload)
                                     <a href="{{ $employeeList->license_upload->getUrl() }}" target="_blank">
@@ -262,73 +278,73 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.email') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->email }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.mobile_number') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->mobile_number }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->joiningexaminfo->exam_name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.grade') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->grade->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.fjoining_date') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->fjoining_date }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->first_joining_office_name }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->first_joining_g_o_date }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->first_joining_memo_no }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.first_joining_order') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->first_joining_order)
                                     <a href="{{ $employeeList->first_joining_order->getUrl() }}" target="_blank">
@@ -338,9 +354,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.fjoining_letter') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->fjoining_letter)
                                     <a href="{{ $employeeList->fjoining_letter->getUrl() }}" target="_blank">
@@ -350,17 +366,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.date_of_gazette') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->date_of_gazette }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->date_of_gazette_if_any)
                                     <a href="{{ $employeeList->date_of_gazette_if_any->getUrl() }}" target="_blank">
@@ -370,25 +386,25 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.date_of_regularization') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->date_of_regularization }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->regularization_issue_date }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->regularization_office_orde_go)
                                     <a href="{{ $employeeList->regularization_office_orde_go->getUrl() }}"
@@ -399,17 +415,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->date_of_con_serviec }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->confirmation_in_service)
                                     <a href="{{ $employeeList->confirmation_in_service->getUrl() }}" target="_blank">
@@ -419,35 +435,35 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.quota') }}
-                            </td>
+                            </th>
                             <td>
                                 {{ $employeeList->quota->name_bn ?? '' }}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.electric_signature') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->electric_signature)
                                     <a href="{{ $employeeList->electric_signature->getUrl() }}" target="_blank"
                                         style="display: inline-block">
-                                        <img src="{{ $employeeList->electric_signature->getUrl('tdumb') }}">
+                                        <img src="{{ $employeeList->electric_signature->getUrl('thumb') }}">
                                     </a>
                                 @endif
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <th>
                                 {{ trans('cruds.employeeList.fields.employee_photo') }}
-                            </td>
+                            </th>
                             <td>
                                 @if ($employeeList->employee_photo)
                                     <a href="{{ $employeeList->employee_photo->getUrl() }}" target="_blank"
                                         style="display: inline-block">
-                                        <img src="{{ $employeeList->employee_photo->getUrl('tdumb') }}">
+                                        <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}">
                                     </a>
                                 @endif
                             </td>
@@ -461,49 +477,49 @@
                     <table class="table-bordered table-striped table" id="Education">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $educationInformatione->name_of_exam->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.exam_board') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $educationInformatione->exam_board->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.school_university_name') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $educationInformatione->school_university_name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.achivement') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $educationInformatione->achivement }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.passing_year') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $educationInformatione->passing_year }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.catificarte') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($educationInformatione->catificarte)
                                         <a href="{{ $educationInformatione->catificarte->getUrl() }}" target="_blank">
@@ -513,9 +529,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $educationInformatione->employee->employeeid ?? '' }}
                                 </td>
@@ -535,49 +551,49 @@
                     <table class="table-bordered table-striped table" id="Professionales">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.professionale.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $professionale->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.professionale.fields.qualification_title') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $professionale->qualification_title }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.professionale.fields.institution') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $professionale->institution }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.professionale.fields.from_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $professionale->from_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.professionale.fields.to_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $professionale->to_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.professionale.fields.passing_year') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $professionale->passing_year }}
                                 </td>
@@ -594,57 +610,57 @@
                     <table class="table-bordered table-striped table" id="addressdetaile">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.addressdetaile.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $addressdetaile->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.addressdetaile.fields.address_type') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECT[$addressdetaile->address_type] ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.addressdetaile.fields.flat_house') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $addressdetaile->flat_house }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.addressdetaile.fields.post_office') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $addressdetaile->post_office }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.addressdetaile.fields.post_code') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $addressdetaile->post_code }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.addressdetaile.fields.thana_upazila') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.addressdetaile.fields.tdana_upazila') }}
-                                </td>
-                                <td>
-                                    {{ $addressdetaile->tdana_upazila->name_bn ?? '' }}
+                                    {{ $addressdetaile->thana_upazila->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.addressdetaile.fields.phone_number') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $addressdetaile->phone_number }}
                                 </td>
@@ -658,41 +674,41 @@
                     <table class="table-bordered table-striped table" id="emergenceContacte">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_name') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $emergenceContacte->contact_person_name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_relation') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $emergenceContacte->contact_person_relation }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.emergenceContacte.fields.address') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $emergenceContacte->address }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $emergenceContacte->contact_person_number }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.emergenceContacte.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $emergenceContacte->employee->employeeid ?? '' }}
                                 </td>
@@ -709,33 +725,33 @@
                     <table class="table-bordered table-striped table" id="spouseInformatione">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $spouseInformatione->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.name_bn') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $spouseInformatione->name_bn }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.name_en') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $spouseInformatione->name_en }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($spouseInformatione->nid_upload)
                                         <a href="{{ $spouseInformatione->nid_upload->getUrl() }}" target="_blank">
@@ -745,41 +761,41 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.occupation') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $spouseInformatione->occupation }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.office_address') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $spouseInformatione->office_address }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.phone_number') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $spouseInformatione->phone_number }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.present_addess') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $spouseInformatione->present_addess !!}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.spouseInformatione.fields.permanent_addess') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $spouseInformatione->permanent_addess !!}
                                 </td>
@@ -797,85 +813,85 @@
                     <table class="table-bordered table-striped table" id="child">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.name_bn') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->name_bn }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.name_en') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->name_en }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.child.fields.date_of_birth') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.child.fields.date_of_birtd') }}
-                                </td>
-                                <td>
-                                    {{ $child->date_of_birtd }}
+                                    {{ $child->date_of_birth }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.child.fields.birth_certificate') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.child.fields.birtd_certificate') }}
-                                </td>
-                                <td>
-                                    @if ($child->birtd_certificate)
-                                        <a href="{{ $child->birtd_certificate->getUrl() }}" target="_blank">
+                                    @if ($child->birth_certificate)
+                                        <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
                                             {{ trans('global.view_file') }}
                                         </a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.complite_21') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->complite_21 }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.gender') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->gender->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.nid_number') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->nid_number }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.passport_number') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $child->passport_number }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.childdren_nid') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($child->childdren_nid)
                                         <a href="{{ $child->childdren_nid->getUrl() }}" target="_blank">
@@ -885,9 +901,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.child.fields.childdren_passporft') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($child->childdren_passporft)
                                         <a href="{{ $child->childdren_passporft->getUrl() }}" target="_blank">
@@ -907,97 +923,97 @@
                     <table class="table-bordered table-striped table" id="jobHistory">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.id') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->id }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.institute_name') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->institute_name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.job_type') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->job_type->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.designation') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->designation->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.joining_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->joining_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.release_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->release_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.level_1') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->level_1 }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.level_2') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->level_2 }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.level_3') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->level_3 }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.level_4') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->level_4 }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.level_5') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->level_5 }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.jobHistory.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $jobHistory->employee->employeeid ?? '' }}
                                 </td>
@@ -1014,41 +1030,41 @@
                     <table class="table-bordered table-striped table" id="employeePromotion">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.employeePromotion.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $employeePromotion->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.employeePromotion.fields.new_designation') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $employeePromotion->new_designation->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $employeePromotion->go_issue_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.employeePromotion.fields.office_order_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $employeePromotion->office_order_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.employeePromotion.fields.office_order') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($employeePromotion->office_order)
                                         <a href="{{ $employeePromotion->office_order->getUrl() }}" target="_blank">
@@ -1069,49 +1085,49 @@
                     <table class="table-bordered table-striped table" id="leaveRecord">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.leaveRecord.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $leaveRecord->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.leaveRecord.fields.leave_category') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $leaveRecord->leave_category->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $leaveRecord->type_of_leave->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.leaveRecord.fields.start_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $leaveRecord->start_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.leaveRecord.fields.end_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $leaveRecord->end_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.leaveRecord.fields.reason') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $leaveRecord->reason !!}
                                 </td>
@@ -1126,49 +1142,49 @@
                     <table class="table-bordered table-striped table" id="serviceParticular">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.serviceParticular.fields.id') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $serviceParticular->id }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.serviceParticular.fields.designation') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $serviceParticular->designation->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.serviceParticular.fields.designation_status') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $serviceParticular->designation_status }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.serviceParticular.fields.office_organization_institute') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $serviceParticular->office_organization_institute }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.serviceParticular.fields.joining_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $serviceParticular->joining_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.serviceParticular.fields.release_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $serviceParticular->release_date }}
                                 </td>
@@ -1186,81 +1202,81 @@
                     <table class="table-bordered table-striped table" id="training">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.training_type') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->training_type->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.training_name') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->training_name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.institute_name') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->institute_name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.country') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->country->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.start_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->start_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.end_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->end_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.grade') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->grade }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.position') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->position }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.training.fields.location') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $training->location }}
                                 </td>
@@ -1275,49 +1291,49 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.travelRecord.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $travelRecord->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.travelRecord.fields.country') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $travelRecord->country->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.travelRecord.fields.title') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $travelRecord->title }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.travelRecord.fields.purpose') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $travelRecord->purpose->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.travelRecord.fields.start_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $travelRecord->start_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.travelRecord.fields.end_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $travelRecord->end_date }}
                                 </td>
@@ -1335,57 +1351,57 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.id') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->id }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.title') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->title }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.country') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->country->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->purpose->name_bn ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.from_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->from_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.to_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->to_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $foreignTravelPersonal->leave->start_date ?? '' }}
                                 </td>
@@ -1401,41 +1417,41 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.id') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $socialAssPrAttachment->id }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $socialAssPrAttachment->degree_membership_organization }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.description') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $socialAssPrAttachment->description }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $socialAssPrAttachment->certificate_achievement }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     Action
-                                </td>
+                                </th>
                                 <td>
                                     <!-- Edit button -->
                                     <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
@@ -1444,9 +1460,9 @@
                                     <!-- Delete button -->
                                     {{-- <form
                                                     action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    metdod="POST" style="display: inline;">
+                                                    method="POST" style="display: inline;">
                                                     @csrf
-                                                    @metdod('DELETE')
+                                                    @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                                 </form> --}}
                                 </td>
@@ -1459,73 +1475,73 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.id') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->id }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.activity_name') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->activity_name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.organization') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->organization }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.position') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->position }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.start_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->start_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.end_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $extracurriculam->end_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.description') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $extracurriculam->description !!}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.extracurriculam.fields.attatchment') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($extracurriculam->attatchment)
                                         <a href="{{ $extracurriculam->attatchment->getUrl() }}" target="_blank">
@@ -1545,57 +1561,57 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.title') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $publication->title }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.publication_type') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.publication_media') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $publication->publication_media }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.publication_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $publication->publication_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.publication_link') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $publication->publication_link }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.description') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $publication->description !!}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.publication.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $publication->employee->employeeid ?? '' }}
                                 </td>
@@ -1611,33 +1627,33 @@
                         <tbody>
 
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.award.fields.title') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $award->title }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.award.fields.ground_area') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $award->ground_area }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.award.fields.date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $award->date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.award.fields.certificate') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($award->certificate)
                                         <a href="{{ $award->certificate->getUrl() }}" target="_blank">
@@ -1647,9 +1663,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.award.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $award->employee->employeeid ?? '' }}
                                 </td>
@@ -1662,73 +1678,73 @@
                 @endforeach
 
 
-                <strong id="otderservicejobs"> {{ trans('cruds.otderServiceJob.title') }}</strong>
+                <strong id="otherservicejobs"> {{ trans('cruds.otherServiceJob.title') }}</strong>
 
-                @foreach ($employeeList->otderservicejobs ?? [] as $otderServiceJob)
+                @foreach ($employeeList->otherservicejobs ?? [] as $otherServiceJob)
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.id') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.otderServiceJob.fields.id') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->id }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {{ trans('cruds.otderServiceJob.fields.employer') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->employer }}
+                                    {{ $otherServiceJob->id }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.employer') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.otderServiceJob.fields.address') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->address }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {{ trans('cruds.otderServiceJob.fields.service_type') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->service_type }}
+                                    {{ $otherServiceJob->employer }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.address') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.otderServiceJob.fields.position') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->position }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {{ trans('cruds.otderServiceJob.fields.from') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->from }}
+                                    {{ $otherServiceJob->address }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.service_type') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.otderServiceJob.fields.to') }}
-                                </td>
-                                <td>
-                                    {{ $otderServiceJob->to }}
+                                    {{ $otherServiceJob->service_type }}
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.position') }}
+                                </th>
                                 <td>
-                                    {{ trans('cruds.otderServiceJob.fields.employee') }}
+                                    {{ $otherServiceJob->position }}
                                 </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.from') }}
+                                </th>
                                 <td>
-                                    {{ $otderServiceJob->employee->employeeid ?? '' }}
+                                    {{ $otherServiceJob->from }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.to') }}
+                                </th>
+                                <td>
+                                    {{ $otherServiceJob->to }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.otherServiceJob.fields.employee') }}
+                                </th>
+                                <td>
+                                    {{ $otherServiceJob->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
 
@@ -1741,41 +1757,41 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.language.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $language->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.language.fields.language') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $language->language }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.language.fields.read') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $language->read->name ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.language.fields.write') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $language->write->name ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.language.fields.speak') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $language->speak->name ?? '' }}
                                 </td>
@@ -1791,53 +1807,54 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalProsecutione.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalProsecutione->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalProsecutione->judgement_type }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalProsecutione->natureof_offence }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalProsecutione->government_order_no }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalProsecutione.fields.court_order') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($criminalProsecutione->court_order)
-                                        <a href="{{ $criminalProsecutione->court_order->getUrl() }}" target="_blank">
+                                        <a href="{{ $criminalProsecutione->court_order->getUrl() }}"
+                                            target="_blank">
                                             {{ trans('global.view_file') }}
                                         </a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalProsecutione.fields.remzrk') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $criminalProsecutione->remzrk !!}
                                 </td>
@@ -1854,33 +1871,33 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalproDisciplinary->judgement_type }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalproDisciplinary->government_order_no }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}
-                                </td>
+                                </th>
                                 <td>
                                     @if ($criminalproDisciplinary->order_upload_file)
                                         <a href="{{ $criminalproDisciplinary->order_upload_file->getUrl() }}"
@@ -1891,9 +1908,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $criminalproDisciplinary->remarks }}
                                 </td>
@@ -1909,41 +1926,41 @@
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.acrMonitoring.fields.employee') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $acrMonitoring->employee->employeeid ?? '' }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.acrMonitoring.fields.year') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $acrMonitoring->year }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.acrMonitoring.fields.reviewer') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $acrMonitoring->reviewer }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.acrMonitoring.fields.review_date') }}
-                                </td>
+                                </th>
                                 <td>
                                     {{ $acrMonitoring->review_date }}
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     {{ trans('cruds.acrMonitoring.fields.remarks') }}
-                                </td>
+                                </th>
                                 <td>
                                     {!! $acrMonitoring->remarks !!}
                                 </td>
