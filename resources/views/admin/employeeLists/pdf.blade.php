@@ -25,6 +25,12 @@
             text-align: left;
         }
 
+        strong {
+            font-size: 18px;
+            line-height: 20px;
+            margin-top: 20px;
+        }
+
         @page {
             header: page-header;
             footer: page-footer;
@@ -39,11 +45,10 @@
 
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
-            <td width="82">
+            <td width="82" style="border: 0;">
                 <img src="img/bforest.png" width="85" alt="">
             </td>
-            <td style="text-align: center;">
-
+            <td style="text-align: center;" style="border: 0;">
                 <h2>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> <br>
                 https://bforest.gov.bd/ <br>
             </td>
@@ -56,7 +61,7 @@
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
             <div>
-                <strong>General Information Content </strong>
+                <strong>General Information</strong>
                 {{ $employeeList->name_bn }} ({{ $employeeList->employeeid }})
                 <table class="table-bordered table-striped table" id="General">
                     <tbody>
