@@ -14,6 +14,7 @@ use App\Models\LeaveRecord;
 use App\Models\LeaveType;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -68,15 +69,18 @@ class LeaveRecordController extends Controller
         return view('admin.leaveRecords.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('leave_record_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $type_of_leaves = LeaveType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $type_of_leaves = LeaveType::pluck($columname , 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $leave_categories = LeaveCategory::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $leave_categories = LeaveCategory::pluck($columname , 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.leaveRecords.create', compact('employees', 'leave_categories', 'type_of_leaves'));
     }

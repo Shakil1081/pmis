@@ -1,29 +1,10 @@
 @extends('layouts.admin')
-@section('styles')
-    @parent
-    <style>
-        /* th,
-            td {
-                font-size: 141px !important;
-                padding: 4px !important;
-                margin: 0px !important;
-            }
-
-            a.nav-link:hover,
-            a.nav-link {
-                padding: 2px 4px;
-                font-size: 14px !important;
-            } */
-
-
-    </style>
-@endsection
-@section('content')
+ @section('content')
     <div class="card p-2">
         <div class="container">
             <div class="row">
-                @include('admin.commonemployee.commonmenuemployeeshow')
-                <div class="col-md-9">
+                
+                <div class="col-md-12">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                         <div>
                             <strong>General Information Content</strong>

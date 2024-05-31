@@ -12,6 +12,7 @@ use App\Models\EmployeeList;
 use App\Models\Gender;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -83,11 +84,13 @@ class ChildController extends Controller
 
     public function create()
     {
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('child_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $genders = Gender::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.children.create', compact('employees', 'genders'));
     }

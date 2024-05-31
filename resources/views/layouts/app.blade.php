@@ -40,13 +40,13 @@
         }
 
         a {
-            color: #02c27a !important;
+            color: #005c3a !important;
             text-decoration: none;
             background-color: transparent;
         }
 
         a:hover {
-            color: #02c27a !important;
+            color: rgb(4, 126, 81) !important;
             text-decoration: underline;
         }
     </style>

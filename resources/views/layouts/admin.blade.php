@@ -56,7 +56,7 @@
         /* .dropzone {
             min-height: 40px !important;
             padding: 7px;
-            background-color: #4c944e45;
+            background-color: #00662545;
             border: gainsboro;
             border-radius: 5px;
         } */
@@ -98,7 +98,7 @@
             top: 0;
             left: 0;
             opacity: 0;
-            font-size: 13px;
+            font-size: 14px;
             min-width: unset;
             max-width: unset;
             padding: 0;
@@ -117,28 +117,50 @@
         }
 
         /* ul.c-sidebar-nav.ps {
-            background: #4c944e !important;
+            background: #006625 !important;
         } */
 
         ul.c-sidebar-nav.ps {
-            background: #22c55e !important;
+            background: #006625 !important;
         }
 
         .btn-success {
             --bs-btn-color: #fff;
-            --bs-btn-bg: #22c55e;
-            --bs-btn-border-color: #22c55e;
+            --bs-btn-bg: #006625;
+            --bs-btn-border-color: #006625;
             --bs-btn-hover-color: #fff;
-            --bs-btn-hover-bg: #22c55e;
-            --bs-btn-hover-border-color: #22c55e;
+            --bs-btn-hover-bg: #006625;
+            --bs-btn-hover-border-color: #006625;
             --bs-btn-focus-shadow-rgb: 60, 153, 110;
             --bs-btn-active-color: #fff;
-            --bs-btn-active-bg: #22c55e;
-            --bs-btn-active-border-color: #22c55e;
+            --bs-btn-active-bg: #006625;
+            --bs-btn-active-border-color: #006625;
             --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
             --bs-btn-disabled-color: #fff;
-            --bs-btn-disabled-bg: #02c27a;
+            --bs-btn-disabled-bg: #006625;
             --bs-btn-disabled-border-color: #198754;
+        }
+
+        .btn-outline-success {
+            --bs-btn-color: #006625;
+            --bs-btn-border-color: #006625;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #006625;
+            --bs-btn-hover-border-color: #006625;
+            --bs-btn-focus-shadow-rgb: 25, 135, 84;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #006625;
+            --bs-btn-active-border-color: #006625;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #006625;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: #006625;
+            --bs-gradient: none;
+        }
+
+        .progress-bar {
+            background-color: #006625;
+
         }
 
         .c-sidebar .c-sidebar-brand,
@@ -153,7 +175,7 @@
 
         .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
         .c-sidebar .c-sidebar-nav-link:hover {
-            background: #4c944e !important;
+            background: #0d3f01d6 !important;
         }
 
         .border-secondary {
@@ -162,12 +184,14 @@
 
         /* a.nav-link.c-active {
             font-weight: bold;
-            color: #4c944e;
+            color: #006625;
             border-color: #3d763e !important;
         } */
+        .active>.page-link,
+        .page-link.active,
         .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
         .c-sidebar .c-sidebar-nav-link:hover {
-            background: #41493fd6 !important;
+            background: #0d3f01d6 !important;
         }
 
         a.nav-link:hover,
@@ -196,29 +220,46 @@
 
         .btn-danger {
             --bs-btn-color: #fff;
-            --bs-btn-bg: #f51313;
-            --bs-btn-border-color: #f51313;
+            --bs-btn-bg: #ad0505;
+            --bs-btn-border-color: #ad0505;
             --bs-btn-hover-color: #fff;
             --bs-btn-hover-bg: #f34a4a;
-            --bs-btn-hover-border-color: #f51313ab;
+            --bs-btn-hover-border-color: #ad0505ab;
             --bs-btn-focus-shadow-rgb: 225, 83, 97;
             --bs-btn-active-color: #fff;
-            --bs-btn-active-bg: #f51313;
-            --bs-btn-active-border-color: #f51313;
+            --bs-btn-active-bg: #ad0505;
+            --bs-btn-active-border-color: #ad0505;
             --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
             --bs-btn-disabled-color: #fff;
-            --bs-btn-disabled-bg: #f51313;
-            --bs-btn-disabled-border-color: #f51313;
+            --bs-btn-disabled-bg: #ad0505;
+            --bs-btn-disabled-border-color: #ad0505;
+        }
+
+        .btn-primary {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #006625;
+            --bs-btn-border-color: #006625;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #006625;
+            --bs-btn-hover-border-color: #006625;
+            --bs-btn-focus-shadow-rgb: 49, 132, 253;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #006625;
+            --bs-btn-active-border-color: #006625;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #006625;
+            --bs-btn-disabled-border-color: #006625;
         }
     </style>
     @yield('styles')
     @stack('css')
     <style>
-        /* html,
+        html,
         body,
         div {
-            font-family: bangla;
-        } */
+            font-size: 14px;
+        }
 
         .table th:last-child,
         .table td:last-child {
@@ -260,14 +301,28 @@
             margin-bottom: .5rem;
             font-weight: 900;
             line-height: 1.2;
-            color: #000000 !important;
+            color: #052e16 !important;
+        }
+
+        div#v-pills-tabContent strong {
+            font-size: 22px;
+            font-weight: 900;
+            color: #052e16;
         }
 
         label {
             display: inline-block;
             color: #052e16;
         }
+
+        body {
+            font-family: 'solaimanlipi', sans-serif;
+        }
     </style>
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
 
     @livewireStyles
 </head>
