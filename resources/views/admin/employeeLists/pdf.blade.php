@@ -348,7 +348,7 @@
                                 {{ $employeeList->first_joining_memo_no }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.first_joining_order') }}
                             </th>
@@ -359,8 +359,8 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> --}}
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.fjoining_letter') }}
                             </th>
@@ -371,7 +371,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.date_of_gazette') }}
@@ -380,7 +380,7 @@
                                 {{ $employeeList->date_of_gazette }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
                             </th>
@@ -391,7 +391,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.date_of_regularization') }}
@@ -408,7 +408,7 @@
                                 {{ $employeeList->regularization_issue_date }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
                             </th>
@@ -420,7 +420,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
@@ -429,7 +429,7 @@
                                 {{ $employeeList->date_of_con_serviec }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
                             </th>
@@ -440,7 +440,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.quota') }}
@@ -449,7 +449,7 @@
                                 {{ $employeeList->quota->name_bn ?? '' }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.electric_signature') }}
                             </th>
@@ -461,8 +461,8 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> --}}
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.employee_photo') }}
                             </th>
@@ -474,7 +474,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table><br />
 
@@ -523,7 +523,7 @@
                                     {{ $educationInformatione->passing_year }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.educationInformatione.fields.catificarte') }}
                                 </th>
@@ -534,7 +534,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.educationInformatione.fields.employee') }}
@@ -851,7 +851,7 @@
                                     {{ $child->date_of_birth }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.birth_certificate') }}
                                 </th>
@@ -862,7 +862,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.complite_21') }}
@@ -895,7 +895,7 @@
                                     {{ $child->passport_number }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.childdren_nid') }}
                                 </th>
@@ -906,8 +906,8 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr> --}}
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.childdren_passporft') }}
                                 </th>
@@ -918,7 +918,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table><br />
@@ -1068,7 +1068,7 @@
                                     {{ $employeePromotion->office_order_date }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.employeePromotion.fields.office_order') }}
                                 </th>
@@ -1079,7 +1079,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table><br />
@@ -1461,8 +1461,8 @@
                                 </th>
                                 <td>
                                     <!-- Edit button -->
-                                    <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                        class="btn btn-sm btn-primary">Edit</a>
+                                    {{-- <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
+                                        class="btn btn-sm btn-primary">Edit</a> --}}
 
                                     <!-- Delete button -->
                                     {{-- <form
@@ -1545,7 +1545,7 @@
                                     {!! $extracurriculam->description !!}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.attatchment') }}
                                 </th>
@@ -1556,7 +1556,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table><br />
@@ -1657,7 +1657,7 @@
                                     {{ $award->date }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.award.fields.certificate') }}
                                 </th>
@@ -1668,7 +1668,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.award.fields.employee') }}
@@ -1845,7 +1845,7 @@
                                     {{ $criminalProsecutione->government_order_no }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.criminalProsecutione.fields.court_order') }}
                                 </th>
@@ -1856,7 +1856,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.criminalProsecutione.fields.remzrk') }}
