@@ -39,15 +39,13 @@
 
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
-            {{-- <td width="82">
-                
-            </td> --}}
-            <td style="text-align: center;">
+            <td width="82">
                 <img src="img/bforest.png" width="85" alt="">
-                <b>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</b> <br>
-                সদর দপ্তর, কুর্মিটোলা, ঢাকা-১২২১ <br>
-                www.caab.gov.bd <br>
-                সদস্য (এটিএস) এর দপ্তর <br>
+            </td>
+            <td style="text-align: center;">
+
+                <h2>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> <br>
+                https://bforest.gov.bd/ <br>
             </td>
             {{-- <td style="text-align: right;" width="82">
                 <img src="img/mujib_borso.png" align="right" width="85" alt="">
@@ -58,7 +56,8 @@
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
             <div>
-                <strong>General Information Content</strong>
+                <strong>General Information Content </strong>
+                {{ $employeeList->name_bn }} ({{ $employeeList->employeeid }})
                 <table class="table-bordered table-striped table" id="General">
                     <tbody>
                         <tr>
