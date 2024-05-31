@@ -50,9 +50,11 @@
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
-                    <h2>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> https://bforest.gov.bd/ <br>
-                    {{ $employeeList->fullname_bn }} {{ $employeeList->fullname_en }}<br>
-                    <b> ({{ $employeeList->employeeid }})</b><br>
+                    <h2 style="color: #006625">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> https://bforest.gov.bd/
+                    <br>
+                    {{ $employeeList->fullname_bn }}: {{ $employeeList->fullname_bn }} (
+                    {{ $employeeList->fullname_en }}{{ $employeeList->fullname_en }})<br>
+                    <b> {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $employeeList->employeeid }}</b><br>
                 </center>
             </td>
             {{-- <td style="text-align: right;" width="82">
