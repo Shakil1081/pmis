@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
-use Carlosmeneses\LaravelMpdf\Facades\LaravelMpdf as PDF;
+use  PDF;
 
 class EmployeeListController extends Controller
 {
@@ -482,36 +482,34 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }
-    public function employeedata_pdf (EmployeeList $employeeList)
+    public function employeedata_pdf (Request $request)
     {
 
-// Check if user is authorized to view employee list
 abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-// Load employee list data with relationships
-$employeeList = $employeeList->load('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota');
+$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+->find($request->id);
 
-// Check if employee list exists
 if (!$employeeList) {
     abort(404);
 }
 
-$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList'),[], [
-    'margin_top' => 20,
-    'margin_bottom' => 15,
-    'margin_left' => 18,
-    'margin_right' => 18,
-    'format' => 'A4',
-    'default_font_size' => '15',
-    'default_font' => 'nikosh',
+
+// return view('admin.employeeLists.pdf', compact('employeeList'));
+
+$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList'),[], ['margin_top' => 20,
+'margin_bottom' => 15,
+'margin_left' => 18,
+'margin_right' => 18,
+'format' => 'A4',
+'default_font_size' => '15', 
+    'default_font' => 'nsikosh',
 
 ]);
 
 // Download the generated PDF file
 return $pdf->download('employee_list.pdf');
 
-// Download the generated PDF file
-return $pdf->download('employee_list.pdf');
   
        
     }

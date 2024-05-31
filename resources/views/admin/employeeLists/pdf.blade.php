@@ -8,7 +8,7 @@
     <!-- Include any CSS styles if needed -->
     <style>
         body {
-            font-family: nsikosh;
+            font-family: 'nsikosh', sans-serif;
             font-size: 14px;
         }
 
@@ -19,14 +19,41 @@
 
         th,
         td {
+            font-weight: normal;
             border: 1px solid black;
             padding: 8px;
             text-align: left;
         }
+
+        @page {
+            header: page-header;
+            footer: page-footer;
+        }
     </style>
 </head>
 
-<body>
+<body style="padding: 20px">
+    <htmlpageheader name="page-header">
+        Your Header Content
+    </htmlpageheader>
+
+    <table class="header w-100" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="82">
+                <img src="img/bijoy_50.jpg" width="85" alt="">
+            </td>
+            <td style="text-align: center;">
+                <b>বন অধিদপ্তর</b> <br>
+                সদর দপ্তর, কুর্মিটোলা, ঢাকা-১২২১ <br>
+                www.caab.gov.bd <br>
+                সদস্য (এটিএস) এর দপ্তর <br>
+            </td>
+            <td style="text-align: right;" width="82">
+                <img src="img/mujib_borso.png" align="right" width="85" alt="">
+            </td>
+        </tr>
+    </table>
+
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
             <div>
@@ -1816,7 +1843,8 @@
                                 </th>
                                 <td>
                                     @if ($criminalProsecutione->court_order)
-                                        <a href="{{ $criminalProsecutione->court_order->getUrl() }}" target="_blank">
+                                        <a href="{{ $criminalProsecutione->court_order->getUrl() }}"
+                                            target="_blank">
                                             {{ trans('global.view_file') }}
                                         </a>
                                     @endif
@@ -1943,6 +1971,9 @@
             </div>
         </div>
     </div>
+    <htmlpagefooter name="page-footer">
+        Page No {PAGENO}
+    </htmlpagefooter>
 </body>
 
 </html>
