@@ -39,9 +39,9 @@
 </head>
 
 <body style="padding: 20px">
-    <htmlpageheader name="page-header">
+    {{-- <htmlpageheader name="page-header">
         Your Header Content
-    </htmlpageheader>
+    </htmlpageheader> --}}
 
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
@@ -49,20 +49,23 @@
                 <img src="img/bforest.png" width="85" alt="">
             </td>
             <td style="text-align: center;" style="border: 0;">
-                <h2>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> <br>
-                https://bforest.gov.bd/ <br>
+                <center>
+                    <h2>বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> https://bforest.gov.bd/ <br>
+                    {{ $employeeList->fullname_bn }} {{ $employeeList->fullname_en }}<br>
+                    <b> ({{ $employeeList->employeeid }})</b><br>
+                </center>
             </td>
             {{-- <td style="text-align: right;" width="82">
                 <img src="img/mujib_borso.png" align="right" width="85" alt="">
             </td> --}}
         </tr>
-    </table>
+    </table><br />
 
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
             <div>
                 <strong>General Information</strong>
-                {{ $employeeList->name_bn }} ({{ $employeeList->employeeid }})
+
                 <table class="table-bordered table-striped table" id="General">
                     <tbody>
                         <tr>
@@ -473,7 +476,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table><br />
 
 
                 <strong>Education</strong>
@@ -542,7 +545,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -604,7 +607,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -671,7 +674,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
                 <strong>{{ trans('cruds.emergenceContacte.title') }}</strong>
                 @foreach ($employeeList->emergencecontactes ?? [] as $emergenceContacte)
@@ -719,7 +722,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -807,7 +810,7 @@
 
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -918,7 +921,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
                 <strong> {{ trans('cruds.jobHistory.title') }}</strong>
@@ -1024,7 +1027,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -1079,7 +1082,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -1138,7 +1141,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
                 <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
@@ -1196,7 +1199,7 @@
 
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
                 <strong>
                     {{ trans('cruds.training.title') }}
@@ -1286,7 +1289,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
                 <strong id="travelRecords">{{ trans('cruds.travelRecord.title') }}</strong>
 
@@ -1344,7 +1347,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -1411,7 +1414,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -1472,7 +1475,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
                 <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                 @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
@@ -1556,7 +1559,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
                 <strong id="publication"> {{ trans('cruds.publication.title') }}</strong>
@@ -1622,7 +1625,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
                 <strong id="awards"> {{ trans('cruds.award.title') }}</strong>
 
@@ -1678,7 +1681,7 @@
 
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
 
@@ -1753,7 +1756,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
                 <strong id="languages"> {{ trans('cruds.language.title') }}</strong>
 
@@ -1802,7 +1805,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
                 <strong id="criminalProsecutione"> {{ trans('cruds.criminalProsecutione.title') }}</strong>
@@ -1865,7 +1868,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
                 <strong id="criminalproDisciplinary">
@@ -1921,7 +1924,7 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
 
                 <strong id="acrMonitoring">{{ trans('cruds.acrMonitoring.title') }}</strong>
@@ -1971,13 +1974,13 @@
                             </tr>
 
                         </tbody>
-                    </table>
+                    </table><br />
                 @endforeach
             </div>
         </div>
     </div>
     <htmlpagefooter name="page-footer">
-        Page No {PAGENO}
+        Page No {PAGENO} <br><br>
     </htmlpagefooter>
 </body>
 

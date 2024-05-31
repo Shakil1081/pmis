@@ -507,12 +507,9 @@ $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList'),[], ['ma
 
 ]);
 
-// Download the generated PDF file
-return $pdf->download('employee_list.pdf');
-
-  
-       
-    }
+$name=$employeeList->employeeid.'_'.$employeeList->fullname_en.'_employee.pdf';
+return $pdf->download($name);
+}
     public function employeedata(Request $request)
     {     
         
