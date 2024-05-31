@@ -148,7 +148,7 @@
                                 {{ $employeeList->date_of_birth }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.birth_certificate_upload') }}
                             </th>
@@ -159,7 +159,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.prl_date') }}
@@ -232,7 +232,7 @@
                                 {{ $employeeList->nid }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.nid_upload') }}
                             </th>
@@ -243,7 +243,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.passport') }}
@@ -252,7 +252,7 @@
                                 {{ $employeeList->passport }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.passport_upload') }}
                             </th>
@@ -263,7 +263,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.license_type') }}
@@ -272,7 +272,7 @@
                                 {{ $employeeList->license_type->name_bn ?? '' }}
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.license_upload') }}
                             </th>
@@ -283,7 +283,7 @@
                                     </a>
                                 @endif
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.email') }}
@@ -755,7 +755,7 @@
                                     {{ $spouseInformatione->name_en }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
                                 </th>
@@ -766,7 +766,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.occupation') }}
@@ -1851,8 +1851,7 @@
                                 </th>
                                 <td>
                                     @if ($criminalProsecutione->court_order)
-                                        <a href="{{ $criminalProsecutione->court_order->getUrl() }}"
-                                            target="_blank">
+                                        <a href="{{ $criminalProsecutione->court_order->getUrl() }}" target="_blank">
                                             {{ trans('global.view_file') }}
                                         </a>
                                     @endif
@@ -1901,7 +1900,7 @@
                                     {{ $criminalproDisciplinary->government_order_no }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}
                                 </th>
@@ -1913,7 +1912,7 @@
                                         </a>
                                     @endif
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
