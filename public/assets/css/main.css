@@ -1165,7 +1165,7 @@ form select.error:focus {
 
 .alert-border-danger {
   border: 1px solid var(--bs-gray-400);
-  border-left: 5px solid #fc185a;
+  border-left: 5px solid #AD0505;
 }
 
 .alert-border-warning {

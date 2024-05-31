@@ -400,16 +400,16 @@ body.lobibox-open {
 }
 
 .lobibox.lobibox-error {
-	border: 1px solid #fc185a
+	border: 1px solid #AD0505
 }
 
 .lobibox.lobibox-error .lobibox-header {
 	color: #eee;
-	background-color: #fc185a
+	background-color: #AD0505
 }
 
 .lobibox.lobibox-error .lobibox-body .lobibox-icon {
-	color: #fc185a
+	color: #AD0505
 }
 
 .lobibox.lobibox-error .lobibox-footer {
@@ -580,8 +580,8 @@ body.lobibox-open {
 
 .lobibox .lobibox-btn.lobibox-btn-cancel {
 	color: #FFF;
-	background-color: #fc185a;
-	border-color: #fc185a
+	background-color: #AD0505;
+	border-color: #AD0505
 }
 
 .lobibox .lobibox-btn.lobibox-btn-cancel.active, .lobibox .lobibox-btn.lobibox-btn-cancel.focus, .lobibox .lobibox-btn.lobibox-btn-cancel:active, .lobibox .lobibox-btn.lobibox-btn-cancel:focus, .lobibox .lobibox-btn.lobibox-btn-cancel:hover, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-cancel {
@@ -591,12 +591,12 @@ body.lobibox-open {
 }
 
 .lobibox .lobibox-btn.lobibox-btn-cancel.disabled, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled.active, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled.focus, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled:active, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled:focus, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled:hover, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled], .lobibox .lobibox-btn.lobibox-btn-cancel[disabled].active, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled].focus, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:active, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:focus, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:hover, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel.active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel.focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:hover {
-	background-color: #fc185a;
-	border-color: #fc185a
+	background-color: #AD0505;
+	border-color: #AD0505
 }
 
 .lobibox .lobibox-btn.lobibox-btn-cancel .badge {
-	color: #fc185a;
+	color: #AD0505;
 	background-color: #FFF
 }
 
@@ -794,7 +794,7 @@ body.lobibox-open {
 }
 
 .lobibox-notify-wrapper-large .lb-notify-tabs>li.lobibox-notify-error>a:hover {
-	background-color: #fc185a;
+	background-color: #AD0505;
 	border-color: #b41d1d
 }
 
@@ -975,13 +975,13 @@ body.lobibox-open {
 }
 
 .lobibox-notify.lobibox-notify-error {
-	border-color: #fc185a;
-	background-color: #fc185a;
+	border-color: #AD0505;
+	background-color: #AD0505;
 	color: #FFF
 }
 
 .lobibox-notify.lobibox-notify-error:hover {
-	background-color: #fc185a;
+	background-color: #AD0505;
 	border-color: #FFF
 }
 

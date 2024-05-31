@@ -7,6 +7,11 @@
     <title>Employee List PDF</title>
     <!-- Include any CSS styles if needed -->
     <style>
+        body {
+            font-family: nsikosh;
+            font-size: 14px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
