@@ -1164,20 +1164,23 @@
                                     {{ trans('cruds.jobHistory.fields.level_5') }}
                                 </th>
                                 <td>
-                                    {{ $jobHistory->level_1 }}
-                                    {{ $jobHistory->level_2 }}
-                                    {{ $jobHistory->level_3 }}
-                                    {{ $jobHistory->level_4 }}
-                                    {{ $jobHistory->level_5 }}
+                                    {{ $jobHistory->level_1 ?? '' }}
+                                    {{ $jobHistory->level_2 ?? '' }}
+                                    {{ $jobHistory->level_3 ?? '' }}
+                                    {{ $jobHistory->level_4 ?? '' }}
+                                    {{ $jobHistory->level_5 ?? '' }}
 
 
+                                    {{ trans('cruds.jobHistory.fields.division_list') }}:
                                     {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? '' }}<br>
 
+                                    {{ trans('Range') }}:
                                     {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
 
-                                    {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
+                                    {{ trans('Beat') }}: {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
 
 
+                                    {{ trans('cruds.jobHistory.fields.circle_list') }}:
                                     {{ $jobHistory->office_unit->{$columname} ?? '' }}<br>
                                 </td>
                             </tr>
