@@ -66,9 +66,10 @@ class StoreEmployeeListRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
             ],
             'prl_date' => [
+                'required',
                 'date_format:' . config('panel.date_format'),
-                'nullable',
             ],
+             
             'height' => [
                 'string',
                 'nullable',

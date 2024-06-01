@@ -138,7 +138,7 @@
                         <div class="form-group">
                             <label for="prl_date">{{ trans('cruds.employeeList.fields.prl_date') }}</label>
                             <input class="form-control date {{ $errors->has('prl_date') ? 'is-invalid' : '' }}"
-                                type="text" name="prl_date" id="prl_date" value="{{ old('prl_date') }}" disabled>
+                                type="date" name="prl_date" id="prl_date" readonly>
                             @if ($errors->has('prl_date'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('prl_date') }}
