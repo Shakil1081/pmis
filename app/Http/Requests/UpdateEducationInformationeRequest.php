@@ -32,7 +32,6 @@ class UpdateEducationInformationeRequest extends FormRequest
             'school_university_name' => [
                 'string',
                 'required',
-                'unique:education_informationes,school_university_name,' . request()->route('education_informatione')->id,
             ],
             'passing_year' => [
                 'nullable',
