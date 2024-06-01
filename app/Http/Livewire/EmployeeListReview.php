@@ -31,7 +31,15 @@ class EmployeeListReview extends Component
             $employee->approveby = auth()->id();
             $employee->save();
 
+
+            if (app()->getLocale() === 'bn'){
+
             $this->flashMessage = 'Employee approved successfully.';
+        }else{
+                             
+            $this->flashMessage = 'অনুমোদন সফলভাবে সম্পন্ন হয়েছে।';
+        }
+           
         }
     }
 

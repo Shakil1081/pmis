@@ -36,8 +36,6 @@ class StoreEducationInformationeRequest extends FormRequest
             'passing_year' => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'achivement' => [
                 'string',
