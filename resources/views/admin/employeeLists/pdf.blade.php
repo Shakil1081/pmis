@@ -1171,17 +1171,26 @@
                                     {{ $jobHistory->level_5 ?? '' }}
 
 
-                                    {{ trans('cruds.jobHistory.fields.division_list') }}:
-                                    {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? '' }}<br>
+                                    @if ($jobHistory->beat_list->forest_range->forest_division)
+                                        {{ trans('cruds.jobHistory.fields.postingindivision') }}:
+                                        {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? '' }}<br>
+                                    @endif
+                                    @if ($jobHistory->beat_list->forest_range)
+                                        {{ trans('cruds.jobHistory.fields.posting_in_range') }}:
+                                        {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
+                                    @endif
 
-                                    {{ trans('Range') }}:
-                                    {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
+                                    @if ($jobHistory->beat_list)
+                                        {{ trans('cruds.jobHistory.fields.beat_list') }}:
+                                        {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
+                                    @endif
 
-                                    {{ trans('Beat') }}: {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
+                                    @if ($jobHistory->office_unit)
+                                        {{ trans('cruds.jobHistory.fields.posting_in_circle') }}:
+                                        {{ $jobHistory->office_unit->{$columname} ?? '' }}<br>
+                                    @endif
 
 
-                                    {{ trans('cruds.jobHistory.fields.circle_list') }}:
-                                    {{ $jobHistory->office_unit->{$columname} ?? '' }}<br>
                                 </td>
                             </tr>
                             {{-- <tr>
