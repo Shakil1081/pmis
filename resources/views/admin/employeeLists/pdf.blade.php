@@ -50,10 +50,11 @@
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
-                    <h2 style="color: #006625">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2> https://bforest.gov.bd/
+                    <h2 style="color: #006625">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
+
                     <br>
-                    {{ $employeeList->fullname_bn }}: {{ $employeeList->fullname_bn }} (
-                    {{ $employeeList->fullname_en }}{{ $employeeList->fullname_en }})<br>
+                    নাম: {{ $employeeList->fullname_bn }} (
+                    Name:{{ $employeeList->full }})<br>
                     <b> {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $employeeList->employeeid }}</b><br>
                 </center>
             </td>
@@ -102,14 +103,7 @@
                                 {{ $employeeList->fullname_bn }}
                             </td>
                         </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.fullname_en') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->fullname_en }}
-                            </td>
-                        </tr>
+
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.fname_bn') }}
@@ -191,7 +185,7 @@
                                 {{ trans('cruds.employeeList.fields.home_district') }}
                             </th>
                             <td>
-                                {{ $employeeList->home_district->name_bn ?? '' }}
+                                {{ $employeeList->home_district->{$columname} ?? '' }}
                             </td>
                         </tr>
                         <tr>
@@ -207,7 +201,7 @@
                                 {{ trans('cruds.employeeList.fields.gender') }}
                             </th>
                             <td>
-                                {{ $employeeList->gender->name_bn ?? '' }}
+                                {{ $employeeList->gender->{$columname} ?? '' }}
                             </td>
                         </tr>
                         <tr>
@@ -215,7 +209,7 @@
                                 {{ trans('cruds.employeeList.fields.religion') }}
                             </th>
                             <td>
-                                {{ $employeeList->religion->name_bn ?? '' }}
+                                {{ $employeeList->religion->{$columname} ?? '' }}
                             </td>
                         </tr>
                         <tr>
@@ -223,7 +217,7 @@
                                 {{ trans('cruds.employeeList.fields.blood_group') }}
                             </th>
                             <td>
-                                {{ $employeeList->blood_group->name_bn ?? '' }}
+                                {{ $employeeList->blood_group->{$columname} ?? '' }}
                             </td>
                         </tr>
                         <tr>
@@ -271,7 +265,7 @@
                                 {{ trans('cruds.employeeList.fields.license_type') }}
                             </th>
                             <td>
-                                {{ $employeeList->license_type->name_bn ?? '' }}
+                                {{ $employeeList->license_type->{$columname} ?? '' }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -315,7 +309,7 @@
                                 {{ trans('cruds.employeeList.fields.grade') }}
                             </th>
                             <td>
-                                {{ $employeeList->grade->name_bn ?? '' }}
+                                {{ $employeeList->grade->{$columname} ?? '' }}
                             </td>
                         </tr>
                         <tr>
@@ -448,7 +442,7 @@
                                 {{ trans('cruds.employeeList.fields.quota') }}
                             </th>
                             <td>
-                                {{ $employeeList->quota->name_bn ?? '' }}
+                                {{ $employeeList->quota->{$columname} ?? '' }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -490,7 +484,7 @@
                                     {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                                 </th>
                                 <td>
-                                    {{ $educationInformatione->name_of_exam->name_bn ?? '' }}
+                                    {{ $educationInformatione->name_of_exam->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -498,7 +492,7 @@
                                     {{ trans('cruds.educationInformatione.fields.exam_board') }}
                                 </th>
                                 <td>
-                                    {{ $educationInformatione->exam_board->name_bn ?? '' }}
+                                    {{ $educationInformatione->exam_board->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -663,7 +657,7 @@
                                     {{ trans('cruds.addressdetaile.fields.thana_upazila') }}
                                 </th>
                                 <td>
-                                    {{ $addressdetaile->thana_upazila->name_bn ?? '' }}
+                                    {{ $addressdetaile->thana_upazila->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -743,10 +737,10 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.spouseInformatione.fields.name_bn') }}
+                                    {{ trans('cruds.spouseInformatione.fields.$columname') }}
                                 </th>
                                 <td>
-                                    {{ $spouseInformatione->name_bn }}
+                                    {{ $spouseInformatione->{$columname} }}
                                 </td>
                             </tr>
                             <tr>
@@ -831,10 +825,10 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.child.fields.name_bn') }}
+                                    {{ trans('cruds.child.fields.$columname') }}
                                 </th>
                                 <td>
-                                    {{ $child->name_bn }}
+                                    {{ $child->{$columname} }}
                                 </td>
                             </tr>
                             <tr>
@@ -878,7 +872,7 @@
                                     {{ trans('cruds.child.fields.gender') }}
                                 </th>
                                 <td>
-                                    {{ $child->gender->name_bn ?? '' }}
+                                    {{ $child->gender->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -952,7 +946,7 @@
                                     {{ trans('cruds.jobHistory.fields.job_type') }}
                                 </th>
                                 <td>
-                                    {{ $jobHistory->job_type->name_bn ?? '' }}
+                                    {{ $jobHistory->job_type->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -960,7 +954,7 @@
                                     {{ trans('cruds.jobHistory.fields.designation') }}
                                 </th>
                                 <td>
-                                    {{ $jobHistory->designation->name_bn ?? '' }}
+                                    {{ $jobHistory->designation->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1051,7 +1045,7 @@
                                     {{ trans('cruds.employeePromotion.fields.new_designation') }}
                                 </th>
                                 <td>
-                                    {{ $employeePromotion->new_designation->name_bn ?? '' }}
+                                    {{ $employeePromotion->new_designation->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1106,7 +1100,7 @@
                                     {{ trans('cruds.leaveRecord.fields.leave_category') }}
                                 </th>
                                 <td>
-                                    {{ $leaveRecord->leave_category->name_bn ?? '' }}
+                                    {{ $leaveRecord->leave_category->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1114,7 +1108,7 @@
                                     {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
                                 </th>
                                 <td>
-                                    {{ $leaveRecord->type_of_leave->name_bn ?? '' }}
+                                    {{ $leaveRecord->type_of_leave->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1163,7 +1157,7 @@
                                     {{ trans('cruds.serviceParticular.fields.designation') }}
                                 </th>
                                 <td>
-                                    {{ $serviceParticular->designation->name_bn ?? '' }}
+                                    {{ $serviceParticular->designation->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1223,7 +1217,7 @@
                                     {{ trans('cruds.training.fields.training_type') }}
                                 </th>
                                 <td>
-                                    {{ $training->training_type->name_bn ?? '' }}
+                                    {{ $training->training_type->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1247,7 +1241,7 @@
                                     {{ trans('cruds.training.fields.country') }}
                                 </th>
                                 <td>
-                                    {{ $training->country->name_bn ?? '' }}
+                                    {{ $training->country->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1312,7 +1306,7 @@
                                     {{ trans('cruds.travelRecord.fields.country') }}
                                 </th>
                                 <td>
-                                    {{ $travelRecord->country->name_bn ?? '' }}
+                                    {{ $travelRecord->country->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1328,7 +1322,7 @@
                                     {{ trans('cruds.travelRecord.fields.purpose') }}
                                 </th>
                                 <td>
-                                    {{ $travelRecord->purpose->name_bn ?? '' }}
+                                    {{ $travelRecord->purpose->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1380,7 +1374,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.country') }}
                                 </th>
                                 <td>
-                                    {{ $foreignTravelPersonal->country->name_bn ?? '' }}
+                                    {{ $foreignTravelPersonal->country->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1388,7 +1382,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
                                 </th>
                                 <td>
-                                    {{ $foreignTravelPersonal->purpose->name_bn ?? '' }}
+                                    {{ $foreignTravelPersonal->purpose->{$columname} ?? '' }}
                                 </td>
                             </tr>
                             <tr>
