@@ -576,7 +576,7 @@
                                 </th>
                                 <td>
 
-                                    @foreach ($deucationDegree->where('id', 1) as $educationDegree)
+                                    @foreach ($deucationDegree->where('id', $educationInformatione->exam_degree) as $educationDegree)
                                         {{ $educationDegree[$columname] }}
                                     @endforeach
 
@@ -637,6 +637,7 @@
                                 <td>
                                     {{ $educationInformatione->achivement }}
                                     {{ $educationInformatione->cgpa ?? '' }}
+                                    {{ $educationInformatione->result->{$columname} ?? '' }}
 
                                 </td>
                             </tr>

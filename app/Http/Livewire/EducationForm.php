@@ -24,10 +24,8 @@ class EducationForm extends Component
     {
         $achievement_types = AchievementschoolsUniversity::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
         $examinations=Examination::all();
-        $ExamDegree=ExamDegree::all();
         return view('livewire.education-form',[
             'examinations'=>$examinations,
-            'ExamDegree'=>$ExamDegree,
             'achievement_types'=>$achievement_types
         ]);
     }
