@@ -107,7 +107,7 @@
                         <div class="progress">
                             @php
                                 $total = 0;
-                                $totalvalue = 17;
+                                $totalvalue = 16;
 
                                 $relationships = [
                                     'batch',
