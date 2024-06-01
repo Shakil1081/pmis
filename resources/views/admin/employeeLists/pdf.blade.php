@@ -55,9 +55,9 @@
                     <br>
 
                     @if (app()->getLocale() === 'bn')
-                        নাম: {{ $employeeList->fullname_bn }}
+                        <h4> নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
-                        Name:{{ $employeeList->fullname_en }}
+                        <h4> Name:{{ $employeeList->fullname_en }}</h4>
                     @endif
 
                     <br>
@@ -73,7 +73,7 @@
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
             <div>
-                <strong>General Information</strong>
+                <strong>{{ trans('cruds.employeeList.title_singular') }}</strong>
 
                 <table class="table-bordered table-striped table" id="General">
                     <tbody>
@@ -502,7 +502,7 @@
                 </table><br />
 
 
-                <strong>Education</strong>
+                <strong>{{ trans('cruds.educationInformatione.title_singular') }}</strong>
                 @foreach ($employeeList->educations ?? [] as $educationInformatione)
                     <table class="table-bordered table-striped table" id="Education">
                         <tbody>
@@ -575,7 +575,7 @@
 
 
 
-                <strong> Professionales</strong>
+                <strong> {{ trans('cruds.professionale.title') }}</strong>
 
                 @foreach ($employeeList->educations ?? [] as $professionale)
                     <table class="table-bordered table-striped table" id="Professionales">
@@ -952,14 +952,14 @@
                 @foreach ($employeeList->jobhistories ?? [] as $jobHistory)
                     <table class="table-bordered table-striped table" id="jobHistory">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $jobHistory->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.institute_name') }}
@@ -1171,14 +1171,14 @@
                 @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
                     <table class="table-bordered table-striped table" id="serviceParticular">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.serviceParticular.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $serviceParticular->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.serviceParticular.fields.designation') }}
@@ -1380,14 +1380,14 @@
                 @foreach ($employeeList->foreigntravelpersonals ?? [] as $foreignTravelPersonal)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $foreignTravelPersonal->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.title') }}
@@ -1446,14 +1446,14 @@
                 @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $socialAssPrAttachment->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
@@ -1504,14 +1504,14 @@
                 @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $extracurriculam->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.employee') }}
@@ -1713,14 +1713,14 @@
                 @foreach ($employeeList->otherservicejobs ?? [] as $otherServiceJob)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.otherServiceJob.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $otherServiceJob->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.otherServiceJob.fields.employer') }}
