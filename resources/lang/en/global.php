@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'saveactions'                        => 'Information Add Successfully.',
+    'saveactions'                        => 'Information Added Successfully.',
     'deleteaction'                        => 'Information updated successfully.',
     'updateAction'                        => 'Information Deleted Successfully.',
     'actions'                        => 'Actions',
