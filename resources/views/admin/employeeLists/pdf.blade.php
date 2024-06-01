@@ -31,6 +31,10 @@
             margin-top: 20px;
         }
 
+        th {
+            width: 50%;
+        }
+
         @page {
             header: page-header;
             footer: page-footer;
@@ -141,8 +145,8 @@
                                     {{ $employeeList->mname_bn }}
                                 </td>
                             </tr>
+                        @else
                             <tr>
-                            @else
                                 <th>
                                     {{ trans('cruds.employeeList.fields.mname_en') }}
                                 </th>
@@ -156,7 +160,7 @@
                                 {{ trans('cruds.employeeList.fields.date_of_birth') }}
                             </th>
                             <td>
-                                {{ $employeeList->date_of_birth }}
+                                {{ englishToBanglaNumber($employeeList->date_of_birth) }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -764,7 +768,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.spouseInformatione.fields.$columname') }}
+                                    {{ trans("cruds.spouseInformatione.fields.$columname") }}
                                 </th>
                                 <td>
                                     {{ $spouseInformatione->{$columname} }}
@@ -852,7 +856,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.child.fields.$columname') }}
+                                    {{ trans("cruds.child.fields.$columname") }}
                                 </th>
                                 <td>
                                     {{ $child->{$columname} }}

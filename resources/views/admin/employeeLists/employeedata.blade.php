@@ -3,17 +3,17 @@
     @parent
     <style>
         /* th,
-                                                        td {
-                                                            font-size: 141px !important;
-                                                            padding: 4px !important;
-                                                            margin: 0px !important;
-                                                        }
+                                                                        td {
+                                                                            font-size: 141px !important;
+                                                                            padding: 4px !important;
+                                                                            margin: 0px !important;
+                                                                        }
 
-                                                        a.nav-link:hover,
-                                                        a.nav-link {
-                                                            padding: 2px 4px;
-                                                            font-size: 14px !important;
-                                                        } */
+                                                                        a.nav-link:hover,
+                                                                        a.nav-link {
+                                                                            padding: 2px 4px;
+                                                                            font-size: 14px !important;
+                                                                        } */
     </style>
 @endsection
 @section('content')
@@ -22,6 +22,8 @@
             <div class="row">
                 @include('admin.commonemployee.commonmenuemployeeshow')
                 <div class="col-md-9">
+
+
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                         <div>
                             <strong>{{ trans('cruds.employeeList.title_singular') }}</strong>
@@ -104,7 +106,7 @@
                                             {{ trans('cruds.employeeList.fields.date_of_birth') }}
                                         </th>
                                         <td>
-                                            {{ $employeeList->date_of_birth }}
+                                            {{ englishToBanglaNumber($employeeList->date_of_birth) }}
                                         </td>
                                     </tr>
                                     <tr>
