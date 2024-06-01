@@ -122,7 +122,7 @@
         @endif
 
         @if (empty($resultlist) || count($resultlist) === 0)
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label
                     for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
                 <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
@@ -140,7 +140,7 @@
                 @endif
                 <span
                     class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
-            </div>
+            </div> --}}
 
             @if ($resultGroup)
                 <div class="form-group">
