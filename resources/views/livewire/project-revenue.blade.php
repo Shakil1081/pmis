@@ -20,7 +20,7 @@
 
         </div>
 
-        @if ($joininginfo && $joininginfo != 2)
+        @if ($joininginfo && $joininginfo != 2 && $joininginfo != 3)
             <div class="form-group projectlist">
                 <label for="project_id">{{ trans('cruds.employeeList.fields.project') }}</label>
                 <select class="form-control select2 {{ $errors->has('project') ? 'is-invalid' : '' }}" name="project_id"
@@ -45,7 +45,7 @@
             </div>
         @endif
 
-        @if ($joininginfo == 2)
+        @if ($joininginfo == 2 && $joininginfo != 3)
             <div class="form-group">
                 <label class="required" for="projectrevenue_id">
 
