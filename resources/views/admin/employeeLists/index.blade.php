@@ -122,7 +122,6 @@
                                     'trainings',
                                     'travelRecords',
                                     'foreigntravelpersonals',
-                                    'socialassprattachments',
                                     'extracurriculams',
                                     'otherservicejobs',
                                     'languages',
