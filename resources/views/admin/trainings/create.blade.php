@@ -100,7 +100,7 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.training.fields.end_date_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="grade">{{ trans('cruds.training.fields.grade') }}</label>
                                     <input class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}"
                                         type="text" name="grade" id="grade" value="{{ old('grade', '') }}">
@@ -121,7 +121,7 @@
                                         </div>
                                     @endif
                                     <span class="help-block">{{ trans('cruds.training.fields.position_helper') }}</span>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="location">{{ trans('cruds.training.fields.location') }}</label>
                                     <input class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}"

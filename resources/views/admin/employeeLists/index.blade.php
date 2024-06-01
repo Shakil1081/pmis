@@ -1,15 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h4> {{ trans('cruds.employeeList.title_singular') }} {{ trans('global.list') }} <strong>
+    <div class="row">
+        <div class="col-md-6 h4">{{ trans('cruds.employeeList.title_singular') }} {{ trans('global.list') }} </div>
+        <div class="col-md-6 h4 text-end">
+
             @if (app()->getLocale() === 'bn')
                 মোট কর্মকর্তা/কর্মচারী
             @else
                 Total Employee
             @endif
-
             : {{ $data['total'] ?? 0 }}
-        </strong></h4>
+
+        </div>
+
+    </div>
+
     <div class="card mb-1">
         <div class="table-responsive p-3">
 
@@ -62,9 +68,9 @@
                                 <p class="customer-name fw-bold mb-0">
 
                                     @if (app()->getLocale() === 'bn')
-                                        {{ $result['fullname_en'] }}
-                                    @else
                                         {{ $result['fullname_bn'] }}
+                                    @else
+                                        {{ $result['fullname_en'] }}
                                     @endif
 
 
