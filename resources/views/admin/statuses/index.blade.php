@@ -26,6 +26,9 @@
                                 {{ trans('cruds.status.fields.name') }}
                             </th>
                             <th>
+                                {{ trans('cruds.status.fields.name_en') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -38,6 +41,9 @@
                                 </td>
                                 <td>
                                     {{ $status->name ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $status->name_en ?? '' }}
                                 </td>
                                 <td>
                                     @can('status_show')

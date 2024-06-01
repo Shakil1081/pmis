@@ -3,19 +3,17 @@
     @parent
     <style>
         /* th,
-            td {
-                font-size: 141px !important;
-                padding: 4px !important;
-                margin: 0px !important;
-            }
+                        td {
+                            font-size: 141px !important;
+                            padding: 4px !important;
+                            margin: 0px !important;
+                        }
 
-            a.nav-link:hover,
-            a.nav-link {
-                padding: 2px 4px;
-                font-size: 14px !important;
-            } */
-
-
+                        a.nav-link:hover,
+                        a.nav-link {
+                            padding: 2px 4px;
+                            font-size: 14px !important;
+                        } */
     </style>
 @endsection
 @section('content')
@@ -1477,7 +1475,7 @@
                                                 {{ trans('cruds.travelRecord.fields.purpose') }}
                                             </th>
                                             <td>
-                                                {{ $travelRecord->purpose->name_bn ?? '' }}
+                                                {{ $travelRecord->purpose_id ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -1555,7 +1553,7 @@
                                                 {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->purpose->name_bn ?? '' }}
+                                                {{ $foreignTravelPersonal->purpose_id ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>

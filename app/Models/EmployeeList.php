@@ -300,7 +300,7 @@ class EmployeeList extends Model implements HasMedia
     }
     public function jobhistories()
     {
-        return $this->belongsTo(JobHistory::class, 'employee_id');
+        return $this->hasmany(JobHistory::class, 'employee_id');
     }
 
     public function getElectricSignatureAttribute()
@@ -371,6 +371,10 @@ class EmployeeList extends Model implements HasMedia
     public function trainings()
     {
         return $this->hasMany(Training::class, 'employee_id');
+    }
+    public function childinformationes()
+    {
+        return $this->hasMany(Child::class, 'employee_id');
     }
 
     public function travelRecords()

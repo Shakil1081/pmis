@@ -23,7 +23,7 @@ class StoreForeignTravelPersonalRequest extends FormRequest
             ],
             'purpose_id' => [
                 'required',
-                'integer',
+                 
             ],
             'from_date' => [
                 'date_format:' . config('panel.date_format'),
