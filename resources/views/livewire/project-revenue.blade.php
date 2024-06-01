@@ -25,6 +25,7 @@
                 <label for="project_id">{{ trans('cruds.employeeList.fields.project') }}</label>
                 <select class="form-control select2 {{ $errors->has('project') ? 'is-invalid' : '' }}" name="project_id"
                     id="project_id">
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($projects as $option)
                         <option value="{{ $option->id }}" {{ old('project_id') == $option->id ? 'selected' : '' }}>
                             @if (app()->getLocale() === 'bn')

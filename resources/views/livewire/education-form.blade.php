@@ -145,7 +145,7 @@
             @if ($resultGroup)
                 <div class="form-group">
                     <label for="cgpa">
-                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa') : 'GPA' }}
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa') : trans('cruds.educationInformatione.fields.gpa') }}
 
                     </label>
                     <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="number"
@@ -156,7 +156,9 @@
                             {{ $errors->first('cgpa') }}
                         </div>
                     @endif
-                    <span class="help-block">{{ trans('cruds.educationInformatione.fields.cgpa_helper') }}</span>
+                    <span class="help-block">
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa_helper') : trans('cruds.educationInformatione.fields.gpa_helper') }}
+                    </span>
                 </div>
 
 
