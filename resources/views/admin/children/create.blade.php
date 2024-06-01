@@ -123,7 +123,7 @@
                                                 No
                                             @endif
                                         </option>
-                                        <option value="yes">
+                                        <option value="Yes">
                                             @if (app()->getLocale() === 'bn')
                                                 হ্যাঁ
                                             @else
@@ -188,7 +188,7 @@
                                                 No
                                             @endif
                                         </option>
-                                        <option value="yes">
+                                        <option value="Yes">
                                             @if (app()->getLocale() === 'bn')
                                                 হ্যাঁ
                                             @else
