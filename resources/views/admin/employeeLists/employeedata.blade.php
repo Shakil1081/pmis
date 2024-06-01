@@ -3,17 +3,17 @@
     @parent
     <style>
         /* th,
-                        td {
-                            font-size: 141px !important;
-                            padding: 4px !important;
-                            margin: 0px !important;
-                        }
+                                td {
+                                    font-size: 141px !important;
+                                    padding: 4px !important;
+                                    margin: 0px !important;
+                                }
 
-                        a.nav-link:hover,
-                        a.nav-link {
-                            padding: 2px 4px;
-                            font-size: 14px !important;
-                        } */
+                                a.nav-link:hover,
+                                a.nav-link {
+                                    padding: 2px 4px;
+                                    font-size: 14px !important;
+                                } */
     </style>
 @endsection
 @section('content')
@@ -1275,7 +1275,7 @@
                                 </table>
                             @endforeach
 
-                            <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
+                            {{-- <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
                             @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
                                 <table class="table-bordered table-striped table" id="serviceParticular">
                                     <tbody>
@@ -1349,7 +1349,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            @endforeach
+                            @endforeach --}}
                             <strong>
                                 {{ trans('cruds.training.title') }}
                             </strong>
@@ -1585,65 +1585,8 @@
                             @endforeach
 
 
-                            <strong id="socialAssPrAttachment"> {{ trans('cruds.socialAssPrAttachment.title') }}</strong>
 
-                            @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
-                                <table class="table-bordered table-striped table">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.id') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->id }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->degree_membership_organization }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.description') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->description }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->certificate_achievement }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                Action
-                                            </th>
-                                            <td>
-                                                <!-- Edit button -->
-                                                <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
 
-                                                <!-- Delete button -->
-                                                {{-- <form
-                                                    action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form> --}}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            @endforeach
                             <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                             @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                                 <table class="table-bordered table-striped table">

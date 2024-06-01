@@ -22,8 +22,8 @@ class StoreEducationInformationeRequest extends FormRequest
                 'integer',
             ],
             'exam_board_id' => [
-                'required',
                 'integer',
+                'nullable',
             ],
             'concentration_major_group' => [
                 'string',
@@ -32,7 +32,6 @@ class StoreEducationInformationeRequest extends FormRequest
             'school_university_name' => [
                 'string',
                 'required',
-                'unique:education_informationes',
             ],
             'passing_year' => [
                 'nullable',

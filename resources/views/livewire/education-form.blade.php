@@ -68,8 +68,7 @@
 
         @if ($exambordlist)
             <div class="form-group">
-                <label class="required"
-                    for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
+                <label for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
                 <select class="form-select select2 {{ $errors->has('exam_board') ? 'is-invalid' : '' }}"
                     name="exam_board_id" id="exam_board_id" required>
                     <option>{{ trans('global.pleaseSelect') }}</option>

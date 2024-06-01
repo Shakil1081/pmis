@@ -29,8 +29,7 @@
                     <span class="help-block">{{ trans('cruds.educationInformatione.fields.name_of_exam_helper') }}</span>
                 </div>
                 <div class="form-group">
-                    <label class="required"
-                        for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
+                    <label for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
                     <select class="form-select select2 {{ $errors->has('exam_board') ? 'is-invalid' : '' }}"
                         name="exam_board_id" id="exam_board_id" required>
                         @foreach ($exam_boards as $id => $entry)
