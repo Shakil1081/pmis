@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('award_create')
+    {{-- @can('award_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.awards.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.award.title_singular') }} {{ trans('global.list') }}
@@ -23,8 +23,19 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.award.fields.id') }}
-                            </th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
                             <th>
                                 {{ trans('cruds.award.fields.title') }}
                             </th>
@@ -34,12 +45,8 @@
                             <th>
                                 {{ trans('cruds.award.fields.date') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.award.fields.certificate') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.award.fields.employee') }}
-                            </th>
+                           
+                            
                             <th>
                                 &nbsp;
                             </th>
@@ -52,7 +59,10 @@
 
                                 </td>
                                 <td>
-                                    {{ $award->id ?? '' }}
+                                    {{ $award->employee->employeeid ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $award->employee->fullname_en ?? '' }}
                                 </td>
                                 <td>
                                     {{ $award->title ?? '' }}
@@ -63,16 +73,8 @@
                                 <td>
                                     {{ $award->date ?? '' }}
                                 </td>
-                                <td>
-                                    @if ($award->certificate)
-                                        <a href="{{ $award->certificate->getUrl() }}" target="_blank">
-                                            {{ trans('global.view_file') }}
-                                        </a>
-                                    @endif
-                                </td>
-                                <td>
-                                    {{ $award->employee->employeeid ?? '' }}
-                                </td>
+                                
+                               
                                 <td>
                                     @can('award_show')
                                         <a class="btn btn-sm btn-success px-2"
@@ -82,7 +84,8 @@
                                     @endcan
 
                                     @can('award_edit')
-                                        <a class="btn btn-xs btn-info" href="{{ route('admin.awards.edit', $award->id) }}">
+                                        <a class="btn btn-sm btn-warning px-2"
+                                            href="{{ route('admin.awards.edit', $award->id) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
@@ -93,7 +96,7 @@
                                             style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger"
+                                            <input type="submit" class="btn btn-sm btn-danger px-2"
                                                 value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan

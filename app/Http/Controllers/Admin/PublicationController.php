@@ -61,6 +61,9 @@ class PublicationController extends Controller
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
             });
+            $table->addColumn('employee_fullname_en', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'employee']);
 

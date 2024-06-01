@@ -3,58 +3,72 @@
     <div class="card">
         <div class="card-header">
             {{ trans('global.edit') }} {{ trans('cruds.award.title_singular') }}
+            <br><strong class="text-dark classname">
+                @if (app()->getLocale() === 'bn')
+                    {{ trans('cruds.employeeList.fields.fullname_bn') }}:{{ $award->employee->fullname_bn }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $award->employee->employeeid }}
+                @else
+                    {{ trans('cruds.employeeList.fields.fullname_en') }}:{{ $award->employee->fullname_en }}
+                    &nbsp;
+                    {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $award->employee->employeeid }}
+                @endif
+            </strong>
         </div>
 
         <div class="card-body">
             <form method="POST" action="{{ route('admin.awards.update', [$award->id]) }}" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
-                    <label for="title">{{ trans('cruds.award.fields.title') }}</label>
-                    <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title"
-                        id="title" value="{{ old('title', $award->title) }}">
-                    @if ($errors->has('title'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('title') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.award.fields.title_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="ground_area">{{ trans('cruds.award.fields.ground_area') }}</label>
-                    <input class="form-control {{ $errors->has('ground_area') ? 'is-invalid' : '' }}" type="text"
-                        name="ground_area" id="ground_area" value="{{ old('ground_area', $award->ground_area) }}">
-                    @if ($errors->has('ground_area'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('ground_area') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.award.fields.ground_area_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="date">{{ trans('cruds.award.fields.date') }}</label>
-                    <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text"
-                        name="date" id="date" value="{{ old('date', $award->date) }}">
-                    @if ($errors->has('date'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('date') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.award.fields.date_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="certificate">{{ trans('cruds.award.fields.certificate') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('certificate') ? 'is-invalid' : '' }}"
-                        id="certificate-dropzone">
+                <div class="row row-cols-3">
+                    <div class="form-group">
+                        <label for="title">{{ trans('cruds.award.fields.title') }}</label>
+                        <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text"
+                            name="title" id="title" value="{{ old('title', $award->title) }}">
+                        @if ($errors->has('title'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('title') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.award.fields.title_helper') }}</span>
                     </div>
-                    @if ($errors->has('certificate'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('certificate') }}
+                    <div class="form-group">
+                        <label for="ground_area">{{ trans('cruds.award.fields.ground_area') }}</label>
+                        <input class="form-control {{ $errors->has('ground_area') ? 'is-invalid' : '' }}" type="text"
+                            name="ground_area" id="ground_area" value="{{ old('ground_area', $award->ground_area) }}">
+                        @if ($errors->has('ground_area'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('ground_area') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.award.fields.ground_area_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">{{ trans('cruds.award.fields.date') }}</label>
+                        <input class="form-control date {{ $errors->has('date') ? 'is-invalid' : '' }}" type="text"
+                            name="date" id="date" value="{{ old('date', $award->date) }}">
+                        @if ($errors->has('date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.award.fields.date_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificate">{{ trans('cruds.award.fields.certificate') }}</label>
+                        <div class="needsclick dropzone {{ $errors->has('certificate') ? 'is-invalid' : '' }}"
+                            id="certificate-dropzone">
                         </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.award.fields.certificate_helper') }}</span>
-                </div>
-                <div class="form-group">
+                        @if ($errors->has('certificate'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('certificate') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.award.fields.certificate_helper') }}</span>
+                    </div>
+
+                    <x-hidden-input name="employee_id" value="{{ $award->employee->id }}" />
+                    {{-- <div class="form-group">
                     <label for="employee_id">{{ trans('cruds.award.fields.employee') }}</label>
                     <select class="form-select select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}"
                         name="employee_id" id="employee_id">
@@ -70,6 +84,7 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.award.fields.employee_helper') }}</span>
+                </div> --}}
                 </div>
                 <div class="form-group">
                     <button class="btn btn-danger" type="submit">

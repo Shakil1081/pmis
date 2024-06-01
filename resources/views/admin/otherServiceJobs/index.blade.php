@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('other_service_job_create')
+    {{-- @can('other_service_job_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.other-service-jobs.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.otherServiceJob.title_singular') }} {{ trans('global.list') }}
@@ -23,14 +23,23 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.otherServiceJob.fields.id') }}
-                            </th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
                             <th>
                                 {{ trans('cruds.otherServiceJob.fields.employer') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.otherServiceJob.fields.address') }}
-                            </th>
+                            
                             <th>
                                 {{ trans('cruds.otherServiceJob.fields.service_type') }}
                             </th>
@@ -38,14 +47,15 @@
                                 {{ trans('cruds.otherServiceJob.fields.position') }}
                             </th>
                             <th>
+                                {{ trans('cruds.otherServiceJob.fields.address') }}
+                            </th>
+                            <th>
                                 {{ trans('cruds.otherServiceJob.fields.from') }}
                             </th>
                             <th>
                                 {{ trans('cruds.otherServiceJob.fields.to') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.otherServiceJob.fields.employee') }}
-                            </th>
+                            
                             <th>
                                 &nbsp;
                             </th>
@@ -58,14 +68,16 @@
 
                                 </td>
                                 <td>
-                                    {{ $otherServiceJob->id ?? '' }}
+                                    {{ $otherServiceJob->employee->employeeid ?? '' }}
                                 </td>
+                                <td>
+                                    {{ $otherServiceJob->employee->fullname_en ?? '' }}
+                                </td>
+                               
                                 <td>
                                     {{ $otherServiceJob->employer ?? '' }}
                                 </td>
-                                <td>
-                                    {{ $otherServiceJob->address ?? '' }}
-                                </td>
+                               
                                 <td>
                                     {{ $otherServiceJob->service_type ?? '' }}
                                 </td>
@@ -73,14 +85,15 @@
                                     {{ $otherServiceJob->position ?? '' }}
                                 </td>
                                 <td>
+                                    {{ $otherServiceJob->address ?? '' }}
+                                </td>
+                                <td>
                                     {{ $otherServiceJob->from ?? '' }}
                                 </td>
                                 <td>
                                     {{ $otherServiceJob->to ?? '' }}
                                 </td>
-                                <td>
-                                    {{ $otherServiceJob->employee->employeeid ?? '' }}
-                                </td>
+                                
                                 <td>
                                     @can('other_service_job_show')
                                         <a class="btn btn-sm btn-success px-2"
@@ -90,7 +103,7 @@
                                     @endcan
 
                                     @can('other_service_job_edit')
-                                        <a class="btn btn-xs btn-info"
+                                        <a class="btn btn-sm btn-warning px-2"
                                             href="{{ route('admin.other-service-jobs.edit', $otherServiceJob->id) }}">
                                             {{ trans('global.edit') }}
                                         </a>
@@ -102,7 +115,7 @@
                                             style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger"
+                                            <input type="submit" class="btn btn-sm btn-danger px-2"
                                                 value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan

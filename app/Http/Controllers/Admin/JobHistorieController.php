@@ -62,6 +62,10 @@ class JobHistorieController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_bn : '';
+            });
+
             $table->editColumn('employee.fullname_bn', function ($row) {
                 return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
             });

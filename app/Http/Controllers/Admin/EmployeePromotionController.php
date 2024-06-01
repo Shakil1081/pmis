@@ -51,6 +51,10 @@ class EmployeePromotionController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_bn : '';
+            });
+
             $table->addColumn('new_designation_name_bn', function ($row) {
                 return $row->new_designation ? $row->new_designation->name_bn : '';
             });

@@ -51,6 +51,9 @@ class ExtracurriculamController extends Controller
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
             });
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
 
             $table->editColumn('activity_name', function ($row) {
                 return $row->activity_name ? $row->activity_name : '';

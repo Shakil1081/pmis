@@ -61,6 +61,7 @@ $batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
 $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
 $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+$maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -96,7 +97,16 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
     public function store(StoreEmployeeListRequest $request)
     {
-   
+//    dd($request->all());
+
+   if ($request->religion_name_bn) {
+    $insearrid = Religion::create([
+        'name_bn' => $request->religion_name_bn,
+        'name_en' => $request->religion_name_en,
+    ]);
+    $request->merge(['religion_id' => $insearrid->id]);
+}
+
     //$employeeList = EmployeeList::create($request->all());
 
     $class = $request->input('class');
@@ -173,6 +183,7 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
         $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+        $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         abort_if(Gate::denies('employee_list_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -180,7 +191,7 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $marital_status = Maritalstatus::pluck($maritialstatus, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 

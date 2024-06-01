@@ -42,32 +42,6 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.fullname_en_helper') }}</span>
                         </div>
 
-                        <div class="form-group">
-                            <label class="required" for="class">{{ trans('cruds.employeeList.fields.class') }}</label>
-                            <select class="form-select {{ $errors->has('class') ? 'is-invalid' : '' }}" name="class"
-                                id="class" required>
-                                <option value="" disabled selected>
-                                    {{ trans('global.pleaseSelect') }}</option>
-
-                                @if (app()->getLocale() === 'bn')
-                                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>১ম</option>
-                                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>২য়</option>
-                                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>৩য়</option>
-                                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>৪র্থ</option>
-                                @else
-                                    <option value="1st" {{ old('class') == '1st' ? 'selected' : '' }}>1st</option>
-                                    <option value="2nd" {{ old('class') == '2nd' ? 'selected' : '' }}>2nd</option>
-                                    <option value="3rd" {{ old('class') == '3rd' ? 'selected' : '' }}>3rd</option>
-                                    <option value="4th" {{ old('class') == '4th' ? 'selected' : '' }}>4th</option>
-                                @endif
-                            </select>
-                            @if ($errors->has('class'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('class') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.class_helper') }}</span>
-                        </div>
 
 
                         <div class="form-group">
@@ -151,8 +125,8 @@
                                 for="date_of_birth">{{ trans('cruds.employeeList.fields.date_of_birth') }}</label>
                             <input
                                 class="form-control date___remove {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
-                                type="date" name="date_of_birth" id="date_of_birth"
-                                value="{{ old('date_of_birth') }}" required>
+                                type="date" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}"
+                                required>
                             @if ($errors->has('date_of_birth'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('date_of_birth') }}
@@ -186,6 +160,62 @@
                             <span
                                 class="help-block">{{ trans('cruds.employeeList.fields.birth_certificate_upload_helper') }}</span>
                         </div>
+
+                        <div class="form-group">
+                            <label class="required"
+                                for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
+                            <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}"
+                                name="marital_statu_id" id="marital_statu_id" required>
+                                @foreach ($marital_status as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('marital_statu_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('marital_statu'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('marital_statu') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.marital_statu_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required"
+                                for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
+                            <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}"
+                                name="gender_id" id="gender_id" required>
+                                @foreach ($genders as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('gender'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('gender') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.gender_helper') }}</span>
+                        </div>
+                        {{-- <div class="form-group">
+                            <label class="required"
+                                for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
+                            <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}"
+                                name="religion_id" id="religion_id" required>
+                                @foreach ($religions as $id => $entry)
+                                    <option value="{{ $id }}"
+                                        {{ old('religion_id') == $id ? 'selected' : '' }}>
+                                        {{ $entry }}</option>
+                                @endforeach
+                                <option value="other">Other</option>
+                            </select>
+                            @if ($errors->has('religion'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('religion') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employeeList.fields.religion_helper') }}</span>
+                        </div> --}}
+                        @livewire('religion')
                     </div>
 
                 </div>
@@ -236,59 +266,7 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employeeList.fields.home_district_helper') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="marital_statu_id">{{ trans('cruds.employeeList.fields.marital_statu') }}</label>
-                            <select class="form-control select2 {{ $errors->has('marital_statu') ? 'is-invalid' : '' }}"
-                                name="marital_statu_id" id="marital_statu_id" required>
-                                @foreach ($marital_status as $id => $entry)
-                                    <option value="{{ $id }}"
-                                        {{ old('marital_statu_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('marital_statu'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('marital_statu') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.marital_statu_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>
-                            <select class="form-control select2 {{ $errors->has('gender') ? 'is-invalid' : '' }}"
-                                name="gender_id" id="gender_id" required>
-                                @foreach ($genders as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('gender'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('gender') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.gender_helper') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="required"
-                                for="religion_id">{{ trans('cruds.employeeList.fields.religion') }}</label>
-                            <select class="form-control select2 {{ $errors->has('religion') ? 'is-invalid' : '' }}"
-                                name="religion_id" id="religion_id" required>
-                                @foreach ($religions as $id => $entry)
-                                    <option value="{{ $id }}"
-                                        {{ old('religion_id') == $id ? 'selected' : '' }}>
-                                        {{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('religion'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('religion') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.religion_helper') }}</span>
-                        </div>
+
                         <div class="form-group">
                             <label class="required"
                                 for="blood_group_id">{{ trans('cruds.employeeList.fields.blood_group') }}</label>
@@ -371,20 +349,18 @@
                         <div class="form-group has_passport_group">
                             <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
                             <select class="form-control" id="has_passport">
+                                <option>{{ trans('global.pleaseSelect') }}</option>
                                 @if (app()->getLocale() === 'bn')
-                                    <option>
-                                        নির্বাচন করুন</option>
                                     <option value="No">না</option>
                                     <option value="Yes">হ্যাঁ</option>
                                 @else
-                                    <option>Select</option>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 @endif
                             </select>
                         </div>
 
-                        <div class="form-group passport_fields" style="display: none;">
+                        <div class="form-group passport_fields d-none">
                             <label for="passport">{{ trans('cruds.employeeList.fields.passport') }}</label>
                             <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}"
                                 type="text" name="passport" id="passport" value="{{ old('passport', '') }}">
@@ -396,7 +372,7 @@
                             <span class="help-block">{{ trans('cruds.employeeList.fields.passport_helper') }}</span>
                         </div>
 
-                        <div class="form-group passport_upload" style="display: none;">
+                        <div class="form-group passport_upload d-none">
                             <label for="passport_upload">{{ trans('cruds.employeeList.fields.passport_upload') }}</label>
                             <div class="needsclick dropzone {{ $errors->has('passport_upload') ? 'is-invalid' : '' }}"
                                 id="passport_upload-dropzone">
@@ -414,12 +390,11 @@
                         <div class="form-group has_license_group">
                             <label for="has_license">{{ trans('cruds.employeeList.fields.has_license') }}</label>
                             <select class="form-control" id="has_license">
+                                <option>{{ trans('global.pleaseSelect') }}</option>
                                 @if (app()->getLocale() === 'bn')
-                                    <option>নির্বাচন করুন</option>
                                     <option value="No">না</option>
                                     <option value="Yes">হ্যাঁ</option>
                                 @else
-                                    <option>Select</option>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 @endif
@@ -1517,14 +1492,14 @@
     </script> --}}
 
     <script>
-        document.getElementById('has_passport').addEventListener('change', function() {
-            var passportFields = document.getElementById('passport_fields');
-            if (this.value === 'Yes') {
-                passportFields.style.display = 'block';
-            } else {
-                passportFields.style.display = 'none';
-            }
-        });
+        // document.getElementById('has_passport').addEventListener('change', function() {
+        //     var passportFields = document.getElementById('passport_fields');
+        //     if (this.value === 'Yes') {
+        //         passportFields.style.display = 'block';
+        //     } else {
+        //         passportFields.style.display = 'none';
+        //     }
+        // });
     </script>
 
     <script>
@@ -1624,17 +1599,17 @@
 
 
     <script>
-        document.getElementById('has_passport').addEventListener('change', function() {
-            var passportFields = document.querySelector('.passport_fields');
-            var passportUpload = document.querySelector('.passport_upload');
-            if (this.value === 'yes') {
-                passportFields.style.display = 'block';
-                passportUpload.style.display = 'block';
-            } else {
-                passportFields.style.display = 'none';
-                passportUpload.style.display = 'none';
-            }
-        });
+        // document.getElementById('has_passport').addEventListener('change', function() {
+        //     var passportFields = document.querySelector('.passport_fields');
+        //     var passportUpload = document.querySelector('.passport_upload');
+        //     if (this.value === 'yes') {
+        //         passportFields.style.display = 'block';
+        //         passportUpload.style.display = 'block';
+        //     } else {
+        //         passportFields.style.display = 'none';
+        //         passportUpload.style.display = 'none';
+        //     }
+        // });
 
         document.getElementById('has_license').addEventListener('change', function() {
 
@@ -1685,6 +1660,30 @@
                     nidInput.setCustomValidity('');
                 } else {
                     nidInput.setCustomValidity('{{ __('validation.nid_invalid') }}');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('has_passport').addEventListener('change', function() {
+                var passportFields = document.querySelector('.passport_fields');
+                var passportUpload = document.querySelector('.passport_upload');
+
+                // Check if passportFields and passportUpload are not null before accessing style properties
+                if (passportFields !== null && passportUpload !== null) {
+                    if (this.value === 'Yes') {
+                        passportFields.classList.remove('d-none');
+                        passportFields.classList.add('d-block');
+                        passportUpload.classList.remove('d-none');
+                        passportUpload.classList.add('d-block');
+                    } else {
+                        passportFields.classList.remove('d-block');
+                        passportFields.classList.add('d-none');
+                        passportUpload.classList.remove('d-block');
+                        passportUpload.classList.add('d-none');
+                    }
+                } else {
+                    console.error('Passport fields or upload elements not found.');
                 }
             });
         });

@@ -46,6 +46,10 @@ class TrainingController extends Controller
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
             });
+            
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
 
             $table->addColumn('training_type_name_bn', function ($row) {
                 return $row->training_type ? $row->training_type->name_bn : '';

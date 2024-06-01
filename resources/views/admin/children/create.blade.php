@@ -101,6 +101,7 @@
                                 </div>
                                 <!-- NID Yes/No -->
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <label for="nid_option">@if (app()->getLocale() === 'bn')
                 এনআইডি
             @else
@@ -122,6 +123,28 @@
             @else
                 Yes
             @endif</option>
+=======
+                                    <label for="nid_option">
+
+
+
+
+                                        @if (app()->getLocale() === 'bn')
+                                            এনআইডি আছে?
+                                        @else
+                                            Any NID?
+                                        @endif
+                                    </label>
+                                    <select class="form-select" id="nid_option" name="nid_option">
+                                        <option>{{ trans('global.pleaseSelect') }}</option>
+                                        @if (app()->getLocale() === 'bn')
+                                            <option value="No">না</option>
+                                            <option value="Yes">হ্যাঁ</option>
+                                        @else
+                                            <option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                        @endif
+>>>>>>> 88e8ec0928b5d0f248bf98216f790287ae4d928a
                                     </select>
                                 </div>
 
@@ -158,6 +181,7 @@
 
                                 <!-- Passport Yes/No -->
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <label for="passport_option">@if (app()->getLocale() === 'bn')
                 পাসপোর্ট
             @else
@@ -179,6 +203,25 @@
             @else
                 Yes
             @endif</option>
+=======
+                                    <label for="passport_option">
+
+                                        @if (app()->getLocale() === 'bn')
+                                            পাসপোর্ট আছে?
+                                        @else
+                                            Any passport?
+                                        @endif
+                                    </label>
+                                    <select class="form-select" id="passport_option" name="passport_option">
+                                        <option>{{ trans('global.pleaseSelect') }}</option>
+                                        @if (app()->getLocale() === 'bn')
+                                            <option value="No">না</option>
+                                            <option value="Yes">হ্যাঁ</option>
+                                        @else
+                                            <option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                        @endif
+>>>>>>> 88e8ec0928b5d0f248bf98216f790287ae4d928a
                                     </select>
                                 </div>
 
@@ -404,7 +447,7 @@
             document.getElementById('nid_option').addEventListener('change', function() {
                 const nidField = document.getElementById('nid_number_field');
                 const nidUploadField = document.getElementById('childdren_nid_field');
-                if (this.value === 'yes') {
+                if (this.value === 'Yes') {
                     nidField.style.display = '';
                     nidUploadField.style.display = '';
                 } else {
@@ -416,7 +459,7 @@
             document.getElementById('passport_option').addEventListener('change', function() {
                 const passportField = document.getElementById('passport_number_field');
                 const passportUploadField = document.getElementById('childdren_passporft_field');
-                if (this.value === 'yes') {
+                if (this.value === 'Yes') {
                     passportField.style.display = '';
                     passportUploadField.style.display = '';
                 } else {
