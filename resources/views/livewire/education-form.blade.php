@@ -9,7 +9,7 @@
                 @endif
             </label>
             <select wire:model="levelofEducation" wire:change="onlevelofEducation($event.target.value)"
-                class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="circle_list_id"
+                class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="exam_degree"
                 id="circle_list_id">
                 <option>{{ trans('global.pleaseSelect') }}</option>
                 @foreach ($examinations as $option)
