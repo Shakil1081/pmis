@@ -379,10 +379,10 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
     }
     public function dfo()
     {
-        abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
+          $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
         $data['total'] = EmployeeList::count();
+
+       
     return view('admin.employeeLists.dfo-review-list', compact('data'));
     }
 
@@ -485,8 +485,6 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
     public function employeedata_pdf (Request $request)
     {
 
-abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
 $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
 ->find($request->id);
 
@@ -512,8 +510,7 @@ return $pdf->download($name);
 }
     public function employeedata(Request $request)
     {     
-        
-        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    
 
         $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
         ->find($request->id);
