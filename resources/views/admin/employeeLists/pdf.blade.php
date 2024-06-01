@@ -395,9 +395,9 @@
 
 
                                 @if (app()->getLocale() === 'bn')
-                                    {{ $employeeList->projectrevenue->project_revenue_bn }}
+                                    {{ $employeeList->projectrevenue->project_revenue_bn ?? '' }}
                                 @else
-                                    {{ $employeeList->projectrevenue->project_revenue_en }}
+                                    {{ $employeeList->projectrevenue->project_revenue_en ?? '' }}
                                 @endif
                             </td>
                         </tr>
@@ -1091,7 +1091,10 @@
                                     {{ trans('cruds.jobHistory.fields.institute_name') }}
                                 </th>
                                 <td>
-                                    {{ $jobHistory->institute_name }}
+                                    {{ $jobHistory->institutename ?? '' }}
+                                    {{ $jobHistory->academy_type ?? '' }}
+                                    {{ $jobHistory->acadaylocation ?? '' }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -1165,30 +1168,37 @@
                                 </th>
                                 <td>
                                     {{ $jobHistory->level_1 ?? '' }}
-                                    {{ $jobHistory->level_2 ?? '' }}
+
                                     {{ $jobHistory->level_3 ?? '' }}
                                     {{ $jobHistory->level_4 ?? '' }}
+                                    @if ($jobHistory->level_2)
+                                        {{ trans('cruds.jobHistory.fields.office_unit') }}
+                                        {{ $jobHistory->level_2 ?? '' }}
+                                    @endif
+
+
+
                                     {{ $jobHistory->level_5 ?? '' }}
 
-
-                                    @if ($jobHistory->beat_list->forest_range->forest_division)
-                                        {{ trans('cruds.jobHistory.fields.postingindivision') }}:
-                                        {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? '' }}<br>
-                                    @endif
-                                    @if ($jobHistory->beat_list->forest_range)
-                                        {{ trans('cruds.jobHistory.fields.posting_in_range') }}:
-                                        {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
-                                    @endif
-
-                                    @if ($jobHistory->beat_list)
-                                        {{ trans('cruds.jobHistory.fields.beat_list') }}:
-                                        {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
-                                    @endif
 
                                     @if ($jobHistory->office_unit)
                                         {{ trans('cruds.jobHistory.fields.posting_in_circle') }}:
                                         {{ $jobHistory->office_unit->{$columname} ?? '' }}<br>
                                     @endif
+
+
+                                    @if ($jobHistory->beat_list)
+                                        {{ trans('cruds.jobHistory.fields.postingindivision') }}:
+                                        {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? '' }}<br>
+
+                                        {{ trans('cruds.jobHistory.fields.posting_in_range') }}:
+                                        {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
+
+                                        {{ trans('cruds.jobHistory.fields.beat_list') }}:
+                                        {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
+                                    @endif
+
+
 
 
                                 </td>
