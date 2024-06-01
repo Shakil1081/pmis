@@ -1,13 +1,12 @@
 <div>
     <div class="row row-cols-2">
 
-
         <div class="form-group">
             <label class="required" for="office_unit_id">{{ trans('cruds.jobHistory.fields.office_unit') }}</label>
             <select wire:model="selectedLevel1" wire:change="onSelectChange($event.target.value)"
                 class="form-select {{ $errors->has('office_unit') ? 'is-invalid' : '' }}" name="office_unit_id"
                 id="office_unit_id" required>
-
+                <option>{{ trans('global.pleaseSelect') }}</option>
                 @foreach ($optionsLevel1 as $option)
                     <option value="{{ $option->id }}" {{ old('office_unit_id') == $option->id ? 'selected' : '' }}>
 
@@ -44,6 +43,7 @@
                 <select wire:model="circlelistid" wire:change="onSelectcirclelistid($event.target.value)"
                     class="form-control select2 {{ $errors->has('circle_list') ? 'is-invalid' : '' }}"
                     name="circle_list_id" id="circle_list_id">
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($circle_lists as $option)
                         <option value="{{ $option->id }}">
                             @if (app()->getLocale() === 'bn')

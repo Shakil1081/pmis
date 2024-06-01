@@ -22,6 +22,11 @@ class StoreStatusRequest extends FormRequest
                 'required',
                 'unique:statuses',
             ],
+            'name_en' => [
+                'string',
+                'required',
+                'unique:statuses',
+            ],
         ];
     }
 }

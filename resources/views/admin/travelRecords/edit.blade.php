@@ -70,14 +70,20 @@
                     </div>
                     <div class="form-group">
                         <label for="purpose_id">{{ trans('cruds.travelRecord.fields.purpose') }}</label>
-                        <select class="form-select select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
+                        {{-- <select class="form-select select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
                             name="purpose_id" id="purpose_id">
                             @foreach ($purposes as $id => $entry)
                                 <option value="{{ $id }}"
                                     {{ (old('purpose_id') ? old('purpose_id') : $travelRecord->purpose->id ?? '') == $id ? 'selected' : '' }}>
                                     {{ $entry }}</option>
                             @endforeach
-                        </select>
+                        </select> --}}
+
+                        <input type="text" class="form-control" name="purpose_id" id="purpose_id"
+                            value="{{ old('purpose_id') ? old('purpose_id') : $travelRecord->purpose_id }}" required>
+
+
+
                         @if ($errors->has('purpose'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('purpose') }}

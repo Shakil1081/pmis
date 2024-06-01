@@ -22,6 +22,11 @@ class UpdateStatusRequest extends FormRequest
                 'required',
                 'unique:statuses,name,' . request()->route('status')->id,
             ],
+            'name_en' => [
+                'string',
+                'required',
+                'unique:statuses,name,' . request()->route('status')->id,
+            ],
         ];
     }
 }
