@@ -102,7 +102,14 @@
                                 {{ trans('cruds.employeeList.fields.batch') }}
                             </th>
                             <td>
-                                {{ $employeeList->batch->batch_bn ?? '' }}
+
+
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $employeeList->batch->batch_bn ?? '' }}
+                                @else
+                                    {{ $employeeList->batch->batch_en ?? '' }}
+                                @endif
+
                             </td>
                         </tr>
 

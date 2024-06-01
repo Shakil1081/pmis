@@ -15,6 +15,15 @@ if (!function_exists('englishToBanglaNumber')) {
             '9' => '৯',
         ];
 
-        return strtr((string)$number, $banglaNumbers);
+
+        if (app()->getLocale() === 'bn'){
+            return strtr((string)$number, $banglaNumbers);
+
+        }   else{
+            return $number ;
+            
+        }                              
+
+       
     }
 }
