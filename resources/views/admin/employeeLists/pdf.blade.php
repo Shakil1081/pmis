@@ -581,7 +581,7 @@
                                     @endforeach
 
 
-                                    {{ $educationInformatione->name_of_exam_id }}
+                                    {{-- {{ $educationInformatione->name_of_exam_id }} --}}
                                 </td>
                             </tr>
                             {{-- <tr>
