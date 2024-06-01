@@ -38,7 +38,7 @@ class ServiceParticularsController extends Controller
     public function store(StoreServiceParticularRequest $request)
     {
         $serviceParticular = ServiceParticular::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.service-particulars.index');
     }
 

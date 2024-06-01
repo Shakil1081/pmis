@@ -560,7 +560,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('achievementschools_university_access')
+                    {{-- @can('achievementschools_university_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.achievementschools-universities.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/achievementschools-universities') || request()->is('admin/achievementschools-universities/*') ? 'c-active' : '' }}">
@@ -570,7 +570,7 @@
                                 {{ trans('cruds.achievementschoolsUniversity.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                 </ul>
             </li>
         @endcan

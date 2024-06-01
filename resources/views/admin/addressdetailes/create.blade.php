@@ -19,11 +19,24 @@
                                         name="address_type" id="address_type" required>
                                         <option value disabled {{ old('address_type', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
-                                        @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECT as $key => $label)
-                                            <option value="{{ $key }}"
-                                                {{ old('address_type', '') === (string) $key ? 'selected' : '' }}>
-                                                {{ $label }}</option>
-                                        @endforeach
+
+                                        @if (app()->getLocale() === 'bn')
+                                            @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECT as $key => $label)
+                                                <option value="{{ $key }}"
+                                                    {{ old('address_type', '') === (string) $key ? 'selected' : '' }}>
+                                                    {{ $label }}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN as $key => $label)
+                                                <option value="{{ $key }}"
+                                                    {{ old('address_type', '') === (string) $key ? 'selected' : '' }}>
+                                                    {{ $label }}</option>
+                                            @endforeach
+                                        @endif
+
+
+
+
                                     </select>
                                     @if ($errors->has('address_type'))
                                         <div class="invalid-feedback">
@@ -112,11 +125,23 @@
                                         name="status" id="status">
                                         <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
-                                        @foreach (App\Models\Addressdetaile::STATUS_SELECT as $key => $label)
-                                            <option value="{{ $key }}"
-                                                {{ old('status', '') === (string) $key ? 'selected' : '' }}>
-                                                {{ $label }}</option>
-                                        @endforeach
+
+                                        @if (app()->getLocale() === 'bn')
+                                            @foreach (App\Models\Addressdetaile::STATUS_SELECTBN as $key => $label)
+                                                <option value="{{ $key }}"
+                                                    {{ old('status', '') === (string) $key ? 'selected' : '' }}>
+                                                    {{ $label }}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach (App\Models\Addressdetaile::STATUS_SELECT as $key => $label)
+                                                <option value="{{ $key }}"
+                                                    {{ old('status', '') === (string) $key ? 'selected' : '' }}>
+                                                    {{ $label }}</option>
+                                            @endforeach
+                                        @endif
+
+
+
                                     </select>
                                     @if ($errors->has('status'))
                                         <div class="invalid-feedback">

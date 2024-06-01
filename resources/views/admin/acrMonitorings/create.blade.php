@@ -21,7 +21,7 @@
                                         for="year">{{ trans('cruds.acrMonitoring.fields.year') }}</label>
                                     <input class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}"
                                         type="number" name="year" id="year" value="{{ old('year', '') }}"
-                                        step="1" required>
+                                        step="1" min="1" required>
                                     @if ($errors->has('year'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('year') }}

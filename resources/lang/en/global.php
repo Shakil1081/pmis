@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'saveactions'                        => 'Information Added Successfully.',
+    'deleteaction'                        => 'Information updated successfully.',
+    'updateAction'                        => 'Information Deleted Successfully.',
     'actions'                        => 'Actions',
     'add'                            => 'Add',
     'allRightsReserved'              => 'All rights reserved.',

@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'saveactions'                        => 'তথ্যটি সঠিকভাবে সম্পাদন করা হয়েছে।',
+    'deleteaction'                        => 'তথ্যটি সঠিকভাবে Update করা হয়েছে।',
+    'updateAction'                        => 'তথ্যটি সঠিকভাবে Delete করা হয়েছে।',
     'actions'                        => 'ক্রিয়াকলাপ',
     'add'                            => 'যোগ করুন',
     'allRightsReserved'              => 'সমস্ত অধিকার সংরক্ষিত.',

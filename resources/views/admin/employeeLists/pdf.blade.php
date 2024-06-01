@@ -31,6 +31,10 @@
             margin-top: 20px;
         }
 
+        th {
+            width: 50%;
+        }
+
         @page {
             header: page-header;
             footer: page-footer;
@@ -55,9 +59,9 @@
                     <br>
 
                     @if (app()->getLocale() === 'bn')
-                        নাম: {{ $employeeList->fullname_bn }}
+                        <h4> নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
-                        Name:{{ $employeeList->fullname_en }}
+                        <h4> Name:{{ $employeeList->fullname_en }}</h4>
                     @endif
 
                     <br>
@@ -73,8 +77,9 @@
     <div class="col-md-12">
         <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
             <div>
-                <strong>General Information</strong>
+                <strong>{{ trans('cruds.employeeList.title_singular') }}</strong>
 
+                {{-- @dd($employeeList); --}}
                 <table class="table-bordered table-striped table" id="General">
                     <tbody>
                         <tr>
@@ -98,7 +103,14 @@
                                 {{ trans('cruds.employeeList.fields.batch') }}
                             </th>
                             <td>
-                                {{ $employeeList->batch->batch_bn ?? '' }}
+
+
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $employeeList->batch->batch_bn ?? '' }}
+                                @else
+                                    {{ $employeeList->batch->batch_en ?? '' }}
+                                @endif
+
                             </td>
                         </tr>
 
@@ -141,8 +153,8 @@
                                     {{ $employeeList->mname_bn }}
                                 </td>
                             </tr>
+                        @else
                             <tr>
-                            @else
                                 <th>
                                     {{ trans('cruds.employeeList.fields.mname_en') }}
                                 </th>
@@ -156,7 +168,7 @@
                                 {{ trans('cruds.employeeList.fields.date_of_birth') }}
                             </th>
                             <td>
-                                {{ $employeeList->date_of_birth }}
+                                {{ englishToBanglaNumber($employeeList->date_of_birth) }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -265,7 +277,7 @@
                                 {{ trans('cruds.employeeList.fields.passport') }}
                             </th>
                             <td>
-                                {{ $employeeList->passport }}
+                                {{ $employeeList->passport ? $employeeList->passport : 'NA' }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -286,6 +298,8 @@
                             </th>
                             <td>
                                 {{ $employeeList->license_type->{$columname} ?? '' }}
+
+                                {{ $employeeList->license_type->license_number ?? '(NA)' }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -371,6 +385,45 @@
                                 {{ $employeeList->first_joining_memo_no }}
                             </td>
                         </tr>
+
+                        <tr>
+                            <th>
+                                {{ trans('cruds.employeeList.fields.projectrevenue') }}
+                            </th>
+                            <td>
+                                {{ $employeeList->projectrevenue->{$columname} ?? '' }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
+                            </th>
+                            <td>
+                                {{ $employeeList->joiningexaminfo->exam_name_en ?? '' }}
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                {{ trans('cruds.employeeList.fields.project') }}
+                            </th>
+                            <td>
+                                {{ $employeeList->project->{$columname} ?? '' }}
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>
+                                {{ trans('cruds.employeeList.fields.departmental_exam') }}
+                            </th>
+                            <td>
+                                {{ $employeeList->departmental_exam->exam_name_bn ?? '' }}
+                            </td>
+                        </tr>
+
                         {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.first_joining_order') }}
@@ -500,9 +553,9 @@
                         </tr> --}}
                     </tbody>
                 </table><br />
+                {{-- @dd($employeeList->educations); --}}
 
-
-                <strong>Education</strong>
+                <strong>{{ trans('cruds.educationInformatione.title_singular') }}</strong>
                 @foreach ($employeeList->educations ?? [] as $educationInformatione)
                     <table class="table-bordered table-striped table" id="Education">
                         <tbody>
@@ -536,6 +589,8 @@
                                 </th>
                                 <td>
                                     {{ $educationInformatione->achivement }}
+                                    {{ $educationInformatione->cgpa ?? '' }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -575,9 +630,9 @@
 
 
 
-                <strong> Professionales</strong>
+                <strong> {{ trans('cruds.professionale.title') }}</strong>
 
-                @foreach ($employeeList->educations ?? [] as $professionale)
+                @foreach ($employeeList->professionales ?? [] as $professionale)
                     <table class="table-bordered table-striped table" id="Professionales">
                         <tbody>
                             <tr>
@@ -764,7 +819,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.spouseInformatione.fields.$columname') }}
+                                    {{ trans("cruds.spouseInformatione.fields.$columname") }}
                                 </th>
                                 <td>
                                     {{ $spouseInformatione->{$columname} }}
@@ -798,14 +853,14 @@
                                     {{ $spouseInformatione->occupation }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.office_address') }}
                                 </th>
                                 <td>
                                     {{ $spouseInformatione->office_address }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.phone_number') }}
@@ -852,7 +907,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.child.fields.$columname') }}
+                                    {{ trans("cruds.child.fields.$columname") }}
                                 </th>
                                 <td>
                                     {{ $child->{$columname} }}
@@ -907,7 +962,7 @@
                                     {{ trans('cruds.child.fields.nid_number') }}
                                 </th>
                                 <td>
-                                    {{ $child->nid_number }}
+                                    {{ $child->nid_number ? $child->nid_number : 'NA' }}
                                 </td>
                             </tr>
                             <tr>
@@ -915,7 +970,7 @@
                                     {{ trans('cruds.child.fields.passport_number') }}
                                 </th>
                                 <td>
-                                    {{ $child->passport_number }}
+                                    {{ $child->passport_number ? $child->passport_number : 'NA' }}
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -949,17 +1004,19 @@
 
                 <strong> {{ trans('cruds.jobHistory.title') }}</strong>
 
+
+                {{-- @dd($employeeList->jobhistories) --}}
                 @foreach ($employeeList->jobhistories ?? [] as $jobHistory)
                     <table class="table-bordered table-striped table" id="jobHistory">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $jobHistory->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.institute_name') }}
@@ -1013,7 +1070,8 @@
                                     {{ trans('cruds.jobHistory.fields.level_2') }}
                                 </th>
                                 <td>
-                                    {{ $jobHistory->level_2 }}
+                                    {{ $jobHistory->level_2 ?? '' }}
+                                    {{ $jobHistory->project->name_en ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1171,14 +1229,14 @@
                 @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
                     <table class="table-bordered table-striped table" id="serviceParticular">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.serviceParticular.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $serviceParticular->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.serviceParticular.fields.designation') }}
@@ -1380,14 +1438,14 @@
                 @foreach ($employeeList->foreigntravelpersonals ?? [] as $foreignTravelPersonal)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $foreignTravelPersonal->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.title') }}
@@ -1446,14 +1504,14 @@
                 @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $socialAssPrAttachment->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
@@ -1471,6 +1529,8 @@
                                 </td>
                             </tr>
                             <tr>
+
+                                {{-- @dd($socialAssPrAttachment) --}}
                                 <th>
                                     {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
                                 </th>
@@ -1504,14 +1564,14 @@
                 @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $extracurriculam->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.employee') }}
@@ -1713,14 +1773,14 @@
                 @foreach ($employeeList->otherservicejobs ?? [] as $otherServiceJob)
                     <table class="table-bordered table-striped table">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.otherServiceJob.fields.id') }}
                                 </th>
                                 <td>
                                     {{ $otherServiceJob->id }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.otherServiceJob.fields.employer') }}
@@ -1799,7 +1859,13 @@
                                     {{ trans('cruds.language.fields.language') }}
                                 </th>
                                 <td>
-                                    {{ $language->language }}
+
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->language->name }}
+                                    @else
+                                        {{ $language->language->nmae_en }}
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
@@ -2002,7 +2068,14 @@
         </div>
     </div>
     <htmlpagefooter name="page-footer">
-        Page No {PAGENO} <br><br>
+
+        @if (app()->getLocale() === 'bn')
+            পৃষ্ঠা নং: {PAGENO}
+        @else
+            Page No {PAGENO}
+        @endif
+
+        <br><br>
     </htmlpagefooter>
 </body>
 

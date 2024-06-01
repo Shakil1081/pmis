@@ -5,7 +5,7 @@
             <select wire:model="religionId" wire:change="onreligionId($event.target.value)"
                 class="form-select @error('religion_id') is-invalid @enderror" name="religion_id" id="religion_id"
                 required>
-                <option value="">{{ trans('global.pleaseSelect') }}</option>
+
                 @foreach ($religions as $id => $rel)
                     <option value="{{ $id }}" {{ old('religion_id') == $id ? 'selected' : '' }}>
                         {{ $rel }}</option>

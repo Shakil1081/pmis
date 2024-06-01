@@ -623,8 +623,12 @@ return [
             'result_helper'                    => ' ',
             'exam_degree'                      => 'Exam Degree',
             'exam_degree_helper'               => ' ',
-            'cgpa'                             => 'CGPA',
+            'cgpa'                             => 'CGPA (Out of 4)',
             'cgpa_helper'                      => ' ',
+            'gpa'                             => 'GPA (Out of 5)',
+            'gpa_helper'                      => ' ',
+            'greadclassdivision'                      => 'Grade/Class/Division',
+            'greadclassdivision_helper'               => ' ',
         ],
     ],
     'professionale' => [

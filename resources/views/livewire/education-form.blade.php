@@ -94,7 +94,7 @@
 
 
             <div class="form-group">
-                <label class="required">Gread/Class/Division</label>
+                <label class="required">{{ trans('cruds.educationInformatione.fields.greadclassdivision') }}</label>
                 <select wire:model="result" wire:change="onresult($event.target.value)" class="form-select" required>
                     <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($resultGroup as $option)
@@ -107,9 +107,9 @@
                         </option>
                     @endforeach
                     <option value="4" {{ old('achievement_types_id') == 4 ? 'selected' : '' }}>
-                        GPA</option>
+                        {{ trans('cruds.educationInformatione.fields.gpa') }} </option>
                     <option value="5" {{ old('achievement_types_id') == 5 ? 'selected' : '' }}>
-                        CGPA</option>
+                        {{ trans('cruds.educationInformatione.fields.cgpa') }}</option>
 
                 </select>
                 @if ($errors->has('exam_board'))
@@ -122,7 +122,7 @@
         @endif
 
         @if (empty($resultlist) || count($resultlist) === 0)
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label
                     for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
                 <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
@@ -140,12 +140,12 @@
                 @endif
                 <span
                     class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
-            </div>
+            </div> --}}
 
             @if ($resultGroup)
                 <div class="form-group">
                     <label for="cgpa">
-                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa') : 'GPA' }}
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa') : trans('cruds.educationInformatione.fields.gpa') }}
 
                     </label>
                     <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="number"
@@ -156,7 +156,9 @@
                             {{ $errors->first('cgpa') }}
                         </div>
                     @endif
-                    <span class="help-block">{{ trans('cruds.educationInformatione.fields.cgpa_helper') }}</span>
+                    <span class="help-block">
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa_helper') : trans('cruds.educationInformatione.fields.gpa_helper') }}
+                    </span>
                 </div>
 
 

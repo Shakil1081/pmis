@@ -49,7 +49,7 @@ return [
             'I' => 'SutonnyOMJ.ttf',
             'BI' => 'SutonnyOMJ.ttf',
             'useOTL' => 0xFF,
-            'useKashida' => 75,
+            'useKashida' => 80,
         ],
     ],
 ];

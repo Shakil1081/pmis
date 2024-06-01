@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
-
+use PDF;
 class EmployeeListController extends Controller
 {
     use MediaUploadingTrait;
@@ -501,7 +501,7 @@ if (!$employeeList) {
 
 
 
- return view('admin.employeeLists.pdf', compact('employeeList','columname'));
+// return view('admin.employeeLists.pdf', compact('employeeList','columname'));
 
 $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname'),[], ['margin_top' => 20,
 'margin_bottom' => 15,
