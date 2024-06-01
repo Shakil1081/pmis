@@ -107,10 +107,8 @@
                         <div class="progress">
                             @php
                                 $total = 0;
-                                $totalvalue = 16;
 
                                 $relationships = [
-                                    'batch',
                                     'educations',
                                     'professionales',
                                     'addressdetailes',
@@ -126,7 +124,12 @@
                                     'otherservicejobs',
                                     'languages',
                                     'acrmonitorings',
+                                    'awards',
+                                    'acrmonitorings',
+                                    'publications',
                                 ];
+
+                                $totalvalue = count($relationships);
                                 // foreach ($relationships as $relationship) {
                                 //     if ($result->{$relationship}) {
                                 //         $total++;
@@ -145,6 +148,7 @@
                                 $progress = ($total / $totalvalue) * 100;
                             @endphp
 
+                            {{-- @dd($totalvalue) --}}
                             <div class="progress-bar" role="progressbar" style="width:{{ round($progress) }}%;"
                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%</div>
                         </div>
