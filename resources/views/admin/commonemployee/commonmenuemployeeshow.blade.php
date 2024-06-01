@@ -5,8 +5,7 @@
     @endphp
 
 
-    <div class="nav flex-column nav-pills position-fixed" id="v-pills-tab" role="tablist" aria-orientation="vertical"
-        style=" top: 102px;">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
         <a href="#General" class="nav-link">
             {{ trans('cruds.employeeList.title') }}
