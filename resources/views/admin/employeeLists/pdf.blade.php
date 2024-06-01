@@ -1097,14 +1097,14 @@
 
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.job_type') }}
                                 </th>
                                 <td>
                                     {{ $jobHistory->job_type->{$columname} ?? '' }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.designation') }}
