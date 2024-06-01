@@ -188,6 +188,10 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->belongsTo(ProjectRevenueExam::class, 'joiningexaminfo_id');
     }
+    public function examinations()
+    {
+        return $this->belongsTo(ProjectRevenueExam::class, 'name_of_exam_id');
+    }
 
     public function departmental_exam()
     {

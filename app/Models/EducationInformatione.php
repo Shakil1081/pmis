@@ -59,6 +59,7 @@ class EducationInformatione extends Model implements HasMedia
     {
         return $this->belongsTo(Examination::class, 'name_of_exam_id');
     }
+ 
 
     public function exam_board()
     {
