@@ -1288,14 +1288,14 @@
                                     {{ $training->end_date }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.grade') }}
                                 </th>
                                 <td>
                                     {{ $training->grade }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.position') }}
