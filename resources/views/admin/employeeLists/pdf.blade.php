@@ -845,14 +845,14 @@
                                     @endif
                                 </td>
                             </tr> --}}
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.occupation') }}
                                 </th>
                                 <td>
                                     {{ $spouseInformatione->occupation }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.office_address') }}
@@ -1225,63 +1225,6 @@
                     </table><br />
                 @endforeach
 
-                <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
-                @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
-                    <table class="table-bordered table-striped table" id="serviceParticular">
-                        <tbody>
-                            {{-- <tr>
-                                <th>
-                                    {{ trans('cruds.serviceParticular.fields.id') }}
-                                </th>
-                                <td>
-                                    {{ $serviceParticular->id }}
-                                </td>
-                            </tr> --}}
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.serviceParticular.fields.designation') }}
-                                </th>
-                                <td>
-                                    {{ $serviceParticular->designation->{$columname} ?? '' }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.serviceParticular.fields.designation_status') }}
-                                </th>
-                                <td>
-                                    {{ $serviceParticular->designation_status }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.serviceParticular.fields.office_organization_institute') }}
-                                </th>
-                                <td>
-                                    {{ $serviceParticular->office_organization_institute }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.serviceParticular.fields.joining_date') }}
-                                </th>
-                                <td>
-                                    {{ $serviceParticular->joining_date }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.serviceParticular.fields.release_date') }}
-                                </th>
-                                <td>
-                                    {{ $serviceParticular->release_date }}
-                                </td>
-                            </tr>
-
-
-                        </tbody>
-                    </table><br />
-                @endforeach
                 <strong>
                     {{ trans('cruds.training.title') }}
                 </strong>
@@ -2002,14 +1945,14 @@
                                     @endif
                                 </td>
                             </tr> --}}
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
                                 </th>
                                 <td>
                                     {{ $criminalproDisciplinary->remarks }}
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table><br />
@@ -2052,14 +1995,14 @@
                                     {{ $acrMonitoring->review_date }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.acrMonitoring.fields.remarks') }}
                                 </th>
                                 <td>
                                     {!! $acrMonitoring->remarks !!}
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table><br />
