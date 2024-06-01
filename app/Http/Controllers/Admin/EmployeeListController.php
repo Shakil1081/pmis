@@ -33,7 +33,6 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
-use  PDF;
 
 class EmployeeListController extends Controller
 {
@@ -69,7 +68,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $marital_status = Maritalstatus::pluck($maritialstatus, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $marital_status = Maritalstatus::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -475,6 +474,9 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
     public function commonemployeeshow(Request $request)
     {
 
+
+        //EmployeeList $employeeList
+
         abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $employeeList = EmployeeList::findOrFail($request->id);
 
@@ -482,6 +484,8 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }
+
+   
     public function employeedata_pdf (Request $request)
     {
 

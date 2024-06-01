@@ -101,6 +101,29 @@
                                 </div>
                                 <!-- NID Yes/No -->
                                 <div class="form-group">
+<<<<<<< HEAD
+                                    <label for="nid_option">@if (app()->getLocale() === 'bn')
+                এনআইডি
+            @else
+                NID
+            @endif</label>
+                                    <select class="form-select" id="nid_option" name="nid_option">
+                                    <option value="">@if (app()->getLocale() === 'bn')
+                অনুগ্রহ করে নির্বাচন করুন
+            @else
+                Please Select
+            @endif</option>
+                                        <option value="no">@if (app()->getLocale() === 'bn')
+                না
+            @else
+                No
+            @endif</option>
+                                        <option value="yes">@if (app()->getLocale() === 'bn')
+                হ্যাঁ
+            @else
+                Yes
+            @endif</option>
+=======
                                     <label for="nid_option">
 
 
@@ -121,6 +144,7 @@
                                             <option value="No">No</option>
                                             <option value="Yes">Yes</option>
                                         @endif
+>>>>>>> 88e8ec0928b5d0f248bf98216f790287ae4d928a
                                     </select>
                                 </div>
 
@@ -157,6 +181,29 @@
 
                                 <!-- Passport Yes/No -->
                                 <div class="form-group">
+<<<<<<< HEAD
+                                    <label for="passport_option">@if (app()->getLocale() === 'bn')
+                পাসপোর্ট
+            @else
+                Passport
+            @endif</label>
+                                    <select class="form-select" id="passport_option" name="passport_option">
+                                    <option value="">@if (app()->getLocale() === 'bn')
+                অনুগ্রহ করে নির্বাচন করুন
+            @else
+                Please Select
+            @endif</option>
+                                        <option value="no">@if (app()->getLocale() === 'bn')
+                না
+            @else
+                No
+            @endif</option>
+                                        <option value="yes">@if (app()->getLocale() === 'bn')
+                হ্যাঁ
+            @else
+                Yes
+            @endif</option>
+=======
                                     <label for="passport_option">
 
                                         @if (app()->getLocale() === 'bn')
@@ -174,6 +221,7 @@
                                             <option value="No">No</option>
                                             <option value="Yes">Yes</option>
                                         @endif
+>>>>>>> 88e8ec0928b5d0f248bf98216f790287ae4d928a
                                     </select>
                                 </div>
 

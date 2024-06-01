@@ -23,8 +23,12 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.foreignTravelPersonal.fields.id') }}
+                            {{ trans('cruds.foreignTravelPersonal.fields.employee') }}
                         </th>
+                        <th>
+                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
+                        </th>
+                       
                         <th>
                             {{ trans('cruds.foreignTravelPersonal.fields.title') }}
                         </th>
@@ -43,15 +47,8 @@
                         <th>
                             {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.travelRecord.fields.title') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.foreignTravelPersonal.fields.employee') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                        </th>
+                        
+                        
                         <th>
                             &nbsp;
                         </th>
@@ -118,9 +115,14 @@
                         name: 'placeholder'
                     },
                     {
-                        data: 'id',
-                        name: 'id'
+                        data: 'employee_employeeid',
+                        name: 'employee.employeeid'
                     },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    
                     {
                         data: 'title',
                         name: 'title'
@@ -145,18 +147,7 @@
                         data: 'leave_start_date',
                         name: 'leave.start_date'
                     },
-                    {
-                        data: 'leave.title',
-                        name: 'leave.title'
-                    },
-                    {
-                        data: 'employee_employeeid',
-                        name: 'employee.employeeid'
-                    },
-                    {
-                        data: 'employee.fullname_bn',
-                        name: 'employee.fullname_bn'
-                    },
+                    
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

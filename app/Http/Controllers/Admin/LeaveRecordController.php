@@ -53,6 +53,10 @@ class LeaveRecordController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_bn : '';
+            });
+
             $table->addColumn('type_of_leave_name_bn', function ($row) {
                 return $row->type_of_leave ? $row->type_of_leave->name_bn : '';
             });

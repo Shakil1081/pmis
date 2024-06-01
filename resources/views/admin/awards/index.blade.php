@@ -23,8 +23,19 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.award.fields.id') }}
-                            </th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
                             <th>
                                 {{ trans('cruds.award.fields.title') }}
                             </th>
@@ -34,12 +45,8 @@
                             <th>
                                 {{ trans('cruds.award.fields.date') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.award.fields.certificate') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.award.fields.employee') }}
-                            </th>
+                           
+                            
                             <th>
                                 &nbsp;
                             </th>
@@ -52,7 +59,10 @@
 
                                 </td>
                                 <td>
-                                    {{ $award->id ?? '' }}
+                                    {{ $award->employee->employeeid ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $award->employee->fullname_en ?? '' }}
                                 </td>
                                 <td>
                                     {{ $award->title ?? '' }}
@@ -63,16 +73,8 @@
                                 <td>
                                     {{ $award->date ?? '' }}
                                 </td>
-                                <td>
-                                    @if ($award->certificate)
-                                        <a href="{{ $award->certificate->getUrl() }}" target="_blank">
-                                            {{ trans('global.view_file') }}
-                                        </a>
-                                    @endif
-                                </td>
-                                <td>
-                                    {{ $award->employee->employeeid ?? '' }}
-                                </td>
+                                
+                               
                                 <td>
                                     @can('award_show')
                                         <a class="btn btn-sm btn-success px-2"

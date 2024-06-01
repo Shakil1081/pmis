@@ -22,27 +22,46 @@
                         <th width="10">
 
                         </th>
+
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
                         <th>
                             {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                         </th>
                         <th>
-                            {{ trans('cruds.educationInformatione.fields.exam_board') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.educationInformatione.fields.concentration_major_group') }}
                         </th>
+                        
+                        
                         <th>
                             {{ trans('cruds.educationInformatione.fields.school_university_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.educationInformatione.fields.result') }}
+                            {{ trans('cruds.educationInformatione.fields.exam_board') }}
                         </th>
+                        
                         <th>
                             {{ trans('cruds.educationInformatione.fields.passing_year') }}
                         </th>
                         <th>
                             {{ trans('cruds.educationInformatione.fields.achievement_types') }}
                         </th>
+                        <th>
+                            {{ trans('cruds.educationInformatione.fields.result') }}
+                        </th>
+                        
                         <th>
                             {{ trans('cruds.achievementschoolsUniversity.fields.name_en') }}
                         </th>
@@ -52,12 +71,7 @@
                         <th>
                             {{ trans('cruds.educationInformatione.fields.catificarte') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.educationInformatione.fields.employee') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.educationInformatione.fields.exam_degree') }}
                         </th>
@@ -130,25 +144,32 @@
                         name: 'placeholder'
                     },
                     {
-                        data: 'name_of_exam_name_bn',
-                        name: 'name_of_exam.name_bn'
+                        data: 'employee_employeeid',
+                        name: 'employee.employeeid'
                     },
                     {
-                        data: 'exam_board_name_bn',
-                        name: 'exam_board.name_bn'
+                        data: 'employee.fullname_bn',
+                        name: 'employee.fullname_bn'
+                    },
+                    {
+                        data: 'name_of_exam_name_bn',
+                        name: 'name_of_exam.name_bn'
                     },
                     {
                         data: 'concentration_major_group',
                         name: 'concentration_major_group'
                     },
+                    
+                   
                     {
                         data: 'school_university_name',
                         name: 'school_university_name'
                     },
                     {
-                        data: 'result_name_bn',
-                        name: 'result.name_bn'
+                        data: 'exam_board_name_bn',
+                        name: 'exam_board.name_bn'
                     },
+                    
                     {
                         data: 'passing_year',
                         name: 'passing_year'
@@ -156,6 +177,10 @@
                     {
                         data: 'achievement_types_name_bn',
                         name: 'achievement_types.name_bn'
+                    },
+                    {
+                        data: 'result_name_bn',
+                        name: 'result.name_bn'
                     },
                     {
                         data: 'achievement_types.name_en',
@@ -171,14 +196,7 @@
                         sortable: false,
                         searchable: false
                     },
-                    {
-                        data: 'employee_employeeid',
-                        name: 'employee.employeeid'
-                    },
-                    {
-                        data: 'employee.fullname_bn',
-                        name: 'employee.fullname_bn'
-                    },
+                    
                     {
                         data: 'exam_degree',
                         name: 'exam_degree'

@@ -26,6 +26,20 @@
 
                         </th>
                         <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
+                        <th>
                             {{ trans('cruds.jobHistory.fields.designation') }}
                         </th>
                         <th>
@@ -34,9 +48,7 @@
                         <th>
                             {{ trans('cruds.jobHistory.fields.release_date') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.employee') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.employeeList.fields.fullname_bn') }}
                         </th>
@@ -121,6 +133,14 @@
                         name: 'placeholder'
                     },
                     {
+                        data: 'employee_employeeid',
+                        name: 'employee.employeeid'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
                         data: 'designation_name_bn',
                         name: 'designation.name_bn'
                     },
@@ -132,10 +152,7 @@
                         data: 'release_date',
                         name: 'release_date'
                     },
-                    {
-                        data: 'employee_employeeid',
-                        name: 'employee.employeeid'
-                    },
+                    
                     {
                         data: 'employee.fullname_bn',
                         name: 'employee.fullname_bn'

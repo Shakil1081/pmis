@@ -22,7 +22,18 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.criminalProsecutione.fields.employee') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
                         </th>
                         <th>
                             {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
@@ -33,9 +44,14 @@
                         <th>
                             {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
                         </th>
-                        <th>
+                        <th>@if (app()->getLocale() === 'bn')
+                        মন্তব্য
+                    @else
+                        Remarks
+                    @endif</th>
+                        <!-- <th>
                             {{ trans('cruds.criminalProsecutione.fields.court_order') }}
-                        </th>
+                        </th> -->
                         <th>
                             &nbsp;
                         </th>
@@ -106,6 +122,10 @@
                         name: 'employee.employeeid'
                     },
                     {
+                        data: 'employee_fullname_en',
+                        name: 'employee_fullname_en'
+                    },
+                    {
                         data: 'judgement_type',
                         name: 'judgement_type'
                     },
@@ -118,11 +138,10 @@
                         name: 'government_order_no'
                     },
                     {
-                        data: 'court_order',
-                        name: 'court_order',
-                        sortable: false,
-                        searchable: false
+                        data: 'remarks',
+                        name: 'remarks'
                     },
+                    
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

@@ -22,6 +22,20 @@
 
                         </th>
                         <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
+                        <th>
                             {{ trans('cruds.publication.fields.title') }}
                         </th>
                         <th>
@@ -30,15 +44,14 @@
                         <th>
                             {{ trans('cruds.publication.fields.publication_media') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.publication.fields.publication_date') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.publication.fields.publication_link') }}
                         </th>
                         <th>
-                            {{ trans('cruds.publication.fields.employee') }}
+                            {{ trans('cruds.publication.fields.publication_date') }}
                         </th>
+                        
                         <th>
                             &nbsp;
                         </th>
@@ -105,6 +118,14 @@
                         name: 'placeholder'
                     },
                     {
+                        data: 'employee_employeeid',
+                        name: 'employee.employeeid'
+                    },
+                    {
+                        data: 'employee_fullname_en',
+                        name: 'employee_fullname_en'
+                    },
+                    {
                         data: 'title',
                         name: 'title'
                     },
@@ -116,18 +137,16 @@
                         data: 'publication_media',
                         name: 'publication_media'
                     },
-                    {
-                        data: 'publication_date',
-                        name: 'publication_date'
-                    },
+                    
                     {
                         data: 'publication_link',
                         name: 'publication_link'
                     },
                     {
-                        data: 'employee_employeeid',
-                        name: 'employee.employeeid'
+                        data: 'publication_date',
+                        name: 'publication_date'
                     },
+                    
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

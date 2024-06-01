@@ -22,26 +22,40 @@
 
                         </th>
                         <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
+                        <th>
                             {{ trans('cruds.spouseInformatione.fields.name_bn') }}
                         </th>
                         <th>
                             {{ trans('cruds.spouseInformatione.fields.name_en') }}
                         </th>
                         <th>
-                            {{ trans('cruds.spouseInformatione.fields.nid_number') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.spouseInformatione.fields.occupation') }}
                         </th>
                         <th>
-                            {{ trans('cruds.spouseInformatione.fields.office_address') }}
+                            {{ trans('cruds.spouseInformatione.fields.nid_number') }}
                         </th>
+
                         <th>
                             {{ trans('cruds.spouseInformatione.fields.phone_number') }}
                         </th>
+                       
+                        <th>
+                            {{ trans('cruds.spouseInformatione.fields.office_address') }}
+                        </th>
+                        
                         <th>
                             &nbsp;
                         </th>
@@ -108,35 +122,42 @@
                         name: 'placeholder'
                     },
                     {
+                        data: 'employeeid',
+                        name: 'employeeid'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
                         data: 'name_bn',
                         name: 'name_bn'
                     },
+                    
                     {
                         data: 'name_en',
                         name: 'name_en'
-                    },
-                    {
-                        data: 'nid_number',
-                        name: 'nid_number'
-                    },
-                    {
-                        data: 'nid_upload',
-                        name: 'nid_upload',
-                        sortable: false,
-                        searchable: false
                     },
                     {
                         data: 'occupation',
                         name: 'occupation'
                     },
                     {
-                        data: 'office_address',
-                        name: 'office_address'
+                        data: 'nid_number',
+                        name: 'nid_number'
                     },
+
                     {
                         data: 'phone_number',
                         name: 'phone_number'
                     },
+                    
+                    
+                    {
+                        data: 'office_address',
+                        name: 'office_address'
+                    },
+                   
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

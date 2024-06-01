@@ -22,11 +22,21 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.extracurriculam.fields.id') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
                         </th>
                         <th>
-                            {{ trans('cruds.extracurriculam.fields.employee') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
                         </th>
+                        
+                        
                         <th>
                             {{ trans('cruds.extracurriculam.fields.activity_name') }}
                         </th>
@@ -42,9 +52,7 @@
                         <th>
                             {{ trans('cruds.extracurriculam.fields.end_date') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.extracurriculam.fields.attatchment') }}
-                        </th>
+                       
                         <th>
                             &nbsp;
                         </th>
@@ -111,13 +119,15 @@
                         name: 'placeholder'
                     },
                     {
-                        data: 'id',
-                        name: 'id'
-                    },
-                    {
                         data: 'employee_employeeid',
                         name: 'employee.employeeid'
                     },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    
+                    
                     {
                         data: 'activity_name',
                         name: 'activity_name'
@@ -138,12 +148,7 @@
                         data: 'end_date',
                         name: 'end_date'
                     },
-                    {
-                        data: 'attatchment',
-                        name: 'attatchment',
-                        sortable: false,
-                        searchable: false
-                    },
+                    
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

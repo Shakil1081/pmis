@@ -21,18 +21,29 @@
                         <th width="10">
 
                         </th>
-                        <th>
-                            {{ trans('cruds.acrMonitoring.fields.employee') }}
+                        
+                        <th>@if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif</th>
+                    <th>@if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif</th>
+                    <th>
+                            {{ trans('cruds.acrMonitoring.fields.reviewer') }}
                         </th>
                         <th>
                             {{ trans('cruds.acrMonitoring.fields.year') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.acrMonitoring.fields.reviewer') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.acrMonitoring.fields.review_date') }}
-                        </th>
+                        
+                        <th>@if (app()->getLocale() === 'bn')
+                        মন্তব্য
+                    @else
+                    Remarks
+                    @endif</th>
                         <th>
                             &nbsp;
                         </th>
@@ -104,16 +115,21 @@
                         name: 'employee.employeeid'
                     },
                     {
-                        data: 'year',
-                        name: 'year'
+                        data: 'employee_fullname_en',
+                        name: 'employee_fullname_en'
                     },
                     {
                         data: 'reviewer',
                         name: 'reviewer'
                     },
                     {
-                        data: 'review_date',
-                        name: 'review_date'
+                        data: 'year',
+                        name: 'year'
+                    },
+                    
+                    {
+                        data: 'remarks',
+                        name: 'remarks'
                     },
                     {
                         data: 'actions',

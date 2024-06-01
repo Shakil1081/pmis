@@ -22,7 +22,18 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.training.fields.employee') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
                         </th>
                         <th>
                             {{ trans('cruds.training.fields.training_type') }}
@@ -42,12 +53,7 @@
                         <th>
                             {{ trans('cruds.training.fields.end_date') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.training.fields.grade') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.training.fields.position') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.training.fields.location') }}
                         </th>
@@ -121,6 +127,10 @@
                         name: 'employee.employeeid'
                     },
                     {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
                         data: 'training_type_name_bn',
                         name: 'training_type.name_bn'
                     },
@@ -144,14 +154,7 @@
                         data: 'end_date',
                         name: 'end_date'
                     },
-                    {
-                        data: 'grade',
-                        name: 'grade'
-                    },
-                    {
-                        data: 'position',
-                        name: 'position'
-                    },
+                    
                     {
                         data: 'location',
                         name: 'location'

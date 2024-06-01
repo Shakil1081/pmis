@@ -49,6 +49,10 @@ class CriminalProsecutioneController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('employee_fullname_en', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
+
             $table->editColumn('judgement_type', function ($row) {
                 return $row->judgement_type ? $row->judgement_type : '';
             });
@@ -60,6 +64,9 @@ class CriminalProsecutioneController extends Controller
             });
             $table->editColumn('court_order', function ($row) {
                 return $row->court_order ? '<a href="' . $row->court_order->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'employee', 'court_order']);

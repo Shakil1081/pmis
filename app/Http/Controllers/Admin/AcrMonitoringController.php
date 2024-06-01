@@ -49,11 +49,18 @@ class AcrMonitoringController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('employee_fullname_en', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
+
             $table->editColumn('year', function ($row) {
                 return $row->year ? $row->year : '';
             });
             $table->editColumn('reviewer', function ($row) {
                 return $row->reviewer ? $row->reviewer : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'employee']);

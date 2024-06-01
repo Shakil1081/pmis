@@ -22,7 +22,18 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.travelRecord.fields.employee') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
                         </th>
                         <th>
                             {{ trans('cruds.travelRecord.fields.country') }}
@@ -107,6 +118,10 @@
                     {
                         data: 'employee_employeeid',
                         name: 'employee.employeeid'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
                     },
                     {
                         data: 'country_name_bn',

@@ -26,7 +26,18 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.employeePromotion.fields.employee') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
                         </th>
                         <th>
                             {{ trans('cruds.employeePromotion.fields.new_designation') }}
@@ -108,6 +119,10 @@
                     {
                         data: 'employee_employeeid',
                         name: 'employee.employeeid'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
                     },
                     {
                         data: 'new_designation_name_bn',

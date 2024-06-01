@@ -47,6 +47,10 @@ class TravelRecordController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
+
             $table->addColumn('country_name_bn', function ($row) {
                 return $row->country ? $row->country->name_bn : '';
             });

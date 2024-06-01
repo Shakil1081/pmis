@@ -23,14 +23,23 @@
 
                             </th>
                             <th>
-                                {{ trans('cruds.otherServiceJob.fields.id') }}
-                            </th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
                             <th>
                                 {{ trans('cruds.otherServiceJob.fields.employer') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.otherServiceJob.fields.address') }}
-                            </th>
+                            
                             <th>
                                 {{ trans('cruds.otherServiceJob.fields.service_type') }}
                             </th>
@@ -38,14 +47,15 @@
                                 {{ trans('cruds.otherServiceJob.fields.position') }}
                             </th>
                             <th>
+                                {{ trans('cruds.otherServiceJob.fields.address') }}
+                            </th>
+                            <th>
                                 {{ trans('cruds.otherServiceJob.fields.from') }}
                             </th>
                             <th>
                                 {{ trans('cruds.otherServiceJob.fields.to') }}
                             </th>
-                            <th>
-                                {{ trans('cruds.otherServiceJob.fields.employee') }}
-                            </th>
+                            
                             <th>
                                 &nbsp;
                             </th>
@@ -58,14 +68,16 @@
 
                                 </td>
                                 <td>
-                                    {{ $otherServiceJob->id ?? '' }}
+                                    {{ $otherServiceJob->employee->employeeid ?? '' }}
                                 </td>
+                                <td>
+                                    {{ $otherServiceJob->employee->fullname_en ?? '' }}
+                                </td>
+                               
                                 <td>
                                     {{ $otherServiceJob->employer ?? '' }}
                                 </td>
-                                <td>
-                                    {{ $otherServiceJob->address ?? '' }}
-                                </td>
+                               
                                 <td>
                                     {{ $otherServiceJob->service_type ?? '' }}
                                 </td>
@@ -73,14 +85,15 @@
                                     {{ $otherServiceJob->position ?? '' }}
                                 </td>
                                 <td>
+                                    {{ $otherServiceJob->address ?? '' }}
+                                </td>
+                                <td>
                                     {{ $otherServiceJob->from ?? '' }}
                                 </td>
                                 <td>
                                     {{ $otherServiceJob->to ?? '' }}
                                 </td>
-                                <td>
-                                    {{ $otherServiceJob->employee->employeeid ?? '' }}
-                                </td>
+                                
                                 <td>
                                     @can('other_service_job_show')
                                         <a class="btn btn-sm btn-success px-2"
