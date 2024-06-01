@@ -3,17 +3,21 @@
     @parent
     <style>
         /* th,
-                                                                            td {
-                                                                                font-size: 141px !important;
-                                                                                padding: 4px !important;
-                                                                                margin: 0px !important;
-                                                                            }
+                                                                                td {
+                                                                                    font-size: 141px !important;
+                                                                                    padding: 4px !important;
+                                                                                    margin: 0px !important;
+                                                                                }
 
-                                                                            a.nav-link:hover,
-                                                                            a.nav-link {
-                                                                                padding: 2px 4px;
-                                                                                font-size: 14px !important;
-                                                                            } */
+                                                                                a.nav-link:hover,
+                                                                                a.nav-link {
+                                                                                    padding: 2px 4px;
+                                                                                    font-size: 14px !important;
+                                                                                } */
+
+        th {
+            font-weight: normal;
+        }
     </style>
 @endsection
 @section('content')
