@@ -94,7 +94,7 @@
 
 
             <div class="form-group">
-                <label class="required">Gread/Class/Division</label>
+                <label class="required">{{ trans('cruds.educationInformatione.fields.greadclassdivision') }}</label>
                 <select wire:model="result" wire:change="onresult($event.target.value)" class="form-select" required>
                     <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($resultGroup as $option)
@@ -107,9 +107,9 @@
                         </option>
                     @endforeach
                     <option value="4" {{ old('achievement_types_id') == 4 ? 'selected' : '' }}>
-                        GPA</option>
+                        {{ trans('cruds.educationInformatione.fields.gpa') }} </option>
                     <option value="5" {{ old('achievement_types_id') == 5 ? 'selected' : '' }}>
-                        CGPA</option>
+                        {{ trans('cruds.educationInformatione.fields.cgpa') }}</option>
 
                 </select>
                 @if ($errors->has('exam_board'))

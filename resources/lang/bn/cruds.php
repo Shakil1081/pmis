@@ -621,8 +621,12 @@ return [
             'result_helper'                    => ' ',
             'cgpa'                             => 'সিজিপিএ',
             'cgpa_helper'                      => ' ',
+            'gpa'                             => 'জিপিএ',
+            'gpa_helper'                      => ' ',
             'exam_degree'                      => 'ডিগ্রী',
             'exam_degree_helper'               => ' ',
+            'greadclassdivision'                      => 'Grade/Class/Division',
+            'greadclassdivision_helper'               => ' ',
             
         ],
     ],

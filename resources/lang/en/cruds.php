@@ -625,6 +625,10 @@ return [
             'exam_degree_helper'               => ' ',
             'cgpa'                             => 'CGPA',
             'cgpa_helper'                      => ' ',
+            'gpa'                             => 'GPA',
+            'gpa_helper'                      => ' ',
+            'greadclassdivision'                      => 'Grade/Class/Division',
+            'greadclassdivision_helper'               => ' ',
         ],
     ],
     'professionale' => [
