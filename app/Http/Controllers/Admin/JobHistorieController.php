@@ -20,6 +20,7 @@ use App\Models\JobType;
 use App\Models\OfficeUnit;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -95,21 +96,25 @@ class JobHistorieController extends Controller
     {
         abort_if(Gate::denies('job_history_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
+        $designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $grades = Grade::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $circle_lists = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $circle_lists = ForestState::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $division_lists = ForestDivision::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $division_lists = ForestDivision::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $range_lists = ForestRange::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $range_lists = ForestRange::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $beat_lists = ForestBeat::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $beat_lists = ForestBeat::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $office_units = OfficeUnit::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $office_units = OfficeUnit::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.jobHistories.create', compact('beat_lists', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'office_units', 'range_lists'));
     }
@@ -133,23 +138,25 @@ class JobHistorieController extends Controller
     {
         abort_if(Gate::denies('job_history_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $grades = Grade::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $grades = Grade::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $circle_lists = ForestState::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $circle_lists = ForestState::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $division_lists = ForestDivision::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $division_lists = ForestDivision::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $range_lists = ForestRange::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $range_lists = ForestRange::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $beat_lists = ForestBeat::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $beat_lists = ForestBeat::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $office_units = OfficeUnit::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $office_units = OfficeUnit::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_types= JobType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $job_types= JobType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $jobHistory->load('designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
 

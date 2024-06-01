@@ -150,7 +150,7 @@
                     <select class="form-select select2" name="beat_list_id" id="beat_list_id">
                         <option>{{ trans('global.pleaseSelect') }}</option>
                         @foreach ($beatList as $option)
-                            <option value="{{ $option->name_bn }}">
+                            <option value="{{ $option->id }}">
                                 @if (app()->getLocale() === 'bn')
                                     {{ $option->name_bn }}
                                 @else
