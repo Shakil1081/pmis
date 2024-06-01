@@ -1275,7 +1275,7 @@
                                 </table>
                             @endforeach
 
-                            <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
+                            {{-- <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
                             @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
                                 <table class="table-bordered table-striped table" id="serviceParticular">
                                     <tbody>
@@ -1349,7 +1349,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            @endforeach
+                            @endforeach --}}
                             <strong>
                                 {{ trans('cruds.training.title') }}
                             </strong>
@@ -1644,6 +1644,9 @@
                                     </tbody>
                                 </table>
                             @endforeach
+
+
+                            
                             <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                             @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                                 <table class="table-bordered table-striped table">
