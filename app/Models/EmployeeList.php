@@ -344,10 +344,10 @@ class EmployeeList extends Model implements HasMedia
     }
 
 
-    public function name_of_exam()
-    {
-        return $this->hasMany(Examination::class, 'name_of_exam_id');
-    }
+    // public function name_of_exam()
+    // {
+    //     return $this->hasMany(Examination::class, 'name_of_exam_id');
+    // }
 
     public function professionales()
     {

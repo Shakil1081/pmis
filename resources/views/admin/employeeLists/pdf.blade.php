@@ -561,12 +561,59 @@
                         <tbody>
                             <tr>
                                 <th>
+                                    @if (app()->getLocale() === 'bn')
+                                        শিক্ষা শ্রেণী
+                                    @else
+                                        {{ trans('Level of Education') }}
+                                    @endif
+                                </th>
+                                <td> {{ $educationInformatione->name_of_exam->{$columname} ?? '' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
                                     {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                                 </th>
                                 <td>
-                                    {{ $educationInformatione->name_of_exam->{$columname} ?? '' }}
+
+                                    @foreach ($deucationDegree->where('id', 1) as $educationDegree)
+                                        {{ $educationDegree[$columname] }}
+                                    @endforeach
+
+
+                                    {{ $educationInformatione->name_of_exam_id }}
                                 </td>
                             </tr>
+                            {{-- <tr>
+                                <th>
+                                    {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
+                                </th>
+                                <td>
+                                    {{ $educationInformatione->name_of_exam->{$columname} ?? '' }}----<br>name_of_exam
+
+                                    @foreach ($deucationDegree->where('id', 1) as $educationDegree)
+                                        {{ $educationDegree[$columname] }}
+                                    @endforeach
+
+
+                                    {{ $educationInformatione->name_of_exam_id }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
+                                </th>
+                                <td>
+                                    {{ $educationInformatione->name_of_exam->{$columname} ?? '' }}----<br>name_of_exam
+                                    {{ $deucationDegree }}
+                                    @foreach ($deucationDegree->where('id', 1) as $educationDegree)
+                                        {{ $educationDegree[$columname] }}
+                                    @endforeach
+
+
+                                    {{ $educationInformatione->name_of_exam_id }}
+                                </td>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.educationInformatione.fields.exam_board') }}
