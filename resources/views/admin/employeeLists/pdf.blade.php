@@ -193,7 +193,12 @@
                                 {{ trans('cruds.employeeList.fields.marital_statu') }}
                             </th>
                             <td>
-                                {{ $employeeList->marital_statu->name ?? '' }}
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $employeeList->marital_statu->name ?? '' }}
+                                @else
+                                    {{ $employeeList->marital_statu->name_en ?? '' }}
+                                @endif
+
                             </td>
                         </tr>
                         <tr>
@@ -301,7 +306,14 @@
                                 {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
                             </th>
                             <td>
-                                {{ $employeeList->joiningexaminfo->exam_name_bn ?? '' }}
+
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $employeeList->joiningexaminfo->exam_name_bn ?? '' }}
+                                @else
+                                    {{ $employeeList->joiningexaminfo->exam_name_en ?? '' }}
+                                @endif
+
+
                             </td>
                         </tr>
                         <tr>
