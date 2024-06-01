@@ -1126,7 +1126,7 @@
                                     {{ $jobHistory->release_date }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.level_1') }}
                                 </th>
@@ -1158,18 +1158,21 @@
                                 <td>
                                     {{ $jobHistory->level_4 }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.jobHistory.fields.level_5') }}
                                 </th>
                                 <td>
+                                    {{ $jobHistory->level_1 }}
+                                    {{ $jobHistory->level_2 }}
+                                    {{ $jobHistory->level_3 }}
+                                    {{ $jobHistory->level_4 }}
                                     {{ $jobHistory->level_5 }}
-                                    {{-- {{ $jobHistory->circle_list }}circle_list_id<br> --}}
-                                    {{ $jobHistory->range_list_id }}<br>
-                                    {{ $jobHistory->range_list }}range_list_id{{ $jobHistory->range_list_id }}<br>
 
-                                    {{ $jobHistory->beat_list->forest_range->forest_division ?? '' }}<br>
+
+                                    {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? '' }}<br>
+
                                     {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
 
                                     {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
