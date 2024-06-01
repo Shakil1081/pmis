@@ -596,11 +596,11 @@
                                     {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                                 </th>
                                 <td>
-
-                                    @foreach ($deucationDegree->where('id', $educationInformatione->exam_degree) as $educationDegree)
-                                        {{ $educationDegree[$columname] }}
-                                    @endforeach
-
+                                    @if ($deucationDegree)
+                                        @foreach ($deucationDegree->where('id', $educationInformatione->exam_degree) as $educationDegree)
+                                            {{ $educationDegree[$columname] }}
+                                        @endforeach
+                                    @endif
 
                                     {{-- {{ $educationInformatione->name_of_exam_id }} --}}
                                 </td>
