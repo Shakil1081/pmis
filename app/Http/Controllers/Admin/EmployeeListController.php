@@ -496,7 +496,8 @@ if (!$employeeList) {
 }
 
 
- //return view('admin.employeeLists.pdf', compact('employeeList','columname'));
+
+ return view('admin.employeeLists.pdf', compact('employeeList','columname'));
 
 $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname'),[], ['margin_top' => 20,
 'margin_bottom' => 15,

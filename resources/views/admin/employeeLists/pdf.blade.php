@@ -53,8 +53,14 @@
                     <h2 style="color: #006625">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
 
                     <br>
-                    নাম: {{ $employeeList->fullname_bn }} (
-                    Name:{{ $employeeList->full }})<br>
+
+                    @if (app()->getLocale() === 'bn')
+                        নাম: {{ $employeeList->fullname_bn }}
+                    @else
+                        Name:{{ $employeeList->fullname_en }}
+                    @endif
+
+                    <br>
                     <b> {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $employeeList->employeeid }}</b><br>
                 </center>
             </td>
@@ -95,47 +101,56 @@
                                 {{ $employeeList->batch->batch_bn ?? '' }}
                             </td>
                         </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->fullname_bn }}
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.fname_bn') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->fname_bn }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.fname_en') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->fname_en }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.mname_bn') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->mname_bn }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.mname_en') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->mname_en }}
-                            </td>
-                        </tr>
+                        @if (app()->getLocale() === 'bn')
+                            নাম: {{ $employeeList->fullname_bn }}
+                        @else
+                            Name:{{ $employeeList->fullname_en }}
+                        @endif
+
+
+
+                        @if (app()->getLocale() === 'bn')
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.fname_bn') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->fname_bn }}
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.fname_en') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->fname_en }}
+                                </td>
+                            </tr>
+                        @endif
+
+
+
+                        @if (app()->getLocale() === 'bn')
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.mname_bn') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->mname_bn }}
+                                </td>
+                            </tr>
+                            <tr>
+                            @else
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.mname_en') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->mname_en }}
+                                </td>
+                            </tr>
+                        @endif
                         <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.date_of_birth') }}
