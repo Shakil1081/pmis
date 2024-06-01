@@ -457,7 +457,7 @@
                                                 {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                                             </th>
                                             <td>
-                                                {{ $educationInformatione->name_of_exam->name_bn ?? '' }}
+                                                {{ $educationInformatione->educations->exam_degree ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
