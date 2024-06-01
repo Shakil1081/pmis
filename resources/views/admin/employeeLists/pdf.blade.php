@@ -586,9 +586,9 @@
 
 
 
-                <strong> {{ trans('cruds.professionale.title') }}</strong>
+                <strong> {{ trans('cruds.professionale.title') }}........</strong>
 
-                @foreach ($employeeList->educations ?? [] as $professionale)
+                @foreach ($employeeList->professionales ?? [] as $professionale)
                     <table class="table-bordered table-striped table" id="Professionales">
                         <tbody>
                             <tr>
