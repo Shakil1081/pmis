@@ -1442,67 +1442,7 @@
                 @endforeach
 
 
-                <strong id="socialAssPrAttachment"> {{ trans('cruds.socialAssPrAttachment.title') }}</strong>
 
-                @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
-                    <table class="table-bordered table-striped table">
-                        <tbody>
-                            {{-- <tr>
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.id') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->id }}
-                                </td>
-                            </tr> --}}
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->degree_membership_organization }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.description') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->description }}
-                                </td>
-                            </tr>
-                            <tr>
-
-                                {{-- @dd($socialAssPrAttachment) --}}
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->certificate_achievement }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Action
-                                </th>
-                                <td>
-                                    <!-- Edit button -->
-                                    {{-- <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                        class="btn btn-sm btn-primary">Edit</a> --}}
-
-                                    <!-- Delete button -->
-                                    {{-- <form
-                                                    action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form> --}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table><br />
-                @endforeach
                 <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                 @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                     <table class="table-bordered table-striped table">
