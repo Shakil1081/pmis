@@ -484,13 +484,8 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }
-<<<<<<< HEAD
-    public function employeedata(Request $request)
-    {     
-        
-       
-        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-=======
+
+   
     public function employeedata_pdf (Request $request)
     {
 
@@ -520,7 +515,6 @@ return $pdf->download($name);
     public function employeedata(Request $request)
     {     
     
->>>>>>> 6ef332895c2dc37bde58ca0329a0e8bf23fec048
 
         $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
         ->find($request->id);

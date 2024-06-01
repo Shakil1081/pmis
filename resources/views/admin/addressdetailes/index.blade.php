@@ -29,10 +29,18 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.addressdetaile.fields.employee') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
                         </th>
                         <th>
-                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
                         </th>
                         <th>
                             {{ trans('cruds.addressdetaile.fields.address_type') }}

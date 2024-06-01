@@ -22,10 +22,27 @@
 
                         </th>
                         <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
+                        </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
+                        <th>
                             {{ trans('cruds.child.fields.name_bn') }}
                         </th>
                         <th>
                             {{ trans('cruds.child.fields.name_en') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.child.fields.gender') }}
                         </th>
                         <th>
                             {{ trans('cruds.child.fields.date_of_birth') }}
@@ -33,9 +50,7 @@
                         <th>
                             {{ trans('cruds.child.fields.complite_21') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.child.fields.gender') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.child.fields.nid_number') }}
                         </th>
@@ -114,12 +129,24 @@
                         name: 'placeholder'
                     },
                     {
+                        data: 'employeeid',
+                        name: 'employeeid'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
                         data: 'name_bn',
                         name: 'name_bn'
                     },
                     {
                         data: 'name_en',
                         name: 'name_en'
+                    },
+                    {
+                        data: 'gender_name_bn',
+                        name: 'gender.name_bn'
                     },
                     {
                         data: 'date_of_birth',
@@ -129,10 +156,7 @@
                         data: 'complite_21',
                         name: 'complite_21'
                     },
-                    {
-                        data: 'gender_name_bn',
-                        name: 'gender.name_bn'
-                    },
+                    
                     {
                         data: 'nid_number',
                         name: 'nid_number'
