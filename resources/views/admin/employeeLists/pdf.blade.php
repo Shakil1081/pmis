@@ -1864,7 +1864,7 @@
                                     @if (app()->getLocale() === 'bn')
                                         {{ $language->language->name }}
                                     @else
-                                        {{ $language->language->name_en }}
+                                        {{ $language->language->nmae_en }}
                                     @endif
                                 </td>
                             </tr>
