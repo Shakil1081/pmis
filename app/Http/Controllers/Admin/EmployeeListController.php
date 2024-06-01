@@ -492,7 +492,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 $locale = App::getLocale();
 $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
-$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'educations', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
 ->find($request->id);
 
 if (!$employeeList) {
@@ -501,7 +501,7 @@ if (!$employeeList) {
 
 
 
- return view('admin.employeeLists.pdf', compact('employeeList','columname'));
+ //return view('admin.employeeLists.pdf', compact('employeeList','columname'));
 
 $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname'),[], ['margin_top' => 20,
 'margin_bottom' => 15,

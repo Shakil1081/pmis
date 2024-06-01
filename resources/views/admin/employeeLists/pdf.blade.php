@@ -569,14 +569,6 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
-                                </th>
-                                <td>
-                                    {{ $educationInformatione->examdegree }}...
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
                                     {{ trans('cruds.educationInformatione.fields.exam_board') }}
                                 </th>
                                 <td>
