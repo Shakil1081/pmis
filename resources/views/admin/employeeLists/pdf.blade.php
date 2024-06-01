@@ -1166,13 +1166,16 @@
                                 <td>
                                     {{ $jobHistory->level_5 }}
                                     {{-- {{ $jobHistory->circle_list }}circle_list_id<br> --}}
-                                    {{ $jobHistory->division_list }}division_list_id<br>
+                                    {{ $jobHistory->range_list_id }}<br>
                                     {{ $jobHistory->range_list }}range_list_id{{ $jobHistory->range_list_id }}<br>
-                                    {{ $jobHistory->beat_list->{$columname} ?? '' }}
-                                    beat_list_id{{ $jobHistory->beat_list->forest_range }}<br>
+
+                                    {{ $jobHistory->beat_list->forest_range->forest_division ?? '' }}<br>
+                                    {{ $jobHistory->beat_list->forest_range->{$columname} ?? '' }}<br>
+
+                                    {{ $jobHistory->beat_list->{$columname} ?? '' }} <br>
 
 
-                                    {{ $jobHistory->office_unit->{$columname} ?? '' }}
+                                    {{ $jobHistory->office_unit->{$columname} ?? '' }}<br>
                                 </td>
                             </tr>
                             {{-- <tr>
