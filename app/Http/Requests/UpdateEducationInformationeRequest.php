@@ -22,8 +22,8 @@ class UpdateEducationInformationeRequest extends FormRequest
                 'integer',
             ],
             'exam_board_id' => [
-                'required',
                 'integer',
+                'nullable',
             ],
             'concentration_major_group' => [
                 'string',
