@@ -2,18 +2,18 @@
 @section('styles')
     @parent
     <style>
-        /* th,
-                                                                        td {
-                                                                            font-size: 141px !important;
-                                                                            padding: 4px !important;
-                                                                            margin: 0px !important;
-                                                                        }
+        /* td,
+                                                                            td {
+                                                                                font-size: 141px !important;
+                                                                                padding: 4px !important;
+                                                                                margin: 0px !important;
+                                                                            }
 
-                                                                        a.nav-link:hover,
-                                                                        a.nav-link {
-                                                                            padding: 2px 4px;
-                                                                            font-size: 14px !important;
-                                                                        } */
+                                                                            a.nav-link:hover,
+                                                                            a.nav-link {
+                                                                                padding: 2px 4px;
+                                                                                font-size: 14px !important;
+                                                                            } */
     </style>
 @endsection
 @section('content')
@@ -30,92 +30,92 @@
                             <table class="table-bordered table-striped table" id="General">
                                 <tbody>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.employeeid') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->employeeid }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.cadreid') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->cadreid }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.batch') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->batch->batch_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->fullname_bn }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.fullname_en') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->fullname_en }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.fname_bn') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->fname_bn }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.fname_en') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->fname_en }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.mname_bn') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->mname_bn }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.mname_en') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->mname_en }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
-                                            {{ trans('cruds.employeeList.fields.date_of_birth') }}
-                                        </th>
                                         <td>
-                                            {{ englishToBanglaNumber($employeeList->date_of_birth) }}
+                                            {{ trans('cruds.employeeList.fields.date_of_birtd') }}
+                                        </td>
+                                        <td>
+                                            {{ englishToBanglaNumber($employeeList->date_of_birtd) }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
-                                            {{ trans('cruds.employeeList.fields.birth_certificate_upload') }}
-                                        </th>
                                         <td>
-                                            @if ($employeeList->birth_certificate_upload)
-                                                <a href="{{ $employeeList->birth_certificate_upload->getUrl() }}"
+                                            {{ trans('cruds.employeeList.fields.birtd_certificate_upload') }}
+                                        </td>
+                                        <td>
+                                            @if ($employeeList->birtd_certificate_upload)
+                                                <a href="{{ $employeeList->birtd_certificate_upload->getUrl() }}"
                                                     target="_blank">
                                                     {{ trans('global.view_file') }}
                                                 </a>
@@ -123,81 +123,81 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.prl_date') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->prl_date }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.height') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->height }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.special_identity') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->special_identity }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.home_district') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->home_district->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.marital_statu') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->marital_statu->name ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.gender') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->gender->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.religion') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->religion->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.blood_group') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->blood_group->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.nid') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->nid }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.nid_upload') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->nid_upload)
                                                 <a href="{{ $employeeList->nid_upload->getUrl() }}" target="_blank">
@@ -207,17 +207,17 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.passport') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->passport }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.passport_upload') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->passport_upload)
                                                 <a href="{{ $employeeList->passport_upload->getUrl() }}" target="_blank">
@@ -227,17 +227,17 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.license_type') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->license_type->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.license_upload') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->license_upload)
                                                 <a href="{{ $employeeList->license_upload->getUrl() }}" target="_blank">
@@ -247,73 +247,73 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.email') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->email }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.mobile_number') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->mobile_number }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->joiningexaminfo->exam_name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.grade') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->grade->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.fjoining_date') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->fjoining_date }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->first_joining_office_name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->first_joining_g_o_date }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->first_joining_memo_no }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.first_joining_order') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->first_joining_order)
                                                 <a href="{{ $employeeList->first_joining_order->getUrl() }}"
@@ -324,9 +324,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.fjoining_letter') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->fjoining_letter)
                                                 <a href="{{ $employeeList->fjoining_letter->getUrl() }}" target="_blank">
@@ -336,17 +336,17 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.date_of_gazette') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->date_of_gazette }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->date_of_gazette_if_any)
                                                 <a href="{{ $employeeList->date_of_gazette_if_any->getUrl() }}"
@@ -357,25 +357,25 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.date_of_regularization') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->date_of_regularization }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->regularization_issue_date }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->regularization_office_orde_go)
                                                 <a href="{{ $employeeList->regularization_office_orde_go->getUrl() }}"
@@ -386,17 +386,17 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->date_of_con_serviec }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->confirmation_in_service)
                                                 <a href="{{ $employeeList->confirmation_in_service->getUrl() }}"
@@ -407,35 +407,35 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.quota') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             {{ $employeeList->quota->name_bn ?? '' }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.electric_signature') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->electric_signature)
                                                 <a href="{{ $employeeList->electric_signature->getUrl() }}" target="_blank"
                                                     style="display: inline-block">
-                                                    <img src="{{ $employeeList->electric_signature->getUrl('thumb') }}">
+                                                    <img src="{{ $employeeList->electric_signature->getUrl('tdumb') }}">
                                                 </a>
                                             @endif
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>
+                                        <td>
                                             {{ trans('cruds.employeeList.fields.employee_photo') }}
-                                        </th>
+                                        </td>
                                         <td>
                                             @if ($employeeList->employee_photo)
                                                 <a href="{{ $employeeList->employee_photo->getUrl() }}" target="_blank"
                                                     style="display: inline-block">
-                                                    <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}">
+                                                    <img src="{{ $employeeList->employee_photo->getUrl('tdumb') }}">
                                                 </a>
                                             @endif
                                         </td>
@@ -449,49 +449,49 @@
                                 <table class="table-bordered table-striped table" id="Education">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $educationInformatione->name_of_exam->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.exam_board') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $educationInformatione->exam_board->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.school_university_name') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $educationInformatione->school_university_name }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.achivement') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $educationInformatione->achivement }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.passing_year') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $educationInformatione->passing_year }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.catificarte') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($educationInformatione->catificarte)
                                                     <a href="{{ $educationInformatione->catificarte->getUrl() }}"
@@ -502,15 +502,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.educationInformatione.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $educationInformatione->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.education-informationes.edit', ['education_informatione' => $educationInformatione->id]) }}"
@@ -519,9 +519,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.education-informationes.destroy', ['education_informatione' => $educationInformatione->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -542,55 +542,55 @@
                                 <table class="table-bordered table-striped table" id="Professionales">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.professionale.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $professionale->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.professionale.fields.qualification_title') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $professionale->qualification_title }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.professionale.fields.institution') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $professionale->institution }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.professionale.fields.from_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $professionale->from_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.professionale.fields.to_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $professionale->to_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.professionale.fields.passing_year') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $professionale->passing_year }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.professionales.edit', ['professionale' => $professionale->id]) }}"
@@ -599,9 +599,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.professionales.destroy', ['professionale' => $professionale->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -619,63 +619,63 @@
                                 <table class="table-bordered table-striped table" id="addressdetaile">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.addressdetaile.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $addressdetaile->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.addressdetaile.fields.address_type') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECT[$addressdetaile->address_type] ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.addressdetaile.fields.flat_house') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $addressdetaile->flat_house }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.addressdetaile.fields.post_office') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $addressdetaile->post_office }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.addressdetaile.fields.post_code') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $addressdetaile->post_code }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.addressdetaile.fields.thana_upazila') }}
-                                            </th>
                                             <td>
-                                                {{ $addressdetaile->thana_upazila->name_bn ?? '' }}
+                                                {{ trans('cruds.addressdetaile.fields.tdana_upazila') }}
+                                            </td>
+                                            <td>
+                                                {{ $addressdetaile->tdana_upazila->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.addressdetaile.fields.phone_number') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $addressdetaile->phone_number }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.addressdetailes.edit', ['addressdetaile' => $addressdetaile->id]) }}"
@@ -684,9 +684,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.addressdetailes.destroy', ['addressdetaile' => $addressdetaile->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -700,47 +700,47 @@
                                 <table class="table-bordered table-striped table" id="emergenceContacte">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.emergenceContacte.fields.contact_person_name') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $emergenceContacte->contact_person_name }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.emergenceContacte.fields.contact_person_relation') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $emergenceContacte->contact_person_relation }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.emergenceContacte.fields.address') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $emergenceContacte->address }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $emergenceContacte->contact_person_number }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.emergenceContacte.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $emergenceContacte->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.emergence-contactes.edit', ['emergence_contacte' => $emergenceContacte->id]) }}"
@@ -749,9 +749,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.emergence-contactes.destroy', ['emergence_contacte' => $emergenceContacte->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -768,33 +768,33 @@
                                 <table class="table-bordered table-striped table" id="spouseInformatione">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $spouseInformatione->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.name_bn') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $spouseInformatione->name_bn }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.name_en') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $spouseInformatione->name_en }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($spouseInformatione->nid_upload)
                                                     <a href="{{ $spouseInformatione->nid_upload->getUrl() }}"
@@ -805,48 +805,48 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.occupation') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $spouseInformatione->occupation }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.office_address') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $spouseInformatione->office_address }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.phone_number') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $spouseInformatione->phone_number }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.present_addess') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $spouseInformatione->present_addess !!}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.spouseInformatione.fields.permanent_addess') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $spouseInformatione->permanent_addess !!}
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.spouse-informationes.edit', ['spouse_informatione' => $spouseInformatione->id]) }}"
@@ -855,9 +855,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.spouse-informationes.destroy', ['spouse_informatione' => $spouseInformatione->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -874,85 +874,85 @@
                                 <table class="table-bordered table-striped table" id="child">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.name_bn') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->name_bn }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.name_en') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->name_en }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.child.fields.date_of_birth') }}
-                                            </th>
                                             <td>
-                                                {{ $child->date_of_birth }}
+                                                {{ trans('cruds.child.fields.date_of_birtd') }}
+                                            </td>
+                                            <td>
+                                                {{ $child->date_of_birtd }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.child.fields.birth_certificate') }}
-                                            </th>
                                             <td>
-                                                @if ($child->birth_certificate)
-                                                    <a href="{{ $child->birth_certificate->getUrl() }}" target="_blank">
+                                                {{ trans('cruds.child.fields.birtd_certificate') }}
+                                            </td>
+                                            <td>
+                                                @if ($child->birtd_certificate)
+                                                    <a href="{{ $child->birtd_certificate->getUrl() }}" target="_blank">
                                                         {{ trans('global.view_file') }}
                                                     </a>
                                                 @endif
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.complite_21') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->complite_21 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.gender') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->gender->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.nid_number') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->nid_number }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.passport_number') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $child->passport_number }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.childdren_nid') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($child->childdren_nid)
                                                     <a href="{{ $child->childdren_nid->getUrl() }}" target="_blank">
@@ -962,9 +962,9 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.child.fields.childdren_passporft') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($child->childdren_passporft)
                                                     <a href="{{ $child->childdren_passporft->getUrl() }}" target="_blank">
@@ -974,7 +974,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.children.edit', ['child' => $child->id]) }}"
@@ -983,9 +983,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.children.destroy', ['child' => $child->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1001,103 +1001,103 @@
                                 <table class="table-bordered table-striped table" id="jobHistory">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.id') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->id }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.institute_name') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->institute_name }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.job_type') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->job_type->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.designation') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->designation->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.joining_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->joining_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.release_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->release_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.level_1') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->level_1 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.level_2') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->level_2 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.level_3') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->level_3 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.level_4') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->level_4 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.level_5') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->level_5 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.jobHistory.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $jobHistory->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.job-histories.edit', ['job_history' => $jobHistory->id]) }}"
@@ -1106,9 +1106,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.job-histories.destroy', ['job_history' => $jobHistory->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1125,41 +1125,41 @@
                                 <table class="table-bordered table-striped table" id="employeePromotion">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.employeePromotion.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $employeePromotion->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.employeePromotion.fields.new_designation') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $employeePromotion->new_designation->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $employeePromotion->go_issue_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.employeePromotion.fields.office_order_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $employeePromotion->office_order_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.employeePromotion.fields.office_order') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($employeePromotion->office_order)
                                                     <a href="{{ $employeePromotion->office_order->getUrl() }}"
@@ -1170,7 +1170,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.employee-promotions.edit', ['employee_promotion' => $employeePromotion->id]) }}"
@@ -1179,9 +1179,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.employee-promotions.destroy', ['employee_promotion' => $employeePromotion->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1198,55 +1198,55 @@
                                 <table class="table-bordered table-striped table" id="leaveRecord">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.leaveRecord.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $leaveRecord->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.leaveRecord.fields.leave_category') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $leaveRecord->leave_category->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $leaveRecord->type_of_leave->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.leaveRecord.fields.start_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $leaveRecord->start_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.leaveRecord.fields.end_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $leaveRecord->end_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.leaveRecord.fields.reason') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $leaveRecord->reason !!}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.leave-records.edit', ['leave_record' => $leaveRecord->id]) }}"
@@ -1255,9 +1255,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.leave-records.destroy', ['leave_record' => $leaveRecord->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1273,56 +1273,56 @@
                                 <table class="table-bordered table-striped table" id="serviceParticular">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.serviceParticular.fields.id') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $serviceParticular->id }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.serviceParticular.fields.designation') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $serviceParticular->designation->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.serviceParticular.fields.designation_status') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $serviceParticular->designation_status }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.serviceParticular.fields.office_organization_institute') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $serviceParticular->office_organization_institute }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.serviceParticular.fields.joining_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $serviceParticular->joining_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.serviceParticular.fields.release_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $serviceParticular->release_date }}
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.service-particulars.edit', ['service_particular' => $serviceParticular->id]) }}"
@@ -1331,9 +1331,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.service-particulars.destroy', ['service_particular' => $serviceParticular->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
@@ -1349,81 +1349,81 @@
                                 <table class="table-bordered table-striped table" id="training">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.training_type') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->training_type->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.training_name') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->training_name }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.institute_name') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->institute_name }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.country') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->country->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.start_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->start_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.end_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->end_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.grade') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->grade }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.position') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->position }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.training.fields.location') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $training->location }}
                                             </td>
@@ -1438,55 +1438,55 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.travelRecord.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $travelRecord->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.travelRecord.fields.country') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $travelRecord->country->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.travelRecord.fields.title') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $travelRecord->title }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.travelRecord.fields.purpose') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $travelRecord->purpose_id ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.travelRecord.fields.start_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $travelRecord->start_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.travelRecord.fields.end_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $travelRecord->end_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.travel-records.edit', ['travel_record' => $travelRecord->id]) }}"
@@ -1495,9 +1495,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.travel-records.destroy', ['travel_record' => $travelRecord->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1515,57 +1515,57 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.id') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->id }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.title') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->title }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.country') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->country->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->purpose_id ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.from_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->from_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.to_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->to_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $foreignTravelPersonal->leave->start_date ?? '' }}
                                             </td>
@@ -1582,73 +1582,73 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.id') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->id }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.activity_name') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->activity_name }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.organization') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->organization }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.position') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->position }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.start_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->start_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.end_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $extracurriculam->end_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.description') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $extracurriculam->description !!}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.extracurriculam.fields.attatchment') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($extracurriculam->attatchment)
                                                     <a href="{{ $extracurriculam->attatchment->getUrl() }}"
@@ -1659,7 +1659,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.extracurriculams.edit', ['extracurriculam' => $extracurriculam->id]) }}"
@@ -1668,9 +1668,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.extracurriculams.destroy', ['extracurriculam' => $extracurriculam->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1686,63 +1686,63 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.title') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $publication->title }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.publication_type') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.publication_media') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $publication->publication_media }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.publication_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $publication->publication_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.publication_link') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $publication->publication_link }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.description') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $publication->description !!}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.publication.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $publication->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.publications.edit', ['publication' => $publication->id]) }}"
@@ -1751,9 +1751,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.publications.destroy', ['publication' => $publication->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1769,33 +1769,33 @@
                                     <tbody>
 
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.award.fields.title') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $award->title }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.award.fields.ground_area') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $award->ground_area }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.award.fields.date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $award->date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.award.fields.certificate') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($award->certificate)
                                                     <a href="{{ $award->certificate->getUrl() }}" target="_blank">
@@ -1805,18 +1805,18 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.award.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $award->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <th>
+                                            <td>
 
-                                            </th>
+                                            </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.awards.edit', ['award' => $award->id]) }}"
@@ -1825,9 +1825,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     ="{{ route('admin.awards.destroy', ['award' => $award->id]) }}"
-                                                method="POST" style="display: inline;">
+                                                metdod="POST" style="display: inline;">
                                                 @csrf
-                                                @method('DELETE')
+                                                @metdod('DELETE')
                                                 <button type="submit"
                                                     class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1839,88 +1839,88 @@
                             @endforeach
 
 
-                            <strong id="otherservicejobs"> {{ trans('cruds.otherServiceJob.title') }}</strong>
+                            <strong id="otderservicejobs"> {{ trans('cruds.otderServiceJob.title') }}</strong>
 
-                            @foreach ($employeeList->otherservicejobs ?? [] as $otherServiceJob)
+                            @foreach ($employeeList->otderservicejobs ?? [] as $otderServiceJob)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.id') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->id }}
+                                                {{ trans('cruds.otderServiceJob.fields.id') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->id }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.employer') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->employer }}
+                                                {{ trans('cruds.otderServiceJob.fields.employer') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->employer }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.address') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->address }}
+                                                {{ trans('cruds.otderServiceJob.fields.address') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->address }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.service_type') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->service_type }}
+                                                {{ trans('cruds.otderServiceJob.fields.service_type') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->service_type }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.position') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->position }}
+                                                {{ trans('cruds.otderServiceJob.fields.position') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->position }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.from') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->from }}
+                                                {{ trans('cruds.otderServiceJob.fields.from') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->from }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.to') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->to }}
+                                                {{ trans('cruds.otderServiceJob.fields.to') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->to }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                {{ trans('cruds.otherServiceJob.fields.employee') }}
-                                            </th>
                                             <td>
-                                                {{ $otherServiceJob->employee->employeeid ?? '' }}
+                                                {{ trans('cruds.otderServiceJob.fields.employee') }}
+                                            </td>
+                                            <td>
+                                                {{ $otderServiceJob->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
-                                                <a href="{{ route('admin.other-service-jobs.edit', ['other_service_job' => $otherServiceJob->id]) }}"
+                                                <a href="{{ route('admin.otder-service-jobs.edit', ['otder_service_job' => $otderServiceJob->id]) }}"
                                                     class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
-                                                    action="{{ route('admin.other-service-jobs.destroy', ['other_service_job' => $otherServiceJob->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    action="{{ route('admin.otder-service-jobs.destroy', ['otder_service_job' => $otderServiceJob->id]) }}"
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -1935,47 +1935,47 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.language.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $language->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.language.fields.language') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $language->language }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.language.fields.read') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $language->read->name ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.language.fields.write') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $language->write->name ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.language.fields.speak') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $language->speak->name ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
@@ -1984,9 +1984,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.languages.destroy', ['language' => $language->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -2002,41 +2002,41 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalProsecutione.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalProsecutione->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalProsecutione->judgement_type }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalProsecutione->natureof_offence }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalProsecutione->government_order_no }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalProsecutione.fields.court_order') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($criminalProsecutione->court_order)
                                                     <a href="{{ $criminalProsecutione->court_order->getUrl() }}"
@@ -2047,15 +2047,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalProsecutione.fields.remzrk') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $criminalProsecutione->remzrk !!}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.criminal-prosecutiones.edit', ['criminal_prosecutione' => $criminalProsecutione->id]) }}"
@@ -2064,9 +2064,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.criminal-prosecutiones.destroy', ['criminal_prosecutione' => $criminalProsecutione->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -2085,33 +2085,33 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalproDisciplinary->judgement_type }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalproDisciplinary->government_order_no }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalproDisciplinary.fields.order_upload_file') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 @if ($criminalproDisciplinary->order_upload_file)
                                                     <a href="{{ $criminalproDisciplinary->order_upload_file->getUrl() }}"
@@ -2122,15 +2122,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.criminalproDisciplinary.fields.remarks') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $criminalproDisciplinary->remarks }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.criminalpro-disciplinaries.edit', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
@@ -2139,9 +2139,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.criminalpro-disciplinaries.destroy', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -2161,47 +2161,47 @@
                                 <table class="table-bordered table-striped table">
                                     <tbody>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.acrMonitoring.fields.employee') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $acrMonitoring->employee->employeeid ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.acrMonitoring.fields.year') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $acrMonitoring->year }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.acrMonitoring.fields.reviewer') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $acrMonitoring->reviewer }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.acrMonitoring.fields.review_date') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {{ $acrMonitoring->review_date }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            <td>
                                                 {{ trans('cruds.acrMonitoring.fields.remarks') }}
-                                            </th>
+                                            </td>
                                             <td>
                                                 {!! $acrMonitoring->remarks !!}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th> </th>
+                                            <td> </td>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.acr-monitorings.edit', ['acr_monitoring' => $acrMonitoring->id]) }}"
@@ -2210,9 +2210,9 @@
                                                 <!-- Delete button -->
                                                 <form
                                                     action="{{ route('admin.acr-monitorings.destroy', ['acr_monitoring' => $acrMonitoring->id]) }}"
-                                                    method="POST" style="display: inline;">
+                                                    metdod="POST" style="display: inline;">
                                                     @csrf
-                                                    @method('DELETE')
+                                                    @metdod('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
@@ -2231,10 +2231,10 @@
 
                 <script>
                     $(document).ready(function() {
-                        // Add active class to clicked menu item and remove from others
+                        // Add active class to clicked menu item and remove from otders
                         $('.nav-link').on('click', function() {
                             $('.nav-link').removeClass('active');
-                            $(this).addClass('active');
+                            $(tdis).addClass('active');
                         });
 
                         // Add active class on page load based on URL hash
