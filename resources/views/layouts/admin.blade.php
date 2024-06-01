@@ -386,7 +386,14 @@
                                         class="material-icons-outlined fs-2">check_circle</span>
                                 </div>
                                 <div class="ms-3">
-                                    <h6 class="text-success mb-0">Success !!</h6>
+                                    <h6 class="text-success mb-0">
+
+                                        @if (app()->getLocale() === 'bn')
+                                            অভিনন্দন !!
+                                        @else
+                                            Congratulations !!
+                                        @endif
+                                    </h6>
                                     <div class="">{{ session('status') }}</div>
                                 </div>
                             </div>

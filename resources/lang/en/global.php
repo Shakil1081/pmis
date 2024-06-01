@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'saveactions'                        => 'Actions',
+    'deleteaction'                        => 'Actions',
+    'updateAction'                        => 'Actions',
     'actions'                        => 'Actions',
     'add'                            => 'Add',
     'allRightsReserved'              => 'All rights reserved.',

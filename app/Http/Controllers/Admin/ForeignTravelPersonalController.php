@@ -102,7 +102,7 @@ class ForeignTravelPersonalController extends Controller
     public function store(StoreForeignTravelPersonalRequest $request)
     {
         $foreignTravelPersonal = ForeignTravelPersonal::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.foreign-travel-personals.index');
     }
 

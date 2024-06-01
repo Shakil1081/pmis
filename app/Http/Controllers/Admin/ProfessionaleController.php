@@ -82,7 +82,7 @@ class ProfessionaleController extends Controller
     public function store(StoreProfessionaleRequest $request)
     {
         $professionale = Professionale::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.professionales.index');
     }
 

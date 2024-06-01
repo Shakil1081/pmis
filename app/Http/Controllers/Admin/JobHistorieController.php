@@ -136,7 +136,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $jobHistory->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.job-histories.index');
     }
 
@@ -183,7 +183,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         } elseif ($jobHistory->go_upload) {
             $jobHistory->go_upload->delete();
         }
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.job-histories.index');
     }
 

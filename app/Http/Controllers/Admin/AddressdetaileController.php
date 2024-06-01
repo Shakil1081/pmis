@@ -100,7 +100,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
     public function store(StoreAddressdetaileRequest $request)
     {
         $addressdetaile = Addressdetaile::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
 
         //return redirect()->route('admin.addressdetailes.index');
     }

@@ -90,7 +90,7 @@ class LanguageController extends Controller
     {
         $language = Language::create($request->all());
 
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(Language $language)
