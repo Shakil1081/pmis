@@ -30,7 +30,13 @@ class Publication extends Model implements HasMedia
         'Mobograph'   => 'Mobograph',
         'Magazine'    => 'Magazine',
         'Periodicals' => 'Periodicals',
-        'Other'       => 'Other',
+    ];
+    public const PUBLICATION_TYPE_SELECTBN = [
+        'Books'       => 'Books',
+        'Journal'     => 'Journal',
+        'Mobograph'   => 'Mobograph',
+        'Magazine'    => 'Magazine',
+        'Periodicals' => 'Periodicals',
     ];
 
     protected $fillable = [

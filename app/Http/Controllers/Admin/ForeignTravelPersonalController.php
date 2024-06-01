@@ -13,6 +13,7 @@ use App\Models\TravelPurpose;
 use App\Models\TravelRecord;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -88,9 +89,13 @@ class ForeignTravelPersonalController extends Controller
     {
         abort_if(Gate::denies('foreign_travel_personal_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $purposes = TravelPurpose::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
+        $countries = Country::pluck($columname , 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $purposes = TravelPurpose::pluck($columname , 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $leaves = TravelRecord::pluck('start_date', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -110,9 +115,11 @@ class ForeignTravelPersonalController extends Controller
     {
         abort_if(Gate::denies('foreign_travel_personal_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $purposes = TravelPurpose::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $purposes = TravelPurpose::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $leaves = TravelRecord::pluck('start_date', 'id')->prepend(trans('global.pleaseSelect'), '');
 

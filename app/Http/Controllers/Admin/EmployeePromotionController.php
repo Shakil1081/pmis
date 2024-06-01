@@ -13,6 +13,7 @@ use App\Models\EmployeeList;
 use App\Models\EmployeePromotion;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -75,9 +76,13 @@ class EmployeePromotionController extends Controller
     {
         abort_if(Gate::denies('employee_promotion_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+
+        $locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $new_designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $new_designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.employeePromotions.create', compact('employees', 'new_designations'));
     }

@@ -762,6 +762,8 @@ return [
             'deleted_at_helper'       => ' ',
             'nid_upload'              => 'এনআইডি সংযোজন (জেপিজি বা পিডিএফ) (২এমবি এর কম)',
             'nid_upload_helper'       => ' ',
+            'nid_number'              => 'এনআইডি নাম্বার',
+            'nid_number_helper'       => ' ',
         ],
     ],
     'child' => [
