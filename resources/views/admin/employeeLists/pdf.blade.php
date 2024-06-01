@@ -350,7 +350,7 @@
                                 {{ trans('cruds.employeeList.fields.grade') }}
                             </th>
                             <td>
-                                {{ $employeeList->grade->{$columname} ?? '' }}
+                                {{ $employeeList->grade->{$columname} ?? 'NA' }}
                             </td>
                         </tr>
                         <tr>
@@ -391,7 +391,14 @@
                                 {{ trans('cruds.employeeList.fields.projectrevenue') }}
                             </th>
                             <td>
-                                {{ $employeeList->projectrevenue->{$columname} ?? '' }}
+
+
+
+                                @if (app()->getLocale() === 'bn')
+                                    {{ $employeeList->projectrevenue->project_revenue_bn }}
+                                @else
+                                    {{ $employeeList->projectrevenue->project_revenue_en }}
+                                @endif
                             </td>
                         </tr>
 
@@ -410,7 +417,7 @@
                                 {{ trans('cruds.employeeList.fields.project') }}
                             </th>
                             <td>
-                                {{ $employeeList->project->{$columname} ?? '' }}
+                                {{ $employeeList->project }}
                             </td>
                         </tr>
 
@@ -420,7 +427,7 @@
                                 {{ trans('cruds.employeeList.fields.departmental_exam') }}
                             </th>
                             <td>
-                                {{ $employeeList->departmental_exam->exam_name_bn ?? '' }}
+                                {{ $employeeList->departmental_exam->{$columname} }}
                             </td>
                         </tr>
 
@@ -448,14 +455,18 @@
                                 @endif
                             </td>
                         </tr> --}}
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.date_of_gazette') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->date_of_gazette }}
-                            </td>
-                        </tr>
+
+                        @if ($employeeList->date_of_gazette)
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.date_of_gazette') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->date_of_gazette }}
+                                </td>
+                            </tr>
+                        @endif
+
                         {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.date_of_gazette_if_any') }}
@@ -468,22 +479,28 @@
                                 @endif
                             </td>
                         </tr> --}}
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.date_of_regularization') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->date_of_regularization }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->regularization_issue_date }}
-                            </td>
-                        </tr>
+                        @if ($employeeList->date_of_regularization)
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.date_of_regularization') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->date_of_regularization }}
+                                </td>
+                            </tr>
+                        @endif
+
+                        @if ($employeeList->regularization_issue_date)
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->regularization_issue_date }}
+                                </td>
+                            </tr>
+                        @endif
+
                         {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.regularization_office_orde_go') }}
@@ -497,14 +514,18 @@
                                 @endif
                             </td>
                         </tr> --}}
-                        <tr>
-                            <th>
-                                {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
-                            </th>
-                            <td>
-                                {{ $employeeList->date_of_con_serviec }}
-                            </td>
-                        </tr>
+
+                        @if ($employeeList->date_of_con_serviec)
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
+                                </th>
+                                <td>
+                                    {{ $employeeList->date_of_con_serviec }}
+                                </td>
+                            </tr>
+                        @endif
+
                         {{-- <tr>
                             <th>
                                 {{ trans('cruds.employeeList.fields.confirmation_in_service') }}
@@ -1144,6 +1165,11 @@
                                 </th>
                                 <td>
                                     {{ $jobHistory->level_5 }}
+                                    {{-- {{ $jobHistory->circle_list }}circle_list_id<br> --}}
+                                    {{ $jobHistory->division_list }}division_list_id<br>
+                                    {{ $jobHistory->range_list }}range_list_id{{ $jobHistory->range_list_id }}<br>
+                                    {{ $jobHistory->beat_list }}beat_list_id{{ $jobHistory->forest_range }}<br>
+                                    {{ $jobHistory->office_unit }}office_unit_id
                                 </td>
                             </tr>
                             {{-- <tr>
