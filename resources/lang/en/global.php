@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'saveactions'                        => 'Actions',
-    'deleteaction'                        => 'Actions',
-    'updateAction'                        => 'Actions',
+    'saveactions'                        => 'Information Add Successfully.',
+    'deleteaction'                        => 'Information updated successfully.',
+    'updateAction'                        => 'Information Deleted Successfully.',
     'actions'                        => 'Actions',
     'add'                            => 'Add',
     'allRightsReserved'              => 'All rights reserved.',
