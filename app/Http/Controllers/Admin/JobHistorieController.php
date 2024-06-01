@@ -121,6 +121,8 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
     public function store(StoreJobHistoryRequest $request)
     {
+
+        dd($request->all());
         $jobHistory = JobHistory::create($request->all());
 
         if ($request->input('go_upload', false)) {
