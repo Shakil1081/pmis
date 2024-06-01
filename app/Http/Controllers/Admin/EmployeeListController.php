@@ -68,7 +68,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $marital_status = Maritalstatus::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $marital_status = Maritalstatus::pluck($maritialstatus, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -498,6 +498,7 @@ $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'g
 if (!$employeeList) {
     abort(404);
 }
+
 
 
  return view('admin.employeeLists.pdf', compact('employeeList','columname'));
