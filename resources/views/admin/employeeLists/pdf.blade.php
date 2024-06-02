@@ -1361,6 +1361,14 @@
                                     {{ $training->training_name }}
                                 </td>
                             </tr>
+                            {{-- <tr>
+                                <th>
+                                    {{ trans('cruds.training.fields.institute_name') }}
+                                </th>
+                                <td>
+                                    {{ $training->institute_name }}
+                                </td>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.institute_name') }}
