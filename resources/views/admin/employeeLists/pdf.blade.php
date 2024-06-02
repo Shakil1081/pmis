@@ -1929,7 +1929,7 @@
                                     @if (app()->getLocale() === 'bn')
                                         {{ $language->read->name }}
                                     @else
-                                        {{ $language->read->nmae_en }}
+                                        {{ $language->read->name_en }}
                                     @endif
 
                                 </td>
@@ -1943,7 +1943,7 @@
                                     @if (app()->getLocale() === 'bn')
                                         {{ $language->write->name }}
                                     @else
-                                        {{ $language->write->nmae_en }}
+                                        {{ $language->write->name_en }}
                                     @endif
                                 </td>
                             </tr>
@@ -1956,7 +1956,7 @@
                                     @if (app()->getLocale() === 'bn')
                                         {{ $language->speak->name }}
                                     @else
-                                        {{ $language->speak->nmae_en }}
+                                        {{ $language->speak->name_en }}
                                     @endif
                                 </td>
                             </tr>
