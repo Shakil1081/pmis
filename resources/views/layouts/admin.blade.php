@@ -352,12 +352,12 @@
                 </li>
 
                 @if (app()->getLocale() === 'bn')
-                    <li><a href="{{ request()->fullUrlWithQuery(['change_language' => 'bn']) }}"
+                    <li><a href="{{ request()->fullUrlWithQuery(['change_language' => 'en']) }}"
                             class="btn btn-sm btn-success mx-2">
                             English
                         </a></li>
                 @else
-                    <li><a href="{{ request()->fullUrlWithQuery(['change_language' => 'en']) }}"
+                    <li><a href="{{ request()->fullUrlWithQuery(['change_language' => 'bn']) }}"
                             class="btn btn-sm btn-success mx-2">
                             বাংলা
                         </a></li>
