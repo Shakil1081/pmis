@@ -21,7 +21,7 @@ return [
     ],
     'boolean'          => 'বৈশিষ্ট্য: ক্ষেত্রটি অবশ্যই সত্য বা মিথ্যা।',
     'confirmed'        => 'এই: বৈশিষ্ট্য নিশ্চিতকরণ মেলে না।',
-    'current_password' => 'The password is incorrect.',
+    'current_password' => 'পাসওয়ার্ডটি সঠিক নয়.',
     'date'             => 'বৈশিষ্ট্য: বৈধ তারিখ নয়।',
     'date_equals'      => 'এই :attribute টি :date. তারিখের সমান তারিখ হতে হবে।',
     'date_format'      => 'এই: বৈশিষ্ট্যটি বিন্যাস: বিন্যাসের সাথে মেলে না।',

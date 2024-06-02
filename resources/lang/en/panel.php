@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'site_title' => 'PIMS',
+    'site_title' => 'SRMS',
 
 ];
