@@ -73,7 +73,8 @@
                                         class="help-block">{{ trans('cruds.addressdetaile.fields.post_office_helper') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="post_code">{{ trans('cruds.addressdetaile.fields.post_code') }}</label>
+                                    <label class="required"
+                                        for="post_code">{{ trans('cruds.addressdetaile.fields.post_code') }}</label>
                                     <input class="form-control {{ $errors->has('post_code') ? 'is-invalid' : '' }}"
                                         type="text" name="post_code" id="post_code" value="{{ old('post_code', '') }}"
                                         required>
