@@ -3,17 +3,17 @@
     @parent
     <style>
         /* th,
-                                                                                    td {
-                                                                                        font-size: 141px !important;
-                                                                                        padding: 4px !important;
-                                                                                        margin: 0px !important;
-                                                                                    }
+                                                                                            td {
+                                                                                                font-size: 141px !important;
+                                                                                                padding: 4px !important;
+                                                                                                margin: 0px !important;
+                                                                                            }
 
-                                                                                    a.nav-link:hover,
-                                                                                    a.nav-link {
-                                                                                        padding: 2px 4px;
-                                                                                        font-size: 14px !important;
-                                                                                    } */
+                                                                                            a.nav-link:hover,
+                                                                                            a.nav-link {
+                                                                                                padding: 2px 4px;
+                                                                                                font-size: 14px !important;
+                                                                                            } */
 
         th {
             font-weight: 200;
@@ -1951,7 +1951,11 @@
                                                 {{ trans('cruds.language.fields.language') }}
                                             </th>
                                             <td>
-                                                {{ $language->language }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->language->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -1960,44 +1964,54 @@
                                             </th>
                                             <td>
                                                 {{ $language->read->name ?? '' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.language.fields.write') }}
-                                            </th>
-                                            <td>
-                                                {{ $language->write->name ?? '' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.language.fields.speak') }}
-                                            </th>
-                                            <td>
-                                                {{ $language->speak->name ?? '' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th> </th>
-                                            <td>
-                                                <!-- Edit button -->
-                                                <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
-                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
+                                            @else
+                                                {{ $language->read->nmae_en }}
+                            @endif
+                            </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.language.fields.write') }}
+                                </th>
+                                <td>
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->write->name }}
+                                    @else
+                                        {{ $language->language->nmae_en }}
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.language.fields.speak') }}
+                                </th>
+                                <td>
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->speak->name }}
+                                    @else
+                                        {{ $language->language->nmae_en }}
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th> </th>
+                                <td>
+                                    <!-- Edit button -->
+                                    <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
+                                        class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
-                                                <!-- Delete button -->
-                                                <form
-                                                    action="{{ route('admin.languages.destroy', ['language' => $language->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    <!-- Delete button -->
+                                    <form action="{{ route('admin.languages.destroy', ['language' => $language->id]) }}"
+                                        method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                            </table>
                             @endforeach
 
                             <strong id="criminalProsecutione"> {{ trans('cruds.criminalProsecutione.title') }}</strong>
