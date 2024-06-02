@@ -65,7 +65,11 @@
                             <div class="customer-pic">
 
 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="hidden" id="employeeid" name="employeeidlist[]"
+                                        value="{{ $result->id }}" checked />
 
+                                </div>
 
                                 @if ($result->employee_photo)
                                     <a href="{{ $result->employee_photo->getUrl() }}" target="_blank"
