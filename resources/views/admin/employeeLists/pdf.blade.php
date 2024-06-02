@@ -23,6 +23,8 @@
             border: 1px solid black;
             padding: 8px;
             text-align: left;
+            padding: 2;
+            margin: 0;
         }
 
         strong {
@@ -54,14 +56,11 @@
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
-                    <h2 style="color: #006625">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
-
-                    <br>
-
+                    <h2 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
                     @if (app()->getLocale() === 'bn')
-                        <h4> নাম: {{ $employeeList->fullname_bn }}</h4>
+                        <h4 style=" margin:0"> নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
-                        <h4> Name:{{ $employeeList->fullname_en }}</h4>
+                        <h4 style=" margin:0"> Name:{{ $employeeList->fullname_en }}</h4>
                     @endif
 
                     <br>
@@ -1415,6 +1414,14 @@
                                 <td>
                                     {{ $training->institute_name ?? 'N/A' }}
                                 </td>
+                            </tr> --}}
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.training.fields.institute_name') }}
+                                </th>
+                                <td>
+                                    {{ $training->institute_name ?? 'N/A' }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>
@@ -1566,7 +1573,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
                                 </th>
                                 <td>
-                                    {{ $foreignTravelPersonal->purpose->{$columname} ?? '' }}
+                                    {{ $foreignTravelPersonal->purpose_id ?? '' }}
                                 </td>
                             </tr>
                             <tr>

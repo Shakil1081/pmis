@@ -808,6 +808,8 @@ return [
         'title'          => 'Job History',
         'title_singular' => 'Job History',
         'fields'         => [
+            'institute_name'        => 'Institution Name',
+            'institute_name_helper' => ' ',
             'id'                       => 'ID',
             'id_helper'                => ' ',
             'designation'              => 'Designation (Current)',
