@@ -58,7 +58,6 @@
                 <center>
                     <h2 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
                     @if (app()->getLocale() === 'bn')
-                        সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম
                         <h4 style=" margin:0"> সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম<br>
                             নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
@@ -66,8 +65,6 @@
                             <br> Name:{{ $employeeList->fullname_en }}
                         </h4>
                     @endif
-
-                    <br>
                     <b> {{ trans('cruds.employeeList.fields.employeeid') }}:
                         {{ englishToBanglaNumber($employeeList->employeeid) }}</b><br>
                 </center>
