@@ -1963,55 +1963,59 @@
                                                 {{ trans('cruds.language.fields.read') }}
                                             </th>
                                             <td>
-                                                {{ $language->read->name ?? '' }}
-                                            @else
-                                                {{ $language->read->nmae_en }}
-                            @endif
-                            </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.language.fields.write') }}
-                                </th>
-                                <td>
-                                    @if (app()->getLocale() === 'bn')
-                                        {{ $language->write->name }}
-                                    @else
-                                        {{ $language->language->nmae_en }}
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.language.fields.speak') }}
-                                </th>
-                                <td>
-                                    @if (app()->getLocale() === 'bn')
-                                        {{ $language->speak->name }}
-                                    @else
-                                        {{ $language->language->nmae_en }}
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th> </th>
-                                <td>
-                                    <!-- Edit button -->
-                                    <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
-                                        class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
-                                    <!-- Delete button -->
-                                    <form action="{{ route('admin.languages.destroy', ['language' => $language->id]) }}"
-                                        method="POST" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            </tbody>
-                            </table>
+
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->read->name ?? '' }}
+                                                @else
+                                                    {{ $language->read->nmae_en }}
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.write') }}
+                                            </th>
+                                            <td>
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->write->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                {{ trans('cruds.language.fields.speak') }}
+                                            </th>
+                                            <td>
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->speak->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th> </th>
+                                            <td>
+                                                <!-- Edit button -->
+                                                <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
+
+                                                <!-- Delete button -->
+                                                <form
+                                                    action="{{ route('admin.languages.destroy', ['language' => $language->id]) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             @endforeach
 
                             <strong id="criminalProsecutione"> {{ trans('cruds.criminalProsecutione.title') }}</strong>
