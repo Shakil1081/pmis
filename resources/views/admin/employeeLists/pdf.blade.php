@@ -929,6 +929,7 @@
                                 </td>
                             </tr>
                             <tr>
+
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.name_en') }}
                                 </th>
@@ -937,6 +938,7 @@
                                 </td>
                             </tr>
                             {{-- <tr>
+
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
                                 </th>
@@ -948,7 +950,7 @@
                                     @endif
                                 </td>
                             </tr> --}}
-                            {{-- <tr>
+                                {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.occupation') }}
                                 </th>
@@ -956,7 +958,7 @@
                                     {{ $spouseInformatione->occupation }}
                                 </td>
                             </tr> --}}
-                            {{-- <tr>
+                                {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.office_address') }}
                                 </th>
@@ -1017,14 +1019,7 @@
                                     {{ $child->{$columname} }}
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.child.fields.name_en') }}
-                                </th>
-                                <td>
-                                    {{ $child->name_en }}
-                                </td>
-                            </tr>
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.date_of_birth') }}
@@ -1993,7 +1988,14 @@
                                     {{ trans('cruds.language.fields.read') }}
                                 </th>
                                 <td>
-                                    {{ $language->read->name ?? 'N/A' }}
+
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->read->name }}
+                                    @else
+                                        {{ $language->read->name_en }}
+                                    @endif
+
                                 </td>
                             </tr>
                             <tr>
@@ -2001,7 +2003,13 @@
                                     {{ trans('cruds.language.fields.write') }}
                                 </th>
                                 <td>
-                                    {{ $language->write->name ?? 'N/A' }}
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->write->name }}
+                                    @else
+                                        {{ $language->write->name_en }}
+                                    @endif
+
                                 </td>
                             </tr>
                             <tr>
@@ -2009,7 +2017,13 @@
                                     {{ trans('cruds.language.fields.speak') }}
                                 </th>
                                 <td>
-                                    {{ $language->speak->name ?? 'N/A' }}
+
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->speak->name }}
+                                    @else
+                                        {{ $language->speak->name_en }}
+                                    @endif
                                 </td>
                             </tr>
 

@@ -21,13 +21,13 @@
                                             {{ trans('global.pleaseSelect') }}</option>
 
                                         @if (app()->getLocale() === 'bn')
-                                            @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECT as $key => $label)
+                                            @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN as $key => $label)
                                                 <option value="{{ $key }}"
                                                     {{ old('address_type', '') === (string) $key ? 'selected' : '' }}>
                                                     {{ $label }}</option>
                                             @endforeach
                                         @else
-                                            @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN as $key => $label)
+                                            @foreach (App\Models\Addressdetaile::ADDRESS_TYPE_SELECT as $key => $label)
                                                 <option value="{{ $key }}"
                                                     {{ old('address_type', '') === (string) $key ? 'selected' : '' }}>
                                                     {{ $label }}</option>
