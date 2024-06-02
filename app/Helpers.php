@@ -1,5 +1,9 @@
 <?php
 
+
+use Carbon\Carbon;
+
+
 if (!function_exists('englishToBanglaNumber')) {
     function englishToBanglaNumber($number) {
         $banglaNumbers = [
@@ -25,5 +29,24 @@ if (!function_exists('englishToBanglaNumber')) {
         }                              
 
        
+    }
+}
+
+function dateDifference($startDate, $endDate)
+{
+    $startDate = Carbon::createFromFormat('d/m/Y', $startDate)->startOfDay();
+    if ($endDate === null || !Carbon::createFromFormat('d/m/Y', $endDate)) {
+        $endDate = Carbon::now()->startOfDay();  
+    } else {
+        $endDate = Carbon::createFromFormat('d/m/Y', $endDate)->startOfDay();
+    }
+    $diff = $endDate->diff($startDate);
+
+    if (app()->getLocale() === 'bn') {
+        $formattedDiff = $diff->format('সময়কাল %y বছর, %m মাস, %d দিন');
+        return englishToBanglaNumber($startDate->format('d/m/Y')) . ' থেকে ' . englishToBanglaNumber($endDate->format('d/m/Y')) . ' ' . englishToBanglaNumber($formattedDiff);
+    } else {
+        $formattedDiff = $diff->format('Duration %y years, %m months, %d days');
+        return $startDate->format('d/m/Y') . ' to ' . $endDate->format('d/m/Y') . ' ' . $formattedDiff;
     }
 }

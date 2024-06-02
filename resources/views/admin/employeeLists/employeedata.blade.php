@@ -3,17 +3,17 @@
     @parent
     <style>
         /* th,
-                                                                                            td {
-                                                                                                font-size: 141px !important;
-                                                                                                padding: 4px !important;
-                                                                                                margin: 0px !important;
-                                                                                            }
+                                                                                                                        td {
+                                                                                                                            font-size: 141px !important;
+                                                                                                                            padding: 4px !important;
+                                                                                                                            margin: 0px !important;
+                                                                                                                        }
 
-                                                                                            a.nav-link:hover,
-                                                                                            a.nav-link {
-                                                                                                padding: 2px 4px;
-                                                                                                font-size: 14px !important;
-                                                                                            } */
+                                                                                                                        a.nav-link:hover,
+                                                                                                                        a.nav-link {
+                                                                                                                            padding: 2px 4px;
+                                                                                                                            font-size: 14px !important;
+                                                                                                                        } */
 
         th {
             font-weight: 200;
@@ -1226,21 +1226,21 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            {{-- <th>
                                                 {{ trans('cruds.leaveRecord.fields.start_date') }}
-                                            </th>
-                                            <td>
-                                                {{ $leaveRecord->start_date }}
+                                            </th> --}}
+                                            <td colspan="2" style="text-align: center">
+                                                {{ dateDifference($leaveRecord->start_date, $leaveRecord->end_date) }}
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.leaveRecord.fields.end_date') }}
                                             </th>
                                             <td>
                                                 {{ $leaveRecord->end_date }}
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <th>
                                                 {{ trans('cruds.leaveRecord.fields.reason') }}
@@ -1551,6 +1551,11 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2" style="text-align: center">
+                                                {{ dateDifference($foreignTravelPersonal->from_date, $foreignTravelPersonal->to_date) }}
+                                            </td> 
+                                        </tr>
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.from_date') }}
                                             </th>
@@ -1565,15 +1570,15 @@
                                             <td>
                                                 {{ $foreignTravelPersonal->to_date }}
                                             </td>
-                                        </tr>
-                                        <tr>
+                                        </tr> --}}
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
                                             </th>
                                             <td>
                                                 {{ $foreignTravelPersonal->leave->start_date ?? '' }}
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             @endforeach
