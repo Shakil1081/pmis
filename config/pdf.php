@@ -12,7 +12,7 @@ return [
     'margin_header'            => 0,
     'margin_footer'            => 0,
     'orientation'              => 'L',
-    'title'                    => 'Laravel mPDF',
+    'title'                    => 'SRMS',
     'subject'                  => '',
     'author'                   => '',
     'watermark'                => '',

@@ -3,17 +3,21 @@
     @parent
     <style>
         /* th,
-                                                                        td {
-                                                                            font-size: 141px !important;
-                                                                            padding: 4px !important;
-                                                                            margin: 0px !important;
-                                                                        }
+                                                                                            td {
+                                                                                                font-size: 141px !important;
+                                                                                                padding: 4px !important;
+                                                                                                margin: 0px !important;
+                                                                                            }
 
-                                                                        a.nav-link:hover,
-                                                                        a.nav-link {
-                                                                            padding: 2px 4px;
-                                                                            font-size: 14px !important;
-                                                                        } */
+                                                                                            a.nav-link:hover,
+                                                                                            a.nav-link {
+                                                                                                padding: 2px 4px;
+                                                                                                font-size: 14px !important;
+                                                                                            } */
+
+        th {
+            font-weight: 200;
+        }
     </style>
 @endsection
 @section('content')
@@ -453,7 +457,7 @@
                                                 {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                                             </th>
                                             <td>
-                                                {{ $educationInformatione->name_of_exam->name_bn ?? '' }}
+                                                {{ $educationInformatione->educations->exam_degree ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -1947,7 +1951,11 @@
                                                 {{ trans('cruds.language.fields.language') }}
                                             </th>
                                             <td>
-                                                {{ $language->language }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->language->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -1955,7 +1963,13 @@
                                                 {{ trans('cruds.language.fields.read') }}
                                             </th>
                                             <td>
-                                                {{ $language->read->name ?? '' }}
+
+
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->read->name ?? '' }}
+                                                @else
+                                                    {{ $language->read->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -1963,7 +1977,11 @@
                                                 {{ trans('cruds.language.fields.write') }}
                                             </th>
                                             <td>
-                                                {{ $language->write->name ?? '' }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->write->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -1971,7 +1989,11 @@
                                                 {{ trans('cruds.language.fields.speak') }}
                                             </th>
                                             <td>
-                                                {{ $language->speak->name ?? '' }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->speak->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>

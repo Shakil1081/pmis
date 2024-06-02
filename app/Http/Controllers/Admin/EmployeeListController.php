@@ -13,6 +13,7 @@ use App\Models\Designation;
 use App\Models\District;
 use App\Models\EmployeeList;
 use App\Models\ExamBoard;
+use App\Models\ExamDegree;
 use App\Models\Examination;
 use App\Models\FreedomFighteRelation;
 use App\Models\Gender;
@@ -491,8 +492,8 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
 $locale = App::getLocale();
 $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
-
-$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+$deucationDegree= ExamDegree::all();
+$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'educations', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
 ->find($request->id);
 
 if (!$employeeList) {
@@ -501,9 +502,9 @@ if (!$employeeList) {
 
 
 
-// return view('admin.employeeLists.pdf', compact('employeeList','columname'));
+// return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
 
-$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname'),[], ['margin_top' => 20,
+$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
 'margin_bottom' => 15,
 'margin_left' => 18,
 'margin_right' => 18,

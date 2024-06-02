@@ -443,6 +443,7 @@ return [
             'blood_group'                          => 'রক্তের গ্রুপ',
             'blood_group_helper'                   => ' ',
             'nid'                                  => 'এনআইডি',
+
             'nid_helper'                           => ' ',
             'passport_upload'                      => 'পাসপোর্ট সংযোজন',
             'passport_upload_helper'               => '(জেপিজি বা পিডিএফ - ২এমবি এর কম)', 
@@ -452,6 +453,7 @@ return [
             'license_type_helper'                  => ' ',
             'license_upload'                       => 'ড্রাইভিং লাইসেন্স সংযোজন',
             'license_upload_helper'                => '(জেপিজি বা পিডিএফ - ২এমবি এর কম)',
+
             'email'                                => 'ই-মেইল',
             'email_helper'                         => ' ',
             'mobile_number'                        => 'মোবাইল নাম্বার',
@@ -464,6 +466,7 @@ return [
             'date_of_con_serviec_helper'           => ' ',
             'quota'                                => 'নিয়োগ কোটা',
             'quota_helper'                         => ' ',
+
             'electric_signature'                   => 'ডিজিটাল স্বাক্ষর (জেপিজি বা পিডিএফ) (২এমবি এর কম)',
             'electric_signature_helper'            => '',
             'employee_photo'                       => 'ফটো সংযোজন',
@@ -779,7 +782,7 @@ return [
             'gender'                     => 'লিঙ্গ',
             'gender_helper'              => ' ',
             'nid_number'                 => 'এনআইডি নাম্বার',
-            'nid_number_helper'          => ' ',
+            'nid_number_helper'          => 'শুধুমাত্র 10, 13, 17 ডিজিটের অনুমতি',
             'passport_number'            => 'পাসপোর্ট নাম্বার',
             'passport_number_helper'     => ' ',
             'date_of_birth'              => 'জন্ম তারিখ',
@@ -851,6 +854,7 @@ return [
             'posting_in_range'         => 'রেঞ্জে পদায়ন',
             'posting_in_range_helper'  => ' ',
             'circle_list'              => 'সার্কেল তালিকা',
+
             'circle_list_helper'       => ' ',
             'division_list'            => 'বিভাগ তালিকা',
             'division_list_helper'     => ' ',

@@ -517,7 +517,7 @@ return [
             'approveby'                            => 'Approveby',
             'approveby_helper'                     => ' ',
             'nid'                                  => 'NID',
-            'nid_helper'                           => ' ',
+            'nid_helper'                           => 'Only 10, 13, 17 Digit allowed.',
             'has_passport'                         => 'Passport',
             'has_license'                         => 'Driving License',
             'class'                         => 'Class',
@@ -780,7 +780,7 @@ return [
             'gender'                     => 'Sex',
             'gender_helper'              => ' ',
             'nid_number'                 => 'NID Number',
-            'nid_number_helper'          => ' ',
+            'nid_number_helper'          => 'Only 10, 13, 17 Digit allowed.',
             'passport_number'            => 'Passport Number',
             'passport_number_helper'     => ' ',
             'date_of_birth'              => 'Date of Birth',
@@ -801,6 +801,7 @@ return [
             'childdren_nid_helper'       => ' PDF/JPG - Max file size 2MB ',
             'childdren_passporft'        => 'Passport Upload ',
             'childdren_passporft_helper' => 'PDF/JPG - Max file size 2MB ',
+
         ],
     ],
     'jobHistory' => [

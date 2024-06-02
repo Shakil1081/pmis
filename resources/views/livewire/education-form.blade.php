@@ -9,7 +9,7 @@
                 @endif
             </label>
             <select wire:model="levelofEducation" wire:change="onlevelofEducation($event.target.value)"
-                class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="circle_list_id"
+                class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="name_of_exam_id"
                 id="circle_list_id">
                 <option>{{ trans('global.pleaseSelect') }}</option>
                 @foreach ($examinations as $option)
@@ -27,10 +27,10 @@
         @if ($levelofEducation)
             <div class="form-group">
                 <label class="required"
-                    for="name_of_exam_id">{{ trans('cruds.educationInformatione.fields.name_of_exam') }}</label>
+                    for="exam_degree">{{ trans('cruds.educationInformatione.fields.name_of_exam') }}</label>
                 <select wire:model="nameOfExam" wire:change="onnameOfExam($event.target.value)"
-                    class="form-select {{ $errors->has('name_of_exam') ? 'is-invalid' : '' }}" name="name_of_exam_id"
-                    id="name_of_exam_id" required>
+                    class="form-select {{ $errors->has('name_of_exam') ? 'is-invalid' : '' }}" name="exam_degree"
+                    id="exam_degree" required>
                     <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($name_of_exams as $option)
                         <option value="{{ $option->id }}">
