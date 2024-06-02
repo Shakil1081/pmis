@@ -502,9 +502,12 @@ if (!$employeeList) {
 
 
 
-//return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
+// return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
 
-$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], [ 
+$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
+'margin_bottom' => 15,
+'margin_left' => 18,
+'margin_right' => 18,
 'format' => 'A4',
 'default_font_size' => '15', 
     'default_font' => 'nsikosh',
