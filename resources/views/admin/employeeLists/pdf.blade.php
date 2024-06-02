@@ -23,6 +23,8 @@
             border: 1px solid black;
             padding: 8px;
             text-align: left;
+            padding: 2;
+            margin: 0;
         }
 
         strong {
@@ -54,18 +56,13 @@
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
-                    <h2 style="color: #006625">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
-
-                    <br>
-
+                    <h2 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
                     @if (app()->getLocale() === 'bn')
-                        <h4> নাম: {{ $employeeList->fullname_bn }}</h4>
+                        <h4 style=" margin:0"> নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
-                        <h4> Name:{{ $employeeList->fullname_en }}</h4>
+                        <h4 style=" margin:0"> Name:{{ $employeeList->fullname_en }}</h4>
                     @endif
-
-                    <br>
-                    <b> {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $employeeList->employeeid }}</b><br>
+                    <b> {{ trans('cruds.employeeList.fields.employeeid') }}:{{ $employeeList->employeeid }}</b>
                 </center>
             </td>
             {{-- <td style="text-align: right;" width="82">
@@ -1361,6 +1358,14 @@
                                     {{ $training->training_name }}
                                 </td>
                             </tr>
+                            {{-- <tr>
+                                <th>
+                                    {{ trans('cruds.training.fields.institute_name') }}
+                                </th>
+                                <td>
+                                    {{ $training->institute_name }}
+                                </td>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.institute_name') }}
@@ -1382,7 +1387,9 @@
                                     {{ trans('cruds.training.fields.start_date') }}
                                 </th>
                                 <td>
-                                    {{ $training->start_date }}
+
+                                    {{ $training->start_date ?? '' }}
+                                    {{-- @dd($training) --}}
                                 </td>
                             </tr>
                             <tr>
@@ -1401,22 +1408,28 @@
                                     {{ $training->grade }}
                                 </td>
                             </tr> --}}
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.training.fields.position') }}
-                                </th>
-                                <td>
-                                    {{ $training->position }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.training.fields.location') }}
-                                </th>
-                                <td>
-                                    {{ $training->location }}
-                                </td>
-                            </tr>
+
+                            @if ($training->position)
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.training.fields.position') }}
+                                    </th>
+                                    <td>
+                                        {{ $training->position }}
+                                    </td>
+                                </tr>
+                            @endif
+                            @if ($training->location)
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.training.fields.location') }}
+                                    </th>
+                                    <td>
+                                        {{ $training->location }}
+                                    </td>
+                                </tr>
+                            @endif
+
                         </tbody>
                     </table><br />
                 @endforeach
@@ -1450,14 +1463,18 @@
                                     {{ $travelRecord->title }}
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.travelRecord.fields.purpose') }}
-                                </th>
-                                <td>
-                                    {{ $travelRecord->purpose->{$columname} ?? '' }}
-                                </td>
-                            </tr>
+
+                            @if ($travelRecord->purpose_id)
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.travelRecord.fields.purpose') }}
+                                    </th>
+                                    <td>
+                                        {{ $travelRecord->purpose_id ?? '' }}
+                                    </td>
+                                </tr>
+                            @endif
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.travelRecord.fields.start_date') }}
@@ -1515,7 +1532,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
                                 </th>
                                 <td>
-                                    {{ $foreignTravelPersonal->purpose->{$columname} ?? '' }}
+                                    {{ $foreignTravelPersonal->purpose_id ?? '' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2018,7 +2035,8 @@
                                     {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
                                 </th>
                                 <td>
-                                    {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? '' }}
+                                    {{ $criminalproDisciplinary->natureof_offence ?? '' }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -2035,6 +2053,12 @@
                                 </th>
                                 <td>
                                     {{ $criminalproDisciplinary->government_order_no }}
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td colspan="2">
+                                    {!! $criminalproDisciplinary->remzrk !!}
                                 </td>
                             </tr>
                             {{-- <tr>
