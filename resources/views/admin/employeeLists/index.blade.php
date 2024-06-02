@@ -55,14 +55,29 @@
         @php
             $empID = $result['id'];
         @endphp
+
+
         <div class="card mb-1">
             <div class="table-responsive p-3">
                 <div class="row justify-content-center align-items-center g-1">
                     <div class="col">
                         <div class="d-flex align-items-center gap-3">
                             <div class="customer-pic">
-                                <img src="{{ asset('assets/images/logo1.png') }}" class="rounded-circle" width="80"
-                                    height="80" alt="">
+
+
+
+
+                                @if ($result->employee_photo)
+                                    <a href="{{ $result->employee_photo->getUrl() }}" target="_blank"
+                                        style="display: inline-block">
+
+                                        <img src="{{ $result->employee_photo->getUrl('thumb') }}" class="rounded-circle"
+                                            width="80" height="80" alt="">
+                                    </a>
+                                @else
+                                    <img src="{{ asset('assets/images/logo1.png') }}" class="rounded-circle" width="80"
+                                        height="80" alt="">
+                                @endif
                             </div>
                             <div>
                                 <p class="customer-name fw-bold mb-0">

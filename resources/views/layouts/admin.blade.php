@@ -49,10 +49,6 @@
     <link href="{{ asset('assets/css/bordered-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <style>
-        .dropzone .dz-preview .dz-image {
-            height: 20px;
-        }
-
         /* .dropzone {
             min-height: 40px !important;
             padding: 7px;
@@ -317,6 +313,16 @@
 
         body {
             font-family: 'solaimanlipi', sans-serif;
+        }
+
+        .dz-filename {
+            display: none;
+        }
+
+        .dropzone .dz-preview .dz-image {
+            height: 39px;
+            position: absolute;
+            border-radius: 0;
         }
     </style>
     <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
