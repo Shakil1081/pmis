@@ -188,6 +188,10 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->belongsTo(ProjectRevenueExam::class, 'joiningexaminfo_id');
     }
+    public function examinations()
+    {
+        return $this->belongsTo(ProjectRevenueExam::class, 'name_of_exam_id');
+    }
 
     public function departmental_exam()
     {
@@ -338,6 +342,13 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->hasMany(EducationInformatione::class, 'employee_id');
     }
+
+
+    // public function name_of_exam()
+    // {
+    //     return $this->hasMany(Examination::class, 'name_of_exam_id');
+    // }
+
     public function professionales()
     {
         return $this->hasMany(Professionale::class, 'employee_id');
