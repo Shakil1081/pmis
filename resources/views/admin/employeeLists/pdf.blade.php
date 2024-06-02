@@ -1925,7 +1925,7 @@
                                     {{ trans('cruds.language.fields.read') }}
                                 </th>
                                 <td>
-                                    {{ $language->read->name ?? '' }}
+
                                     @if (app()->getLocale() === 'bn')
                                         {{ $language->read->name }}
                                     @else
