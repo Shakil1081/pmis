@@ -58,9 +58,13 @@
                 <center>
                     <h2 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
                     @if (app()->getLocale() === 'bn')
-                        <h4 style=" margin:0"> নাম: {{ $employeeList->fullname_bn }}</h4>
+                        সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম
+                        <h4 style=" margin:0"> সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম<br>
+                            নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
-                        <h4 style=" margin:0"> Name:{{ $employeeList->fullname_en }}</h4>
+                        <h4 style=" margin:0"> Service Record Management System
+                            <br> Name:{{ $employeeList->fullname_en }}
+                        </h4>
                     @endif
 
                     <br>
