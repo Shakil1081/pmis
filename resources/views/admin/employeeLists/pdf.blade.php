@@ -417,7 +417,7 @@
                                 {{ trans('cruds.employeeList.fields.project') }}
                             </th>
                             <td>
-                                {{ $employeeList->project }}
+                                {{ $employeeList->project->{$columname} ?? 'NA' }}
                             </td>
                         </tr>
 
