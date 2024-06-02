@@ -892,13 +892,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>
-                                    {{ trans('cruds.spouseInformatione.fields.name_en') }}
-                                </th>
-                                <td>
-                                    {{ $spouseInformatione->name_en }}
-                                </td>
-                            </tr>
+                            
                             {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
