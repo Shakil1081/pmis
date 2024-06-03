@@ -532,7 +532,9 @@ if (!$employeeList) {
 
 
 
+
 //return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
+
 
 $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
 'margin_bottom' => 15,

@@ -763,10 +763,7 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-
                                     {{ dateDifference($professionale->from_date, $professionale->to_date) }}
-
-
 
                                 </td>
                             </tr>
