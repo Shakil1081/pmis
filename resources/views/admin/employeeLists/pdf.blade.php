@@ -69,15 +69,20 @@
                         {{ englishToBanglaNumber($employeeList->employeeid) }}</b><br>
                 </center>
             </td>
-            <td style="text-align: right;border: 0;" width="82">
 
-                @if ($employeeList->employee_photo)
+
+            @if ($employeeList->employee_photo)
+                <td style="text-align: right;border: 0;" width="82">
                     <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}" class="rounded-circle"
                         width="80">
-                @else
+                </td>
+            @else
+                <td style="text-align: right;" width="82">
+                    NO<br>
                     PHOTO
-                @endif
-            </td>
+                </td>
+            @endif
+
         </tr>
     </table><br />
 
