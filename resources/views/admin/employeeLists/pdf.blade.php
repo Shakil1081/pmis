@@ -56,24 +56,26 @@
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
-                    <h2 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
+                    <h1 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h1>
                     @if (app()->getLocale() === 'bn')
-                        <h4 style=" margin:0"> সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম<br>
-                            নাম: {{ $employeeList->fullname_bn }}</h4>
+                        <h3 style=" margin:0"> সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম<br>
+                            নাম: {{ $employeeList->fullname_bn }}</h3>
                     @else
-                        <h4 style=" margin:0"> Service Record Management System
+                        <h3 style=" margin:0"> Service Record Management System
                             <br> Name:{{ $employeeList->fullname_en }}
-                        </h4>
+                        </h3>
                     @endif
                     <b> {{ trans('cruds.employeeList.fields.employeeid') }}:
                         {{ englishToBanglaNumber($employeeList->employeeid) }}</b><br>
                 </center>
             </td>
-            <td style="text-align: right;;border: 0;" width="82">
+            <td style="text-align: right;border: 0;" width="82">
 
                 @if ($employeeList->employee_photo)
                     <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}" class="rounded-circle"
                         width="80">
+                @else
+                    PHOTO
                 @endif
             </td>
         </tr>
