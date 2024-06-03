@@ -9,7 +9,7 @@
                     <img src="{{ asset('assets/images/logo1.png') }}" height="50" alt="Logo" />
                 </div>
                 <div class="col-md-8 d-flex">
-                    <small class="text-dark h1">{{ trans('panel.site_title') }}</small>
+                    <small class="text-dark h4">{{ trans('panel.site_title') }}</small>
                 </div>
             </div>
 
