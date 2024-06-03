@@ -51,8 +51,8 @@
 
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
-            <td width="82" style="border: 0;">
-                <img src="img/bforest.png" width="85" alt="">
+            <td style="text-align: left;" width="82">
+                <img src="img/bforest.png" width="85"height="82">
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
@@ -73,7 +73,7 @@
 
                 @if ($employeeList->employee_photo)
                     <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}" class="rounded-circle"
-                        width="50" height="50" alt="">
+                        width="82" height="82" alt="">
                 @endif
             </td>
         </tr>
