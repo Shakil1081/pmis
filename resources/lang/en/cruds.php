@@ -404,6 +404,18 @@ return [
         'approve'                         => 'Approve',
         'waiting'                         => 'Waiting',
         'fields'         => [
+            'cadre/noncadre'                       => 'Cadre/Non-Cadre',
+            'cadre/noncadre_helper'                => ' ',
+            'cadre'                                => 'Cadre',
+            'cadre_helper'                         => ' ',
+            'noncadre'                             => 'Non-Cadre',
+            'noncadre_helper'                      => ' ',
+            'cadreexam'                            => 'Cadre Exam',
+            'cadreexam_helper'                     => ' ',
+            'projectname'                         => 'Development Project Name',
+            'projectname_helper'                  => ' ',
+            'adhoc'                               => 'Adhoc',
+            'adhoc_helper'                        => ' ',
             'id'                                   => 'ID',
             'id_helper'                            => ' ',
             'employeeid'                           => 'Employee ID',
@@ -522,7 +534,13 @@ return [
             'has_license'                         => 'Driving License',
             'class'                         => 'Class',
             'class_helper'                         => '',
-           
+            'nid_number'                         => 'NID Number',
+            'nid_number_helper'                  => '',
+            'yes'                                => 'Yes',
+            'yes_helper'                         => ' ',
+            'no'                                => 'N/A',
+            'no_helper'                         => ' ',
+            
         ],
     ],
     'licenseType' => [
@@ -1293,7 +1311,7 @@ return [
         'fields'         => [
             'id'                     => 'ID',
             'id_helper'              => ' ',
-            'project_revenue'        => 'Project/Revenue',
+            'project_revenue'        => 'Revenue',
             'project_revenue_helper' => ' ',
             'name_bn'                => 'Name Bn',
             'name_bn_helper'         => ' ',

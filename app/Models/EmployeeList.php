@@ -198,6 +198,11 @@ class EmployeeList extends Model implements HasMedia
         return $this->belongsTo(ProjectRevenuelone::class, 'departmental_exam_id');
     }
 
+    public function freedom_fighter()
+    {
+        return $this->belongsTo(FreedomFighteRelation::class, 'freedomfighter_id');
+    }
+
     public function project()
     {
         return $this->belongsTo(Project::class, 'project_id');
