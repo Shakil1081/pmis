@@ -77,7 +77,7 @@
                         width="80">
                 </td>
             @else
-                <td style="text-align: right;" width="82">
+                <td style="text-align: center;" width="82">
                     NO<br>
                     PHOTO
                 </td>
