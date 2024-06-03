@@ -51,8 +51,8 @@
 
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
-            <td style="text-align: left;" width="82">
-                <img src="{{ public_path('img/bforest.png') }}" height="50">
+            <td style="text-align: left; border: 0;" width="82">
+                <img src="{{ public_path('img/bforest.png') }}" width="80">
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
@@ -69,11 +69,11 @@
                         {{ englishToBanglaNumber($employeeList->employeeid) }}</b><br>
                 </center>
             </td>
-            <td style="text-align: right;" width="82">
+            <td style="text-align: right;;border: 0;" width="82">
 
                 @if ($employeeList->employee_photo)
                     <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}" class="rounded-circle"
-                        width="50">
+                        width="80">
                 @endif
             </td>
         </tr>
