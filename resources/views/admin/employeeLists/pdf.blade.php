@@ -353,7 +353,11 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.employeeList.fields.grade') }}
+                            @if (app()->getLocale() === 'bn')
+                        ১ম যোগদানের গ্রেড
+                    @else
+                        First Joining Grade
+                    @endif
                             </th>
                             <td>
                                 {{ $employeeList->grade->{$columname} ?? 'N/A' }}
@@ -602,7 +606,7 @@
                             <tr>
                                 <th>
                                     @if (app()->getLocale() === 'bn')
-                                        শিক্ষা শ্রেণী
+                                        শিক্ষার স্তর
                                     @else
                                         {{ trans('Level of Education') }}
                                     @endif
@@ -672,11 +676,11 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.educationInformatione.fields.achivement') }}
+                                    {{ trans('cruds.educationInformatione.fields.result') }}
                                 </th>
                                 <td>
                                     {{ $educationInformatione->achivement }}
-                                    {{ $educationInformatione->cgpa ?? 'N/A' }}
+                                    {{ $educationInformatione->cgpa ?? '' }}
                                     {{ $educationInformatione->result->{$columname} ?? '' }}
 
                                 </td>
@@ -753,22 +757,18 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.professionale.fields.from_date') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($professionale->from_date ?? 'N/A') }}
+                                {{ englishToBanglaNumber($professionale->from_date) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($professionale->to_date) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::parse($professionale->from_date)->diff(\Carbon\Carbon::parse($professionale->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
+
                                     
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.professionale.fields.to_date') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($professionale->to_date ?? 'N/A') }}
-                                    
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <th>
                                     {{ trans('cruds.professionale.fields.passing_year') }}
@@ -929,7 +929,6 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.name_en') }}
                                 </th>
@@ -938,7 +937,6 @@
                                 </td>
                             </tr>
                             {{-- <tr>
-
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.nid_upload') }}
                                 </th>
@@ -950,7 +948,7 @@
                                     @endif
                                 </td>
                             </tr> --}}
-                                {{-- <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.occupation') }}
                                 </th>
@@ -958,7 +956,7 @@
                                     {{ $spouseInformatione->occupation }}
                                 </td>
                             </tr> --}}
-                                {{-- <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.spouseInformatione.fields.office_address') }}
                                 </th>
@@ -1019,7 +1017,14 @@
                                     {{ $child->{$columname} }}
                                 </td>
                             </tr>
-
+                            <tr>
+                                <th>
+                                    {{ trans('cruds.child.fields.name_en') }}
+                                </th>
+                                <td>
+                                    {{ $child->name_en }}
+                                </td>
+                            </tr>
                             <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.date_of_birth') }}
@@ -1342,22 +1347,18 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.leaveRecord.fields.start_date') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($leaveRecord->start_date ?? 'N/A') }}
+                                {{ englishToBanglaNumber($leaveRecord->start_date) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($leaveRecord->end_date) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $leaveRecord->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $leaveRecord->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
+
                                     
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.leaveRecord.fields.end_date') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($leaveRecord->end_date ?? 'N/A') }}
-                                
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <th>
                                     {{ trans('cruds.leaveRecord.fields.reason') }}
@@ -1378,14 +1379,7 @@
                 @foreach ($employeeList->trainings ?? [] as $training)
                     <table class="table-bordered table-striped table" id="training">
                         <tbody>
-                            {{-- <tr>
-                                <th>
-                                    {{ trans('cruds.training.fields.employee') }}
-                                </th>
-                                <td>
-                                    {{ $training->employee->employeeid ?? '' }}
-                                </td>
-                            </tr> --}}
+                            
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.training_type') }}
@@ -1409,7 +1403,7 @@
                                 <td>
                                     {{ $training->institute_name ?? 'N/A' }}
                                 </td>
-                            </tr> --}}
+                            </tr>
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.institute_name') }}
@@ -1426,24 +1420,21 @@
                                     {{ $training->country->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
+
                             <tr>
                                 <th>
-                                    {{ trans('cruds.training.fields.start_date') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($training->start_date ?? 'N/A') }}
+                                {{ englishToBanglaNumber($training->start_date) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($training->end_date) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $training->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $training->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
+
                                     
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.training.fields.end_date') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($training->end_date ?? 'N/A') }}
-                                    
-                                </td>
-                            </tr>
+                            
                             {{-- <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.grade') }}
@@ -1454,7 +1445,11 @@
                             </tr> --}}
                             <tr>
                                 <th>
-                                    {{ trans('cruds.training.fields.position') }}
+                                @if (app()->getLocale() === 'bn')
+                        অর্জন (যদি থাকে)
+                    @else
+                        Achievement (If Any)
+                    @endif
                                 </th>
                                 <td>
                                     {{ $training->position ?? 'N/A'}}
@@ -1511,22 +1506,17 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.travelRecord.fields.start_date') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($travelRecord->start_date ?? 'N/A') }}
-                                
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.travelRecord.fields.end_date') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($travelRecord->end_date ?? 'N/A') }}
+                                {{ englishToBanglaNumber($travelRecord->start_date) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($travelRecord->end_date) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $travelRecord->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $travelRecord->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
                                     
                                 </td>
                             </tr>
+                            
 
                         </tbody>
                     </table><br />
@@ -1573,23 +1563,18 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.foreignTravelPersonal.fields.from_date') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($foreignTravelPersonal->from_date ?? 'N/A') }}
+                                {{ englishToBanglaNumber($foreignTravelPersonal->from_date) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($foreignTravelPersonal->to_date) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $foreignTravelPersonal->from_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $foreignTravelPersonal->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
                                     
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.foreignTravelPersonal.fields.to_date') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($foreignTravelPersonal->to_date ?? 'N/A') }}
-                                   
-                                </td>
-                            </tr>
-                            <tr>
+                            
+                            <!-- <tr>
                                 <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
                                 </th>
@@ -1597,7 +1582,7 @@
                                 {{ englishToBanglaNumber($foreignTravelPersonal->leave->start_date ?? 'N/A') }}
                                    
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table><br />
                 @endforeach
@@ -1710,22 +1695,18 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.extracurriculam.fields.start_date') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($extracurriculam->start_date ?? 'N/A') }}
+                                {{ englishToBanglaNumber($extracurriculam->start_date) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($extracurriculam->end_date) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $extracurriculam->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $extracurriculam->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
                                     
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.extracurriculam.fields.end_date') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($extracurriculam->end_date ?? 'N/A') }}
-                                    
-                                </td>
-                            </tr>
+                            
+                            
                             <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.description') }}
@@ -1928,22 +1909,17 @@
                             </tr>
                             <tr>
                                 <th>
-                                    {{ trans('cruds.otherServiceJob.fields.from') }}
+                                    {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($otherServiceJob->from ?? 'N/A') }}
-                                   
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.otherServiceJob.fields.to') }}
-                                </th>
-                                <td>
-                                {{ englishToBanglaNumber($otherServiceJob->to ?? 'N/A') }}
+                                {{ englishToBanglaNumber($otherServiceJob->from) }} {{ trans('cruds.professionale.fields.to') }}
+                    {{ englishToBanglaNumber($otherServiceJob->to) }} ; 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $otherServiceJob->from)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $otherServiceJob->to))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
                                     
                                 </td>
                             </tr>
+                           
                             {{-- <tr>
                                 <th>
                                     {{ trans('cruds.otherServiceJob.fields.employee') }}
@@ -1988,14 +1964,7 @@
                                     {{ trans('cruds.language.fields.read') }}
                                 </th>
                                 <td>
-
-
-                                    @if (app()->getLocale() === 'bn')
-                                        {{ $language->read->name }}
-                                    @else
-                                        {{ $language->read->name_en }}
-                                    @endif
-
+                                    {{ $language->read->name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2003,13 +1972,7 @@
                                     {{ trans('cruds.language.fields.write') }}
                                 </th>
                                 <td>
-
-                                    @if (app()->getLocale() === 'bn')
-                                        {{ $language->write->name }}
-                                    @else
-                                        {{ $language->write->name_en }}
-                                    @endif
-
+                                    {{ $language->write->name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2017,13 +1980,7 @@
                                     {{ trans('cruds.language.fields.speak') }}
                                 </th>
                                 <td>
-
-
-                                    @if (app()->getLocale() === 'bn')
-                                        {{ $language->speak->name }}
-                                    @else
-                                        {{ $language->speak->name_en }}
-                                    @endif
+                                    {{ $language->speak->name ?? 'N/A' }}
                                 </td>
                             </tr>
 

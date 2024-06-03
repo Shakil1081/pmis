@@ -635,6 +635,11 @@ return [
         'title'          => 'Additional Professional Qualification',
         'title_singular' => 'Additional Professional Qualification',
         'fields'         => [
+            'duration'                   => 'Duration',
+            'to'                         => 'to',
+            'year'                       => 'Year(s)',
+            'month'                      => 'Month(s)',
+            'day'                        => 'Day(s)',
             'id'                         => 'ID',
             'id_helper'                  => ' ',
             'employee'                   => 'Employee',
@@ -1084,7 +1089,7 @@ return [
             'employee_helper'            => ' ',
             'natureof_offence'           => 'Nature of offense',
             'natureof_offence_helper'    => ' ',
-            'government_order_no'        => '. Government Order No. & Date',
+            'government_order_no'        => 'Government Order No. & Date',
             'government_order_no_helper' => ' ',
             'court_order'                => 'Order Upload (PDF or JPG)(Less than 2MB)',
             'court_order_helper'         => 'PDF/JPG - Max file size 2MB ',
@@ -1423,8 +1428,8 @@ return [
         ],
     ],
     'otherServiceJob' => [
-        'title'          => 'Other Service/Job',
-        'title_singular' => 'Other Service/Job',
+        'title'          => 'Other Service/Job (With the Permission of Controlling Authority)',
+        'title_singular' => 'Other Service/Job ',
         'fields'         => [
             'id'                  => 'ID',
             'id_helper'           => ' ',
