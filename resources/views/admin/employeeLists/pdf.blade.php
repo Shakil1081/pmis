@@ -765,8 +765,8 @@
                                 <td>
                                 {{ englishToBanglaNumber($professionale->from_date) }} {{ trans('cruds.professionale.fields.to') }}
                     {{ englishToBanglaNumber($professionale->to_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::parse($professionale->from_date)->diff(\Carbon\Carbon::parse($professionale->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
+{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $professionale->from_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $professionale->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
                                     
 
