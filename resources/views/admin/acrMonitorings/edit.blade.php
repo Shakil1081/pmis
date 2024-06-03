@@ -55,7 +55,7 @@
                         @endif
                         <span class="help-block">{{ trans('cruds.acrMonitoring.fields.year_helper') }}</span>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="reviewer">{{ trans('cruds.acrMonitoring.fields.reviewer') }}</label>
                         <input class="form-control {{ $errors->has('reviewer') ? 'is-invalid' : '' }}" type="text"
                             name="reviewer" id="reviewer" value="{{ old('reviewer', $acrMonitoring->reviewer) }}">
@@ -77,7 +77,7 @@
                             </div>
                         @endif
                         <span class="help-block">{{ trans('cruds.acrMonitoring.fields.review_date_helper') }}</span>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <div class="form-group">

@@ -58,13 +58,15 @@
                 <center>
                     <h2 style="color: #006625; margin:0">বন অধিদপ্তর-গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h2>
                     @if (app()->getLocale() === 'bn')
-                        <h4 style=" margin:0"> নাম: {{ $employeeList->fullname_bn }}</h4>
+                        <h4 style=" margin:0"> সার্ভিস রেকর্ড ম্যানেজমেন্ট সিস্টেম<br>
+                            নাম: {{ $employeeList->fullname_bn }}</h4>
                     @else
-                        <h4 style=" margin:0"> Name:{{ $employeeList->fullname_en }}</h4>
+                        <h4 style=" margin:0"> Service Record Management System
+                            <br> Name:{{ $employeeList->fullname_en }}
+                        </h4>
                     @endif
-
-                    <br>
-                    <b> {{ trans('cruds.employeeList.fields.employeeid') }}: {{ englishToBanglaNumber($employeeList->employeeid) }}</b><br>
+                    <b> {{ trans('cruds.employeeList.fields.employeeid') }}:
+                        {{ englishToBanglaNumber($employeeList->employeeid) }}</b><br>
                 </center>
             </td>
             {{-- <td style="text-align: right;" width="82">
@@ -86,8 +88,8 @@
                                 {{ trans('cruds.employeeList.fields.employeeid') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->employeeid ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->employeeid ?? 'N/A') }}
+
                             </td>
                         </tr>
                         <tr>
@@ -95,8 +97,8 @@
                                 {{ trans('cruds.employeeList.fields.cadreid') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->cadreid ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->cadreid ?? 'N/A') }}
+
                             </td>
                         </tr>
                         <tr>
@@ -189,8 +191,8 @@
                                 {{ trans('cruds.employeeList.fields.prl_date') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->prl_date ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->prl_date ?? 'N/A') }}
+
                             </td>
                         </tr>
                         <tr>
@@ -198,8 +200,8 @@
                                 {{ trans('cruds.employeeList.fields.height') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->height ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->height ?? 'N/A') }}
+
                             </td>
                         </tr>
                         <tr>
@@ -260,8 +262,8 @@
                                 {{ trans('cruds.employeeList.fields.nid') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->nid ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->nid ?? 'N/A') }}
+
                             </td>
                         </tr>
                         {{-- <tr>
@@ -281,8 +283,8 @@
                                 {{ trans('cruds.employeeList.fields.passport') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->passport ? $employeeList->passport : 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->passport ? $employeeList->passport : 'N/A') }}
+
                             </td>
                         </tr>
                         {{-- <tr>
@@ -304,7 +306,7 @@
                             <td>
                                 {{ $employeeList->license_type->{$columname} ?? 'N/A' }}
 
-                                {{ $employeeList->license_type->license_number ?? 'N/A' }}
+                                {{ $employeeList->license_type->license_number ?? '' }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -332,8 +334,8 @@
                                 {{ trans('cruds.employeeList.fields.mobile_number') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->mobile_number ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->mobile_number ?? 'N/A') }}
+
                             </td>
                         </tr>
                         <tr>
@@ -368,8 +370,8 @@
                                 {{ trans('cruds.employeeList.fields.fjoining_date') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->fjoining_date ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->fjoining_date ?? 'N/A') }}
+
                             </td>
                         </tr>
                         <tr>
@@ -377,7 +379,7 @@
                                 {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
                             </th>
                             <td>
-                                {{ $employeeList->first_joining_office_name ?? 'N/A'}}
+                                {{ $employeeList->first_joining_office_name ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -385,9 +387,9 @@
                                 {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->first_joining_g_o_date ?? 'N/A') }}
-                            
-                                
+                                {{ englishToBanglaNumber($employeeList->first_joining_g_o_date ?? 'N/A') }}
+
+
                             </td>
                         </tr>
                         <tr>
@@ -395,8 +397,8 @@
                                 {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
                             </th>
                             <td>
-                            {{ englishToBanglaNumber($employeeList->first_joining_memo_no ?? 'N/A') }}
-                                
+                                {{ englishToBanglaNumber($employeeList->first_joining_memo_no ?? 'N/A') }}
+
                             </td>
                         </tr>
 
@@ -421,7 +423,7 @@
                                 {{ trans('cruds.employeeList.fields.joiningexaminfo') }}
                             </th>
                             <td>
-                  
+
                                 @if (app()->getLocale() === 'bn')
                                     {{ $employeeList->joiningexaminfo->exam_name_bn ?? 'N/A' }}
                                 @else
@@ -481,8 +483,8 @@
                                     {{ trans('cruds.employeeList.fields.date_of_gazette') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($employeeList->date_of_gazette ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($employeeList->date_of_gazette ?? 'N/A') }}
+
                                 </td>
                             </tr>
                         @endif
@@ -505,8 +507,8 @@
                                     {{ trans('cruds.employeeList.fields.date_of_regularization') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($employeeList->date_of_regularization ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($employeeList->date_of_regularization ?? 'N/A') }}
+
                                 </td>
                             </tr>
                         @endif
@@ -517,8 +519,8 @@
                                     {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($employeeList->regularization_issue_date ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($employeeList->regularization_issue_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                         @endif
@@ -543,8 +545,8 @@
                                     {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($employeeList->date_of_con_serviec ?? 'N/A') }}
-                            
+                                    {{ englishToBanglaNumber($employeeList->date_of_con_serviec ?? 'N/A') }}
+
                                 </td>
                             </tr>
                         @endif
@@ -690,8 +692,8 @@
                                     {{ trans('cruds.educationInformatione.fields.passing_year') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($educationInformatione->passing_year ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($educationInformatione->passing_year ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -741,9 +743,9 @@
                                     {{ trans('cruds.professionale.fields.qualification_title') }}
                                 </th>
                                 <td>
-                                {{ $professionale->qualification_title ?? 'N/A' }}
-                                
-                                    
+                                    {{ $professionale->qualification_title ?? 'N/A' }}
+
+
                                 </td>
                             </tr>
                             <tr>
@@ -751,12 +753,13 @@
                                     {{ trans('cruds.professionale.fields.institution') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($professionale->institution ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($professionale->institution ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
                                 <th>
+
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
@@ -766,6 +769,7 @@
 
 
                                     
+
                                 </td>
                             </tr>
                             
@@ -774,8 +778,8 @@
                                     {{ trans('cruds.professionale.fields.passing_year') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($professionale->passing_year ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($professionale->passing_year ?? 'N/A') }}
+
                                 </td>
                             </tr>
 
@@ -802,12 +806,12 @@
                                     {{ trans('cruds.addressdetaile.fields.address_type') }}
                                 </th>
                                 <td>
-                                @if (app()->getLocale() === 'bn')
-                                {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN[$addressdetaile->address_type] ?? 'N/A' }}
-                                @else
-                                {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECT[$addressdetaile->address_type] ?? 'N/A' }}
-                                @endif
-                                    
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN[$addressdetaile->address_type] ?? 'N/A' }}
+                                    @else
+                                        {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECT[$addressdetaile->address_type] ?? 'N/A' }}
+                                    @endif
+
                                 </td>
                             </tr>
                             <tr>
@@ -815,7 +819,7 @@
                                     {{ trans('cruds.addressdetaile.fields.flat_house') }}
                                 </th>
                                 <td>
-                                    {{ $addressdetaile->flat_house ?? 'N/A'}}
+                                    {{ $addressdetaile->flat_house ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -823,7 +827,7 @@
                                     {{ trans('cruds.addressdetaile.fields.post_office') }}
                                 </th>
                                 <td>
-                                    {{ $addressdetaile->post_office ?? 'N/A'}}
+                                    {{ $addressdetaile->post_office ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -831,8 +835,8 @@
                                     {{ trans('cruds.addressdetaile.fields.post_code') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($addressdetaile->post_code ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($addressdetaile->post_code ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -848,8 +852,8 @@
                                     {{ trans('cruds.addressdetaile.fields.phone_number') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($addressdetaile->phone_number ?? 'N/A') }}
-                                
+                                    {{ englishToBanglaNumber($addressdetaile->phone_number ?? 'N/A') }}
+
                                 </td>
                             </tr>
 
@@ -873,7 +877,7 @@
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_relation') }}
                                 </th>
                                 <td>
-                                    {{ $emergenceContacte->contact_person_relation ?? 'N/A'}}
+                                    {{ $emergenceContacte->contact_person_relation ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -889,8 +893,8 @@
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($emergenceContacte->contact_person_number ?? 'N/A') }}
-                                   
+                                    {{ englishToBanglaNumber($emergenceContacte->contact_person_number ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -925,7 +929,7 @@
                                     {{ trans("cruds.spouseInformatione.fields.$columname") }}
                                 </th>
                                 <td>
-                                {{ $spouseInformatione->name_bn ?? 'N/A' }}
+                                    {{ $spouseInformatione->name_bn ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -969,8 +973,8 @@
                                     {{ trans('cruds.spouseInformatione.fields.phone_number') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($spouseInformatione->phone_number ?? 'N/A') }}
-                                
+                                    {{ englishToBanglaNumber($spouseInformatione->phone_number ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -978,7 +982,7 @@
                                     {{ trans('cruds.spouseInformatione.fields.present_addess') }}
                                 </th>
                                 <td>
-                                    {{ $spouseInformatione->present_addess ?? 'N/A'}}
+                                    {!! $spouseInformatione->present_addess ?? 'N/A' !!}
                                 </td>
                             </tr>
                             <tr>
@@ -986,7 +990,7 @@
                                     {{ trans('cruds.spouseInformatione.fields.permanent_addess') }}
                                 </th>
                                 <td>
-                                    {{ $spouseInformatione->permanent_addess ?? 'N/A'}}
+                                    {!! $spouseInformatione->permanent_addess ?? 'N/A' !!}
                                 </td>
                             </tr>
 
@@ -1030,8 +1034,8 @@
                                     {{ trans('cruds.child.fields.date_of_birth') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($child->date_of_birth ?? 'N/A') }}
-                                   
+                                    {{ englishToBanglaNumber($child->date_of_birth ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1051,8 +1055,8 @@
                                     {{ trans('cruds.child.fields.complite_21') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($child->complite_21 ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($child->complite_21 ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -1060,7 +1064,7 @@
                                     {{ trans('cruds.child.fields.gender') }}
                                 </th>
                                 <td>
-                                    
+
                                     {{ $child->gender->{$columname} ?? '' }}
                                 </td>
                             </tr>
@@ -1069,8 +1073,8 @@
                                     {{ trans('cruds.child.fields.nid_number') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($child->nid_number ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($child->nid_number ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -1078,8 +1082,8 @@
                                     {{ trans('cruds.child.fields.passport_number') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($child->passport_number ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($child->passport_number ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1158,8 +1162,8 @@
                                     {{ trans('cruds.jobHistory.fields.joining_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($jobHistory->joining_date ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($jobHistory->joining_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -1167,8 +1171,8 @@
                                     {{ trans('cruds.jobHistory.fields.release_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($jobHistory->release_date ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($jobHistory->release_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1285,8 +1289,8 @@
                                     {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($employeePromotion->go_issue_date ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($employeePromotion->go_issue_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -1294,8 +1298,8 @@
                                     {{ trans('cruds.employeePromotion.fields.office_order_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($employeePromotion->office_order_date ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($employeePromotion->office_order_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1350,6 +1354,7 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
+
                                 {{ englishToBanglaNumber($leaveRecord->start_date) }} {{ trans('cruds.professionale.fields.to') }}
                     {{ englishToBanglaNumber($leaveRecord->end_date) }} ; 
 {{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $leaveRecord->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $leaveRecord->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
@@ -1359,12 +1364,13 @@
                                 </td>
                             </tr>
                             
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.leaveRecord.fields.reason') }}
                                 </th>
                                 <td>
-                                    {{ $leaveRecord->reason ?? 'N/A' }}
+                                    {!! $leaveRecord->reason ?? 'N/A' !!}
                                 </td>
                             </tr>
 
@@ -1393,7 +1399,7 @@
                                     {{ trans('cruds.training.fields.training_name') }}
                                 </th>
                                 <td>
-                                    {{ $training->training_name ?? 'N/A'}}
+                                    {{ $training->training_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1423,6 +1429,7 @@
 
                             <tr>
                                 <th>
+
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
@@ -1452,7 +1459,7 @@
                     @endif
                                 </th>
                                 <td>
-                                    {{ $training->position ?? 'N/A'}}
+                                    {{ $training->position ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1493,7 +1500,7 @@
                                     {{ trans('cruds.travelRecord.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $travelRecord->title ?? 'N/A'}}
+                                    {{ $travelRecord->title ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1506,6 +1513,7 @@
                             </tr>
                             <tr>
                                 <th>
+
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
@@ -1566,6 +1574,7 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
+
                                 {{ englishToBanglaNumber($foreignTravelPersonal->from_date) }} {{ trans('cruds.professionale.fields.to') }}
                     {{ englishToBanglaNumber($foreignTravelPersonal->to_date) }} ; 
 {{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $foreignTravelPersonal->from_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $foreignTravelPersonal->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
@@ -1575,12 +1584,13 @@
                             </tr>
                             
                             <!-- <tr>
+
                                 <th>
                                     {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($foreignTravelPersonal->leave->start_date ?? 'N/A') }}
-                                   
+                                    {{ englishToBanglaNumber($foreignTravelPersonal->leave->start_date ?? 'N/A') }}
+
                                 </td>
                             </tr> -->
                         </tbody>
@@ -1588,67 +1598,6 @@
                 @endforeach
 
 
-                <!-- <strong id="socialAssPrAttachment"> {{ trans('cruds.socialAssPrAttachment.title') }}</strong>
-
-                @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
-                    <table class="table-bordered table-striped table">
-                        <tbody>
-                            {{-- <tr>
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.id') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->id }}
-                                </td>
-                            </tr> --}}
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->degree_membership_organization }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.description') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->description }}
-                                </td>
-                            </tr>
-                            <tr>
-
-                                {{-- @dd($socialAssPrAttachment) --}}
-                                <th>
-                                    {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
-                                </th>
-                                <td>
-                                    {{ $socialAssPrAttachment->certificate_achievement }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Action
-                                </th>
-                                <td>
-                                    <!-- Edit button -->
-                                    {{-- <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                        class="btn btn-sm btn-primary">Edit</a> --}}
-
-                                    <!-- Delete button -->
-                                    {{-- <form
-                                                    action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form> --}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table><br />
-                @endforeach -->
                 <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                 @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                     <table class="table-bordered table-striped table">
@@ -1703,6 +1652,7 @@
 {{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $extracurriculam->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $extracurriculam->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
                                     
+
                                 </td>
                             </tr>
                             
@@ -1712,7 +1662,7 @@
                                     {{ trans('cruds.extracurriculam.fields.description') }}
                                 </th>
                                 <td>
-                                    {{ $extracurriculam->description ?? 'N/A'}}
+                                    {!! $extracurriculam->description ?? 'N/A' !!}
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1742,7 +1692,7 @@
                                     {{ trans('cruds.publication.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $publication->title ?? 'N/A'}}
+                                    {{ $publication->title ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1750,12 +1700,12 @@
                                     {{ trans('cruds.publication.fields.publication_type') }}
                                 </th>
                                 <td>
-                                @if (app()->getLocale() === 'bn')
-                                {{ App\Models\Publication::PUBLICATION_TYPE_SELECTBN[$publication->publication_type] ?? 'N/A' }}
-                                @else
-                                {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? 'N/A' }}
-                                @endif
-                                    
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ App\Models\Publication::PUBLICATION_TYPE_SELECTBN[$publication->publication_type] ?? 'N/A' }}
+                                    @else
+                                        {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? 'N/A' }}
+                                    @endif
+
                                 </td>
                             </tr>
                             <tr>
@@ -1771,8 +1721,8 @@
                                     {{ trans('cruds.publication.fields.publication_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($publication->publication_date ?? 'N/A') }}
-                                 
+                                    {{ englishToBanglaNumber($publication->publication_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -1780,7 +1730,7 @@
                                     {{ trans('cruds.publication.fields.publication_link') }}
                                 </th>
                                 <td>
-                                    {{ $publication->publication_link ?? 'N/A'}}
+                                    {{ $publication->publication_link ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1788,7 +1738,7 @@
                                     {{ trans('cruds.publication.fields.description') }}
                                 </th>
                                 <td>
-                                    {{ $publication->description ?? 'N/A'}}
+                                    {!! $publication->description ?? 'N/A' !!}
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1830,8 +1780,8 @@
                                     {{ trans('cruds.award.fields.date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($award->date ?? 'N/A') }}
-                                  
+                                    {{ englishToBanglaNumber($award->date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1880,7 +1830,7 @@
                                     {{ trans('cruds.otherServiceJob.fields.employer') }}
                                 </th>
                                 <td>
-                                    {{ $otherServiceJob->employer ?? 'N/A'}}
+                                    {{ $otherServiceJob->employer ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1909,6 +1859,7 @@
                             </tr>
                             <tr>
                                 <th>
+
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
@@ -1917,6 +1868,7 @@
 {{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $otherServiceJob->from)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $otherServiceJob->to))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
                                     
+
                                 </td>
                             </tr>
                            
@@ -2006,7 +1958,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
                                 </th>
                                 <td>
-                                    {{ $criminalProsecutione->judgement_type ?? 'N/A'}}
+                                    {{ $criminalProsecutione->judgement_type ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2014,7 +1966,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
                                 </th>
                                 <td>
-                                    {{ $criminalProsecutione->natureof_offence ?? 'N/A'}}
+                                    {{ $criminalProsecutione->natureof_offence ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2022,8 +1974,8 @@
                                     {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($criminalProsecutione->government_order_no ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($criminalProsecutione->government_order_no ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -2043,7 +1995,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.remzrk') }}
                                 </th>
                                 <td>
-                                    {{ $criminalProsecutione->remzrk ?? 'N/A'}}
+                                    {!! $criminalProsecutione->remzrk ?? 'N/A' !!}
                                 </td>
                             </tr>
 
@@ -2078,8 +2030,8 @@
                                     {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($criminalproDisciplinary->government_order_no ?? 'N/A') }}
-                                  
+                                    {{ englishToBanglaNumber($criminalproDisciplinary->government_order_no ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -2126,8 +2078,8 @@
                                     {{ trans('cruds.acrMonitoring.fields.year') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($acrMonitoring->year ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($acrMonitoring->year ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             <tr>
@@ -2143,8 +2095,8 @@
                                     {{ trans('cruds.acrMonitoring.fields.review_date') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($acrMonitoring->review_date ?? 'N/A') }}
-                                    
+                                    {{ englishToBanglaNumber($acrMonitoring->review_date ?? 'N/A') }}
+
                                 </td>
                             </tr>
                             {{-- <tr>

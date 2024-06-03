@@ -29,7 +29,7 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.acrMonitoring.fields.year_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="reviewer">{{ trans('cruds.acrMonitoring.fields.reviewer') }}</label>
                                     <input class="form-control {{ $errors->has('reviewer') ? 'is-invalid' : '' }}"
                                         type="text" name="reviewer" id="reviewer" value="{{ old('reviewer', '') }}">
@@ -53,12 +53,11 @@
                                     @endif
                                     <span
                                         class="help-block">{{ trans('cruds.acrMonitoring.fields.review_date_helper') }}</span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-group">
                                 <label for="remarks">{{ trans('cruds.acrMonitoring.fields.remarks') }}</label>
-                                <textarea class="form-control ckeditor {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks"
-                                    id="remarks">{!! old('remarks') !!}</textarea>
+                                <textarea class="form-control ckeditor {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{!! old('remarks') !!}</textarea>
                                 @if ($errors->has('remarks'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('remarks') }}

@@ -39,19 +39,49 @@ class EmployeeListController extends Controller
 {
     use MediaUploadingTrait;
 
+    // public function index(Request $request)
+    // {
+    //     abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+    //     $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
+    //  //$data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+
+    //     $data['total'] = EmployeeList::count();
+
+    //     // You can specify the number of items per page, for example, 10
+    // return view('admin.employeeLists.index', compact('data'));
+
+    // }
+
+
     public function index(Request $request)
-    {
-        abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+{
+    // abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // $data['total'] = EmployeeList::count();
+    // $query = EmployeeList::with('jobhistories.designation')->whereNotNull('approve');
 
-        $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
-     //$data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+    // // Check if a search query parameter is present in the request
+    // if ($request->has('search_query')) {
+    //     $searchQuery = $request->input('search_query');
+    //     // Add a where clause to filter by the search query
+    //     $query->where(function ($query) use ($searchQuery) {
+    //         $query->Where('fullname_bn', 'like', '%' . $searchQuery . '%')
+    //               ->orWhere('fullname_en', 'like', '%' . $searchQuery . '%')
+    //               ->orWhere('employeeid', 'like', '%' . $searchQuery . '%')
+    //               ->orWhere('nid', 'like', '%' . $searchQuery . '%')
+    //               ->orWhere('cadreid', 'like', '%' . $searchQuery . '%')
+    //               ->orWhere('mobile_number', 'like', '%' . $searchQuery . '%');
+    //         // Add additional fields as needed for searching
+    //     });
+    // }
 
-        $data['total'] = EmployeeList::count();
+    // $data['allresult'] = $query->paginate(10);
+    // $data['total'] = EmployeeList::count();
 
-        // You can specify the number of items per page, for example, 10
-    return view('admin.employeeLists.index', compact('data'));
+    return view('admin.employeeLists.index');
+}
 
-    }
+
 
     public function create()
     {
