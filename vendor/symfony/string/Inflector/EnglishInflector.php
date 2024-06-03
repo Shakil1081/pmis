@@ -238,6 +238,9 @@ final class EnglishInflector implements InflectorInterface
         // teeth (tooth)
         ['htoot', 5, true, true, 'teeth'],
 
+        // albums (album)
+        ['mubla', 5, true, true, 'albums'],
+
         // bacteria (bacterium), criteria (criterion), phenomena (phenomenon)
         ['mu', 2, true, true, 'a'],
 
@@ -398,6 +401,9 @@ final class EnglishInflector implements InflectorInterface
         'tfarcria',
     ];
 
+    /**
+     * {@inheritdoc}
+     */
     public function singularize(string $plural): array
     {
         $pluralRev = strrev($plural);
@@ -429,7 +435,7 @@ final class EnglishInflector implements InflectorInterface
                 if ($j === $suffixLength) {
                     // Is there any character preceding the suffix in the plural string?
                     if ($j < $pluralLength) {
-                        $nextIsVowel = str_contains('aeiou', $lowerPluralRev[$j]);
+                        $nextIsVowel = false !== strpos('aeiou', $lowerPluralRev[$j]);
 
                         if (!$map[2] && $nextIsVowel) {
                             // suffix may not succeed a vowel but next char is one
@@ -474,6 +480,9 @@ final class EnglishInflector implements InflectorInterface
         return [$plural];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function pluralize(string $singular): array
     {
         $singularRev = strrev($singular);
@@ -506,7 +515,7 @@ final class EnglishInflector implements InflectorInterface
                 if ($j === $suffixLength) {
                     // Is there any character preceding the suffix in the plural string?
                     if ($j < $singularLength) {
-                        $nextIsVowel = str_contains('aeiou', $lowerSingularRev[$j]);
+                        $nextIsVowel = false !== strpos('aeiou', $lowerSingularRev[$j]);
 
                         if (!$map[2] && $nextIsVowel) {
                             // suffix may not succeed a vowel but next char is one
