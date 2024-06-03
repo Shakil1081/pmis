@@ -52,7 +52,7 @@
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
             <td style="text-align: left;" width="82">
-                <img src="img/bforest.png" width="85"height="82">
+                <img src="{{ public_path('img/bforest.png') }}" width="85"height="82">
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
