@@ -18,7 +18,7 @@
                                         for="training_type_id">{{ trans('cruds.training.fields.training_type') }}</label>
                                     <select
                                         class="form-control select2 {{ $errors->has('training_type') ? 'is-invalid' : '' }}"
-                                        name="training_type_id" id="training_type_id" required>
+                                        name="training_type_id" id="training_type_id" required onchange="showCounter()">
                                         @foreach ($training_types as $id => $entry)
                                             <option value="{{ $id }}"
                                                 {{ old('training_type_id') == $id ? 'selected' : '' }}>{{ $entry }}
@@ -59,13 +59,14 @@
                                     <span
                                         class="help-block">{{ trans('cruds.training.fields.institute_name_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group counter" style="display: none;">
                                     <label for="country_id">{{ trans('cruds.training.fields.country') }}</label>
                                     <select class="form-select select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
                                         name="country_id" id="country_id">
                                         @foreach ($countries as $id => $entry)
                                             <option value="{{ $id }}"
-                                                {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                                {{ (old('country_id') ?? 14) == $id ? 'selected' : '' }}>
+                                                {{ $entry }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -145,4 +146,17 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    @parent
+    <script>
+        function showCounter() {
+            var selectedValue = document.getElementById("training_type_id").value;
+            if (selectedValue == 2) {
+                document.querySelector('.counter').style.display = 'block'; // Show the counter
+            } else {
+                document.querySelector('.counter').style.display = 'none'; // Hide the counter
+            }
+        }
+    </script>
 @endsection
