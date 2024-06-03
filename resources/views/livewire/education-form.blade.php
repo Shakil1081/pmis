@@ -66,7 +66,7 @@
                 class="help-block">{{ trans('cruds.educationInformatione.fields.school_university_name_helper') }}</span>
         </div>
 
-        @if ($exambordlist)
+        @if ($exambordlist && !in_array($levelofEducation, [6, 7, 8]))
             <div class="form-group">
                 <label for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
                 <select class="form-select select2 {{ $errors->has('exam_board') ? 'is-invalid' : '' }}"

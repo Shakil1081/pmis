@@ -83,6 +83,7 @@ class EmployeeList extends Model implements HasMedia
         'date_of_gazette',
         'date_of_regularization',
         'regularization_issue_date',
+        'freedom_fighter_id',
         'date_of_con_serviec',
         'quota_id',
         'freedomfighter',
@@ -202,6 +203,7 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->belongsTo(FreedomFighteRelation::class, 'freedomfighter_id');
     }
+   
 
     public function project()
     {

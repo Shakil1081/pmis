@@ -56,28 +56,6 @@ class EmployeeListController extends Controller
 
     public function index(Request $request)
 {
-    // abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-    // $data['total'] = EmployeeList::count();
-    // $query = EmployeeList::with('jobhistories.designation')->whereNotNull('approve');
-
-    // // Check if a search query parameter is present in the request
-    // if ($request->has('search_query')) {
-    //     $searchQuery = $request->input('search_query');
-    //     // Add a where clause to filter by the search query
-    //     $query->where(function ($query) use ($searchQuery) {
-    //         $query->Where('fullname_bn', 'like', '%' . $searchQuery . '%')
-    //               ->orWhere('fullname_en', 'like', '%' . $searchQuery . '%')
-    //               ->orWhere('employeeid', 'like', '%' . $searchQuery . '%')
-    //               ->orWhere('nid', 'like', '%' . $searchQuery . '%')
-    //               ->orWhere('cadreid', 'like', '%' . $searchQuery . '%')
-    //               ->orWhere('mobile_number', 'like', '%' . $searchQuery . '%');
-    //         // Add additional fields as needed for searching
-    //     });
-    // }
-
-    // $data['allresult'] = $query->paginate(10);
-    // $data['total'] = EmployeeList::count();
-
     return view('admin.employeeLists.index');
 }
 
