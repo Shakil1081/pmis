@@ -355,11 +355,11 @@
                         </tr>
                         <tr>
                             <th>
-                            @if (app()->getLocale() === 'bn')
-                        ১ম যোগদানের গ্রেড
-                    @else
-                        First Joining Grade
-                    @endif
+                                @if (app()->getLocale() === 'bn')
+                                    ১ম যোগদানের গ্রেড
+                                @else
+                                    First Joining Grade
+                                @endif
                             </th>
                             <td>
                                 {{ $employeeList->grade->{$columname} ?? 'N/A' }}
@@ -763,16 +763,17 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($professionale->from_date) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($professionale->to_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::parse($professionale->from_date)->diff(\Carbon\Carbon::parse($professionale->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+                                    {{ englishToBanglaNumber($professionale->from_date) }}
+                                    {{ trans('cruds.professionale.fields.to') }}
+                                    {{ englishToBanglaNumber($professionale->to_date) }} ;
+                                    {{ englishToBanglaNumber(\Carbon\Carbon::parse($professionale->from_date)->diff(\Carbon\Carbon::parse($professionale->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
 
-                                    
+
 
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.professionale.fields.passing_year') }}
@@ -1355,15 +1356,13 @@
                                 </th>
                                 <td>
 
-                                {{ englishToBanglaNumber($leaveRecord->start_date) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($leaveRecord->end_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $leaveRecord->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $leaveRecord->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
+                                    {{ dateDifference($leaveRecord->start_date, $leaveRecord->end_date) }}
 
 
-                                    
                                 </td>
                             </tr>
-                            
+
 
                             <tr>
                                 <th>
@@ -1385,7 +1384,7 @@
                 @foreach ($employeeList->trainings ?? [] as $training)
                     <table class="table-bordered table-striped table" id="training">
                         <tbody>
-                            
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.training_type') }}
@@ -1433,15 +1432,14 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($training->start_date) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($training->end_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $training->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $training->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
+
+                                    {{ dateDifference($training->start_date, $training->end_date) }}
 
 
-                                    
+
                                 </td>
                             </tr>
-                            
+
                             {{-- <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.grade') }}
@@ -1452,11 +1450,11 @@
                             </tr> --}}
                             <tr>
                                 <th>
-                                @if (app()->getLocale() === 'bn')
-                        অর্জন (যদি থাকে)
-                    @else
-                        Achievement (If Any)
-                    @endif
+                                    @if (app()->getLocale() === 'bn')
+                                        অর্জন (যদি থাকে)
+                                    @else
+                                        Achievement (If Any)
+                                    @endif
                                 </th>
                                 <td>
                                     {{ $training->position ?? 'N/A' }}
@@ -1517,14 +1515,13 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($travelRecord->start_date) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($travelRecord->end_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $travelRecord->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $travelRecord->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
-                                    
+                                    {{ dateDifference($travelRecord->start_date, $travelRecord->end_date) }}
+
+
                                 </td>
                             </tr>
-                            
+
 
                         </tbody>
                     </table><br />
@@ -1575,14 +1572,13 @@
                                 </th>
                                 <td>
 
-                                {{ englishToBanglaNumber($foreignTravelPersonal->from_date) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($foreignTravelPersonal->to_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $foreignTravelPersonal->from_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $foreignTravelPersonal->to_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
-                                    
+                                    {{ dateDifference($foreignTravelPersonal->from_date, $foreignTravelPersonal->to_date) }}
+
+
                                 </td>
                             </tr>
-                            
+
                             <!-- <tr>
 
                                 <th>
@@ -1647,16 +1643,13 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($extracurriculam->start_date) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($extracurriculam->end_date) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $extracurriculam->start_date)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $extracurriculam->end_date))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
-                                    
+                                    {{ dateDifference($extracurriculam->start_date, $extracurriculam->end_date) }}
 
                                 </td>
                             </tr>
-                            
-                            
+
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.extracurriculam.fields.description') }}
@@ -1863,15 +1856,14 @@
                                     {{ trans('cruds.professionale.fields.duration') }}
                                 </th>
                                 <td>
-                                {{ englishToBanglaNumber($otherServiceJob->from) }} {{ trans('cruds.professionale.fields.to') }}
-                    {{ englishToBanglaNumber($otherServiceJob->to) }} ; 
-{{ englishToBanglaNumber(\Carbon\Carbon::createFromFormat('d/m/Y', $otherServiceJob->from)->diff(\Carbon\Carbon::createFromFormat('d/m/Y', $otherServiceJob->to))->format('%y ' . trans('cruds.professionale.fields.year') . ' %m ' . trans('cruds.professionale.fields.month') . ' %d ' . trans('cruds.professionale.fields.day'))) }}
 
-                                    
+                                    {{ dateDifference($otherServiceJob->from, $otherServiceJob->toe) }}
+
+
 
                                 </td>
                             </tr>
-                           
+
                             {{-- <tr>
                                 <th>
                                     {{ trans('cruds.otherServiceJob.fields.employee') }}
