@@ -23,7 +23,7 @@
             border: 1px solid black;
             padding: 8px;
             text-align: left;
-            padding: 2;
+            padding: 4;
             margin: 0;
         }
 
