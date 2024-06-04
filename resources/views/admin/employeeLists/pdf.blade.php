@@ -2028,7 +2028,12 @@
                                     {{ trans('cruds.language.fields.read') }}
                                 </th>
                                 <td>
-                                    {{ $language->read->name ?? 'N/A' }}
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->read->name ?? 'N/A' }}
+                                    @else
+                                        {{ $language->read->name_en ?? 'N/A' }}
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
@@ -2036,7 +2041,12 @@
                                     {{ trans('cruds.language.fields.write') }}
                                 </th>
                                 <td>
-                                    {{ $language->write->name ?? 'N/A' }}
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->write->name ?? 'N/A' }}
+                                    @else
+                                        {{ $language->write->name_en ?? 'N/A' }}
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
@@ -2044,7 +2054,12 @@
                                     {{ trans('cruds.language.fields.speak') }}
                                 </th>
                                 <td>
-                                    {{ $language->speak->name ?? 'N/A' }}
+
+                                    @if (app()->getLocale() === 'bn')
+                                        {{ $language->speak->name ?? 'N/A' }}
+                                    @else
+                                        {{ $language->speak->name_en ?? 'N/A' }}
+                                    @endif
                                 </td>
                             </tr>
 
