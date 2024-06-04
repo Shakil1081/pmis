@@ -55,9 +55,9 @@ class EmployeeListController extends Controller
 
 
     public function index(Request $request)
-{
-    return view('admin.employeeLists.index');
-}
+    {
+        return view('admin.employeeLists.index');
+    }
 
 
 
@@ -536,6 +536,7 @@ return $pdf->download($name);
 
         return view('admin.employeeLists.employeedata', compact('employeeList'));
     }
+
     public function upcoming_retirement_list()
     {
         $currentDate = now()->toDateString();
@@ -546,4 +547,5 @@ return $pdf->download($name);
 
         return view('admin.retirement.index', compact('employeeList'));
     }
+
 }

@@ -402,6 +402,8 @@ return [
         'approve'                         => 'অনুমোদন করুন',
         'waiting'                         => 'অপেক্ষমান',
         'fields'         => [
+            'upcomingretirementlist'               => 'আসন্ন অবসর তালিকা',
+            'upcomingretirementlist_helper'        => ' ',
             'cadre/noncadre'                       => 'ক্যাডার/নন-ক্যাডার',
             'cadre/noncadre_helper'                => ' ',
             'cadre'                                => 'ক্যাডার',
