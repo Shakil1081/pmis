@@ -1545,6 +1545,8 @@ return [
             'id_helper'         => ' ',
             'name'              => 'নাম',
             'name_helper'       => ' ',
+            'name_en'           => 'নাম (ইংরেজি)',
+            'name_en_helper'    => ' ',
             'created_at' => 'তৈরী করা হয়েছে',
             'created_at_helper' => ' ',
             'updated_at'        => 'আপডেট করা হয়েছে',

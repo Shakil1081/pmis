@@ -1515,8 +1515,10 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Name BN',
             'name_helper'       => ' ',
+            'name_en'              => 'Name EN',
+            'name_en_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',
