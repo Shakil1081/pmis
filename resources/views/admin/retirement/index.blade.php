@@ -4,10 +4,8 @@
 
 @section('content')
 
+
 <div class="row">
-
-
-
 
 
         <div class="col-md-6 h4">@if (app()->getLocale() === 'bn')
@@ -15,6 +13,7 @@
             @else
                 Upcoming Employee Retirement List (Next Three Months)
             @endif</div>
+
         <div class="col-md-6 h4 text-end">
 
             @if (app()->getLocale() === 'bn')
@@ -30,12 +29,12 @@
 
 
 
+
 @foreach ($employeeList as $result)
 
 
-
-
 <div class="card mb-1 p-2">
+
             <div class="row justify-content-center align-items-center g-3">
                 <div class="col">
                     <div class="d-flex align-items-center">
@@ -51,6 +50,7 @@
                                 <img src="{{ asset('assets/images/logo1.png') }}" class="rounded-circle" width="50"
                                     height="50" alt="">
                             @endif
+
                         </div>
                         <div>
                             <p class="customer-name fw-bold mb-0">
@@ -68,14 +68,14 @@
                         </div>
                     </div>
                 </div>
-                
+
 
 
 
                 @php
                     $lastJobHistory = $result->jobhistories->last();
                     //dd($lastJobHistory);
-                    
+
                     if ($lastJobHistory) {
                         $designation = $lastJobHistory->designation;
                         if (app()->getLocale() === 'bn') {
@@ -106,6 +106,7 @@
                 </div>
                 <div class="col mb-0"> <b>
 
+
                     @if (app()->getLocale() === 'bn')
                         অবসরের তারিখ
                     @else
@@ -113,9 +114,6 @@
                     @endif </b><br>
                     <p class="mb-0" >{{ englishToBanglaNumber($result['prl_date'] ?? 'N/A') }}</p>
 
-
-
-                    
                 </div>
                 <div class="col text-end">
                     <div class="btn-group">
@@ -141,5 +139,6 @@
                 </div>
             </div>
         </div>
+
         @endforeach
 @endsection

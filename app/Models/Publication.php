@@ -46,7 +46,7 @@ class Publication extends Model implements HasMedia
         'Newspapers' => 'পত্রিকা',
         'Blog' => 'ব্লগ',
     ];
-
+    
     protected $fillable = [
         'title',
         'publication_type',

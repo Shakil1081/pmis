@@ -548,5 +548,4 @@ return $pdf->download($name);
         return view('admin.retirement.index', compact('employeeList'));
     }
 
-
 }
