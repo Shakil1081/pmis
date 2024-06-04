@@ -404,6 +404,8 @@ return [
         'approve'                         => 'Approve',
         'waiting'                         => 'Waiting',
         'fields'         => [
+            'upcomingretirementlist'               => 'Upcoming Retirement List',
+            'upcomingretirementlist_helper'        => ' ',
             'cadre/noncadre'                       => 'Cadre/Non-Cadre',
             'cadre/noncadre_helper'                => ' ',
             'cadre'                                => 'Cadre',

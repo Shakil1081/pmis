@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('employee-data/{id}', [EmployeeListController::class,'employeedata'])->name('employeedata');
     Route::get('employee-pdf/{id}', [EmployeeListController::class,'employeedata_pdf'])->name('employeedata.pdf');
 
+    Route::get('upcoming_retirement_list', [EmployeeListController::class,'upcoming_retirement_list'])->name('upcoming_retirement_list');
+
     Route::post('/approve', [EmployeeListController::class, 'approve'])->name('employee.approve');
 
    Route::get('/', 'HomeController@index')->name('home');
