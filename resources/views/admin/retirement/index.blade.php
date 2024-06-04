@@ -40,11 +40,17 @@
                 <div class="col">
                     <div class="d-flex align-items-center">
                         <div class="customer-pic p-2">
+                        @if ($result->employee_photo)
+                                <a href="{{ $result->employee_photo->getUrl() }}" target="_blank"
+                                    style="display: inline-block">
 
-                            
+                                    <img src="{{ $result->employee_photo->getUrl('thumb') }}" class="rounded-circle"
+                                        width="50" height="50" alt="">
+                                </a>
+                            @else
                                 <img src="{{ asset('assets/images/logo1.png') }}" class="rounded-circle" width="50"
                                     height="50" alt="">
-                        
+                            @endif
                         </div>
                         <div>
                             <p class="customer-name fw-bold mb-0">

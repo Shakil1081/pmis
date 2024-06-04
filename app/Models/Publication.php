@@ -25,18 +25,26 @@ class Publication extends Model implements HasMedia
     ];
 
     public const PUBLICATION_TYPE_SELECT = [
-        'Books'       => 'Books',
         'Journal'     => 'Journal',
-        'Mobograph'   => 'Mobograph',
         'Magazine'    => 'Magazine',
-        'Periodicals' => 'Periodicals',
+        'Articles' => 'Articles',
+        'Review' => 'Review',
+        'Bibliography' => 'Bibliography',
+        'Research' => 'Research',
+        'Books' => 'Books',
+        'Newspapers' => 'Newspapers',
+        'Blog' => 'Blog',
     ];
     public const PUBLICATION_TYPE_SELECTBN = [
-        'Books'       => 'Books',
-        'Journal'     => 'Journal',
-        'Mobograph'   => 'Mobograph',
-        'Magazine'    => 'Magazine',
-        'Periodicals' => 'Periodicals',
+        'Journal'     => 'জার্নাল',
+        'Magazine'    => 'ম্যাগাজিন',
+        'Articles' => 'আর্টিক্যাল',
+        'Review' => 'রিভিউ',
+        'Bibliography' => 'গ্রন্থপঞ্জি',
+        'Research' => 'রিসার্চ',
+        'Books' => 'বই',
+        'Newspapers' => 'পত্রিকা',
+        'Blog' => 'ব্লগ',
     ];
 
     protected $fillable = [
