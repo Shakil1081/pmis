@@ -1015,7 +1015,7 @@
                             </tr> --}}
                             <tr>
                                 <th>
-                                    {{ trans("cruds.spouseInformatione.fields.$columname") }}
+                                    {{ trans('cruds.spouseInformatione.fields.name_bn') }}
                                 </th>
                                 <td>
                                     {{ $spouseInformatione->name_bn ?? 'N/A' }}
