@@ -765,7 +765,7 @@
                                 </th>
                                 <td>
                                     {{ $educationInformatione->achivement }}
-                                    {{ $educationInformatione->cgpa ?? '' }}
+                                    {{ englishToBanglaNumber($educationInformatione->cgpa ?? '') }}
                                     {{ $educationInformatione->result->{$columname} ?? '' }}
 
                                 </td>
