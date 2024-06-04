@@ -99,7 +99,7 @@
                                 {{ trans('cruds.employeeList.fields.employeeid') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->employeeid ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->employeeid ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -108,7 +108,7 @@
                                 {{ trans('cruds.employeeList.fields.cadreid') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->cadreid ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->cadreid ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -118,7 +118,7 @@
                             </th>
                             <td>
 
-                                {{ app()->getLocale() === 'bn' ? $employeeList->batch->batch_bn ?? 'তথ্য নেই (N/A)' : $employeeList->batch->batch_en ?? 'তথ্য নেই (N/A)' }}
+                                {{ app()->getLocale() === 'bn' ? $employeeList->batch->batch_bn ?? 'N/A' : $employeeList->batch->batch_en ?? 'N/A' }}
 
                             </td>
                         </tr>
@@ -131,7 +131,7 @@
                                     {{ trans('cruds.employeeList.fields.fname_bn') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->fname_bn ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->fname_bn ?? 'N/A' }}
                                 </td>
                             </tr>
                         @else
@@ -140,7 +140,7 @@
                                     {{ trans('cruds.employeeList.fields.fname_en') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->fname_en ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->fname_en ?? 'N/A' }}
                                 </td>
                             </tr>
                         @endif
@@ -153,7 +153,7 @@
                                     {{ trans('cruds.employeeList.fields.mname_bn') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->mname_bn ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->mname_bn ?? 'N/A' }}
                                 </td>
                             </tr>
                         @else
@@ -162,7 +162,7 @@
                                     {{ trans('cruds.employeeList.fields.mname_en') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->mname_en ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->mname_en ?? 'N/A' }}
                                 </td>
                             </tr>
                         @endif
@@ -171,7 +171,7 @@
                                 {{ trans('cruds.employeeList.fields.date_of_birth') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->date_of_birth ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->date_of_birth ?? 'N/A') }}
                             </td>
                         </tr>
                         {{-- <tr>
@@ -191,7 +191,7 @@
                                 {{ trans('cruds.employeeList.fields.prl_date') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->prl_date ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->prl_date ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -200,7 +200,7 @@
                                 {{ trans('cruds.employeeList.fields.height') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->height ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->height ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -209,7 +209,7 @@
                                 {{ trans('cruds.employeeList.fields.special_identity') }}
                             </th>
                             <td>
-                                {{ $employeeList->special_identity ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->special_identity ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -217,7 +217,7 @@
                                 {{ trans('cruds.employeeList.fields.home_district') }}
                             </th>
                             <td>
-                                {{ $employeeList->home_district->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->home_district->{$columname} ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -226,9 +226,9 @@
                             </th>
                             <td>
                                 @if (app()->getLocale() === 'bn')
-                                    {{ $employeeList->marital_statu->name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->marital_statu->name ?? 'N/A' }}
                                 @else
-                                    {{ $employeeList->marital_statu->name_en ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->marital_statu->name_en ?? 'N/A' }}
                                 @endif
 
                             </td>
@@ -238,7 +238,7 @@
                                 {{ trans('cruds.employeeList.fields.gender') }}
                             </th>
                             <td>
-                                {{ $employeeList->gender->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->gender->{$columname} ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -246,7 +246,7 @@
                                 {{ trans('cruds.employeeList.fields.religion') }}
                             </th>
                             <td>
-                                {{ $employeeList->religion->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->religion->{$columname} ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -254,7 +254,7 @@
                                 {{ trans('cruds.employeeList.fields.blood_group') }}
                             </th>
                             <td>
-                                {{ $employeeList->blood_group->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->blood_group->{$columname} ?? 'N/A' }}
                             </td>
                         </tr>
                         @if ($employeeList->nid !== null)
@@ -272,7 +272,7 @@
                                     {{ trans('cruds.employeeList.fields.nid_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->nid ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->nid ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -298,7 +298,7 @@
                                     {{ trans('cruds.child.fields.passport_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->passport ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->passport ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -348,7 +348,7 @@
                                     {{ trans('cruds.employeeList.fields.license_type') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->license_type->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->license_type->{$columname} ?? 'N/A' }}
 
                                 </td>
                             </tr>
@@ -358,7 +358,7 @@
                                     {{ trans('cruds.employeeList.fields.license_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->license_number ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->license_number ?? 'N/A') }}
 
 
                                 </td>
@@ -375,7 +375,7 @@
                                 {{ trans('cruds.employeeList.fields.email') }}
                             </th>
                             <td>
-                                {{ $employeeList->email ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->email ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -383,7 +383,7 @@
                                 {{ trans('cruds.employeeList.fields.mobile_number') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->mobile_number ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->mobile_number ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -402,9 +402,9 @@
                                     <th>{{ trans('cruds.employeeList.fields.cadreexam') }}</th>
                                     <td>
                                         @if (app()->getLocale() === 'bn')
-                                            {{ $employeeList->joiningexaminfo->exam_name_bn ?? 'তথ্য নেই (N/A)' }}
+                                            {{ $employeeList->joiningexaminfo->exam_name_bn ?? 'N/A' }}
                                         @else
-                                            {{ $employeeList->joiningexaminfo->exam_name_en ?? 'তথ্য নেই (N/A)' }}
+                                            {{ $employeeList->joiningexaminfo->exam_name_en ?? 'N/A' }}
                                         @endif
                                     </td>
                                 </tr>
@@ -423,9 +423,9 @@
                                 <th>{{ trans('cruds.employeeList.fields.projectname') }}</th>
                                 <td>
                                     @if (app()->getLocale() === 'bn')
-                                        {{ $employeeList->project->name_bn ?? 'তথ্য নেই (N/A)' }}
+                                        {{ $employeeList->project->name_bn ?? 'N/A' }}
                                     @else
-                                        {{ $employeeList->project->name_en ?? 'তথ্য নেই (N/A)' }}
+                                        {{ $employeeList->project->name_en ?? 'N/A' }}
                                     @endif
                                 </td>
                             </tr>
@@ -459,7 +459,7 @@
                                 @endif
                             </th>
                             <td>
-                                {{ $employeeList->grade->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->grade->{$columname} ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -467,7 +467,7 @@
                                 {{ trans('cruds.employeeList.fields.fjoining_date') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->fjoining_date ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->fjoining_date ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -476,7 +476,7 @@
                                 {{ trans('cruds.employeeList.fields.first_joining_office_name') }}
                             </th>
                             <td>
-                                {{ $employeeList->first_joining_office_name ?? 'তথ্য নেই (N/A)' }}
+                                {{ $employeeList->first_joining_office_name ?? 'N/A' }}
                             </td>
                         </tr>
                         <tr>
@@ -484,7 +484,7 @@
                                 {{ trans('cruds.employeeList.fields.first_joining_g_o_date') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->first_joining_g_o_date ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->first_joining_g_o_date ?? 'N/A') }}
 
 
                             </td>
@@ -495,7 +495,7 @@
                                     {{ trans('cruds.employeeList.fields.date_of_regularization') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->date_of_regularization ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->date_of_regularization ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -504,7 +504,7 @@
                                     {{ trans('cruds.employeeList.fields.regularization_issue_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->regularization_issue_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->regularization_issue_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -514,7 +514,7 @@
                                 {{ trans('cruds.employeeList.fields.first_joining_memo_no') }}
                             </th>
                             <td>
-                                {{ englishToBanglaNumber($employeeList->first_joining_memo_no ?? 'তথ্য নেই (N/A)') }}
+                                {{ englishToBanglaNumber($employeeList->first_joining_memo_no ?? 'N/A') }}
 
                             </td>
                         </tr>
@@ -559,7 +559,7 @@
                                     {{ trans('cruds.employeeList.fields.date_of_gazette') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->date_of_gazette ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->date_of_gazette ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -601,7 +601,7 @@
                                     {{ trans('cruds.employeeList.fields.date_of_con_serviec') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeeList->date_of_con_serviec ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeeList->date_of_con_serviec ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -625,7 +625,7 @@
                                     {{ trans('cruds.employeeList.fields.quota') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->quota->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->quota->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
 
@@ -634,7 +634,7 @@
                                     {{ trans('cruds.employeeList.fields.freedomfighter') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->freedom_fighter->name_bn ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->freedom_fighter->name_bn ?? 'N/A' }}
                                 </td>
                             </tr>
                         @else
@@ -643,7 +643,7 @@
                                     {{ trans('cruds.employeeList.fields.quota') }}
                                 </th>
                                 <td>
-                                    {{ $employeeList->quota->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeeList->quota->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                         @endif
@@ -696,7 +696,7 @@
                                         {{ trans('Level of Education') }}
                                     @endif
                                 </th>
-                                <td> {{ $educationInformatione->name_of_exam->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                <td> {{ $educationInformatione->name_of_exam->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -706,7 +706,7 @@
                                 <td>
                                     @if ($deucationDegree)
                                         @foreach ($deucationDegree->where('id', $educationInformatione->exam_degree) as $educationDegree)
-                                            {{ $educationDegree[$columname] ?? 'তথ্য নেই (N/A)' }}
+                                            {{ $educationDegree[$columname] ?? 'N/A' }}
                                         @endforeach
                                     @endif
 
@@ -748,7 +748,7 @@
                                     {{ trans('cruds.educationInformatione.fields.exam_board') }}
                                 </th>
                                 <td>
-                                    {{ $educationInformatione->exam_board->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $educationInformatione->exam_board->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -756,7 +756,7 @@
                                     {{ trans('cruds.educationInformatione.fields.school_university_name') }}
                                 </th>
                                 <td>
-                                    {{ $educationInformatione->school_university_name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $educationInformatione->school_university_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -775,7 +775,7 @@
                                     {{ trans('cruds.educationInformatione.fields.passing_year') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($educationInformatione->passing_year ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($educationInformatione->passing_year ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -828,7 +828,7 @@
                                     {{ trans('cruds.professionale.fields.qualification_title') }}
                                 </th>
                                 <td>
-                                    {{ $professionale->qualification_title ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $professionale->qualification_title ?? 'N/A' }}
 
 
                                 </td>
@@ -838,7 +838,7 @@
                                     {{ trans('cruds.professionale.fields.institution') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($professionale->institution ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($professionale->institution ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -858,7 +858,7 @@
                                     {{ trans('cruds.professionale.fields.passing_year') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($professionale->passing_year ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($professionale->passing_year ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -889,9 +889,9 @@
                                 </th>
                                 <td>
                                     @if (app()->getLocale() === 'bn')
-                                        {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN[$addressdetaile->address_type] ?? 'তথ্য নেই (N/A)' }}
+                                        {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECTBN[$addressdetaile->address_type] ?? 'N/A' }}
                                     @else
-                                        {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECT[$addressdetaile->address_type] ?? 'তথ্য নেই (N/A)' }}
+                                        {{ App\Models\Addressdetaile::ADDRESS_TYPE_SELECT[$addressdetaile->address_type] ?? 'N/A' }}
                                     @endif
 
                                 </td>
@@ -901,7 +901,7 @@
                                     {{ trans('cruds.addressdetaile.fields.flat_house') }}
                                 </th>
                                 <td>
-                                    {{ $addressdetaile->flat_house ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $addressdetaile->flat_house ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -909,7 +909,7 @@
                                     {{ trans('cruds.addressdetaile.fields.post_office') }}
                                 </th>
                                 <td>
-                                    {{ $addressdetaile->post_office ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $addressdetaile->post_office ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -917,7 +917,7 @@
                                     {{ trans('cruds.addressdetaile.fields.post_code') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($addressdetaile->post_code ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($addressdetaile->post_code ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -934,7 +934,7 @@
                                     {{ trans('cruds.addressdetaile.fields.phone_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($addressdetaile->phone_number ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($addressdetaile->phone_number ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -956,7 +956,7 @@
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_name') }}
                                 </th>
                                 <td>
-                                    {{ $emergenceContacte->contact_person_name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $emergenceContacte->contact_person_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -964,7 +964,7 @@
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_relation') }}
                                 </th>
                                 <td>
-                                    {{ $emergenceContacte->contact_person_relation ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $emergenceContacte->contact_person_relation ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -972,7 +972,7 @@
                                     {{ trans('cruds.emergenceContacte.fields.address') }}
                                 </th>
                                 <td>
-                                    {{ $emergenceContacte->address ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $emergenceContacte->address ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -980,7 +980,7 @@
                                     {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($emergenceContacte->contact_person_number ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($emergenceContacte->contact_person_number ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1018,7 +1018,7 @@
                                     {{ trans("cruds.spouseInformatione.fields.$columname") }}
                                 </th>
                                 <td>
-                                    {{ $spouseInformatione->name_bn ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $spouseInformatione->name_bn ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1026,7 +1026,7 @@
                                     {{ trans('cruds.spouseInformatione.fields.name_en') }}
                                 </th>
                                 <td>
-                                    {{ $spouseInformatione->name_en ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $spouseInformatione->name_en ?? 'N/A' }}
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1062,7 +1062,7 @@
                                     {{ trans('cruds.spouseInformatione.fields.phone_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($spouseInformatione->phone_number ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($spouseInformatione->phone_number ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1071,7 +1071,7 @@
                                     {{ trans('cruds.spouseInformatione.fields.present_addess') }}
                                 </th>
                                 <td>
-                                    {!! $spouseInformatione->present_addess ?? 'তথ্য নেই (N/A)' !!}
+                                    {!! $spouseInformatione->present_addess ?? 'N/A' !!}
                                 </td>
                             </tr>
                             <tr>
@@ -1079,7 +1079,7 @@
                                     {{ trans('cruds.spouseInformatione.fields.permanent_addess') }}
                                 </th>
                                 <td>
-                                    {!! $spouseInformatione->permanent_addess ?? 'তথ্য নেই (N/A)' !!}
+                                    {!! $spouseInformatione->permanent_addess ?? 'N/A' !!}
                                 </td>
                             </tr>
 
@@ -1125,7 +1125,7 @@
                                     {{ trans('cruds.child.fields.date_of_birth') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($child->date_of_birth ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($child->date_of_birth ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1146,7 +1146,7 @@
                                     {{ trans('cruds.child.fields.complite_21') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($child->complite_21 ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($child->complite_21 ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1164,7 +1164,7 @@
                                     {{ trans('cruds.child.fields.nid_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($child->nid_number ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($child->nid_number ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1173,7 +1173,7 @@
                                     {{ trans('cruds.child.fields.passport_number') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($child->passport_number ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($child->passport_number ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1248,7 +1248,7 @@
                                     {{ trans('cruds.jobHistory.fields.designation') }}
                                 </th>
                                 <td>
-                                    {{ $jobHistory->designation->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $jobHistory->designation->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1256,7 +1256,7 @@
                                     {{ trans('cruds.jobHistory.fields.joining_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($jobHistory->joining_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($jobHistory->joining_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1265,7 +1265,7 @@
                                     {{ trans('cruds.jobHistory.fields.release_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($jobHistory->release_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($jobHistory->release_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1323,19 +1323,19 @@
 
                                     @if ($jobHistory->office_unit)
                                         {{ trans('cruds.jobHistory.fields.posting_in_circle') }}:
-                                        {{ $jobHistory->office_unit->{$columname} ?? 'তথ্য নেই (N/A)' }}<br>
+                                        {{ $jobHistory->office_unit->{$columname} ?? 'N/A' }}<br>
                                     @endif
 
 
                                     @if ($jobHistory->beat_list)
                                         {{ trans('cruds.jobHistory.fields.postingindivision') }}:
-                                        {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? 'তথ্য নেই (N/A)' }}<br>
+                                        {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? 'N/A' }}<br>
 
                                         {{ trans('cruds.jobHistory.fields.posting_in_range') }}:
-                                        {{ $jobHistory->beat_list->forest_range->{$columname} ?? 'তথ্য নেই (N/A)' }}<br>
+                                        {{ $jobHistory->beat_list->forest_range->{$columname} ?? 'N/A' }}<br>
 
                                         {{ trans('cruds.jobHistory.fields.beat_list') }}:
-                                        {{ $jobHistory->beat_list->{$columname} ?? 'তথ্য নেই (N/A)' }} <br>
+                                        {{ $jobHistory->beat_list->{$columname} ?? 'N/A' }} <br>
                                     @endif
 
 
@@ -1377,7 +1377,7 @@
                                     {{ trans('cruds.employeePromotion.fields.new_designation') }}
                                 </th>
                                 <td>
-                                    {{ $employeePromotion->new_designation->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $employeePromotion->new_designation->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1385,7 +1385,7 @@
                                     {{ trans('cruds.employeePromotion.fields.go_issue_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeePromotion->go_issue_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeePromotion->go_issue_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1394,7 +1394,7 @@
                                     {{ trans('cruds.employeePromotion.fields.office_order_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($employeePromotion->office_order_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($employeePromotion->office_order_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1436,7 +1436,7 @@
                                     {{ trans('cruds.leaveRecord.fields.leave_category') }}
                                 </th>
                                 <td>
-                                    {{ $leaveRecord->leave_category->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $leaveRecord->leave_category->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1444,7 +1444,7 @@
                                     {{ trans('cruds.leaveRecord.fields.type_of_leave') }}
                                 </th>
                                 <td>
-                                    {{ $leaveRecord->type_of_leave->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $leaveRecord->type_of_leave->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1466,7 +1466,7 @@
                                     {{ trans('cruds.leaveRecord.fields.reason') }}
                                 </th>
                                 <td>
-                                    {!! $leaveRecord->reason ?? 'তথ্য নেই (N/A)' !!}
+                                    {!! $leaveRecord->reason ?? 'N/A' !!}
                                 </td>
                             </tr>
 
@@ -1490,7 +1490,7 @@
                                     {{ trans('cruds.training.fields.training_type') }}
                                 </th>
                                 <td>
-                                    {{ $training->training_type->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->training_type->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1498,7 +1498,7 @@
                                     {{ trans('cruds.training.fields.training_name') }}
                                 </th>
                                 <td>
-                                    {{ $training->training_name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->training_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1506,7 +1506,7 @@
                                     {{ trans('cruds.training.fields.institute_name') }}
                                 </th>
                                 <td>
-                                    {{ $training->institute_name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->institute_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1514,7 +1514,7 @@
                                     {{ trans('cruds.training.fields.institute_name') }}
                                 </th>
                                 <td>
-                                    {{ $training->institute_name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->institute_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1522,7 +1522,7 @@
                                     {{ trans('cruds.training.fields.country') }}
                                 </th>
                                 <td>
-                                    {{ $training->country->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->country->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
 
@@ -1557,7 +1557,7 @@
                                     @endif
                                 </th>
                                 <td>
-                                    {{ $training->position ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->position ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1565,7 +1565,7 @@
                                     {{ trans('cruds.training.fields.location') }}
                                 </th>
                                 <td>
-                                    {{ $training->location ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $training->location ?? 'N/A' }}
                                 </td>
                             </tr>
                         </tbody>
@@ -1593,7 +1593,7 @@
                                     {{ trans('cruds.travelRecord.fields.country') }}
                                 </th>
                                 <td>
-                                    {{ $travelRecord->country->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $travelRecord->country->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1601,7 +1601,7 @@
                                     {{ trans('cruds.travelRecord.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $travelRecord->title ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $travelRecord->title ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1609,7 +1609,7 @@
                                     {{ trans('cruds.travelRecord.fields.purpose') }}
                                 </th>
                                 <td>
-                                    {{ $travelRecord->purpose->{$columname} ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $travelRecord->purpose->{$columname} ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1690,7 +1690,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($foreignTravelPersonal->leave->start_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($foreignTravelPersonal->leave->start_date ?? 'N/A') }}
 
                                 </td>
                             </tr> -->
@@ -1726,7 +1726,7 @@
                                     {{ trans('cruds.extracurriculam.fields.activity_name') }}
                                 </th>
                                 <td>
-                                    {{ $extracurriculam->activity_name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $extracurriculam->activity_name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1734,7 +1734,7 @@
                                     {{ trans('cruds.extracurriculam.fields.organization') }}
                                 </th>
                                 <td>
-                                    {{ $extracurriculam->organization ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $extracurriculam->organization ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1742,7 +1742,7 @@
                                     {{ trans('cruds.extracurriculam.fields.position') }}
                                 </th>
                                 <td>
-                                    {{ $extracurriculam->position ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $extracurriculam->position ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1762,7 +1762,7 @@
                                     {{ trans('cruds.extracurriculam.fields.description') }}
                                 </th>
                                 <td>
-                                    {!! $extracurriculam->description ?? 'তথ্য নেই (N/A)' !!}
+                                    {!! $extracurriculam->description ?? 'N/A' !!}
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1795,7 +1795,7 @@
                                     {{ trans('cruds.publication.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $publication->title ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $publication->title ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1804,9 +1804,9 @@
                                 </th>
                                 <td>
                                     @if (app()->getLocale() === 'bn')
-                                        {{ App\Models\Publication::PUBLICATION_TYPE_SELECTBN[$publication->publication_type] ?? 'তথ্য নেই (N/A)' }}
+                                        {{ App\Models\Publication::PUBLICATION_TYPE_SELECTBN[$publication->publication_type] ?? 'N/A' }}
                                     @else
-                                        {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? 'তথ্য নেই (N/A)' }}
+                                        {{ App\Models\Publication::PUBLICATION_TYPE_SELECT[$publication->publication_type] ?? 'N/A' }}
                                     @endif
 
                                 </td>
@@ -1824,7 +1824,7 @@
                                     {{ trans('cruds.publication.fields.publication_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($publication->publication_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($publication->publication_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1833,7 +1833,7 @@
                                     {{ trans('cruds.publication.fields.publication_link') }}
                                 </th>
                                 <td>
-                                    {{ $publication->publication_link ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $publication->publication_link ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1841,7 +1841,7 @@
                                     {{ trans('cruds.publication.fields.description') }}
                                 </th>
                                 <td>
-                                    {!! $publication->description ?? 'তথ্য নেই (N/A)' !!}
+                                    {!! $publication->description ?? 'N/A' !!}
                                 </td>
                             </tr>
                             {{-- <tr>
@@ -1871,7 +1871,7 @@
                                     {{ trans('cruds.award.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $award->title ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $award->title ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1879,7 +1879,7 @@
                                     {{ trans('cruds.award.fields.ground_area') }}
                                 </th>
                                 <td>
-                                    {{ $award->ground_area ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $award->ground_area ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1887,7 +1887,7 @@
                                     {{ trans('cruds.award.fields.date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($award->date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($award->date ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -1939,7 +1939,7 @@
                                     {{ trans('cruds.otherServiceJob.fields.employer') }}
                                 </th>
                                 <td>
-                                    {{ $otherServiceJob->employer ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $otherServiceJob->employer ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1947,7 +1947,7 @@
                                     {{ trans('cruds.otherServiceJob.fields.address') }}
                                 </th>
                                 <td>
-                                    {{ $otherServiceJob->address ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $otherServiceJob->address ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1955,7 +1955,7 @@
                                     {{ trans('cruds.otherServiceJob.fields.service_type') }}
                                 </th>
                                 <td>
-                                    {{ $otherServiceJob->service_type ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $otherServiceJob->service_type ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -1963,7 +1963,7 @@
                                     {{ trans('cruds.otherServiceJob.fields.position') }}
                                 </th>
                                 <td>
-                                    {{ $otherServiceJob->position ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $otherServiceJob->position ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2017,9 +2017,9 @@
 
 
                                     @if (app()->getLocale() === 'bn')
-                                        {{ $language->language->name ?? 'তথ্য নেই (N/A)' }}
+                                        {{ $language->language->name ?? 'N/A' }}
                                     @else
-                                        {{ $language->language->nmae_en ?? 'তথ্য নেই (N/A)' }}
+                                        {{ $language->language->nmae_en ?? 'N/A' }}
                                     @endif
                                 </td>
                             </tr>
@@ -2028,7 +2028,7 @@
                                     {{ trans('cruds.language.fields.read') }}
                                 </th>
                                 <td>
-                                    {{ $language->read->name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $language->read->name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2036,7 +2036,7 @@
                                     {{ trans('cruds.language.fields.write') }}
                                 </th>
                                 <td>
-                                    {{ $language->write->name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $language->write->name ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2044,7 +2044,7 @@
                                     {{ trans('cruds.language.fields.speak') }}
                                 </th>
                                 <td>
-                                    {{ $language->speak->name ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $language->speak->name ?? 'N/A' }}
                                 </td>
                             </tr>
 
@@ -2073,7 +2073,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.judgement_type') }}
                                 </th>
                                 <td>
-                                    {{ $criminalProsecutione->judgement_type ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $criminalProsecutione->judgement_type ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2081,7 +2081,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
                                 </th>
                                 <td>
-                                    {{ $criminalProsecutione->natureof_offence ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $criminalProsecutione->natureof_offence ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2089,7 +2089,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($criminalProsecutione->government_order_no ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($criminalProsecutione->government_order_no ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -2110,7 +2110,7 @@
                                     {{ trans('cruds.criminalProsecutione.fields.remzrk') }}
                                 </th>
                                 <td>
-                                    {!! $criminalProsecutione->remzrk ?? 'তথ্য নেই (N/A)' !!}
+                                    {!! $criminalProsecutione->remzrk ?? 'N/A' !!}
                                 </td>
                             </tr>
 
@@ -2133,7 +2133,7 @@
                                     {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
                                 </th>
                                 <td>
-                                    {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2141,7 +2141,7 @@
                                     {{ trans('cruds.criminalproDisciplinary.fields.judgement_type') }}
                                 </th>
                                 <td>
-                                    {{ $criminalproDisciplinary->judgement_type ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $criminalproDisciplinary->judgement_type ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2149,7 +2149,7 @@
                                     {{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($criminalproDisciplinary->government_order_no ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($criminalproDisciplinary->government_order_no ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -2200,7 +2200,7 @@
                                     {{ trans('cruds.acrMonitoring.fields.year') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($acrMonitoring->year ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($acrMonitoring->year ?? 'N/A') }}
 
                                 </td>
                             </tr>
@@ -2209,7 +2209,7 @@
                                     {{ trans('cruds.acrMonitoring.fields.reviewer') }}
                                 </th>
                                 <td>
-                                    {{ $acrMonitoring->reviewer ?? 'তথ্য নেই (N/A)' }}
+                                    {{ $acrMonitoring->reviewer ?? 'N/A' }}
                                 </td>
                             </tr>
                             <tr>
@@ -2217,7 +2217,7 @@
                                     {{ trans('cruds.acrMonitoring.fields.review_date') }}
                                 </th>
                                 <td>
-                                    {{ englishToBanglaNumber($acrMonitoring->review_date ?? 'তথ্য নেই (N/A)') }}
+                                    {{ englishToBanglaNumber($acrMonitoring->review_date ?? 'N/A') }}
 
                                 </td>
                             </tr>
