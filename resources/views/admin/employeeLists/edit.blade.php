@@ -15,7 +15,7 @@
                         <label class="required" for="employeeid">{{ trans('cruds.employeeList.fields.employeeid') }}</label>
                         <input class="form-control {{ $errors->has('employeeid') ? 'is-invalid' : '' }}" type="text"
                             name="employeeid" id="employeeid" value="{{ old('employeeid', $employeeList->employeeid) }}"
-                            required>
+                            disabled>
                         @if ($errors->has('employeeid'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('employeeid') }}
@@ -484,6 +484,42 @@
                         @endif
                         <span class="help-block">{{ trans('cruds.employeeList.fields.grade_helper') }}</span>
                     </div>
+
+                    <div class="form-group d-none">
+                        <label class="required" for="class">{{ trans('cruds.employeeList.fields.class') }}</label>
+                        <select class="form-select {{ $errors->has('class') ? 'is-invalid' : '' }}" name="class"
+                            id="class" required>
+                            {{-- <option value="" disabled selected>
+                                {{ trans('global.pleaseSelect') }}</option> --}}
+
+                            @if (app()->getLocale() === 'bn')
+                                <option value="1st" selected>১ম
+                                </option>
+                                <option value="2nd"
+                                    {{ old('class', $employeeList->class) == '2nd' ? 'selected' : '' }}>২য়</option>
+                                <option value="3rd"
+                                    {{ old('class', $employeeList->class) == '3rd' ? 'selected' : '' }}>৩য়</option>
+                                <option value="4th"
+                                    {{ old('class', $employeeList->class) == '4th' ? 'selected' : '' }}>৪র্থ</option>
+                            @else
+                                <option value="1st"
+                                    {{ old('class', $employeeList->class) == '1st' ? 'selected' : '' }}>1st</option>
+                                <option value="2nd"
+                                    {{ old('class', $employeeList->class) == '2nd' ? 'selected' : '' }}>2nd</option>
+                                <option value="3rd"
+                                    {{ old('class', $employeeList->class) == '3rd' ? 'selected' : '' }}>3rd</option>
+                                <option value="4th"
+                                    {{ old('class', $employeeList->class) == '4th' ? 'selected' : '' }}>4th</option>
+                            @endif
+                        </select>
+                        @if ($errors->has('class'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('class') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.employeeList.fields.class_helper') }}</span>
+                    </div>
+
                     <div class="form-group">
                         <label class="required"
                             for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
