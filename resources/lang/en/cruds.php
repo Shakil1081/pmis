@@ -806,6 +806,8 @@ return [
             'nid_number_helper'          => 'Only 10, 13, 17 Digit allowed.',
             'passport_number'            => 'Passport Number',
             'passport_number_helper'     => ' ',
+            'passport'            => 'Passport',
+            'passport_helper'     => ' ',
             'date_of_birth'              => 'Date of Birth',
             'date_of_birth_helper'       => ' ',
             'created_at'                 => 'Created at',
