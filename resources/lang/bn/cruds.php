@@ -809,6 +809,8 @@ return [
             'nid_number_helper'          => 'শুধুমাত্র 10, 13, 17 ডিজিটের অনুমতি',
             'passport_number'            => 'পাসপোর্ট নাম্বার',
             'passport_number_helper'     => ' ',
+            'passport'            => 'পাসপোর্ট',
+            'passport_helper'     => ' ',
             'date_of_birth'              => 'জন্ম তারিখ',
             'date_of_birth_helper'       => ' ',
             'created_at'                 => 'তৈরী করা হয়েছে',
