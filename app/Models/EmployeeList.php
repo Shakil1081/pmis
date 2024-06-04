@@ -83,12 +83,15 @@ class EmployeeList extends Model implements HasMedia
         'date_of_gazette',
         'date_of_regularization',
         'regularization_issue_date',
+        'freedom_fighter_id',
         'date_of_con_serviec',
         'quota_id',
         'freedomfighter',
         'created_at',
         'updated_at',
         'deleted_at',
+        'approved',
+        'approved_by'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -186,11 +189,21 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->belongsTo(ProjectRevenueExam::class, 'joiningexaminfo_id');
     }
+    public function examinations()
+    {
+        return $this->belongsTo(ProjectRevenueExam::class, 'name_of_exam_id');
+    }
 
     public function departmental_exam()
     {
         return $this->belongsTo(ProjectRevenuelone::class, 'departmental_exam_id');
     }
+
+    public function freedom_fighter()
+    {
+        return $this->belongsTo(FreedomFighteRelation::class, 'freedomfighter_id');
+    }
+   
 
     public function project()
     {
@@ -298,7 +311,7 @@ class EmployeeList extends Model implements HasMedia
     }
     public function jobhistories()
     {
-        return $this->belongsTo(JobHistory::class, 'employee_id');
+        return $this->hasmany(JobHistory::class, 'employee_id');
     }
 
     public function getElectricSignatureAttribute()
@@ -336,6 +349,13 @@ class EmployeeList extends Model implements HasMedia
     {
         return $this->hasMany(EducationInformatione::class, 'employee_id');
     }
+
+
+    // public function name_of_exam()
+    // {
+    //     return $this->hasMany(Examination::class, 'name_of_exam_id');
+    // }
+
     public function professionales()
     {
         return $this->hasMany(Professionale::class, 'employee_id');
@@ -369,6 +389,10 @@ class EmployeeList extends Model implements HasMedia
     public function trainings()
     {
         return $this->hasMany(Training::class, 'employee_id');
+    }
+    public function childinformationes()
+    {
+        return $this->hasMany(Child::class, 'employee_id');
     }
 
     public function travelRecords()

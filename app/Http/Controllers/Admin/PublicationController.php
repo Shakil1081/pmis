@@ -61,6 +61,9 @@ class PublicationController extends Controller
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
             });
+            $table->addColumn('employee_fullname_en', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'employee']);
 
@@ -86,7 +89,7 @@ class PublicationController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $publication->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
        // return redirect()->route('admin.publications.index');
     }
 

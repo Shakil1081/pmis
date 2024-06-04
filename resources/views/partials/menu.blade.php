@@ -9,7 +9,7 @@
                     <img src="{{ asset('assets/images/logo1.png') }}" height="50" alt="Logo" />
                 </div>
                 <div class="col-md-8 d-flex">
-                    <small class="text-dark">{{ trans('panel.site_title') }}</small>
+                    <small class="text-dark h4">{{ trans('panel.site_title') }}</small>
                 </div>
             </div>
 
@@ -560,7 +560,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('achievementschools_university_access')
+                    {{-- @can('achievementschools_university_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.achievementschools-universities.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/achievementschools-universities') || request()->is('admin/achievementschools-universities/*') ? 'c-active' : '' }}">
@@ -570,8 +570,19 @@
                                 {{ trans('cruds.achievementschoolsUniversity.title') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                 </ul>
+            </li>
+        @endcan
+        @can('dfo')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route('dfo') }}"
+                    class="c-sidebar-nav-link {{ request()->is('admin/dfo') || request()->is('admin/dfo/*') ? 'c-active' : '' }}">
+                    <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.employeeList.dfo') }}
+                </a>
             </li>
         @endcan
         @can('employee_detail_access')
@@ -585,7 +596,7 @@
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('employee_list_access')
-                        <li class="c-sidebar-nav-item">
+                        {{-- <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.dfo') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/dfo') || request()->is('admin/dfo/*') ? 'c-active' : '' }}">
                                 <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
@@ -593,7 +604,7 @@
                                 </i>
                                 {{ trans('cruds.employeeList.dfo') }}
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route('admin.employee-lists.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/employee-lists') || request()->is('admin/employee-lists/*') ? 'c-active' : '' }}">

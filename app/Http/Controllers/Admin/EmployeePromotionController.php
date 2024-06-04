@@ -13,6 +13,7 @@ use App\Models\EmployeeList;
 use App\Models\EmployeePromotion;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -51,6 +52,10 @@ class EmployeePromotionController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_bn : '';
+            });
+
             $table->addColumn('new_designation_name_bn', function ($row) {
                 return $row->new_designation ? $row->new_designation->name_bn : '';
             });
@@ -71,9 +76,13 @@ class EmployeePromotionController extends Controller
     {
         abort_if(Gate::denies('employee_promotion_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+
+        $locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $new_designations = Designation::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $new_designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.employeePromotions.create', compact('employees', 'new_designations'));
     }
@@ -89,7 +98,7 @@ class EmployeePromotionController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $employeePromotion->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
        // return redirect()->route('admin.employee-promotions.index');
     }
 

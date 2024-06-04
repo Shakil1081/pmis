@@ -26,6 +26,9 @@
                                 {{ trans('cruds.status.fields.name') }}
                             </th>
                             <th>
+                                {{ trans('cruds.status.fields.name_en') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -40,6 +43,9 @@
                                     {{ $status->name ?? '' }}
                                 </td>
                                 <td>
+                                    {{ $status->name_en ?? '' }}
+                                </td>
+                                <td>
                                     @can('status_show')
                                         <a class="btn btn-sm btn-success px-2"
                                             href="{{ route('admin.statuses.show', $status->id) }}">
@@ -48,7 +54,8 @@
                                     @endcan
 
                                     @can('status_edit')
-                                        <a class="btn btn-xs btn-info" href="{{ route('admin.statuses.edit', $status->id) }}">
+                                        <a class="btn btn-sm btn-warning px-2"
+                                            href="{{ route('admin.statuses.edit', $status->id) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
@@ -59,7 +66,7 @@
                                             style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger"
+                                            <input type="submit" class="btn btn-sm btn-danger px-2"
                                                 value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan

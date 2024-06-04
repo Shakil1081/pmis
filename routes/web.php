@@ -14,13 +14,15 @@ Route::get('/home', function () {
 });
 
 Auth::routes(['register' => false]);
-
+Route::get('dfo', [EmployeeListController::class,'dfo'])->name('dfo');
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', '2fa']], function () {
    
     Route::get('add-employee', [EmployeeListController::class,'Commonemployeecreate'])->name('creatrmployee');
     Route::get('show-employee', [EmployeeListController::class,'commonemployeeshow'])->name('commonemployeeshow');
     Route::get('employee-data/{id}', [EmployeeListController::class,'employeedata'])->name('employeedata');
-    Route::get('dfo', [EmployeeListController::class,'dfo'])->name('dfo');
+    Route::get('employee-pdf/{id}', [EmployeeListController::class,'employeedata_pdf'])->name('employeedata.pdf');
+
+    Route::post('/approve', [EmployeeListController::class, 'approve'])->name('employee.approve');
 
    Route::get('/', 'HomeController@index')->name('home');
     // Permissions

@@ -84,7 +84,7 @@ class EmergenceContacteController extends Controller
     public function store(StoreEmergenceContacteRequest $request)
     {
         $emergenceContacte = EmergenceContacte::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.emergence-contactes.index');
     }
 

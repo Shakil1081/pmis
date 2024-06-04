@@ -13,6 +13,7 @@ use App\Models\Designation;
 use App\Models\District;
 use App\Models\EmployeeList;
 use App\Models\ExamBoard;
+use App\Models\ExamDegree;
 use App\Models\Examination;
 use App\Models\FreedomFighteRelation;
 use App\Models\Gender;
@@ -29,25 +30,36 @@ use App\Models\Religion;
 use App\Models\Upazila;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
-
+use PDF;
 class EmployeeListController extends Controller
 {
     use MediaUploadingTrait;
 
+    // public function index(Request $request)
+    // {
+    //     abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+    //     $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
+    //  //$data['allresult'] = EmployeeList::with('jobhistories.designation')->paginate(10);
+
+    //     $data['total'] = EmployeeList::count();
+
+    //     // You can specify the number of items per page, for example, 10
+    // return view('admin.employeeLists.index', compact('data'));
+
+    // }
+
+
     public function index(Request $request)
-    {
-        abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+{
+    return view('admin.employeeLists.index');
+}
 
-        $data['allresult'] = EmployeeList::with('jobhistories.designation')->whereNotNull('approve')->paginate(10);
-        $data['total'] = EmployeeList::count();
 
-        // You can specify the number of items per page, for example, 10
-    return view('admin.employeeLists.index', compact('data'));
-
-    }
 
     public function create()
     {
@@ -58,13 +70,14 @@ $batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
 $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
 $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+$maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $marital_status = Maritalstatus::pluck($maritialstatus, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -93,7 +106,16 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
     public function store(StoreEmployeeListRequest $request)
     {
-   
+//    dd($request->all());
+
+   if ($request->religion_name_bn) {
+    $insearrid = Religion::create([
+        'name_bn' => $request->religion_name_bn,
+        'name_en' => $request->religion_name_en,
+    ]);
+    $request->merge(['religion_id' => $insearrid->id]);
+}
+
     //$employeeList = EmployeeList::create($request->all());
 
     $class = $request->input('class');
@@ -170,6 +192,7 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
         $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+        $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         abort_if(Gate::denies('employee_list_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -177,7 +200,7 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $marital_status = Maritalstatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $marital_status = Maritalstatus::pluck($maritialstatus, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -364,13 +387,26 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
     }
     public function dfo()
     {
-        abort_if(Gate::denies('employee_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
+          $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
         $data['total'] = EmployeeList::count();
 
-        // You can specify the number of items per page, for example, 10
+       
     return view('admin.employeeLists.dfo-review-list', compact('data'));
+    }
+
+    public function approve(Request $request)
+    {
+        $employee = EmployeeList::find($request->employee_id);
+        //dd($employee);
+        if ($employee) {
+            $employee->approve = 'Approved';
+            $employee->approveby = Auth::id();
+            $employee->save();
+
+            return response()->json(['status' => 'success', 'message' => 'Employee approved successfully']);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Employee not found'], 404);
     }
 
     public function massDestroy(MassDestroyEmployeeListRequest $request)
@@ -457,11 +493,43 @@ $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
 
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }
+
+   
+    public function employeedata_pdf (Request $request)
+    {
+
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+$deucationDegree= ExamDegree::all();
+$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'educations', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+->find($request->id);
+
+if (!$employeeList) {
+    abort(404);
+}
+
+
+
+
+//return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
+
+
+$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
+'margin_bottom' => 15,
+'margin_left' => 18,
+'margin_right' => 18,
+'format' => 'A4',
+'default_font_size' => '15', 
+    'default_font' => 'nsikosh',
+
+]);
+
+$name=$employeeList->employeeid.'_'.$employeeList->fullname_en.'_employee.pdf';
+return $pdf->download($name);
+}
     public function employeedata(Request $request)
     {     
-        
-       
-        abort_if(Gate::denies('employee_list_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    
 
         $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
         ->find($request->id);

@@ -35,7 +35,7 @@ class OtherServiceJobController extends Controller
     public function store(StoreOtherServiceJobRequest $request)
     {
         $otherServiceJob = OtherServiceJob::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
        /// return redirect()->route('admin.other-service-jobs.index');
     }
 

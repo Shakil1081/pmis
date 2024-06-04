@@ -32,11 +32,33 @@
                                         <option value disabled
                                             {{ old('publication_type', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
-                                        @foreach (App\Models\Publication::PUBLICATION_TYPE_SELECT as $key => $label)
-                                            <option value="{{ $key }}"
-                                                {{ old('publication_type', '') === (string) $key ? 'selected' : '' }}>
-                                                {{ $label }}</option>
-                                        @endforeach
+
+
+                                        @if (app()->getLocale() === 'bn')
+                                            @foreach (App\Models\Publication::PUBLICATION_TYPE_SELECTBN as $key => $label)
+                                                <option value="{{ $key }}"
+                                                    {{ old('publication_type', '') === (string) $key ? 'selected' : '' }}>
+                                                    {{ $label }}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach (App\Models\Publication::PUBLICATION_TYPE_SELECT as $key => $label)
+                                                <option value="{{ $key }}"
+                                                    {{ old('publication_type', '') === (string) $key ? 'selected' : '' }}>
+                                                    {{ $label }}</option>
+                                            @endforeach
+                                        @endif
+
+
+
+
+
+
+
+
+
+
+
+
                                     </select>
                                     @if ($errors->has('publication_type'))
                                         <div class="invalid-feedback">

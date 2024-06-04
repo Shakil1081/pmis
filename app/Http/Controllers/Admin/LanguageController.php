@@ -12,6 +12,7 @@ use App\Models\LanguageList;
 use App\Models\LanguageProficiency;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -75,12 +76,14 @@ class LanguageController extends Controller
     {
         abort_if(Gate::denies('language_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name' : 'name_en';
+        $list = $locale === 'bn' ? 'name' : 'nmae_en';
 
-        $reads = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $writes = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $speaks = LanguageProficiency::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $languages = LanguageList::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $reads = LanguageProficiency::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $writes = LanguageProficiency::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $speaks = LanguageProficiency::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $languages = LanguageList::pluck( $list, 'id')->prepend(trans('global.pleaseSelect'), '');
         
 
         return view('admin.languages.create', compact( 'languages', 'reads', 'speaks', 'writes'));
@@ -90,7 +93,7 @@ class LanguageController extends Controller
     {
         $language = Language::create($request->all());
 
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(Language $language)

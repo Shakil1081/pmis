@@ -24,13 +24,13 @@
 
                                 @if (app()->getLocale() === 'bn')
                                     <h4 class="fw-bold mt-4">লগইন করুন</h4>
-                                    <p class="mb-0">নিচের ফর্মটি পূরণ করুন</p>
+                                    {{-- <p class="mb-0">নিচের ফর্মটি পূরণ করুন</p> --}}
                                     Change language to <a href="{{ url()->current() }}?change_language=en">
                                         English
                                     </a>
                                 @else
                                     <h4 class="fw-bold mt-4">Get Started Now</h4>
-                                    <p class="mb-0">Enter your credentials to login your account</p>
+                                    {{-- <p class="mb-0">Enter your credentials to login your account</p> --}}
                                     ভাষা পরিবর্তন করুন <a href="{{ url()->current() }}?change_language=bn">
                                         বাংলা
                                     </a>
@@ -92,7 +92,7 @@
                                             required placeholder=" 
                                             ">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button" id="togglePassword">
+                                            <button class="btn btn-success" type="button" id="togglePassword">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
                                                     height="16" fill="currentColor">
                                                     <path
@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-success">
                                             @if (app()->getLocale() === 'bn')
                                                 লগইন
                                             @else

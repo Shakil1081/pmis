@@ -12,6 +12,7 @@ use App\Models\TravelPurpose;
 use App\Models\TravelRecord;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -47,6 +48,10 @@ class TravelRecordController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
+
             $table->addColumn('country_name_bn', function ($row) {
                 return $row->country ? $row->country->name_bn : '';
             });
@@ -70,11 +75,14 @@ class TravelRecordController extends Controller
     {
         abort_if(Gate::denies('travel_record_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $purposes = TravelPurpose::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $purposes = TravelPurpose::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.travelRecords.create', compact('countries', 'employees', 'purposes'));
     }
@@ -82,7 +90,7 @@ class TravelRecordController extends Controller
     public function store(StoreTravelRecordRequest $request)
     {
         $travelRecord = TravelRecord::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
        // return redirect()->route('admin.travel-records.index');
     }
 
@@ -90,11 +98,13 @@ class TravelRecordController extends Controller
     {
         abort_if(Gate::denies('travel_record_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $purposes = TravelPurpose::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $purposes = TravelPurpose::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $travelRecord->load('employee', 'country', 'purpose');
 

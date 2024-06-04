@@ -10,8 +10,10 @@ use App\Models\Country;
 use App\Models\EmployeeList;
 use App\Models\Training;
 use App\Models\TrainingType;
+use Facade\FlareClient\Api;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -45,6 +47,10 @@ class TrainingController extends Controller
 
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
+            });
+            
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
             });
 
             $table->addColumn('training_type_name_bn', function ($row) {
@@ -83,11 +89,15 @@ class TrainingController extends Controller
     {
         abort_if(Gate::denies('training_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        
+$locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $training_types = TrainingType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $training_types = TrainingType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.trainings.create', compact('countries', 'employees', 'training_types'));
     }
@@ -95,7 +105,7 @@ class TrainingController extends Controller
     public function store(StoreTrainingRequest $request)
     {
         $training = Training::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.trainings.index');
     }
 
@@ -103,11 +113,13 @@ class TrainingController extends Controller
     {
         abort_if(Gate::denies('training_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $locale = App::getLocale();
+$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $training_types = TrainingType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $training_types = TrainingType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $training->load('employee', 'training_type', 'country');
 

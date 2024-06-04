@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('job_type_create')
+    {{-- @can('job_type_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.job-types.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.jobType.title_singular') }} {{ trans('global.list') }}
@@ -54,7 +54,7 @@
                                     @endcan
 
                                     @can('job_type_edit')
-                                        <a class="btn btn-xs btn-info"
+                                        <a class="btn btn-sm btn-warning px-2"
                                             href="{{ route('admin.job-types.edit', $jobType->id) }}">
                                             {{ trans('global.edit') }}
                                         </a>
@@ -66,7 +66,7 @@
                                             style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="submit" class="btn btn-xs btn-danger"
+                                            <input type="submit" class="btn btn-sm btn-danger px-2"
                                                 value="{{ trans('global.delete') }}">
                                         </form>
                                     @endcan

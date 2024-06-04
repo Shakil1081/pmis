@@ -45,10 +45,10 @@ class ForeignTravelPersonal extends Model
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-    public function purpose()
-    {
-        return $this->belongsTo(TravelPurpose::class, 'purpose_id');
-    }
+    // public function purpose()
+    // {
+    //     return $this->belongsTo(TravelPurpose::class, 'purpose_id');
+    // }
 
     public function getFromDateAttribute($value)
     {

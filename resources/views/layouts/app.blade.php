@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ env('APP_TITLE', 'PIMS') }}</title>
+    <title>{{ env('APP_TITLE', 'SRMS') }}</title>
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png">
 
@@ -30,9 +30,24 @@
         }
     </style>
     <style>
-        body {
+        /* body {
             background: linear-gradient(to bottom, #dbe7c1, #a1c181);
-            /* Gradient from light green to darker green */
+            
+        }*/
+
+        body {
+            background: linear-gradient(to bottom, #dbe7c1, #dcfce7);
+        }
+
+        a {
+            color: #005c3a !important;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        a:hover {
+            color: rgb(4, 126, 81) !important;
+            text-decoration: underline;
         }
     </style>
 </head>

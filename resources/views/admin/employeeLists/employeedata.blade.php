@@ -2,17 +2,21 @@
 @section('styles')
     @parent
     <style>
-        th,
-        td {
-            font-size: 11px !important;
-            padding: 4px !important;
-            margin: 0px !important;
-        }
+        /* th,
+                                                                                                                        td {
+                                                                                                                            font-size: 141px !important;
+                                                                                                                            padding: 4px !important;
+                                                                                                                            margin: 0px !important;
+                                                                                                                        }
 
-        a.nav-link:hover,
-        a.nav-link {
-            padding: 2px 4px;
-            font-size: 12px !important;
+                                                                                                                        a.nav-link:hover,
+                                                                                                                        a.nav-link {
+                                                                                                                            padding: 2px 4px;
+                                                                                                                            font-size: 14px !important;
+                                                                                                                        } */
+
+        th {
+            font-weight: 200;
         }
     </style>
 @endsection
@@ -22,9 +26,11 @@
             <div class="row">
                 @include('admin.commonemployee.commonmenuemployeeshow')
                 <div class="col-md-9">
+
+
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                         <div>
-                            <strong>General Information Content</strong>
+                            <strong>{{ trans('cruds.employeeList.title_singular') }}</strong>
                             <table class="table-bordered table-striped table" id="General">
                                 <tbody>
                                     <tr>
@@ -104,7 +110,7 @@
                                             {{ trans('cruds.employeeList.fields.date_of_birth') }}
                                         </th>
                                         <td>
-                                            {{ $employeeList->date_of_birth }}
+                                            {{ englishToBanglaNumber($employeeList->date_of_birth) }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -442,7 +448,7 @@
                             </table>
 
 
-                            <strong>Education</strong>
+                            <strong>{{ trans('cruds.educationInformatione.title_singular') }}</strong>
                             @foreach ($employeeList->educations ?? [] as $educationInformatione)
                                 <table class="table-bordered table-striped table" id="Education">
                                     <tbody>
@@ -451,7 +457,7 @@
                                                 {{ trans('cruds.educationInformatione.fields.name_of_exam') }}
                                             </th>
                                             <td>
-                                                {{ $educationInformatione->name_of_exam->name_bn ?? '' }}
+                                                {{ $educationInformatione->educations->exam_degree ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -508,13 +514,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.education-informationes.edit', ['education_informatione' => $educationInformatione->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -522,7 +526,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -535,7 +540,7 @@
 
 
 
-                            <strong> Professionales</strong>
+                            <strong> {{ trans('cruds.professionale.title') }}</strong>
 
                             @foreach ($employeeList->educations ?? [] as $professionale)
                                 <table class="table-bordered table-striped table" id="Professionales">
@@ -589,13 +594,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.professionales.edit', ['professionale' => $professionale->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -603,7 +606,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -675,13 +679,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.addressdetailes.edit', ['addressdetaile' => $addressdetaile->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -689,7 +691,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -741,13 +744,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.emergence-contactes.edit', ['emergence_contacte' => $emergenceContacte->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -755,7 +756,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -848,13 +850,11 @@
                                         </tr>
 
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.spouse-informationes.edit', ['spouse_informatione' => $spouseInformatione->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -862,7 +862,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -977,13 +978,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.children.edit', ['child' => $child->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -991,7 +990,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1101,13 +1101,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.job-histories.edit', ['job_history' => $jobHistory->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1115,7 +1113,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1175,13 +1174,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.employee-promotions.edit', ['employee_promotion' => $employeePromotion->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1189,7 +1186,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1228,21 +1226,21 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
+                                            {{-- <th>
                                                 {{ trans('cruds.leaveRecord.fields.start_date') }}
-                                            </th>
-                                            <td>
-                                                {{ $leaveRecord->start_date }}
+                                            </th> --}}
+                                            <td colspan="2" style="text-align: center">
+                                                {{ dateDifference($leaveRecord->start_date, $leaveRecord->end_date) }}
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.leaveRecord.fields.end_date') }}
                                             </th>
                                             <td>
                                                 {{ $leaveRecord->end_date }}
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <th>
                                                 {{ trans('cruds.leaveRecord.fields.reason') }}
@@ -1252,13 +1250,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.leave-records.edit', ['leave_record' => $leaveRecord->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1266,7 +1262,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1275,7 +1272,7 @@
                                 </table>
                             @endforeach
 
-                            <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
+                            {{-- <strong> {{ trans('cruds.serviceParticular.title') }}</strong>
                             @foreach ($employeeList->serviceparticulars ?? [] as $serviceParticular)
                                 <table class="table-bordered table-striped table" id="serviceParticular">
                                     <tbody>
@@ -1329,13 +1326,11 @@
                                         </tr>
 
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.service-particulars.edit', ['service_particular' => $serviceParticular->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1343,13 +1338,13 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            @endforeach
+                            @endforeach --}}
                             <strong>
                                 {{ trans('cruds.training.title') }}
                             </strong>
@@ -1475,7 +1470,7 @@
                                                 {{ trans('cruds.travelRecord.fields.purpose') }}
                                             </th>
                                             <td>
-                                                {{ $travelRecord->purpose->name_bn ?? '' }}
+                                                {{ $travelRecord->purpose_id ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -1495,13 +1490,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.travel-records.edit', ['travel_record' => $travelRecord->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1509,7 +1502,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1553,10 +1547,15 @@
                                                 {{ trans('cruds.foreignTravelPersonal.fields.purpose') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->purpose->name_bn ?? '' }}
+                                                {{ $foreignTravelPersonal->purpose_id ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2" style="text-align: center">
+                                                {{ dateDifference($foreignTravelPersonal->from_date, $foreignTravelPersonal->to_date) }}
+                                            </td> 
+                                        </tr>
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.from_date') }}
                                             </th>
@@ -1571,79 +1570,22 @@
                                             <td>
                                                 {{ $foreignTravelPersonal->to_date }}
                                             </td>
-                                        </tr>
-                                        <tr>
+                                        </tr> --}}
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
                                             </th>
                                             <td>
                                                 {{ $foreignTravelPersonal->leave->start_date ?? '' }}
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             @endforeach
 
 
-                            <strong id="socialAssPrAttachment"> {{ trans('cruds.socialAssPrAttachment.title') }}</strong>
 
-                            @foreach ($employeeList->socialassprattachments ?? [] as $socialAssPrAttachment)
-                                <table class="table-bordered table-striped table">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.id') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->id }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.degree_membership_organization') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->degree_membership_organization }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.description') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->description }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.socialAssPrAttachment.fields.certificate_achievement') }}
-                                            </th>
-                                            <td>
-                                                {{ $socialAssPrAttachment->certificate_achievement }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                Action
-                                            </th>
-                                            <td>
-                                                <!-- Edit button -->
-                                                <a href="{{ route('admin.social-ass-pr-attachments.edit', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
 
-                                                <!-- Delete button -->
-                                                {{-- <form
-                                                    action="{{ route('admin.social-ass-pr-attachments.destroy', ['social_ass_pr_attachment' => $socialAssPrAttachment->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form> --}}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            @endforeach
                             <strong id="extracurriculam"> {{ trans('cruds.extracurriculam.title') }}</strong>
                             @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                                 <table class="table-bordered table-striped table">
@@ -1726,13 +1668,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.extracurriculams.edit', ['extracurriculam' => $extracurriculam->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1740,7 +1680,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1810,13 +1751,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.publications.edit', ['publication' => $publication->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1824,7 +1763,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1884,20 +1824,21 @@
 
                                         <tr>
                                             <th>
-                                                Action
+
                                             </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.awards.edit', ['award' => $award->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
-                                                    action="{{ route('admin.awards.destroy', ['award' => $award->id]) }}"
-                                                    method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    ="{{ route('admin.awards.destroy', ['award' => $award->id]) }}"
+                                                method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -1977,13 +1918,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.other-service-jobs.edit', ['other_service_job' => $otherServiceJob->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -1991,7 +1930,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -2016,7 +1956,11 @@
                                                 {{ trans('cruds.language.fields.language') }}
                                             </th>
                                             <td>
-                                                {{ $language->language }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->language->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -2024,7 +1968,13 @@
                                                 {{ trans('cruds.language.fields.read') }}
                                             </th>
                                             <td>
-                                                {{ $language->read->name ?? '' }}
+
+
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->read->name ?? '' }}
+                                                @else
+                                                    {{ $language->read->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -2032,7 +1982,11 @@
                                                 {{ trans('cruds.language.fields.write') }}
                                             </th>
                                             <td>
-                                                {{ $language->write->name ?? '' }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->write->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
@@ -2040,17 +1994,19 @@
                                                 {{ trans('cruds.language.fields.speak') }}
                                             </th>
                                             <td>
-                                                {{ $language->speak->name ?? '' }}
+                                                @if (app()->getLocale() === 'bn')
+                                                    {{ $language->speak->name }}
+                                                @else
+                                                    {{ $language->language->nmae_en }}
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.languages.edit', ['language' => $language->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -2058,7 +2014,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -2125,13 +2082,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.criminal-prosecutiones.edit', ['criminal_prosecutione' => $criminalProsecutione->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -2139,7 +2094,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -2201,13 +2157,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.criminalpro-disciplinaries.edit', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -2215,7 +2169,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -2273,13 +2228,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>
-                                                Action
-                                            </th>
+                                            <th> </th>
                                             <td>
                                                 <!-- Edit button -->
                                                 <a href="{{ route('admin.acr-monitorings.edit', ['acr_monitoring' => $acrMonitoring->id]) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
+                                                    class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
                                                 <!-- Delete button -->
                                                 <form
@@ -2287,7 +2240,8 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -1258,7 +1258,7 @@
                                                         <path id="SvgjsPath1076"
                                                             d="M2.5 50.001L2.5 41.66766666666666L12.166666666666668 41.66766666666666L12.166666666666668 50.001L2.5 50.001C2.5 50.001 2.5 50.001 2.5 50.001C2.5 50.001 2.5 50.001 2.5 50.001C2.5 50.001 2.5 50.001 2.5 50.001C2.5 50.001 2.5 50.001 2.5 50.001 "
                                                             fill="url(#SvgjsLinearGradient1070)" fill-opacity="1"
-                                                            stroke="#fc185a" stroke-opacity="1" stroke-linecap="round"
+                                                            stroke="#AD0505" stroke-opacity="1" stroke-linecap="round"
                                                             stroke-width="2" stroke-dasharray="0"
                                                             class="apexcharts-bar-area" index="0"
                                                             clip-path="url(#gridRectMaskgwfzr91j)"
@@ -1270,7 +1270,7 @@
                                                         <path id="SvgjsPath1083"
                                                             d="M19.166666666666668 50.001L19.166666666666668 15.834333333333326L28.833333333333336 15.834333333333326L28.833333333333336 50.001L19.166666666666668 50.001C19.166666666666668 50.001 19.166666666666668 50.001 19.166666666666668 50.001C19.166666666666668 50.001 19.166666666666668 50.001 19.166666666666668 50.001C19.166666666666668 50.001 19.166666666666668 50.001 19.166666666666668 50.001C19.166666666666668 50.001 19.166666666666668 50.001 19.166666666666668 50.001 "
                                                             fill="url(#SvgjsLinearGradient1077)" fill-opacity="1"
-                                                            stroke="#fc185a" stroke-opacity="1" stroke-linecap="round"
+                                                            stroke="#AD0505" stroke-opacity="1" stroke-linecap="round"
                                                             stroke-width="2" stroke-dasharray="0"
                                                             class="apexcharts-bar-area" index="0"
                                                             clip-path="url(#gridRectMaskgwfzr91j)"
@@ -1282,7 +1282,7 @@
                                                         <path id="SvgjsPath1090"
                                                             d="M35.833333333333336 50.001L35.833333333333336 25.001L45.5 25.001L45.5 50.001L35.833333333333336 50.001C35.833333333333336 50.001 35.833333333333336 50.001 35.833333333333336 50.001C35.833333333333336 50.001 35.833333333333336 50.001 35.833333333333336 50.001C35.833333333333336 50.001 35.833333333333336 50.001 35.833333333333336 50.001C35.833333333333336 50.001 35.833333333333336 50.001 35.833333333333336 50.001 "
                                                             fill="url(#SvgjsLinearGradient1084)" fill-opacity="1"
-                                                            stroke="#fc185a" stroke-opacity="1" stroke-linecap="round"
+                                                            stroke="#AD0505" stroke-opacity="1" stroke-linecap="round"
                                                             stroke-width="2" stroke-dasharray="0"
                                                             class="apexcharts-bar-area" index="0"
                                                             clip-path="url(#gridRectMaskgwfzr91j)"
@@ -1293,7 +1293,7 @@
                                                         <path id="SvgjsPath1097"
                                                             d="M52.5 50.001L52.5 7.500999999999998L62.16666666666667 7.500999999999998L62.16666666666667 50.001L52.5 50.001C52.5 50.001 52.5 50.001 52.5 50.001C52.5 50.001 52.5 50.001 52.5 50.001C52.5 50.001 52.5 50.001 52.5 50.001C52.5 50.001 52.5 50.001 52.5 50.001 "
                                                             fill="url(#SvgjsLinearGradient1091)" fill-opacity="1"
-                                                            stroke="#fc185a" stroke-opacity="1" stroke-linecap="round"
+                                                            stroke="#AD0505" stroke-opacity="1" stroke-linecap="round"
                                                             stroke-width="2" stroke-dasharray="0"
                                                             class="apexcharts-bar-area" index="0"
                                                             clip-path="url(#gridRectMaskgwfzr91j)"
@@ -1304,7 +1304,7 @@
                                                         <path id="SvgjsPath1104"
                                                             d="M69.16666666666667 50.001L69.16666666666667 29.167666666666666L78.83333333333334 29.167666666666666L78.83333333333334 50.001L69.16666666666667 50.001C69.16666666666667 50.001 69.16666666666667 50.001 69.16666666666667 50.001C69.16666666666667 50.001 69.16666666666667 50.001 69.16666666666667 50.001C69.16666666666667 50.001 69.16666666666667 50.001 69.16666666666667 50.001C69.16666666666667 50.001 69.16666666666667 50.001 69.16666666666667 50.001 "
                                                             fill="url(#SvgjsLinearGradient1098)" fill-opacity="1"
-                                                            stroke="#fc185a" stroke-opacity="1" stroke-linecap="round"
+                                                            stroke="#AD0505" stroke-opacity="1" stroke-linecap="round"
                                                             stroke-width="2" stroke-dasharray="0"
                                                             class="apexcharts-bar-area" index="0"
                                                             clip-path="url(#gridRectMaskgwfzr91j)"
@@ -1316,7 +1316,7 @@
                                                         <path id="SvgjsPath1111"
                                                             d="M85.83333333333334 50.001L85.83333333333334 37.501L95.50000000000001 37.501L95.50000000000001 50.001L85.83333333333334 50.001C85.83333333333334 50.001 85.83333333333334 50.001 85.83333333333334 50.001C85.83333333333334 50.001 85.83333333333334 50.001 85.83333333333334 50.001C85.83333333333334 50.001 85.83333333333334 50.001 85.83333333333334 50.001C85.83333333333334 50.001 85.83333333333334 50.001 85.83333333333334 50.001 "
                                                             fill="url(#SvgjsLinearGradient1105)" fill-opacity="1"
-                                                            stroke="#fc185a" stroke-opacity="1" stroke-linecap="round"
+                                                            stroke="#AD0505" stroke-opacity="1" stroke-linecap="round"
                                                             stroke-width="2" stroke-dasharray="0"
                                                             class="apexcharts-bar-area" index="0"
                                                             clip-path="url(#gridRectMaskgwfzr91j)"
@@ -2115,7 +2115,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card bg-success mb-0 mb-4 border shadow-none">
+                    <div class="card mb-4">
                         <div class="card-body">
                             <h3>{!! $chart3->options['chart_title'] !!}</h3>
                             {!! $chart3->renderHtml() !!}

@@ -66,9 +66,10 @@ class StoreEmployeeListRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
             ],
             'prl_date' => [
+                'required',
                 'date_format:' . config('panel.date_format'),
-                'nullable',
             ],
+             
             'height' => [
                 'string',
                 'nullable',
@@ -90,8 +91,7 @@ class StoreEmployeeListRequest extends FormRequest
                 'integer',
             ],
             'religion_id' => [
-                'required',
-                'integer',
+                'nullable'
             ],
             'blood_group_id' => [
                 'required',

@@ -9,9 +9,9 @@
                 @endif
             </label>
             <select wire:model="levelofEducation" wire:change="onlevelofEducation($event.target.value)"
-                class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="circle_list_id"
+                class="form-select {{ $errors->has('circle_list') ? 'is-invalid' : '' }}" name="name_of_exam_id"
                 id="circle_list_id">
-                <option value="">Select</option>
+                <option>{{ trans('global.pleaseSelect') }}</option>
                 @foreach ($examinations as $option)
                     <option value="{{ $option->id }}">
                         @if (app()->getLocale() === 'bn')
@@ -27,11 +27,11 @@
         @if ($levelofEducation)
             <div class="form-group">
                 <label class="required"
-                    for="name_of_exam_id">{{ trans('cruds.educationInformatione.fields.name_of_exam') }}</label>
+                    for="exam_degree">{{ trans('cruds.educationInformatione.fields.name_of_exam') }}</label>
                 <select wire:model="nameOfExam" wire:change="onnameOfExam($event.target.value)"
-                    class="form-select {{ $errors->has('name_of_exam') ? 'is-invalid' : '' }}" name="name_of_exam_id"
-                    id="name_of_exam_id" required>
-                    <option value="">Select</option>
+                    class="form-select {{ $errors->has('name_of_exam') ? 'is-invalid' : '' }}" name="exam_degree"
+                    id="exam_degree" required>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($name_of_exams as $option)
                         <option value="{{ $option->id }}">
                             @if (app()->getLocale() === 'bn')
@@ -66,13 +66,12 @@
                 class="help-block">{{ trans('cruds.educationInformatione.fields.school_university_name_helper') }}</span>
         </div>
 
-        @if ($exambordlist)
+        @if ($exambordlist && !in_array($levelofEducation, [6, 7, 8]))
             <div class="form-group">
-                <label class="required"
-                    for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
+                <label for="exam_board_id">{{ trans('cruds.educationInformatione.fields.exam_board') }}</label>
                 <select class="form-select select2 {{ $errors->has('exam_board') ? 'is-invalid' : '' }}"
                     name="exam_board_id" id="exam_board_id" required>
-                    <option value="">Select</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($exambordlist as $option)
                         <option value="{{ $option->id }}">
                             @if (app()->getLocale() === 'bn')
@@ -92,10 +91,12 @@
             </div>
         @endif
         @if ($resultGroup)
+
+
             <div class="form-group">
-                <label class="required">Gread/Class/Division</label>
+                <label class="required">{{ trans('cruds.educationInformatione.fields.greadclassdivision') }}</label>
                 <select wire:model="result" wire:change="onresult($event.target.value)" class="form-select" required>
-                    <option value="">Select</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($resultGroup as $option)
                         <option value="{{ $option->id }}">
                             @if (app()->getLocale() === 'bn')
@@ -105,6 +106,11 @@
                             @endif
                         </option>
                     @endforeach
+                    <option value="4" {{ old('achievement_types_id') == 4 ? 'selected' : '' }}>
+                        {{ trans('cruds.educationInformatione.fields.gpa') }} </option>
+                    <option value="5" {{ old('achievement_types_id') == 5 ? 'selected' : '' }}>
+                        {{ trans('cruds.educationInformatione.fields.cgpa') }}</option>
+
                 </select>
                 @if ($errors->has('exam_board'))
                     <div class="invalid-feedback">
@@ -116,38 +122,46 @@
         @endif
 
         @if (empty($resultlist) || count($resultlist) === 0)
+            {{-- <div class="form-group">
+                <label
+                    for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
+                <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
+                    name="achievement_types_id" id="achievement_types_id">
+                    @foreach ($achievement_types as $id => $entry)
+                        <option value="{{ $id }}"
+                            {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
+                            {{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('achievement_types'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('achievement_types') }}
+                    </div>
+                @endif
+                <span
+                    class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
+            </div> --}}
+
             @if ($resultGroup)
                 <div class="form-group">
-                    <label for="cgpa">{{ trans('cruds.educationInformatione.fields.cgpa') }}</label>
-                    <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="text"
-                        name="cgpa" id="cgpa" value="{{ old('cgpa', '') }}">
+                    <label for="cgpa">
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa') : trans('cruds.educationInformatione.fields.gpa') }}
+
+                    </label>
+                    <input class="form-control {{ $errors->has('cgpa') ? 'is-invalid' : '' }}" type="number"
+                        step="any" name="cgpa" id="cgpa" value="{{ old('cgpa', '') }}" min="1"
+                        max="{{ $result == 5 ? 4 : 5 }}">
                     @if ($errors->has('cgpa'))
                         <div class="invalid-feedback">
                             {{ $errors->first('cgpa') }}
                         </div>
                     @endif
-                    <span class="help-block">{{ trans('cruds.educationInformatione.fields.cgpa_helper') }}</span>
+                    <span class="help-block">
+                        {{ $result == 5 ? trans('cruds.educationInformatione.fields.cgpa_helper') : trans('cruds.educationInformatione.fields.gpa_helper') }}
+                    </span>
                 </div>
 
-                <div class="form-group">
-                    <label
-                        for="achievement_types_id">{{ trans('cruds.educationInformatione.fields.achievement_types') }}</label>
-                    <select class="form-control select2 {{ $errors->has('achievement_types') ? 'is-invalid' : '' }}"
-                        name="achievement_types_id" id="achievement_types_id">
-                        @foreach ($achievement_types as $id => $entry)
-                            <option value="{{ $id }}"
-                                {{ old('achievement_types_id') == $id ? 'selected' : '' }}>
-                                {{ $entry }}</option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('achievement_types'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('achievement_types') }}
-                        </div>
-                    @endif
-                    <span
-                        class="help-block">{{ trans('cruds.educationInformatione.fields.achievement_types_helper') }}</span>
-                </div>
+
             @endif
         @else
             <div class="form-group">
@@ -155,7 +169,7 @@
                     for="result_id">{{ trans('cruds.educationInformatione.fields.result') }}</label>
                 <select class="form-select select2 {{ $errors->has('result') ? 'is-invalid' : '' }}" name="result_id"
                     id="result_id" required>
-                    <option value="">Select</option>
+                    <option>{{ trans('global.pleaseSelect') }}</option>
                     @foreach ($resultlist as $option)
                         <option value="{{ $option->id }}">
                             @if (app()->getLocale() === 'bn')

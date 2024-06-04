@@ -80,7 +80,7 @@ class SocialAssPrAttachmentController extends Controller
     public function store(StoreSocialAssPrAttachmentRequest $request)
     {
         $socialAssPrAttachment = SocialAssPrAttachment::create($request->all());
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
        // return redirect()->route('admin.social-ass-pr-attachments.index');
     }
 

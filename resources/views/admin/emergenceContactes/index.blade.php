@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    @can('emergence_contacte_create')
+    {{-- @can('emergence_contacte_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.emergence-contactes.create') }}">
@@ -8,7 +8,7 @@
                 </a>
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.emergenceContacte.title_singular') }} {{ trans('global.list') }}
@@ -22,8 +22,20 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.emergenceContacte.fields.id') }}
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী আইডি
+                    @else
+                        Employee ID
+                    @endif
                         </th>
+                        <th>
+                        @if (app()->getLocale() === 'bn')
+                        কর্মকর্তা/কর্মচারী নাম
+                    @else
+                        Employee Name
+                    @endif
+                        </th>
+                        
                         <th>
                             {{ trans('cruds.emergenceContacte.fields.contact_person_name') }}
                         </th>
@@ -31,17 +43,13 @@
                             {{ trans('cruds.emergenceContacte.fields.contact_person_relation') }}
                         </th>
                         <th>
-                            {{ trans('cruds.emergenceContacte.fields.address') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.emergenceContacte.fields.contact_person_number') }}
                         </th>
                         <th>
-                            {{ trans('cruds.emergenceContacte.fields.employee') }}
+                            {{ trans('cruds.emergenceContacte.fields.address') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                        </th>
+                        
+                        
                         <th>
                             &nbsp;
                         </th>
@@ -108,9 +116,14 @@
                         name: 'placeholder'
                     },
                     {
-                        data: 'id',
-                        name: 'id'
+                        data: 'employee_employeeid',
+                        name: 'employee.employeeid'
                     },
+                    {
+                        data: 'employee.fullname_bn',
+                        name: 'employee.fullname_bn'
+                    },
+                    
                     {
                         data: 'contact_person_name',
                         name: 'contact_person_name'
@@ -119,22 +132,16 @@
                         data: 'contact_person_relation',
                         name: 'contact_person_relation'
                     },
-                    {
-                        data: 'address',
-                        name: 'address'
-                    },
+                   
                     {
                         data: 'contact_person_number',
                         name: 'contact_person_number'
                     },
                     {
-                        data: 'employee_employeeid',
-                        name: 'employee.employeeid'
+                        data: 'address',
+                        name: 'address'
                     },
-                    {
-                        data: 'employee.fullname_bn',
-                        name: 'employee.fullname_bn'
-                    },
+                    
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

@@ -47,14 +47,8 @@
                                 <div class="form-group">
                                     <label class="required"
                                         for="purpose_id">{{ trans('cruds.foreignTravelPersonal.fields.purpose') }}</label>
-                                    <select class="form-select select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
-                                        name="purpose_id" id="purpose_id" required>
-                                        @foreach ($purposes as $id => $entry)
-                                            <option value="{{ $id }}"
-                                                {{ old('purpose_id') == $id ? 'selected' : '' }}>{{ $entry }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="purpose_id" id="purpose_id" required>
+
                                     @if ($errors->has('purpose'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('purpose') }}
@@ -67,7 +61,8 @@
                                     <label
                                         for="from_date">{{ trans('cruds.foreignTravelPersonal.fields.from_date') }}</label>
                                     <input class="form-control date {{ $errors->has('from_date') ? 'is-invalid' : '' }}"
-                                        type="text" name="from_date" id="from_date" value="{{ old('from_date') }}">
+                                        type="text" name="from_date" id="from_date" value="{{ old('from_date') }}"
+                                        required>
                                     @if ($errors->has('from_date'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('from_date') }}
@@ -79,7 +74,7 @@
                                 <div class="form-group">
                                     <label for="to_date">{{ trans('cruds.foreignTravelPersonal.fields.to_date') }}</label>
                                     <input class="form-control date {{ $errors->has('to_date') ? 'is-invalid' : '' }}"
-                                        type="text" name="to_date" id="to_date" value="{{ old('to_date') }}">
+                                        type="text" name="to_date" id="to_date" value="{{ old('to_date') }}" required>
                                     @if ($errors->has('to_date'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('to_date') }}
@@ -88,7 +83,7 @@
                                     <span
                                         class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.to_date_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="leave_id">{{ trans('cruds.foreignTravelPersonal.fields.leave') }}</label>
                                     <select class="form-select select2 {{ $errors->has('leave') ? 'is-invalid' : '' }}"
                                         name="leave_id" id="leave_id">
@@ -105,7 +100,7 @@
                                     @endif
                                     <span
                                         class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.leave_helper') }}</span>
-                                </div>
+                                </div> --}}
                                 {{-- <div class="form-group">
                                     <label class="required"
                                         for="employee_id">{{ trans('cruds.foreignTravelPersonal.fields.employee') }}</label>

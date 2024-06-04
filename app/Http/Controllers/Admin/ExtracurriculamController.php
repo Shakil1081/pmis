@@ -51,6 +51,9 @@ class ExtracurriculamController extends Controller
             $table->addColumn('employee_employeeid', function ($row) {
                 return $row->employee ? $row->employee->employeeid : '';
             });
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
 
             $table->editColumn('activity_name', function ($row) {
                 return $row->activity_name ? $row->activity_name : '';
@@ -94,7 +97,7 @@ class ExtracurriculamController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $extracurriculam->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.extracurriculams.index');
     }
 

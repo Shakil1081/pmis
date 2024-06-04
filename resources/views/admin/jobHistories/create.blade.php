@@ -12,7 +12,7 @@
                             @csrf
                             @livewire('multi-level-dropdown')
                             <div class="row row-cols-2 mt-3">
-
+                                <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
                                 <div class="form-group">
                                     <label class="required"
                                         for="designation_id">{{ trans('cruds.jobHistory.fields.designation') }}</label>

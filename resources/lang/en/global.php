@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'saveactions'                        => 'Information Added Successfully.',
+    'deleteaction'                        => 'Information updated successfully.',
+    'updateAction'                        => 'Information Deleted Successfully.',
     'actions'                        => 'Actions',
     'add'                            => 'Add',
     'allRightsReserved'              => 'All rights reserved.',
@@ -27,6 +30,23 @@ return [
     'month'                          => 'Month',
     'no'                             => 'No',
     'pleaseSelect'                   => 'Please select',
+	'postingCircle'                   => 'Posting in Circle',
+	'postingOffice'                   => 'Posting in Office',
+	'division'                   => 'Division',
+	'divisionList'                   => 'Division List',
+	'postingDivision'                   => 'Posting in Division',
+	'rangeSFPCStation'                   => 'Range/SFNTC/Station',
+	'nameWingunit'                   => 'Name of Wing/UNit',
+	'postinginRange'                   => 'Posting in Range',
+	'beatSFNTCCamp'                   => 'Beat/SFPC/Camp',
+	'others'                   => 'Others',
+	'institution'                   => 'Institution',
+	'forestAcademy'                   => 'Forest Academy',
+	'skec'                   => 'SKWC',
+	'fsti'                   => 'FSTI',
+	'Sylhet'                   => 'Sylhet',
+	'Chittagong'                   => 'Chittagong',
+	'Rajshahi'                   => 'Rajshahi',
     'register'                       => 'Register',
     'remember_me'                    => 'Remember me',
     'reset_password'                 => 'Reset Password',
@@ -322,5 +342,6 @@ return [
     'leave'                          => 'Leave',
     'calendar'                       => 'Calendar',
     'messenger'                      => 'Messenger',
+    
 
 ];

@@ -18,6 +18,10 @@ class Addressdetaile extends Model
         'No'  => 'No',
         'Yes' => 'Yes',
     ];
+    public const STATUS_SELECTBN = [
+        'No'  => 'না',
+        'Yes' => 'হ্যাঁ',
+    ];
 
     protected $dates = [
         'created_at',
@@ -28,6 +32,10 @@ class Addressdetaile extends Model
     public const ADDRESS_TYPE_SELECT = [
         'Present'   => 'Present',
         'Permanent' => 'Permanent',
+    ];
+    public const ADDRESS_TYPE_SELECTBN = [
+        'Present'   => 'বর্তমান ঠিকানা',
+        'Permanent' => 'স্থায়ী ঠিকানা',
     ];
 
     protected $fillable = [

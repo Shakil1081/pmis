@@ -44,6 +44,13 @@ class SpouseInformationeController extends Controller
                     'row'
                 ));
             });
+            $table->addColumn('employeeid', function ($row) {
+                return $row->employee ? $row->employee->employeeid : '';
+            });
+            
+            $table->addColumn('name', function ($row) {
+                return $row->employee ? $row->employee->fullname_bn : '';
+            });
 
             $table->editColumn('name_bn', function ($row) {
                 return $row->name_bn ? $row->name_bn : '';
@@ -96,7 +103,7 @@ class SpouseInformationeController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $spouseInformatione->id]);
         }
 
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(SpouseInformatione $spouseInformatione)

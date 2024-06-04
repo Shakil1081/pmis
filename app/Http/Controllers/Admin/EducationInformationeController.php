@@ -136,7 +136,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
             Media::whereIn('id', $media)->update(['model_id' => $educationInformatione->id]);
         }
 
-        return redirect()->back()->with('status', 'Action successful!');
+         return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(EducationInformatione $educationInformatione)

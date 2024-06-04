@@ -5,8 +5,7 @@
     @endphp
 
 
-    <div class="nav flex-column nav-pills position-fixed" id="v-pills-tab" role="tablist" aria-orientation="vertical"
-        style=" top: 102px;">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
         <a href="#General" class="nav-link">
             {{ trans('cruds.employeeList.title') }}
@@ -50,9 +49,9 @@
             {{ trans('cruds.leaveRecord.title') }}
         </a>
 
-        <a href="#serviceParticular" class="nav-link">
+        {{-- <a href="#serviceParticular" class="nav-link">
             {{ trans('cruds.serviceParticular.title') }}
-        </a>
+        </a> --}}
 
         <a href="#training" class="nav-link">
             {{ trans('cruds.training.title') }}
@@ -66,9 +65,9 @@
 
             {{ trans('cruds.foreignTravelPersonal.title') }}
         </a>
-        <a href="#socialAssPrAttachment" class="nav-link">
+        {{-- <a href="#socialAssPrAttachment" class="nav-link">
             {{ trans('cruds.socialAssPrAttachment.title') }}
-        </a>
+        </a> --}}
         <a href="#extracurriculam" class="nav-link">
             {{ trans('cruds.extracurriculam.title') }}
         </a>

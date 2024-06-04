@@ -13,8 +13,8 @@ class UsersTableSeeder extends Seeder
             [
                 'id'              => 1,
                 'name'            => 'Shakil Hossain',
-                'email'           => 'shakilaust81@gmail.com',
-                'password'        => bcrypt('987654321'),
+                'email'           => 'kamranraz28@gmail.com',
+                'password'        => bcrypt('18102017'),
                 'remember_token'  => null,
                 'two_factor_code' => '',
                 'name_en'         => '',

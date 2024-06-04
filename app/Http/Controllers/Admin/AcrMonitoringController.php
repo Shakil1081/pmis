@@ -49,11 +49,18 @@ class AcrMonitoringController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
+            $table->addColumn('employee_fullname_en', function ($row) {
+                return $row->employee ? $row->employee->fullname_en : '';
+            });
+
             $table->editColumn('year', function ($row) {
                 return $row->year ? $row->year : '';
             });
             $table->editColumn('reviewer', function ($row) {
                 return $row->reviewer ? $row->reviewer : '';
+            });
+            $table->editColumn('remarks', function ($row) {
+                return $row->remarks ? $row->remarks : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'employee']);
@@ -80,7 +87,7 @@ class AcrMonitoringController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $acrMonitoring->id]);
         }
-        return redirect()->back()->with('status', 'Action successful!');
+        return redirect()->back()->with('status', __('global.saveactions'));
       //  return redirect()->route('admin.acr-monitorings.index');
     }
 

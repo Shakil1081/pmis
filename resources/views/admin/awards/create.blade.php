@@ -6,17 +6,14 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
-                        {{ trans('global.create') }} {{ trans('cruds.award.title_singular') }}
+                        <strong> {{ trans('global.create') }} {{ trans('cruds.award.title_singular') }}</strong>
 
                         <form method="POST"
                             action="{{ route('admin.awards.store', ['employee_id' => request()->query('id')]) }}"
                             enctype="multipart/form-data">
                             @csrf
 
-
-
                             <div class="row row-cols-2">
-
                                 <div class="form-group">
                                     <label for="title">{{ trans('cruds.award.fields.title') }}</label>
                                     <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"

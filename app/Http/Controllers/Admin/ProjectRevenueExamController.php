@@ -40,9 +40,9 @@ class ProjectRevenueExamController extends Controller
                 ));
             });
 
-            $table->addColumn('exam_name_bn', function ($row) {
-                return $row->exam ? $row->exam->name_bn : '';
-            });
+            // $table->addColumn('exam_name_bn', function ($row) {
+            //     return $row->exam ? $row->exam->name_bn : '';
+            // });
 
             $table->editColumn('exam.name_en', function ($row) {
                 return $row->exam ? (is_string($row->exam) ? $row->exam : $row->exam->name_en) : '';
