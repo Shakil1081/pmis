@@ -103,7 +103,7 @@
                             @$designationName = $designation->name_en;
                         }
                     } else {
-                        $designationName = 'NA';
+                        $designationName = ' ';
                     }
                 @endphp
 
@@ -133,7 +133,7 @@
 
                     <div class="progress">
                         @php
-                            $total = 0;
+                            $total = 1;
 
                             $relationships = [
                                 'educations',

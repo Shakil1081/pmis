@@ -860,6 +860,19 @@
                 </ul>
             </li>
         @endcan
+
+        @can('retirementlist_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route('admin.upcoming_retirement_list') }}"
+                    class="c-sidebar-nav-link {{ request()->is('admin/criminal-prosecutiones') || request()->is('admin/criminal-prosecutiones/*') ? 'c-active' : '' }}">
+                    <i class="fa fa-chart-bar c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.employeeList.fields.upcomingretirementlist') }}
+                </a>
+            </li>
+        @endcan
+
         @can('faq_management_access')
             <li
                 class="c-sidebar-nav-dropdown {{ request()->is('admin/faq-categories*') ? 'c-show' : '' }} {{ request()->is('admin/faq-questions*') ? 'c-show' : '' }}">
@@ -892,9 +905,11 @@
                             </a>
                         </li>
                     @endcan
+                    
                 </ul>
             </li>
         @endcan
+        
         @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

@@ -33,6 +33,7 @@ if (!function_exists('englishToBanglaNumber')) {
 }
 
 
+
 function dateDifference($startDate, $endDate)
 {
     try {
@@ -45,11 +46,11 @@ function dateDifference($startDate, $endDate)
         $diff = $endDate->diff($startDate);
 
         if (app()->getLocale() === 'bn') {
-            $formattedDiff = $diff->format('সময়কাল %y বছর, %m মাস, %d দিন');
-            return englishToBanglaNumber($startDate->format('d/m/Y')) . ' থেকে ' . englishToBanglaNumber($endDate->format('d/m/Y')) . ' ' . englishToBanglaNumber($formattedDiff);
+            $formattedDiff = $diff->format('%y বছর, %m মাস, %d দিন');
+            return englishToBanglaNumber($startDate->format('d/m/Y')) . ' থেকে ' . englishToBanglaNumber($endDate->format('d/m/Y')) . '; ' . englishToBanglaNumber($formattedDiff);
         } else {
-            $formattedDiff = $diff->format('Duration %y years, %m months, %d days');
-            return $startDate->format('d/m/Y') . ' to ' . $endDate->format('d/m/Y') . ' ' . $formattedDiff;
+            $formattedDiff = $diff->format('%y years, %m months, %d days');
+            return $startDate->format('d/m/Y') . ' to ' . $endDate->format('d/m/Y') . '; ' . $formattedDiff;
         }
     } catch (\Exception $e) {
         // Handle the exception, log it, or return an error message

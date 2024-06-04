@@ -3,17 +3,17 @@
     @parent
     <style>
         /* th,
-                                                                                                                        td {
-                                                                                                                            font-size: 141px !important;
-                                                                                                                            padding: 4px !important;
-                                                                                                                            margin: 0px !important;
-                                                                                                                        }
+                                                                                                                                                td {
+                                                                                                                                                    font-size: 141px !important;
+                                                                                                                                                    padding: 4px !important;
+                                                                                                                                                    margin: 0px !important;
+                                                                                                                                                }
 
-                                                                                                                        a.nav-link:hover,
-                                                                                                                        a.nav-link {
-                                                                                                                            padding: 2px 4px;
-                                                                                                                            font-size: 14px !important;
-                                                                                                                        } */
+                                                                                                                                                a.nav-link:hover,
+                                                                                                                                                a.nav-link {
+                                                                                                                                                    padding: 2px 4px;
+                                                                                                                                                    font-size: 14px !important;
+                                                                                                                                                } */
 
         th {
             font-weight: 200;
@@ -442,6 +442,25 @@
                                                     <img src="{{ $employeeList->employee_photo->getUrl('thumb') }}">
                                                 </a>
                                             @endif
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th> </th>
+                                        <td>
+                                            <!-- Edit button -->
+                                            <a href="{{ route('admin.employee-lists.edit', ['employee_list' => $employeeList->id]) }}"
+                                                class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
+
+                                            {{-- <!-- Delete button -->
+                                            <form
+                                                action="{{ route('admin.employee-lists.destroy', ['employee_list' => $employeeList->id]) }}"
+                                                method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1553,7 +1572,7 @@
                                         <tr>
                                             <td colspan="2" style="text-align: center">
                                                 {{ dateDifference($foreignTravelPersonal->from_date, $foreignTravelPersonal->to_date) }}
-                                            </td> 
+                                            </td>
                                         </tr>
                                         {{-- <tr>
                                             <th>

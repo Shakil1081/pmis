@@ -55,9 +55,9 @@ class EmployeeListController extends Controller
 
 
     public function index(Request $request)
-{
-    return view('admin.employeeLists.index');
-}
+    {
+        return view('admin.employeeLists.index');
+    }
 
 
 
@@ -181,7 +181,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
             Media::whereIn('id', $media)->update(['model_id' => $employeeList->id]);
         }
 
-        return redirect()->route('admin.employee-lists.index');
+        return redirect()->route('admin.employee-lists.index')->with('status', __('global.saveactions'));
     }
 
     public function edit(EmployeeList $employeeList)
@@ -365,7 +365,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
             $employeeList->employee_photo->delete();
         }
 
-        return redirect()->route('admin.employee-lists.index');
+        return redirect()->route('admin.employee-lists.index')->with('status', __('global.updateAction'));
     }
 
     public function show(EmployeeList $employeeList)
@@ -536,4 +536,16 @@ return $pdf->download($name);
 
         return view('admin.employeeLists.employeedata', compact('employeeList'));
     }
+
+    public function upcoming_retirement_list()
+    {
+        $currentDate = now()->toDateString();
+        
+        $endDate = now()->addMonths(3)->toDateString();
+        
+        $employeeList = EmployeeList::whereRaw("prl_date BETWEEN '$currentDate' AND '$endDate'")->get();
+
+        return view('admin.retirement.index', compact('employeeList'));
+    }
+
 }
