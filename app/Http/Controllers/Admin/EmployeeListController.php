@@ -536,4 +536,14 @@ return $pdf->download($name);
 
         return view('admin.employeeLists.employeedata', compact('employeeList'));
     }
+    public function upcoming_retirement_list()
+    {
+        $currentDate = now()->toDateString();
+        
+        $endDate = now()->addMonths(3)->toDateString();
+        
+        $employeeList = EmployeeList::whereRaw("prl_date BETWEEN '$currentDate' AND '$endDate'")->get();
+
+        return view('admin.retirement.index', compact('employeeList'));
+    }
 }
