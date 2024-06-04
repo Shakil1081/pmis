@@ -329,7 +329,7 @@
                                     {{ $errors->first('nid') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.employeeList.fields.nid_helper') }}</span>
+                            <span class="help-block">{{ trans('validation.nid_number') }}</span>
                         </div>
                         <div class="form-group">
                             <label for="nid_upload">{{ trans('cruds.employeeList.fields.nid_upload') }}</label>
@@ -347,39 +347,39 @@
 
 
                         <!-- <div class="form-group has_passport_group">
+                                <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
+
+                                <select class="form-control" id="has_passport">
+                                    <option>{{ trans('global.pleaseSelect') }}</option>
+
+                                    @if (app()->getLocale() === 'bn')
+    <option value="No">না</option>
+                                        <option value="Yes">হ্যাঁ</option>
+@else
+    <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+    @endif
+                                </select>
+                            </div> -->
+
+                        <div class="form-group passport_fields d-none">
+
                             <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
-
-                            <select class="form-control" id="has_passport">
-                                <option>{{ trans('global.pleaseSelect') }}</option>
-
+                            <select class="form-control" id="has_passport" name="has_passport">
                                 @if (app()->getLocale() === 'bn')
+                                    <option>নির্বাচন করুন</option>
                                     <option value="No">না</option>
                                     <option value="Yes">হ্যাঁ</option>
                                 @else
+                                    <option>Select</option>
                                     <option value="No">No</option>
                                     <option value="Yes">Yes</option>
                                 @endif
                             </select>
-                        </div> -->
+                        </div>
+
 
                         <div class="form-group passport_fields d-none">
-
-    <label for="has_passport">{{ trans('cruds.employeeList.fields.has_passport') }}</label>
-    <select class="form-control" id="has_passport" name="has_passport">
-        @if (app()->getLocale() === 'bn')
-            <option>নির্বাচন করুন</option>
-            <option value="No">না</option>
-            <option value="Yes">হ্যাঁ</option>
-        @else
-            <option>Select</option>
-            <option value="No">No</option>
-            <option value="Yes">Yes</option>
-        @endif
-    </select>
-</div>
-
-
-<div class="form-group passport_fields d-none">
                             <label for="passport">{{ trans('cruds.employeeList.fields.passport') }}</label>
                             <input class="form-control {{ $errors->has('passport') ? 'is-invalid' : '' }}"
                                 type="text" name="passport" id="passport" value="{{ old('passport', '') }}">
@@ -1515,7 +1515,7 @@
 
         //     var passportFields = document.getElementById('passport_fields');
 
-           
+
         //     var passportFields = document.getElementById('passport_fields');
         //     alert(passportFields);
 
@@ -1624,7 +1624,6 @@
 
 
     <script>
-
         // document.getElementById('has_passport').addEventListener('change', function() {
         //     var passportFields = document.querySelector('.passport_fields');
         //     var passportUpload = document.querySelector('.passport_upload');
@@ -1692,26 +1691,26 @@
 
 
             document.getElementById('has_passport').addEventListener('change', function() {
-        var passportFields = document.querySelector('.passport_fields');
-        var passportUpload = document.querySelector('.passport_upload');
-        
-        // Check if passportFields and passportUpload are not null before accessing style properties
-        if (passportFields !== null && passportUpload !== null) {
-            if (this.value === 'Yes') {
-                passportFields.classList.remove('d-none');
-                passportFields.classList.add('d-block');
-                passportUpload.classList.remove('d-none');
-                passportUpload.classList.add('d-block');
-            } else {
-                passportFields.classList.remove('d-block');
-                passportFields.classList.add('d-none');
-                passportUpload.classList.remove('d-block');
-                passportUpload.classList.add('d-none');
-            }
-        } else {
-            console.error('Passport fields or upload elements not found.');
-        }
-    });
+                var passportFields = document.querySelector('.passport_fields');
+                var passportUpload = document.querySelector('.passport_upload');
+
+                // Check if passportFields and passportUpload are not null before accessing style properties
+                if (passportFields !== null && passportUpload !== null) {
+                    if (this.value === 'Yes') {
+                        passportFields.classList.remove('d-none');
+                        passportFields.classList.add('d-block');
+                        passportUpload.classList.remove('d-none');
+                        passportUpload.classList.add('d-block');
+                    } else {
+                        passportFields.classList.remove('d-block');
+                        passportFields.classList.add('d-none');
+                        passportUpload.classList.remove('d-block');
+                        passportUpload.classList.add('d-none');
+                    }
+                } else {
+                    console.error('Passport fields or upload elements not found.');
+                }
+            });
 
 
         });

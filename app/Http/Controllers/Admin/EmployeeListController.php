@@ -181,7 +181,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
             Media::whereIn('id', $media)->update(['model_id' => $employeeList->id]);
         }
 
-        return redirect()->route('admin.employee-lists.index');
+        return redirect()->route('admin.employee-lists.index')->with('status', __('global.saveactions'));
     }
 
     public function edit(EmployeeList $employeeList)
@@ -365,7 +365,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
             $employeeList->employee_photo->delete();
         }
 
-        return redirect()->route('admin.employee-lists.index');
+        return redirect()->route('admin.employee-lists.index')->with('status', __('global.updateAction'));
     }
 
     public function show(EmployeeList $employeeList)
