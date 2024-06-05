@@ -324,6 +324,10 @@
             position: absolute;
             border-radius: 0;
         }
+
+        .dropzone .dz-preview .dz-image img {
+    height: 36px;
+}
     </style>
     {{-- <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
     <noscript>
