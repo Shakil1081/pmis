@@ -89,8 +89,8 @@
                                     class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.remarks_helper') }}</span>
                             </div>
 
-
-                            <div id="action-fields">
+  
+                            <div id="action-fields  d-none">
             <div class="action-field">
             <div class="row row-cols-3">
                 <div class="form-group">
