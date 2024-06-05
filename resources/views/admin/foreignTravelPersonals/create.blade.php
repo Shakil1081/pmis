@@ -1,6 +1,4 @@
-@extends('layouts.admin')
-@section('content')
-    <div class="card p-2">
+<div class="card p-2">
         <div class="container">
             <div class="row">
                 @include('admin.commonemployee.commonmenu')
@@ -89,12 +87,12 @@
                 </button>
             </div>
         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-
-
-@endsection
+@endsection 
 
 @section('scripts')
 <script>
