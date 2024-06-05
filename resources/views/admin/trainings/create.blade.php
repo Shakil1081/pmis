@@ -134,7 +134,7 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.training.fields.location_helper') }}</span>
                                 </div>
-                            </div>
+                           
                             <div class="form-group">
                 <label for="upload_certificate">{{ trans('cruds.training.fields.upload_certificate') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('upload_certificate') ? 'is-invalid' : '' }}" id="upload_certificate-dropzone">
@@ -145,6 +145,7 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.training.fields.upload_certificate_helper') }}</span>
+            </div>
             </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
