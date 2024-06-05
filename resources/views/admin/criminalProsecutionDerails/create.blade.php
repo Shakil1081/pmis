@@ -50,8 +50,22 @@
             </div>
         </form>
     </div>
-</div>
+</div> 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('add-field').addEventListener('click', function () {
+            let container = document.getElementById('order-fields');
+            let newField = document.querySelector('.order-field').cloneNode(true);
+            newField.querySelectorAll('input').forEach(input => input.value = '');
+            container.appendChild(newField);
+        });
 
-
+        document.getElementById('order-fields').addEventListener('click', function (e) {
+            if (e.target && e.target.matches('button.remove-field')) {
+                e.target.parentNode.remove();
+            }
+        });
+    });
+</script>
 @endsection
