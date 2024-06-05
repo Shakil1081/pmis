@@ -92,6 +92,7 @@
 
                             <div id="action-fields">
             <div class="action-field">
+            <div class="row row-cols-2">
                 <div class="form-group">
                     <label class="required" for="govt_order_no_0">{{ trans('cruds.diciplinaryAction.fields.govt_order_no') }}</label>
                     <input class="form-control {{ $errors->has('govt_order_no.0') ? 'is-invalid' : '' }}" type="text" name="govt_order_no[]" id="govt_order_no_0" value="{{ old('govt_order_no.0', '') }}" required>
@@ -111,8 +112,11 @@
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.diciplinaryAction.fields.govt_order_date_helper') }}</span>
-                </div>
+                    </div>
+                    <div class="form-group">
                 <button type="button" class="btn btn-danger remove-field">Remove</button>
+                </div>
+                </div>
             </div>
         </div>
 
