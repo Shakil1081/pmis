@@ -2,21 +2,8 @@
 @section('styles')
     @parent
     <style>
-        /* th,
-                                                                                                                                                td {
-                                                                                                                                                    font-size: 141px !important;
-                                                                                                                                                    padding: 4px !important;
-                                                                                                                                                    margin: 0px !important;
-                                                                                                                                                }
-
-                                                                                                                                                a.nav-link:hover,
-                                                                                                                                                a.nav-link {
-                                                                                                                                                    padding: 2px 4px;
-                                                                                                                                                    font-size: 14px !important;
-                                                                                                                                                } */
-
-        th {
-            font-weight: 200;
+            th {
+            font-weight: 100;
         }
     </style>
 @endsection
@@ -446,13 +433,13 @@
                                     </tr>
 
                                     <tr>
-                                        <th> </th>
+                                        <th> &nbsp;</th>
                                         <td>
                                             <!-- Edit button -->
                                             <a href="{{ route('admin.employee-lists.edit', ['employee_list' => $employeeList->id]) }}"
                                                 class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
-                                            {{-- <!-- Delete button -->
+                                            {{-- 
                                             <form
                                                 action="{{ route('admin.employee-lists.destroy', ['employee_list' => $employeeList->id]) }}"
                                                 method="POST" style="display: inline;">
