@@ -136,6 +136,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                <label class="required" for="leave_permission">{{ trans('cruds.foreignTravelPersonal.fields.leave_permission') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('leave_permission') ? 'is-invalid' : '' }}" id="leave_permission-dropzone">
+                </div>
+                @if($errors->has('leave_permission'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('leave_permission') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.leave_permission_helper') }}</span>
+            </div>
+                            <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
                                     {{ trans('global.save') }}
                                 </button>
@@ -159,4 +170,58 @@
             }
         }
     </script>
+@endsection
+
+
+@section('scripts')
+<script>
+    Dropzone.options.leavePermissionDropzone = {
+    url: '{{ route('admin.foreign-travel-personals.storeMedia') }}',
+    maxFilesize: 4, // MB
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 4
+    },
+    success: function (file, response) {
+      $('form').find('input[name="leave_permission"]').remove()
+      $('form').append('<input type="hidden" name="leave_permission" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="leave_permission"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($foreignTravelPersonal) && $foreignTravelPersonal->leave_permission)
+      var file = {!! json_encode($foreignTravelPersonal->leave_permission) !!}
+          this.options.addedfile.call(this, file)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="leave_permission" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
 @endsection
