@@ -6,9 +6,6 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
-                @include('admin.commonemployee.commonmenu')
-                <div class="col-md-8">
-                    <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                     <h4>{{ trans('cruds.foreignTravelPersonal.title_singular') }} </h4>
 
                      <div class="card-body">
