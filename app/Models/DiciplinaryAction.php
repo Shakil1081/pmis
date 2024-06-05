@@ -23,8 +23,8 @@ class DiciplinaryAction extends Model
 
     protected $fillable = [
         'govt_order_no',
-        'govt_order_date',
         'diciplinary_action_id',
+        'govt_order',
         'created_at',
         'updated_at',
         'deleted_at',

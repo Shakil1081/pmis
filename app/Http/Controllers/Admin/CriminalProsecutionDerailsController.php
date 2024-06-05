@@ -76,48 +76,6 @@ class CriminalProsecutionDerailsController extends Controller
     //     return redirect()->route('admin.criminal-prosecution-derails.index');
     // }
 
-
-    public function store(StoreCriminalProsecutioneRequest $request)
-{
-    // Validate the request data using the StoreCriminalProsecutioneRequest class
-    $validatedData = $request->validated();
-
-    // Create a new CriminalProsecutione instance using the validated data
-    $criminalProsecutione = CriminalProsecutione::create($validatedData);
-
-    // Handle file uploads for court_order (if any)
-    if ($request->hasFile('court_order')) {
-        $courtOrderFile = $request->file('court_order');
-        $criminalProsecutione->addMedia($courtOrderFile)->toMediaCollection('court_order');
-    }
-
-    // Now, create the CriminalProsecutionDerail instance
-    $criminalProsecutionDerailData = $request->only(['govt_order_no', 'govt_order_file']);
-    $criminalProsecutionDerailData['criminalprosecutione_id'] = $criminalProsecutione->id;
-
-    // Handle file uploads for govt_order_file (if any)
-    if ($request->hasFile('govt_order_file')) {
-        $govtOrderFile = $request->file('govt_order_file');
-        // Handle file uploads for govt_order_file
-        // Assuming you have a method to store this file and get its path
-        $govtOrderFilePath = $this->storeFileAndGetPath($govtOrderFile);
-        $criminalProsecutionDerailData['govt_order'] = $govtOrderFilePath;
-    }
-
-    // Create the CriminalProsecutionDerail instance
-    CriminalProsecutionDerail::create($criminalProsecutionDerailData);
-
-    // Handle any other media files attached via CKEditor (if any)
-    if ($media = $request->input('ck-media', false)) {
-        Media::whereIn('id', $media)->update(['model_id' => $criminalProsecutione->id]);
-    }
-
-    // Redirect back with a success message
-    return redirect()->back()->with('status', __('global.saveactions'));
-}
-
-
-
     public function edit(CriminalProsecutionDerail $criminalProsecutionDerail)
     {
         abort_if(Gate::denies('criminal_prosecution_derail_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

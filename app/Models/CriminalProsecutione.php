@@ -53,6 +53,10 @@ class CriminalProsecutione extends Model implements HasMedia
         return $this->belongsTo(EmployeeList::class, 'employee_id');
     }
 
+    public function criminalprosecutione(){
+        return $this->hasMany(CriminalProsecutionDerail::class,'criminalprosecutione_id');
+    }
+
     public function getCourtOrderAttribute()
     {
         return $this->getMedia('court_order')->last();

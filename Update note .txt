@@ -1,0 +1,39 @@
+travel_title_create
+travel_title_edit
+travel_title_access
+travel_title_show
+travel_title_delete
+
+
+foreign_travel_personals   change title to title _id is and datatype 
+
+travel_records  same thing 
+
+
+
+
+CREATE TABLE IF NOT EXISTS `diciplinary_actions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `govt_order_no` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `govt_order` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `diciplinary_action_id` bigint unsigned NOT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `Index 1` (`id`)
+)
+
+
+CREATE TABLE IF NOT EXISTS `criminal_prosecution_derails` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `govt_order_no` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `govt_order` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `criminalprosecutione_id` bigint NOT NULL DEFAULT (0),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+
+

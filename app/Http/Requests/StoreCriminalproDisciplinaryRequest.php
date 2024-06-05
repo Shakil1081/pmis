@@ -29,6 +29,14 @@ class StoreCriminalproDisciplinaryRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'govt_order' => [
+                'string',
+                'nullable',
+            ],
+            'employee_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

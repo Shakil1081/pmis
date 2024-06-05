@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyCriminalProsecutioneRequest;
 use App\Http\Requests\StoreCriminalProsecutioneRequest;
 use App\Http\Requests\UpdateCriminalProsecutioneRequest;
+use App\Models\CriminalProsecutionDerail;
 use App\Models\CriminalProsecutione;
 use App\Models\EmployeeList;
 use Gate;
@@ -79,22 +80,76 @@ class CriminalProsecutioneController extends Controller
         return view('admin.criminalProsecutiones.create', compact('employees'));
     }
 
+    // public function store(StoreCriminalProsecutioneRequest $request)
+    // {
+
+    //     dd($request->all());
+    //     $criminalProsecutione = CriminalProsecutione::create($request->all());
+
+    //     if ($request->input('court_order', false)) {
+    //         $criminalProsecutione->addMedia(storage_path('tmp/uploads/' . basename($request->input('court_order'))))->toMediaCollection('court_order');
+    //     }
+
+    //     if ($media = $request->input('ck-media', false)) {
+    //         Media::whereIn('id', $media)->update(['model_id' => $criminalProsecutione->id]);
+    //     }
+    //     return redirect()->back()->with('status', __('global.saveactions'));
+    //     //return redirect()->route('admin.criminal-prosecutiones.index');
+    // }
+
+
+    
     public function store(StoreCriminalProsecutioneRequest $request)
     {
+        // Validate the request data using the StoreCriminalProsecutioneRequest class
+        $validatedData = $request->validated();
 
-        dd($request->all());
-        $criminalProsecutione = CriminalProsecutione::create($request->all());
+       //dd($validatedData);
 
-        if ($request->input('court_order', false)) {
-            $criminalProsecutione->addMedia(storage_path('tmp/uploads/' . basename($request->input('court_order'))))->toMediaCollection('court_order');
+        $criminalProsecutione = CriminalProsecutione::create($validatedData);
+    
+        if ($request->hasFile('court_order')) {
+            $courtOrderFiles = $request->file('court_order');
+            foreach ($courtOrderFiles as $courtOrderFile) {
+                $criminalProsecutione->addMedia($courtOrderFile)->toMediaCollection('court_order');
+            }
         }
+    
 
+        $govtOrderNos = $request->input('govt_order_no', []);
+        $govtOrderFiles = $request->file('govt_order_file', []);
+
+  
+        foreach ($govtOrderNos as $index => $govtOrderNo) {
+            
+            if (isset($govtOrderFiles[$index])) {
+                $govtOrderFile = $govtOrderFiles[$index];
+
+               
+                $govtOrderPath = $govtOrderFile->store('govt_orders', 'public'); 
+
+             
+                $criminalProsecutionDerailData = [
+                    'govt_order_no' => $govtOrderNo,
+                    'govt_order' => $govtOrderPath,  
+                    'criminalprosecutione_id' => $criminalProsecutione->id,
+                ];
+   
+                CriminalProsecutionDerail::create($criminalProsecutionDerailData);
+            }
+        }
+    
+        // Handle any other media files attached via CKEditor (if any)
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $criminalProsecutione->id]);
         }
+    
+        // Redirect back with a success message
         return redirect()->back()->with('status', __('global.saveactions'));
-        //return redirect()->route('admin.criminal-prosecutiones.index');
     }
+    
+
+    
 
     public function edit(CriminalProsecutione $criminalProsecutione)
     {

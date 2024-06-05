@@ -11,7 +11,7 @@
                             action="{{ route('admin.criminal-prosecutiones.store', ['employee_id' => request()->query('id')]) }}"
                             enctype="multipart/form-data">
                             @csrf
-
+                            <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
                             <div class="row row-cols-2">
 
                                 <div class="form-group">
@@ -48,38 +48,42 @@
 
 
                                 <div class="order-field">
-                                    <div class="row row-cols-3">
-                                        <div class="form-group">
-                                            <label
-                                                for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
-                                            <input
-                                                class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}"
-                                                type="text" name="govt_order_no[]" id="govt_order_no">
-                                            @if ($errors->has('govt_order_no'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('govt_order_no') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no_helper') }}</span>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label
+                                                    for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
+                                                <input
+                                                    class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}"
+                                                    type="text" name="govt_order_no[]" id="govt_order_no">
+                                                @if ($errors->has('govt_order_no'))
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('govt_order_no') }}
+                                                    </div>
+                                                @endif
+                                                <span
+                                                    class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no_helper') }}</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="govt_order_file"
-                                                class="form-label">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_file') }}</label>
-                                            <input
-                                                class="form-control form-control-file {{ $errors->has('govt_order_file') ? 'is-invalid' : '' }}"
-                                                type="file" name="govt_order_file[]" id="govt_order_file" multiple>
-                                            @if ($errors->has('govt_order_file'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('govt_order_file') }}
-                                                </div>
-                                            @endif
-                                            {{-- <span
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label
+                                                    for="court_order">{{ trans('cruds.criminalProsecutione.fields.court_order') }}</label>
+                                                <input
+                                                    class="form-control form-control-file {{ $errors->has('govt_order_file') ? 'is-invalid' : '' }}"
+                                                    type="file" name="govt_order_file[]" id="govt_order_file" multiple>
+                                                @if ($errors->has('govt_order_file'))
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('govt_order_file') }}
+                                                    </div>
+                                                @endif
+                                                {{-- <span
                                                 class="form-text">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_file_helper') }}</span> --}}
+                                            </div>
                                         </div>
 
 
-                                        <div class="form-group">
+                                        <div class="col-md-2">
                                             <label class="w-100">&nbsp;</label>
                                             <button type="button" class="btn btn-danger remove-field">Remove</button>
                                         </div>

@@ -30,7 +30,8 @@ class CriminalproDisciplinary extends Model implements HasMedia
     protected $fillable = [
         'criminalprosecutione_id',
         'judgement_type',
-        'government_order_no',
+        'govt_order_no',
+        'govt_order_file',
         'remarks',
         'created_at',
         'updated_at',

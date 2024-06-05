@@ -22,9 +22,9 @@ class CriminalProsecutionDerail extends Model
     ];
 
     protected $fillable = [
-        'criminal_prosecution_id',
+        'criminalprosecutione_id',
         'govt_order_no',
-        'govt_order_date',
+        'govt_order',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -37,7 +37,7 @@ class CriminalProsecutionDerail extends Model
 
     public function criminal_prosecution()
     {
-        return $this->belongsTo(CriminalProsecutione::class, 'criminal_prosecution_id');
+        return $this->belongsTo(CriminalProsecutione::class, 'criminalprosecutione_id');
     }
 
     public function getGovtOrderDateAttribute($value)
