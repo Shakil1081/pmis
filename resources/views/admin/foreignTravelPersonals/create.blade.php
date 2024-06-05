@@ -7,7 +7,6 @@
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
         {{ trans('global.create') }} {{ trans('cruds.foreignTravelPersonal.title_singular') }}
-    </div>
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.foreign-travel-personals.store") }}" enctype="multipart/form-data">
@@ -92,7 +91,7 @@
         </form>
     </div>
 </div>
-
+</div>
 
 
 @endsection
