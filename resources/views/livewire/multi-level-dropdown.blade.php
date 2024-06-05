@@ -110,7 +110,7 @@
 
 
 
-            @if ($onSelctDivisionmodel && $selectedValue2 == 'Division' && $beatSFPCCamp == 'Range/SFNTC/Station')
+            @if ($onSelctDivisionmodel && $selectedValue2 == 'Division' && $beatSFPCCamp === 'Range/SFNTC/Station')
                 <div class="form-group">
                     <label class="required" for="posting_in_range">{{ trans('cruds.jobHistory.fields.range_list') }}</label>
                     <select wire:model="rangeForbeat" wire:change="onbeat($event.target.value)"
