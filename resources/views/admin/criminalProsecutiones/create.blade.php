@@ -101,7 +101,7 @@
             </div>
             <div class="form-group">
             <label for="govt_order_date">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_date') }}</label>
-            <input class="form-control date {{ $errors->has('govt_order_date') ? 'is-invalid' : '' }}" type="text" name="govt_order_date[]" id="govt_order_date">
+            <input class="form-control date {{ $errors->has('govt_order_date') ? 'is-invalid' : '' }}" type="date" name="govt_order_date[]" id="govt_order_date">
             @if($errors->has('govt_order_date'))
             <div class="invalid-feedback">
             {{ $errors->first('govt_order_date') }}
@@ -110,6 +110,7 @@
             <span class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_date_helper') }}</span>
             </div>
             <div class="form-group">
+            <label for="govt_order_date">&nbsp;</label>
             <button type="button" class="btn btn-danger remove-field">Remove</button>
             </div>
             </div>
