@@ -114,7 +114,9 @@
             </div>
             </div>
             </div>
-        <button type="button" id="add-field" class="btn btn-primary">Add More</button>
+        <div class="form-group">
+    <button type="button" id="add-field" class="btn btn-primary">Add More</button>
+    </div>
         </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
