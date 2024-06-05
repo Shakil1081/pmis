@@ -882,7 +882,6 @@ return [
             'posting_in_range'         => 'রেঞ্জে পদায়ন',
             'posting_in_range_helper'  => ' ',
             'circle_list'              => 'সার্কেল তালিকা',
-
             'circle_list_helper'       => ' ',
             'division_list'            => 'বিভাগ তালিকা',
             'division_list_helper'     => ' ',
