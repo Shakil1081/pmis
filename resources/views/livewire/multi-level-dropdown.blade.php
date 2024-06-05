@@ -131,7 +131,7 @@
 
 
 
-            @if ($rangeForbeat)
+            @if ($beatSFPCCamp === 'Range/SFNTC/Station')
                 <div class="form-group">
                     <label class="required" for="posting_in_range">{{ trans('global.postinginRange') }}</label>
                     <select wire:model="beatlistshow" class="form-select" name="posting_in_range"
