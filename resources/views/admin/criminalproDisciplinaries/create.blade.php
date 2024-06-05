@@ -129,7 +129,7 @@
                                 </button>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group  d-none">
             
             <button type="button" id="add-field" class="btn btn-primary">Add More</button>
     
