@@ -142,7 +142,7 @@
                     </select>
                 </div>
             @endif
-{{ $beatlistshow }}
+
 
             @if ($beatlistshow == 'Beat/SFNTC/Camp')
                 <div class="form-group">
