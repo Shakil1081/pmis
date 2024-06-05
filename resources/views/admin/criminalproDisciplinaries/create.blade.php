@@ -114,23 +114,27 @@
                     <span class="help-block">{{ trans('cruds.diciplinaryAction.fields.govt_order_date_helper') }}</span>
                     </div>
                     <div class="form-group">
-                    <label for="govt_order_date">&nbsp;</label>
+                    <label class="w-100">&nbsp;</label>
                 <button type="button" class="btn btn-danger remove-field">Remove</button>
                 </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-        <button type="button" id="add-field" class="btn btn-primary">Add More</button>
-
-        </div>
+        <div class="row row-cols-3">
+       
 
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
                                     {{ trans('global.save') }}
                                 </button>
                             </div>
+
+                            <div class="form-group">
+            
+            <button type="button" id="add-field" class="btn btn-primary">Add More</button>
+    
+            </div>
+            </div>
                         </form>
                     </div>
                 </div>
