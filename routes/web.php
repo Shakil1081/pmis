@@ -216,9 +216,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('leave-records/process-csv-import', 'LeaveRecordController@processCsvImport')->name('leave-records.processCsvImport');
     Route::resource('leave-records', 'LeaveRecordController');
 
-    // Training
-    Route::delete('trainings/destroy', 'TrainingController@massDestroy')->name('trainings.massDestroy');
-    Route::resource('trainings', 'TrainingController');
+       // Training
+       Route::delete('trainings/destroy', 'TrainingController@massDestroy')->name('trainings.massDestroy');
+       Route::post('trainings/media', 'TrainingController@storeMedia')->name('trainings.storeMedia');
+       Route::post('trainings/ckmedia', 'TrainingController@storeCKEditorImages')->name('trainings.storeCKEditorImages');
+       Route::resource('trainings', 'TrainingController');
 
     // Traveltype
     Route::delete('traveltypes/destroy', 'TraveltypeController@massDestroy')->name('traveltypes.massDestroy');

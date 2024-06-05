@@ -8,12 +8,19 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Training extends Model
+class Training extends Model implements HasMedia
 {
-    use SoftDeletes, Auditable, HasFactory;
+    use SoftDeletes, InteractsWithMedia, Auditable, HasFactory;
 
     public $table = 'trainings';
+
+    protected $appends = [
+        'upload_certificate',
+    ];
 
     protected $dates = [
         'start_date',
@@ -43,6 +50,12 @@ class Training extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
     public function employee()
@@ -83,5 +96,10 @@ class Training extends Model
     public function setEndDateAttribute($value)
     {
         $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getUploadCertificateAttribute()
+    {
+        return $this->getMedia('upload_certificate')->last();
     }
 }

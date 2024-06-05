@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyTrainingRequest;
 use App\Http\Requests\StoreTrainingRequest;
 use App\Http\Requests\UpdateTrainingRequest;
@@ -13,11 +14,14 @@ use App\Models\TrainingType;
 use App\Models\TravelPurpose;
 use Gate;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class TrainingController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('training_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -78,8 +82,11 @@ class TrainingController extends Controller
             $table->editColumn('location', function ($row) {
                 return $row->location ? $row->location : '';
             });
+            $table->editColumn('upload_certificate', function ($row) {
+                return $row->upload_certificate ? '<a href="' . $row->upload_certificate->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'employee', 'foreign_travel', 'training_type', 'country']);
+            $table->rawColumns(['actions', 'placeholder', 'employee', 'foreign_travel', 'training_type', 'country', 'upload_certificate']);
 
             return $table->make(true);
         }
@@ -106,6 +113,14 @@ class TrainingController extends Controller
     {
         $training = Training::create($request->all());
 
+        if ($request->input('upload_certificate', false)) {
+            $training->addMedia(storage_path('tmp/uploads/' . basename($request->input('upload_certificate'))))->toMediaCollection('upload_certificate');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $training->id]);
+        }
+
         return redirect()->route('admin.trainings.index');
     }
 
@@ -129,6 +144,17 @@ class TrainingController extends Controller
     public function update(UpdateTrainingRequest $request, Training $training)
     {
         $training->update($request->all());
+
+        if ($request->input('upload_certificate', false)) {
+            if (! $training->upload_certificate || $request->input('upload_certificate') !== $training->upload_certificate->file_name) {
+                if ($training->upload_certificate) {
+                    $training->upload_certificate->delete();
+                }
+                $training->addMedia(storage_path('tmp/uploads/' . basename($request->input('upload_certificate'))))->toMediaCollection('upload_certificate');
+            }
+        } elseif ($training->upload_certificate) {
+            $training->upload_certificate->delete();
+        }
 
         return redirect()->route('admin.trainings.index');
     }
@@ -160,5 +186,17 @@ class TrainingController extends Controller
         }
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('training_create') && Gate::denies('training_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new Training();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }
