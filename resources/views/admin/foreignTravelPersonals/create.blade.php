@@ -1,14 +1,18 @@
 @extends('layouts.admin')
 @section('content')
-
-<div class="card">
-    <div class="card-header">
+    <div class="card p-2">
+        <div class="container">
+            <div class="row">
+                @include('admin.commonemployee.commonmenu')
+                <div class="col-md-8">
+                    <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
         {{ trans('global.create') }} {{ trans('cruds.foreignTravelPersonal.title_singular') }}
     </div>
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.foreign-travel-personals.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="row row-cols-2">
             <div class="form-group">
                 <label for="title">{{ trans('cruds.foreignTravelPersonal.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}">
@@ -91,6 +95,7 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.leave_permission_helper') }}</span>
+            </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
