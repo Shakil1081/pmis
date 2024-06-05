@@ -136,15 +136,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                <label class="required" for="leave_permission">{{ trans('cruds.foreignTravelPersonal.fields.leave_permission') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('leave_permission') ? 'is-invalid' : '' }}" id="leave_permission-dropzone">
+                <label for="upload_certificate">{{ trans('cruds.training.fields.upload_certificate') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('upload_certificate') ? 'is-invalid' : '' }}" id="upload_certificate-dropzone">
                 </div>
-                @if($errors->has('leave_permission'))
+                @if($errors->has('upload_certificate'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('leave_permission') }}
+                        {{ $errors->first('upload_certificate') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.leave_permission_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.training.fields.upload_certificate_helper') }}</span>
             </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
@@ -157,26 +157,15 @@
             </div>
         </div>
     </div>
-@endsection
-@section('scripts')
-    @parent
-    <script>
-        function showCounter() {
-            var selectedValue = document.getElementById("training_type_id").value;
-            if (selectedValue == 2) {
-                document.querySelector('.counter').style.display = 'block'; // Show the counter
-            } else {
-                document.querySelector('.counter').style.display = 'none'; // Hide the counter
-            }
-        }
-    </script>
-@endsection
 
+    
+
+@endsection
 
 @section('scripts')
 <script>
-    Dropzone.options.leavePermissionDropzone = {
-    url: '{{ route('admin.foreign-travel-personals.storeMedia') }}',
+    Dropzone.options.uploadCertificateDropzone = {
+    url: '{{ route('admin.trainings.storeMedia') }}',
     maxFilesize: 4, // MB
     maxFiles: 1,
     addRemoveLinks: true,
@@ -187,22 +176,22 @@
       size: 4
     },
     success: function (file, response) {
-      $('form').find('input[name="leave_permission"]').remove()
-      $('form').append('<input type="hidden" name="leave_permission" value="' + response.name + '">')
+      $('form').find('input[name="upload_certificate"]').remove()
+      $('form').append('<input type="hidden" name="upload_certificate" value="' + response.name + '">')
     },
     removedfile: function (file) {
       file.previewElement.remove()
       if (file.status !== 'error') {
-        $('form').find('input[name="leave_permission"]').remove()
+        $('form').find('input[name="upload_certificate"]').remove()
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
     init: function () {
-@if(isset($foreignTravelPersonal) && $foreignTravelPersonal->leave_permission)
-      var file = {!! json_encode($foreignTravelPersonal->leave_permission) !!}
+@if(isset($training) && $training->upload_certificate)
+      var file = {!! json_encode($training->upload_certificate) !!}
           this.options.addedfile.call(this, file)
       file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="leave_permission" value="' + file.file_name + '">')
+      $('form').append('<input type="hidden" name="upload_certificate" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
 @endif
     },
