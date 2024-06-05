@@ -83,7 +83,33 @@
                                 <span
                                     class="help-block">{{ trans('cruds.criminalProsecutione.fields.remzrk_helper') }}</span>
                             </div>
-
+                            <div id="order-fields">
+            <div class="order-field">
+                <div class="form-group">
+                    <label for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
+                    <input class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}" type="text" name="govt_order_no[]" id="govt_order_no">
+                    @if($errors->has('govt_order_no'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('govt_order_no') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no_helper') }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="govt_order_date">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_date') }}</label>
+                    <input class="form-control date {{ $errors->has('govt_order_date') ? 'is-invalid' : '' }}" type="text" name="govt_order_date[]" id="govt_order_date">
+                    @if($errors->has('govt_order_date'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('govt_order_date') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_date_helper') }}</span>
+                </div>
+                <button type="button" class="btn btn-danger remove-field">Remove</button>
+            </div>
+        </div>
+        <button type="button" id="add-field" class="btn btn-primary">Add More</button>
+        
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
                                     {{ trans('global.save') }}
@@ -95,8 +121,23 @@
             </div>
         </div>
     </div>
-@endsection
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('add-field').addEventListener('click', function () {
+            let container = document.getElementById('order-fields');
+            let newField = document.querySelector('.order-field').cloneNode(true);
+            newField.querySelectorAll('input').forEach(input => input.value = '');
+            container.appendChild(newField);
+        });
 
+        document.getElementById('order-fields').addEventListener('click', function (e) {
+            if (e.target && e.target.matches('button.remove-field')) {
+                e.target.parentNode.remove();
+            }
+        });
+    });
+</script>
+@endsection
 @section('scripts')
     <script>
         Dropzone.options.courtOrderDropzone = {
