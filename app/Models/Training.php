@@ -25,6 +25,7 @@ class Training extends Model
 
     protected $fillable = [
         'employee_id',
+        'foreign_travel_id',
         'training_type_id',
         'training_name',
         'institute_name',
@@ -47,6 +48,11 @@ class Training extends Model
     public function employee()
     {
         return $this->belongsTo(EmployeeList::class, 'employee_id');
+    }
+
+    public function foreign_travel()
+    {
+        return $this->belongsTo(TravelPurpose::class, 'foreign_travel_id');
     }
 
     public function training_type()

@@ -23,6 +23,7 @@ class UpdateForeignTravelPersonalRequest extends FormRequest
             ],
             'purpose_id' => [
                 'required',
+                'integer',
             ],
             'from_date' => [
                 'date_format:' . config('panel.date_format'),
@@ -35,6 +36,9 @@ class UpdateForeignTravelPersonalRequest extends FormRequest
             'employee_id' => [
                 'required',
                 'integer',
+            ],
+            'leave_permission' => [
+                'required',
             ],
         ];
     }
