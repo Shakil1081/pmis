@@ -87,7 +87,7 @@
                             <div id="order-fields">
 
           
-            <div class="order-field">
+            <div class="order-field d-none">
             <div class="row row-cols-3">
             <div class="form-group">
             <label for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
