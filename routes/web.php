@@ -306,6 +306,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Foreign Travel Personal
     Route::delete('foreign-travel-personals/destroy', 'ForeignTravelPersonalController@massDestroy')->name('foreign-travel-personals.massDestroy');
+    Route::post('foreign-travel-personals/media', 'ForeignTravelPersonalController@storeMedia')->name('foreign-travel-personals.storeMedia');
+    Route::post('foreign-travel-personals/ckmedia', 'ForeignTravelPersonalController@storeCKEditorImages')->name('foreign-travel-personals.storeCKEditorImages');
     Route::resource('foreign-travel-personals', 'ForeignTravelPersonalController');
 
     // Social Ass Pr Attachment
@@ -382,6 +384,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
         // Result
         Route::delete('results/destroy', 'ResultController@massDestroy')->name('results.massDestroy');
         Route::resource('results', 'ResultController');
+
+         // Criminal Prosecution Derails
+    Route::delete('criminal-prosecution-derails/destroy', 'CriminalProsecutionDerailsController@massDestroy')->name('criminal-prosecution-derails.massDestroy');
+    Route::resource('criminal-prosecution-derails', 'CriminalProsecutionDerailsController');
+
+    // Diciplinary Action
+    Route::delete('diciplinary-actions/destroy', 'DiciplinaryActionController@massDestroy')->name('diciplinary-actions.massDestroy');
+    Route::resource('diciplinary-actions', 'DiciplinaryActionController');
     });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
