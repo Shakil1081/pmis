@@ -969,6 +969,8 @@ return [
             'position_helper'       => ' ',
             'created_at'            => 'Created at',
             'created_at_helper'     => ' ',
+            'upload_certificate'              => 'Upload_Certificate',
+            'upload_certificate_helper'       => 'PDF/JPG - Max file size 2MB ',
             'updated_at'            => 'Updated at',
             'updated_at_helper'     => ' ',
             'deleted_at'            => 'Deleted at',
