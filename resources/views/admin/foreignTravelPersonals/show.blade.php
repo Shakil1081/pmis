@@ -65,10 +65,22 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.foreignTravelPersonal.fields.leave') }}
+                            {{ trans('cruds.foreignTravelPersonal.fields.employee') }}
                         </th>
                         <td>
-                            {{ $foreignTravelPersonal->leave->start_date ?? '' }}
+                            {{ $foreignTravelPersonal->employee->employeeid ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.foreignTravelPersonal.fields.leave_permission') }}
+                        </th>
+                        <td>
+                            @if($foreignTravelPersonal->leave_permission)
+                                <a href="{{ $foreignTravelPersonal->leave_permission->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 </tbody>
