@@ -1645,7 +1645,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $foreignTravelPersonal->title->{$columname} }}
+                                    {{ $foreignTravelPersonal->title }}
                                 </td>
                             </tr>
                             <tr>
@@ -1809,7 +1809,7 @@
                                     {{ trans('cruds.publication.fields.publication_media') }}
                                 </th>
                                 <td>
-                                    {{ $publication->publication_media }}
+                                    <!-- {{ $publication->publication_media }} -->
                                 </td>
                             </tr>
                             <tr>
