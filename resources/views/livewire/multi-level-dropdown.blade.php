@@ -144,7 +144,7 @@
             @endif
 
 
-            @if ($beatlistshow == 'Beat/SFNTC/Camp')
+            @if ($beatlistshow ==='Beat/SFNTC/Camp')
                 <div class="form-group">
                     <label class="required" for="beat_list_id">{{ trans('cruds.jobHistory.fields.beat_list') }}</label>
                     <select class="form-select select2" name="beat_list_id" id="beat_list_id">
