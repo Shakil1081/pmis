@@ -251,7 +251,7 @@
         @endcan
         @can('office_config_access')
             <li
-                class="c-sidebar-nav-dropdown {{ request()->is('admin/office-units*') ? 'c-show' : '' }} {{ request()->is('admin/designations*') ? 'c-show' : '' }} {{ request()->is('admin/leave-categories*') ? 'c-show' : '' }} {{ request()->is('admin/leave-types*') ? 'c-show' : '' }} {{ request()->is('admin/training-types*') ? 'c-show' : '' }} {{ request()->is('admin/travel-purposes*') ? 'c-show' : '' }} {{ request()->is('admin/license-types*') ? 'c-show' : '' }} {{ request()->is('admin/grades*') ? 'c-show' : '' }} {{ request()->is('admin/traveltypes*') ? 'c-show' : '' }} {{ request()->is('admin/batches*') ? 'c-show' : '' }} {{ request()->is('admin/joininginfos*') ? 'c-show' : '' }} {{ request()->is('admin/project-revenuelones*') ? 'c-show' : '' }} {{ request()->is('admin/project-revenue-exams*') ? 'c-show' : '' }} {{ request()->is('admin/years*') ? 'c-show' : '' }} {{ request()->is('admin/projects*') ? 'c-show' : '' }}">
+                class="c-sidebar-nav-dropdown {{ request()->is('admin/office-units*') ? 'c-show' : '' }} {{ request()->is('admin/designations*') ? 'c-show' : '' }} {{ request()->is('admin/leave-categories*') ? 'c-show' : '' }} {{ request()->is('admin/leave-types*') ? 'c-show' : '' }} {{ request()->is('admin/training-types*') ? 'c-show' : '' }} {{ request()->is('admin/travel-purposes*') ? 'c-show' : '' }} {{ request()->is('admin/license-types*') ? 'c-show' : '' }} {{ request()->is('admin/grades*') ? 'c-show' : '' }} {{ request()->is('admin/traveltypes*') ? 'c-show' : '' }} {{ request()->is('admin/batches*') ? 'c-show' : '' }} {{ request()->is('admin/joininginfos*') ? 'c-show' : '' }} {{ request()->is('admin/project-revenuelones*') ? 'c-show' : '' }} {{ request()->is('admin/project-revenue-exams*') ? 'c-show' : '' }} {{ request()->is('admin/years*') ? 'c-show' : '' }} {{ request()->is('admin/projects*') ? 'c-show' : '' }} {{ request()->is('admin/travel-titles') || request()->is('admin/travel-titles/*') ? 'c-show' : '' }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-building c-sidebar-nav-icon">
 
@@ -319,9 +319,16 @@
                             <a href="{{ route('admin.travel-purposes.index') }}"
                                 class="c-sidebar-nav-link {{ request()->is('admin/travel-purposes') || request()->is('admin/travel-purposes/*') ? 'c-active' : '' }}">
                                 <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
-
                                 </i>
                                 {{ trans('cruds.travelPurpose.title') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.travel-titles.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/travel-titles') || request()->is('admin/travel-titles/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-angle-right c-sidebar-nav-icon">
+                                </i>
+                                {{ trans('cruds.travelTitle.title') }}
                             </a>
                         </li>
                     @endcan
@@ -905,11 +912,11 @@
                             </a>
                         </li>
                     @endcan
-                    
+
                 </ul>
             </li>
         @endcan
-        
+
         @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

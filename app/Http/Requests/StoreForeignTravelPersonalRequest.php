@@ -17,10 +17,6 @@ class StoreForeignTravelPersonalRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
-                'string',
-                'nullable',
-            ],
             'purpose_id' => [
                 'required',
                 'integer',
@@ -38,6 +34,9 @@ class StoreForeignTravelPersonalRequest extends FormRequest
                 'integer',
             ],
             'leave_permission' => [
+                'required',
+            ],
+            'title_id' => [
                 'required',
             ],
         ];

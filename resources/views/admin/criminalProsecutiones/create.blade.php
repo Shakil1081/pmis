@@ -19,7 +19,7 @@
                                         for="judgement_type">{{ trans('cruds.criminalProsecutione.fields.judgement_type') }}</label>
                                     <input class="form-control {{ $errors->has('judgement_type') ? 'is-invalid' : '' }}"
                                         type="text" name="judgement_type" id="judgement_type"
-                                        value="{{ old('judgement_type', '') }}">
+                                        value="{{ old('judgement_type', '') }}" required>
                                     @if ($errors->has('judgement_type'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('judgement_type') }}
@@ -42,37 +42,56 @@
                                     <span
                                         class="help-block">{{ trans('cruds.criminalProsecutione.fields.natureof_offence_helper') }}</span>
                                 </div>
-                                <div class="form-group">
-                                    <label
-                                        for="government_order_no">{{ trans('cruds.criminalProsecutione.fields.government_order_no') }}</label>
-                                    <input
-                                        class="form-control {{ $errors->has('government_order_no') ? 'is-invalid' : '' }}"
-                                        type="text" name="government_order_no" id="government_order_no"
-                                        value="{{ old('government_order_no', '') }}">
-                                    @if ($errors->has('government_order_no'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('government_order_no') }}
+                            </div>
+
+                            <div id="order-fields">
+
+
+                                <div class="order-field">
+                                    <div class="row row-cols-3">
+                                        <div class="form-group">
+                                            <label
+                                                for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
+                                            <input
+                                                class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}"
+                                                type="text" name="govt_order_no[]" id="govt_order_no">
+                                            @if ($errors->has('govt_order_no'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('govt_order_no') }}
+                                                </div>
+                                            @endif
+                                            <span
+                                                class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no_helper') }}</span>
                                         </div>
-                                    @endif
-                                    <span
-                                        class="help-block">{{ trans('cruds.criminalProsecutione.fields.government_order_no_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label
-                                        for="court_order">{{ trans('cruds.criminalProsecutione.fields.court_order') }}</label>
-                                    <div class="needsclick dropzone {{ $errors->has('court_order') ? 'is-invalid' : '' }}"
-                                        id="court_order-dropzone">
+                                        <div class="form-group">
+                                            <label for="govt_order_file"
+                                                class="form-label">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_file') }}</label>
+                                            <input
+                                                class="form-control form-control-file {{ $errors->has('govt_order_file') ? 'is-invalid' : '' }}"
+                                                type="file" name="govt_order_file[]" id="govt_order_file" multiple>
+                                            @if ($errors->has('govt_order_file'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('govt_order_file') }}
+                                                </div>
+                                            @endif
+                                            {{-- <span
+                                                class="form-text">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_file_helper') }}</span> --}}
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="w-100">&nbsp;</label>
+                                            <button type="button" class="btn btn-danger remove-field">Remove</button>
+                                        </div>
                                     </div>
-                                    @if ($errors->has('court_order'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('court_order') }}
-                                        </div>
-                                    @endif
-                                    <span
-                                        class="help-block">{{ trans('cruds.criminalProsecutione.fields.court_order_helper') }}</span>
                                 </div>
                             </div>
-                          
+
+                            <div class="form-group w-100">
+
+                                <button type="button" id="add-field" class="btn btn-primary w100">Add More</button>
+
+                            </div>
                             <div class="form-group">
                                 <label for="remzrk">{{ trans('cruds.criminalProsecutione.fields.remzrk') }}</label>
                                 <textarea class="form-control ckeditor {{ $errors->has('remzrk') ? 'is-invalid' : '' }}" name="remzrk" id="remzrk">{!! old('remzrk') !!}</textarea>
@@ -84,53 +103,17 @@
                                 <span
                                     class="help-block">{{ trans('cruds.criminalProsecutione.fields.remzrk_helper') }}</span>
                             </div>
-                            <div id="order-fields">
 
-          
-            <div class="order-field d-none">
-            <div class="row row-cols-3">
-            <div class="form-group">
-            <label for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
-            <input class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}" type="text" name="govt_order_no[]" id="govt_order_no">
-            @if($errors->has('govt_order_no'))
-            <div class="invalid-feedback">
-            {{ $errors->first('govt_order_no') }}
-            </div>
-            @endif
-            <span class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no_helper') }}</span>
-            </div>
-            <div class="form-group">
-            <label for="govt_order_date">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_date') }}</label>
-            <input class="form-control date {{ $errors->has('govt_order_date') ? 'is-invalid' : '' }}" type="date" name="govt_order_date[]" id="govt_order_date">
-            @if($errors->has('govt_order_date'))
-            <div class="invalid-feedback">
-            {{ $errors->first('govt_order_date') }}
-            </div>
-            @endif
-            <span class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_date_helper') }}</span>
-            </div>
-            <div class="form-group">
-            <label class="w-100">&nbsp;</label>
-            <button type="button" class="btn btn-danger remove-field">Remove</button>
-            </div>
-            </div>
-            </div>
-        </div>
-        <div class="row row-cols-3">
-       
+                            <div class="row row-cols-2">
 
-       <div class="form-group">
-           <button class="btn btn-danger" type="submit">
-               {{ trans('global.save') }}
-           </button>
-       </div>
 
-       <div class="form-group  d-none">
+                                <div class="form-group">
+                                    <button class="btn btn-danger" type="submit">
+                                        {{ trans('global.save') }}
+                                    </button>
+                                </div>
 
-<button type="button" id="add-field" class="btn btn-primary">Add More</button>
-
-</div>
-</div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -138,21 +121,21 @@
         </div>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('add-field').addEventListener('click', function () {
-            let container = document.getElementById('order-fields');
-            let newField = document.querySelector('.order-field').cloneNode(true);
-            newField.querySelectorAll('input').forEach(input => input.value = '');
-            container.appendChild(newField);
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('add-field').addEventListener('click', function() {
+                let container = document.getElementById('order-fields');
+                let newField = document.querySelector('.order-field').cloneNode(true);
+                newField.querySelectorAll('input').forEach(input => input.value = '');
+                container.appendChild(newField);
+            });
 
-        document.getElementById('order-fields').addEventListener('click', function (e) {
-            if (e.target && e.target.matches('button.remove-field')) {
-                e.target.parentNode.remove();
-            }
+            document.getElementById('order-fields').addEventListener('click', function(e) {
+                if (e.target && e.target.matches('button.remove-field')) {
+                    e.target.parentNode.remove();
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endsection
 @section('scripts')
     <script>

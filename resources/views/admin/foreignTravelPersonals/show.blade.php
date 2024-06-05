@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.foreignTravelPersonal.fields.title') }}
-                        </th>
-                        <td>
-                            {{ $foreignTravelPersonal->title }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.foreignTravelPersonal.fields.country') }}
                         </th>
                         <td>
@@ -81,6 +73,14 @@
                                     {{ trans('global.view_file') }}
                                 </a>
                             @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.foreignTravelPersonal.fields.title') }}
+                        </th>
+                        <td>
+                            {{ $foreignTravelPersonal->title->name_bn ?? '' }}
                         </td>
                     </tr>
                 </tbody>

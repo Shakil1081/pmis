@@ -17,10 +17,6 @@ class UpdateForeignTravelPersonalRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
-                'string',
-                'nullable',
-            ],
             'purpose_id' => [
                 'required',
                 'integer',
@@ -39,6 +35,10 @@ class UpdateForeignTravelPersonalRequest extends FormRequest
             ],
             'leave_permission' => [
                 'required',
+            ],
+            'title_id' => [
+                'required',
+                'integer',
             ],
         ];
     }

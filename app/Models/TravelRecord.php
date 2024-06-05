@@ -24,8 +24,8 @@ class TravelRecord extends Model
 
     protected $fillable = [
         'employee_id',
+        'title_id',
         'country_id',
-        'title',
         'purpose_id',
         'start_date',
         'end_date',
@@ -44,15 +44,20 @@ class TravelRecord extends Model
         return $this->belongsTo(EmployeeList::class, 'employee_id');
     }
 
+    public function title()
+    {
+        return $this->belongsTo(TravelTitle::class, 'title_id');
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-    // public function purpose()
-    // {
-    //     return $this->belongsTo(TravelPurpose::class, 'purpose_id');
-    // }
+    public function purpose()
+    {
+        return $this->belongsTo(TravelPurpose::class, 'purpose_id');
+    }
 
     public function getStartDateAttribute($value)
     {

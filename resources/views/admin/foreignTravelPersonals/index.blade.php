@@ -25,9 +25,6 @@
                         {{ trans('cruds.foreignTravelPersonal.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.foreignTravelPersonal.fields.title') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.foreignTravelPersonal.fields.country') }}
                     </th>
                     <th>
@@ -44,6 +41,9 @@
                     </th>
                     <th>
                         {{ trans('cruds.employeeList.fields.fullname_bn') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.foreignTravelPersonal.fields.title') }}
                     </th>
                     <th>
                         &nbsp;
@@ -102,13 +102,13 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'title', name: 'title' },
 { data: 'country_name_bn', name: 'country.name_bn' },
 { data: 'purpose_name_bn', name: 'purpose.name_bn' },
 { data: 'from_date', name: 'from_date' },
 { data: 'to_date', name: 'to_date' },
 { data: 'employee_employeeid', name: 'employee.employeeid' },
 { data: 'employee.fullname_bn', name: 'employee.fullname_bn' },
+{ data: 'title_name_bn', name: 'title.name_bn' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

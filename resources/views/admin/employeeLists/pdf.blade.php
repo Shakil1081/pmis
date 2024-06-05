@@ -52,7 +52,7 @@
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
             <td style="text-align: left; border: 0;" width="82">
-                <img src="{{ public_path('img/bforest.png') }}" width="80">
+                <img src="img/bforest.png" width="80">
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
@@ -1112,14 +1112,14 @@
                                     {{ $child->{$columname} }}
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.name_en') }}
                                 </th>
                                 <td>
                                     {{ $child->name_en }}
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     {{ trans('cruds.child.fields.date_of_birth') }}
@@ -1509,14 +1509,7 @@
                                     {{ $training->institute_name ?? 'N/A' }}
                                 </td>
                             </tr>
-                            <tr>
-                                <th>
-                                    {{ trans('cruds.training.fields.institute_name') }}
-                                </th>
-                                <td>
-                                    {{ $training->institute_name ?? 'N/A' }}
-                                </td>
-                            </tr>
+
                             <tr>
                                 <th>
                                     {{ trans('cruds.training.fields.country') }}

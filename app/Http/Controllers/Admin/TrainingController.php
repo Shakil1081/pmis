@@ -14,6 +14,7 @@ use App\Models\TrainingType;
 use App\Models\TravelPurpose;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -97,14 +98,16 @@ class TrainingController extends Controller
     public function create()
     {
         abort_if(Gate::denies('training_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $foreign_travels = TravelPurpose::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $foreign_travels = TravelPurpose::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $training_types = TrainingType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $training_types = TrainingType::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.trainings.create', compact('countries', 'employees', 'foreign_travels', 'training_types'));
     }
@@ -121,20 +124,21 @@ class TrainingController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $training->id]);
         }
 
-        return redirect()->route('admin.trainings.index');
+        return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(Training $training)
     {
         abort_if(Gate::denies('training_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $foreign_travels = TravelPurpose::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $foreign_travels = TravelPurpose::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $training_types = TrainingType::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $training_types = TrainingType::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name_bn', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $training->load('employee', 'foreign_travel', 'training_type', 'country');
 

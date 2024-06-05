@@ -33,14 +33,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelRecord.fields.title') }}
-                        </th>
-                        <td>
-                            {{ $travelRecord->title }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.travelRecord.fields.purpose') }}
                         </th>
                         <td>
@@ -61,6 +53,14 @@
                         </th>
                         <td>
                             {{ $travelRecord->end_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.travelRecord.fields.title') }}
+                        </th>
+                        <td>
+                            {{ $travelRecord->title->name_bn ?? '' }}
                         </td>
                     </tr>
                 </tbody>

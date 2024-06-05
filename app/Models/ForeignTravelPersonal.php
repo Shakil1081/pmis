@@ -30,12 +30,12 @@ class ForeignTravelPersonal extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'title',
         'country_id',
         'purpose_id',
         'from_date',
         'to_date',
         'employee_id',
+        'title_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -90,5 +90,10 @@ class ForeignTravelPersonal extends Model implements HasMedia
     public function getLeavePermissionAttribute()
     {
         return $this->getMedia('leave_permission')->last();
+    }
+
+    public function title()
+    {
+        return $this->belongsTo(TravelTitle::class, 'title_id');
     }
 }

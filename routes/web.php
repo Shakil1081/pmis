@@ -394,6 +394,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Diciplinary Action
     Route::delete('diciplinary-actions/destroy', 'DiciplinaryActionController@massDestroy')->name('diciplinary-actions.massDestroy');
     Route::resource('diciplinary-actions', 'DiciplinaryActionController');
+
+
+    // Travel Title
+    Route::delete('travel-titles/destroy', 'TravelTitleController@massDestroy')->name('travel-titles.massDestroy');
+    Route::resource('travel-titles', 'TravelTitleController');
+    
     });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password

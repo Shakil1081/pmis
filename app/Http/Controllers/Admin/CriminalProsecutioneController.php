@@ -81,6 +81,8 @@ class CriminalProsecutioneController extends Controller
 
     public function store(StoreCriminalProsecutioneRequest $request)
     {
+
+        dd($request->all());
         $criminalProsecutione = CriminalProsecutione::create($request->all());
 
         if ($request->input('court_order', false)) {
