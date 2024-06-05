@@ -71,20 +71,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.to_date_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label class="required" for="employee_id">{{ trans('cruds.foreignTravelPersonal.fields.employee') }}</label>
-                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id" id="employee_id" required>
-                    @foreach($employees as $id => $entry)
-                        <option value="{{ $id }}" {{ old('employee_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('employee'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('employee') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.employee_helper') }}</span>
-            </div>
+            <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
             <div class="form-group">
                 <label class="required" for="leave_permission">{{ trans('cruds.foreignTravelPersonal.fields.leave_permission') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('leave_permission') ? 'is-invalid' : '' }}" id="leave_permission-dropzone">
