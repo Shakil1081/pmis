@@ -452,6 +452,8 @@ return [
             'home_district_helper'                 => ' ',
             'marital_statu'                        => 'Marital Status',
             'marital_statu_helper'                 => ' ',
+            'project_revenue'                      => 'Revenue',
+            'project_revenue_helper'               => ' ',
             'gender'                               => 'Gender',
             'gender_helper'                        => ' ',
             'religion'                             => 'Religion',
