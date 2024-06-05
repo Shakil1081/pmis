@@ -72,6 +72,7 @@
                                         class="help-block">{{ trans('cruds.criminalProsecutione.fields.court_order_helper') }}</span>
                                 </div>
                             </div>
+                          
                             <div class="form-group">
                                 <label for="remzrk">{{ trans('cruds.criminalProsecutione.fields.remzrk') }}</label>
                                 <textarea class="form-control ckeditor {{ $errors->has('remzrk') ? 'is-invalid' : '' }}" name="remzrk" id="remzrk">{!! old('remzrk') !!}</textarea>
@@ -83,6 +84,7 @@
                                 <span
                                     class="help-block">{{ trans('cruds.criminalProsecutione.fields.remzrk_helper') }}</span>
                             </div>
+                            <div class="row row-cols-2">
                             <div id="order-fields">
             <div class="order-field">
                 <div class="form-group">
@@ -107,9 +109,9 @@
                 </div>
                 <button type="button" class="btn btn-danger remove-field">Remove</button>
             </div>
-        </div>
+      
         <button type="button" id="add-field" class="btn btn-primary">Add More</button>
-        
+        </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">
                                     {{ trans('global.save') }}
