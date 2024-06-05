@@ -86,8 +86,9 @@
                             </div>
                             <div id="order-fields">
 
-            <div class="row row-cols-2">
+          
             <div class="order-field">
+            <div class="row row-cols-3">
             <div class="form-group">
             <label for="govt_order_no">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no') }}</label>
             <input class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}" type="text" name="govt_order_no[]" id="govt_order_no">
