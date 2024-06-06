@@ -56,7 +56,9 @@ class JobHistorieController extends Controller
             });
 
             $table->addColumn('designation_name_bn', function ($row) {
-                return $row->designation ? $row->designation->name_bn : 'N/A';
+                $locale = App::getLocale();
+                $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+                return $row->designation ? $row->designation->{$columname} : 'N/A';
             });
 
             $table->addColumn('employee_employeeid', function ($row) {
