@@ -60,7 +60,7 @@ class JobHistorieController extends Controller
             });
 
             $table->addColumn('employee_employeeid', function ($row) {
-                return $row->employee ? $row->employee->employeeid : 'N/A';
+                return $row->employee ? englishToBanglaNumber($row->employee->employeeid) : 'N/A';
             });
 
             $table->addColumn('name', function ($row) {
@@ -75,7 +75,7 @@ class JobHistorieController extends Controller
             });
 
             $table->editColumn('grade.salary_range', function ($row) {
-                return $row->grade ? (is_string($row->grade) ? $row->grade : $row->grade->salary_range) : 'N/A';
+                return $row->grade ? (is_string($row->grade) ? $row->grade : englishToBanglaNumber($row->grade->salary_range)) : 'N/A';
             });
             $table->editColumn('institutename', function ($row) {
                 return $row->institutename ? $row->institutename : 'N/A';
@@ -92,10 +92,10 @@ class JobHistorieController extends Controller
             });            
 
             $table->addColumn('posting_in_range', function ($row) {
-                return  $row->beat_list->forest_range->name_bn??'N/A';
+                return  $row->beat_list->forest_range->name_bn ?? 'N/A';
             });
             $table->addColumn('beat_list', function ($row) {
-                return $row->beat_list->name_bn ??'N/A';
+                return $row->beat_list->name_bn ?? 'N/A';
             }); 
             $table->addColumn('office_unit', function ($row) {
                 return $row->office_unit->name_en ??'N/A';

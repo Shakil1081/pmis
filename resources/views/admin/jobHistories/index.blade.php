@@ -193,13 +193,14 @@
                         name: 'posting_in_range'
                     },
                     {
-                        data: 'office_unit',
-                        name: 'office_unit'
-                    },
-                    {
                         data: 'beat_list',
                         name: 'beat_list'
                     },
+                    {
+                        data: 'office_unit',
+                        name: 'office_unit'
+                    },
+
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'
