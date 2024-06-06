@@ -52,7 +52,7 @@
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
             <td style="text-align: left; border: 0;" width="82">
-                <img src="img/bforest.png" width="80">
+                <img src="{{ public_path('assets/images/logo1.png') }}" height="80" alt="Logo" />
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
@@ -1645,7 +1645,7 @@
                                     {{ trans('cruds.foreignTravelPersonal.fields.title') }}
                                 </th>
                                 <td>
-                                    {{ $foreignTravelPersonal->title }}
+                                    {{ $foreignTravelPersonal->title->{$columname} }}
                                 </td>
                             </tr>
                             <tr>
@@ -1809,7 +1809,7 @@
                                     {{ trans('cruds.publication.fields.publication_media') }}
                                 </th>
                                 <td>
-                                    <!-- {{ $publication->publication_media }} -->
+                                    {{ $publication->publication_media }}
                                 </td>
                             </tr>
                             <tr>
