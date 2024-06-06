@@ -14,7 +14,7 @@
                 @include('admin.commonemployee.commonmenuemployeeshow')
                 <div class="col-md-9">
 
-
+<!-- updated -->
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                         <div>
                             <strong>{{ trans('cruds.employeeList.title_singular') }}</strong>
@@ -2181,11 +2181,10 @@
                                         <tr>
                                             <th> </th>
                                             <td>
-                                                <!-- Edit button -->
+                                                
                                                 <a href="{{ route('admin.criminalpro-disciplinaries.edit', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
                                                     class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
-
-                                                <!-- Delete button -->
+ 
                                                 <form
                                                     action="{{ route('admin.criminalpro-disciplinaries.destroy', ['criminalpro_disciplinary' => $criminalproDisciplinary->id]) }}"
                                                     method="POST" style="display: inline;">
