@@ -1469,7 +1469,7 @@
                                                 {{ trans('cruds.travelRecord.fields.title') }}
                                             </th>
                                             <td>
-                                                {{ $travelRecord->title }}
+                                                {{ $travelRecord->title->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
