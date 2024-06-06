@@ -10,6 +10,8 @@ foreign_travel_personals   change title to title _id is and datatype
 travel_records  same thing 
 
 
+delete add on server  data base   clas   
+
 
 
 CREATE TABLE IF NOT EXISTS `diciplinary_actions` (
