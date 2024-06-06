@@ -52,21 +52,31 @@
                         <th>
                             {{ trans('cruds.employeeList.fields.fullname_bn') }}
                         </th>
-                        {{-- <th>
+                        <th>
                             {{ trans('cruds.jobHistory.fields.grade') }}
-                        </th> --}}
+                        </th>
                         <th>
                             {{ trans('cruds.grade.fields.salary_range') }}
                         </th>
-                        {{-- <th>
+                        <th>
                             {{ trans('cruds.jobHistory.fields.institutename') }}
-                        </th> --}}
+                        </th>
                         <th>
                             {{ trans('cruds.jobHistory.fields.circle_list') }}
                         </th>
-                        {{-- <th>
+                        <th>
                             {{ trans('cruds.jobHistory.fields.division_list') }}
-                        </th> --}}
+                        </th>
+
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.range') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.beat') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.office_unit') }}
+                        </th>
                         <th>
                             &nbsp;
                         </th>
@@ -157,26 +167,39 @@
                         data: 'employee.fullname_bn',
                         name: 'employee.fullname_bn'
                     },
-                    // {
-                    //     data: 'grade_name_bn',
-                    //     name: 'grade.name_bn'
-                    // },
+                    {
+                        data: 'grade_name_bn',
+                        name: 'grade.name_bn'
+                    },
                     {
                         data: 'grade.salary_range',
                         name: 'grade.salary_range'
                     },
-                    // {
-                    //     data: 'institutename',
-                    //     name: 'institutename'
-                    // },
+                    {
+                        data: 'institutename',
+                        name: 'institutename'
+                    },
                     {
                         data: 'circle_list_name_bn',
                         name: 'circle_list.name_bn'
                     },
-                    // {
-                    //     data: 'division_list_name_bn',
-                    //     name: 'division_list.name_bn'
-                    // },
+                    {
+                        data: 'division_list_name_bn',
+                        name: 'division_list.name_bn'
+                    },
+
+                    {
+                        data: 'posting_in_range',
+                        name: 'posting_in_range'
+                    },
+                    {
+                        data: 'office_unit',
+                        name: 'office_unit'
+                    },
+                    {
+                        data: 'beat_list',
+                        name: 'beat_list'
+                    },
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

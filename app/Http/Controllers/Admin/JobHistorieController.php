@@ -56,89 +56,50 @@ class JobHistorieController extends Controller
             });
 
             $table->addColumn('designation_name_bn', function ($row) {
-                return $row->designation ? $row->designation->name_bn : '';
+                return $row->designation ? $row->designation->name_bn : 'N/A';
             });
 
             $table->addColumn('employee_employeeid', function ($row) {
-                return $row->employee ? $row->employee->employeeid : '';
+                return $row->employee ? $row->employee->employeeid : 'N/A';
             });
 
             $table->addColumn('name', function ($row) {
-                return $row->employee ? $row->employee->fullname_bn : '';
+                return $row->employee ? $row->employee->fullname_bn : 'N/A';
             });
 
             $table->editColumn('employee.fullname_bn', function ($row) {
-                return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : '';
+                return $row->employee ? (is_string($row->employee) ? $row->employee : $row->employee->fullname_bn) : 'N/A';
             });
             $table->addColumn('grade_name_bn', function ($row) {
-                return $row->grade ? $row->grade->name_bn : '';
+                return $row->grade ? $row->grade->name_bn : 'N/A';
             });
 
             $table->editColumn('grade.salary_range', function ($row) {
-
-                $gradeDetails = $row->grade ? $row->grade->name_bn . ', (' . englishToBanglaNumber($row->grade->salary_range) : ''.')';
-
-                //return $row->grade ? (is_string($row->grade) ? $row->grade : $row->grade->salary_range) : '';
-                return  $gradeDetails;
+                return $row->grade ? (is_string($row->grade) ? $row->grade : $row->grade->salary_range) : 'N/A';
             });
-            // $table->editColumn('institutename', function ($row) {
-            //     return $row->institutename ? $row->institutename : '';
-            // });
+            $table->editColumn('institutename', function ($row) {
+                return $row->institutename ? $row->institutename : 'N/A';
+            });
             $table->addColumn('circle_list_name_bn', function ($row) {
-               
-                    $locale = App::getLocale();
-                    $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
-                    $concatenatedString = '';
-
-                    // Check and concatenate institutename
-                    if (!empty($row->institutename)) {
-                        $concatenatedString .= trans('cruds.jobHistory.fields.institutename') . ": " . $row->institutename . "; ";
-                    }
-                    
-                    // Check and concatenate postingindivision
-                    if (!empty($row->beat_list->forest_range->forest_division->{$columname})) {
-                        $concatenatedString .= trans('cruds.jobHistory.fields.postingindivision') . ": " . $row->beat_list->forest_range->forest_division->{$columname} . "; ";
-                    }
-                    
-                    // Check and concatenate posting_in_range
-                    if (!empty($row->beat_list->forest_range->{$columname})) {
-                        $concatenatedString .= trans('cruds.jobHistory.fields.posting_in_range') . ": " . $row->beat_list->forest_range->{$columname} . "; ";
-                    }
-                    
-                    // Check and concatenate beat_list
-                    if (!empty($row->beat_list->{$columname})) {
-                        $concatenatedString .= trans('cruds.jobHistory.fields.beat_list') . ": " . $row->beat_list->{$columname} . "; ";
-                    }
-                    
-                    // Trim trailing semicolon and whitespace
-                    $concatenatedString = rtrim($concatenatedString, "; ");
-                    
-                    // If concatenated string is empty, assign 'N/A'
-                    if (empty($concatenatedString)) {
-                        $concatenatedString = 'N/A';
-                    }
-                    
-    
-                    // $institutename=$row->institutename ? $row->institutename : '';
-                    // $circle_list=$row->circle_list ? $row->circle_list->name_bn : '';
-
-
-                    // {{ trans('cruds.jobHistory.fields.postingindivision') }}:
-                    //                     {{ $jobHistory->beat_list->forest_range->forest_division->{$columname} ?? 'N/A' }};
-
-                    //                     {{ trans('cruds.jobHistory.fields.posting_in_range') }}:
-                    //                     {{ $jobHistory->beat_list->forest_range->{$columname} ?? 'N/A' }};
-
-                    //                     {{ trans('cruds.jobHistory.fields.beat_list') }}:
-                    //                     {{ $jobHistory->beat_list->{$columname} ?? 'N/A' }} <br>
-                    return $concatenatedString;
+                return $row->circle_list ? $row->circle_list->name_bn : 'N/A';
+            });
+            $table->addColumn('forest_division', function ($row) {
+                return ($row->beat_list ? $row->beat_list->forest_state:'');
+            });
             
-            });
+            $table->editColumn('division_list_name_bn', function ($row) {
+                return $row->beat_list->forest_range->forest_division->name_bn ?? 'N/A';
+            });            
 
-            $table->addColumn('division_list_name_bn', function ($row) {
-                return $row->division_list ? $row->division_list->name_bn : '';
+            $table->addColumn('posting_in_range', function ($row) {
+                return  $row->beat_list->forest_range->name_bn??'N/A';
             });
-
+            $table->addColumn('beat_list', function ($row) {
+                return $row->beat_list->name_bn ??'N/A';
+            }); 
+            $table->addColumn('office_unit', function ($row) {
+                return $row->office_unit->name_en ??'N/A';
+            }); 
             $table->rawColumns(['actions', 'placeholder', 'designation', 'employee', 'grade', 'circle_list', 'division_list']);
 
             return $table->make(true);
