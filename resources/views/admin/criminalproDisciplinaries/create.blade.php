@@ -120,61 +120,25 @@
                                         </div>
 
 
-                                        <div class="col-md-2">
+                                        {{-- <div class="col-md-2">
                                             <label class="w-100">&nbsp;</label>
                                             <button type="button" class="btn btn-danger remove-field">Remove</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group w-100">
+                                <button type="button" id="add-field" class="btn btn-primary w100">
 
-                                <button type="button" id="add-field" class="btn btn-primary w100">Add More</button>
-
+                                    @if (app()->getLocale() === 'bn')
+                                        আরো যোগ করুন
+                                    @else
+                                        Add More
+                                    @endif
+                                </button>
                             </div>
 
-
-                            {{-- <div id="action-fields" class="">
-                                <div class="action-field">
-                                    <div class="row row-cols-3">
-                                        <div class="form-group">
-                                            <label class="required"
-                                                for="govt_order_no_0">{{ trans('cruds.diciplinaryAction.fields.govt_order_no') }}</label>
-                                            <input
-                                                class="form-control {{ $errors->has('govt_order_no.0') ? 'is-invalid' : '' }}"
-                                                type="text" name="govt_order_no[]" id="govt_order_no_0"
-                                                value="{{ old('govt_order_no.0', '') }}" required>
-                                            @if ($errors->has('govt_order_no.0'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('govt_order_no.0') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.diciplinaryAction.fields.govt_order_no_helper') }}</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="required"
-                                                for="govt_order_date_0">{{ trans('cruds.diciplinaryAction.fields.govt_order_date') }}</label>
-                                            <input
-                                                class="form-control {{ $errors->has('govt_order_date.0') ? 'is-invalid' : '' }}"
-                                                type="date" name="govt_order_date[]" id="govt_order_date_0"
-                                                value="{{ old('govt_order_date.0') }}" required>
-                                            @if ($errors->has('govt_order_date.0'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('govt_order_date.0') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.diciplinaryAction.fields.govt_order_date_helper') }}</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="w-100">&nbsp;</label>
-                                            <button type="button" class="btn btn-danger remove-field">Remove</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
 
                             <div class="form-group">
                                 <label for="remarks">{{ trans('cruds.criminalproDisciplinary.fields.remarks') }}</label>

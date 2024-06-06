@@ -83,17 +83,23 @@
                                         </div>
 
 
-                                        <div class="col-md-2">
+                                        {{-- <div class="col-md-2">
                                             <label class="w-100">&nbsp;</label>
                                             <button type="button" class="btn btn-danger remove-field">Remove</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group w-100">
 
-                                <button type="button" id="add-field" class="btn btn-primary w100">Add More</button>
+                                <button type="button" id="add-field" class="btn btn-primary w100">
+                                    @if (app()->getLocale() === 'bn')
+                                        আরো যোগ করুন
+                                    @else
+                                        Add More
+                                    @endif
+                                </button>
 
                             </div>
                             <div class="form-group">
