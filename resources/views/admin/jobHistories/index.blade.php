@@ -26,18 +26,18 @@
 
                         </th>
                         <th>
-                        @if (app()->getLocale() === 'bn')
-                        কর্মকর্তা/কর্মচারী আইডি
-                    @else
-                        Employee ID
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                কর্মকর্তা/কর্মচারী আইডি
+                            @else
+                                Employee ID
+                            @endif
                         </th>
                         <th>
-                        @if (app()->getLocale() === 'bn')
-                        কর্মকর্তা/কর্মচারী নাম
-                    @else
-                        Employee Name
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                কর্মকর্তা/কর্মচারী নাম
+                            @else
+                                Employee Name
+                            @endif
                         </th>
                         <th>
                             {{ trans('cruds.jobHistory.fields.designation') }}
@@ -48,25 +48,25 @@
                         <th>
                             {{ trans('cruds.jobHistory.fields.release_date') }}
                         </th>
-                        
+
                         <th>
                             {{ trans('cruds.employeeList.fields.fullname_bn') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.jobHistory.fields.grade') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.grade.fields.salary_range') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.jobHistory.fields.institutename') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.jobHistory.fields.circle_list') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.jobHistory.fields.division_list') }}
-                        </th>
+                        </th> --}}
                         <th>
                             &nbsp;
                         </th>
@@ -152,31 +152,31 @@
                         data: 'release_date',
                         name: 'release_date'
                     },
-                    
+
                     {
                         data: 'employee.fullname_bn',
                         name: 'employee.fullname_bn'
                     },
-                    {
-                        data: 'grade_name_bn',
-                        name: 'grade.name_bn'
-                    },
+                    // {
+                    //     data: 'grade_name_bn',
+                    //     name: 'grade.name_bn'
+                    // },
                     {
                         data: 'grade.salary_range',
                         name: 'grade.salary_range'
                     },
-                    {
-                        data: 'institutename',
-                        name: 'institutename'
-                    },
+                    // {
+                    //     data: 'institutename',
+                    //     name: 'institutename'
+                    // },
                     {
                         data: 'circle_list_name_bn',
                         name: 'circle_list.name_bn'
                     },
-                    {
-                        data: 'division_list_name_bn',
-                        name: 'division_list.name_bn'
-                    },
+                    // {
+                    //     data: 'division_list_name_bn',
+                    //     name: 'division_list.name_bn'
+                    // },
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'
