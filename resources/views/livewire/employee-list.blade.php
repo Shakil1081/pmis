@@ -156,7 +156,7 @@
                                 'publications',
                             ];
 
-                            $totalvalue = count($relationships);
+                            $totalvalue = count($relationships)+1;
 
                             foreach ($relationships as $relationship) {
                                 $countable = $result->{$relationship} ?? collect();

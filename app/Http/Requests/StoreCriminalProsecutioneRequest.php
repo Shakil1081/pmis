@@ -19,7 +19,7 @@ class StoreCriminalProsecutioneRequest extends FormRequest
         return [
             'judgement_type' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'natureof_offence' => [
                 'string',
@@ -29,6 +29,14 @@ class StoreCriminalProsecutioneRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'employee_id' => [
+                'required',
+                'integer',
+            ],
+            // 'criminalprosecutione_id' => [
+            //     'required',
+            //     'integer',
+            // ],
         ];
     }
 }

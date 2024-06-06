@@ -21,10 +21,6 @@ class StoreTravelRecordRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'title' => [
-                'string',
-                'nullable',
-            ],
             'start_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
@@ -32,6 +28,9 @@ class StoreTravelRecordRequest extends FormRequest
             'end_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
+            ],
+            'title_id' => [
+                'required',
             ],
         ];
     }

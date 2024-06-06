@@ -2,21 +2,8 @@
 @section('styles')
     @parent
     <style>
-        /* th,
-                                                                                                                                                td {
-                                                                                                                                                    font-size: 141px !important;
-                                                                                                                                                    padding: 4px !important;
-                                                                                                                                                    margin: 0px !important;
-                                                                                                                                                }
-
-                                                                                                                                                a.nav-link:hover,
-                                                                                                                                                a.nav-link {
-                                                                                                                                                    padding: 2px 4px;
-                                                                                                                                                    font-size: 14px !important;
-                                                                                                                                                } */
-
         th {
-            font-weight: 200;
+            font-weight: 100;
         }
     </style>
 @endsection
@@ -446,13 +433,13 @@
                                     </tr>
 
                                     <tr>
-                                        <th> </th>
+                                        <th> &nbsp;</th>
                                         <td>
                                             <!-- Edit button -->
                                             <a href="{{ route('admin.employee-lists.edit', ['employee_list' => $employeeList->id]) }}"
                                                 class="btn btn-sm btn-primary">{{ trans('global.edit') }}</a>
 
-                                            {{-- <!-- Delete button -->
+                                            {{-- 
                                             <form
                                                 action="{{ route('admin.employee-lists.destroy', ['employee_list' => $employeeList->id]) }}"
                                                 method="POST" style="display: inline;">
@@ -912,6 +899,7 @@
                                                 {{ $child->name_bn }}
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                             <th>
                                                 {{ trans('cruds.child.fields.name_en') }}
@@ -1537,20 +1525,21 @@
                             @foreach ($employeeList->foreigntravelpersonals ?? [] as $foreignTravelPersonal)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
+
                                         <tr>
                                             <th>
-                                                {{ trans('cruds.foreignTravelPersonal.fields.id') }}
+                                                {{ trans('cruds.spouseInformatione.fields.name_en') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->id }}
+                                                {{ $foreignTravelPersonal->title->name_en }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>
-                                                {{ trans('cruds.foreignTravelPersonal.fields.title') }}
+                                                {{ trans('cruds.spouseInformatione.fields.name_bn') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->title }}
+                                                {{ $foreignTravelPersonal->title->name_bn }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -1609,14 +1598,14 @@
                             @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
                                 <table class="table-bordered table-striped table">
                                     <tbody>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>
                                                 {{ trans('cruds.extracurriculam.fields.id') }}
                                             </th>
                                             <td>
                                                 {{ $extracurriculam->id }}
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <th>
                                                 {{ trans('cruds.extracurriculam.fields.employee') }}
@@ -2063,22 +2052,36 @@
                                                 {{ $criminalProsecutione->judgement_type }}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
-                                            </th>
-                                            <td>
-                                                {{ $criminalProsecutione->natureof_offence }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
-                                            </th>
-                                            <td>
-                                                {{ $criminalProsecutione->government_order_no }}
-                                            </td>
-                                        </tr>
+
+                                        @if ($criminalProsecutione->natureof_offence)
+                                            <tr>
+                                                <th>
+                                                    {{ trans('cruds.criminalProsecutione.fields.natureof_offence') }}
+                                                </th>
+                                                <td>
+                                                    {{ $criminalProsecutione->natureof_offence }}
+
+                                                </td>
+                                            </tr>
+                                        @endif
+                                        @foreach ($criminalProsecutione->criminalprosecutione as $item)
+                                            <tr>
+                                                <th>
+                                                    {{ trans('cruds.criminalProsecutione.fields.government_order_no') }}
+                                                </th>
+                                                <td>
+                                                    {{ $item->govt_order_no, $item->govt_order }}
+
+
+                                                    <a href="{{ asset("storage/$item->govt_order") }}"
+                                                        target="_blank">View File</a>
+
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+
                                         <tr>
                                             <th>
                                                 {{ trans('cruds.criminalProsecutione.fields.court_order') }}
@@ -2135,7 +2138,7 @@
                                                 {{ trans('cruds.criminalproDisciplinary.fields.criminalprosecutione') }}
                                             </th>
                                             <td>
-                                                {{ $criminalproDisciplinary->criminalprosecutione->natureof_offence ?? '' }}
+                                                {{ $criminalproDisciplinary->natureof_offence ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
