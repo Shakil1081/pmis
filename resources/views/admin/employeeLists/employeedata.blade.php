@@ -1550,7 +1550,7 @@
                                                 {{ trans('cruds.foreignTravelPersonal.fields.title') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->title }}
+                                                {{ $foreignTravelPersonal->title->name_bn }}
                                             </td>
                                         </tr>
                                         <tr>
