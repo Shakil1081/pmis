@@ -42,25 +42,8 @@
                         <th>
                             {{ trans('cruds.jobHistory.fields.designation') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.institutename') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.joining_date') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.release_date') }}
-                        </th>
 
-                        <th>
-                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.grade') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.grade.fields.salary_range') }}
-                        </th>
+
                         <th>
                             {{ trans('cruds.jobHistory.fields.beat') }}
                         </th>
@@ -74,6 +57,21 @@
                         <th>
                             {{ trans('cruds.jobHistory.fields.circle_list') }}
                         </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.joining_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.release_date') }}
+                        </th>
+
+                        {{-- <th>
+                            {{ trans('cruds.employeeList.fields.fullname_bn') }}
+                        </th> --}}
+
+
 
 
 
@@ -157,31 +155,10 @@
                         data: 'designation_name_bn',
                         name: 'designation.name_bn'
                     },
-                    {
-                        data: 'institutename',
-                        name: 'institutename'
-                    },
-                    {
-                        data: 'joining_date',
-                        name: 'joining_date'
-                    },
-                    {
-                        data: 'release_date',
-                        name: 'release_date'
-                    },
-
-                    {
-                        data: 'employee.fullname_bn',
-                        name: 'employee.fullname_bn'
-                    },
-                    {
-                        data: 'grade_name_bn',
-                        name: 'grade.name_bn'
-                    },
-                    {
-                        data: 'grade.salary_range',
-                        name: 'grade.salary_range'
-                    },
+                    // {
+                    //     data: 'institutename',
+                    //     name: 'institutename'
+                    // },
                     {
                         data: 'beat_list',
                         name: 'beat_list'
@@ -200,6 +177,29 @@
                         data: 'circle_list_name_bn',
                         name: 'circle_list.name_bn'
                     },
+                    {
+                        data: 'grade_name_bn',
+                        name: 'grade.name_bn'
+                    },
+                    {
+                        data: 'joining_date',
+                        name: 'joining_date'
+                    },
+                    {
+                        data: 'release_date',
+                        name: 'release_date'
+                    },
+
+                    // {
+                    //     data: 'employee.fullname_bn',
+                    //     name: 'employee.fullname_bn'
+                    // },
+
+                    // {
+                    //     data: 'grade.salary_range',
+                    //     name: 'grade.salary_range'
+                    // },
+
 
 
 
