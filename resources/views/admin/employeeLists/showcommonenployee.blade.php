@@ -7,7 +7,7 @@
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
                         <div>
-                            <h3>General Information Content</h3>
+                            <h3>{{ trans('cruds.employeeList.fields.title') }}</h3>
                             <table class="table-bordered table-striped table">
                                 <tbody>
                                     <tr>
