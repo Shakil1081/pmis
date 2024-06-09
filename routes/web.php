@@ -2,9 +2,8 @@
 
 
 use App\Http\Controllers\Admin\EmployeeListController;
-// Route::redirect('/', '/login')->name('home');
+Route::redirect('/', '/login')->name('home');
 
-Route::redirect('/', 'https://bfis.bforest.gov.bd/srms/login');
 
 Route::get('/home', function () {
     if (session('status')) {
