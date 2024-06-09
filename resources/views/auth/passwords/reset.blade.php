@@ -5,6 +5,11 @@
             <div class="card mx-4">
                 <div class="card-body p-4">
                     <h1>{{ trans('panel.site_title') }}</h1>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
                     <p class="text-muted">{{ trans('global.reset_password') }}</p>
 
