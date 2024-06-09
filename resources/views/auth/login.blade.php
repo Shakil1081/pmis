@@ -60,6 +60,7 @@
                                         @else
                                             Email
                                         @endif
+                                        <span class="test-danget">*</span>
                                     </label>
 
 
@@ -85,6 +86,7 @@
                                         @else
                                             Password
                                         @endif
+                                        <span class="test-danget">*</span>
                                     </label>
                                     <div class="input-group">
                                         <input id="password" name="password" type="password"

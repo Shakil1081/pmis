@@ -64,13 +64,14 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="inputEmailAddress" class="form-label">
+                                    <label for="inputEmailAddress " class="form-label required">
 
                                         @if (app()->getLocale() === 'bn')
                                             ইমেইল
                                         @else
                                             Email
                                         @endif
+                                        <span class="test-danget">*</span>
                                     </label>
                                     <input id="email" type="email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
