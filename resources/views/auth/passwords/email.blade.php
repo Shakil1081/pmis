@@ -52,7 +52,12 @@
                                 </div>
                             @endif
 
-
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                    {{ session('message') }}
+                                </div>
+                            @endif
 
 
                             <form method="POST" action="{{ route('password.email') }}">
