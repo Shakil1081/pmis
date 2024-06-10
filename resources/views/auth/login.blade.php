@@ -29,7 +29,7 @@
                                         English
                                     </a>
                                 @else
-                                    <h4 class="fw-bold mt-4">Get Started Now</h4>
+                                    <h4 class="fw-bold mt-4">Login In</h4>
                                     {{-- <p class="mb-0">Enter your credentials to login your account</p> --}}
                                     ভাষা পরিবর্তন করুন <a href="{{ url()->current() }}?change_language=bn">
                                         বাংলা
