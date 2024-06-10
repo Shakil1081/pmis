@@ -112,13 +112,13 @@
 
                 <div class="col">
                     @if ($designationName)
-                        <p class="badge bg-warning"
+                        <p class="badge bg-warning" title="{{ $designationName }}"
                             style="
                     background-color: #5d1f1f17 !important;
                     color: #5d1f1f !important;
                     padding: 6px !IMPORTANT;
                     border-radius: 25px;
-                    width: 200px;
+                    width: 300px;
                     overflow: hidden;">
                             {{ $designationName }}</p>
                     @endif
