@@ -173,7 +173,7 @@
             </div>
         @endforeach
 
-        {{ $data['allresult']->links() }}
+        {{ $data['allresult']->links('pagination::bootstrap-4') }}
     @else
         <p>No results found.</p>
     @endif
