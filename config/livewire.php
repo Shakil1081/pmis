@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => 'http://bfis.bforest.gov.bd/srms',
+    'asset_url' => env('APP_URL', 'http://bfis.bforest.gov.bd/srms'),
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'app_url' => 'http://bfis.bforest.gov.bd/srms',
+    'app_url' => env('APP_URL', 'http://bfis.bforest.gov.bd/srms'),
 
     /*
     |--------------------------------------------------------------------------
