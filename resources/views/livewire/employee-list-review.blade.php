@@ -143,10 +143,10 @@
                         </div>
                         <div class="col text-end">
                             <div class="btn-group">
-                                {{-- <button wire:click="approve({{ $empID }})"
+                                <button wire:click="approve({{ $empID }})"
                                     class="approve-button btn btn-sm btn-success">
                                     Approve
-                                </button> --}}
+                                </button>
                                 <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
                                     class="btn btn-sm btn-outline-dark">
                                     {{ trans('global.edit') }}
