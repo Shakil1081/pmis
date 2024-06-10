@@ -83,10 +83,15 @@
                                         </div>
 
 
-                                        {{-- <div class="col-md-2">
-                                            <label class="w-100">&nbsp;</label>
-                                            <button type="button" class="btn btn-danger remove-field">Remove</button>
-                                        </div> --}}
+
+                                        <button type="button" class="btn btn-danger btn-sm remove-field"
+                                            style="
+                                        width: 40px;
+                                        height: 35px;
+                                        margin-top: 27px;
+                                    "><i
+                                                class="fa fa-trash" aria-hidden="true"></i></button>
+
                                     </div>
                                 </div>
                             </div>

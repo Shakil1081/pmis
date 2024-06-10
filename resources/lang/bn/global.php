@@ -26,7 +26,7 @@ return [
     'login_email'                    => 'ইমেইল',
     'login_password'                 => 'পাসওয়ার্ড',
     'login_password_confirmation'    => 'পাসওয়ার্ড নিশ্চিতকরণ',
-    'logout'                         => 'প্রস্থান',
+    'logout'                         => 'লগ আউট',
     'month'                          => 'মাস',
     'no'                             => 'না',
     'pleaseSelect'                   => 'অনুগ্রহ করে নির্বাচন করুন',

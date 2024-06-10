@@ -73,6 +73,9 @@ return [
             'two_factor_code_helper'       => ' ',
             'two_factor_expires_at'        => 'দুই ফ্যাক্টর মেয়াদ শেষ হয়ে যাবে',
             'two_factor_expires_at_helper' => ' ',
+            'old_password'          => 'বর্তমান পাসওয়ার্ড',
+            'new_password'          => 'নতুন পাসওয়ার্ড',
+            'password_confirmation'          => 'কনফার্ম নতুন পাসওয়ার্ড',
         ],
     ],
     'division' => [
@@ -398,7 +401,7 @@ return [
     'employeeList' => [
         'title'          => 'সাধারণ তথ্যসমূহ',
         'title_singular' => 'সাধারণ তথ্যসমূহ',
-        'dfo'                         => 'ডিএফও',
+        'dfo'                         => 'অনুমোদনের অপেক্ষাধীন',
         'approve'                         => 'অনুমোদন করুন',
         'waiting'                         => 'অপেক্ষমান',
         'fields'         => [
@@ -1207,8 +1210,8 @@ return [
         ],
     ],
     'faqManagement' => [
-        'title'          => 'জিজ্ঞাসিত ',
-        'title_singular' => 'জিজ্ঞাসিত ',
+        'title'          => 'সচরাচর জিজ্ঞাসা ',
+        'title_singular' => 'সচরাচর জিজ্ঞাসা ',
     ],
     'faqCategory' => [
         'title'          => 'শ্রেণী',
