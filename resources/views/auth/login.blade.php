@@ -25,13 +25,13 @@
                                 @if (app()->getLocale() === 'bn')
                                     <h4 class="fw-bold mt-4">লগইন করুন</h4>
                                     {{-- <p class="mb-0">নিচের ফর্মটি পূরণ করুন</p> --}}
-                                    Change language to <a href="{{ url()->current() }}?change_language=en">
+                                    <a href="{{ url()->current() }}?change_language=en">
                                         English
                                     </a>
                                 @else
                                     <h4 class="fw-bold mt-4">Login In</h4>
                                     {{-- <p class="mb-0">Enter your credentials to login your account</p> --}}
-                                    ভাষা পরিবর্তন করুন <a href="{{ url()->current() }}?change_language=bn">
+                                    <a href="{{ url()->current() }}?change_language=bn">
                                         বাংলা
                                     </a>
                                 @endif
