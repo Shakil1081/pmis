@@ -145,7 +145,17 @@
                             <div class="btn-group">
                                 <button wire:click="approve({{ $empID }})"
                                     class="approve-button btn btn-sm btn-success">
-                                    Approve
+
+
+
+
+
+                                    @if (app()->getLocale() === 'bn')
+                                        অনুমোদন করুন
+                                    @else
+                                        Approve
+                                    @endif
+
                                 </button>
                                 <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
                                     class="btn btn-sm btn-outline-dark">
