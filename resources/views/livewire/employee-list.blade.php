@@ -124,15 +124,14 @@
                     @endif
 
 
-                    @if (app()->getLocale() === 'bn')
-                        প্রোফাইলের অগ্রগতি
+
+
+
+
+                    <div class="progress"
+                        title=" @if (app()->getLocale() === 'bn') প্রোফাইলের অগ্রগতি
                     @else
-                        Profile progress
-                    @endif
-
-
-
-                    <div class="progress">
+                        Profile progress @endif">
                         @php
                             $total = 1;
 
