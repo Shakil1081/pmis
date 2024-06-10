@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ asset('assets/images/logo1.png') }}" class="mb-4" width="100"
+                                    <img src="{{ asset('assets/images/logo1.png') }}" class="mb-4" width="80"
                                         alt="Logo" />
                                 </a>
                             </div>

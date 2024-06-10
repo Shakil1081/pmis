@@ -111,67 +111,70 @@
 
                 <div class="col">
                     @if ($designationName)
-                        <span class="badge bg-warning"style="
+                        <span class="badge bg-warning"
+                            style="
                         background-color: #5d1f1f17 !important;
                         color: #5d1f1f !important;
                         padding: 6px !IMPORTANT;
                         border-radius: 25px;
-                    "> {{ $designationName }}</span>
-                    @endif
+                        width: 200px;
+                        overflow: hidden;> {{ $designationName }}</span>
+@endif
 
 
                 </div>
                 <div class="col">
 
-                    @if (app()->getLocale() === 'bn')
-                        প্রোফাইলের অগ্রগতি
-                    @else
-                        Profile progress
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                প্রোফাইলের অগ্রগতি
+                            @else
+                                Profile progress
+                            @endif
 
 
 
-                    <div class="progress">
-                        @php
-                            $total = 1;
+                            <div class="progress">
+                                @php
+                                    $total = 1;
 
-                            $relationships = [
-                                'educations',
-                                'professionales',
-                                'addressdetailes',
-                                'emergencecontactes',
-                                'spouseinformationes',
-                                'childinformationes',
-                                'jobhistories',
-                                'employeepromotions',
-                                'trainings',
-                                'travelRecords',
-                                'foreigntravelpersonals',
-                                'extracurriculams',
-                                'otherservicejobs',
-                                'languages',
-                                'acrmonitorings',
-                                'awards',
-                                'acrmonitorings',
-                                'publications',
-                            ];
+                                    $relationships = [
+                                        'educations',
+                                        'professionales',
+                                        'addressdetailes',
+                                        'emergencecontactes',
+                                        'spouseinformationes',
+                                        'childinformationes',
+                                        'jobhistories',
+                                        'employeepromotions',
+                                        'trainings',
+                                        'travelRecords',
+                                        'foreigntravelpersonals',
+                                        'extracurriculams',
+                                        'otherservicejobs',
+                                        'languages',
+                                        'acrmonitorings',
+                                        'awards',
+                                        'acrmonitorings',
+                                        'publications',
+                                    ];
 
-                            $totalvalue = count($relationships)+1;
+                                    $totalvalue = count($relationships) + 1;
 
-                            foreach ($relationships as $relationship) {
-                                $countable = $result->{$relationship} ?? collect();
-                                if ($countable->count()) {
-                                    $total++;
-                                }
-                            }
+                                    foreach ($relationships as $relationship) {
+                                        $countable = $result->{$relationship} ?? collect();
+                                        if ($countable->count()) {
+                                            $total++;
+                                        }
+                                    }
 
-                            $progress = ($total / $totalvalue) * 100;
-                        @endphp
+                                    $progress = ($total / $totalvalue) * 100;
+                                @endphp
 
-                        {{-- @dd($totalvalue) --}}
-                        <div class="progress-bar" role="progressbar" style="width:{{ round($progress) }}%;"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%</div>
-                    </div>
+                                {{-- @dd($totalvalue) --}}
+                                <div class="progress-bar" role="progressbar" style="width:{{ round($progress) }}%;"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%
+                                </div>
+                            </div>
 
 
                 </div>
