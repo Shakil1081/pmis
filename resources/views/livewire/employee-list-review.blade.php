@@ -59,7 +59,7 @@
                     $lastJobHistory = $result->jobhistories->last();
                     if ($lastJobHistory && $lastJobHistory->relationLoaded('designation')) {
                         $designation = $lastJobHistory->designation;
-                        $designationName = $designation->name_bn;
+                        $designationName = $designation->name_bn ?? '';
                     }
                 }
             @endphp
