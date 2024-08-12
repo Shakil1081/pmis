@@ -2,6 +2,7 @@
 @section('content')
     <div class="card p-2">
         <div class="container">
+        
             <div class="row">
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">

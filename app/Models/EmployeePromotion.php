@@ -24,7 +24,6 @@ class EmployeePromotion extends Model implements HasMedia
 
     protected $dates = [
         'go_issue_date',
-        'office_order_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -71,15 +70,20 @@ class EmployeePromotion extends Model implements HasMedia
         $this->attributes['go_issue_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function getOfficeOrderDateAttribute($value)
-    {
-        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    }
-
     public function setOfficeOrderDateAttribute($value)
     {
-        $this->attributes['office_order_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+        if (!$value) {
+            $this->attributes['office_order_date'] = null;
+            return;
+        }
+
+        try {
+            $this->attributes['office_order_date'] = Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d');
+        } catch (\Exception $e) {
+            $this->attributes['office_order_date'] = $value; // Or null if you prefer
+        }
     }
+
 
     public function getOfficeOrderAttribute()
     {

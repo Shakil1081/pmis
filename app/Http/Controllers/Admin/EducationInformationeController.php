@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -35,9 +36,9 @@ class EducationInformationeController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'education_informatione_show';
-                $editGate      = 'education_informatione_edit';
-                $deleteGate    = 'education_informatione_delete';
+                $viewGate = 'education_informatione_show';
+                $editGate = 'education_informatione_edit';
+                $deleteGate = 'education_informatione_delete';
                 $crudRoutePart = 'education-informationes';
 
                 return view('partials.datatablesActions', compact(
@@ -46,7 +47,8 @@ class EducationInformationeController extends Controller
                     'deleteGate',
                     'crudRoutePart',
                     'row'
-                ));
+                )
+                );
             });
 
             $table->addColumn('name_of_exam_name_bn', function ($row) {
@@ -107,8 +109,8 @@ class EducationInformationeController extends Controller
 
     public function create()
     {
-$locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('education_informatione_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -136,13 +138,13 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
             Media::whereIn('id', $media)->update(['model_id' => $educationInformatione->id]);
         }
 
-         return redirect()->back()->with('status', __('global.saveactions'));
+        return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(EducationInformatione $educationInformatione)
     {
         $locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('education_informatione_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -165,7 +167,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $educationInformatione->update($request->all());
 
         if ($request->input('catificarte', false)) {
-            if (! $educationInformatione->catificarte || $request->input('catificarte') !== $educationInformatione->catificarte->file_name) {
+            if (!$educationInformatione->catificarte || $request->input('catificarte') !== $educationInformatione->catificarte->file_name) {
                 if ($educationInformatione->catificarte) {
                     $educationInformatione->catificarte->delete();
                 }
@@ -211,10 +213,10 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
     {
         abort_if(Gate::denies('education_informatione_create') && Gate::denies('education_informatione_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new EducationInformatione();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new EducationInformatione();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

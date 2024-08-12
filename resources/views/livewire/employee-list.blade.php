@@ -6,7 +6,11 @@
 
 
 
-        <div class="col-md-6 h4">{{ trans('cruds.employeeList.title_singular') }} {{ trans('global.list') }} </div>
+        <div class="col-md-6 h4">@if (app()->getLocale() === 'bn')
+                সাধারণ তথ্যসমূহের তালিকা
+            @else
+                General Information List
+            @endif </div>
         <div class="col-md-6 h4 text-end">
 
             @if (app()->getLocale() === 'bn')
@@ -14,7 +18,7 @@
             @else
                 Total Employee
             @endif
-            : {{ $data['total'] ?? 0 }}
+            : {{ englishToBanglaNumber($data['total'] ?? 0) }}
 
         </div>
 
@@ -43,7 +47,7 @@
                         </a> --}}
                         <a class="btn btn-success" href="{{ route('admin.employee-lists.create') }}">
                             <i class="fa fa-plus" aria-hidden="true"></i>
-                            {{ trans('global.add') }} {{ trans('cruds.employeeList.title_singular') }}
+                            {{ trans('cruds.employeeList.title_singular') }} {{ trans('global.add') }} 
                         </a>
                     @endcan
                 </div>

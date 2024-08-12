@@ -58,10 +58,6 @@ class ProfessionaleController extends Controller
                 return $row->institution ? $row->institution : '';
             });
 
-            $table->editColumn('passing_year', function ($row) {
-                return $row->passing_year ? $row->passing_year : '';
-            });
-
             $table->rawColumns(['actions', 'placeholder', 'employee']);
 
             return $table->make(true);
@@ -83,7 +79,6 @@ class ProfessionaleController extends Controller
     {
         $professionale = Professionale::create($request->all());
          return redirect()->back()->with('status', __('global.saveactions'));
-        //return redirect()->route('admin.professionales.index');
     }
 
     public function edit(Professionale $professionale)

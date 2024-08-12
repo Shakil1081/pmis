@@ -6,7 +6,9 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
+                        <br>
                         <h4> {{ trans('global.create') }} {{ trans('cruds.addressdetaile.title_singular') }}</h4>
+                        <br>
                         <form method="POST"
                             action="{{ route('admin.addressdetailes.store', ['employee_id' => request()->query('id')]) }}"
                             enctype="multipart/form-data">

@@ -6,7 +6,9 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
+                        <br>
                         <h4> {{ trans('global.create') }} {{ trans('cruds.child.title_singular') }}</h4>
+                        <br>
 
                         <form method="POST"
                             action="{{ route('admin.children.store', ['employee_id' => request()->query('id')]) }}"
@@ -55,7 +57,7 @@
                                         class="help-block">{{ trans('cruds.child.fields.birth_certificate_helper') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="date_of_birth">{{ trans('cruds.child.fields.date_of_birth') }}</label>
+                                    <label class="required" for="date_of_birth">{{ trans('cruds.child.fields.date_of_birth') }}</label>
                                     <input class="form-select date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
                                         type="text" name="date_of_birth" id="date_of_birth"
                                         value="{{ old('date_of_birth') }}">
@@ -405,7 +407,7 @@
 
                     if (dateOfBirth) {
                         const complete21Date = new Date(dateOfBirth);
-                        complete21Date.setFullYear(complete21Date.getFullYear() + 21);
+                        complete21Date.setFullYear(complete21Date.getFullYear() + 23);
 
                         const formattedComplete21Date = flatpickr.formatDate(complete21Date, "d/m/Y");
                         document.getElementById('complite_21').value = formattedComplete21Date;
