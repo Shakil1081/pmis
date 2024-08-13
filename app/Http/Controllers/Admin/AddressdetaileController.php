@@ -84,17 +84,20 @@ class AddressdetaileController extends Controller
         return view('admin.addressdetailes.index');
     }
 
-    public function create()
+    public function create(Request $request)
     { 
         $locale = App::getLocale();
 $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('addressdetaile_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+ $employee = EmployeeList::find($employeeId);
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $thana_upazilas = Upazila::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.addressdetailes.create', compact('employees', 'thana_upazilas'));
+        return view('admin.addressdetailes.create', compact('employees', 'thana_upazilas','employee'));
     }
 
     public function store(StoreAddressdetaileRequest $request)

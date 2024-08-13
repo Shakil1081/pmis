@@ -6,7 +6,24 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
-                        <h4>{{ trans('global.create') }} {{ trans('cruds.acrMonitoring.title_singular') }}
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
+
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+                        <h4>{{ trans('cruds.acrMonitoring.title_singular') }}
+                        <br>
                         </h4>
                         <form method="POST"
                             action="{{ route('admin.acr-monitorings.store', ['employee_id' => request()->query('id')]) }}"

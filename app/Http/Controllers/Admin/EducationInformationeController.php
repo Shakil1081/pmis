@@ -41,13 +41,15 @@ class EducationInformationeController extends Controller
                 $deleteGate = 'education_informatione_delete';
                 $crudRoutePart = 'education-informationes';
 
-                return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                )
+                return view(
+                    'partials.datatablesActions',
+                    compact(
+                        'viewGate',
+                        'editGate',
+                        'deleteGate',
+                        'crudRoutePart',
+                        'row'
+                    )
                 );
             });
 
@@ -107,24 +109,23 @@ class EducationInformationeController extends Controller
         return view('admin.educationInformationes.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
         abort_if(Gate::denies('education_informatione_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
         $name_of_exams = Examination::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $exam_boards = ExamBoard::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $results = Result::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $achievement_types = AchievementschoolsUniversity::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.educationInformationes.create', compact('achievement_types', 'employees', 'exam_boards', 'name_of_exams', 'results'));
+        return view('admin.educationInformationes.create', compact('achievement_types', 'employees', 'exam_boards', 'name_of_exams', 'results', 'employee'));
     }
+
 
     public function store(StoreEducationInformationeRequest $request)
     {

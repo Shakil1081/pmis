@@ -6,7 +6,25 @@
             @include('admin.commonemployee.commonmenu')
             <div class="col-md-8">
                 <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
-                    <h4>{{ trans('global.create') }} {{ trans('cruds.emergenceContacte.title_singular') }}</h4>
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
+
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+
+                    <h4>{{ trans('cruds.emergenceContacte.title_singular') }}</h4>
+                    <br>
 
                     <form id="emergencyContactForm" method="POST"
                         action="{{ route('admin.emergence-contactes.store', ['employee_id' => request()->query('id')]) }}"
@@ -74,7 +92,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-danger" type="button" onclick="showConfirmationModal()">
+                            <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}
                             </button>
                         </div>
@@ -84,97 +102,6 @@
         </div>
     </div>
 </div>
-
-<!-- Bootstrap Modal -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="confirmationModalLabel">@if (app()->getLocale() === 'bn')
-                    জরুরি যোগাযোগ
-                @else
-                    Emergency Contact
-                @endif</
-                h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <label for="modalContactPersonName">@if (app()->getLocale() === 'bn')
-                        নাম
-                    @else
-                        Name
-                    @endif</label>
-                    <input type="text" class="form-control" id="modalContactPersonName" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="modalContactPersonRelation">@if (app()->getLocale() === 'bn')
-                        সম্পর্ক
-                    @else
-                        Relation
-                    @endif</label>
-                    <input type="text" class="form-control" id="modalContactPersonRelation" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="modalContactPersonNumber">@if (app()->getLocale() === 'bn')
-                        যোগাযোগের নাম্বার
-                    @else
-                        Contact Number
-                    @endif</label>
-                    <input type="text" class="form-control" id="modalContactPersonNumber" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="modalAddress">@if (app()->getLocale() === 'bn')
-                        ঠিকানা
-                    @else
-                        Address
-                    @endif</label>
-                    <textarea class="form-control" id="modalAddress" readonly></textarea>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">@if (app()->getLocale() === 'bn')
-                    বাতিল
-                @else
-                    Cancel
-                @endif</button>
-                <button type="button" class="btn btn-primary" onclick="submitForm()">@if (app()->getLocale() === 'bn')
-                    সংরক্ষণ
-                @else
-                    Submit
-                @endif</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Inline JavaScript -->
-<script>
-    function showConfirmationModal() {
-        // Get form values
-        const contactPersonName = document.getElementById('contact_person_name').value;
-        const contactPersonRelation = document.getElementById('contact_person_relation').value;
-        const contactPersonNumber = document.getElementById('contact_person_number').value;
-        const address = document.getElementById('address').value;
 
-        // Populate modal with values
-        document.getElementById('modalContactPersonName').value = contactPersonName;
-        document.getElementById('modalContactPersonRelation').value = contactPersonRelation;
-        document.getElementById('modalContactPersonNumber').value = contactPersonNumber;
-        document.getElementById('modalAddress').value = address;
-
-        // Show the modal
-        $('#confirmationModal').modal('show');
-    }
-
-    function submitForm() {
-        // Submit the form
-        document.getElementById('emergencyContactForm').submit();
-    }
-</script>
 @endsection

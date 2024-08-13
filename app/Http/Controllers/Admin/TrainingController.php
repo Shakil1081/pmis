@@ -95,9 +95,13 @@ class TrainingController extends Controller
         return view('admin.trainings.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('training_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
@@ -109,7 +113,7 @@ class TrainingController extends Controller
 
         $countries = Country::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.trainings.create', compact('countries', 'employees', 'foreign_travels', 'training_types'));
+        return view('admin.trainings.create', compact('countries','employee', 'employees', 'foreign_travels', 'training_types'));
     }
 
     public function store(StoreTrainingRequest $request)

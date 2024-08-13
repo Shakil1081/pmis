@@ -88,17 +88,20 @@ class ChildController extends Controller
         return view('admin.children.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         abort_if(Gate::denies('child_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $genders = Gender::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.children.create', compact('employees', 'genders'));
+        return view('admin.children.create', compact('employees', 'genders','employee'));
     }
 
     public function store(StoreChildRequest $request)

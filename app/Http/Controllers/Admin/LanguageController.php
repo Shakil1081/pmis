@@ -72,9 +72,12 @@ class LanguageController extends Controller
         return view('admin.languages.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('language_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name' : 'name_en';
@@ -86,7 +89,7 @@ class LanguageController extends Controller
         $languages = LanguageList::pluck( $list, 'id')->prepend(trans('global.pleaseSelect'), '');
         
 
-        return view('admin.languages.create', compact( 'languages', 'reads', 'speaks', 'writes'));
+        return view('admin.languages.create', compact( 'languages', 'reads', 'speaks', 'writes','employee'));
     }
 
     public function store(StoreLanguageRequest $request)

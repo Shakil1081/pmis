@@ -69,9 +69,11 @@ class TravelRecordController extends Controller
         return view('admin.travelRecords.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('travel_record_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -82,7 +84,7 @@ class TravelRecordController extends Controller
 
         $purposes = TravelPurpose::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travelRecords.create', compact('countries', 'employees', 'purposes', 'titles'));
+        return view('admin.travelRecords.create', compact('countries', 'employees', 'purposes', 'titles','employee'));
     }
 
     public function store(StoreTravelRecordRequest $request)

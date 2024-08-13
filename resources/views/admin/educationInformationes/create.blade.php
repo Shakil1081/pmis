@@ -5,12 +5,32 @@
         <div class="row">
             @include('admin.commonemployee.commonmenu')
             <div class="col-md-8">
+
+
                 <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
+
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
+
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+
+
                     <div>
+                        <h3> {{ trans('cruds.educationInformatione.title_singular') }}</h3>
                         <br>
-                        <h3> {{ trans('global.create') }} {{ trans('cruds.educationInformatione.title_singular') }}</h3>
-                        <br>
-                        
+
                         <form method="POST" action="{{ route('admin.education-informationes.store') }}"
                             enctype="multipart/form-data">
                             @csrf

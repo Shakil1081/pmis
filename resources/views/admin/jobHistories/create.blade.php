@@ -6,8 +6,24 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
 
-                        <h4> {{ trans('global.create') }} {{ trans('cruds.jobHistory.title_singular') }} </h4>
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+                        <h4>{{ trans('cruds.jobHistory.title_singular') }} </h4>
+                        <br>
                         <form method="POST" action="{{ route('admin.job-histories.store') }}" enctype="multipart/form-data">
                             @csrf
                             @livewire('multi-level-dropdown')
