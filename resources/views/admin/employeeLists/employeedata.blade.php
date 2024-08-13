@@ -1531,7 +1531,7 @@
                                                 {{ trans('cruds.spouseInformatione.fields.name_en') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->title->name_en }}
+                                                {{ $foreignTravelPersonal->title->name_en ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -1539,7 +1539,7 @@
                                                 {{ trans('cruds.spouseInformatione.fields.name_bn') }}
                                             </th>
                                             <td>
-                                                {{ $foreignTravelPersonal->title->name_bn }}
+                                                {{ $foreignTravelPersonal->title->name_bn ?? '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -2262,8 +2262,12 @@
                                                     method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
-                                                        class="btn btn-sm btn-danger">{{ trans('global.delete') }}</button>
+                                                    <button type="submit" 
+                                                            class="btn btn-sm btn-danger" 
+                                                            onclick="return confirm('{{ trans('global.areYouSure') }}');">
+                                                        {{ trans('global.delete') }}
+                                                    </button>
+
                                                 </form>
                                             </td>
                                         </tr>
