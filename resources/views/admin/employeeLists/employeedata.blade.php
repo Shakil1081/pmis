@@ -1541,6 +1541,9 @@
                                             <td>
                                                 {{ $foreignTravelPersonal->title->name_bn }}
                                             </td>
+
+<!-- 
+                                            {{ $foreignTravelPersonal->title->name_bn }} -->
                                         </tr>
                                         <tr>
                                             <th>
