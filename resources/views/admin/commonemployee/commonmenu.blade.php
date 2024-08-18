@@ -1,8 +1,18 @@
-<div class="col-md-4 mycustommenu mt-1 border p-1">
+<style>
+    .nav-pills .nav-link:hover {
+        background-color: #fffcec;
+        color: black;
+        transition: background-color 0.3s;
+    }
+</style>
+
+<div class="col-md-4 mycustommenu mt-1 border p-1" style="background-color: #515250; color: white">
 
     @php
         $id = request()->input('id');
     @endphp
+
+    
 
 
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">

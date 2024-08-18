@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\EmployeeList;
 
 class CriminalproDisciplinaryController extends Controller
 {
@@ -71,13 +72,15 @@ class CriminalproDisciplinaryController extends Controller
         return view('admin.criminalproDisciplinaries.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('criminalpro_disciplinary_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
         $criminalprosecutiones = CriminalProsecutione::pluck('natureof_offence', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.criminalproDisciplinaries.create', compact('criminalprosecutiones'));
+        return view('admin.criminalproDisciplinaries.create', compact('criminalprosecutiones','employee'));
     }
 
     // public function store(StoreCriminalproDisciplinaryRequest $request)

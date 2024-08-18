@@ -41,9 +41,9 @@ class JobHistorieController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'job_history_show';
-                $editGate      = 'job_history_edit';
-                $deleteGate    = 'job_history_delete';
+                $viewGate = 'job_history_show';
+                $editGate = 'job_history_edit';
+                $deleteGate = 'job_history_delete';
                 $crudRoutePart = 'job-histories';
 
                 return view('partials.datatablesActions', compact(
@@ -52,7 +52,8 @@ class JobHistorieController extends Controller
                     'deleteGate',
                     'crudRoutePart',
                     'row'
-                ));
+                )
+                );
             });
 
             $table->addColumn('designation_name_bn', function ($row) {
@@ -110,13 +111,16 @@ class JobHistorieController extends Controller
         return view('admin.jobHistories.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('job_history_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
-$locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
         $designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -134,7 +138,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
         $office_units = OfficeUnit::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.jobHistories.create', compact('beat_lists', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'office_units', 'range_lists'));
+        return view('admin.jobHistories.create', compact('employee','beat_lists', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'office_units', 'range_lists'));
     }
 
     public function store(StoreJobHistoryRequest $request)
@@ -150,7 +154,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $jobHistory->id]);
         }
-         return redirect()->back()->with('status', __('global.saveactions'));
+        return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.job-histories.index');
     }
 
@@ -158,8 +162,8 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
     {
         abort_if(Gate::denies('job_history_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-$locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -176,11 +180,11 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
         $office_units = OfficeUnit::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_types= JobType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $job_types = JobType::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $jobHistory->load('designation', 'employee', 'grade', 'circle_list', 'division_list', 'range_list', 'beat_list', 'office_unit');
 
-        return view('admin.jobHistories.edit', compact('beat_lists','job_types', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
+        return view('admin.jobHistories.edit', compact('beat_lists', 'job_types', 'circle_lists', 'designations', 'division_lists', 'employees', 'grades', 'jobHistory', 'office_units', 'range_lists'));
     }
 
     public function update(UpdateJobHistoryRequest $request, JobHistory $jobHistory)
@@ -188,7 +192,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $jobHistory->update($request->all());
 
         if ($request->input('go_upload', false)) {
-            if (! $jobHistory->go_upload || $request->input('go_upload') !== $jobHistory->go_upload->file_name) {
+            if (!$jobHistory->go_upload || $request->input('go_upload') !== $jobHistory->go_upload->file_name) {
                 if ($jobHistory->go_upload) {
                     $jobHistory->go_upload->delete();
                 }
@@ -197,7 +201,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         } elseif ($jobHistory->go_upload) {
             $jobHistory->go_upload->delete();
         }
-         return redirect()->back()->with('status', __('global.saveactions'));
+        return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.job-histories.index');
     }
 
@@ -234,10 +238,10 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
     {
         abort_if(Gate::denies('job_history_create') && Gate::denies('job_history_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new JobHistory();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new JobHistory();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

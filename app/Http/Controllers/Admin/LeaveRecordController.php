@@ -77,6 +77,8 @@ class LeaveRecordController extends Controller
     {
         abort_if(Gate::denies('leave_record_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
@@ -86,7 +88,7 @@ class LeaveRecordController extends Controller
 
         $leave_categories = LeaveCategory::pluck($columname , 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.leaveRecords.create', compact('employees', 'leave_categories', 'type_of_leaves'));
+        return view('admin.leaveRecords.create', compact('employees', 'leave_categories', 'type_of_leaves','employee'));
     }
 
     public function store(StoreLeaveRecordRequest $request)

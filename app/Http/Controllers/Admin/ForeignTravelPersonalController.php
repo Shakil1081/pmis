@@ -79,9 +79,11 @@ class ForeignTravelPersonalController extends Controller
         return view('admin.foreignTravelPersonals.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('foreign_travel_personal_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
         $locale = App::getLocale();
         $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -92,7 +94,7 @@ class ForeignTravelPersonalController extends Controller
 
         $titles = TravelTitle::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.foreignTravelPersonals.create', compact('countries', 'employees', 'purposes', 'titles'));
+        return view('admin.foreignTravelPersonals.create', compact('countries', 'employee', 'employees', 'purposes', 'titles'));
     }
 
     public function store(StoreForeignTravelPersonalRequest $request)

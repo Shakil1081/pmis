@@ -27,7 +27,7 @@ class StoreEmployeePromotionRequest extends FormRequest
             ],
             'office_order_date' => [
                 'required',
-                'date_format:' . config('panel.date_format'),
+                
             ],
         ];
     }

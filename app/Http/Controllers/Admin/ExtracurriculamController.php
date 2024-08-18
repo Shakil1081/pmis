@@ -77,13 +77,16 @@ class ExtracurriculamController extends Controller
         return view('admin.extracurriculams.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('extracurriculam_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.extracurriculams.create', compact('employees'));
+        return view('admin.extracurriculams.create', compact('employees','employee'));
     }
 
     public function store(StoreExtracurriculamRequest $request)

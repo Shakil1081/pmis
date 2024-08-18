@@ -27,9 +27,9 @@ class EmergenceContacteController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'emergence_contacte_show';
-                $editGate      = 'emergence_contacte_edit';
-                $deleteGate    = 'emergence_contacte_delete';
+                $viewGate = 'emergence_contacte_show';
+                $editGate = 'emergence_contacte_edit';
+                $deleteGate = 'emergence_contacte_delete';
                 $crudRoutePart = 'emergence-contactes';
 
                 return view('partials.datatablesActions', compact(
@@ -38,7 +38,8 @@ class EmergenceContacteController extends Controller
                     'deleteGate',
                     'crudRoutePart',
                     'row'
-                ));
+                )
+                );
             });
 
             $table->editColumn('id', function ($row) {
@@ -72,19 +73,22 @@ class EmergenceContacteController extends Controller
         return view('admin.emergenceContactes.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('emergence_contacte_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.emergenceContactes.create', compact('employees'));
+        return view('admin.emergenceContactes.create', compact('employees', 'employee'));
     }
 
     public function store(StoreEmergenceContacteRequest $request)
     {
         $emergenceContacte = EmergenceContacte::create($request->all());
-         return redirect()->back()->with('status', __('global.saveactions'));
+        return redirect()->back()->with('status', __('global.saveactions'));
         //return redirect()->route('admin.emergence-contactes.index');
     }
 

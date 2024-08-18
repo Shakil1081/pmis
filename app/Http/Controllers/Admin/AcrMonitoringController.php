@@ -71,13 +71,16 @@ class AcrMonitoringController extends Controller
         return view('admin.acrMonitorings.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('acr_monitoring_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.acrMonitorings.create', compact('employees'));
+        return view('admin.acrMonitorings.create', compact('employees','employee'));
     }
 
     public function store(StoreAcrMonitoringRequest $request)

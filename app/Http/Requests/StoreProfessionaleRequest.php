@@ -38,7 +38,6 @@ class StoreProfessionaleRequest extends FormRequest
                 'nullable',
             ],
             'passing_year' => [
-                'required',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',

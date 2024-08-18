@@ -34,9 +34,9 @@ class EmployeePromotionController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'employee_promotion_show';
-                $editGate      = 'employee_promotion_edit';
-                $deleteGate    = 'employee_promotion_delete';
+                $viewGate = 'employee_promotion_show';
+                $editGate = 'employee_promotion_edit';
+                $deleteGate = 'employee_promotion_delete';
                 $crudRoutePart = 'employee-promotions';
 
                 return view('partials.datatablesActions', compact(
@@ -45,7 +45,8 @@ class EmployeePromotionController extends Controller
                     'deleteGate',
                     'crudRoutePart',
                     'row'
-                ));
+                )
+                );
             });
 
             $table->addColumn('employee_employeeid', function ($row) {
@@ -72,19 +73,21 @@ class EmployeePromotionController extends Controller
         return view('admin.employeePromotions.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('employee_promotion_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
         $locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $new_designations = Designation::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.employeePromotions.create', compact('employees', 'new_designations'));
+        return view('admin.employeePromotions.create', compact('employees', 'new_designations', 'employee'));
     }
 
     public function store(StoreEmployeePromotionRequest $request)
@@ -98,8 +101,8 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $employeePromotion->id]);
         }
-         return redirect()->back()->with('status', __('global.saveactions'));
-       // return redirect()->route('admin.employee-promotions.index');
+        return redirect()->back()->with('status', __('global.saveactions'));
+        // return redirect()->route('admin.employee-promotions.index');
     }
 
     public function edit(EmployeePromotion $employeePromotion)
@@ -120,7 +123,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employeePromotion->update($request->all());
 
         if ($request->input('office_order', false)) {
-            if (! $employeePromotion->office_order || $request->input('office_order') !== $employeePromotion->office_order->file_name) {
+            if (!$employeePromotion->office_order || $request->input('office_order') !== $employeePromotion->office_order->file_name) {
                 if ($employeePromotion->office_order) {
                     $employeePromotion->office_order->delete();
                 }
@@ -166,10 +169,10 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
     {
         abort_if(Gate::denies('employee_promotion_create') && Gate::denies('employee_promotion_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new EmployeePromotion();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new EmployeePromotion();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

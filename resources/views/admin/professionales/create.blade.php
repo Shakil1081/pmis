@@ -4,15 +4,45 @@
         <div class="container">
             <div class="row">
                 @include('admin.commonemployee.commonmenu')
-                <div class="col-md-8">
-                    <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
-                        <h4> {{ trans('global.create') }} {{ trans('cruds.professionale.title_singular') }}</h4>
+                <div class="col-md-8" >
+                    <div class="tab-content my-1 border p-2"  id="v-pills-tabContent">
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
 
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+                        <h4> {{ trans('cruds.professionale.title_singular') }}</h4>
+    <br>
                         <form method="POST"
                             action="{{ route('admin.professionales.store', ['employee_id' => request()->query('id')]) }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row row-cols-2">
+                            <div class="form-group">
+                                    <label class="required"
+                                        for="institution">{{ trans('cruds.professionale.fields.institution') }}</label>
+                                    <input class="form-control {{ $errors->has('institution') ? 'is-invalid' : '' }}"
+                                        type="text" name="institution" id="institution"
+                                        value="{{ old('institution', '') }}" required>
+                                    @if ($errors->has('institution'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('institution') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.professionale.fields.institution_helper') }}</span>
+                                </div>
                                 <div class="form-group">
                                     <label class="required"
                                         for="qualification_title">{{ trans('cruds.professionale.fields.qualification_title') }}</label>
@@ -28,20 +58,7 @@
                                     <span
                                         class="help-block">{{ trans('cruds.professionale.fields.qualification_title_helper') }}</span>
                                 </div>
-                                <div class="form-group">
-                                    <label class="required"
-                                        for="institution">{{ trans('cruds.professionale.fields.institution') }}</label>
-                                    <input class="form-control {{ $errors->has('institution') ? 'is-invalid' : '' }}"
-                                        type="text" name="institution" id="institution"
-                                        value="{{ old('institution', '') }}" required>
-                                    @if ($errors->has('institution'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('institution') }}
-                                        </div>
-                                    @endif
-                                    <span
-                                        class="help-block">{{ trans('cruds.professionale.fields.institution_helper') }}</span>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label class="required"
                                         for="from_date">{{ trans('cruds.professionale.fields.from_date') }}</label>
@@ -68,7 +85,7 @@
                                     <span
                                         class="help-block">{{ trans('cruds.professionale.fields.to_date_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="required"
                                         for="passing_year">{{ trans('cruds.professionale.fields.passing_year') }}</label>
                                     <input class="form-control {{ $errors->has('passing_year') ? 'is-invalid' : '' }}"
@@ -81,7 +98,7 @@
                                     @endif
                                     <span
                                         class="help-block">{{ trans('cruds.professionale.fields.passing_year_helper') }}</span>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-danger" type="submit">

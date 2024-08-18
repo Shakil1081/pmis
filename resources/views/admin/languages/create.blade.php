@@ -5,7 +5,25 @@
              <div class="row">
                  @include('admin.commonemployee.commonmenu')
                  <div class="col-md-8">
-                     <h4> {{ trans('global.create') }} {{ trans('cruds.language.title_singular') }}</h4>
+                 <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
+
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+                     <h4>{{ trans('cruds.language.title_singular') }}</h4>
+                     <br>
                      <form method="POST" action="{{ route('admin.languages.store') }}" enctype="multipart/form-data">
                          @csrf
                          <x-hidden-input name="employee_id" value="{{ request()->input('id') }}" />
