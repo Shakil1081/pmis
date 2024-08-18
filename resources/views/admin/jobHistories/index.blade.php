@@ -26,21 +26,39 @@
 
                         </th>
                         <th>
-                        @if (app()->getLocale() === 'bn')
-                        কর্মকর্তা/কর্মচারী আইডি
-                    @else
-                        Employee ID
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                কর্মকর্তা/কর্মচারী আইডি
+                            @else
+                                Employee ID
+                            @endif
                         </th>
                         <th>
-                        @if (app()->getLocale() === 'bn')
-                        কর্মকর্তা/কর্মচারী নাম
-                    @else
-                        Employee Name
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                কর্মকর্তা/কর্মচারী নাম
+                            @else
+                                Employee Name
+                            @endif
                         </th>
                         <th>
                             {{ trans('cruds.jobHistory.fields.designation') }}
+                        </th>
+
+
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.beat') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.range') }}
+                        </th>
+
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.division_list') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.circle_list') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.jobHistory.fields.grade') }}
                         </th>
                         <th>
                             {{ trans('cruds.jobHistory.fields.joining_date') }}
@@ -48,25 +66,18 @@
                         <th>
                             {{ trans('cruds.jobHistory.fields.release_date') }}
                         </th>
-                        
-                        <th>
+
+                        {{-- <th>
                             {{ trans('cruds.employeeList.fields.fullname_bn') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.grade') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.grade.fields.salary_range') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.institutename') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.circle_list') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.jobHistory.fields.division_list') }}
-                        </th>
+                        </th> --}}
+
+
+
+
+
+                        {{-- <th>
+                            {{ trans('cruds.jobHistory.fields.office_unit') }}
+                        </th> --}}
                         <th>
                             &nbsp;
                         </th>
@@ -144,6 +155,32 @@
                         data: 'designation_name_bn',
                         name: 'designation.name_bn'
                     },
+                    // {
+                    //     data: 'institutename',
+                    //     name: 'institutename'
+                    // },
+                    {
+                        data: 'beat_list',
+                        name: 'beat_list'
+                    },
+                    {
+                        data: 'posting_in_range',
+                        name: 'posting_in_range'
+                    },
+                    {
+                        data: 'division_list_name_bn',
+                        name: 'division_list.name_bn'
+                    },
+
+
+                    {
+                        data: 'circle_list_name_bn',
+                        name: 'circle_list.name_bn'
+                    },
+                    {
+                        data: 'grade_name_bn',
+                        name: 'grade.name_bn'
+                    },
                     {
                         data: 'joining_date',
                         name: 'joining_date'
@@ -152,31 +189,25 @@
                         data: 'release_date',
                         name: 'release_date'
                     },
-                    
-                    {
-                        data: 'employee.fullname_bn',
-                        name: 'employee.fullname_bn'
-                    },
-                    {
-                        data: 'grade_name_bn',
-                        name: 'grade.name_bn'
-                    },
-                    {
-                        data: 'grade.salary_range',
-                        name: 'grade.salary_range'
-                    },
-                    {
-                        data: 'institutename',
-                        name: 'institutename'
-                    },
-                    {
-                        data: 'circle_list_name_bn',
-                        name: 'circle_list.name_bn'
-                    },
-                    {
-                        data: 'division_list_name_bn',
-                        name: 'division_list.name_bn'
-                    },
+
+                    // {
+                    //     data: 'employee.fullname_bn',
+                    //     name: 'employee.fullname_bn'
+                    // },
+
+                    // {
+                    //     data: 'grade.salary_range',
+                    //     name: 'grade.salary_range'
+                    // },
+
+
+
+
+                    // {
+                    //     data: 'office_unit',
+                    //     name: 'office_unit'
+                    // },
+
                     {
                         data: 'actions',
                         name: '{{ trans('global.actions') }}'

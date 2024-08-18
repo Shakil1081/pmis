@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-    @can('professionale_create')
+    {{-- @can('professionale_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                {{-- <a class="btn btn-success" href="{{ route('admin.professionales.create') }}">
+                <a class="btn btn-success" href="{{ route('admin.professionales.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.professionale.title_singular') }}
-            </a> --}}
+            </a>
                 <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
                     {{ trans('global.app_csvImport') }}
                 </button>
@@ -15,7 +15,7 @@
                 ])
             </div>
         </div>
-    @endcan
+    @endcan --}}
     <div class="card">
         <div class="card-header">
             {{ trans('cruds.professionale.title_singular') }} {{ trans('global.list') }}
@@ -29,18 +29,18 @@
 
                         </th>
                         <th>
-                        @if (app()->getLocale() === 'bn')
-                        কর্মকর্তা/কর্মচারী আইডি
-                    @else
-                        Employee ID
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                কর্মকর্তা/কর্মচারী আইডি
+                            @else
+                                Employee ID
+                            @endif
                         </th>
                         <th>
-                        @if (app()->getLocale() === 'bn')
-                        কর্মকর্তা/কর্মচারী নাম
-                    @else
-                        Employee Name
-                    @endif
+                            @if (app()->getLocale() === 'bn')
+                                কর্মকর্তা/কর্মচারী নাম
+                            @else
+                                Employee Name
+                            @endif
                         </th>
                         <th>
                             {{ trans('cruds.professionale.fields.qualification_title') }}

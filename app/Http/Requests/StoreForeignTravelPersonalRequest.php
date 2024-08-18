@@ -17,10 +17,10 @@ class StoreForeignTravelPersonalRequest extends FormRequest
     public function rules()
     {
         return [
-            'purpose_id' => [
-                'required',
-                'integer',
-            ],
+            // 'purpose_id' => [
+            //     'required',
+            //     'integer',
+            // ],
             'from_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',

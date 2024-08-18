@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Admin\EmployeeListController;
-Route::redirect('/', '/login')->name('home');
+Route::redirect('/', '/srms/login')->name('home');
 
 
 Route::get('/home', function () {

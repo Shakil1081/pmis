@@ -128,6 +128,7 @@ class EmployeeListController extends Controller
         // Create the employee with the generated ID
         $employeeData = $request->all();
         $employeeData['employeeid'] = $employeeId;
+        $employeeData['created_by'] = auth()->id();
 
         $employeeList = EmployeeList::create($employeeData);
 
@@ -511,7 +512,7 @@ class EmployeeListController extends Controller
         }
 
 
-        return view('admin.employeeLists.pdf', compact('employeeList', 'columname', 'deucationDegree'));
+        //return view('admin.employeeLists.pdf', compact('employeeList', 'columname', 'deucationDegree'));
 
 
         $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList', 'columname', 'deucationDegree'), [], [
@@ -524,6 +525,7 @@ class EmployeeListController extends Controller
             'default_font' => 'nsikosh',
 
         ]);
+
 
         $name = $employeeList->employeeid . '_' . $employeeList->fullname_en . '_employee.pdf';
         return $pdf->download($name);

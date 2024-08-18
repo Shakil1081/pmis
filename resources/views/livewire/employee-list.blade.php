@@ -113,29 +113,29 @@
 
 
 
+
                 <div class="col">
                     @if ($designationName)
-                        <span class="badge bg-warning"style="
-                        background-color: #5d1f1f17 !important;
-                        color: #5d1f1f !important;
-                        padding: 6px !IMPORTANT;
-                        border-radius: 25px;
-                    "> {{ $designationName }}</span>
+                        <p class="badge bg-warning" title="{{ $designationName }}"
+                            style="
+                    background-color: #5d1f1f17 !important;
+                    color: #5d1f1f !important;
+                    padding: 6px !IMPORTANT;
+                    border-radius: 25px;
+                    width: 300px;
+                    overflow: hidden;">
+                            {{ $designationName }}</p>
                     @endif
 
 
-                </div>
-                <div class="col">
 
-                    @if (app()->getLocale() === 'bn')
-                        প্রোফাইলের অগ্রগতি
+
+
+
+                    <div class="progress"
+                        title=" @if (app()->getLocale() === 'bn') প্রোফাইলের অগ্রগতি
                     @else
-                        Profile progress
-                    @endif
-
-
-
-                    <div class="progress">
+                        Profile progress @endif">
                         @php
                             $total = 1;
 
@@ -160,7 +160,7 @@
                                 'publications',
                             ];
 
-                            $totalvalue = count($relationships)+1;
+                            $totalvalue = count($relationships) + 1;
 
                             foreach ($relationships as $relationship) {
                                 $countable = $result->{$relationship} ?? collect();
@@ -174,7 +174,8 @@
 
                         {{-- @dd($totalvalue) --}}
                         <div class="progress-bar" role="progressbar" style="width:{{ round($progress) }}%;"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%</div>
+                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ round($progress) }}%
+                        </div>
                     </div>
 
 

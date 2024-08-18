@@ -59,7 +59,7 @@
                     $lastJobHistory = $result->jobhistories->last();
                     if ($lastJobHistory && $lastJobHistory->relationLoaded('designation')) {
                         $designation = $lastJobHistory->designation;
-                        $designationName = $designation->name_bn;
+                        $designationName = $designation->name_bn ?? '';
                     }
                 }
             @endphp
@@ -145,8 +145,22 @@
                             <div class="btn-group">
                                 <button wire:click="approve({{ $empID }})"
                                     class="approve-button btn btn-sm btn-success">
-                                    Approve
+
+
+
+
+
+                                    @if (app()->getLocale() === 'bn')
+                                        অনুমোদন করুন
+                                    @else
+                                        Approve
+                                    @endif
+
                                 </button>
+                                <a href="{{ route('admin.commonemployeeshow', ['id' => $empID]) }}"
+                                    class="btn btn-sm btn-outline-dark">
+                                    {{ trans('global.edit') }}
+                                </a>
 
                                 <a href="{{ route('admin.employeedata', ['id' => $empID]) }}" target="_blank"
                                     class="btn btn-sm btn-outline-success">
@@ -173,7 +187,7 @@
             </div>
         @endforeach
 
-        {{ $data['allresult']->links() }}
+        {{ $data['allresult']->links('pagination::bootstrap-4') }}
     @else
         <p>No results found.</p>
     @endif

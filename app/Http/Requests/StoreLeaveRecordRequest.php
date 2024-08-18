@@ -25,11 +25,18 @@ class StoreLeaveRecordRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'leave_orderumber' => [
+                'required', 
+            ],
             'start_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
             'end_date' => [
+                'required',
+                'date_format:' . config('panel.date_format'),
+            ],
+            'leave_order_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
             ],
