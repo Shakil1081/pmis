@@ -82,6 +82,35 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.leaveRecord.fields.end_date_helper') }}</span>
                                 </div>
+                                <div class="form-group">
+                                    <label class="required"
+                                        for="leave_orderumber">{{ trans('cruds.leaveRecord.fields.leave_orderumber') }}</label>
+                                    <input class="form-control {{ $errors->has('leave_orderumber') ? 'is-invalid' : '' }}"
+                                        type="text" name="leave_orderumber" id="leave_orderumber"
+                                        value="{{ old('leave_orderumber') }}" required>
+                                    @if ($errors->has('leave_orderumber'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('leave_orderumber') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.leaveRecord.fields.leave_orderumber_helper') }}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required"
+                                        for="leave_order_date">{{ trans('cruds.leaveRecord.fields.leave_order_date') }}</label>
+                                    <input
+                                        class="form-control date {{ $errors->has('leave_order_date') ? 'is-invalid' : '' }}"
+                                        type="text" name="leave_order_date" id="leave_order_date"
+                                        value="{{ old('leave_order_date') }}" required>
+                                    @if ($errors->has('leave_order_date'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('leave_order_date') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.leaveRecord.fields.leave_order_date_helper') }}</span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="reason">{{ trans('cruds.leaveRecord.fields.reason') }}</label>

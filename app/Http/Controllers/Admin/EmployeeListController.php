@@ -126,6 +126,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         // Create the employee with the generated ID
         $employeeData = $request->all();
         $employeeData['employeeid'] = $employeeId;
+        $employeeData['created_by'] = auth()->id();
 
         $employeeList = EmployeeList::create($employeeData);
 
@@ -511,18 +512,18 @@ if (!$employeeList) {
 
 
 
- //return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
+ return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
 
 
-$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
-'margin_bottom' => 15,
-'margin_left' => 18,
-'margin_right' => 18,
-'format' => 'A4',
-'default_font_size' => '15', 
-    'default_font' => 'nsikosh',
+// $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
+// 'margin_bottom' => 15,
+// 'margin_left' => 18,
+// 'margin_right' => 18,
+// 'format' => 'A4',
+// 'default_font_size' => '15', 
+//     'default_font' => 'nsikosh',
 
-]);
+// ]);
 
 $name=$employeeList->employeeid.'_'.$employeeList->fullname_en.'_employee.pdf';
 return $pdf->download($name);

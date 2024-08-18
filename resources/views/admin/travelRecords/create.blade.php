@@ -87,7 +87,7 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.travelRecord.fields.country_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="purpose_id">{{ trans('cruds.travelRecord.fields.purpose') }}</label>
                                     <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
                                         name="purpose_id" id="purpose_id">
@@ -103,7 +103,7 @@
                                         </div>
                                     @endif
                                     <span class="help-block">{{ trans('cruds.travelRecord.fields.purpose_helper') }}</span>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label class="required"
                                         for="start_date">{{ trans('cruds.travelRecord.fields.start_date') }}</label>

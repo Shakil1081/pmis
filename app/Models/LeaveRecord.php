@@ -21,6 +21,7 @@ class LeaveRecord extends Model implements HasMedia
     protected $dates = [
         'start_date',
         'end_date',
+        'leave_order_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -32,6 +33,8 @@ class LeaveRecord extends Model implements HasMedia
         'leave_category_id',
         'start_date',
         'end_date',
+        'leave_order_date',
+        'leave_orderumber',
         'reason',
         'created_at',
         'updated_at',
@@ -82,5 +85,14 @@ class LeaveRecord extends Model implements HasMedia
     public function setEndDateAttribute($value)
     {
         $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+    public function getLeaveOrderDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setLeaveOrderDateAttribute($value)
+    {
+        $this->attributes['leave_order_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 }

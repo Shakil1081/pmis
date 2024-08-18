@@ -95,7 +95,7 @@
                                     <span
                                         class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.country_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="required"
                                         for="purpose_id">{{ trans('cruds.foreignTravelPersonal.fields.purpose') }}</label>
                                     <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
@@ -113,7 +113,7 @@
                                     @endif
                                     <span
                                         class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.purpose_helper') }}</span>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label
                                         for="from_date">{{ trans('cruds.foreignTravelPersonal.fields.from_date') }}</label>

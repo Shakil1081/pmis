@@ -52,7 +52,16 @@
     <table class="header w-100" cellspacing="0" cellpadding="0">
         <tr>
             <td style="text-align: left; border: 0;" width="82">
-                <img src="{{ public_path('assets/images/logo1.png') }}" height="80" alt="Logo" />
+                @php
+                    $imagePath = public_path('assets/images/logo1.png');
+                @endphp
+
+                @if (file_exists($imagePath))
+                    <img src="{{ asset('assets/images/logo1.png') }}" height="80" alt="Logo" />
+                @else
+                    <p>Logo not found</p>
+                @endif
+
             </td>
             <td style="text-align: center;" style="border: 0;">
                 <center>
@@ -686,6 +695,8 @@
 
 
                 @foreach ($employeeList->educations ?? [] as $educationInformatione)
+                    <p>{{ trans('cruds.educationInformatione.title_singular') }}
+                        {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table" id="Education">
                         <tbody>
                             <tr>
@@ -813,6 +824,7 @@
 
 
                 @foreach ($employeeList->professionales ?? [] as $professionale)
+                    <p>{{ trans('cruds.professionale.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table" id="Professionales">
                         <tbody>
                             {{-- <tr>
@@ -873,6 +885,7 @@
 
 
                 @foreach ($employeeList->addressdetailes ?? [] as $addressdetaile)
+                    {{-- <p>{{ trans('cruds.addressdetaile.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p> --}}
                     <table class="table-bordered table-striped table" id="addressdetaile">
                         <tbody>
                             {{-- <tr>
@@ -1003,6 +1016,8 @@
 
 
                 @foreach ($employeeList->spouseinformationes ?? [] as $spouseInformatione)
+                    <p>{{ trans('cruds.spouseInformatione.title') }} {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
                     <table class="table-bordered table-striped table" id="spouseInformatione">
                         <tbody>
                             {{-- <tr>
@@ -1094,6 +1109,8 @@
 
 
                 @foreach ($employeeList->childinformationes ?? [] as $child)
+                    <p>{{ trans('cruds.child.title') }} {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
                     <table class="table-bordered table-striped table" id="child">
                         <tbody>
                             {{-- <tr>
@@ -1214,6 +1231,7 @@
 
                 {{-- @dd($employeeList->jobhistories) --}}
                 @foreach ($employeeList->jobhistories ?? [] as $jobHistory)
+                    <p> {{ trans('cruds.jobHistory.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table" id="jobHistory">
                         <tbody>
                             {{-- <tr>
@@ -1362,6 +1380,9 @@
 
 
                 @foreach ($employeeList->employeepromotions ?? [] as $employeePromotion)
+                    <p> {{ trans('cruds.employeePromotion.title') }} {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
+
                     <table class="table-bordered table-striped table" id="employeePromotion">
                         <tbody>
                             {{-- <tr>
@@ -1421,6 +1442,7 @@
 
 
                 @foreach ($employeeList->leaverecords ?? [] as $leaveRecord)
+                    <p> {{ trans('cruds.leaveRecord.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table" id="leaveRecord">
                         <tbody>
                             {{-- <tr>
@@ -1482,6 +1504,7 @@
 
 
                 @foreach ($employeeList->trainings ?? [] as $training)
+                    <p> {{ trans('cruds.training.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table" id="training">
                         <tbody>
 
@@ -1571,6 +1594,7 @@
 
 
                 @foreach ($employeeList->travelRecords ?? [] as $travelRecord)
+                    <p>{{ trans('cruds.travelRecord.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             {{-- <tr>
@@ -1630,6 +1654,9 @@
 
 
                 @foreach ($employeeList->foreigntravelpersonals ?? [] as $foreignTravelPersonal)
+                    <p>{{ trans('cruds.foreignTravelPersonal.title') }}
+                        {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             {{-- <tr>
@@ -1697,6 +1724,7 @@
                 @endif
 
                 @foreach ($employeeList->extracurriculams ?? [] as $extracurriculam)
+                    <p> {{ trans('cruds.extracurriculam.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             {{-- <tr>
@@ -1782,6 +1810,7 @@
 
 
                 @foreach ($employeeList->publications ?? [] as $publication)
+                    <p> {{ trans('cruds.publication.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
@@ -1857,6 +1886,7 @@
 
 
                 @foreach ($employeeList->awards ?? [] as $award)
+                    <p>{{ trans('cruds.award.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table">
                         <tbody>
 
@@ -1993,6 +2023,7 @@
 
 
                 @foreach ($employeeList->languages ?? [] as $language)
+                    <p>{{ trans('cruds.language.title') }} {{ englishToBanglaNumber($loop->index + 1) }}</p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             {{-- <tr>
@@ -2067,6 +2098,8 @@
 
 
                 @foreach ($employeeList->criminalprosecutiones ?? [] as $criminalProsecutione)
+                    <p>{{ trans('cruds.criminalProsecutione.title') }} {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             {{-- <tr>
@@ -2135,6 +2168,9 @@
 
 
                 @foreach ($employeeList->criminalprodisciplinaries ?? [] as $criminalproDisciplinary)
+                    <p> {{ trans('cruds.criminalproDisciplinary.title') }}
+                        {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
                     <table class="table-bordered table-striped table">
                         <tbody>
                             <tr>
@@ -2194,6 +2230,9 @@
 
 
                 @foreach ($employeeList->acrmonitorings ?? [] as $acrMonitoring)
+                    <p>{{ trans('cruds.acrMonitoring.title') }} {{ englishToBanglaNumber($loop->index + 1) }}
+                    </p>
+
                     <table class="table-bordered table-striped table">
                         <tbody>
                             {{-- <tr>

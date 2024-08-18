@@ -31,7 +31,7 @@ class StoreEmployeeListRequest extends FormRequest
                 'min:2',
                 'max:50',
                 'required',
-                'unique:employee_lists',
+                //'unique:employee_lists',
             ],
             'fullname_en' => [
                 'string',
