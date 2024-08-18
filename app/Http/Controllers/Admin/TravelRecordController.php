@@ -10,6 +10,7 @@ use App\Models\Country;
 use App\Models\EmployeeList;
 use App\Models\TravelPurpose;
 use App\Models\TravelRecord;
+use App\Models\TravelTitle;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -23,7 +24,7 @@ class TravelRecordController extends Controller
         abort_if(Gate::denies('travel_record_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = TravelRecord::with(['employee', 'country', 'purpose'])->select(sprintf('%s.*', (new TravelRecord)->table));
+            $query = TravelRecord::with(['employee', 'title', 'country', 'purpose'])->select(sprintf('%s.*', (new TravelRecord)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -48,22 +49,19 @@ class TravelRecordController extends Controller
                 return $row->employee ? $row->employee->employeeid : '';
             });
 
-            $table->addColumn('name', function ($row) {
-                return $row->employee ? $row->employee->fullname_en : '';
+            $table->addColumn('title_name_bn', function ($row) {
+                return $row->title ? $row->title->name_bn : '';
             });
 
             $table->addColumn('country_name_bn', function ($row) {
                 return $row->country ? $row->country->name_bn : '';
             });
 
-            $table->editColumn('title', function ($row) {
-                return $row->title ? $row->title : '';
-            });
             $table->addColumn('purpose_name_bn', function ($row) {
                 return $row->purpose ? $row->purpose->name_bn : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'employee', 'country', 'purpose']);
+            $table->rawColumns(['actions', 'placeholder', 'employee', 'title', 'country', 'purpose']);
 
             return $table->make(true);
         }
@@ -71,44 +69,57 @@ class TravelRecordController extends Controller
         return view('admin.travelRecords.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('travel_record_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-$locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
-
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $titles = TravelTitle::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $purposes = TravelPurpose::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travelRecords.create', compact('countries', 'employees', 'purposes'));
+        $purposes = TravelPurpose::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.travelRecords.create', compact('countries', 'employees', 'purposes', 'titles','employee'));
     }
 
     public function store(StoreTravelRecordRequest $request)
     {
-        $travelRecord = TravelRecord::create($request->all());
-         return redirect()->back()->with('status', __('global.saveactions'));
-       // return redirect()->route('admin.travel-records.index');
+
+        $data = $request->all(); 
+        if ($data['title_id'] == 'Other') {
+            $travelTitle = new TravelTitle();
+            $travelTitle->name_bn = $data['name_bn'];
+            $travelTitle->name_en = $data['name_en'];
+            $travelTitle->save();
+            $data['title_id'] = $travelTitle->id;
+        }
+
+        $travelRecord = TravelRecord::create($data);
+
+        return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(TravelRecord $travelRecord)
     {
         abort_if(Gate::denies('travel_record_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-$locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $titles = TravelTitle::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $purposes = TravelPurpose::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travelRecord->load('employee', 'country', 'purpose');
+        $purposes = TravelPurpose::pluck( $columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travelRecords.edit', compact('countries', 'employees', 'purposes', 'travelRecord'));
+        $travelRecord->load('employee', 'title', 'country', 'purpose');
+
+        return view('admin.travelRecords.edit', compact('countries', 'employees', 'purposes', 'titles', 'travelRecord'));
     }
 
     public function update(UpdateTravelRecordRequest $request, TravelRecord $travelRecord)
@@ -122,7 +133,7 @@ $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
     {
         abort_if(Gate::denies('travel_record_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travelRecord->load('employee', 'country', 'purpose');
+        $travelRecord->load('employee', 'title', 'country', 'purpose');
 
         return view('admin.travelRecords.show', compact('travelRecord'));
     }

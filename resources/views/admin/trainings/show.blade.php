@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.training.fields.foreign_travel') }}
+                        </th>
+                        <td>
+                            {{ $training->foreign_travel->name_bn ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.training.fields.training_type') }}
                         </th>
                         <td>

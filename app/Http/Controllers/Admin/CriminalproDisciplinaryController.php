@@ -9,11 +9,13 @@ use App\Http\Requests\StoreCriminalproDisciplinaryRequest;
 use App\Http\Requests\UpdateCriminalproDisciplinaryRequest;
 use App\Models\CriminalproDisciplinary;
 use App\Models\CriminalProsecutione;
+use App\Models\DiciplinaryAction;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\EmployeeList;
 
 class CriminalproDisciplinaryController extends Controller
 {
@@ -70,29 +72,104 @@ class CriminalproDisciplinaryController extends Controller
         return view('admin.criminalproDisciplinaries.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('criminalpro_disciplinary_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
         $criminalprosecutiones = CriminalProsecutione::pluck('natureof_offence', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.criminalproDisciplinaries.create', compact('criminalprosecutiones'));
+        return view('admin.criminalproDisciplinaries.create', compact('criminalprosecutiones','employee'));
     }
 
-    public function store(StoreCriminalproDisciplinaryRequest $request)
-    {
-        $criminalproDisciplinary = CriminalproDisciplinary::create($request->all());
+    // public function store(StoreCriminalproDisciplinaryRequest $request)
+    // {
+    //     $criminalproDisciplinary = CriminalproDisciplinary::create($request->all());
 
-        if ($request->input('order_upload_file', false)) {
-            $criminalproDisciplinary->addMedia(storage_path('tmp/uploads/' . basename($request->input('order_upload_file'))))->toMediaCollection('order_upload_file');
-        }
+    //     if ($request->input('order_upload_file', false)) {
+    //         $criminalproDisciplinary->addMedia(storage_path('tmp/uploads/' . basename($request->input('order_upload_file'))))->toMediaCollection('order_upload_file');
+    //     }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $criminalproDisciplinary->id]);
+    //     if ($media = $request->input('ck-media', false)) {
+    //         Media::whereIn('id', $media)->update(['model_id' => $criminalproDisciplinary->id]);
+    //     }
+    //     return redirect()->back()->with('status', __('global.saveactions'));
+    //     //return redirect()->route('admin.criminalpro-disciplinaries.index');
+    // }
+
+//     public function store(StoreCriminalproDisciplinaryRequest $request)
+// {
+ 
+//     $criminalproDisciplinary = CriminalproDisciplinary::create($request->all());
+//     if ($request->hasFile('order_upload_file')) {
+//         $orderUploadFile = $request->file('order_upload_file');
+//         $criminalproDisciplinary->addMedia($orderUploadFile)->toMediaCollection('order_upload_file');
+//     }
+
+//     // Handle any other media files attached via CKEditor (if any)
+//     if ($media = $request->input('ck-media', false)) {
+//         Media::whereIn('id', $media)->update(['model_id' => $criminalproDisciplinary->id]);
+//     }
+
+//     // Redirect back with a success message
+//     return redirect()->back()->with('status', __('global.saveactions'));
+// }
+
+
+
+public function store(StoreCriminalproDisciplinaryRequest $request)
+{
+    // Validate the request data using the StoreCriminalProsecutioneRequest class
+    $validatedData = $request->validated();
+
+  // dd($request->all());
+
+    $diciplinaryAction = CriminalproDisciplinary::create($validatedData);
+
+    if ($request->hasFile('court_order')) {
+        $courtOrderFiles = $request->file('court_order');
+        foreach ($courtOrderFiles as $courtOrderFile) {
+            $diciplinaryAction->addMedia($courtOrderFile)->toMediaCollection('court_order');
         }
-return redirect()->back()->with('status', 'Action successful!');
-       // return redirect()->route('admin.criminalpro-disciplinaries.index');
     }
+
+
+    $govtOrderNos = $request->input('govt_order_no', []);
+    $govtOrderFiles = $request->file('govt_order_file', []);
+
+
+    foreach ($govtOrderNos as $index => $govtOrderNo) {
+        
+        if (isset($govtOrderFiles[$index])) {
+            $govtOrderFile = $govtOrderFiles[$index];
+
+           
+            $govtOrderPath = $govtOrderFile->store('govt_orders', 'public'); 
+
+         
+            $diciplinaryActionData = [
+                'govt_order_no' => $govtOrderNo,
+                'govt_order' => $govtOrderPath,  
+                'diciplinary_action_id' => $diciplinaryAction->id,
+            ];
+
+            //dd( $diciplinaryActionData);
+            DiciplinaryAction::create($diciplinaryActionData);
+        }
+    }
+
+    // Handle any other media files attached via CKEditor (if any)
+    if ($media = $request->input('ck-media', false)) {
+        Media::whereIn('id', $media)->update(['model_id' => $diciplinaryAction->id]);
+    }
+
+    // Redirect back with a success message
+    return redirect()->back()->with('status', __('global.saveactions'));
+}
+
+
+
 
     public function edit(CriminalproDisciplinary $criminalproDisciplinary)
     {

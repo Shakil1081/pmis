@@ -175,7 +175,11 @@
             <div class="form-group{{ $joininginfo !== null && $joininginfo != 2 ? '' : ' d-none' }}">
 
                 <label
-                    for="date_of_regularization">{{ trans('cruds.employeeList.fields.date_of_regularization') }}</label>
+                    for="date_of_regularization">@if (app()->getLocale() === 'bn')
+                নিয়মিত করনের তারিখ
+            @else
+                Date of Regularization
+            @endif</label>
                 <input class="form-control date {{ $errors->has('date_of_regularization') ? 'is-invalid' : '' }}"
                     type="text" name="date_of_regularization" id="date_of_regularization"
                     value="{{ old('date_of_regularization') }}">
@@ -189,7 +193,7 @@
         @endif
 
 
-        @if ($joininginfo != 3)
+        <!-- @if ($joininginfo != 3)
             <div class="form-group{{ $joininginfo !== null && $joininginfo != 2 ? '' : ' d-none' }}">
                 <label
                     for="regularization_issue_date">{{ trans('cruds.employeeList.fields.regularization_issue_date') }}</label>
@@ -205,7 +209,30 @@
                     class="help-block">{{ trans('cruds.employeeList.fields.regularization_issue_date_helper') }}</span>
             </div>
 
-        @endif
+        @endif -->
+
+        <!-- @if ($joininginfo != 3)
+        <div class="form-group">
+                        <label
+                            for="regularization_office_orde_go">@if (app()->getLocale() === 'bn')
+                নিয়মিত করনের আদেশ সংযোজন
+            @else
+                Date of Regularization Order pload
+            @endif</label>
+                        <div class="needsclick dropzone {{ $errors->has('regularization_office_orde_go') ? 'is-invalid' : '' }}"
+                            id="regularization_office_orde_go-dropzone">
+                        </div>
+                        @if ($errors->has('regularization_office_orde_go'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('regularization_office_orde_go') }}
+                            </div>
+                        @endif
+
+                        <span
+                            class="help-block">{{ trans('cruds.employeeList.fields.regularization_office_orde_go_helper') }}</span>
+                    </div>
+
+        @endif -->
 
         <div class="form-group">
             <label for="grade_id">{{ trans('cruds.employeeList.fields.grade') }}</label>
@@ -251,17 +278,6 @@
             <span class="help-block">{{ trans('cruds.employeeList.fields.class_helper') }}</span>
         </div>
 
-        <div class="form-group">
-            <label class="required"
-                for="fjoining_date">{{ trans('cruds.employeeList.fields.fjoining_date') }}</label>
-            <input class="form-control date {{ $errors->has('fjoining_date') ? 'is-invalid' : '' }}" type="text"
-                name="fjoining_date" id="fjoining_date" value="{{ old('fjoining_date') }}" required>
-            @if ($errors->has('fjoining_date'))
-                <div class="invalid-feedback">
-                    {{ $errors->first('fjoining_date') }}
-                </div>
-            @endif
-            <span class="help-block">{{ trans('cruds.employeeList.fields.fjoining_date_helper') }}</span>
-        </div>
+        
     </div>
 </div>

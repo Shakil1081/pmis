@@ -23,13 +23,16 @@ class OtherServiceJobController extends Controller
         return view('admin.otherServiceJobs.index', compact('otherServiceJobs'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('other_service_job_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
+
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.otherServiceJobs.create', compact('employees'));
+        return view('admin.otherServiceJobs.create', compact('employees','employee'));
     }
 
     public function store(StoreOtherServiceJobRequest $request)

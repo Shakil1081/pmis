@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.projectRevenuelone.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.diciplinaryAction.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.project-revenuelones.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.diciplinary-actions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,40 +17,32 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.projectRevenuelone.fields.id') }}
+                            {{ trans('cruds.diciplinaryAction.fields.govt_order_no') }}
                         </th>
                         <td>
-                            {{ $projectRevenuelone->id }}
+                            {{ $diciplinaryAction->govt_order_no }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.projectRevenuelone.fields.project_revenue') }}
+                            {{ trans('cruds.diciplinaryAction.fields.govt_order_date') }}
                         </th>
                         <td>
-                            {{ $projectRevenuelone->project_revenue->project_revenue_bn ?? '' }}
+                            {{ $diciplinaryAction->govt_order_date }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.projectRevenuelone.fields.name_bn') }}
+                            {{ trans('cruds.diciplinaryAction.fields.diciplinary_action') }}
                         </th>
                         <td>
-                            {{ $projectRevenuelone->name_bn }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.projectRevenuelone.fields.name_en') }}
-                        </th>
-                        <td>
-                            {{ $projectRevenuelone->name_en }}
+                            {{ $diciplinaryAction->diciplinary_action->judgement_type ?? '' }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.project-revenuelones.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.diciplinary-actions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

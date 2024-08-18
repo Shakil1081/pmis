@@ -7,12 +7,19 @@ use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class ForeignTravelPersonal extends Model
+class ForeignTravelPersonal extends Model implements HasMedia
 {
-    use Auditable, HasFactory;
+    use InteractsWithMedia, Auditable, HasFactory;
 
     public $table = 'foreign_travel_personals';
+
+    protected $appends = [
+        'leave_permission',
+    ];
 
     protected $dates = [
         'from_date',
@@ -23,13 +30,12 @@ class ForeignTravelPersonal extends Model
     ];
 
     protected $fillable = [
-        'title',
         'country_id',
         'purpose_id',
         'from_date',
         'to_date',
-        'leave_id',
         'employee_id',
+        'title_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -40,15 +46,21 @@ class ForeignTravelPersonal extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
 
-    // public function purpose()
-    // {
-    //     return $this->belongsTo(TravelPurpose::class, 'purpose_id');
-    // }
+    public function purpose()
+    {
+        return $this->belongsTo(TravelPurpose::class, 'purpose_id');
+    }
 
     public function getFromDateAttribute($value)
     {
@@ -70,13 +82,18 @@ class ForeignTravelPersonal extends Model
         $this->attributes['to_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function leave()
-    {
-        return $this->belongsTo(TravelRecord::class, 'leave_id');
-    }
-
     public function employee()
     {
         return $this->belongsTo(EmployeeList::class, 'employee_id');
+    }
+
+    public function getLeavePermissionAttribute()
+    {
+        return $this->getMedia('leave_permission')->last();
+    }
+
+    public function title()
+    {
+        return $this->belongsTo(TravelTitle::class, 'title_id');
     }
 }

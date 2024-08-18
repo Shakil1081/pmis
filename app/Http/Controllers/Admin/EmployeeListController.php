@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -35,6 +36,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 use PDF;
+
 class EmployeeListController extends Controller
 {
     use MediaUploadingTrait;
@@ -65,12 +67,12 @@ class EmployeeListController extends Controller
     {
         // $dd= EmployeeList::generateEmployeeid('3rd'); 
         // dd($dd); 
-$locale = App::getLocale();
-$batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
-$project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
-$exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
-$maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
+        $locale = App::getLocale();
+        $batchColumn = $locale === 'bn' ? 'batch_bn' : 'batch_en';
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $project_revenue_bn = $locale === 'bn' ? 'project_revenue_bn' : 'project_revenue_en';
+        $exam_name_bn = $locale === 'bn' ? 'exam_name_bn' : 'exam_name_en';
+        $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -106,19 +108,19 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
     public function store(StoreEmployeeListRequest $request)
     {
-//    dd($request->all());
+        //    dd($request->all());
 
-   if ($request->religion_name_bn) {
-    $insearrid = Religion::create([
-        'name_bn' => $request->religion_name_bn,
-        'name_en' => $request->religion_name_en,
-    ]);
-    $request->merge(['religion_id' => $insearrid->id]);
-}
+        if ($request->religion_name_bn) {
+            $insearrid = Religion::create([
+                'name_bn' => $request->religion_name_bn,
+                'name_en' => $request->religion_name_en,
+            ]);
+            $request->merge(['religion_id' => $insearrid->id]);
+        }
 
-    //$employeeList = EmployeeList::create($request->all());
+        //$employeeList = EmployeeList::create($request->all());
 
-    $class = $request->input('class');
+        $class = $request->input('class');
 
         // Generate the employee ID
         $employeeId = EmployeeList::generateEmployeeId($class);
@@ -212,7 +214,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         $projectrevenues = Joininginfo::pluck($project_revenue_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $joiningexaminfos = ProjectRevenueExam::pluck( $exam_name_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $joiningexaminfos = ProjectRevenueExam::pluck($exam_name_bn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $departmental_exams = ProjectRevenuelone::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -234,7 +236,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         $employeeList->update($request->all());
 
         if ($request->input('birth_certificate_upload', false)) {
-            if (! $employeeList->birth_certificate_upload || $request->input('birth_certificate_upload') !== $employeeList->birth_certificate_upload->file_name) {
+            if (!$employeeList->birth_certificate_upload || $request->input('birth_certificate_upload') !== $employeeList->birth_certificate_upload->file_name) {
                 if ($employeeList->birth_certificate_upload) {
                     $employeeList->birth_certificate_upload->delete();
                 }
@@ -245,7 +247,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('nid_upload', false)) {
-            if (! $employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
+            if (!$employeeList->nid_upload || $request->input('nid_upload') !== $employeeList->nid_upload->file_name) {
                 if ($employeeList->nid_upload) {
                     $employeeList->nid_upload->delete();
                 }
@@ -256,7 +258,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('passport_upload', false)) {
-            if (! $employeeList->passport_upload || $request->input('passport_upload') !== $employeeList->passport_upload->file_name) {
+            if (!$employeeList->passport_upload || $request->input('passport_upload') !== $employeeList->passport_upload->file_name) {
                 if ($employeeList->passport_upload) {
                     $employeeList->passport_upload->delete();
                 }
@@ -267,7 +269,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('license_upload', false)) {
-            if (! $employeeList->license_upload || $request->input('license_upload') !== $employeeList->license_upload->file_name) {
+            if (!$employeeList->license_upload || $request->input('license_upload') !== $employeeList->license_upload->file_name) {
                 if ($employeeList->license_upload) {
                     $employeeList->license_upload->delete();
                 }
@@ -278,7 +280,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('certificate_upload', false)) {
-            if (! $employeeList->certificate_upload || $request->input('certificate_upload') !== $employeeList->certificate_upload->file_name) {
+            if (!$employeeList->certificate_upload || $request->input('certificate_upload') !== $employeeList->certificate_upload->file_name) {
                 if ($employeeList->certificate_upload) {
                     $employeeList->certificate_upload->delete();
                 }
@@ -289,7 +291,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('first_joining_order', false)) {
-            if (! $employeeList->first_joining_order || $request->input('first_joining_order') !== $employeeList->first_joining_order->file_name) {
+            if (!$employeeList->first_joining_order || $request->input('first_joining_order') !== $employeeList->first_joining_order->file_name) {
                 if ($employeeList->first_joining_order) {
                     $employeeList->first_joining_order->delete();
                 }
@@ -300,7 +302,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('fjoining_letter', false)) {
-            if (! $employeeList->fjoining_letter || $request->input('fjoining_letter') !== $employeeList->fjoining_letter->file_name) {
+            if (!$employeeList->fjoining_letter || $request->input('fjoining_letter') !== $employeeList->fjoining_letter->file_name) {
                 if ($employeeList->fjoining_letter) {
                     $employeeList->fjoining_letter->delete();
                 }
@@ -311,7 +313,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('date_of_gazette_if_any', false)) {
-            if (! $employeeList->date_of_gazette_if_any || $request->input('date_of_gazette_if_any') !== $employeeList->date_of_gazette_if_any->file_name) {
+            if (!$employeeList->date_of_gazette_if_any || $request->input('date_of_gazette_if_any') !== $employeeList->date_of_gazette_if_any->file_name) {
                 if ($employeeList->date_of_gazette_if_any) {
                     $employeeList->date_of_gazette_if_any->delete();
                 }
@@ -322,7 +324,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('regularization_office_orde_go', false)) {
-            if (! $employeeList->regularization_office_orde_go || $request->input('regularization_office_orde_go') !== $employeeList->regularization_office_orde_go->file_name) {
+            if (!$employeeList->regularization_office_orde_go || $request->input('regularization_office_orde_go') !== $employeeList->regularization_office_orde_go->file_name) {
                 if ($employeeList->regularization_office_orde_go) {
                     $employeeList->regularization_office_orde_go->delete();
                 }
@@ -333,7 +335,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('confirmation_in_service', false)) {
-            if (! $employeeList->confirmation_in_service || $request->input('confirmation_in_service') !== $employeeList->confirmation_in_service->file_name) {
+            if (!$employeeList->confirmation_in_service || $request->input('confirmation_in_service') !== $employeeList->confirmation_in_service->file_name) {
                 if ($employeeList->confirmation_in_service) {
                     $employeeList->confirmation_in_service->delete();
                 }
@@ -344,7 +346,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('electric_signature', false)) {
-            if (! $employeeList->electric_signature || $request->input('electric_signature') !== $employeeList->electric_signature->file_name) {
+            if (!$employeeList->electric_signature || $request->input('electric_signature') !== $employeeList->electric_signature->file_name) {
                 if ($employeeList->electric_signature) {
                     $employeeList->electric_signature->delete();
                 }
@@ -355,7 +357,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         }
 
         if ($request->input('employee_photo', false)) {
-            if (! $employeeList->employee_photo || $request->input('employee_photo') !== $employeeList->employee_photo->file_name) {
+            if (!$employeeList->employee_photo || $request->input('employee_photo') !== $employeeList->employee_photo->file_name) {
                 if ($employeeList->employee_photo) {
                     $employeeList->employee_photo->delete();
                 }
@@ -387,11 +389,11 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
     }
     public function dfo()
     {
-          $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve',Null)->paginate(10);
+        $data['allresult'] = EmployeeList::with('jobhistories.designation')->where('approve', Null)->paginate(10);
         $data['total'] = EmployeeList::count();
 
-       
-    return view('admin.employeeLists.dfo-review-list', compact('data'));
+
+        return view('admin.employeeLists.dfo-review-list', compact('data'));
     }
 
     public function approve(Request $request)
@@ -424,10 +426,10 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
     {
         abort_if(Gate::denies('employee_list_create') && Gate::denies('employee_list_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new EmployeeList();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new EmployeeList();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
@@ -444,7 +446,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
 
         abort_if(Gate::denies('employee_list_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $batches = Batch::pluck( $batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
+        $batches = Batch::pluck($batchColumn, 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $home_districts = District::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -476,7 +478,7 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         $thana_upazilas = Upazila::pluck($columname, 'id')->prepend(trans('global.pleaseSelect'), '');
 
 
-        return view('admin.commonemployee.create', compact('new_designations','designations','job_types','thana_upazilas','batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions','employees', 'exam_boards', 'name_of_exams'));
+        return view('admin.commonemployee.create', compact('new_designations', 'designations', 'job_types', 'thana_upazilas', 'batches', 'blood_groups', 'genders', 'grades', 'home_districts', 'joiningexaminfos', 'license_types', 'marital_status', 'quotas', 'religions', 'employees', 'exam_boards', 'name_of_exams'));
     }
 
 
@@ -494,45 +496,44 @@ $maritialstatus = $locale === 'bn' ? 'name' : 'name_en';
         return view('admin.employeeLists.showcommonenployee', compact('employeeList'));
     }
 
-   
-    public function employeedata_pdf (Request $request)
+
+    public function employeedata_pdf(Request $request)
     {
 
-$locale = App::getLocale();
-$columname = $locale === 'bn' ? 'name_bn' : 'name_en';
-$deucationDegree= ExamDegree::all();
-$employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'educations', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
-->find($request->id);
+        $locale = App::getLocale();
+        $columname = $locale === 'bn' ? 'name_bn' : 'name_en';
+        $deucationDegree = ExamDegree::all();
+        $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'educations', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
+            ->find($request->id);
 
-if (!$employeeList) {
-    abort(404);
-}
-
-
+        if (!$employeeList) {
+            abort(404);
+        }
 
 
-//return view('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'));
+        return view('admin.employeeLists.pdf', compact('employeeList', 'columname', 'deucationDegree'));
 
 
-$pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList','columname','deucationDegree'),[], ['margin_top' => 20,
-'margin_bottom' => 15,
-'margin_left' => 18,
-'margin_right' => 18,
-'format' => 'A4',
-'default_font_size' => '15', 
-    'default_font' => 'nsikosh',
+        $pdf = PDF::loadView('admin.employeeLists.pdf', compact('employeeList', 'columname', 'deucationDegree'), [], [
+            'margin_top' => 20,
+            'margin_bottom' => 15,
+            'margin_left' => 18,
+            'margin_right' => 18,
+            'format' => 'A4',
+            'default_font_size' => '15',
+            'default_font' => 'nsikosh',
 
-]);
+        ]);
 
-$name=$employeeList->employeeid.'_'.$employeeList->fullname_en.'_employee.pdf';
-return $pdf->download($name);
-}
+        $name = $employeeList->employeeid . '_' . $employeeList->fullname_en . '_employee.pdf';
+        return $pdf->download($name);
+    }
     public function employeedata(Request $request)
-    {     
-    
+    {
+
 
         $employeeList = EmployeeList::with('batch', 'home_district', 'marital_statu', 'gender', 'religion', 'blood_group', 'license_type', 'joiningexaminfo', 'grade', 'quota')
-        ->find($request->id);
+            ->find($request->id);
 
         return view('admin.employeeLists.employeedata', compact('employeeList'));
     }
@@ -540,9 +541,9 @@ return $pdf->download($name);
     public function upcoming_retirement_list()
     {
         $currentDate = now()->toDateString();
-        
+
         $endDate = now()->addMonths(3)->toDateString();
-        
+
         $employeeList = EmployeeList::whereRaw("prl_date BETWEEN '$currentDate' AND '$endDate'")->get();
 
         return view('admin.retirement.index', compact('employeeList'));

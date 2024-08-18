@@ -6,7 +6,24 @@
                 @include('admin.commonemployee.commonmenu')
                 <div class="col-md-8">
                     <div class="tab-content my-1 border p-2" id="v-pills-tabContent">
-                        <h4> {{ trans('global.create') }} {{ trans('cruds.criminalproDisciplinary.title_singular') }}</h4>
+                    <div class="text-center">
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী আইডি : <b>{{ englishToBanglaNumber($employee['employeeid'] ?? 0) }}</b>
+                        @else
+                            Employee ID : <b>{{ $employee->employeeid }}</b>
+                        @endif
+
+                        <br>
+
+                        @if (app()->getLocale() === 'bn')
+                            কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
+                        @else
+                            Employee Name: <b>{{ $employee->fullname_en }}</b>
+                        @endif
+                    </div>
+                    <hr>
+                        <h4>{{ trans('cruds.criminalproDisciplinary.title_singular') }}</h4>
+                        <br>
                         <form method="POST"
                             action="{{ route('admin.criminalpro-disciplinaries.store', ['employee_id' => request()->query('id')]) }}"
                             enctype="multipart/form-data">
@@ -47,7 +64,7 @@
                                     <span
                                         class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.judgement_type_helper') }}</span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label
                                         for="government_order_no">{{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}</label>
                                     <input
@@ -75,8 +92,71 @@
                                     @endif
                                     <span
                                         class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.order_upload_file_helper') }}</span>
+                                </div> --}}
+                            </div>
+
+
+
+
+                            <div id="order-fields">
+
+
+                                <div class="order-field">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label
+                                                    for="government_order_no">{{ trans('cruds.criminalproDisciplinary.fields.government_order_no') }}</label>
+                                                <input
+                                                    class="form-control {{ $errors->has('govt_order_no') ? 'is-invalid' : '' }}"
+                                                    type="text" name="govt_order_no[]" id="govt_order_no">
+                                                @if ($errors->has('govt_order_no'))
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('govt_order_no') }}
+                                                    </div>
+                                                @endif
+                                                <span
+                                                    class="help-block">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_no_helper') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label
+                                                    for="court_order">{{ trans('cruds.criminalProsecutione.fields.court_order') }}</label>
+                                                <input
+                                                    class="form-control form-control-file {{ $errors->has('govt_order_file') ? 'is-invalid' : '' }}"
+                                                    type="file" name="govt_order_file[]" id="govt_order_file" multiple>
+                                                @if ($errors->has('govt_order_file'))
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('govt_order_file') }}
+                                                    </div>
+                                                @endif
+                                                {{-- <span
+                                                class="form-text">{{ trans('cruds.criminalProsecutionDerail.fields.govt_order_file_helper') }}</span> --}}
+                                            </div>
+                                        </div>
+
+
+                                        {{-- <div class="col-md-2">
+                                            <label class="w-100">&nbsp;</label>
+                                            <button type="button" class="btn btn-danger remove-field">Remove</button>
+                                        </div> --}}
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="form-group w-100">
+                                <button type="button" id="add-field" class="btn btn-primary w100">
+
+                                    @if (app()->getLocale() === 'bn')
+                                        আরো যোগ করুন
+                                    @else
+                                        Add More
+                                    @endif
+                                </button>
+                            </div>
+
+
                             <div class="form-group">
                                 <label for="remarks">{{ trans('cruds.criminalproDisciplinary.fields.remarks') }}</label>
                                 <textarea class="form-control {{ $errors->has('remarks') ? 'is-invalid' : '' }}" name="remarks" id="remarks">{{ old('remarks') }}</textarea>
@@ -89,10 +169,20 @@
                                     class="help-block">{{ trans('cruds.criminalproDisciplinary.fields.remarks_helper') }}</span>
                             </div>
 
-                            <div class="form-group">
-                                <button class="btn btn-danger" type="submit">
-                                    {{ trans('global.save') }}
-                                </button>
+                            <div class="row row-cols-3">
+
+
+                                <div class="form-group">
+                                    <button class="btn btn-danger" type="submit">
+                                        {{ trans('global.save') }}
+                                    </button>
+                                </div>
+
+                                <div class="form-group d-none">
+
+                                    <button type="button" id="add-field" class="btn btn-primary">Add More</button>
+
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -100,8 +190,65 @@
             </div>
         </div>
     </div>
-@endsection
 
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('add-field').addEventListener('click', function() {
+                let container = document.getElementById('order-fields');
+                let newField = document.querySelector('.order-field').cloneNode(true);
+                newField.querySelectorAll('input').forEach(input => input.value = '');
+                container.appendChild(newField);
+            });
+
+            document.getElementById('order-fields').addEventListener('click', function(e) {
+                if (e.target && e.target.matches('button.remove-field')) {
+                    e.target.parentNode.remove();
+                }
+            });
+        });
+    </script>
+
+    {{--     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let fieldCount = 1;
+
+            document.getElementById('add-field').addEventListener('click', function() {
+                let container = document.getElementById('action-fields');
+                let newField = document.querySelector('.action-field').cloneNode(true);
+
+                newField.querySelectorAll('input').forEach(input => {
+                    input.value = '';
+                    input.id = input.id.replace(/\d+/, fieldCount);
+                });
+
+                newField.querySelectorAll('label').forEach(label => {
+                    label.setAttribute('for', label.getAttribute('for').replace(/\d+/, fieldCount));
+                });
+
+                newField.querySelectorAll('.invalid-feedback').forEach(div => div.remove());
+                newField.querySelectorAll('.is-invalid').forEach(input => input.classList.remove(
+                    'is-invalid'));
+
+                container.appendChild(newField);
+                fieldCount++;
+            });
+
+            document.getElementById('action-fields').addEventListener('click', function(e) {
+                if (e.target && e.target.matches('button.remove-field')) {
+                    if (document.querySelectorAll('.action-field').length > 1) {
+                        e.target.closest('.action-field').remove();
+                    } else {
+                        alert('At least one set of fields must be present.');
+                    }
+                }
+            });
+        });
+    </script> --}}
+@endsection
+{{-- 
 @section('scripts')
     <script>
         Dropzone.options.orderUploadFileDropzone = {
@@ -154,4 +301,4 @@
             }
         }
     </script>
-@endsection
+@endsection --}}

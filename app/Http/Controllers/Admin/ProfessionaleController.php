@@ -30,9 +30,9 @@ class ProfessionaleController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'professionale_show';
-                $editGate      = 'professionale_edit';
-                $deleteGate    = 'professionale_delete';
+                $viewGate = 'professionale_show';
+                $editGate = 'professionale_edit';
+                $deleteGate = 'professionale_delete';
                 $crudRoutePart = 'professionales';
 
                 return view('partials.datatablesActions', compact(
@@ -41,7 +41,8 @@ class ProfessionaleController extends Controller
                     'deleteGate',
                     'crudRoutePart',
                     'row'
-                ));
+                )
+                );
             });
 
             $table->addColumn('employee_employeeid', function ($row) {
@@ -58,10 +59,6 @@ class ProfessionaleController extends Controller
                 return $row->institution ? $row->institution : '';
             });
 
-            $table->editColumn('passing_year', function ($row) {
-                return $row->passing_year ? $row->passing_year : '';
-            });
-
             $table->rawColumns(['actions', 'placeholder', 'employee']);
 
             return $table->make(true);
@@ -70,20 +67,21 @@ class ProfessionaleController extends Controller
         return view('admin.professionales.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         abort_if(Gate::denies('professionale_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $employeeId = $request->query('id');
+        $employee = EmployeeList::find($employeeId);
 
         $employees = EmployeeList::pluck('employeeid', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.professionales.create', compact('employees'));
+        return view('admin.professionales.create', compact('employees', 'employee'));
     }
 
     public function store(StoreProfessionaleRequest $request)
     {
         $professionale = Professionale::create($request->all());
-         return redirect()->back()->with('status', __('global.saveactions'));
-        //return redirect()->route('admin.professionales.index');
+        return redirect()->back()->with('status', __('global.saveactions'));
     }
 
     public function edit(Professionale $professionale)

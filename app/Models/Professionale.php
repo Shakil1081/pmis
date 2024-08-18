@@ -29,7 +29,6 @@ class Professionale extends Model
         'institution',
         'from_date',
         'to_date',
-        'passing_year',
         'created_at',
         'updated_at',
         'deleted_at',

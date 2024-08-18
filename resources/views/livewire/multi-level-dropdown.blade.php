@@ -110,9 +110,9 @@
 
 
 
-            @if ($onSelctDivisionmodel && $selectedValue2 == 'Division' && $beatSFPCCamp == 'Range/SFNTC/Station')
+            @if ($onSelctDivisionmodel && $selectedValue2 == 'Division' && $beatSFPCCamp === 'Range/SFNTC/Station')
                 <div class="form-group">
-                    <label class="required" for="posting_in_range">{{ trans('Range List') }}</label>
+                    <label class="required" for="posting_in_range">{{ trans('cruds.jobHistory.fields.range_list') }}</label>
                     <select wire:model="rangeForbeat" wire:change="onbeat($event.target.value)"
                         class="form-select select2" name="posting_in_range" id="posting_in_range" required>
                         <option>{{ trans('global.pleaseSelect') }}</option>
@@ -131,7 +131,7 @@
 
 
 
-            @if ($rangeForbeat)
+            @if ($beatSFPCCamp === 'Range/SFNTC/Station')
                 <div class="form-group">
                     <label class="required" for="posting_in_range">{{ trans('global.postinginRange') }}</label>
                     <select wire:model="beatlistshow" class="form-select" name="posting_in_range"
@@ -144,9 +144,9 @@
             @endif
 
 
-            @if ($beatlistshow == 'Beat/SFNTC/Camp')
+            @if ($beatlistshow ==='Beat/SFNTC/Camp')
                 <div class="form-group">
-                    <label class="required" for="beat_list_id">{{ trans('Beat list') }}</label>
+                    <label class="required" for="beat_list_id">{{ trans('cruds.jobHistory.fields.beat_list') }}</label>
                     <select class="form-select select2" name="beat_list_id" id="beat_list_id">
                         <option>{{ trans('global.pleaseSelect') }}</option>
                         @foreach ($beatList as $option)
