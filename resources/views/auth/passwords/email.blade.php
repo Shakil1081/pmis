@@ -52,20 +52,26 @@
                                 </div>
                             @endif
 
-
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    {{ session('status') }}
+                                    {{ session('message') }}
+                                </div>
+                            @endif
 
 
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="inputEmailAddress" class="form-label">
+                                    <label for="inputEmailAddress " class="form-label required">
 
                                         @if (app()->getLocale() === 'bn')
                                             ইমেইল
                                         @else
                                             Email
                                         @endif
+                                        <span class="test-danget">*</span>
                                     </label>
                                     <input id="email" type="email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"

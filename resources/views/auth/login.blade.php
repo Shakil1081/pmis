@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <a href="{{ route('home') }}">
-                                    <img src="{{ asset('assets/images/logo1.png') }}" class="mb-4" width="100"
+                                    <img src="{{ asset('assets/images/logo1.png') }}" class="mb-4" width="80"
                                         alt="Logo" />
                                 </a>
                             </div>
@@ -25,13 +25,13 @@
                                 @if (app()->getLocale() === 'bn')
                                     <h4 class="fw-bold mt-4">লগইন করুন</h4>
                                     {{-- <p class="mb-0">নিচের ফর্মটি পূরণ করুন</p> --}}
-                                    Change language to <a href="{{ url()->current() }}?change_language=en">
+                                    <a href="{{ url()->current() }}?change_language=en">
                                         English
                                     </a>
                                 @else
-                                    <h4 class="fw-bold mt-4">Get Started Now</h4>
+                                    <h4 class="fw-bold mt-4">Login In</h4>
                                     {{-- <p class="mb-0">Enter your credentials to login your account</p> --}}
-                                    ভাষা পরিবর্তন করুন <a href="{{ url()->current() }}?change_language=bn">
+                                    <a href="{{ url()->current() }}?change_language=bn">
                                         বাংলা
                                     </a>
                                 @endif
@@ -60,6 +60,7 @@
                                         @else
                                             Email
                                         @endif
+                                        <span class="test-danget">*</span>
                                     </label>
 
 
@@ -85,6 +86,7 @@
                                         @else
                                             Password
                                         @endif
+                                        <span class="test-danget">*</span>
                                     </label>
                                     <div class="input-group">
                                         <input id="password" name="password" type="password"

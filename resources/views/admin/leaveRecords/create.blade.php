@@ -14,7 +14,6 @@
                         @endif
 
                         <br>
-
                         @if (app()->getLocale() === 'bn')
                             কর্মকর্তা/কর্মচারী নাম : <b>{{ $employee->fullname_bn }}</b>
                         @else
@@ -49,6 +48,7 @@
                                 @endif
                                 <span
                                     class="help-block">{{ trans('cruds.leaveRecord.fields.leave_category_helper') }}</span>
+
                             </div>
                             <div class="form-group">
                                 <label class="required"

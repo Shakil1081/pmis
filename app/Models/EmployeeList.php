@@ -91,7 +91,8 @@ class EmployeeList extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'approved',
-        'approved_by'
+        'approved_by',
+        'created_by',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

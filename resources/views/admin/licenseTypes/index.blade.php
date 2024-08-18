@@ -6,13 +6,13 @@
                 <a class="btn btn-success" href="{{ route('admin.license-types.create') }}">
                     {{ trans('global.add') }} {{ trans('cruds.licenseType.title_singular') }}
                 </a>
-                <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{-- <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
                     {{ trans('global.app_csvImport') }}
                 </button>
                 @include('csvImport.modal', [
                     'model' => 'LicenseType',
                     'route' => 'admin.license-types.parseCsvImport',
-                ])
+                ]) --}}
             </div>
         </div>
     @endcan

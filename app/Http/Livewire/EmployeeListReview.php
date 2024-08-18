@@ -34,10 +34,10 @@ class EmployeeListReview extends Component
 
             if (app()->getLocale() === 'bn'){
 
-            $this->flashMessage = 'Employee approved successfully.';
+                $this->flashMessage = 'অনুমোদন সফলভাবে সম্পন্ন হয়েছে।';
         }else{
-                             
-            $this->flashMessage = 'অনুমোদন সফলভাবে সম্পন্ন হয়েছে।';
+            $this->flashMessage = 'Employee approved successfully.';    
+            
         }
            
         }

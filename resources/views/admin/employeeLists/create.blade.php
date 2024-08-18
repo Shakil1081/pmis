@@ -162,6 +162,7 @@
                         <div class="needsclick dropzone {{ $errors->has('birth_certificate_upload') ? 'is-invalid' : '' }}"
                             id="birth_certificate_upload-dropzone">
                         </div>
+
                         @if ($errors->has('birth_certificate_upload'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('birth_certificate_upload') }}
@@ -190,6 +191,9 @@
                         @endif
 
                         <span class="help-block">{{ trans('cruds.employeeList.fields.marital_statu_helper') }}</span>
+
+                    
+                        @livewire('religion')
                     </div>
                     <div class="form-group">
                         <label class="required" for="gender_id">{{ trans('cruds.employeeList.fields.gender') }}</label>

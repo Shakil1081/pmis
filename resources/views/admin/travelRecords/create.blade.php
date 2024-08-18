@@ -61,6 +61,7 @@
                             </div>
 
 
+ 
                             <div class="form-group otherDiv d-none">
                                 <label class="required"
                                     for="name_bn">{{ trans('cruds.foreignTravelPersonal.fields.name_bn') }}</label>
@@ -73,6 +74,7 @@
                                 @endif
                                 <span
                                     class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.title_helper') }}</span>
+ 
                             </div>
 
                             <div class="form-group otherDiv d-none">

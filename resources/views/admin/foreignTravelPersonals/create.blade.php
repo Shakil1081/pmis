@@ -32,6 +32,7 @@
                         <div class="row row-cols-2">
 
 
+
                             <div class="form-group">
                                 <label class="required"
                                     for="title_id">{{ trans('cruds.foreignTravelPersonal.fields.title') }}</label>
@@ -50,6 +51,67 @@
                                         <option value="Other" {{ old('title_id') == 'Other' ? 'selected' : '' }}>
                                             Other
                                         </option>
+
+                                <div class="form-group">
+                                    <label
+                                        for="country_id">{{ trans('cruds.foreignTravelPersonal.fields.country') }}</label>
+                                    <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                                        name="country_id" id="country_id">
+                                        @foreach ($countries as $id => $entry)
+                                            <option value="{{ $id }}"
+                                                {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('country'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('country') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.country_helper') }}</span>
+                                </div>
+                                {{-- <div class="form-group">
+                                    <label class="required"
+                                        for="purpose_id">{{ trans('cruds.foreignTravelPersonal.fields.purpose') }}</label>
+                                    <select class="form-control select2 {{ $errors->has('purpose') ? 'is-invalid' : '' }}"
+                                        name="purpose_id" id="purpose_id" required>
+                                        @foreach ($purposes as $id => $entry)
+                                            <option value="{{ $id }}"
+                                                {{ old('purpose_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('purpose'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('purpose') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.purpose_helper') }}</span>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label
+                                        for="from_date">{{ trans('cruds.foreignTravelPersonal.fields.from_date') }}</label>
+                                    <input class="form-control date {{ $errors->has('from_date') ? 'is-invalid' : '' }}"
+                                        type="text" name="from_date" id="from_date" value="{{ old('from_date') }}">
+                                    @if ($errors->has('from_date'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('from_date') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.foreignTravelPersonal.fields.from_date_helper') }}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="to_date">{{ trans('cruds.foreignTravelPersonal.fields.to_date') }}</label>
+                                    <input class="form-control date {{ $errors->has('to_date') ? 'is-invalid' : '' }}"
+                                        type="text" name="to_date" id="to_date" value="{{ old('to_date') }}">
+                                    @if ($errors->has('to_date'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('to_date') }}
+                                        </div>
+
                                     @endif
 
 

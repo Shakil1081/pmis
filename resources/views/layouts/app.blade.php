@@ -49,6 +49,10 @@
             color: rgb(4, 126, 81) !important;
             text-decoration: underline;
         }
+
+        span.test-danget {
+            color: red;
+        }
     </style>
 </head>
 
