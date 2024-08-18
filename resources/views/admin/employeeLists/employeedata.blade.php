@@ -1539,8 +1539,13 @@
                                                 {{ trans('cruds.spouseInformatione.fields.name_bn') }}
                                             </th>
                                             <td>
+
                                                 {{ $foreignTravelPersonal->title->name_bn ?? '' }}
+
                                             </td>
+
+<!-- 
+                                            {{ $foreignTravelPersonal->title->name_bn }} -->
                                         </tr>
                                         <tr>
                                             <th>
